@@ -244,6 +244,9 @@
     <Folder Include="App_Data\" />
     <Folder Include="Images\Icons\" />
     <Folder Include="Images\Pictures\" />
+    <Folder Include="Models\Administrador\" />
+    <Folder Include="Models\Anunciante\" />
+    <Folder Include="Models\Consumidor\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
