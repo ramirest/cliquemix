@@ -8,35 +8,35 @@ namespace Cliquemix.Models.Todos
     public class cl_nivel_premio
     {
         #region _Atributos 
-        private Int32 cod_premio;
-        private string titulo_nivel_premio;
-        private string ds_Premio;
-        private string premio_img;
+        private Int32 _cod_premio;
+        private string _titulo_nivel_premio;
+        private string _ds_Premio;
+        private string _premio_img;
         #endregion
 
         #region _Propriedades 
         public int CodPremio
         {
-            get { return cod_premio; }
-            set { cod_premio = value; }
+            get { return _cod_premio; }
+            set { _cod_premio = value; }
         }
 
         public string TituloNivelPremio
         {
-            get { return titulo_nivel_premio; }
-            set { titulo_nivel_premio = value; }
+            get { return _titulo_nivel_premio; }
+            set { _titulo_nivel_premio = value; }
         }
 
         public string DescPremio
         {
-            get { return ds_Premio; }
-            set { ds_Premio = value; }
+            get { return _ds_Premio; }
+            set { _ds_Premio = value; }
         }
 
         public string PremioImg
         {
-            get { return premio_img; }
-            set { premio_img = value; }
+            get { return _premio_img; }
+            set { _premio_img = value; }
         }
         #endregion
     }
