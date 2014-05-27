@@ -13,7 +13,7 @@ namespace Cliquemix.Models.Administrador
         private string _titulo_banner;       // titulo do banner;
 
         #endregion
-
+        //
         #region _Propriedades
 
         public int Bid
