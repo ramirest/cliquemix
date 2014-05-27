@@ -178,13 +178,24 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Anunciante\cl_anunciante.cs" />
+    <Compile Include="Models\Anunciante\cl_anuncio.cs" />
     <Compile Include="Models\Anunciante\cl_area_anuncio.cs" />
+    <Compile Include="Models\Anunciante\cl_campanha_localizacao.cs" />
+    <Compile Include="Models\Anunciante\cl_compra_credito.cs" />
+    <Compile Include="Models\Anunciante\cl_credito.cs" />
     <Compile Include="Models\Anunciante\cl_desconta_credito.cs" />
+    <Compile Include="Models\Anunciante\cl_destaque.cs" />
+    <Compile Include="Models\Anunciante\cl_premio_destaque.cs" />
+    <Compile Include="Models\Consumidor\cl_consumidor_anuncio.cs" />
+    <Compile Include="Models\Todos\cl_img_premio.cs" />
+    <Compile Include="Models\Todos\cl_premio.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Todos\cl_ban.cs" />
     <Compile Include="Models\Todos\cl_cidade.cs" />
     <Compile Include="Models\Todos\cl_estado.cs" />
     <Compile Include="Models\Todos\cl_nivel_premio.cs" />
     <Compile Include="Models\Todos\cl_pais.cs" />
+    <Compile Include="Models\Todos\cl_tmp_pontos_rede.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Views\index.Master.cs">
@@ -252,7 +263,6 @@
     <Folder Include="Images\Icons\" />
     <Folder Include="Images\Pictures\" />
     <Folder Include="Models\Administrador\" />
-    <Folder Include="Models\Consumidor\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
