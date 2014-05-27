@@ -177,8 +177,14 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Anunciante\cl_anunciante.cs" />
+    <Compile Include="Models\Anunciante\cl_area_anuncio.cs" />
+    <Compile Include="Models\Anunciante\cl_desconta_credito.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Todos\cl_cidade.cs" />
+    <Compile Include="Models\Todos\cl_estado.cs" />
     <Compile Include="Models\Todos\cl_nivel_premio.cs" />
+    <Compile Include="Models\Todos\cl_pais.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Views\index.Master.cs">
@@ -246,7 +252,6 @@
     <Folder Include="Images\Icons\" />
     <Folder Include="Images\Pictures\" />
     <Folder Include="Models\Administrador\" />
-    <Folder Include="Models\Anunciante\" />
     <Folder Include="Models\Consumidor\" />
   </ItemGroup>
   <ItemGroup>
