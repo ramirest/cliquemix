@@ -118,5 +118,10 @@ namespace Cliquemix.Models.Anunciante
         }
         #endregion
 
+
+        #region _Métodos
+        public 
+        #endregion
+
     }
 }
