@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Services.Description;
 
 namespace Cliquemix.Models.Anunciante
 {
@@ -118,10 +119,123 @@ namespace Cliquemix.Models.Anunciante
         }
         #endregion
 
-
         #region _Métodos
-        public 
+
+        #region _Método Novo Anunciante 
+        public void _novo(string @Pcnpj, string @Prazaosocial, string @PnmFantasia, string @Pcontato, string @Pie, string @Pim,
+            string @Pemail, string @Psite, string @Pobs, Int32 @PcodCondPagto, Int32 @PcodRamoAtividade, Int32 @PcodTermo, 
+            float @PsaldoCredito, Boolean @PleuTos)
+        {
+            try
+            {
+                Cnpj = Pcnpj;
+                RazaoSocial = Prazaosocial;
+                NomeFantasia = PnmFantasia;
+                Contato = Pcontato;
+                InscEstadual = Pie;
+                InscMunicipal = Pim;
+                Email = Pemail;
+                Site = Psite;
+                Obs = Pobs;
+                Cpid = PcodCondPagto;
+                Raid = PcodRamoAtividade;
+                Taid = PcodTermo;
+                SaldoCreditos = PsaldoCredito;
+                LeuTos = PleuTos;
+            }
+            catch (Exception)
+            {                
+                throw;
+            }
+        }
         #endregion
 
+        #region _Método Editar Anunciante
+        public void _editar(string @Pcnpj, string @Prazaosocial, string @PnmFantasia, string @Pcontato, string @Pie, string @Pim,
+            string @Pemail, string @Psite, string @Pobs, Int32 @PcodCondPagto, Int32 @PcodRamoAtividade, Int32 @PcodTermo,
+            float @PsaldoCredito, Boolean @PleuTos)
+        {
+            try
+            {
+                Cnpj = Pcnpj;
+                RazaoSocial = Prazaosocial;
+                NomeFantasia = PnmFantasia;
+                Contato = Pcontato;
+                InscEstadual = Pie;
+                InscMunicipal = Pim;
+                Email = Pemail;
+                Site = Psite;
+                Obs = Pobs;
+                Cpid = PcodCondPagto;
+                Raid = PcodRamoAtividade;
+                Taid = PcodTermo;
+                SaldoCreditos = PsaldoCredito;
+                LeuTos = PleuTos;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        #endregion
+
+        #region _Método Excluir Anunciante
+        public void _excluir(Int32 @codAnunciante)
+        {
+            try
+            {
+                //Delete SQL
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        #endregion
+
+        #endregion
+
+        #region _Construtores
+        public cl_anunciante() // Contrutor Padrão
+        {
+            _pid = 0;
+            _cnpj = string.Empty;
+            _razao_social = string.Empty;
+            _fantasia = string.Empty;
+            _contato = string.Empty;
+            _ie = string.Empty;
+            _im = string.Empty;
+            _email = string.Empty;
+            _site = string.Empty;
+            _obs = string.Empty;
+            _cpid = 0;
+            _raid = 0;
+            _taid = 0;
+            _saldo_creditos = 0;
+            _leu_tos = false;
+        }
+        #endregion
+
+        #region _Destrutores 
+        public ~cl_anunciante() // Destrutor Padrão
+        {
+            _pid = 0;
+            _cnpj = string.Empty;
+            _razao_social = string.Empty;
+            _fantasia = string.Empty;
+            _contato = string.Empty;
+            _ie = string.Empty;
+            _im = string.Empty;
+            _email = string.Empty;
+            _site = string.Empty;
+            _obs = string.Empty;
+            _cpid = 0;
+            _raid = 0;
+            _taid = 0;
+            _saldo_creditos = 0;
+            _leu_tos = false;
+        }
+        
+        #endregion
     }
 }
