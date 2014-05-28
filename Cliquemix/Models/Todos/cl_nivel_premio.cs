@@ -39,5 +39,76 @@ namespace Cliquemix.Models.Todos
             set { _premio_img = value; }
         }
         #endregion
+
+        #region _Métodos
+
+        #region _Método Novo Nível Prêmio 
+        public void _novo(string @PtituloNivelPremio, string @PdsPremio, string @PpremioImg)
+        {
+            try
+            {
+                TituloNivelPremio = PtituloNivelPremio;
+                DescPremio = PdsPremio;
+                PremioImg = PpremioImg;
+            }
+            catch (Exception)
+            {                
+                throw;
+            }
+        }
+        #endregion
+
+        #region _Método Editar Nível de Prêmio
+        public void _editar(string @PtituloNivelPremio, string @PdsPremio, string @PpremioImg)
+        {
+            try
+            {
+                TituloNivelPremio = PtituloNivelPremio;
+                DescPremio = PdsPremio;
+                PremioImg = PpremioImg;
+            }
+            catch (Exception)
+            {                
+                throw;
+            }
+        }
+        #endregion
+
+        #region _Método Excluir Nível de Prêmio
+        public void _excluir(Int32 @codNivelPremio)
+        {
+            try
+            {
+                //Delete SQL
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        #endregion
+
+        #endregion
+
+        #region _Construtores
+        public cl_nivel_premio() // Contrutor Padrão
+        {
+            _cod_premio = 0;
+            _titulo_nivel_premio = string.Empty;
+            _ds_Premio = string.Empty;
+            _premio_img = string.Empty;
+        }
+        #endregion
+
+        #region _Destrutores 
+        public ~cl_nivel_premio() // Destrutor Padrão
+        {
+            _cod_premio = 0;
+            _titulo_nivel_premio = string.Empty;
+            _ds_Premio = string.Empty;
+            _premio_img = string.Empty;
+        }        
+        #endregion
+
     }
 }

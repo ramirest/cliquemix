@@ -46,5 +46,61 @@ namespace Cliquemix.Models.Anunciante
             set { _dt_ocorrido = value; }
         }
         #endregion
+
+        #region _Métodos
+
+        #region _Método Descontar Crédito
+        public void _descontarCredito(Int32 @PcodDestaqueAnunciante, Int32 @PQtdeCreditosDescontar, DateTime @PdataOcorrido)
+        {
+            try
+            {
+                QtCreditoFinal = SaldoCreditoIni - PQtdeCreditosDescontar;
+                DtOcorrido = PdataOcorrido;
+            }
+            catch (Exception)
+            {                
+                throw;
+            }
+        }
+        #endregion
+
+        #region _Método Retornar Crédito 
+        public void _retornarCredito(Int32 @PcodDescontoCredito)
+        {
+            try
+            {
+                //    
+            }
+            catch (Exception)
+            {                
+                throw;
+            }
+        }
+        #endregion
+
+        #endregion
+
+        #region _Construtores
+        public cl_desconta_credito() // Contrutor Padrão
+        {
+            _dcid = 0;
+            _adid = 0;
+            _saldo_credito_ini = 0;
+            _qt_credito_final = 0;
+            _dt_ocorrido = DateTime.Now;
+        }
+        #endregion
+
+        #region _Destrutores 
+        public ~cl_desconta_credito() // Contrutor Padrão
+        {
+            _dcid = 0;
+            _adid = 0;
+            _saldo_credito_ini = 0;
+            _qt_credito_final = 0;
+            _dt_ocorrido = DateTime.Now;
+        }
+        #endregion
+
     }
 }
