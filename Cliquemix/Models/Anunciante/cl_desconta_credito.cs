@@ -19,7 +19,6 @@ namespace Cliquemix.Models.Anunciante
         public int Dcid
         {
             get { return _dcid; }
-            set { _dcid = value; }
         }
 
         public int Adid

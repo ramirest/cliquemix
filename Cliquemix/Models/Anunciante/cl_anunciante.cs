@@ -31,7 +31,6 @@ namespace Cliquemix.Models.Anunciante
         public int Pid
         {
             get { return _pid; }
-            set { _pid = value; }
         }       
 
         public string Cnpj
@@ -122,26 +121,26 @@ namespace Cliquemix.Models.Anunciante
         #region _Métodos
 
         #region _Método Novo Anunciante 
-        public void _novo(string @Pcnpj, string @Prazaosocial, string @PnmFantasia, string @Pcontato, string @Pie, string @Pim,
-            string @Pemail, string @Psite, string @Pobs, Int32 @PcodCondPagto, Int32 @PcodRamoAtividade, Int32 @PcodTermo, 
-            float @PsaldoCredito, Boolean @PleuTos)
+        public void _novo(string @pCnpj, string @pRazaoSocial, string @pNmFantasia, string @pContato, string @pIe, string @pIm,
+            string @pEmail, string @pSite, string @pObs, Int32 @pCodCondPagto, Int32 @pCodRamoAtividade, Int32 @pCodTermo, 
+            float @pSaldoCredito, Boolean @pLeuTos)
         {
             try
             {
-                Cnpj = Pcnpj;
-                RazaoSocial = Prazaosocial;
-                NomeFantasia = PnmFantasia;
-                Contato = Pcontato;
-                InscEstadual = Pie;
-                InscMunicipal = Pim;
-                Email = Pemail;
-                Site = Psite;
-                Obs = Pobs;
-                Cpid = PcodCondPagto;
-                Raid = PcodRamoAtividade;
-                Taid = PcodTermo;
-                SaldoCreditos = PsaldoCredito;
-                LeuTos = PleuTos;
+                Cnpj = pCnpj;
+                RazaoSocial = pRazaoSocial;
+                NomeFantasia = pNmFantasia;
+                Contato = pContato;
+                InscEstadual = pIe;
+                InscMunicipal = pIm;
+                Email = pEmail;
+                Site = pSite;
+                Obs = pObs;
+                Cpid = pCodCondPagto;
+                Raid = pCodRamoAtividade;
+                Taid = pCodTermo;
+                SaldoCreditos = pSaldoCredito;
+                LeuTos = pLeuTos;
             }
             catch (Exception)
             {                
@@ -151,36 +150,37 @@ namespace Cliquemix.Models.Anunciante
         #endregion
 
         #region _Método Editar Anunciante
-        public void _editar(string @Pcnpj, string @Prazaosocial, string @PnmFantasia, string @Pcontato, string @Pie, string @Pim,
-            string @Pemail, string @Psite, string @Pobs, Int32 @PcodCondPagto, Int32 @PcodRamoAtividade, Int32 @PcodTermo,
-            float @PsaldoCredito, Boolean @PleuTos)
+        public void _editar(Int32 @pCodAnunciante, string @pCnpj, string @pRazaoSocial, string @pNmFantasia, string @pContato, string @pIe, string @pIm,
+            string @pEmail, string @pSite, string @pObs, Int32 @pCodCondPagto, Int32 @pCodRamoAtividade, Int32 @pCodTermo,
+            float @pSaldoCredito, Boolean @pLeuTos)
         {
             try
             {
-                Cnpj = Pcnpj;
-                RazaoSocial = Prazaosocial;
-                NomeFantasia = PnmFantasia;
-                Contato = Pcontato;
-                InscEstadual = Pie;
-                InscMunicipal = Pim;
-                Email = Pemail;
-                Site = Psite;
-                Obs = Pobs;
-                Cpid = PcodCondPagto;
-                Raid = PcodRamoAtividade;
-                Taid = PcodTermo;
-                SaldoCreditos = PsaldoCredito;
-                LeuTos = PleuTos;
+                //where _pid == pCodAnunciante
+                Cnpj = pCnpj;
+                RazaoSocial = pRazaoSocial;
+                NomeFantasia = pNmFantasia;
+                Contato = pContato;
+                InscEstadual = pIe;
+                InscMunicipal = pIm;
+                Email = pEmail;
+                Site = pSite;
+                Obs = pObs;
+                Cpid = pCodCondPagto;
+                Raid = pCodRamoAtividade;
+                Taid = pCodTermo;
+                SaldoCreditos = pSaldoCredito;
+                LeuTos = pLeuTos;
             }
             catch (Exception)
             {
                 throw;
             }
         }
-        #endregion
+        #endregion 
 
         #region _Método Excluir Anunciante
-        public void _excluir(Int32 @codAnunciante)
+        public void _excluir(Int32 @pCodAnunciante)
         {
             try
             {

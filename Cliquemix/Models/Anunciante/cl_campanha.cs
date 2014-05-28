@@ -8,39 +8,127 @@ namespace Cliquemix.Models.Anunciante
     public class cl_campanha
     {
         #region _Atributos 
-        private Int32 _cid; //codigo da campanha;
-        private string _titulo_campanha;
-        private float _dt_inicio;
-        private float _dt_termino;
-
-        private Int32 did; // codigo   destaque.
-        private Int32 scid;
+        private Int32 _cid; //Código da Campanha;
+        private string _tituloCampanha; //Título da Campanha
+        private DateTime _dtInicio; //Data de Início
+        private DateTime _dtTermino; //Data de Término
+        private Int32 _did; //Código Destaque
+        private Int32 _scid; //Código do Status da Campanha
         #endregion
 
         #region _Propriedades 
-
         public int Cid
         {
             get { return _cid; }
-            set { _cid = value; }
         }
 
         public string TituloCampanha
         {
-            get { return _titulo_campanha; }
-            set { _titulo_campanha = value; }
+            get { return _tituloCampanha; }
+            set { _tituloCampanha = value; }
         }
 
-        public float DtInicio
+        public DateTime DtInicio
         {
-            get { return _dt_inicio; }
-            set { _dt_inicio = value; }
+            get { return _dtInicio; }
+            set { _dtInicio = value; }
         }
 
-        public float DtTermino
+        public DateTime DtTermino
         {
-            get { return _dt_termino; }
-            set { _dt_termino = value; }
+            get { return _dtTermino; }
+            set { _dtTermino = value; }
+        }
+
+        public int Did
+        {
+            get { return _did; }
+            set { _did = value; }
+        }
+
+        public int Scid
+        {
+            get { return _scid; }
+            set { _scid = value; }
+        }
+        #endregion
+
+        #region _Métodos 
+
+        #region _Método Novo Campanha 
+        public void _novo(string @pTituloCampanha, DateTime @pDataInicio, DateTime @pDataTermino, Int32 @pCodDestaque, Int32 @pCodStatusCampanha)
+        {
+            try
+            {
+                TituloCampanha = pTituloCampanha;
+                DtInicio = pDataInicio;
+                DtTermino = pDataTermino;
+                Did = pCodDestaque;
+                Scid = pCodStatusCampanha;
+            }
+            catch (Exception)
+            {                
+                throw;
+            }
+        }
+        #endregion
+
+        #region _Método Editar Campanha 
+        public void _novo(Int32 @pCodCampanha, string @pTituloCampanha, DateTime @pDataInicio, DateTime @pDataTermino, Int32 @pCodDestaque, Int32 @pCodStatusCampanha)
+        {
+            try
+            {
+                //where _cid == CodCampanha
+                TituloCampanha = pTituloCampanha;
+                DtInicio = pDataInicio;
+                DtTermino = pDataTermino;
+                Did = pCodDestaque;
+                Scid = pCodStatusCampanha;
+            }
+            catch (Exception)
+            {                
+                throw;
+            }
+        }
+        #endregion
+
+        #region _Método Excluir Anuncio 
+        public void _excluir(Int32 @pCodCampanha)
+        {
+            try
+            {
+                //Delete SQL
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        #endregion
+
+        #endregion
+
+        #region _Construtores 
+        public cl_campanha() // Contrutor Padrão
+        {
+            _cid = 0;
+            _tituloCampanha = string.Empty;
+            _dtInicio = DateTime.Now;
+            _dtTermino = DateTime.Now;
+            _did = 0;
+            _scid = 0;
+        }
+        #endregion
+
+        #region _Destrutores 
+        public ~cl_campanha() // Destrutor Padrão
+        {
+            _cid = 0;
+            _tituloCampanha = string.Empty;
+            _dtInicio = DateTime.Now;
+            _dtTermino = DateTime.Now;
+            _did = 0;
+            _scid = 0;
         }
         #endregion
     }

@@ -109,6 +109,5 @@ namespace Cliquemix.Models.Todos
             _premio_img = string.Empty;
         }        
         #endregion
-
     }
 }

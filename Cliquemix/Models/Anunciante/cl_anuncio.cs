@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Web;
 
 namespace Cliquemix.Models.Anunciante
@@ -9,11 +10,11 @@ namespace Cliquemix.Models.Anunciante
     {
         #region _Atributos 
         private Int32 _aid; //Código do anúncio
-        private string _titulo_anuncio; //Título do anúncio
+        private string _tituloAnuncio; //Título do anúncio
         private string _url; //URL do anúncio
-        private string _ds_anuncio; //Descrição do anúncio
-        private string _video_anuncio; //Caminho do vídeo do anúncio
-        private Int32 _qtde_pode_clicar; //Qtde de cliques permitidos por consumidor
+        private string _dsAnuncio; //Descrição do anúncio
+        private string _videoAnuncio; //Caminho do vídeo do anúncio
+        private Int32 _qtCliqueMax; //Qtde de cliques permitidos por consumidor
         private Int32 _aaid; //Código da área do anúncio
         #endregion
 
@@ -21,13 +22,12 @@ namespace Cliquemix.Models.Anunciante
         public int Aid
         {
             get { return _aid; }
-            set { _aid = value; }
         }
 
         public string TituloAnuncio
         {
-            get { return _titulo_anuncio; }
-            set { _titulo_anuncio = value; }
+            get { return _tituloAnuncio; }
+            set { _tituloAnuncio = value; }
         }
 
         public string Url
@@ -36,28 +36,111 @@ namespace Cliquemix.Models.Anunciante
             set { _url = value; }
         }
 
-        public string DsAnuncio
+        public string DescAnuncio
         {
-            get { return _ds_anuncio; }
-            set { _ds_anuncio = value; }
+            get { return _dsAnuncio; }
+            set { _dsAnuncio = value; }
         }
 
         public string VideoAnuncio
         {
-            get { return _video_anuncio; }
-            set { _video_anuncio = value; }
+            get { return _videoAnuncio; }
+            set { _videoAnuncio = value; }
         }
 
-        public int QtdePodeClicar
+        public int QtdeCliqueMad
         {
-            get { return _qtde_pode_clicar; }
-            set { _qtde_pode_clicar = value; }
+            get { return _qtCliqueMax; }
+            set { _qtCliqueMax = value; }
         }
 
         public int Aaid
         {
             get { return _aaid; }
             set { _aaid = value; }
+        }
+        #endregion
+
+        #region _Métodos
+
+        #region _Método Novo Anúncio 
+        public void _novo(string @pTituloAnuncio, string @pUrl, string @pDescAnuncio, string @pVideoAnuncio, Int32 @pQtCliqueMax, Int32 @pCodAreaAnuncio)
+        {
+            try
+            {
+                TituloAnuncio = pTituloAnuncio;
+                Url = pUrl;
+                DescAnuncio = pDescAnuncio;
+                VideoAnuncio = pVideoAnuncio;
+                QtdeCliqueMad = pQtCliqueMax;
+                Aaid = pCodAreaAnuncio;
+            }
+            catch (Exception)
+            {                
+                throw;
+            }
+        }
+        #endregion
+
+        #region _Método Editar Anúncio 
+        public void _editar(Int32 @pCodAnuncio, string @pTituloAnuncio, string @pUrl, string @pDescAnuncio, string @pVideoAnuncio, Int32 @pQtCliqueMax, Int32 @pCodAreaAnuncio)
+        {
+            try
+            {
+                //where aid == pCodAnuncio
+                TituloAnuncio = pTituloAnuncio;
+                Url = pUrl;
+                DescAnuncio = pDescAnuncio;
+                VideoAnuncio = pVideoAnuncio;
+                QtdeCliqueMad = pQtCliqueMax;
+                Aaid = pCodAreaAnuncio;
+            }
+            catch (Exception)
+            {                
+                throw;
+            }
+        }
+        #endregion
+
+        #region _Método Excluir Anuncio
+        public void _excluir(Int32 @pCodAnuncio)
+        {
+            try
+            {
+                //Delete SQL
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        #endregion
+
+        #endregion
+
+        #region _Construtores
+        public cl_anuncio() // Contrutor Padrão
+        {
+            _aid = 0;
+            _tituloAnuncio = string.Empty;
+            _url = string.Empty;
+            _dsAnuncio = string.Empty;
+            _videoAnuncio = string.Empty;
+            _qtCliqueMax = 0;
+            _aaid = 0;
+        }
+        #endregion
+
+        #region _Destrutores
+        public ~cl_anuncio() // Destrutor Padrão
+        {
+            _aid = 0;
+            _tituloAnuncio = string.Empty;
+            _url = string.Empty;
+            _dsAnuncio = string.Empty;
+            _videoAnuncio = string.Empty;
+            _qtCliqueMax = 0;
+            _aaid = 0;
         }
         #endregion
     }
