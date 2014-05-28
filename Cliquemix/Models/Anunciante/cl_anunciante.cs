@@ -235,7 +235,6 @@ namespace Cliquemix.Models.Anunciante
             _saldo_creditos = 0;
             _leu_tos = false;
         }
-        
         #endregion
     }
 }

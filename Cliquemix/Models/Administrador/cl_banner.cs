@@ -14,7 +14,7 @@ namespace Cliquemix.Models.Administrador
 
         #endregion
         //
-        #region _Propriedades
+        #region _Propriedades 
 
         public int Bid
         {
@@ -29,5 +29,71 @@ namespace Cliquemix.Models.Administrador
         }
 
         #endregion
+
+        #region _Métodos 
+
+            #region _Metodo Novo Banner 
+        public void _novo(Int32 @Pbid, string @Ptitulo_banner)
+        {
+            try
+            {
+                Bid = Pbid;
+                TituloBanner = Ptitulo_banner;
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+            
+        }
+            #endregion
+
+            #region _Metodo Editar Banner
+
+        public void _editar(Int32 @Pbid, string @Ptitulo_banner)
+        {
+            try
+            {
+                Bid = Pbid;
+                TituloBanner = Ptitulo_banner;
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+        }
+            #endregion
+
+            #region _Metodo Excluir Banner
+
+        public void _excluir(Int32 @CdBanner)
+        {
+            //Delete SQL
+        }
+
+            #endregion
+
+        #endregion
+
+        #region _Construtores 
+
+            public cl_banner()
+            {
+                _bid = 0;
+                _titulo_banner = string.Empty;
+            }
+        #endregion
+
+        #region _ Destrutores 
+            public ~cl_banner()
+            {
+                _bid = 0;
+                _titulo_banner = string.Empty;
+            }
+        #endregion
+
+
     }
 }
