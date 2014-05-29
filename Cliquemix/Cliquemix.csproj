@@ -348,7 +348,10 @@
     <Folder Include="App_Data\" />
     <Folder Include="Images\Icons\" />
     <Folder Include="Images\Pictures\" />
+    <Folder Include="Views\Administrador\" />
     <Folder Include="Views\Anunciante\" />
+    <Folder Include="Views\Consumidor\" />
+    <Folder Include="Views\Todos\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

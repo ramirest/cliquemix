@@ -37,6 +37,13 @@ namespace Cliquemix.Database
             _strConexaoDataBase = @"Dsn=cliquemix;uid=evsicove;pwd=evs1c0v3";
             _conn = new OdbcConnection(_strConexaoDataBase);
         }
+
+        public void _inserirDados(string @pStrSQL)
+        {
+            OdbcCommand comando = new OdbcCommand(pStrSQL, Conn);
+            Conn.Open();
+            comando.ExecuteNonQuery();
+        }
         #endregion
     }
 }

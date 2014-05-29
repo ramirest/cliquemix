@@ -143,6 +143,9 @@ namespace Cliquemix.Models.Anunciante
                 Taid = pCodTermo;
                 SaldoCreditos = pSaldoCredito;
                 LeuTos = pLeuTos;
+
+                conn._inserirDados(@"insert into anunciante (cnpj, razao_social, fantasia, contato) 
+                    values ('00.000.000/0000-00', 'Empresa1', 'Empresa1', 'João')");
             }
             catch (Exception)
             {                
@@ -151,10 +154,7 @@ namespace Cliquemix.Models.Anunciante
         }
         #endregion
 
-        #region _Método Inserir Dados 
-        
-
-        #region _Método Editar Anunciante
+        #region _Método Editar Anunciante 
         public void _editar(Int32 @pCodAnunciante, string @pCnpj, string @pRazaoSocial, string @pNmFantasia, string @pContato, string @pIe, string @pIm,
             string @pEmail, string @pSite, string @pObs, Int32 @pCodCondPagto, Int32 @pCodRamoAtividade, Int32 @pCodTermo,
             float @pSaldoCredito, Boolean @pLeuTos)
@@ -184,7 +184,7 @@ namespace Cliquemix.Models.Anunciante
         }
         #endregion 
 
-        #region _Método Excluir Anunciante
+        #region _Método Excluir Anunciante 
         public void _excluir(Int32 @pCodAnunciante)
         {
             try
@@ -198,9 +198,13 @@ namespace Cliquemix.Models.Anunciante
         }
         #endregion
 
+        #region _Método Listar Anunciantes 
+        //Listar anunciantes        
         #endregion
 
-        #region _Construtores
+        #endregion
+
+        #region _Construtores 
         public cl_anunciante() // Contrutor Padrão
         {
             _pid = 0;
