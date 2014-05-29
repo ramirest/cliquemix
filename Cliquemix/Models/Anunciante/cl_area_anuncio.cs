@@ -81,7 +81,7 @@ namespace Cliquemix.Models.Anunciante
         #endregion
 
         #region _Destrutores
-        public ~cl_area_anuncio() // Destrutor Padrão
+        ~cl_area_anuncio() // Destrutor Padrão
         {
             _aaid = 0;
             _tituloAreaAnuncio = string.Empty;

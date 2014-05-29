@@ -92,7 +92,7 @@ namespace Cliquemix.Models.Todos
         #endregion
 
         #region _Destrutores 
-        public ~cl_estado() // Destrutor Padrão
+        ~cl_estado() // Destrutor Padrão
         {
             _eid = 0;
             _nomeEstado = string.Empty;

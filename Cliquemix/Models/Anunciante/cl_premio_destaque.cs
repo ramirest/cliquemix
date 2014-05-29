@@ -91,7 +91,7 @@ namespace Cliquemix.Models.Anunciante
         #endregion
 
         #region _Destrutores
-        public ~cl_premio_destaque() // Destrutor Padrão
+        ~cl_premio_destaque() // Destrutor Padrão
         {
             _pid = 0;
             _did = 0;

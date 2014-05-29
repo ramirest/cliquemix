@@ -100,7 +100,7 @@ namespace Cliquemix.Models.Todos
         #endregion
 
         #region _Destrutores 
-        public ~cl_nivel_premio() // Destrutor Padrão
+        ~cl_nivel_premio() // Destrutor Padrão
         {
             _codPremio = 0;
             _tituloNivelPremio = string.Empty;

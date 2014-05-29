@@ -91,7 +91,7 @@ namespace Cliquemix.Models.Todos
         #endregion
 
         #region _Destrutores 
-        public ~cl_cidade() // Destrutor Padrão
+        ~cl_cidade() // Destrutor Padrão
         {
             _cid = 0;
             _nomeCidade = string.Empty;

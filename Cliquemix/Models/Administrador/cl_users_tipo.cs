@@ -83,7 +83,7 @@ namespace Cliquemix.Models.Todos
         #endregion
 
         #region _Destrutores 
-        public ~cl_users_tipo() // Destrutor Padrão
+        ~cl_users_tipo() // Destrutor Padrão
         {
             _uid = 0;
             _username = string.Empty;

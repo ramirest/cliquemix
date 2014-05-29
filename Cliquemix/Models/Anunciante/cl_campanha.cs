@@ -121,7 +121,7 @@ namespace Cliquemix.Models.Anunciante
         #endregion
 
         #region _Destrutores 
-        public ~cl_campanha() // Destrutor Padrão
+        ~cl_campanha() // Destrutor Padrão
         {
             _cid = 0;
             _tituloCampanha = string.Empty;

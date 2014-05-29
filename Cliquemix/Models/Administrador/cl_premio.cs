@@ -122,7 +122,7 @@ namespace Cliquemix.Models.Consumidor
         #endregion
 
         #region _Destrutores 
-        public ~cl_premio() // Destrutor Padrão
+        ~cl_premio() // Destrutor Padrão
         {
             _pid = 0;
             _tituloPremio = string.Empty;

@@ -99,7 +99,7 @@ namespace Cliquemix.Models.Administrador
         #endregion
 
         #region _ Destrutores 
-        public ~cl_banner_img()
+        ~cl_banner_img()
         {
             _imgid = 0;
             _bid = 0;

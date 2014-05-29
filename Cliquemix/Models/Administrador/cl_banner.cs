@@ -85,7 +85,7 @@ namespace Cliquemix.Models.Administrador
         #endregion
 
         #region _ Destrutores 
-            public ~cl_banner()
+            ~cl_banner()
             {
                 _bid = 0;
                 _tituloBanner = string.Empty;

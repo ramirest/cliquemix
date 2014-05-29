@@ -92,7 +92,7 @@ namespace Cliquemix.Models.Todos
         #endregion
 
         #region _Construtores 
-        public cl_users_tipo() // Contrutor Padrão
+        public cl_users() // Contrutor Padrão
         {
             _uid = 0;
             _username = string.Empty;
@@ -102,7 +102,7 @@ namespace Cliquemix.Models.Todos
         #endregion
 
         #region _Destrutores 
-        public ~cl_users_tipo() // Destrutor Padrão
+        ~cl_users() // Destrutor Padrão
         {
             _uid = 0;
             _username = string.Empty;

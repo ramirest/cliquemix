@@ -217,7 +217,7 @@ namespace Cliquemix.Models.Anunciante
         #endregion
 
         #region _Destrutores 
-        public ~cl_anunciante() // Destrutor Padrão
+        ~cl_anunciante() // Destrutor Padrão
         {
             _pid = 0;
             _cnpj = string.Empty;

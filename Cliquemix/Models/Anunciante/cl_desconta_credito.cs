@@ -91,7 +91,7 @@ namespace Cliquemix.Models.Anunciante
         #endregion
 
         #region _Destrutores 
-        public ~cl_desconta_credito() // Contrutor Padrão
+        ~cl_desconta_credito() // Contrutor Padrão
         {
             _dcid = 0;
             _adid = 0;

@@ -97,7 +97,7 @@ namespace Cliquemix.Models.Consumidor
         #endregion
 
         #region _Destrutores 
-        public ~cl_campanha_anuncio_consumidor() // Destrutor Padrão
+        ~cl_campanha_anuncio_consumidor() // Destrutor Padrão
         {
             _cacid = 0;
             _caid = 0;

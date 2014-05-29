@@ -106,8 +106,8 @@ namespace Cliquemix.Models.Anunciante
         }
         #endregion
 
-        #region _Construtores
-        public ~cl_campanha_anuncio() // Destrutor Padrão
+        #region _Destrutores
+        ~cl_campanha_anuncio() // Destrutor Padrão
         {
             _caid = 0;
             _aid = 0;

@@ -91,7 +91,7 @@ namespace Cliquemix.Models.Anunciante
         #endregion
 
         #region _Destrutores 
-        public ~cl_condicao_pgto() // Destrutor Padrão
+        ~cl_condicao_pgto() // Destrutor Padrão
         {
             _cpid = 0;
             _descricao = string.Empty;

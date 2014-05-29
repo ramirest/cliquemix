@@ -101,7 +101,7 @@ namespace Cliquemix.Models.Todos
         #endregion
 
         #region _Destrutores 
-        public ~cl_ban() // Destrutor Padrão
+        ~cl_ban() // Destrutor Padrão
         {
             _baid = 0;
             _btid = 0;

@@ -80,7 +80,7 @@ namespace Cliquemix.Models.Anunciante
         #endregion
 
         #region _Destrutores
-        public ~cl_campanha_anuncio_status() // Destrutor Padrão
+       ~cl_campanha_anuncio_status() // Destrutor Padrão
         {
             _casid = 0;
             _dsCamAnuStatus = string.Empty;

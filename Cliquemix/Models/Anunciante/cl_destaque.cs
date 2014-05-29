@@ -143,7 +143,7 @@ namespace Cliquemix.Models.Anunciante
         #endregion
 
         #region _Destrutores 
-        public ~cl_destaque() // Contrutor Padrão
+        ~cl_destaque() // Contrutor Padrão
         {
             _did = 0;
             _tituloDestaque = string.Empty;

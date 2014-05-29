@@ -87,7 +87,7 @@ namespace Cliquemix.Models.Anunciante
         #endregion
 
         #region _ Destrutores 
-        public ~cl_anuncio_img()
+        ~cl_anuncio_img()
         {
             _imgid = 0;
             _aid = 0;

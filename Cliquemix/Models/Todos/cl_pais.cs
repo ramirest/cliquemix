@@ -25,5 +25,24 @@ namespace Cliquemix.Models.Todos
             set { _nome_pais = value; }
         }
         #endregion
-   }
+
+        #region _Construtores 
+
+        public cl_pais() // Contrutor Padrão
+        {
+            _pid = 0;
+            _nome_pais = String.Empty;
+        }
+
+        #endregion
+
+        #region _Destrutores
+
+        ~cl_pais() // Destrutor Padrão
+        {
+            _pid = 0;
+            _nome_pais = String.Empty;
+        }
+        #endregion
+    }
 }

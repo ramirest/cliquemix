@@ -91,7 +91,7 @@ namespace Cliquemix.Models.Todos
         #endregion
 
         #region _Destrutores 
-        public ~cl_premio_img() // Destrutor Padrão
+       ~cl_premio_img() // Destrutor Padrão
         {
             _piid = 0;
             _pid = 0;

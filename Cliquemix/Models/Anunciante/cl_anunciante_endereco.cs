@@ -154,7 +154,7 @@ namespace Cliquemix.Models.Anunciante
         #endregion
 
         #region _Destrutores 
-        public ~cl_anunciante_endereco() // Destrutor Padrão
+        ~cl_anunciante_endereco() // Destrutor Padrão
         {
             _peid = 0;
             _pid = 0;

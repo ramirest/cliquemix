@@ -81,7 +81,7 @@ namespace Cliquemix.Models.Anunciante
         #endregion
 
         #region _Destrutores
-        public ~cl_ramo_atividade() // Destrutor Padrão
+        ~cl_ramo_atividade() // Destrutor Padrão
         {
             _raid = 0;
             _descricao = string.Empty;

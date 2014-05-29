@@ -88,7 +88,7 @@ namespace Cliquemix.Models.Anunciante
         #endregion
 
         #region _ Destrutores 
-        ~cl_anuncio_funcionalidade()
+         ~cl_anuncio_funcionalidade()
         {
             _afid = 0;
             _aid = 0;

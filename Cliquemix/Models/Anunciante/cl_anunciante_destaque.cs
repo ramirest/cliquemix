@@ -121,7 +121,7 @@ namespace Cliquemix.Models.Anunciante
         #endregion
 
         #region _Destrutores 
-        public ~cl_anunciante_destaque() // Destrutor Padrão
+        ~cl_anunciante_destaque() // Destrutor Padrão
         {
             _adid = 0;
             _aid = 0;

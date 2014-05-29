@@ -83,7 +83,7 @@ namespace Cliquemix.Models.Anunciante
         #endregion
 
         #region _Destrutores 
-        public ~cl_funcionalidade() // Destrutor Padrão
+        ~cl_funcionalidade() // Destrutor Padrão
         {
             _fid = 0;
             _dsFuncionalidade = string.Empty;

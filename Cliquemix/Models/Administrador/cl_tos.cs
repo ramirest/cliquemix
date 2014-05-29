@@ -102,7 +102,7 @@ namespace Cliquemix.Models.Todos
         #endregion
 
         #region _Destrutores 
-        public ~cl_tos() // Destrutor Padrão
+       ~cl_tos() // Destrutor Padrão
         {
             _tid = 0;
             _titulo = string.Empty;
