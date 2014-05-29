@@ -28,7 +28,7 @@ namespace Cliquemix.Models.Administrador
         }
 
         #endregion
-        //
+        
         #region _Métodos 
 
         #region _Metodo Novo Banner 
