@@ -53,7 +53,7 @@ namespace Cliquemix.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Invalid username or password.");
+                    ModelState.AddModelError("", "Usuário ou Senha inválidos.");
                 }
             }
 
@@ -119,10 +119,10 @@ namespace Cliquemix.Controllers
         public ActionResult Manage(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
-                : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
-                : message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
-                : message == ManageMessageId.Error ? "An error has occurred."
+                message == ManageMessageId.ChangePasswordSuccess ? "Sua senha foi alterada com sucesso."
+                : message == ManageMessageId.SetPasswordSuccess ? "Sua senha foi criada com sucesso."
+                : message == ManageMessageId.RemoveLoginSuccess ? "O login externo foi removido."
+                : message == ManageMessageId.Error ? "Um erro foi encontrado."
                 : "";
             ViewBag.HasLocalPassword = HasPassword();
             ViewBag.ReturnUrl = Url.Action("Manage");

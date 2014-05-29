@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Services.Description;
+using Cliquemix.Database;
 
 namespace Cliquemix.Models.Anunciante
 {
     public class cl_anunciante
     {
+        private connMySQL conn = new connMySQL();
         #region _Atributos 
         private Int32 _pid; //Código do anunciante;
         private string _cnpj; //CNPJ do anunciante;
@@ -148,6 +150,9 @@ namespace Cliquemix.Models.Anunciante
             }
         }
         #endregion
+
+        #region _Método Inserir Dados 
+        
 
         #region _Método Editar Anunciante
         public void _editar(Int32 @pCodAnunciante, string @pCnpj, string @pRazaoSocial, string @pNmFantasia, string @pContato, string @pIe, string @pIm,
