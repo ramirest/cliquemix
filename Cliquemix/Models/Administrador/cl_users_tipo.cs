@@ -9,7 +9,7 @@ namespace Cliquemix.Models.Todos
     {
         #region _Atributos 
         private Int32 _utid;
-        private string dsUsersTipo;
+        private string _dsUsersTipo;
         #endregion
 
         #region _Propriedades 
@@ -75,20 +75,16 @@ namespace Cliquemix.Models.Todos
         #region _Construtores 
         public cl_users_tipo() // Contrutor Padrão
         {
-            _uid = 0;
-            _username = string.Empty;
-            _pwd = string.Empty;
             _utid = 0;
+            _dsUsersTipo = string.Empty;
         }
         #endregion
 
         #region _Destrutores 
         ~cl_users_tipo() // Destrutor Padrão
         {
-            _uid = 0;
-            _username = string.Empty;
-            _pwd = string.Empty;
-            _utid = 0;         
+            _utid = 0;
+            _dsUsersTipo = string.Empty;
         }        
         #endregion
     }
