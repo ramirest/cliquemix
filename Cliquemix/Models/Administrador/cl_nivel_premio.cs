@@ -8,39 +8,38 @@ namespace Cliquemix.Models.Todos
     public class cl_nivel_premio
     {
         #region _Atributos 
-        private Int32 _cod_premio;
-        private string _titulo_nivel_premio;
-        private string _ds_Premio;
-        private string _premio_img;
+        private Int32 _codPremio;
+        private string _tituloNivelPremio;
+        private string _dsPremio;
+        private string _premioImg;
         #endregion
 
         #region _Propriedades 
         public int CodPremio
         {
-            get { return _cod_premio; }
-            set { _cod_premio = value; }
+            get { return _codPremio; }
         }
 
         public string TituloNivelPremio
         {
-            get { return _titulo_nivel_premio; }
-            set { _titulo_nivel_premio = value; }
+            get { return _tituloNivelPremio; }
+            set { _tituloNivelPremio = value; }
         }
 
         public string DescPremio
         {
-            get { return _ds_Premio; }
-            set { _ds_Premio = value; }
+            get { return _dsPremio; }
+            set { _dsPremio = value; }
         }
 
         public string PremioImg
         {
-            get { return _premio_img; }
-            set { _premio_img = value; }
+            get { return _premioImg; }
+            set { _premioImg = value; }
         }
         #endregion
 
-        #region _Métodos
+        #region _Métodos 
 
         #region _Método Novo Nível Prêmio 
         public void _novo(string @PtituloNivelPremio, string @PdsPremio, string @PpremioImg)
@@ -90,23 +89,23 @@ namespace Cliquemix.Models.Todos
 
         #endregion
 
-        #region _Construtores
+        #region _Construtores 
         public cl_nivel_premio() // Contrutor Padrão
         {
-            _cod_premio = 0;
-            _titulo_nivel_premio = string.Empty;
-            _ds_Premio = string.Empty;
-            _premio_img = string.Empty;
+            _codPremio = 0;
+            _tituloNivelPremio = string.Empty;
+            _dsPremio = string.Empty;
+            _premioImg = string.Empty;
         }
         #endregion
 
         #region _Destrutores 
         public ~cl_nivel_premio() // Destrutor Padrão
         {
-            _cod_premio = 0;
-            _titulo_nivel_premio = string.Empty;
-            _ds_Premio = string.Empty;
-            _premio_img = string.Empty;
+            _codPremio = 0;
+            _tituloNivelPremio = string.Empty;
+            _dsPremio = string.Empty;
+            _premioImg = string.Empty;
         }        
         #endregion
     }

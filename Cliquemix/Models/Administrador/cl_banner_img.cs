@@ -14,7 +14,7 @@ namespace Cliquemix.Models.Administrador
         private string _imgBanner;
         #endregion
 
-        #region _Propriedades
+        #region _Propriedades 
 
         public int Imgid
         {
