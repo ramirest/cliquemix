@@ -7,7 +7,7 @@ namespace Cliquemix.Models.Administrador
 {
     public class cl_banner
     {
-        #region _Atributos
+        #region _Atributos 
 
         private Int32 _bid;                  //codigo do banner;
         private string _tituloBanner;       // titulo do banner;
