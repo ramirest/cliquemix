@@ -20,8 +20,8 @@ namespace Cliquemix.Models.Todos
 
         public string DsUsersTipo
         {
-            get { return dsUsersTipo; }
-            set { dsUsersTipo = value; }
+            get { return _dsUsersTipo; }
+            set { _dsUsersTipo = value; }
         }
         #endregion
 
