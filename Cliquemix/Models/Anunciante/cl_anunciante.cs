@@ -121,7 +121,7 @@ namespace Cliquemix.Models.Anunciante
         #endregion
 
         #region _Métodos
-
+/*
         #region _Método Novo Anunciante 
         public void _novo(string @pCnpj, string @pRazaoSocial, string @pNmFantasia, string @pContato, string @pIe, string @pIm,
             string @pEmail, string @pSite, string @pObs, Int32 @pCodCondPagto, Int32 @pCodRamoAtividade, Int32 @pCodTermo, 
@@ -201,12 +201,12 @@ namespace Cliquemix.Models.Anunciante
         #region _Método Listar Anunciantes 
         //Listar anunciantes        
         #endregion
-
+        */
         #endregion
 
         #region _Construtores 
         public cl_anunciante() // Contrutor Padrão
-        {
+        {/*
             _pid = 0;
             _cnpj = string.Empty;
             _razao_social = string.Empty;
@@ -221,7 +221,7 @@ namespace Cliquemix.Models.Anunciante
             _raid = 0;
             _taid = 0;
             _saldo_creditos = 0;
-            _leu_tos = false;
+            _leu_tos = false;*/
         }
         #endregion
 

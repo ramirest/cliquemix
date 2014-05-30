@@ -222,17 +222,13 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AnuncianteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Database\dbConnectionMySQL.cs" />
-    <Compile Include="Database\Cliquemix.Designer.cs">
+    <Compile Include="Models\Database\dbConnectionMySQL.cs" />
+    <Compile Include="Models\Database\Cliquemix.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Cliquemix.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Database\tbAnunciante.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>tbAnunciante.xsd</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -288,23 +284,12 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <EntityDeploy Include="Database\Cliquemix.edmx">
+    <EntityDeploy Include="Models\Database\Cliquemix.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Cliquemix.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Database\Cliquemix.edmx.diagram">
+    <Content Include="Models\Database\Cliquemix.edmx.diagram">
       <DependentUpon>Cliquemix.edmx</DependentUpon>
-    </Content>
-    <Content Include="Database\tbAnunciante.xsc">
-      <DependentUpon>tbAnunciante.xsd</DependentUpon>
-    </Content>
-    <None Include="Database\tbAnunciante.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>tbAnunciante.Designer.cs</LastGenOutput>
-    </None>
-    <Content Include="Database\tbAnunciante.xss">
-      <DependentUpon>tbAnunciante.xsd</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
@@ -350,6 +335,7 @@
     <Folder Include="Images\Pictures\" />
     <Folder Include="Views\Administrador\" />
     <Folder Include="Views\Anunciante\" />
+    <Folder Include="Views\Anunciante_\" />
     <Folder Include="Views\Consumidor\" />
     <Folder Include="Views\Todos\" />
   </ItemGroup>
