@@ -222,14 +222,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AnuncianteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Models\Database\dbConnectionMySQL.cs" />
-    <Compile Include="Models\Database\Cliquemix.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Cliquemix.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -257,8 +250,10 @@
     <Compile Include="Models\Consumidor\cl_campanha_anuncio_consumidor.cs" />
     <Compile Include="Models\Anunciante\cl_anunciante_endereco.cs" />
     <Compile Include="Models\Anunciante\cl_ramo_atividade.cs" />
+    <Compile Include="Models\Database\database.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Administrador\cl_ban.cs" />
+    <Compile Include="Models\StoreContext.cs" />
     <Compile Include="Models\Todos\cl_cidade.cs" />
     <Compile Include="Models\Todos\cl_estado.cs" />
     <Compile Include="Models\Administrador\cl_premio_img.cs" />
@@ -284,13 +279,6 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <EntityDeploy Include="Models\Database\Cliquemix.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Cliquemix.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Database\Cliquemix.edmx.diagram">
-      <DependentUpon>Cliquemix.edmx</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
