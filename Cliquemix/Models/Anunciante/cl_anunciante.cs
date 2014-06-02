@@ -5,13 +5,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Services.Description;
 using Cliquemix.Models;
-using Cliquemix.Models.Database;
 
 namespace Cliquemix.Models.Anunciante
 {
     public class cl_anunciante
     {
-        private database db;
 
         #region _Atributos 
         private Int32 _pid; //Código do anunciante;
@@ -134,24 +132,6 @@ namespace Cliquemix.Models.Anunciante
         }
         #endregion
 
-
-        public void Cadastro()
-        {
-            try
-            {
-                db.conn.Open();
-                string inserir = "INSERT INTO anunciante (cnpj, razao_social, fantasia, contato) " +
-                                 "VALUES ('" + this.Cnpj + "','" + this.RazaoSocial + "','" + this.NomeFantasia + "','" +
-                                 this.Contato + "')";
-                OdbcCommand comando = new OdbcCommand(inserir, db.conn);
-                comando.ExecuteNonQuery();
-                db.conn.Close();
-            }
-            catch (Exception ex)
-            {                
-                throw new Exception("Erro de comando: "+ex.Message);
-            }
-        }
 
         #region _Destrutores 
         ~cl_anunciante() // Destrutor Padrão
