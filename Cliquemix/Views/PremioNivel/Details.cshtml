@@ -1,0 +1,43 @@
+﻿@model Cliquemix.Models.tbPremioNivel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbPremioNivel</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tituloNivelPremio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tituloNivelPremio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dsPremio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dsPremio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.premioImg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.premioImg)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.pnid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

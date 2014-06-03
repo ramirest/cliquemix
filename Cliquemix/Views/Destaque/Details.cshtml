@@ -1,0 +1,75 @@
+﻿@model Cliquemix.Models.tbDestaque
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbDestaque</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tituloDestaque)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tituloDestaque)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qtCredito)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qtCredito)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tmpEspera)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tmpEspera)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.durCampanha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.durCampanha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qtDurCampanha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qtDurCampanha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dsDestaque)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dsDestaque)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.imgDestaque)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.imgDestaque)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.did }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

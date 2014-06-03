@@ -1,0 +1,86 @@
+﻿@model Cliquemix.Models.tbDestaque
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>tbDestaque</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.did)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.tituloDestaque, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.tituloDestaque)
+                @Html.ValidationMessageFor(model => model.tituloDestaque)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.qtCredito, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.qtCredito)
+                @Html.ValidationMessageFor(model => model.qtCredito)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.tmpEspera, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.tmpEspera)
+                @Html.ValidationMessageFor(model => model.tmpEspera)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.durCampanha, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.durCampanha)
+                @Html.ValidationMessageFor(model => model.durCampanha)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.qtDurCampanha, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.qtDurCampanha)
+                @Html.ValidationMessageFor(model => model.qtDurCampanha)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.dsDestaque, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.dsDestaque)
+                @Html.ValidationMessageFor(model => model.dsDestaque)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.imgDestaque, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.imgDestaque)
+                @Html.ValidationMessageFor(model => model.imgDestaque)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

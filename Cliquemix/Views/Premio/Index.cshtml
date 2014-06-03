@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Cliquemix.Models.tbPremio>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.tituloPremio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dsPremio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dtCriacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ativo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbPremioNivel.tituloNivelPremio)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tituloPremio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dsPremio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dtCriacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ativo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbPremioNivel.tituloNivelPremio)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.prid }) |
+            @Html.ActionLink("Details", "Details", new { id=item.prid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.prid })
+        </td>
+    </tr>
+}
+
+</table>

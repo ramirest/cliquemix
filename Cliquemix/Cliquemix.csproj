@@ -206,6 +206,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DestaqueController.cs" />
+    <Compile Include="Controllers\PremioController.cs" />
+    <Compile Include="Controllers\PremioNivelController.cs" />
+    <Compile Include="Controllers\AnuncianteController.cs" />
+    <Compile Include="Controllers\AnuncianteDestaqueController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -420,6 +425,31 @@
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Anunciante\Create.cshtml" />
+    <Content Include="Views\Anunciante\Delete.cshtml" />
+    <Content Include="Views\Anunciante\Details.cshtml" />
+    <Content Include="Views\Anunciante\Edit.cshtml" />
+    <Content Include="Views\Anunciante\Index.cshtml" />
+    <Content Include="Views\AnuncianteDestaque\Create.cshtml" />
+    <Content Include="Views\AnuncianteDestaque\Delete.cshtml" />
+    <Content Include="Views\AnuncianteDestaque\Details.cshtml" />
+    <Content Include="Views\AnuncianteDestaque\Edit.cshtml" />
+    <Content Include="Views\AnuncianteDestaque\Index.cshtml" />
+    <Content Include="Views\PremioNivel\Create.cshtml" />
+    <Content Include="Views\PremioNivel\Delete.cshtml" />
+    <Content Include="Views\PremioNivel\Details.cshtml" />
+    <Content Include="Views\PremioNivel\Edit.cshtml" />
+    <Content Include="Views\PremioNivel\Index.cshtml" />
+    <Content Include="Views\Premio\Create.cshtml" />
+    <Content Include="Views\Premio\Delete.cshtml" />
+    <Content Include="Views\Premio\Details.cshtml" />
+    <Content Include="Views\Premio\Edit.cshtml" />
+    <Content Include="Views\Premio\Index.cshtml" />
+    <Content Include="Views\Destaque\Create.cshtml" />
+    <Content Include="Views\Destaque\Delete.cshtml" />
+    <Content Include="Views\Destaque\Details.cshtml" />
+    <Content Include="Views\Destaque\Edit.cshtml" />
+    <Content Include="Views\Destaque\Index.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

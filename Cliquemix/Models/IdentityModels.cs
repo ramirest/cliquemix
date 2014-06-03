@@ -26,5 +26,15 @@ namespace Cliquemix.Models
         public System.Data.Entity.DbSet<Cliquemix.Models.tbTos> tbTos { get; set; }
 
         public System.Data.Entity.DbSet<Cliquemix.Models.tbUsers> tbUsers { get; set; }
+
+        public System.Data.Entity.DbSet<Cliquemix.Models.tbAnuncianteDestaque> tbAnuncianteDestaques { get; set; }
+
+        public System.Data.Entity.DbSet<Cliquemix.Models.tbAnuncianteDestaqueStatus> tbAnuncianteDestaqueStatus { get; set; }
+
+        public System.Data.Entity.DbSet<Cliquemix.Models.tbDestaque> tbDestaque { get; set; }
+
+        public System.Data.Entity.DbSet<Cliquemix.Models.tbPremioNivel> tbPremioNivels { get; set; }
+
+        public System.Data.Entity.DbSet<Cliquemix.Models.tbPremio> tbPremios { get; set; }
     }
 }
