@@ -211,26 +211,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Administrador\cl_banner.cs" />
-    <Compile Include="Models\Administrador\cl_banner_img.cs" />
-    <Compile Include="Models\Administrador\cl_users_tipo.cs" />
-    <Compile Include="Models\Anunciante\cl_anunciante.cs" />
-    <Compile Include="Models\Anunciante\cl_anunciante_destaque.cs" />
-    <Compile Include="Models\Anunciante\cl_anuncio.cs" />
-    <Compile Include="Models\Anunciante\cl_anuncio_funcionalidade.cs" />
-    <Compile Include="Models\Anunciante\cl_anuncio_img.cs" />
-    <Compile Include="Models\Anunciante\cl_area_anuncio.cs" />
-    <Compile Include="Models\Anunciante\cl_campanha.cs" />
-    <Compile Include="Models\Anunciante\cl_campanha_anuncio_status.cs" />
-    <Compile Include="Models\Anunciante\cl_campanha_anuncio.cs" />
-    <Compile Include="Models\Anunciante\cl_campanha_anuncio_localizacao.cs" />
-    <Compile Include="Models\Anunciante\cl_compra_credito.cs" />
-    <Compile Include="Models\Anunciante\cl_condicao_pgto.cs" />
-    <Compile Include="Models\Anunciante\cl_credito.cs" />
-    <Compile Include="Models\Anunciante\cl_desconta_credito.cs" />
-    <Compile Include="Models\Anunciante\cl_destaque.cs" />
-    <Compile Include="Models\Anunciante\cl_funcionalidade.cs" />
-    <Compile Include="Models\Anunciante\cl_premio_destaque.cs" />
     <Compile Include="Models\Cliquemix.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -246,11 +226,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Cliquemix.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Consumidor\cl_campanha_anuncio_consumidor.cs" />
-    <Compile Include="Models\Anunciante\cl_anunciante_endereco.cs" />
-    <Compile Include="Models\Anunciante\cl_ramo_atividade.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\Administrador\cl_ban.cs" />
     <Compile Include="Models\tbAnunciante.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
@@ -374,15 +350,6 @@
     <Compile Include="Models\tbUsersTipo.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Todos\cl_cidade.cs" />
-    <Compile Include="Models\Todos\cl_estado.cs" />
-    <Compile Include="Models\Administrador\cl_premio_img.cs" />
-    <Compile Include="Models\Administrador\cl_nivel_premio.cs" />
-    <Compile Include="Models\Todos\cl_pais.cs" />
-    <Compile Include="Models\Administrador\cl_premio.cs" />
-    <Compile Include="Models\Administrador\cl_premio_consumidor.cs" />
-    <Compile Include="Models\Administrador\cl_tos.cs" />
-    <Compile Include="Models\Administrador\cl_users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -462,7 +429,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\Anunciante\" />
     <Folder Include="Images\Icons\" />
     <Folder Include="Images\Pictures\" />
   </ItemGroup>
@@ -494,7 +460,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>9535</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:9535/</IISUrl>
+          <IISUrl>http://localhost:35543/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
