@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Cliquemix.Models.tbAnuncio>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ANÚNCIOS</h2>
+
+<p>
+    @Html.ActionLink("Novo Anúncio", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("CÓDIGO")
+        </th>        
+        <th>
+            @Html.DisplayName("TÍTULO")
+        </th>
+        <th>
+            @Html.DisplayName("URL")
+        </th>
+        <th>
+            @Html.DisplayName("DESCRIÇÃO")
+        </th>
+        <th>
+            @Html.DisplayName("VÍDEO")
+        </th>
+        <th>
+            @Html.DisplayName("ÁREA DO ANÚNCIO")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.aid)
+        </td>        
+        <td>
+            @Html.DisplayFor(modelItem => item.tituloAnuncio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.url)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dsAnuncio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.videoAnuncio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbAnuncioArea.tituloAnuncioArea)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.aid }) |
+            @Html.ActionLink("Details", "Details", new { id=item.aid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.aid })
+        </td>
+    </tr>
+}
+
+</table>

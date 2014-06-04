@@ -40,3 +40,39 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+
+#BoxTitulo
+{
+    width:100%;
+    float:left;
+    margin-bottom:20px;
+}
+#BoxFormsGeral
+{
+    width:100%;
+    float:left;
+    margin-bottom:10px;
+    display:inline-block;
+}
+#BoxOutrasInformacoes
+{
+    width:100%;
+    float:left;
+    display:inline-block;
+}
+#BoxFormLogin
+{
+    width:370px;
+    display:inline-block;
+    float:left;
+    text-align:left;
+    padding:15px;
+}
+#BoxCadastro
+{
+    width:370px;
+    display:inline-block;
+    float:right;
+    text-align:left;
+    padding:15px;
+}

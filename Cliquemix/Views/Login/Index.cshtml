@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "CLIQUEMIX";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="BoxTitulo">
+    <h1>
+        ACESSE OS CONTEÚDOS EXCLUSIVOS CLIQUEMIX
+    </h1>
+</div>
+<div id="BoxFormsGeral">
+    <div id="BoxFormLogin">
+        <fieldset>
+            <legend>Informe seus dados</legend>
+            <form method="post" action="/Login/Principal" id="frmLogin">
+                <table style="margin-top:10px;">
+                    <tr>
+                        <td>Usuário:</td>
+                        <td><input type="text" name="txtUsuario" id="txtUsuario" maxlength="20" class="" /></td>
+                    </tr>
+                    <tr>
+                        <td>Senha:</td>
+                        <td><input type="password" name="txtSenha" id="txtSenha" maxlength="10" class="" /></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" name="btnLogar" id="btnLogar" value="Logar" /></td>
+                    </tr>
+                </table>
+            </form>
+        </fieldset>
+    </div>
+    <div id="BoxCadastro">
+        <fieldset>
+            <legend>Cadastre-se</legend>
+            <span style="margin-top:15px;">
+                Ainda não se cadastrou em nosso portal? Cadastre-se agora mesmo!<br /><br />
+                <input type="button" value="Cadastrar agora!" id="btnCadastrar" />
+            </span>
+        </fieldset>
+    </div>
+</div>
+<div id="BoxOutrasInformacoes">
+    <a href="@Href("~/Usuarios/Relembrar")" target="_self" class="LinkGeral">
+        Esqueceu seu usuário e/ou senha?
+    </a>
+</div>

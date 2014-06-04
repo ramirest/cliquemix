@@ -1,4 +1,4 @@
-﻿@model Cliquemix.Models.tbPremioNivel
+﻿@model Cliquemix.Models.tbBan
 
 @{
     ViewBag.Title = "Create";
@@ -12,31 +12,31 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>NÍVEL DE PRÊMIO</h4>
+        <h4>BAN</h4>
         <hr />
         @Html.ValidationSummary(true)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.tituloNivelPremio, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.btid, "btid", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.tituloNivelPremio)
-                @Html.ValidationMessageFor(model => model.tituloNivelPremio)
+                @Html.DropDownList("btid", String.Empty)
+                @Html.ValidationMessageFor(model => model.btid)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.dsPremio, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.uid, "uid", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.dsPremio)
-                @Html.ValidationMessageFor(model => model.dsPremio)
+                @Html.DropDownList("uid", String.Empty)
+                @Html.ValidationMessageFor(model => model.uid)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.premioImg, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.dtOcorrido, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.premioImg)
-                @Html.ValidationMessageFor(model => model.premioImg)
+                @Html.EditorFor(model => model.dtOcorrido)
+                @Html.ValidationMessageFor(model => model.dtOcorrido)
             </div>
         </div>
 

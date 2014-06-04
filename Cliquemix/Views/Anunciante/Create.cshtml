@@ -5,19 +5,19 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Novo Anunciante</h2>
+<h2>Novo</h2>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Anunciante</h4>
+        <h4>ANUNCIANTE</h4>
         <hr />
         @Html.ValidationSummary(true)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.cnpj, new { @class = "control-label col-md-2"})
+            @Html.Label("CNPJ", new { @class = "control-label col-md-2"})
             <div class="col-md-10">
                 @Html.EditorFor(model => model.cnpj)
                 @Html.ValidationMessageFor(model => model.cnpj)
@@ -25,7 +25,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.razaoSocial, new { @class = "control-label col-md-2" })
+            @Html.Label("Razão Social", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.razaoSocial)
                 @Html.ValidationMessageFor(model => model.razaoSocial)
@@ -33,7 +33,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.nmFantasia, new { @class = "control-label col-md-2" })
+            @Html.Label("Nome Fantasia", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.nmFantasia)
                 @Html.ValidationMessageFor(model => model.nmFantasia)
@@ -41,7 +41,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.contato, new { @class = "control-label col-md-2" })
+            @Html.Label("Contato", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.contato)
                 @Html.ValidationMessageFor(model => model.contato)
@@ -49,7 +49,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ie, new { @class = "control-label col-md-2" })
+            @Html.Label("Insc. Estadual", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ie)
                 @Html.ValidationMessageFor(model => model.ie)
@@ -57,7 +57,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.im, new { @class = "control-label col-md-2" })
+            @Html.Label("Insc. Municipal", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.im)
                 @Html.ValidationMessageFor(model => model.im)
@@ -65,7 +65,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.email, new { @class = "control-label col-md-2" })
+            @Html.Label("E-mail", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.email)
                 @Html.ValidationMessageFor(model => model.email)
@@ -73,7 +73,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.site, new { @class = "control-label col-md-2" })
+            @Html.Label("Site", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.site)
                 @Html.ValidationMessageFor(model => model.site)
@@ -81,7 +81,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.obs, new { @class = "control-label col-md-2" })
+            @Html.Label("Observações", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.obs)
                 @Html.ValidationMessageFor(model => model.obs)
@@ -89,7 +89,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.cpid, "cpid", new { @class = "control-label col-md-2" })
+            @Html.Label("Condição de Pagto", "cpid", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("cpid", String.Empty)
                 @Html.ValidationMessageFor(model => model.cpid)
@@ -97,7 +97,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.raid, "raid", new { @class = "control-label col-md-2" })
+            @Html.Label("Ramo de Atividade", "raid", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("raid", String.Empty)
                 @Html.ValidationMessageFor(model => model.raid)
@@ -105,15 +105,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.tid, "tid", new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("tid", String.Empty)
-                @Html.ValidationMessageFor(model => model.tid)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.saldoCreditos, new { @class = "control-label col-md-2" })
+            @Html.Label("Saldo de Créditos", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.saldoCreditos)
                 @Html.ValidationMessageFor(model => model.saldoCreditos)
@@ -121,7 +113,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.leuTermo, new { @class = "control-label col-md-2" })
+            @Html.Label("Termo Lido", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.leuTermo)
                 @Html.ValidationMessageFor(model => model.leuTermo)
@@ -129,7 +121,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.uid, "uid", new { @class = "control-label col-md-2" })
+            @Html.Label("Usuário", "uid", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("uid", String.Empty)
                 @Html.ValidationMessageFor(model => model.uid)

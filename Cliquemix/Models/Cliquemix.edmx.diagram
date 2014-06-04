@@ -88,6 +88,10 @@
         <AssociationConnector Association="cliquemixModel.prid_TbPremioDestaque_tbPremio_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.prid_tbPremioImg_tbPremio_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.utid_tbUsers_tbUsersTipo_fk" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="cliquemixModel.tbPermissao" Width="1.5" PointX="0.5" PointY="19.5" />
+        <EntityTypeShape EntityType="cliquemixModel.tbUsersPermissao" Width="1.5" PointX="2.75" PointY="19.25" />
+        <AssociationConnector Association="cliquemixModel.peid_tbUsersPermissao_tbPermissao_fk" />
+        <AssociationConnector Association="cliquemixModel.uid_tbUsersPermissao_tbUsers_fk" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

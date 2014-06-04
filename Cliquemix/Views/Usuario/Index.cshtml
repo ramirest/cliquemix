@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Cliquemix.Models.tbUsers>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>USUÁRIOS</h2>
+
+<p>
+    @Html.ActionLink("Novo Usuário", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Código")
+        </th>        
+        <th>
+            @Html.DisplayName("Nome de Usuário")
+        </th>
+        <th>
+            @Html.DisplayName("Tipo de Usuário")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.uid)
+        </td>        
+        <td>
+            @Html.DisplayFor(modelItem => item.username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbUsersTipo.dsUsersTipo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.uid }) |
+            @Html.ActionLink("Details", "Details", new { id=item.uid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.uid })
+        </td>
+    </tr>
+}
+
+</table>

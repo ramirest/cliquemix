@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Anunciantes</h2>
+<h2>ANUNCIANTES</h2>
 
 <p>
     @Html.ActionLink("Novo Anunciante", "Create")
@@ -13,49 +13,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.cnpj)            
+            @Html.DisplayName("CÓDIGO")
+        </th>        
+        <th>
+            @Html.DisplayName("CNPJ")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.razaoSocial)
+            @Html.DisplayName("RAZÃO SOCIAL")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.nmFantasia)
+            @Html.DisplayName("SALDO DE CRÉDITOS")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.contato)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ie)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.im)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.site)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.obs)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.saldoCreditos)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.leuTermo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tbCondicaoPagto.descricao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tbRamoAtividade.descricao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tbTos.titulo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tbUsers.username)
+            @Html.DisplayName("USUÁRIO")
         </th>
         <th></th>
     </tr>
@@ -63,46 +33,16 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.pid)
+        </td>        
+        <td>
             @Html.DisplayFor(modelItem => item.cnpj)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.razaoSocial)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.nmFantasia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.contato)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ie)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.im)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.site)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.obs)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.saldoCreditos)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.leuTermo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tbCondicaoPagto.descricao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tbRamoAtividade.descricao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tbTos.titulo)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.tbUsers.username)

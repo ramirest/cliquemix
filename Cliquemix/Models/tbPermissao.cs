@@ -12,23 +12,16 @@ namespace Cliquemix.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tbUsers
+    public partial class tbPermissao
     {
-        public tbUsers()
+        public tbPermissao()
         {
-            this.tbAnunciante = new HashSet<tbAnunciante>();
-            this.tbBan = new HashSet<tbBan>();
             this.tbUsersPermissao = new HashSet<tbUsersPermissao>();
         }
     
-        public int uid { get; set; }
-        public string username { get; set; }
-        public string pwd { get; set; }
-        public int utid { get; set; }
+        public int peid { get; set; }
+        public string dsPermissao { get; set; }
     
-        public virtual ICollection<tbAnunciante> tbAnunciante { get; set; }
-        public virtual ICollection<tbBan> tbBan { get; set; }
-        public virtual tbUsersTipo tbUsersTipo { get; set; }
         public virtual ICollection<tbUsersPermissao> tbUsersPermissao { get; set; }
     }
 }

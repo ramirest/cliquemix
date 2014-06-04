@@ -1,4 +1,5 @@
-﻿@{
+﻿@using Microsoft.Ajax.Utilities
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -12,11 +13,18 @@
     <div class="col-md-4">
         <h2>MENU ADMINISTRADOR</h2>
         <p>
-            <li>@Html.ActionLink("Anunciante", "Index", "Anunciante")</li>
             <li>@Html.ActionLink("Prêmio", "Index", "Premio")</li>
             <li>@Html.ActionLink("Nível de Prêmio", "Index", "PremioNivel")</li>
+            <li>@Html.ActionLink("Destaque", "Index", "Destaque")</li>
             <li>@Html.ActionLink("Anunciante", "Index", "Anunciante")</li>
-            <li>@Html.ActionLink("Anunciante", "Index", "Anunciante")</li>
+            <li>@Html.ActionLink("Anúncio", "Index", "Anuncio")</li>
+            <li>@Html.ActionLink("Banimento", "Index", "Ban")</li>
+            <li>@Html.ActionLink("Login", "Index", "Login")</li>
+            <p>
+
+            </p>
+            <li>@Html.ActionLink("Usuário", "Index", "Usuario")</li>
+            <li>@Html.ActionLink("Tipo Usuário", "Index", "UsuarioTipo")</li>
         </p>
         <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
     </div>
