@@ -205,7 +205,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\Anunciante\LoginAnuncianteController.cs" />
     <Compile Include="Controllers\Anunciante\MenuAnuncianteController.cs" />
     <Compile Include="Controllers\Anunciante\MenuTopoAnuncianteController.cs" />
     <Compile Include="Controllers\Anunciante\PrincipalAnuncianteController.cs" />
@@ -232,6 +231,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Cliquemix.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\dbContexto.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\tbAnunciante.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
@@ -539,9 +539,6 @@
     <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Anuncio\CreateAnuncio.cshtml" />
-    <Content Include="Views\Anuncio\ListAnuncio.cshtml" />
-    <Content Include="Views\Anuncio\UpdateAnuncio.cshtml" />
     <Content Include="Views\Breadcrumbs\Breadcrumbs.cshtml" />
     <Content Include="Views\LoginAnunciante\LoginAnunciante.cshtml" />
     <Content Include="Views\Logout\Logout.cshtml" />
@@ -549,6 +546,11 @@
     <Content Include="Views\MenuTopoAnunciante\MenuTopo.cshtml" />
     <Content Include="Views\PrincipalAnunciante\PrincipalAnunciante.cshtml" />
     <Content Include="Views\SignIn\SignInAnunciante.cshtml" />
+    <Content Include="Views\Anuncio\Create.cshtml" />
+    <Content Include="Views\Anuncio\Delete.cshtml" />
+    <Content Include="Views\Anuncio\Details.cshtml" />
+    <Content Include="Views\Anuncio\Edit.cshtml" />
+    <Content Include="Views\Anuncio\Index.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

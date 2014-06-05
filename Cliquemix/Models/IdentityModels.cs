@@ -18,7 +18,11 @@ namespace Cliquemix.Models
         {
         }
 
-        public System.Data.Entity.DbSet<Cliquemix.Models.tbBanner> tbBanners { get; set; }
+        public System.Data.Entity.DbSet<Cliquemix.Models.tbCep> tbCeps { get; set; }
+
+        public System.Data.Entity.DbSet<Cliquemix.Models.tbAnuncio> tbAnuncios { get; set; }
+
+        public System.Data.Entity.DbSet<Cliquemix.Models.tbAnuncioArea> tbAnuncioArea { get; set; }
 
     }
 }

@@ -1,0 +1,59 @@
+﻿@model Cliquemix.Models.tbAnuncio
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbAnuncio</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tituloAnuncio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tituloAnuncio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.url)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.url)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dsAnuncio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dsAnuncio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.videoAnuncio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.videoAnuncio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbAnuncioArea.tituloAnuncioArea)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbAnuncioArea.tituloAnuncioArea)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.aid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

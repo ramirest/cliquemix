@@ -16,7 +16,7 @@ namespace Cliquemix
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "PrincipalAnunciante", action = "PrincipalAnunciante", id = UrlParameter.Optional }
+                defaults: new { controller = "PricipalAnunciante", action = "PrincipalAnunciante", id = UrlParameter.Optional }
             );
         }
     }
