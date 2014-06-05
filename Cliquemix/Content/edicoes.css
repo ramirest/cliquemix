@@ -1,0 +1,14 @@
+﻿.edit-tamanho {                         /* classe para adequar o tamanho da logo da sicove no topo. */
+    max-width: 56%;
+    margin-left: 21%;
+    margin-top: -3%;
+}
+
+.warper_mudado {
+    margin: 50px 0 0;
+}
+
+.edit-tamanho-cadastro {
+    max-width: 70%;
+    margin-top: -4%;
+}

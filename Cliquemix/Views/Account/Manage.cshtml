@@ -1,7 +1,7 @@
-﻿@using Cliquemix.Models;
+﻿@using Test_AspNet.Models;
 @using Microsoft.AspNet.Identity;
 @{
-    ViewBag.Title = "Gerenciamento de conta";
+    ViewBag.Title = "Manage Account";
 }
 
 <h2>@ViewBag.Title.</h2>
@@ -20,7 +20,7 @@
 
         <section id="externalLogins">
             @Html.Action("RemoveAccountList")
-            @Html.Partial("_ExternalLoginsListPartial", new { Action = "LinkLogin", ReturnUrl = ViewBag.ReturnUrl })
+            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { Action = "LinkLogin", ReturnUrl = ViewBag.ReturnUrl })
         </section>
     </div>
 </div>
