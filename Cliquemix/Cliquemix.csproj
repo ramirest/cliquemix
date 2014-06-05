@@ -206,18 +206,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AnuncioController.cs" />
-    <Compile Include="Controllers\BanController.cs" />
-    <Compile Include="Controllers\BannerController.cs" />
-    <Compile Include="Controllers\DestaqueController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\PremioController.cs" />
-    <Compile Include="Controllers\PremioNivelController.cs" />
-    <Compile Include="Controllers\AnuncianteController.cs" />
-    <Compile Include="Controllers\AnuncianteDestaqueController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\UsuarioController.cs" />
-    <Compile Include="Controllers\UsuarioTipoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -367,8 +356,8 @@
     <Compile Include="Models\tbUsersTipo.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Velejador.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\UsuarioRepositorio.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -438,48 +427,6 @@
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Anunciante\Create.cshtml" />
-    <Content Include="Views\Anunciante\Delete.cshtml" />
-    <Content Include="Views\Anunciante\Details.cshtml" />
-    <Content Include="Views\Anunciante\Edit.cshtml" />
-    <Content Include="Views\Anunciante\Index.cshtml" />
-    <Content Include="Views\PremioNivel\Create.cshtml" />
-    <Content Include="Views\PremioNivel\Delete.cshtml" />
-    <Content Include="Views\PremioNivel\Details.cshtml" />
-    <Content Include="Views\PremioNivel\Edit.cshtml" />
-    <Content Include="Views\PremioNivel\Index.cshtml" />
-    <Content Include="Views\Premio\Create.cshtml" />
-    <Content Include="Views\Premio\Delete.cshtml" />
-    <Content Include="Views\Premio\Details.cshtml" />
-    <Content Include="Views\Premio\Edit.cshtml" />
-    <Content Include="Views\Premio\Index.cshtml" />
-    <Content Include="Views\Destaque\Create.cshtml" />
-    <Content Include="Views\Destaque\Delete.cshtml" />
-    <Content Include="Views\Destaque\Details.cshtml" />
-    <Content Include="Views\Destaque\Edit.cshtml" />
-    <Content Include="Views\Destaque\Index.cshtml" />
-    <Content Include="Views\UsuarioTipo\Create.cshtml" />
-    <Content Include="Views\UsuarioTipo\Delete.cshtml" />
-    <Content Include="Views\UsuarioTipo\Details.cshtml" />
-    <Content Include="Views\UsuarioTipo\Edit.cshtml" />
-    <Content Include="Views\UsuarioTipo\Index.cshtml" />
-    <Content Include="Views\Usuario\Create.cshtml" />
-    <Content Include="Views\Usuario\Delete.cshtml" />
-    <Content Include="Views\Usuario\Details.cshtml" />
-    <Content Include="Views\Usuario\Edit.cshtml" />
-    <Content Include="Views\Usuario\Index.cshtml" />
-    <Content Include="Views\Anuncio\Create.cshtml" />
-    <Content Include="Views\Anuncio\Delete.cshtml" />
-    <Content Include="Views\Anuncio\Details.cshtml" />
-    <Content Include="Views\Anuncio\Edit.cshtml" />
-    <Content Include="Views\Anuncio\Index.cshtml" />
-    <Content Include="Views\Ban\Create.cshtml" />
-    <Content Include="Views\Ban\Delete.cshtml" />
-    <Content Include="Views\Ban\Details.cshtml" />
-    <Content Include="Views\Ban\Edit.cshtml" />
-    <Content Include="Views\Ban\Index.cshtml" />
-    <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\Login\Principal.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
