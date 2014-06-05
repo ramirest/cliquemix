@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5d247319dd2a4b93aafc4f5a067a78e3" Name="Diagram1">
+      <Diagram DiagramId="1f327c6d9e964535b9611caed62a7f48" Name="Diagram1" ZoomLevel="74">
         <EntityTypeShape EntityType="cliquemixModel.tbAnunciante" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbAnuncianteDestaque" Width="1.5" PointX="8.25" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbAnuncianteDestaqueStatus" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
@@ -36,6 +36,7 @@
         <EntityTypeShape EntityType="cliquemixModel.tbEstado" Width="1.5" PointX="14.25" PointY="17.5" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbFuncionalidade" Width="1.5" PointX="17.25" PointY="22.75" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbPais" Width="1.5" PointX="16.5" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbPermissao" Width="1.5" PointX="0.75" PointY="19.375" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbPontosRede" Width="1.5" PointX="13.5" PointY="23.625" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbPremio" Width="1.5" PointX="18.75" PointY="9.25" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbPremioConsumidor" Width="1.5" PointX="21" PointY="13.625" IsExpanded="true" />
@@ -43,8 +44,9 @@
         <EntityTypeShape EntityType="cliquemixModel.tbPremioImg" Width="1.5" PointX="21" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbPremioNivel" Width="1.5" PointX="16.5" PointY="9.625" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbRamoAtividade" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbTos" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbUsers" Width="1.5" PointX="0.75" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbTos" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbUsers" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbUsersPermissao" Width="1.5" PointX="3" PointY="19.125" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbUsersTipo" Width="1.5" PointX="1.5" PointY="16.375" IsExpanded="true" />
         <AssociationConnector Association="cliquemixModel.cpid_tbAnunciante_tbCondicaoPagto_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.pid_tbAnuncianteDestaque_tbAnunciante_fk" ManuallyRouted="false" />
@@ -83,15 +85,13 @@
         <AssociationConnector Association="cliquemixModel.tid_tbConsumidor_tbTos_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.crid_tbCreditoCompra_tbCredito_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.did_TbPremioDestaque_tbDestaque_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="cliquemixModel.peid_tbUsersPermissao_tbPermissao_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.pnid_tbPremio_tbPremioNivel_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.prid_tbPremioConsumidor_tbPremio_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.prid_TbPremioDestaque_tbPremio_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.prid_tbPremioImg_tbPremio_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="cliquemixModel.uid_tbUsersPermissao_tbUsers_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.utid_tbUsers_tbUsersTipo_fk" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="cliquemixModel.tbPermissao" Width="1.5" PointX="0.5" PointY="19.5" />
-        <EntityTypeShape EntityType="cliquemixModel.tbUsersPermissao" Width="1.5" PointX="2.75" PointY="19.25" />
-        <AssociationConnector Association="cliquemixModel.peid_tbUsersPermissao_tbPermissao_fk" />
-        <AssociationConnector Association="cliquemixModel.uid_tbUsersPermissao_tbUsers_fk" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

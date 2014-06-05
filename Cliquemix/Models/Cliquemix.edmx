@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="cliquemixModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="cliquemixModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tbAnunciante">
           <Key>
             <PropertyRef Name="pid" />
@@ -1141,7 +1141,8 @@
             <End Role="tbUsers" EntitySet="tbUsers" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="cliquemixModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1497,6 +1498,14 @@
           <Property Name="nomePais" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="tbCampanhaAnuncioLocalizacao" Relationship="Self.paid_tbCampanhaAnuncioLocalizacao_tbPais_fk" FromRole="tbPais" ToRole="tbCampanhaAnuncioLocalizacao" />
         </EntityType>
+        <EntityType Name="tbPermissao">
+          <Key>
+            <PropertyRef Name="peid" />
+          </Key>
+          <Property Name="peid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dsPermissao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbUsersPermissao" Relationship="Self.peid_tbUsersPermissao_tbPermissao_fk" FromRole="tbPermissao" ToRole="tbUsersPermissao" />
+        </EntityType>
         <EntityType Name="tbPontosRede">
           <Key>
             <PropertyRef Name="pid" />
@@ -1591,8 +1600,18 @@
           <Property Name="utid" Type="Int32" Nullable="false" />
           <NavigationProperty Name="tbAnunciante" Relationship="Self.uid_tbAnunciante_tbUsers_fk" FromRole="tbUsers" ToRole="tbAnunciante" />
           <NavigationProperty Name="tbBan" Relationship="Self.uid_tbBan_tbUsers_fk" FromRole="tbUsers" ToRole="tbBan" />
+          <NavigationProperty Name="tbUsersPermissao" Relationship="Self.uid_tbUsersPermissao_tbUsers_fk" FromRole="tbUsers" ToRole="tbUsersPermissao" />
           <NavigationProperty Name="tbUsersTipo" Relationship="Self.utid_tbUsers_tbUsersTipo_fk" FromRole="tbUsers" ToRole="tbUsersTipo" />
-          <NavigationProperty Name="tbUsersPermissao" Relationship="cliquemixModel.uid_tbUsersPermissao_tbUsers_fk" FromRole="tbUsers" ToRole="tbUsersPermissao" />
+        </EntityType>
+        <EntityType Name="tbUsersPermissao">
+          <Key>
+            <PropertyRef Name="upid" />
+          </Key>
+          <Property Name="upid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uid" Type="Int32" Nullable="false" />
+          <Property Name="peid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbPermissao" Relationship="Self.peid_tbUsersPermissao_tbPermissao_fk" FromRole="tbUsersPermissao" ToRole="tbPermissao" />
+          <NavigationProperty Name="tbUsers" Relationship="Self.uid_tbUsersPermissao_tbUsers_fk" FromRole="tbUsersPermissao" ToRole="tbUsers" />
         </EntityType>
         <EntityType Name="tbUsersTipo">
           <Key>
@@ -2046,6 +2065,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="peid_tbUsersPermissao_tbPermissao_fk">
+          <End Role="tbPermissao" Type="Self.tbPermissao" Multiplicity="1" />
+          <End Role="tbUsersPermissao" Type="Self.tbUsersPermissao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPermissao">
+              <PropertyRef Name="peid" />
+            </Principal>
+            <Dependent Role="tbUsersPermissao">
+              <PropertyRef Name="peid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="pnid_tbPremio_tbPremioNivel_fk">
           <End Role="tbPremioNivel" Type="Self.tbPremioNivel" Multiplicity="1" />
           <End Role="tbPremio" Type="Self.tbPremio" Multiplicity="*" />
@@ -2094,6 +2125,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="uid_tbUsersPermissao_tbUsers_fk">
+          <End Role="tbUsers" Type="Self.tbUsers" Multiplicity="1" />
+          <End Role="tbUsersPermissao" Type="Self.tbUsersPermissao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsers">
+              <PropertyRef Name="uid" />
+            </Principal>
+            <Dependent Role="tbUsersPermissao">
+              <PropertyRef Name="uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="utid_tbUsers_tbUsersTipo_fk">
           <End Role="tbUsersTipo" Type="Self.tbUsersTipo" Multiplicity="1" />
           <End Role="tbUsers" Type="Self.tbUsers" Multiplicity="*" />
@@ -2106,7 +2149,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="cliquemixEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="cliquemixEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tbAnunciante" EntityType="Self.tbAnunciante" />
           <EntitySet Name="tbAnuncianteDestaque" EntityType="Self.tbAnuncianteDestaque" />
           <EntitySet Name="tbAnuncianteDestaqueStatus" EntityType="Self.tbAnuncianteDestaqueStatus" />
@@ -2138,6 +2181,7 @@
           <EntitySet Name="tbEstado" EntityType="Self.tbEstado" />
           <EntitySet Name="tbFuncionalidade" EntityType="Self.tbFuncionalidade" />
           <EntitySet Name="tbPais" EntityType="Self.tbPais" />
+          <EntitySet Name="tbPermissao" EntityType="Self.tbPermissao" />
           <EntitySet Name="tbPontosRede" EntityType="Self.tbPontosRede" />
           <EntitySet Name="tbPremio" EntityType="Self.tbPremio" />
           <EntitySet Name="tbPremioConsumidor" EntityType="Self.tbPremioConsumidor" />
@@ -2147,6 +2191,7 @@
           <EntitySet Name="tbRamoAtividade" EntityType="Self.tbRamoAtividade" />
           <EntitySet Name="tbTos" EntityType="Self.tbTos" />
           <EntitySet Name="tbUsers" EntityType="Self.tbUsers" />
+          <EntitySet Name="tbUsersPermissao" EntityType="Self.tbUsersPermissao" />
           <EntitySet Name="tbUsersTipo" EntityType="Self.tbUsersTipo" />
           <AssociationSet Name="cpid_tbAnunciante_tbCondicaoPagto_fk" Association="Self.cpid_tbAnunciante_tbCondicaoPagto_fk">
             <End Role="tbCondicaoPagto" EntitySet="tbCondicaoPagto" />
@@ -2296,6 +2341,10 @@
             <End Role="tbDestaque" EntitySet="tbDestaque" />
             <End Role="tbPremioDestaque" EntitySet="tbPremioDestaque" />
           </AssociationSet>
+          <AssociationSet Name="peid_tbUsersPermissao_tbPermissao_fk" Association="Self.peid_tbUsersPermissao_tbPermissao_fk">
+            <End Role="tbPermissao" EntitySet="tbPermissao" />
+            <End Role="tbUsersPermissao" EntitySet="tbUsersPermissao" />
+          </AssociationSet>
           <AssociationSet Name="pnid_tbPremio_tbPremioNivel_fk" Association="Self.pnid_tbPremio_tbPremioNivel_fk">
             <End Role="tbPremioNivel" EntitySet="tbPremioNivel" />
             <End Role="tbPremio" EntitySet="tbPremio" />
@@ -2312,69 +2361,21 @@
             <End Role="tbPremio" EntitySet="tbPremio" />
             <End Role="tbPremioImg" EntitySet="tbPremioImg" />
           </AssociationSet>
+          <AssociationSet Name="uid_tbUsersPermissao_tbUsers_fk" Association="Self.uid_tbUsersPermissao_tbUsers_fk">
+            <End Role="tbUsers" EntitySet="tbUsers" />
+            <End Role="tbUsersPermissao" EntitySet="tbUsersPermissao" />
+          </AssociationSet>
           <AssociationSet Name="utid_tbUsers_tbUsersTipo_fk" Association="Self.utid_tbUsers_tbUsersTipo_fk">
             <End Role="tbUsersTipo" EntitySet="tbUsersTipo" />
             <End Role="tbUsers" EntitySet="tbUsers" />
           </AssociationSet>
-          <EntitySet Name="tbPermissao" EntityType="cliquemixModel.tbPermissao" />
-          <EntitySet Name="tbUsersPermissao" EntityType="cliquemixModel.tbUsersPermissao" />
-          <AssociationSet Name="peid_tbUsersPermissao_tbPermissao_fk" Association="cliquemixModel.peid_tbUsersPermissao_tbPermissao_fk">
-            <End Role="tbPermissao" EntitySet="tbPermissao" />
-            <End Role="tbUsersPermissao" EntitySet="tbUsersPermissao" />
-          </AssociationSet>
-          <AssociationSet Name="uid_tbUsersPermissao_tbUsers_fk" Association="cliquemixModel.uid_tbUsersPermissao_tbUsers_fk">
-            <End Role="tbUsers" EntitySet="tbUsers" />
-            <End Role="tbUsersPermissao" EntitySet="tbUsersPermissao" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="tbPermissao">
-          <Key>
-            <PropertyRef Name="peid" />
-          </Key>
-          <Property Name="peid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="dsPermissao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbUsersPermissao" Relationship="cliquemixModel.peid_tbUsersPermissao_tbPermissao_fk" FromRole="tbPermissao" ToRole="tbUsersPermissao" />
-        </EntityType>
-        <EntityType Name="tbUsersPermissao">
-          <Key>
-            <PropertyRef Name="upid" />
-          </Key>
-          <Property Name="upid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="uid" Type="Int32" Nullable="false" />
-          <Property Name="peid" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tbPermissao" Relationship="cliquemixModel.peid_tbUsersPermissao_tbPermissao_fk" FromRole="tbUsersPermissao" ToRole="tbPermissao" />
-          <NavigationProperty Name="tbUsers" Relationship="cliquemixModel.uid_tbUsersPermissao_tbUsers_fk" FromRole="tbUsersPermissao" ToRole="tbUsers" />
-        </EntityType>
-        <Association Name="peid_tbUsersPermissao_tbPermissao_fk">
-          <End Type="cliquemixModel.tbPermissao" Role="tbPermissao" Multiplicity="1" />
-          <End Type="cliquemixModel.tbUsersPermissao" Role="tbUsersPermissao" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbPermissao">
-              <PropertyRef Name="peid" />
-            </Principal>
-            <Dependent Role="tbUsersPermissao">
-              <PropertyRef Name="peid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="uid_tbUsersPermissao_tbUsers_fk">
-          <End Type="cliquemixModel.tbUsers" Role="tbUsers" Multiplicity="1" />
-          <End Type="cliquemixModel.tbUsersPermissao" Role="tbUsersPermissao" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbUsers">
-              <PropertyRef Name="uid" />
-            </Principal>
-            <Dependent Role="tbUsersPermissao">
-              <PropertyRef Name="uid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="cliquemixModelStoreContainer" CdmEntityContainer="cliquemixEntities1">
+        <EntityContainerMapping StorageEntityContainer="cliquemixModelStoreContainer" CdmEntityContainer="cliquemixEntities">
           <EntitySetMapping Name="tbAnunciante">
             <EntityTypeMapping TypeName="cliquemixModel.tbAnunciante">
               <MappingFragment StoreEntitySet="tbAnunciante">
@@ -2692,6 +2693,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tbPermissao">
+            <EntityTypeMapping TypeName="cliquemixModel.tbPermissao">
+              <MappingFragment StoreEntitySet="tbPermissao">
+                <ScalarProperty Name="peid" ColumnName="peid" />
+                <ScalarProperty Name="dsPermissao" ColumnName="dsPermissao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tbPontosRede">
             <EntityTypeMapping TypeName="cliquemixModel.tbPontosRede">
               <MappingFragment StoreEntitySet="tbPontosRede">
@@ -2780,28 +2789,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tbUsersPermissao">
+            <EntityTypeMapping TypeName="cliquemixModel.tbUsersPermissao">
+              <MappingFragment StoreEntitySet="tbUsersPermissao">
+                <ScalarProperty Name="upid" ColumnName="upid" />
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="peid" ColumnName="peid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tbUsersTipo">
             <EntityTypeMapping TypeName="cliquemixModel.tbUsersTipo">
               <MappingFragment StoreEntitySet="tbUsersTipo">
                 <ScalarProperty Name="utid" ColumnName="utid" />
                 <ScalarProperty Name="dsUsersTipo" ColumnName="dsUsersTipo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbPermissao">
-            <EntityTypeMapping TypeName="cliquemixModel.tbPermissao">
-              <MappingFragment StoreEntitySet="tbPermissao">
-                <ScalarProperty Name="dsPermissao" ColumnName="dsPermissao" />
-                <ScalarProperty Name="peid" ColumnName="peid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbUsersPermissao">
-            <EntityTypeMapping TypeName="cliquemixModel.tbUsersPermissao">
-              <MappingFragment StoreEntitySet="tbUsersPermissao">
-                <ScalarProperty Name="peid" ColumnName="peid" />
-                <ScalarProperty Name="uid" ColumnName="uid" />
-                <ScalarProperty Name="upid" ColumnName="upid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

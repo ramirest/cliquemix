@@ -28,7 +28,7 @@ namespace Cliquemix.Models
     
         public virtual ICollection<tbAnunciante> tbAnunciante { get; set; }
         public virtual ICollection<tbBan> tbBan { get; set; }
-        public virtual tbUsersTipo tbUsersTipo { get; set; }
         public virtual ICollection<tbUsersPermissao> tbUsersPermissao { get; set; }
+        public virtual tbUsersTipo tbUsersTipo { get; set; }
     }
 }

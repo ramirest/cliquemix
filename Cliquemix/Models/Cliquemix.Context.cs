@@ -13,10 +13,10 @@ namespace Cliquemix.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class cliquemixEntities1 : DbContext
+    public partial class cliquemixEntities : DbContext
     {
-        public cliquemixEntities1()
-            : base("name=cliquemixEntities1")
+        public cliquemixEntities()
+            : base("name=cliquemixEntities")
         {
         }
     
@@ -56,6 +56,7 @@ namespace Cliquemix.Models
         public virtual DbSet<tbEstado> tbEstado { get; set; }
         public virtual DbSet<tbFuncionalidade> tbFuncionalidade { get; set; }
         public virtual DbSet<tbPais> tbPais { get; set; }
+        public virtual DbSet<tbPermissao> tbPermissao { get; set; }
         public virtual DbSet<tbPontosRede> tbPontosRede { get; set; }
         public virtual DbSet<tbPremio> tbPremio { get; set; }
         public virtual DbSet<tbPremioConsumidor> tbPremioConsumidor { get; set; }
@@ -65,8 +66,7 @@ namespace Cliquemix.Models
         public virtual DbSet<tbRamoAtividade> tbRamoAtividade { get; set; }
         public virtual DbSet<tbTos> tbTos { get; set; }
         public virtual DbSet<tbUsers> tbUsers { get; set; }
-        public virtual DbSet<tbUsersTipo> tbUsersTipo { get; set; }
-        public virtual DbSet<tbPermissao> tbPermissao { get; set; }
         public virtual DbSet<tbUsersPermissao> tbUsersPermissao { get; set; }
+        public virtual DbSet<tbUsersTipo> tbUsersTipo { get; set; }
     }
 }
