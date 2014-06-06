@@ -19,7 +19,7 @@
         @Html.HiddenFor(model => model.aid)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.tituloAnuncio, new { @class = "control-label col-md-2" })
+            @Html.Label("Título do Anúncio", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.tituloAnuncio)
                 @Html.ValidationMessageFor(model => model.tituloAnuncio)
@@ -27,7 +27,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.url, new { @class = "control-label col-md-2" })
+            @Html.Label("URL do Anúncio", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.url)
                 @Html.ValidationMessageFor(model => model.url)
@@ -35,7 +35,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.dsAnuncio, new { @class = "control-label col-md-2" })
+            @Html.Label("Descrição do Anúncio", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.dsAnuncio)
                 @Html.ValidationMessageFor(model => model.dsAnuncio)
@@ -43,7 +43,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.videoAnuncio, new { @class = "control-label col-md-2" })
+            @Html.Label("Vídeo do Anúncio", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.videoAnuncio)
                 @Html.ValidationMessageFor(model => model.videoAnuncio)
@@ -51,7 +51,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.aaid, "aaid", new { @class = "control-label col-md-2" })
+            @Html.Label("Área do Anúncio", "aaid", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("aaid", String.Empty)
                 @Html.ValidationMessageFor(model => model.aaid)
@@ -63,13 +63,9 @@
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
-    </div>
-}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+        <input type="submit" value="Criar Anúncio" class="btn btn-default" />
+        @Html.ActionLink("Cancelar", "Index")
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    </div>    
 }

@@ -208,8 +208,10 @@
     <Compile Include="Controllers\Anunciante\MenuAnuncianteController.cs" />
     <Compile Include="Controllers\Anunciante\MenuTopoAnuncianteController.cs" />
     <Compile Include="Controllers\Anunciante\PrincipalAnuncianteController.cs" />
+    <Compile Include="Controllers\AnuncioAreaController.cs" />
     <Compile Include="Controllers\AnuncioController.cs" />
     <Compile Include="Controllers\BreadcrumbsController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\LogoutController.cs" />
     <Compile Include="Controllers\SignInController.cs" />
     <Compile Include="Global.asax.cs">
@@ -233,6 +235,7 @@
     </Compile>
     <Compile Include="Models\dbContexto.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\tbAnunciante.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
@@ -551,6 +554,12 @@
     <Content Include="Views\Anuncio\Details.cshtml" />
     <Content Include="Views\Anuncio\Edit.cshtml" />
     <Content Include="Views\Anuncio\Index.cshtml" />
+    <Content Include="Views\AnuncioArea\Create.cshtml" />
+    <Content Include="Views\AnuncioArea\Delete.cshtml" />
+    <Content Include="Views\AnuncioArea\Details.cshtml" />
+    <Content Include="Views\AnuncioArea\Edit.cshtml" />
+    <Content Include="Views\AnuncioArea\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -22,7 +22,7 @@ namespace Cliquemix.Models
             this.tbPontosRede = new HashSet<tbPontosRede>();
         }
     
-        public int aid { get; set; }
+        public int aid { get { return aid; } }
         public string tituloAnuncio { get; set; }
         public string url { get; set; }
         public string dsAnuncio { get; set; }

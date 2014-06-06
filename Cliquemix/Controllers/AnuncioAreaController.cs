@@ -10,112 +10,107 @@ using Cliquemix.Models;
 
 namespace Cliquemix.Controllers
 {
-    public class AnuncioController : Controller
+    public class AnuncioAreaController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: /Anuncio/
+        // GET: /AnuncioArea/
         public ActionResult Index()
         {
-            var tbanuncio = db.tbAnuncios.Include(t => t.tbAnuncioArea);
-            return View(tbanuncio.ToList());
+            return View(db.tbAnuncioArea.ToList());
         }
 
-        // GET: /Anuncio/Details/5
+        // GET: /AnuncioArea/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tbAnuncio tbanuncio = db.tbAnuncios.Find(id);
-            if (tbanuncio == null)
+            tbAnuncioArea tbanuncioarea = db.tbAnuncioArea.Find(id);
+            if (tbanuncioarea == null)
             {
                 return HttpNotFound();
             }
-            return View(tbanuncio);
+            return View(tbanuncioarea);
         }
 
-        // GET: /Anuncio/Create
+        // GET: /AnuncioArea/Create
         public ActionResult Create()
         {
-            ViewBag.aaid = new SelectList(db.tbAnuncioArea, "aaid", "tituloAnuncioArea");
             return View();
         }
 
-        // POST: /Anuncio/Create
+        // POST: /AnuncioArea/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="tituloAnuncio,url,dsAnuncio,videoAnuncio,aaid")] tbAnuncio tbanuncio)
+        public ActionResult Create([Bind(Include="aaid,tituloAnuncioArea")] tbAnuncioArea tbanuncioarea)
         {
             if (ModelState.IsValid)
             {
-                db.tbAnuncios.Add(tbanuncio);
+                db.tbAnuncioArea.Add(tbanuncioarea);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.aaid = new SelectList(db.tbAnuncioArea, "aaid", "tituloAnuncioArea", tbanuncio.aaid);
-            return View(tbanuncio);
+            return View(tbanuncioarea);
         }
 
-        // GET: /Anuncio/Edit/5
+        // GET: /AnuncioArea/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tbAnuncio tbanuncio = db.tbAnuncios.Find(id);
-            if (tbanuncio == null)
+            tbAnuncioArea tbanuncioarea = db.tbAnuncioArea.Find(id);
+            if (tbanuncioarea == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.aaid = new SelectList(db.tbAnuncioArea, "aaid", "tituloAnuncioArea", tbanuncio.aaid);
-            return View(tbanuncio);
+            return View(tbanuncioarea);
         }
 
-        // POST: /Anuncio/Edit/5
+        // POST: /AnuncioArea/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="aid,tituloAnuncio,url,dsAnuncio,videoAnuncio,aaid")] tbAnuncio tbanuncio)
+        public ActionResult Edit([Bind(Include="aaid,tituloAnuncioArea")] tbAnuncioArea tbanuncioarea)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tbanuncio).State = EntityState.Modified;
+                db.Entry(tbanuncioarea).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.aaid = new SelectList(db.tbAnuncioArea, "aaid", "tituloAnuncioArea", tbanuncio.aaid);
-            return View(tbanuncio);
+            return View(tbanuncioarea);
         }
 
-        // GET: /Anuncio/Delete/5
+        // GET: /AnuncioArea/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tbAnuncio tbanuncio = db.tbAnuncios.Find(id);
-            if (tbanuncio == null)
+            tbAnuncioArea tbanuncioarea = db.tbAnuncioArea.Find(id);
+            if (tbanuncioarea == null)
             {
                 return HttpNotFound();
             }
-            return View(tbanuncio);
+            return View(tbanuncioarea);
         }
 
-        // POST: /Anuncio/Delete/5
+        // POST: /AnuncioArea/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            tbAnuncio tbanuncio = db.tbAnuncios.Find(id);
-            db.tbAnuncios.Remove(tbanuncio);
+            tbAnuncioArea tbanuncioarea = db.tbAnuncioArea.Find(id);
+            db.tbAnuncioArea.Remove(tbanuncioarea);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
