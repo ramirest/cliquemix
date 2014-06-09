@@ -3,62 +3,66 @@
 @{
     ViewBag.Title = "Index";
 }
+<div class="row">
+    <div class="col-lg-12">
+        <div class="page-title">
+            <h1>
+                Anúncio
+                <small> Lista</small>
+            </h1>
+            @RenderPage("~/Views/Breadcrumbs/Breadcrumbs.cshtml")
+        </div>
+        <p>
+            @Html.ActionLink("Novo Anúncio", "Create")
+        </p>
 
-<h2>Anúncio - Lista</h2>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayName("Código")
+                </th>
+                <th>
+                    @Html.DisplayName("Título do Anúncio")
+                </th>
+                <th>
+                    @Html.DisplayName("URL do Anúncio")
+                </th>
+                <th>
+                    @Html.DisplayName("Link do Vídeo")
+                </th>
+                <th>
+                    @Html.DisplayName("Ramo de Atividade")
+                </th>
+                <th></th>
+            </tr>
 
-<p>
-    @Html.ActionLink("Novo Anúncio", "Create")
-</p>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.aid)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tituloAnuncio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.url)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.videoAnuncio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tbRamoAtividade.descricao)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.aid }) |
+                        @Html.ActionLink("Detalhes", "Details", new { id = item.aid }) |
+                        @Html.ActionLink("Excluir", "Delete", new { id = item.aid })
+                    </td>
+                </tr>
+            }
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayName("Código")
-        </th>        
-        <th>
-            @Html.DisplayName("Título do Anúncio")
-        </th>
-        <th>
-            @Html.DisplayName("URL")
-        </th>
-        <th>
-            @Html.DisplayName("Descrição")
-        </th>
-        <th>
-            @Html.DisplayName("Vídeo")
-        </th>
-        <th>
-            @Html.DisplayName("Ramo de Atividade")
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.aid)
-        </td>        
-        <td>
-            @Html.DisplayFor(modelItem => item.tituloAnuncio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.url)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dsAnuncio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.videoAnuncio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tbRamoAtividade.descricao)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.aid }) |
-            @Html.ActionLink("Visualizar", "Details", new { id=item.aid }) |
-            @Html.ActionLink("Excluir", "Delete", new { id=item.aid })
-        </td>
-    </tr>
-}
-
-</table>
+        </table>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>

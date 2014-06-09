@@ -5,64 +5,69 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
-
 <div>
-    <h4>tbAnuncio</h4>
-	<hr />
-    <dl class="dl-horizontal">
-        
-        <dt>
-            @Html.DisplayName("Código")
-        </dt>
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-title">
+                <h1>
+                    Anúncio
+                    <small> Detalhes</small>
+                </h1>
+                @RenderPage("~/Views/Breadcrumbs/Breadcrumbs.cshtml")
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.aid)
-        </dd>        
-        
-        <dt>
-            @Html.DisplayName("Título do Anúncio")
-        </dt>        
+            <div class="form-horizontal">
+                <hr />
+                @Html.ValidationSummary(true)
 
-        <dd>
-            @Html.DisplayFor(model => model.tituloAnuncio)
-        </dd>
+                <div class="form-group">
+                    @Html.Label("Código", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DisplayTextFor(model => model.aid)
+                    </div>
+                </div>
 
-        <dt>
-            @Html.DisplayName("URL do Anúncio")
-        </dt>
+                <div class="form-group">
+                    @Html.Label("Título do Anúncio", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DisplayTextFor(model => model.tituloAnuncio)
+                    </div>
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.url)
-        </dd>
+                <div class="form-group">
+                    @Html.Label("URL do Anúncio", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DisplayTextFor(model => model.url)
+                    </div>
+                </div>
 
-        <dt>
-            @Html.DisplayName("Descrição do Anúncio")
-        </dt>
+                <div class="form-group">
+                    @Html.Label("Descriçao do Anúncio", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DisplayTextFor(model => model.dsAnuncio)
+                    </div>
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.dsAnuncio)
-        </dd>
+                <div class="form-group">
+                    @Html.Label("Link do Vídeo", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DisplayTextFor(model => model.videoAnuncio)
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    @Html.Label("Ramo de Atividade", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DisplayTextFor(model => model.tbRamoAtividade.descricao)
+                    </div>
+                </div>
 
-        <dt>
-            @Html.DisplayName("URL do Vídeo")
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.videoAnuncio)
-        </dd>
-
-        <dt>
-            @Html.DisplayName("Ramo de Atividade")
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.tbRamoAtividade.descricao)
-        </dd>
-
-    </dl>
+            </div>
+            <div>
+                @Html.ActionLink("Editar", "Edit", new { id = Model.uid }) |
+                @Html.ActionLink("Voltar", "Index")
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.aid }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
