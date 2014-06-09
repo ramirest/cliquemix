@@ -17,7 +17,7 @@ namespace Cliquemix.Controllers
         // GET: /Anuncio/
         public ActionResult Index()
         {
-            var tbanuncio = db.tbAnuncios.Include(t => t.tbAnuncioArea);
+            var tbanuncio = db.tbAnuncios.Include(t => t.tbRamoAtividade);
             return View(tbanuncio.ToList());
         }
 
@@ -39,7 +39,7 @@ namespace Cliquemix.Controllers
         // GET: /Anuncio/Create
         public ActionResult Create()
         {
-            ViewBag.aaid = new SelectList(db.tbAnuncioArea, "aaid", "tituloAnuncioArea");
+            ViewBag.raid = new SelectList(db.tbRamoAtividade, "raid", "descricao");
             return View();
         }
 
@@ -48,7 +48,7 @@ namespace Cliquemix.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="tituloAnuncio,url,dsAnuncio,videoAnuncio,aaid")] tbAnuncio tbanuncio)
+        public ActionResult Create([Bind(Include="tituloAnuncio,url,dsAnuncio,videoAnuncio,raid")] tbAnuncio tbanuncio)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +57,7 @@ namespace Cliquemix.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.aaid = new SelectList(db.tbAnuncioArea, "aaid", "tituloAnuncioArea", tbanuncio.aaid);
+            ViewBag.raid = new SelectList(db.tbRamoAtividade, "raid", "descricao", tbanuncio.raid);
             return View(tbanuncio);
         }
 
@@ -73,7 +73,7 @@ namespace Cliquemix.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.aaid = new SelectList(db.tbAnuncioArea, "aaid", "tituloAnuncioArea", tbanuncio.aaid);
+            ViewBag.aaid = new SelectList(db.tbRamoAtividade, "raid", "descricao", tbanuncio.raid);
             return View(tbanuncio);
         }
 
@@ -82,7 +82,7 @@ namespace Cliquemix.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="aid,tituloAnuncio,url,dsAnuncio,videoAnuncio,aaid")] tbAnuncio tbanuncio)
+        public ActionResult Edit([Bind(Include="aid,tituloAnuncio,url,dsAnuncio,videoAnuncio,raid")] tbAnuncio tbanuncio)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace Cliquemix.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.aaid = new SelectList(db.tbAnuncioArea, "aaid", "tituloAnuncioArea", tbanuncio.aaid);
+            ViewBag.aaid = new SelectList(db.tbRamoAtividade, "raid", "descricao", tbanuncio.raid);
             return View(tbanuncio);
         }
 

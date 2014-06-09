@@ -42,8 +42,8 @@ namespace Cliquemix.Models
         public virtual ICollection<tbAnuncianteDestaque> tbAnuncianteDestaque { get; set; }
         public virtual ICollection<tbAnuncianteEndereco> tbAnuncianteEndereco { get; set; }
         public virtual ICollection<tbCreditoCompra> tbCreditoCompra { get; set; }
-        public virtual tbRamoAtividade tbRamoAtividade { get; set; }
         public virtual tbTos tbTos { get; set; }
         public virtual tbUsers tbUsers { get; set; }
+        public virtual tbRamoAtividade tbRamoAtividade { get; set; }
     }
 }

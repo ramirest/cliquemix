@@ -205,12 +205,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Administrador\UsersController.cs" />
     <Compile Include="Controllers\Anunciante\MenuAnuncianteController.cs" />
     <Compile Include="Controllers\Anunciante\MenuTopoAnuncianteController.cs" />
     <Compile Include="Controllers\Anunciante\PrincipalAnuncianteController.cs" />
-    <Compile Include="Controllers\AnuncioAreaController.cs" />
     <Compile Include="Controllers\AnuncioController.cs" />
     <Compile Include="Controllers\BreadcrumbsController.cs" />
+    <Compile Include="Controllers\Anunciante\LoginAnuncianteController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\LogoutController.cs" />
     <Compile Include="Controllers\SignInController.cs" />
@@ -249,9 +250,6 @@
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbAnuncio.cs">
-      <DependentUpon>Cliquemix.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tbAnuncioArea.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbAnuncioFuncionalidade.cs">
@@ -357,6 +355,9 @@
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbUsers.cs">
+      <DependentUpon>Cliquemix.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbUsersLogAcesso.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbUsersPermissao.cs">
@@ -543,7 +544,6 @@
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Breadcrumbs\Breadcrumbs.cshtml" />
-    <Content Include="Views\LoginAnunciante\LoginAnunciante.cshtml" />
     <Content Include="Views\Logout\Logout.cshtml" />
     <Content Include="Views\MenuAnunciante\MenuAnunciante.cshtml" />
     <Content Include="Views\MenuTopoAnunciante\MenuTopo.cshtml" />
@@ -554,12 +554,13 @@
     <Content Include="Views\Anuncio\Details.cshtml" />
     <Content Include="Views\Anuncio\Edit.cshtml" />
     <Content Include="Views\Anuncio\Index.cshtml" />
-    <Content Include="Views\AnuncioArea\Create.cshtml" />
-    <Content Include="Views\AnuncioArea\Delete.cshtml" />
-    <Content Include="Views\AnuncioArea\Details.cshtml" />
-    <Content Include="Views\AnuncioArea\Edit.cshtml" />
-    <Content Include="Views\AnuncioArea\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\LoginAnunciante\LoginAnunciante.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

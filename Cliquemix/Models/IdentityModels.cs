@@ -22,7 +22,12 @@ namespace Cliquemix.Models
 
         public System.Data.Entity.DbSet<Cliquemix.Models.tbAnuncio> tbAnuncios { get; set; }
 
-        public System.Data.Entity.DbSet<Cliquemix.Models.tbAnuncioArea> tbAnuncioArea { get; set; }
+        public System.Data.Entity.DbSet<Cliquemix.Models.tbRamoAtividade> tbRamoAtividade { get; set; }
+        public System.Data.Entity.DbSet<Cliquemix.Models.tbUsersLogAcesso> TbUsersLogAcessos { get; set; }
+
+        public System.Data.Entity.DbSet<Cliquemix.Models.tbUsers> tbUsers { get; set; }
+
+        public System.Data.Entity.DbSet<Cliquemix.Models.tbUsersTipo> tbUsersTipo { get; set; }
 
     }
 }

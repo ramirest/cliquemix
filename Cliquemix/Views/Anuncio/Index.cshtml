@@ -28,7 +28,7 @@
             @Html.DisplayName("Vídeo")
         </th>
         <th>
-            @Html.DisplayName("Área do Anúncio")
+            @Html.DisplayName("Ramo de Atividade")
         </th>
         <th></th>
     </tr>
@@ -51,7 +51,7 @@
             @Html.DisplayFor(modelItem => item.videoAnuncio)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.tbAnuncioArea.tituloAnuncioArea)
+            @Html.DisplayFor(modelItem => item.tbRamoAtividade.descricao)
         </td>
         <td>
             @Html.ActionLink("Editar", "Edit", new { id=item.aid }) |

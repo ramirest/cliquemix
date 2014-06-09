@@ -29,8 +29,6 @@ namespace Cliquemix.Models
         public virtual DbSet<tbAnuncianteDestaque> tbAnuncianteDestaque { get; set; }
         public virtual DbSet<tbAnuncianteDestaqueStatus> tbAnuncianteDestaqueStatus { get; set; }
         public virtual DbSet<tbAnuncianteEndereco> tbAnuncianteEndereco { get; set; }
-        public virtual DbSet<tbAnuncio> tbAnuncio { get; set; }
-        public virtual DbSet<tbAnuncioArea> tbAnuncioArea { get; set; }
         public virtual DbSet<tbAnuncioFuncionalidade> tbAnuncioFuncionalidade { get; set; }
         public virtual DbSet<tbAnuncioImg> tbAnuncioImg { get; set; }
         public virtual DbSet<tbBan> tbBan { get; set; }
@@ -63,10 +61,12 @@ namespace Cliquemix.Models
         public virtual DbSet<tbPremioDestaque> tbPremioDestaque { get; set; }
         public virtual DbSet<tbPremioImg> tbPremioImg { get; set; }
         public virtual DbSet<tbPremioNivel> tbPremioNivel { get; set; }
-        public virtual DbSet<tbRamoAtividade> tbRamoAtividade { get; set; }
         public virtual DbSet<tbTos> tbTos { get; set; }
         public virtual DbSet<tbUsers> tbUsers { get; set; }
         public virtual DbSet<tbUsersPermissao> tbUsersPermissao { get; set; }
         public virtual DbSet<tbUsersTipo> tbUsersTipo { get; set; }
+        public virtual DbSet<tbAnuncio> tbAnuncio { get; set; }
+        public virtual DbSet<tbRamoAtividade> tbRamoAtividade { get; set; }
+        public virtual DbSet<tbUsersLogAcesso> tbUsersLogAcesso { get; set; }
     }
 }

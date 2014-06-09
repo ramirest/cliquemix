@@ -22,17 +22,17 @@ namespace Cliquemix.Models
             this.tbPontosRede = new HashSet<tbPontosRede>();
         }
     
-        public int aid { get { return aid; } }
+        public int aid { get; set; }
         public string tituloAnuncio { get; set; }
         public string url { get; set; }
         public string dsAnuncio { get; set; }
         public string videoAnuncio { get; set; }
-        public int aaid { get; set; }
+        public Nullable<int> raid { get; set; }
     
-        public virtual tbAnuncioArea tbAnuncioArea { get; set; }
         public virtual ICollection<tbAnuncioFuncionalidade> tbAnuncioFuncionalidade { get; set; }
         public virtual ICollection<tbAnuncioImg> tbAnuncioImg { get; set; }
         public virtual ICollection<tbCampanhaAnuncio> tbCampanhaAnuncio { get; set; }
         public virtual ICollection<tbPontosRede> tbPontosRede { get; set; }
+        public virtual tbRamoAtividade tbRamoAtividade { get; set; }
     }
 }

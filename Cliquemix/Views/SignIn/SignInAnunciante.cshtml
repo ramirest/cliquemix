@@ -79,17 +79,17 @@
                                             <div class="col-sm-3">
                                                 <ul id="userSettings" class="nav nav-pills nav-stacked">
                                                     <li class="active">
-                                                        <a href="#dadosEmpresa" data-toggle="tab"><i class="fa fa-building-o fa-fw"></i> Dados da Empresa</a>
+                                                        <a href="#dadosEmpresa" data-toggle="tab" id="link1"><i class="fa fa-building-o fa-fw"></i> Dados da Empresa</a>
                                                     </li>
                                                     <li>
-                                                        <a href="#dadosContato" data-toggle="tab"><i class="fa fa-phone fa-fw"></i> Dados de Contato</a>
+                                                        <a href="#dadosContato" data-toggle="tab" id="link2"><i class="fa fa-phone fa-fw"></i> Dados de Contato</a>
                                                     </li>
                                                     <li>
-                                                        <a href="#dadosEndereco" data-toggle="tab"><i class="fa fa-globe fa-fw"></i>Dados de Endereço</a>
+                                                        <a href="#dadosEndereco" data-toggle="tab" id="link3"><i class="fa fa-globe fa-fw"></i>Dados de Endereço</a>
                                                     </li>
 
                                                     <li>
-                                                        <a href="#dadosUsuario" data-toggle="tab"><i class="fa fa-user fa-fw"></i>Dados de Usuário</a>
+                                                        <a href="#dadosUsuario" data-toggle="tab" id="link4"><i class="fa fa-user fa-fw"></i>Dados de Usuário</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -136,7 +136,7 @@
                                                             </div>
 
                                                             <div class="col-sm-offset-10 col-sm-1">
-                                                                <button type="button" onclick="$('#dadosContato').click();" class="btn btn-default">Próximo</button>
+                                                                <button type="button" onclick="$('#link2').click();" class="btn btn-default">Próximo</button>
                                                             </div>
 
 
@@ -164,8 +164,8 @@
                                                                 <input type="text" class="form-control" value="">
                                                             </div>
                                                             <div class="form-group col-lg-offset-9">
-                                                                <button type="button" onclick="$('#dadosEmpresa').click();" class="btn btn-default">Anterior</button>
-                                                                <button type="button" onclick="$('#dadosEndereco').click();" class="btn btn-default">Próximo</button>
+                                                                <button type="button" onclick="$('#link1').click();" class="btn btn-default">Anterior</button>
+                                                                <button type="button" onclick="$('#link3').click();" class="btn btn-default">Próximo</button>
                                                             </div>
                                                         </form>
                                                     </div>
@@ -205,8 +205,8 @@
                                                             </div>
 
                                                             <div class="form-group col-lg-offset-9">
-                                                                <button type="button" onclick="$('#dadosEndereco').click();" class="btn btn-default">Anterior</button>
-                                                                <button type="button" onclick="$('#dadosUsuario').click();" class="btn btn-default">Próximo</button>
+                                                                <button type="button" onclick="$('#link2').click();" class="btn btn-default">Anterior</button>
+                                                                <button type="button" onclick="$('#link4').click();" class="btn btn-default">Próximo</button>
                                                             </div>
                                                             
 
@@ -247,7 +247,7 @@
 
 
                                                             <div class="form-group col-lg-offset-9">
-                                                                <button type="button" onclick="$('#dadosUsuario').click();" class="btn btn-default">Anterior</button>
+                                                                <button type="button" onclick="$('#link3').click();" class="btn btn-default">Anterior</button>
                                                                 <button type="submit" class="btn btn-default" id="save" value="save">
                                                                     <i class="fa fa-floppy-o"></i>
                                                                     Salvar

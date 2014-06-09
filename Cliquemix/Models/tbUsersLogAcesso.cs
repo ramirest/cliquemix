@@ -12,16 +12,13 @@ namespace Cliquemix.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tbAnuncioArea
+    public partial class tbUsersLogAcesso
     {
-        public tbAnuncioArea()
-        {
-            this.tbAnuncio = new HashSet<tbAnuncio>();
-        }
+        public int ulaid { get; set; }
+        public int uid { get; set; }
+        public System.DateTime dataHoraLog { get; set; }
+        public Nullable<int> timeOutLog { get; set; }
     
-        public int aaid { get; set; }
-        public string tituloAnuncioArea { get; set; }
-    
-        public virtual ICollection<tbAnuncio> tbAnuncio { get; set; }
+        public virtual tbUsers tbUsers { get; set; }
     }
 }
