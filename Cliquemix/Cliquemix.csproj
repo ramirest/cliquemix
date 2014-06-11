@@ -565,6 +565,7 @@
     <Content Include="Views\Anuncio\CreateAnuncio.cshtml" />
     <Content Include="Views\Anuncio\ListAnuncio.cshtml" />
     <Content Include="Views\Anuncio\UpdateAnuncio.cshtml" />
+    <Content Include="Views\Breadcrumbs\Breadcrumbs-Anuncio.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
