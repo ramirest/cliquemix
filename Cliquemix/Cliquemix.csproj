@@ -234,7 +234,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Cliquemix.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\dbContexto.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\tbAnunciante.cs">
