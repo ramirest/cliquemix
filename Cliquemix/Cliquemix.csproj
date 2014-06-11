@@ -411,6 +411,7 @@
     <Content Include="fonts\img\flex-admin-logo.png" />
     <Content Include="fonts\img\logo.fw.png" />
     <Content Include="fonts\img\logo.png" />
+    <Content Include="fonts\img\produto_sem_foto.gif" />
     <Content Include="fonts\img\profile-full.jpg" />
     <Content Include="fonts\img\profile-pic-small.jpg" />
     <Content Include="fonts\img\profile-pic.jpg" />
@@ -474,6 +475,7 @@
     <Content Include="Scripts\Outros\respond.min.js" />
     <Content Include="Scripts\Outros\_references.js" />
     <Content Include="Scripts\plugins\bootstrap-datepicker\bootstrap-datepicker.js" />
+    <Content Include="Scripts\plugins\bootstrap-filestyle\bootstrap-filestyle.min.js" />
     <Content Include="Scripts\plugins\bootstrap-maxlength\bootstrap-maxlength.js" />
     <Content Include="Scripts\plugins\bootstrap-multiselect\bootstrap-multiselect.js" />
     <Content Include="Scripts\plugins\bootstrap-timepicker\bootstrap-timepicker.min.js" />
@@ -560,6 +562,9 @@
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Logout\Logout.cshtml" />
+    <Content Include="Views\Anuncio\CreateAnuncio.cshtml" />
+    <Content Include="Views\Anuncio\ListAnuncio.cshtml" />
+    <Content Include="Views\Anuncio\UpdateAnuncio.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

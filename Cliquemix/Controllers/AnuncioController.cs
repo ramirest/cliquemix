@@ -37,7 +37,7 @@ namespace Cliquemix.Controllers
         }
 
         // GET: /Anuncio/Create
-        public ActionResult Create()
+        public ActionResult CreateAnuncio()
         {
             ViewBag.raid = new SelectList(db.tbRamoAtividade, "raid", "descricao");
             return View();
