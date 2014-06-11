@@ -557,7 +557,6 @@
     <Content Include="Views\Anuncio\Edit.cshtml" />
     <Content Include="Views\Anuncio\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\LoginAnunciante\LoginAnunciante.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Delete.cshtml" />
     <Content Include="Views\Users\Details.cshtml" />
