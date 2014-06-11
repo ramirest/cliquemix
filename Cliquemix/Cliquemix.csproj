@@ -213,7 +213,6 @@
     <Compile Include="Controllers\Anunciante\PrincipalAnuncianteController.cs" />
     <Compile Include="Controllers\AnuncioController.cs" />
     <Compile Include="Controllers\BreadcrumbsController.cs" />
-    <Compile Include="Controllers\Anunciante\LoginAnuncianteController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\LogoutController.cs" />
     <Compile Include="Controllers\SignInController.cs" />
