@@ -29,5 +29,11 @@ namespace Cliquemix.Models
 
         public System.Data.Entity.DbSet<Cliquemix.Models.tbUsersTipo> tbUsersTipo { get; set; }
 
+        public System.Data.Entity.DbSet<Cliquemix.Models.tbCampanha> tbCampanhas { get; set; }
+
+        public System.Data.Entity.DbSet<Cliquemix.Models.tbCampanhaStatus> tbCampanhaStatus { get; set; }
+
+        public System.Data.Entity.DbSet<Cliquemix.Models.tbDestaque> tbDestaque { get; set; }
+
     }
 }

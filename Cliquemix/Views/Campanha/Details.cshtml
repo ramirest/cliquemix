@@ -1,0 +1,59 @@
+﻿@model Cliquemix.Models.tbCampanha
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbCampanha</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tituloCampanha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tituloCampanha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dtInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dtInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dtTermino)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dtTermino)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbCampanhaStatus.dsCampStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbCampanhaStatus.dsCampStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbDestaque.tituloDestaque)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbDestaque.tituloDestaque)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.cid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
