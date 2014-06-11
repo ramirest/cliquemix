@@ -1,4 +1,7 @@
-﻿<!-- begin SIDE NAVIGATION -->
+﻿@using System.Web.Configuration
+@using Microsoft.AspNet.Identity;
+
+<!-- begin SIDE NAVIGATION -->
 <nav class="navbar-side" role="navigation">
     <div class="navbar-collapse sidebar-collapse collapse">
         <ul id="side" class="nav navbar-nav side-nav">
@@ -7,11 +10,15 @@
             <li class="side-user hidden-xs">
                 <img class="img-circle" src="~/fonts/img/profile-pic.jpg" alt="">
                 <p class="welcome">
-                    <i class="fa fa-key"></i> Logado como
+                    <i class="fa fa-key"></i> Logado como 
                 </p>
                 <p class="name tooltip-sidebar-logout">
-                    Rayans
-                    <span class="last-name">Carvalho</span> <a style="color: inherit" class="logout_open" href="#logout" data-toggle="tooltip" data-placement="top" title="Logout"><i class="fa fa-sign-out"></i></a>
+                    
+                    @if (Request.IsAuthenticated)
+                    {
+                       @Html.Label(User.Identity.GetUserName());
+                    }
+                <span class="last-name">Carvalho</span> <a style="color: inherit" class="logout_open" href="#logout" data-toggle="tooltip" data-placement="top" title="Logout"><i class="fa fa-sign-out"></i></a>
                 </p>
                 <div class="clearfix"></div>
             </li>

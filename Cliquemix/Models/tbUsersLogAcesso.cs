@@ -18,6 +18,10 @@ namespace Cliquemix.Models
         public int uid { get; set; }
         public System.DateTime dataHoraLog { get; set; }
         public Nullable<int> timeOutLog { get; set; }
+        public Nullable<System.DateTime> dataHoraExpiracao { get; set; }
+        public Nullable<int> idSessao { get; set; }
+        public Nullable<int> sessaoExpirada { get; set; }
+        public string nomeSessao { get; set; }
     
         public virtual tbUsers tbUsers { get; set; }
     }

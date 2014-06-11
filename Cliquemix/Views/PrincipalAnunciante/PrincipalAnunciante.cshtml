@@ -1,4 +1,7 @@
-﻿<div class="row">
+﻿@using Microsoft.AspNet.Identity;
+@using Microsoft.AspNet.Identity
+
+<div class="row">
     <div class="col-lg-12">
         <div class="page-title">
             <h1>
@@ -7,12 +10,33 @@
             </h1>
             @RenderPage("~/Views/Breadcrumbs/Breadcrumbs.cshtml")
         </div>
-        <p>
+        <p>            
             <li>@Html.ActionLink("Login", "Index", "Login")</li>
+        </p>
+        <p>
+            <a href="~/LoginAnunciante/LoginAnunciante">
+                <i class="fa fa-angle-double-right"></i> Criar Anúncios
+            </a>
         </p>
         <p>
             <li>@Html.ActionLink("Usuários", "Index", "Users")</li>
         </p>
+        
+        @if (Request.IsAuthenticated)
+        {
+            <div>
+                <div>
+                    <p>
+                        <li>@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "PrincipalAnunciante", "PrincipalAnunciante")</li>
+                    </p>
+                    <p>
+                        <li>@Html.ActionLink("LOGOUT", "PrincipalAnunciante", "PrincipalAnunciante")</li>
+                    </p>
+                </div>
+            </div>
+        } 
+        
+
     </div>
     <!-- /.col-lg-12 -->
 </div>

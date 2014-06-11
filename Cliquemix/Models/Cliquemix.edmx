@@ -25,6 +25,10 @@
           <Property Name="saldoCreditos" Type="decimal" Precision="11" Scale="3" />
           <Property Name="leuTermo" Type="int" />
           <Property Name="uid" Type="int" />
+          <Property Name="telResidencial" Type="varchar" MaxLength="15" />
+          <Property Name="telComercial" Type="varchar" MaxLength="15" />
+          <Property Name="telCelular1" Type="varchar" MaxLength="15" />
+          <Property Name="telCelular2" Type="varchar" MaxLength="15" />
         </EntityType>
         <EntityType Name="tbAnuncianteDestaque">
           <Key>
@@ -378,6 +382,10 @@
           <Property Name="uid" Type="int" Nullable="false" />
           <Property Name="dataHoraLog" Type="datetime" Nullable="false" />
           <Property Name="timeOutLog" Type="int" />
+          <Property Name="dataHoraExpiracao" Type="datetime" />
+          <Property Name="idSessao" Type="int" />
+          <Property Name="sessaoExpirada" Type="int" />
+          <Property Name="nomeSessao" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tbUsersPermissao">
           <Key>
@@ -1190,6 +1198,10 @@
           <NavigationProperty Name="tbTos" Relationship="Self.tid_tbAnunciante_tbTos_fk" FromRole="tbAnunciante" ToRole="tbTos" />
           <NavigationProperty Name="tbUsers" Relationship="Self.uid_tbAnunciante_tbUsers_fk" FromRole="tbAnunciante" ToRole="tbUsers" />
           <NavigationProperty Name="tbRamoAtividade" Relationship="cliquemixModel.raid_tbAnunciante_tbRamoAtividade_fk" FromRole="tbAnunciante" ToRole="tbRamoAtividade" />
+          <Property Name="telResidencial" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="telComercial" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="telCelular1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="telCelular2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tbAnuncianteDestaque">
           <Key>
@@ -2394,6 +2406,10 @@
           <Property Name="dataHoraLog" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="timeOutLog" Type="Int32" />
           <NavigationProperty Name="tbUsers" Relationship="cliquemixModel.uid_tbUsersLogAcesso_tbUsers_fk" FromRole="tbUsersLogAcesso" ToRole="tbUsers" />
+          <Property Name="dataHoraExpiracao" Type="DateTime" Precision="3" />
+          <Property Name="idSessao" Type="Int32" />
+          <Property Name="sessaoExpirada" Type="Int32" />
+          <Property Name="nomeSessao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="uid_tbUsersLogAcesso_tbUsers_fk">
           <End Type="cliquemixModel.tbUsers" Role="tbUsers" Multiplicity="1" />
@@ -2416,6 +2432,10 @@
           <EntitySetMapping Name="tbAnunciante">
             <EntityTypeMapping TypeName="cliquemixModel.tbAnunciante">
               <MappingFragment StoreEntitySet="tbAnunciante">
+                <ScalarProperty Name="telCelular2" ColumnName="telCelular2" />
+                <ScalarProperty Name="telCelular1" ColumnName="telCelular1" />
+                <ScalarProperty Name="telComercial" ColumnName="telComercial" />
+                <ScalarProperty Name="telResidencial" ColumnName="telResidencial" />
                 <ScalarProperty Name="pid" ColumnName="pid" />
                 <ScalarProperty Name="cnpj" ColumnName="cnpj" />
                 <ScalarProperty Name="razaoSocial" ColumnName="razaoSocial" />
@@ -2838,6 +2858,10 @@
           <EntitySetMapping Name="tbUsersLogAcesso">
             <EntityTypeMapping TypeName="cliquemixModel.tbUsersLogAcesso">
               <MappingFragment StoreEntitySet="tbUsersLogAcesso">
+                <ScalarProperty Name="nomeSessao" ColumnName="nomeSessao" />
+                <ScalarProperty Name="sessaoExpirada" ColumnName="sessaoExpirada" />
+                <ScalarProperty Name="idSessao" ColumnName="idSessao" />
+                <ScalarProperty Name="dataHoraExpiracao" ColumnName="dataHoraExpiracao" />
                 <ScalarProperty Name="timeOutLog" ColumnName="timeOutLog" />
                 <ScalarProperty Name="dataHoraLog" ColumnName="dataHoraLog" />
                 <ScalarProperty Name="uid" ColumnName="uid" />

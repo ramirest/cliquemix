@@ -544,7 +544,6 @@
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Breadcrumbs\Breadcrumbs.cshtml" />
-    <Content Include="Views\Logout\Logout.cshtml" />
     <Content Include="Views\MenuAnunciante\MenuAnunciante.cshtml" />
     <Content Include="Views\MenuTopoAnunciante\MenuTopo.cshtml" />
     <Content Include="Views\PrincipalAnunciante\PrincipalAnunciante.cshtml" />
@@ -561,6 +560,7 @@
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Logout\Logout.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

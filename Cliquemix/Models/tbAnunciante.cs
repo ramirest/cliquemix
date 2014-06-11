@@ -37,6 +37,10 @@ namespace Cliquemix.Models
         public Nullable<decimal> saldoCreditos { get; set; }
         public Nullable<int> leuTermo { get; set; }
         public Nullable<int> uid { get; set; }
+        public string telResidencial { get; set; }
+        public string telComercial { get; set; }
+        public string telCelular1 { get; set; }
+        public string telCelular2 { get; set; }
     
         public virtual tbCondicaoPagto tbCondicaoPagto { get; set; }
         public virtual ICollection<tbAnuncianteDestaque> tbAnuncianteDestaque { get; set; }
