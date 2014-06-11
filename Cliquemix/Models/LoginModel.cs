@@ -74,6 +74,10 @@ namespace Cliquemix.Models
             db.SaveChanges();
         }
 
+        public void Teste1()
+        {
+            //
+        }
 
     }
 }
