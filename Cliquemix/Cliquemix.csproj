@@ -412,6 +412,7 @@
     <Content Include="fonts\img\flex-admin-logo.png" />
     <Content Include="fonts\img\logo.fw.png" />
     <Content Include="fonts\img\logo.png" />
+    <Content Include="fonts\img\logo2.png" />
     <Content Include="fonts\img\produto_sem_foto.gif" />
     <Content Include="fonts\img\profile-full.jpg" />
     <Content Include="fonts\img\profile-pic-small.jpg" />
@@ -555,7 +556,6 @@
     <Content Include="Views\Anuncio\Details.cshtml" />
     <Content Include="Views\Anuncio\Edit.cshtml" />
     <Content Include="Views\Anuncio\Index.cshtml" />
-    <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Delete.cshtml" />
     <Content Include="Views\Users\Details.cshtml" />
@@ -576,6 +576,7 @@
     <Content Include="Views\Destaque\Details.cshtml" />
     <Content Include="Views\Destaque\Edit.cshtml" />
     <Content Include="Views\Destaque\Index.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
