@@ -1,17 +1,144 @@
-﻿
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>ListAnuncio</title>
-</head>
-<body>
-    <div> 
+﻿<div class="row">
+    <div class="col-lg-12">
+        <div class="page-title">
+            <h1>
+                Anunciante
+                <small>Criar Anúncio</small>
+            </h1>
+            @RenderPage("~/Views/Breadcrumbs/Breadcrumbs-Anuncio-List.cshtml")
+        </div>
     </div>
-</body>
-</html>
+</div>
+
+
+<div class="row">
+    <!-- Basic Responsive Table -->
+    <div class="col-lg-12">
+        <div class="portlet portlet-default">
+            <div class="portlet-heading">
+                <div class="portlet-title">
+                      
+                    <h4 class="flutuar">Lista de Anúncios</h4>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="portlet-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th class="text-center">Título</th>
+                                <th class="text-center">Ramo</th>
+                                <th class="text-center">Video</th>
+                                <th class="text-center">Imagem</th>
+                                <th class="text-center">Data</th>
+                                <th class="text-center">Status</th>
+                                <th class="text-center">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center">1</td>
+                                <td class="text-center">Tecidos Bahia</td>
+                                <td class="text-center">Roupa</td>
+                                <td class="text-center">Sim</td>
+                                <td class="text-center">Sim</td>
+                                <td class="text-center">28/11/2013</td>
+                                <td class="text-center">Em Campanha</td>
+                                <td class="text-center">
+                                    <a href="#" title="Visualizar" style="padding-right: 10px;">
+                                        <i class="fa fa-search"></i>
+                                    </a>
+                                    <a href="#" title="Editar" style="padding-right: 10px;">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a href="#" title="Excluir">
+                                        <i class="fa fa-trash-o"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">2</td>
+                                <td class="text-center">B & Gamma</td>
+                                <td class="text-center">TI</td>
+                                <td class="text-center">Não</td>
+                                <td class="text-center">Sim</td>
+                                <td class="text-center">28/01/2014</td>
+                                <td class="text-center">Disponível</td>
+                                <td class="text-center">
+                                    <a href="#" title="Visualizar" style="padding-right: 10px;">
+                                        <i class="fa fa-search"></i>
+                                    </a>
+                                    <a href="#" title="Editar" style="padding-right: 10px;">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a href="#" title="Excluir">
+                                        <i class="fa fa-trash-o"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">3</td>
+                                <td class="text-center">Pasta Dent..</td>
+                                <td class="text-center">Odontologia</td>
+                                <td class="text-center">Sim</td>
+                                <td class="text-center">Não</td>
+                                <td class="text-center">11/04/2014</td>
+                                <td class="text-center">Em Campanha</td>
+                                <td class="text-center">
+                                    <a href="#" title="Visualizar" style="padding-right: 10px;">
+                                        <i class="fa fa-search"></i>
+                                    </a>
+                                    <a href="#" title="Editar" style="padding-right: 10px;">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a href="#" title="Excluir">
+                                        <i class="fa fa-trash-o"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <thead class="rodape-tabela">
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th class="text-center">Título</th>
+                                    <th class="text-center">Ramo</th>
+                                    <th class="text-center">Video</th>
+                                    <th class="text-center">Imagem</th>
+                                    <th class="text-center">Data</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="text-center">Ações</th>
+                                </tr>
+                            </thead>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- /.portlet -->
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="text-center">
+        <ul class="pagination">
+            <li>
+                <a href="#">&laquo;</a>
+            </li>
+            <li class="active">
+                <a href="#">1</a>
+            </li>
+            <li>
+                <a href="#">2</a>
+            </li>
+            <li>
+                <a href="#">3</a>
+            </li>
+            <li>
+                <a href="#">&raquo;</a>
+            </li>
+        </ul>
+    </div>
+    
+</div>

@@ -577,6 +577,8 @@
     <Content Include="Views\Destaque\Edit.cshtml" />
     <Content Include="Views\Destaque\Index.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Breadcrumbs\Breadcrumbs-Anuncio-Edit.cshtml" />
+    <Content Include="Views\Breadcrumbs\Breadcrumbs-Anuncio-List.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
