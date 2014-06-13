@@ -213,8 +213,7 @@
     <Compile Include="Controllers\Anunciante\PrincipalAnuncianteController.cs" />
     <Compile Include="Controllers\AnuncioController.cs" />
     <Compile Include="Controllers\BreadcrumbsController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\LogoutController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\SignInController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -520,7 +519,9 @@
     <Content Include="Scripts\plugins\validate\jquery.validate.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Views\Shared\favicon.ico" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -531,26 +532,26 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\_RemoveAccountPartial.cshtml" />
-    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Manage.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\_Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\_Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\_Account\_RemoveAccountPartial.cshtml" />
+    <Content Include="Views\_Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\_Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\_Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\_Account\Login.cshtml" />
+    <Content Include="Views\_Account\Manage.cshtml" />
+    <Content Include="Views\_Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\_Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\_Account\ForgotPassword.cshtml" />
+    <Content Include="Views\_Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\_Account\ResetPassword.cshtml" />
+    <Content Include="Views\_Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Breadcrumbs\Breadcrumbs.cshtml" />
     <Content Include="Views\MenuAnunciante\MenuAnunciante.cshtml" />
     <Content Include="Views\MenuTopoAnunciante\MenuTopo.cshtml" />
     <Content Include="Views\PrincipalAnunciante\PrincipalAnunciante.cshtml" />
-    <Content Include="Views\SignIn\SignInAnunciante.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Anuncio\Create.cshtml" />
     <Content Include="Views\Anuncio\Delete.cshtml" />
     <Content Include="Views\Anuncio\Details.cshtml" />
@@ -561,7 +562,6 @@
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
-    <Content Include="Views\Logout\Logout.cshtml" />
     <Content Include="Views\Anuncio\CreateAnuncio.cshtml" />
     <Content Include="Views\Anuncio\ListAnuncio.cshtml" />
     <Content Include="Views\Anuncio\UpdateAnuncio.cshtml" />
@@ -576,9 +576,10 @@
     <Content Include="Views\Destaque\Details.cshtml" />
     <Content Include="Views\Destaque\Edit.cshtml" />
     <Content Include="Views\Destaque\Index.cshtml" />
-    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Breadcrumbs\Breadcrumbs-Anuncio-Edit.cshtml" />
     <Content Include="Views\Breadcrumbs\Breadcrumbs-Anuncio-List.cshtml" />
+    <Content Include="Views\Account\Logout.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

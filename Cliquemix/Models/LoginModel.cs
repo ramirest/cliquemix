@@ -72,8 +72,7 @@ namespace Cliquemix.Models
 
             db.TbUsersLogAcessos.Add(logAcesso);
             db.SaveChanges();
-        }
-
+        }        
 
     }
 }

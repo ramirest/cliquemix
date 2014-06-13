@@ -1,4 +1,5 @@
-﻿
+﻿@using Microsoft.AspNet.Identity;
+
 <!-- begin TOP NAVIGATION -->
 <nav class="navbar-top" role="navigation">
     <!-- begin BRAND HEADING -->
@@ -48,10 +49,14 @@
                             <i class="fa fa-gear"></i> Configurações
                         </a>
                     </li>
+
                     <li>
-                        <a class="logout_open" href="~/Views/Logout/Logout">
+                        <a class="logout_open" href="~/Account/Logout">
                             <i class="fa fa-sign-out"></i> Logout
-                            <strong>Rayans Carvalho</strong>
+                            @if (Request.IsAuthenticated)
+                            {
+                                @Html.Label(User.Identity.GetUserName());
+                            }
                         </a>
                     </li>
                     

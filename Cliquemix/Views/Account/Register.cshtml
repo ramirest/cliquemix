@@ -1,41 +1,306 @@
-﻿@model Test_AspNet.Models.RegisterViewModel
-@{
-    ViewBag.Title = "Register";
+﻿@{
+    Layout = null;
 }
 
-<h2>@ViewBag.Title.</h2>
+<!DOCTYPE html>
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
-        </div>
-    </div>
-}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    
+    <link href="~/Content/plugins/pace/pace.css" rel="stylesheet">
+    <script src="~/Scripts/plugins/pace/pace.js"></script>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    
+    <link href="~/Content/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel="stylesheet" type="text/css">
+    <link href="~/fonts/icons/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet">
+    <link href="~/Content/plugins.css" rel="stylesheet">
+    <link href="~/Content/edicoes.css" rel="stylesheet">
+    
+    <!--[if lt IE 9]>
+      <script src="~/Scripts/html5shiv.js"></script>
+      <script src="~/Scripts/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+    <div id="wrapper ">
+        <nav class="navbar-top" role="navigation">
+            <div class="navbar-header">
+                <div class="nav-top">
+                    
+                        <div class="navbar-brand">
+                            <a href="#">
+                                <img src="~/fonts/img/logo.png" class="img-responsive edit-tamanho-cadastro" alt="" />
+                            </a>
+                        </div>                   
+                </div>
+            </div>
+        </nav>
+
+
+        <div id="page-wrapper" class="collapsed">
+            <div class="page-content">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="page-title">
+                            <h1>
+                                CliqueMix
+                                <small>Cadastro de Anunciante</small>
+                            </h1>
+                            <ol class="breadcrumb">
+                                <li>
+                                    <i class="fa fa-dashboard"></i>  <a href="index.html">Anunciante</a>
+                                </li>
+                                <li class="active">Cadastro</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="portlet portlet-default">
+                            <div class="portlet-body">
+                                <ul id="userTab" class="nav nav-tabs">
+                                    <li class="active">
+                                        <a href="#profile-settings" data-toggle="tab">Cadastro de Informações</a>
+                                    </li>
+                                </ul>
+                                <div id="userTabContent" class="tab-content">
+                                    <div class="tab-pane fade in active" id="profile-settings">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <ul id="userSettings" class="nav nav-pills nav-stacked">
+                                                    <li class="active">
+                                                        <a href="#dadosEmpresa" data-toggle="tab" id="link1"><i class="fa fa-building-o fa-fw"></i> Dados da Empresa</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#dadosContato" data-toggle="tab" id="link2"><i class="fa fa-phone fa-fw"></i> Dados de Contato</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#dadosEndereco" data-toggle="tab" id="link3"><i class="fa fa-globe fa-fw"></i>Dados de Endereço</a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a href="#dadosUsuario" data-toggle="tab" id="link4"><i class="fa fa-user fa-fw"></i>Dados de Usuário</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <div id="userSettingsContent" class="tab-content">
+                                                    <div class="tab-pane fade in active" id="dadosEmpresa">
+                                                        @*  Dados da empresa   *@
+                                                        <form role="form">
+                                                            <h4 class="page-header">Dados da Empresa:</h4>
+                                                            <div class="form-group col-lg-6">
+                                                                <label>CNPJ</label>
+                                                                <input type="text" class="form-control" value="">
+                                                            </div>
+                                                            <div class="form-group col-lg-6">
+                                                                <label>Razão Social</label>
+                                                                <input type="text" class="form-control" value="">
+                                                            </div>
+                                                            <div class="form-group col-lg-6">
+                                                                <label>Nome Fantasia</label>
+                                                                <input type="tel" class="form-control" value="">
+                                                            </div>
+                                                            <div class="form-group col-lg-6">
+                                                                <label>Administrador</label>
+                                                                <input type="text" class="form-control" value="">
+                                                            </div>
+
+                                                            <div class="form-group col-lg-6">
+                                                                <label>Inscrição Estadual</label>
+                                                                <input type="text" class="form-control" value="">
+                                                            </div>
+
+                                                            <div class="form-group col-lg-6">
+                                                                <label>Inscrição Municipal</label>
+                                                                <input type="text" class="form-control" value="">
+                                                            </div>
+
+                                                            <div class="form-group col-lg-6">
+                                                                <label>Ramo de Atividade</label>
+                                                                <br />
+                                                                <select class="form-control">
+                                                                    <option>Selecione</option>
+                                                                    <option>Bens de Consumo</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="col-sm-offset-10 col-sm-1">
+                                                                <button type="button" onclick="$('#link2').click();" class="btn btn-default">Próximo</button>
+                                                            </div>
+
+
+                                                        </form>
+                                                    </div>
+                                                    <div class="tab-pane fade" id="dadosContato">
+                                                        @*  Dados de Contato   *@
+                                                        <br>
+                                                        <form role="form">
+                                                            <h4 class="page-header">Dados de Contato:</h4>
+                                                            <div class="form-group col-lg-6">
+                                                                <label>E-mail</label>
+                                                                <input type="text" class="form-control" value="">
+                                                            </div>
+                                                            <div class="form-group col-lg-6">
+                                                                <label>Telefone</label>
+                                                                <input type="text" class="form-control" value="">
+                                                            </div>
+                                                            <div class="form-group col-lg-6">
+                                                                <label>Celular</label>
+                                                                <input type="tel" class="form-control" value="">
+                                                            </div>
+                                                            <div class="form-group col-lg-6">
+                                                                <label>Site</label>
+                                                                <input type="text" class="form-control" value="">
+                                                            </div>
+                                                            <div class="form-group col-lg-offset-9">
+                                                                <button type="button" onclick="$('#link1').click();" class="btn btn-default">Anterior</button>
+                                                                <button type="button" onclick="$('#link3').click();" class="btn btn-default">Próximo</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="tab-pane fade in" id="dadosEndereco">
+                                                       
+                                                        <form role="form">
+                                                            <h4 class="page-header">Dados de Endereço:</h4>
+                                                            <div class="form-group col-lg-3">
+                                                                <label>Cep</label>
+                                                                <input type="text" class="form-control" value="">
+                                                            </div>                                             
+                                                            <div class="form-group col-lg-3">
+                                                                <label>Bairro</label>
+                                                                <input type="tel" class="form-control" value="">
+                                                            </div>
+                                                            
+                                                            <div class="form-group col-lg-6">
+                                                                <label>Rua</label>
+                                                                <input type="text" class="form-control" value="">
+                                                            </div>
+
+                                                            <div class="form-group col-lg-6">
+                                                                <label>Cidade</label>
+                                                                <input type="text" class="form-control" value="">
+                                                            </div>                                                           
+                                                            <div class="form-group col-lg-2">
+                                                                <label>Estado</label>
+                                                                <input type="text" class="form-control" value="">
+                                                            </div>
+                                                            <div class="form-group col-lg-2">
+                                                                <label>Numero</label>
+                                                                <input type="text" class="form-control" value="">
+                                                            </div>
+                                                            <div class="form-group col-lg-2">
+                                                                <label>Compl</label>
+                                                                <input type="text" class="form-control" value="">
+                                                            </div>
+
+                                                            <div class="form-group col-lg-offset-9">
+                                                                <button type="button" onclick="$('#link2').click();" class="btn btn-default">Anterior</button>
+                                                                <button type="button" onclick="$('#link4').click();" class="btn btn-default">Próximo</button>
+                                                            </div>
+                                                            
+
+                                                        </form>
+                                                    </div>
+                                                    <div class="tab-pane fade in" id="dadosUsuario">
+
+                                                        <form role="form">
+                                                            <h4 class="page-header">Dados de Usuário:</h4>
+                                                            <div class="form-group col-lg-6">
+                                                                <div class="input-group">
+                                                                    <label>Usuário</label>
+                                                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                                    <input type="text" class="form-control" value="">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="clearfix"></div>
+                                                            <div class="form-group col-lg-6">
+                                                                <div class="input-group">
+                                                                    <label style="padding-right: 12px;">Senha</label>
+                                                                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                                                    <input type="password" class="form-control" value="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="clearfix"></div>
+
+                                                            <div class="clearfix"></div>
+                                                            <div class="form-group col-lg-6">
+                                                                <div class="input-group">
+                                                                    <label style="padding-right: 12px;">Confirme a Senha</label>
+                                                                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                                                    <input type="password" class="form-control" value="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="clearfix"></div>
+
+                                                            <div class="form-group col-lg-12"></div>
+                                                            <div class="form-group col-lg-12"></div>
+                                                            <div class="form-group col-lg-12"></div>
+
+                                                            <div class="form-group col-lg-12">
+                                                                Ao clicar em salvar, confirmo ter lido e concordado com todos os
+                                                                <a style="color: #1CC7D3; font-weight:bold;" href="#" target="_blank">termos do serviço.</a>
+                                                            </div>
+
+
+
+                                                            <div class="form-group col-lg-offset-9">
+                                                                <button type="button" onclick="$('#link3').click();" class="btn btn-default">Anterior</button>
+                                                                <button type="submit" class="btn btn-default" id="save" value="save">
+                                                                    <i class="fa fa-floppy-o"></i>
+                                                                    Salvar
+                                                                </button>
+                                                            </div>
+
+
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.portlet-body -->
+                        </div>
+                        <!-- /.portlet -->
+
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="~/Scripts/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="~/Scripts/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="~/Scripts/plugins/hisrc/hisrc.js"></script>
+    <script src="~/Scripts/flex.js"></script>
+</body>
+</html>
