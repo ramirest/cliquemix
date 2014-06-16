@@ -8,7 +8,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head runat="server">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
@@ -47,7 +47,7 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="portlet-body">
-                        @using (Html.BeginForm())
+                        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl}, FormMethod.Post))
                         {
                             <form accept-charset="UTF-8" role="form">
                                 <fieldset>

@@ -68,6 +68,9 @@
           <Property Name="dsAnuncio" Type="text" />
           <Property Name="videoAnuncio" Type="text" />
           <Property Name="raid" Type="int" />
+          <Property Name="comentar" Type="int" />
+          <Property Name="curtir" Type="int" />
+          <Property Name="compartilhar" Type="int" />
         </EntityType>
         <EntityType Name="tbAnuncioFuncionalidade">
           <Key>
@@ -294,6 +297,23 @@
           </Key>
           <Property Name="peid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="dsPermissao" Type="varchar" MaxLength="100" />
+          <Property Name="pgid" Type="int" />
+          <Property Name="psgid" Type="int" />
+        </EntityType>
+        <EntityType Name="tbPermissaoGrupo">
+          <Key>
+            <PropertyRef Name="pgid" />
+          </Key>
+          <Property Name="pgid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dsPermissaoGrupo" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbPermissaoSubGrupo">
+          <Key>
+            <PropertyRef Name="psgid" />
+          </Key>
+          <Property Name="psgid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dsPermissaoSubGrupo" Type="varchar" MaxLength="50" />
+          <Property Name="pgid" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tbPontosRede">
           <Key>
@@ -750,6 +770,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="pgid_tbPermissao_tbPermissaoGrupo_fk">
+          <End Role="tbPermissaoGrupo" Type="Self.tbPermissaoGrupo" Multiplicity="0..1" />
+          <End Role="tbPermissao" Type="Self.tbPermissao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPermissaoGrupo">
+              <PropertyRef Name="pgid" />
+            </Principal>
+            <Dependent Role="tbPermissao">
+              <PropertyRef Name="pgid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pgid_tbPermissaoSubGrupo_tbPermissaoGrupo_fk">
+          <End Role="tbPermissaoGrupo" Type="Self.tbPermissaoGrupo" Multiplicity="1" />
+          <End Role="tbPermissaoSubGrupo" Type="Self.tbPermissaoSubGrupo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPermissaoGrupo">
+              <PropertyRef Name="pgid" />
+            </Principal>
+            <Dependent Role="tbPermissaoSubGrupo">
+              <PropertyRef Name="pgid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="pid_tbAnuncianteDestaque_tbAnunciante_fk">
           <End Role="tbAnunciante" Type="Self.tbAnunciante" Multiplicity="1" />
           <End Role="tbAnuncianteDestaque" Type="Self.tbAnuncianteDestaque" Multiplicity="*" />
@@ -831,6 +875,18 @@
             </Principal>
             <Dependent Role="tbPremioImg">
               <PropertyRef Name="prid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="psgid_tbPermissao_tbPermissaoSubGrupo_fk">
+          <End Role="tbPermissaoSubGrupo" Type="Self.tbPermissaoSubGrupo" Multiplicity="0..1" />
+          <End Role="tbPermissao" Type="Self.tbPermissao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPermissaoSubGrupo">
+              <PropertyRef Name="psgid" />
+            </Principal>
+            <Dependent Role="tbPermissao">
+              <PropertyRef Name="psgid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -974,6 +1030,8 @@
           <EntitySet Name="tbFuncionalidade" EntityType="Self.tbFuncionalidade" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbPais" EntityType="Self.tbPais" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbPermissao" EntityType="Self.tbPermissao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbPermissaoGrupo" EntityType="Self.tbPermissaoGrupo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbPermissaoSubGrupo" EntityType="Self.tbPermissaoSubGrupo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbPontosRede" EntityType="Self.tbPontosRede" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbPremio" EntityType="Self.tbPremio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbPremioConsumidor" EntityType="Self.tbPremioConsumidor" Schema="dbo" store:Type="Tables" />
@@ -1102,6 +1160,14 @@
             <End Role="tbPermissao" EntitySet="tbPermissao" />
             <End Role="tbUsersPermissao" EntitySet="tbUsersPermissao" />
           </AssociationSet>
+          <AssociationSet Name="pgid_tbPermissao_tbPermissaoGrupo_fk" Association="Self.pgid_tbPermissao_tbPermissaoGrupo_fk">
+            <End Role="tbPermissaoGrupo" EntitySet="tbPermissaoGrupo" />
+            <End Role="tbPermissao" EntitySet="tbPermissao" />
+          </AssociationSet>
+          <AssociationSet Name="pgid_tbPermissaoSubGrupo_tbPermissaoGrupo_fk" Association="Self.pgid_tbPermissaoSubGrupo_tbPermissaoGrupo_fk">
+            <End Role="tbPermissaoGrupo" EntitySet="tbPermissaoGrupo" />
+            <End Role="tbPermissaoSubGrupo" EntitySet="tbPermissaoSubGrupo" />
+          </AssociationSet>
           <AssociationSet Name="pid_tbAnuncianteDestaque_tbAnunciante_fk" Association="Self.pid_tbAnuncianteDestaque_tbAnunciante_fk">
             <End Role="tbAnunciante" EntitySet="tbAnunciante" />
             <End Role="tbAnuncianteDestaque" EntitySet="tbAnuncianteDestaque" />
@@ -1129,6 +1195,10 @@
           <AssociationSet Name="prid_tbPremioImg_tbPremio_fk" Association="Self.prid_tbPremioImg_tbPremio_fk">
             <End Role="tbPremio" EntitySet="tbPremio" />
             <End Role="tbPremioImg" EntitySet="tbPremioImg" />
+          </AssociationSet>
+          <AssociationSet Name="psgid_tbPermissao_tbPermissaoSubGrupo_fk" Association="Self.psgid_tbPermissao_tbPermissaoSubGrupo_fk">
+            <End Role="tbPermissaoSubGrupo" EntitySet="tbPermissaoSubGrupo" />
+            <End Role="tbPermissao" EntitySet="tbPermissao" />
           </AssociationSet>
           <AssociationSet Name="raid_tbAnunciante_tbRamoAtividade_fk" Association="Self.raid_tbAnunciante_tbRamoAtividade_fk">
             <End Role="tbRamoAtividade" EntitySet="tbRamoAtividade" />
@@ -1510,6 +1580,10 @@
           <Property Name="peid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="dsPermissao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tbUsersPermissao" Relationship="Self.peid_tbUsersPermissao_tbPermissao_fk" FromRole="tbPermissao" ToRole="tbUsersPermissao" />
+          <Property Name="pgid" Type="Int32" />
+          <Property Name="psgid" Type="Int32" />
+          <NavigationProperty Name="tbPermissaoGrupo" Relationship="cliquemixModel.pgid_tbPermissao_tbPermissaoGrupo_fk" FromRole="tbPermissao" ToRole="tbPermissaoGrupo" />
+          <NavigationProperty Name="tbPermissaoSubGrupo" Relationship="cliquemixModel.psgid_tbPermissao_tbPermissaoSubGrupo_fk" FromRole="tbPermissao" ToRole="tbPermissaoSubGrupo" />
         </EntityType>
         <EntityType Name="tbPontosRede">
           <Key>
@@ -2299,6 +2373,20 @@
             <End Role="tbUsers" EntitySet="tbUsers" />
             <End Role="tbUsersLogAcesso" EntitySet="tbUsersLogAcesso" />
           </AssociationSet>
+          <EntitySet Name="tbPermissaoGrupo" EntityType="cliquemixModel.tbPermissaoGrupo" />
+          <EntitySet Name="tbPermissaoSubGrupo" EntityType="cliquemixModel.tbPermissaoSubGrupo" />
+          <AssociationSet Name="pgid_tbPermissao_tbPermissaoGrupo_fk" Association="cliquemixModel.pgid_tbPermissao_tbPermissaoGrupo_fk">
+            <End Role="tbPermissaoGrupo" EntitySet="tbPermissaoGrupo" />
+            <End Role="tbPermissao" EntitySet="tbPermissao" />
+          </AssociationSet>
+          <AssociationSet Name="psgid_tbPermissao_tbPermissaoSubGrupo_fk" Association="cliquemixModel.psgid_tbPermissao_tbPermissaoSubGrupo_fk">
+            <End Role="tbPermissaoSubGrupo" EntitySet="tbPermissaoSubGrupo" />
+            <End Role="tbPermissao" EntitySet="tbPermissao" />
+          </AssociationSet>
+          <AssociationSet Name="pgid_tbPermissaoSubGrupo_tbPermissaoGrupo_fk" Association="cliquemixModel.pgid_tbPermissaoSubGrupo_tbPermissaoGrupo_fk">
+            <End Role="tbPermissaoGrupo" EntitySet="tbPermissaoGrupo" />
+            <End Role="tbPermissaoSubGrupo" EntitySet="tbPermissaoSubGrupo" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="tbAnuncio">
           <Key>
@@ -2315,6 +2403,9 @@
           <NavigationProperty Name="tbCampanhaAnuncio" Relationship="cliquemixModel.aid_tbCampanhaAnuncio_tbAnuncio_fk" FromRole="tbAnuncio" ToRole="tbCampanhaAnuncio" />
           <NavigationProperty Name="tbPontosRede" Relationship="cliquemixModel.aid_tbPontosRede_tbAnuncio_fk" FromRole="tbAnuncio" ToRole="tbPontosRede" />
           <NavigationProperty Name="tbRamoAtividade" Relationship="cliquemixModel.raid_tbAnuncio_tbRamoAtividade_fk" FromRole="tbAnuncio" ToRole="tbRamoAtividade" />
+          <Property Name="comentar" Type="Int32" />
+          <Property Name="curtir" Type="Int32" />
+          <Property Name="compartilhar" Type="Int32" />
         </EntityType>
         <EntityType Name="tbRamoAtividade">
           <Key>
@@ -2420,6 +2511,61 @@
             </Principal>
             <Dependent Role="tbUsersLogAcesso">
               <PropertyRef Name="uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tbPermissaoGrupo">
+          <Key>
+            <PropertyRef Name="pgid" />
+          </Key>
+          <Property Name="pgid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dsPermissaoGrupo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbPermissao" Relationship="cliquemixModel.pgid_tbPermissao_tbPermissaoGrupo_fk" FromRole="tbPermissaoGrupo" ToRole="tbPermissao" />
+          <NavigationProperty Name="tbPermissaoSubGrupo" Relationship="cliquemixModel.pgid_tbPermissaoSubGrupo_tbPermissaoGrupo_fk" FromRole="tbPermissaoGrupo" ToRole="tbPermissaoSubGrupo" />
+        </EntityType>
+        <EntityType Name="tbPermissaoSubGrupo">
+          <Key>
+            <PropertyRef Name="psgid" />
+          </Key>
+          <Property Name="psgid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dsPermissaoSubGrupo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pgid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbPermissao" Relationship="cliquemixModel.psgid_tbPermissao_tbPermissaoSubGrupo_fk" FromRole="tbPermissaoSubGrupo" ToRole="tbPermissao" />
+          <NavigationProperty Name="tbPermissaoGrupo" Relationship="cliquemixModel.pgid_tbPermissaoSubGrupo_tbPermissaoGrupo_fk" FromRole="tbPermissaoSubGrupo" ToRole="tbPermissaoGrupo" />
+        </EntityType>
+        <Association Name="pgid_tbPermissao_tbPermissaoGrupo_fk">
+          <End Type="cliquemixModel.tbPermissaoGrupo" Role="tbPermissaoGrupo" Multiplicity="0..1" />
+          <End Type="cliquemixModel.tbPermissao" Role="tbPermissao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPermissaoGrupo">
+              <PropertyRef Name="pgid" />
+            </Principal>
+            <Dependent Role="tbPermissao">
+              <PropertyRef Name="pgid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="psgid_tbPermissao_tbPermissaoSubGrupo_fk">
+          <End Type="cliquemixModel.tbPermissaoSubGrupo" Role="tbPermissaoSubGrupo" Multiplicity="0..1" />
+          <End Type="cliquemixModel.tbPermissao" Role="tbPermissao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPermissaoSubGrupo">
+              <PropertyRef Name="psgid" />
+            </Principal>
+            <Dependent Role="tbPermissao">
+              <PropertyRef Name="psgid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pgid_tbPermissaoSubGrupo_tbPermissaoGrupo_fk">
+          <End Type="cliquemixModel.tbPermissaoGrupo" Role="tbPermissaoGrupo" Multiplicity="1" />
+          <End Type="cliquemixModel.tbPermissaoSubGrupo" Role="tbPermissaoSubGrupo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPermissaoGrupo">
+              <PropertyRef Name="pgid" />
+            </Principal>
+            <Dependent Role="tbPermissaoSubGrupo">
+              <PropertyRef Name="pgid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2733,6 +2879,8 @@
           <EntitySetMapping Name="tbPermissao">
             <EntityTypeMapping TypeName="cliquemixModel.tbPermissao">
               <MappingFragment StoreEntitySet="tbPermissao">
+                <ScalarProperty Name="psgid" ColumnName="psgid" />
+                <ScalarProperty Name="pgid" ColumnName="pgid" />
                 <ScalarProperty Name="peid" ColumnName="peid" />
                 <ScalarProperty Name="dsPermissao" ColumnName="dsPermissao" />
               </MappingFragment>
@@ -2838,6 +2986,9 @@
           <EntitySetMapping Name="tbAnuncio">
             <EntityTypeMapping TypeName="cliquemixModel.tbAnuncio">
               <MappingFragment StoreEntitySet="tbAnuncio">
+                <ScalarProperty Name="compartilhar" ColumnName="compartilhar" />
+                <ScalarProperty Name="curtir" ColumnName="curtir" />
+                <ScalarProperty Name="comentar" ColumnName="comentar" />
                 <ScalarProperty Name="raid" ColumnName="raid" />
                 <ScalarProperty Name="videoAnuncio" ColumnName="videoAnuncio" />
                 <ScalarProperty Name="dsAnuncio" ColumnName="dsAnuncio" />
@@ -2866,6 +3017,23 @@
                 <ScalarProperty Name="dataHoraLog" ColumnName="dataHoraLog" />
                 <ScalarProperty Name="uid" ColumnName="uid" />
                 <ScalarProperty Name="ulaid" ColumnName="ulaid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbPermissaoGrupo">
+            <EntityTypeMapping TypeName="cliquemixModel.tbPermissaoGrupo">
+              <MappingFragment StoreEntitySet="tbPermissaoGrupo">
+                <ScalarProperty Name="dsPermissaoGrupo" ColumnName="dsPermissaoGrupo" />
+                <ScalarProperty Name="pgid" ColumnName="pgid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbPermissaoSubGrupo">
+            <EntityTypeMapping TypeName="cliquemixModel.tbPermissaoSubGrupo">
+              <MappingFragment StoreEntitySet="tbPermissaoSubGrupo">
+                <ScalarProperty Name="pgid" ColumnName="pgid" />
+                <ScalarProperty Name="dsPermissaoSubGrupo" ColumnName="dsPermissaoSubGrupo" />
+                <ScalarProperty Name="psgid" ColumnName="psgid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

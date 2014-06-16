@@ -211,7 +211,7 @@
     <Compile Include="Controllers\Anunciante\MenuAnuncianteController.cs" />
     <Compile Include="Controllers\Anunciante\MenuTopoAnuncianteController.cs" />
     <Compile Include="Controllers\Anunciante\PrincipalAnuncianteController.cs" />
-    <Compile Include="Controllers\AnuncioController.cs" />
+    <Compile Include="Controllers\Anunciante\AnuncioController.cs" />
     <Compile Include="Controllers\BreadcrumbsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\SignInController.cs" />
@@ -236,6 +236,7 @@
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\PermissaoAcesso.cs" />
     <Compile Include="Models\tbAnunciante.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
@@ -327,6 +328,12 @@
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbPermissao.cs">
+      <DependentUpon>Cliquemix.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbPermissaoGrupo.cs">
+      <DependentUpon>Cliquemix.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbPermissaoSubGrupo.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbPontosRede.cs">

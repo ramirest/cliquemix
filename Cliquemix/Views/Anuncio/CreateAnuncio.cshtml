@@ -1,4 +1,7 @@
-﻿<div class="row">
+﻿@using System.Web.UI.WebControls
+@model Cliquemix.Models.tbAnuncio
+
+<div class="row">
     <div class="col-lg-12">
         <div class="page-title">
             <h1>
@@ -33,7 +36,6 @@
                                     <li>
                                         <a href="#infoImg" data-toggle="tab" id="lnk3"><i class="fa fa-picture-o fa-fw"></i> Imagens</a>
                                     </li>
-
                                     <li>
                                         <a href="#infoFunc" data-toggle="tab" id="lnk4"><i class="fa fa-puzzle-piece fa-fw"></i> Funcionalidades</a>
                                     </li>
@@ -46,27 +48,25 @@
                                         <form role="form">
                                             <h4 class="page-header">Informações do Anúncio:</h4>
                                             <div class="form-group col-lg-6">
-                                                <label>Título</label>
-                                                <input type="text" class="form-control" value="">
+                                                @Html.Label("Título do Anúncio")
+                                                @Html.TextBoxFor(model => model.tituloAnuncio, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.tituloAnuncio)
                                             </div>
 
                                             <div class="clearfix"></div>
                                             <div class="form-group col-lg-offset-6"></div>
 
                                             <div class="form-group col-lg-6">
-                                                <label>Ramo de atividade</label>
-                                                <select class="form-control">
-                                                    <option>Selecione</option>
-                                                </select>
+                                                @Html.Label("Ramo de Atividade")
+                                                @Html.DropDownListFor(model => model.raid, (IEnumerable<SelectListItem>)ViewBag.raid, string.Empty, new { @class = "form-control" })
                                             </div>
                                             
                                             <div class="clearfix"></div>
                                             <div class="form-group col-lg-offset-6"></div>
-                                            
 
                                             <div class="form-group col-lg-6">
-                                                <label>Url</label>
-                                                <input type="tel" class="form-control" value="" placeholder="http://">
+                                                @Html.Label("URL do Anúncio")
+                                                @Html.TextBoxFor(model => model.url, new { @class = "form-control" , placeholder = "Http://"})
                                             </div>
                                             
                                             <div class="clearfix"></div>
@@ -75,9 +75,7 @@
                                             <div class="form-group col-lg-12">
                                                 <div id="summernote">Seu texto aqui.</div>
                                             </div>
-                                            
-
-                                            
+                                           
 
                                             <div class="col-sm-offset-10 col-sm-1">
                                                 <button type="button" onclick="$('#lnk2').click();" class="btn btn-default">Próximo</button>
@@ -90,8 +88,8 @@
                                         <form role="form">
                                             <h4 class="page-header">Informações do Video:</h4>
                                             <div class="form-group col-lg-6">
-                                                <label>Url</label>
-                                                <input type="text" class="form-control" value="" placeholder="http://">
+                                                @Html.Label("URL")
+                                                @Html.TextBoxFor(model => model.videoAnuncio, new { @class = "form-control", placeholder = "Http://" })
                                             </div>
                                             
                                             <div class="form-group col-lg-offset-6">
@@ -101,19 +99,15 @@
                                             <div class="clearfix"></div>
 
                                             <div class="form-group col-lg-6">
-                                                <label>Imagem do Video</label>
+                                                @Html.Label("Imagem do Vídeo")
                                                 <input type="image" class="img-thumbnail" src="~/fonts/img/produto_sem_foto.gif">
                                             </div>
-                                           
                                             
                                             <div class="form-group col-lg-offset-12">
 
                                             </div>
 
                                             <div class="clearfix"></div>
-                                            
-                                            
-                                            
 
                                             <div class="form-group col-lg-offset-9">
 
@@ -132,8 +126,6 @@
                                             <div class="page-header upload-botao">
                                                 <input type="file" class="filestyle " data-input="false" data-iconname="glyphicon-inbox">
                                             </div>
-
-
 
 
                                             <div class="col-lg-offset-6"></div>
@@ -193,11 +185,7 @@
                                                         <img class="img-responsive" src="http://placehold.it/400x300">
                                                     </a>
                                                 </div>
-
-
                                             </div>
-
-
 
                                             <div class="form-group col-lg-offset-9">
                                                 <button type="button" onclick="$('#lnk2').click();" class="btn btn-default">Anterior</button>
@@ -212,7 +200,7 @@
                                             <div class="form-group col-lg-12 ">
 
                                                 <div class="col-lg-3">
-                                                    <label>Curtir</label>
+                                                    <label>@Html.Label("Curtir")</label>
                                                 </div>
 
                                                 <div class="col-lg-9"></div>
@@ -231,7 +219,7 @@
                                                 <div class="clearfix"></div>
 
                                                 <div class="col-lg-3">
-                                                    <label>Comentar</label>
+                                                    <label>@Html.Label("Comentar")</label>
                                                 </div>
 
                                                 <div class="col-lg-9"></div>
@@ -250,7 +238,7 @@
                                                 <div class="clearfix"></div>
 
                                                 <div class="col-lg-3">
-                                                    <label>Compartilhar</label>
+                                                    <label>@Html.Label("Compartilhar")</label>
                                                 </div>
                                                 
                                                 <div class="col-lg-9"></div>
@@ -274,8 +262,6 @@
                                             <div class="form-group col-lg-12"></div>
                                             <div class="form-group col-lg-12"></div>
 
-
-
                                             <div class="form-group col-lg-offset-9">
                                                 <button type="button" onclick="$('#lnk3').click();" class="btn btn-default">Anterior</button>
                                                 <button type="submit" class="btn btn-default" id="save" value="save">
@@ -283,7 +269,6 @@
                                                     Salvar
                                                 </button>
                                             </div>
-
 
                                         </form>
                                     </div>

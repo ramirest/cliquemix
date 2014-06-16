@@ -10,6 +10,7 @@ using Cliquemix.Models;
 
 namespace Cliquemix.Controllers
 {
+    [Authorize]
     public class AnuncioController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -48,7 +49,7 @@ namespace Cliquemix.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="tituloAnuncio,url,dsAnuncio,videoAnuncio,raid")] tbAnuncio tbanuncio)
+        public ActionResult CreateAnuncio([Bind(Include = "tituloAnuncio,url,dsAnuncio,videoAnuncio,raid,comentar,curtir,compartilhar")] tbAnuncio tbanuncio)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +83,7 @@ namespace Cliquemix.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="aid,tituloAnuncio,url,dsAnuncio,videoAnuncio,raid")] tbAnuncio tbanuncio)
+        public ActionResult Edit([Bind(Include = "aid,tituloAnuncio,url,dsAnuncio,videoAnuncio,raid,comentar,curtir,compartilhar")] tbAnuncio tbanuncio)
         {
             if (ModelState.IsValid)
             {

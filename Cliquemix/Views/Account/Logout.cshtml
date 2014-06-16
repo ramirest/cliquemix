@@ -1,17 +1,29 @@
-﻿<!-- Logout Notification Box -->
-<div id="logout">
-    <div class="logout-message">
-        <img class="img-circle img-logout" src="~/fonts/img/profile-pic.jpg" alt="">
-        <h3>
-            <i class="fa fa-sign-out text-green"></i> <p>Pronto para sair?</p>
-        </h3>
-        <p>Selecione "Sair" se você estiver pronto<br> para terminar a sua sessão.</p>
-        <ul class="list-inline">
-            <input type="submit" value="Logout" class="btn btn-green" />
-            <li>
-                <button class="logout_close btn btn-green">Cancelar</button>
-            </li>
-        </ul>
-    </div>
-</div>
+﻿@using Microsoft.AspNet.Identity
+
+<!-- Logout Notification Box -->
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("_Logout", "Account", FormMethod.Post, new {id = "logoutForm", @class = "navbar-right"}))
+    {
+        @Html.AntiForgeryToken()
+
+        <div id="logout">
+            <div class="logout-message">
+                <img class="img-circle img-logout" src="~/fonts/img/profile-pic.jpg" alt="">
+                <h3>
+                    <i class="fa fa-sign-out text-green"></i> <p>Pronto para sair?</p>
+                </h3>
+                <p>Selecione "Sair" se você estiver pronto<br> para terminar a sua sessão.</p>
+                <ul class="list-inline">
+                    <li><a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-green">Sair</a></li>
+
+                    @*<input type="submit" value="Logout" class="btn btn-green" />*@
+                    <li>
+                        <button class="logout_close btn btn-green">Cancelar</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    }
+}
 <!-- /#logout -->

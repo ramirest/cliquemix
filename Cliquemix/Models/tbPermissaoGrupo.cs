@@ -12,20 +12,18 @@ namespace Cliquemix.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tbPermissao
+    public partial class tbPermissaoGrupo
     {
-        public tbPermissao()
+        public tbPermissaoGrupo()
         {
-            this.tbUsersPermissao = new HashSet<tbUsersPermissao>();
+            this.tbPermissao = new HashSet<tbPermissao>();
+            this.tbPermissaoSubGrupo = new HashSet<tbPermissaoSubGrupo>();
         }
     
-        public int peid { get; set; }
-        public string dsPermissao { get; set; }
-        public Nullable<int> pgid { get; set; }
-        public Nullable<int> psgid { get; set; }
+        public int pgid { get; set; }
+        public string dsPermissaoGrupo { get; set; }
     
-        public virtual ICollection<tbUsersPermissao> tbUsersPermissao { get; set; }
-        public virtual tbPermissaoGrupo tbPermissaoGrupo { get; set; }
-        public virtual tbPermissaoSubGrupo tbPermissaoSubGrupo { get; set; }
+        public virtual ICollection<tbPermissao> tbPermissao { get; set; }
+        public virtual ICollection<tbPermissaoSubGrupo> tbPermissaoSubGrupo { get; set; }
     }
 }

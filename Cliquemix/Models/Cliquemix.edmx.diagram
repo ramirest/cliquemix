@@ -93,6 +93,11 @@
         <AssociationConnector Association="cliquemixModel.raid_tbAnuncio_tbRamoAtividade_fk" />
         <EntityTypeShape EntityType="cliquemixModel.tbUsersLogAcesso" Width="1.5" PointX="2.75" PointY="22.125" />
         <AssociationConnector Association="cliquemixModel.uid_tbUsersLogAcesso_tbUsers_fk" />
+        <EntityTypeShape EntityType="cliquemixModel.tbPermissaoGrupo" Width="1.5" PointX="0.75" PointY="22.875" />
+        <EntityTypeShape EntityType="cliquemixModel.tbPermissaoSubGrupo" Width="1.5" PointX="3" PointY="26.125" />
+        <AssociationConnector Association="cliquemixModel.pgid_tbPermissao_tbPermissaoGrupo_fk" />
+        <AssociationConnector Association="cliquemixModel.psgid_tbPermissao_tbPermissaoSubGrupo_fk" />
+        <AssociationConnector Association="cliquemixModel.pgid_tbPermissaoSubGrupo_tbPermissaoGrupo_fk" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
