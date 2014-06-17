@@ -31,6 +31,8 @@ namespace Cliquemix.Models
         public Nullable<int> comentar { get; set; }
         public Nullable<int> curtir { get; set; }
         public Nullable<int> compartilhar { get; set; }
+        public Nullable<System.DateTime> dtCriacao { get; set; }
+        public string statusAnuncio { get; set; }
     
         public virtual ICollection<tbAnuncioFuncionalidade> tbAnuncioFuncionalidade { get; set; }
         public virtual ICollection<tbAnuncioImg> tbAnuncioImg { get; set; }

@@ -71,6 +71,8 @@
           <Property Name="comentar" Type="int" />
           <Property Name="curtir" Type="int" />
           <Property Name="compartilhar" Type="int" />
+          <Property Name="dtCriacao" Type="datetime" />
+          <Property Name="statusAnuncio" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tbAnuncioFuncionalidade">
           <Key>
@@ -2406,6 +2408,8 @@
           <Property Name="comentar" Type="Int32" />
           <Property Name="curtir" Type="Int32" />
           <Property Name="compartilhar" Type="Int32" />
+          <Property Name="dtCriacao" Type="DateTime" Precision="3" />
+          <Property Name="statusAnuncio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tbRamoAtividade">
           <Key>
@@ -2986,6 +2990,8 @@
           <EntitySetMapping Name="tbAnuncio">
             <EntityTypeMapping TypeName="cliquemixModel.tbAnuncio">
               <MappingFragment StoreEntitySet="tbAnuncio">
+                <ScalarProperty Name="statusAnuncio" ColumnName="statusAnuncio" />
+                <ScalarProperty Name="dtCriacao" ColumnName="dtCriacao" />
                 <ScalarProperty Name="compartilhar" ColumnName="compartilhar" />
                 <ScalarProperty Name="curtir" ColumnName="curtir" />
                 <ScalarProperty Name="comentar" ColumnName="comentar" />

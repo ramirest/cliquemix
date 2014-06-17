@@ -22,6 +22,13 @@ namespace Cliquemix.Controllers
             return View(tbanuncio.ToList());
         }
 
+        // GET: /Anuncio/
+        public ActionResult ListAnuncio()
+        {
+            var tbanuncio = db.tbAnuncios.Include(t => t.tbRamoAtividade);
+            return View(tbanuncio.ToList());
+        }
+
         // GET: /Anuncio/Details/5
         public ActionResult Details(int? id)
         {
@@ -44,7 +51,7 @@ namespace Cliquemix.Controllers
             return View();
         }
 
-        // POST: /Anuncio/Create
+        // POST: /Anuncio/CreateAnuncio
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
