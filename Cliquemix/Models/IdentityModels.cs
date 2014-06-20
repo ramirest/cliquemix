@@ -19,6 +19,7 @@ namespace Cliquemix.Models
         }
 
         public System.Data.Entity.DbSet<Cliquemix.Models.tbCep> tbCeps { get; set; }
+        public System.Data.Entity.DbSet<Cliquemix.Models.Endereco> Enderecos { get; set; }
 
         public System.Data.Entity.DbSet<Cliquemix.Models.tbAnuncio> tbAnuncios { get; set; }
 

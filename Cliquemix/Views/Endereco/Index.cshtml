@@ -1,0 +1,27 @@
+﻿@using System.Web.Razor.Text
+@using System.Web.UI.WebControls
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Endereço</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.Label("CEP", new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                <button id="btnConsultar" onclick="btnConsultar_Click"></button>
+            </div>
+        </div>
+    </div>
+}

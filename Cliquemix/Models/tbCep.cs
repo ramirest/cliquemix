@@ -25,6 +25,7 @@ namespace Cliquemix.Models
         public string dsCidade { get; set; }
         public string dsLogradouro { get; set; }
         public string cep { get; set; }
+        public string dsBairro { get; set; }
     
         public virtual ICollection<tbAnuncianteEndereco> tbAnuncianteEndereco { get; set; }
     }

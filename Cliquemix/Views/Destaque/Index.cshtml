@@ -1,63 +1,77 @@
 ﻿@model IEnumerable<Cliquemix.Models.tbDestaque>
+@using Cliquemix.Models
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-}
-<div class="row">
-    <div class="col-lg-12">
-        <div class="page-title">
-            <h1>
-                Destaque
-                <small> Lista</small>
-            </h1>
-            @RenderPage("~/Views/Breadcrumbs/Breadcrumbs.cshtml")
-        </div>
-        <p>
-            @Html.ActionLink("Novo Destaque", "Create")
-        </p>
 
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayName("Título")
-                </th>
-                <th>
-                    @Html.DisplayName("Qtde de Créditos")
-                </th>
-                <th>
-                    @Html.DisplayName("Tempo de Espera")
-                </th>
-                <th>
-                    @Html.DisplayName("Duração da Campanha")
-                </th>
-                <th></th>
-            </tr>
+    ViewBag.Title = "Create";
+    Layout = null;
+    /*
+    string Titulo = string.Empty;
+    DateTime dtInicio = DateTime.Now;
+    DateTime dtTermino = DateTime.Now.AddMonths(3).AddDays(10);
+    string Cep = string.Empty;
+    
+    if(IsPost)
+    {
+        
+        Titulo = Request["txtTitulo"];
+        dtInicio = Convert.ToDateTime(Request["txtdtInicio"]);
+        dtTermino = Convert.ToDateTime(Request["txtdtTermino"]);
+         
+        Cep = Request["txtCep"];
 
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.tituloDestaque)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.qtCredito)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.tmpEspera)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.durCampanha)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Editar", "Edit", new { id = item.did }) |
-                        @Html.ActionLink("Detalhes", "Details", new { id = item.did }) |
-                        @Html.ActionLink("Excluir", "Delete", new { id = item.did })
-                    </td>
-                </tr>
-            }
+        //Response.Write("Campanha cadastrada: Título " + Titulo + " - " +"Data Início: " + dtInicio +" - Data Término: " + dtTermino +" - CEP: " + Cep);
+        Endereco end = new Endereco();
+        end.localizarEnd(Cep);
+        Response.Write(end.dsPais + " - " + end.dsEstado + " - " + end.dsCidade + " - " + end.dsBairro + " - " + end.dsLogradouro);
+    }  
+     */
+}    
 
-        </table>
-    </div>
-    <!-- /.col-lg-12 -->
-</div>
+<form id="formCampanha" action="" method="post">
+    <fieldset>
+        @*
+        <legend>Adicionando nova campanha</legend>
+
+        <label for="txtTitulo">Título da Campanha</label>
+        <input type="text" id="txtTitulo" name="txtTitulo" />
+        <br />
+
+        <label for="txtdtInicio">Data Início da Campanha</label>
+        <input type="text" id="txtdtInicio" name="txtdtInicio" />
+        <br />
+
+        <label for="txtdtTermino">Data Término da Campanha</label>
+        <input type="text" id="txtdtTermino" name="txtdtTermino" />
+        <br />
+        *@
+        <label for="txtCep">Cep da Campanha</label>
+        <input type="text" id="txtCep" name="txtCep"/>
+        <br />
+
+        <input type="submit" value="Salvar" id="btnEnviar" name="btnEnviar" />
+
+    </fieldset>
+    
+    @{
+        int a1 = 0;
+        string Cep = string.Empty;
+        
+        if (Request["txtCep"].Length > 8)
+        {
+            a1 = 100;
+        }
+        
+        
+        if(IsPost)
+        {
+            Cep = Request["txtCep"];
+            Endereco end = new Endereco();
+            end.localizarEnd(Cep);
+            Response.Write(end.dsPais + " - " + end.dsEstado + " - " + end.dsCidade + " - " + end.dsBairro + " - " + end.dsLogradouro);
+        }  
+    }
+</form>
+

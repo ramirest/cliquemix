@@ -1,5 +1,12 @@
-﻿@{
+﻿@model Cliquemix.Models.tbAnunciante
+@using System.Security.Cryptography
+@using System.Web.Mvc;
+@using System.Web.UI.WebControls
+@using Cliquemix.Controllers
+
+@{
     Layout = null;
+    string Cep = string.Empty;
 }
 
 <!DOCTYPE html>
@@ -26,7 +33,7 @@
       <script src="~/Scripts/html5shiv.js"></script>
       <script src="~/Scripts/respond.min.js"></script>
     <![endif]-->
-
+    
 </head>
 <body>
     <div id="wrapper ">
@@ -95,122 +102,114 @@
                                             <div class="col-sm-9">
                                                 <div id="userSettingsContent" class="tab-content">
                                                     <div class="tab-pane fade in active" id="dadosEmpresa">
-                                                        @*  Dados da empresa   *@
+                                                        @*  Dados da empresa  *@
                                                         <form role="form">
                                                             <h4 class="page-header">Dados da Empresa:</h4>
                                                             <div class="form-group col-lg-6">
-                                                                <label>CNPJ</label>
-                                                                <input type="text" class="form-control" value="">
+                                                                @Html.LabelFor(model => model.cnpj, "CNPJ")
+                                                                @Html.TextBoxFor(model => model.cnpj, new { @class = "form-control", maxlength = "18", alt = "cnpj", id = "txtCnpj" })
+                                                                @Html.ValidationMessageFor(model => model.cnpj)
                                                             </div>
                                                             <div class="form-group col-lg-6">
-                                                                <label>Razão Social</label>
-                                                                <input type="text" class="form-control" value="">
+                                                                @Html.LabelFor(model => model.razaoSocial, "Razão Social")
+                                                                @Html.TextBoxFor(model => model.razaoSocial, new { @class = "form-control", maxlength = "100", alt = "razaoSocial", id = "txtRazaoSocial" })
+                                                                @Html.ValidationMessageFor(model => model.razaoSocial)
                                                             </div>
                                                             <div class="form-group col-lg-6">
-                                                                <label>Nome Fantasia</label>
-                                                                <input type="tel" class="form-control" value="">
+                                                                @Html.LabelFor(model => model.nmFantasia, "Nome Fantasia")
+                                                                @Html.TextBoxFor(model => model.nmFantasia, new { @class = "form-control", maxlength = "100", alt = "nmFantasia", id = "txtnmFantasia" })
+                                                                @Html.ValidationMessageFor(model => model.nmFantasia)
                                                             </div>
                                                             <div class="form-group col-lg-6">
-                                                                <label>Administrador</label>
-                                                                <input type="text" class="form-control" value="">
+                                                                @Html.LabelFor(model => model.contato, "Contato")
+                                                                @Html.TextBoxFor(model => model.contato, new { @class = "form-control", maxlength = "45", alt = "contato", id = "txtContato" })
+                                                                @Html.ValidationMessageFor(model => model.contato)
                                                             </div>
-
                                                             <div class="form-group col-lg-6">
-                                                                <label>Inscrição Estadual</label>
-                                                                <input type="text" class="form-control" value="">
+                                                                @Html.LabelFor(model => model.ie, "Inscrição Estadual")
+                                                                @Html.TextBoxFor(model => model.ie, new { @class = "form-control", maxlength = "45", alt = "ie", id = "txtie" })
+                                                                @Html.ValidationMessageFor(model => model.ie)
                                                             </div>
-
                                                             <div class="form-group col-lg-6">
-                                                                <label>Inscrição Municipal</label>
-                                                                <input type="text" class="form-control" value="">
+                                                                @Html.LabelFor(model => model.im, "Inscrição Municipal")
+                                                                @Html.TextBoxFor(model => model.im, new { @class = "form-control", maxlength = "45", alt = "im", id = "txtim" })
+                                                                @Html.ValidationMessageFor(model => model.im)
                                                             </div>
-
                                                             <div class="form-group col-lg-6">
-                                                                <label>Ramo de Atividade</label>
-                                                                <br />
-                                                                <select class="form-control">
-                                                                    <option>Selecione</option>
-                                                                    <option>Bens de Consumo</option>
-                                                                </select>
+                                                                @Html.LabelFor(model => model.raid, "Ramo de Atividade")
+                                                                @Html.DropDownList("raid", String.Empty)
+                                                                @Html.ValidationMessageFor(model => model.raid)
                                                             </div>
 
                                                             <div class="col-sm-offset-10 col-sm-1">
                                                                 <button type="button" onclick="$('#link2').click();" class="btn btn-default">Próximo</button>
                                                             </div>
-
-
                                                         </form>
                                                     </div>
                                                     <div class="tab-pane fade" id="dadosContato">
-                                                        @*  Dados de Contato   *@
+                                                        @*  Dados de Contato  *@
                                                         <br>
                                                         <form role="form">
-                                                            <h4 class="page-header">Dados de Contato:</h4>
-                                                            <div class="form-group col-lg-6">
-                                                                <label>E-mail</label>
-                                                                <input type="text" class="form-control" value="">
-                                                            </div>
-                                                            <div class="form-group col-lg-6">
-                                                                <label>Telefone</label>
-                                                                <input type="text" class="form-control" value="">
-                                                            </div>
-                                                            <div class="form-group col-lg-6">
-                                                                <label>Celular</label>
-                                                                <input type="tel" class="form-control" value="">
-                                                            </div>
-                                                            <div class="form-group col-lg-6">
-                                                                <label>Site</label>
-                                                                <input type="text" class="form-control" value="">
-                                                            </div>
-                                                            <div class="form-group col-lg-offset-9">
-                                                                <button type="button" onclick="$('#link1').click();" class="btn btn-default">Anterior</button>
-                                                                <button type="button" onclick="$('#link3').click();" class="btn btn-default">Próximo</button>
-                                                            </div>
+                                                                <h4 class="page-header">Dados de Contato:</h4>
+                                                                <div class="form-group col-lg-6">
+                                                                    @Html.LabelFor(model => model.im, "Inscrição Municipal")
+                                                                    @Html.TextBoxFor(model => model.im, new { @class = "form-control", maxlength = "45", alt = "im", id = "txtim" })
+                                                                    @Html.ValidationMessageFor(model => model.im)
+                                                                </div>
+                                                                <div class="form-group col-lg-6">
+                                                                    <label>Telefone</label>
+                                                                    <input type="text" class="form-control" value="">
+                                                                </div>
+                                                                <div class="form-group col-lg-6">
+                                                                    <label>Celular</label>
+                                                                    <input type="tel" class="form-control" value="">
+                                                                </div>
+                                                                <div class="form-group col-lg-6">
+                                                                    <label>Site</label>
+                                                                    <input type="text" class="form-control" value="">
+                                                                </div>
+                                                                <div class="form-group col-lg-offset-9">
+                                                                    <button type="button" onclick="$('#link1').click();" class="btn btn-default">Anterior</button>
+                                                                    <button type="button" onclick="$('#link3').click();" class="btn btn-default">Próximo</button>
+                                                                </div>
                                                         </form>
                                                     </div>
                                                     <div class="tab-pane fade in" id="dadosEndereco">
-                                                       
                                                         <form role="form">
                                                             <h4 class="page-header">Dados de Endereço:</h4>
                                                             <div class="form-group col-lg-3">
-                                                                <label>Cep</label>
-                                                                <input type="text" class="form-control" value="">
-                                                            </div>                                             
+                                                                @Html.LabelFor(model => model.cep, "CEP")
+                                                                @Html.TextBoxFor(model => model.cep, new { @class = "form-control", maxlength = "8", alt = "cep", id = "txtCep", ondblclick = "Pesquisar" })
+                                                                @Html.ValidationMessageFor(model => model.cep)
+                                                            </div>
                                                             <div class="form-group col-lg-3">
-                                                                <label>Bairro</label>
-                                                                <input type="tel" class="form-control" value="">
+                                                                @Html.LabelFor(model => model.dsBairro, "Bairro")
+                                                                @Html.TextBoxFor(model => model.dsBairro, new { @class = "form-control", maxlength = "100" })
+                                                                @Html.ValidationMessageFor(model => model.dsBairro)
                                                             </div>
-                                                            
                                                             <div class="form-group col-lg-6">
-                                                                <label>Rua</label>
-                                                                <input type="text" class="form-control" value="">
-                                                            </div>
-
-                                                            <div class="form-group col-lg-6">
-                                                                <label>Cidade</label>
-                                                                <input type="text" class="form-control" value="">
+                                                                @Html.Label("Cidade")
+                                                                @Html.TextBoxFor(model => model.dsCidade, new { @class = "form-control", maxlength = "100" })
                                                             </div>                                                           
                                                             <div class="form-group col-lg-2">
-                                                                <label>Estado</label>
-                                                                <input type="text" class="form-control" value="">
+                                                                @Html.Label("Estado")
+                                                                @Html.TextBoxFor(model => model.dsEstado, new { @class = "form-control", maxlength = "2" })
                                                             </div>
                                                             <div class="form-group col-lg-2">
-                                                                <label>Numero</label>
-                                                                <input type="text" class="form-control" value="">
+                                                                @Html.Label("Número")
+                                                                @Html.TextBox("Número", new { @class = "form-control", maxlength = "20" })
                                                             </div>
                                                             <div class="form-group col-lg-2">
-                                                                <label>Compl</label>
-                                                                <input type="text" class="form-control" value="">
+                                                                @Html.Label("Complemento")
+                                                                @Html.TextBox("Complemento", new { @class = "form-control", maxlength = "50" })
                                                             </div>
-
                                                             <div class="form-group col-lg-offset-9">
                                                                 <button type="button" onclick="$('#link2').click();" class="btn btn-default">Anterior</button>
                                                                 <button type="button" onclick="$('#link4').click();" class="btn btn-default">Próximo</button>
                                                             </div>
-                                                            
-
                                                         </form>
                                                     </div>
+
                                                     <div class="tab-pane fade in" id="dadosUsuario">
 
                                                         <form role="form">
@@ -252,8 +251,6 @@
                                                                 <a style="color: #1CC7D3; font-weight:bold;" href="#" target="_blank">termos do serviço.</a>
                                                             </div>
 
-
-
                                                             <div class="form-group col-lg-offset-9">
                                                                 <button type="button" onclick="$('#link3').click();" class="btn btn-default">Anterior</button>
                                                                 <button type="submit" class="btn btn-default" id="save" value="save">
@@ -261,9 +258,8 @@
                                                                     Salvar
                                                                 </button>
                                                             </div>
-
-
                                                         </form>
+
                                                     </div>
                                                 </div>
                                             </div>

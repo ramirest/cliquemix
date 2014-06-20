@@ -200,11 +200,12 @@
             <PropertyRef Name="cepid" />
           </Key>
           <Property Name="cepid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="dsPais" Type="varchar" MaxLength="20" />
+          <Property Name="dsPais" Type="varchar" MaxLength="50" />
           <Property Name="dsEstado" Type="varchar" MaxLength="20" />
-          <Property Name="dsCidade" Type="varchar" MaxLength="50" />
-          <Property Name="dsLogradouro" Type="varchar" MaxLength="100" />
-          <Property Name="cep" Type="varchar" MaxLength="8" />
+          <Property Name="dsCidade" Type="varchar" MaxLength="100" />
+          <Property Name="dsLogradouro" Type="varchar" MaxLength="200" />
+          <Property Name="cep" Type="varchar" MaxLength="10" />
+          <Property Name="dsBairro" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="tbCidade">
           <Key>
@@ -1464,12 +1465,13 @@
             <PropertyRef Name="cepid" />
           </Key>
           <Property Name="cepid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="dsPais" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="dsPais" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="dsEstado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="dsCidade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="dsLogradouro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="cep" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="dsCidade" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dsLogradouro" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="cep" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tbAnuncianteEndereco" Relationship="Self.cepid_tbAnuncianteEndereco_tbCep_fk" FromRole="tbCep" ToRole="tbAnuncianteEndereco" />
+          <Property Name="dsBairro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tbCidade">
           <Key>
@@ -2774,6 +2776,7 @@
           <EntitySetMapping Name="tbCep">
             <EntityTypeMapping TypeName="cliquemixModel.tbCep">
               <MappingFragment StoreEntitySet="tbCep">
+                <ScalarProperty Name="dsBairro" ColumnName="dsBairro" />
                 <ScalarProperty Name="cepid" ColumnName="cepid" />
                 <ScalarProperty Name="dsPais" ColumnName="dsPais" />
                 <ScalarProperty Name="dsEstado" ColumnName="dsEstado" />

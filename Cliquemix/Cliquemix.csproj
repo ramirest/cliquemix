@@ -214,6 +214,7 @@
     <Compile Include="Controllers\Anunciante\AnuncioController.cs" />
     <Compile Include="Controllers\BreadcrumbsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EnderecoController.cs" />
     <Compile Include="Controllers\SignInController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -234,6 +235,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Cliquemix.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Endereco.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\PermissaoAcesso.cs" />
@@ -587,6 +589,7 @@
     <Content Include="Views\Breadcrumbs\Breadcrumbs-Anuncio-Edit.cshtml" />
     <Content Include="Views\Breadcrumbs\Breadcrumbs-Anuncio-List.cshtml" />
     <Content Include="Views\Account\Logout.cshtml" />
+    <Content Include="Views\Endereco\Index.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
