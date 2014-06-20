@@ -215,7 +215,6 @@
     <Compile Include="Controllers\BreadcrumbsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EnderecoController.cs" />
-    <Compile Include="Controllers\SignInController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -246,9 +245,6 @@
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbAnuncianteDestaqueStatus.cs">
-      <DependentUpon>Cliquemix.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tbAnuncianteEndereco.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbAnuncio.cs">

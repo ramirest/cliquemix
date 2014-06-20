@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<Cliquemix.Models.tbDestaque>
 @using Cliquemix.Models
+@using Microsoft.Ajax.Utilities
 
 @{
     ViewBag.Title = "Index";
@@ -59,11 +60,17 @@
         int a1 = 0;
         string Cep = string.Empty;
         
-        if (Request["txtCep"].Length > 8)
+        try
         {
-            a1 = 100;
+            if (Request["txtCep"].Length >= 8)
+            {
+                a1 = 100;
+            }
         }
-        
+        catch (Exception)
+        {
+            //throw;
+        }
         
         if(IsPost)
         {

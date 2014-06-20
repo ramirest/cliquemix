@@ -8,7 +8,6 @@
         <EntityTypeShape EntityType="cliquemixModel.tbAnunciante" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbAnuncianteDestaque" Width="1.5" PointX="8.25" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbAnuncianteDestaqueStatus" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbAnuncianteEndereco" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbAnuncioFuncionalidade" Width="1.5" PointX="19.5" PointY="17.5" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbAnuncioImg" Width="1.5" PointX="13.5" PointY="21" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbBan" Width="1.5" PointX="8" PointY="10" IsExpanded="true" />
@@ -47,14 +46,12 @@
         <EntityTypeShape EntityType="cliquemixModel.tbUsersTipo" Width="1.5" PointX="1.5" PointY="16.375" IsExpanded="true" />
         <AssociationConnector Association="cliquemixModel.cpid_tbAnunciante_tbCondicaoPagto_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.pid_tbAnuncianteDestaque_tbAnunciante_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="cliquemixModel.pid_tbAnuncianteEndereco_tbAnunciante_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.pid_tbCreditoCompra_tbAnunciante_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.tid_tbAnunciante_tbTos_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.uid_tbAnunciante_tbUsers_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.adid_tbCreditoDesconta_tbAnuncianteDestaque_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.adsid_tbAnuncianteDestaque_tbAnuncianteDestaqueStatus_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.did_tbAnuncianteDestaque_tbDestaque_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="cliquemixModel.cepid_tbAnuncianteEndereco_tbCep_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.fid_tbAnuncioFuncionalidade_tbFuncionalidade_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.btid_tbBan_tbBanTipo_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.uid_tbBan_tbUsers_fk" ManuallyRouted="false" />
@@ -98,6 +95,7 @@
         <AssociationConnector Association="cliquemixModel.pgid_tbPermissao_tbPermissaoGrupo_fk" />
         <AssociationConnector Association="cliquemixModel.psgid_tbPermissao_tbPermissaoSubGrupo_fk" />
         <AssociationConnector Association="cliquemixModel.pgid_tbPermissaoSubGrupo_tbPermissaoGrupo_fk" />
+        <AssociationConnector Association="cliquemixModel.cepid_tbAnunciante_tbCep_fk" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

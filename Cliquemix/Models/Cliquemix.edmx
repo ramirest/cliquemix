@@ -12,7 +12,7 @@
           <Property Name="pid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="cnpj" Type="varchar" MaxLength="18" Nullable="false" />
           <Property Name="razaoSocial" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="nmFantasia" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="nmFantasia" Type="varchar" MaxLength="100" />
           <Property Name="contato" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="ie" Type="varchar" MaxLength="45" />
           <Property Name="im" Type="varchar" MaxLength="45" />
@@ -29,6 +29,9 @@
           <Property Name="telComercial" Type="varchar" MaxLength="15" />
           <Property Name="telCelular1" Type="varchar" MaxLength="15" />
           <Property Name="telCelular2" Type="varchar" MaxLength="15" />
+          <Property Name="cepid" Type="int" />
+          <Property Name="numero_endereco" Type="varchar" MaxLength="10" />
+          <Property Name="complemento_endereco" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tbAnuncianteDestaque">
           <Key>
@@ -47,16 +50,6 @@
           </Key>
           <Property Name="adsid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="dsAnuncianteDestaqueStatus" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="tbAnuncianteEndereco">
-          <Key>
-            <PropertyRef Name="peid" />
-          </Key>
-          <Property Name="peid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="pid" Type="int" Nullable="false" />
-          <Property Name="cepid" Type="int" />
-          <Property Name="numero" Type="int" />
-          <Property Name="complemento" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tbAnuncio">
           <Key>
@@ -581,14 +574,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="cepid_tbAnuncianteEndereco_tbCep_fk">
+        <Association Name="cepid_tbAnunciante_tbCep_fk">
           <End Role="tbCep" Type="Self.tbCep" Multiplicity="0..1" />
-          <End Role="tbAnuncianteEndereco" Type="Self.tbAnuncianteEndereco" Multiplicity="*" />
+          <End Role="tbAnunciante" Type="Self.tbAnunciante" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tbCep">
               <PropertyRef Name="cepid" />
             </Principal>
-            <Dependent Role="tbAnuncianteEndereco">
+            <Dependent Role="tbAnunciante">
               <PropertyRef Name="cepid" />
             </Dependent>
           </ReferentialConstraint>
@@ -809,18 +802,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="pid_tbAnuncianteEndereco_tbAnunciante_fk">
-          <End Role="tbAnunciante" Type="Self.tbAnunciante" Multiplicity="1" />
-          <End Role="tbAnuncianteEndereco" Type="Self.tbAnuncianteEndereco" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbAnunciante">
-              <PropertyRef Name="pid" />
-            </Principal>
-            <Dependent Role="tbAnuncianteEndereco">
-              <PropertyRef Name="pid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="pid_tbCreditoCompra_tbAnunciante_fk">
           <End Role="tbAnunciante" Type="Self.tbAnunciante" Multiplicity="1" />
           <End Role="tbCreditoCompra" Type="Self.tbCreditoCompra" Multiplicity="*" />
@@ -1005,7 +986,6 @@
           <EntitySet Name="tbAnunciante" EntityType="Self.tbAnunciante" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbAnuncianteDestaque" EntityType="Self.tbAnuncianteDestaque" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbAnuncianteDestaqueStatus" EntityType="Self.tbAnuncianteDestaqueStatus" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbAnuncianteEndereco" EntityType="Self.tbAnuncianteEndereco" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbAnuncio" EntityType="Self.tbAnuncio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbAnuncioFuncionalidade" EntityType="Self.tbAnuncioFuncionalidade" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbAnuncioImg" EntityType="Self.tbAnuncioImg" Schema="dbo" store:Type="Tables" />
@@ -1099,9 +1079,9 @@
             <End Role="tbCalculoCondicaoPagto" EntitySet="tbCalculoCondicaoPagto" />
             <End Role="tbCalculoCondicao" EntitySet="tbCalculoCondicao" />
           </AssociationSet>
-          <AssociationSet Name="cepid_tbAnuncianteEndereco_tbCep_fk" Association="Self.cepid_tbAnuncianteEndereco_tbCep_fk">
+          <AssociationSet Name="cepid_tbAnunciante_tbCep_fk" Association="Self.cepid_tbAnunciante_tbCep_fk">
             <End Role="tbCep" EntitySet="tbCep" />
-            <End Role="tbAnuncianteEndereco" EntitySet="tbAnuncianteEndereco" />
+            <End Role="tbAnunciante" EntitySet="tbAnunciante" />
           </AssociationSet>
           <AssociationSet Name="cid_tbCampanhaAnuncio_tbCampanha_fk" Association="Self.cid_tbCampanhaAnuncio_tbCampanha_fk">
             <End Role="tbCampanha" EntitySet="tbCampanha" />
@@ -1175,10 +1155,6 @@
             <End Role="tbAnunciante" EntitySet="tbAnunciante" />
             <End Role="tbAnuncianteDestaque" EntitySet="tbAnuncianteDestaque" />
           </AssociationSet>
-          <AssociationSet Name="pid_tbAnuncianteEndereco_tbAnunciante_fk" Association="Self.pid_tbAnuncianteEndereco_tbAnunciante_fk">
-            <End Role="tbAnunciante" EntitySet="tbAnunciante" />
-            <End Role="tbAnuncianteEndereco" EntitySet="tbAnuncianteEndereco" />
-          </AssociationSet>
           <AssociationSet Name="pid_tbCreditoCompra_tbAnunciante_fk" Association="Self.pid_tbCreditoCompra_tbAnunciante_fk">
             <End Role="tbAnunciante" EntitySet="tbAnunciante" />
             <End Role="tbCreditoCompra" EntitySet="tbCreditoCompra" />
@@ -1251,7 +1227,7 @@
           <Property Name="pid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="cnpj" Type="String" MaxLength="18" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="razaoSocial" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="nmFantasia" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nmFantasia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="contato" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ie" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="im" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
@@ -1266,7 +1242,6 @@
           <Property Name="uid" Type="Int32" />
           <NavigationProperty Name="tbCondicaoPagto" Relationship="Self.cpid_tbAnunciante_tbCondicaoPagto_fk" FromRole="tbAnunciante" ToRole="tbCondicaoPagto" />
           <NavigationProperty Name="tbAnuncianteDestaque" Relationship="Self.pid_tbAnuncianteDestaque_tbAnunciante_fk" FromRole="tbAnunciante" ToRole="tbAnuncianteDestaque" />
-          <NavigationProperty Name="tbAnuncianteEndereco" Relationship="Self.pid_tbAnuncianteEndereco_tbAnunciante_fk" FromRole="tbAnunciante" ToRole="tbAnuncianteEndereco" />
           <NavigationProperty Name="tbCreditoCompra" Relationship="Self.pid_tbCreditoCompra_tbAnunciante_fk" FromRole="tbAnunciante" ToRole="tbCreditoCompra" />
           <NavigationProperty Name="tbTos" Relationship="Self.tid_tbAnunciante_tbTos_fk" FromRole="tbAnunciante" ToRole="tbTos" />
           <NavigationProperty Name="tbUsers" Relationship="Self.uid_tbAnunciante_tbUsers_fk" FromRole="tbAnunciante" ToRole="tbUsers" />
@@ -1275,6 +1250,10 @@
           <Property Name="telComercial" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="telCelular1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="telCelular2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="cepid" Type="Int32" />
+          <Property Name="numero_endereco" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="complemento_endereco" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbCep" Relationship="cliquemixModel.cepid_tbAnunciante_tbCep_fk" FromRole="tbAnunciante" ToRole="tbCep" />
         </EntityType>
         <EntityType Name="tbAnuncianteDestaque">
           <Key>
@@ -1298,18 +1277,6 @@
           <Property Name="adsid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="dsAnuncianteDestaqueStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="tbAnuncianteDestaque" Relationship="Self.adsid_tbAnuncianteDestaque_tbAnuncianteDestaqueStatus_fk" FromRole="tbAnuncianteDestaqueStatus" ToRole="tbAnuncianteDestaque" />
-        </EntityType>
-        <EntityType Name="tbAnuncianteEndereco">
-          <Key>
-            <PropertyRef Name="peid" />
-          </Key>
-          <Property Name="peid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="pid" Type="Int32" Nullable="false" />
-          <Property Name="cepid" Type="Int32" />
-          <Property Name="numero" Type="Int32" />
-          <Property Name="complemento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbAnunciante" Relationship="Self.pid_tbAnuncianteEndereco_tbAnunciante_fk" FromRole="tbAnuncianteEndereco" ToRole="tbAnunciante" />
-          <NavigationProperty Name="tbCep" Relationship="Self.cepid_tbAnuncianteEndereco_tbCep_fk" FromRole="tbAnuncianteEndereco" ToRole="tbCep" />
         </EntityType>
         <EntityType Name="tbAnuncioFuncionalidade">
           <Key>
@@ -1470,8 +1437,8 @@
           <Property Name="dsCidade" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="dsLogradouro" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="cep" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbAnuncianteEndereco" Relationship="Self.cepid_tbAnuncianteEndereco_tbCep_fk" FromRole="tbCep" ToRole="tbAnuncianteEndereco" />
           <Property Name="dsBairro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbAnunciante" Relationship="cliquemixModel.cepid_tbAnunciante_tbCep_fk" FromRole="tbCep" ToRole="tbAnunciante" />
         </EntityType>
         <EntityType Name="tbCidade">
           <Key>
@@ -1721,18 +1688,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="pid_tbAnuncianteEndereco_tbAnunciante_fk">
-          <End Role="tbAnunciante" Type="Self.tbAnunciante" Multiplicity="1" />
-          <End Role="tbAnuncianteEndereco" Type="Self.tbAnuncianteEndereco" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbAnunciante">
-              <PropertyRef Name="pid" />
-            </Principal>
-            <Dependent Role="tbAnuncianteEndereco">
-              <PropertyRef Name="pid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="pid_tbCreditoCompra_tbAnunciante_fk">
           <End Role="tbAnunciante" Type="Self.tbAnunciante" Multiplicity="1" />
           <End Role="tbCreditoCompra" Type="Self.tbCreditoCompra" Multiplicity="*" />
@@ -1802,18 +1757,6 @@
             </Principal>
             <Dependent Role="tbAnuncianteDestaque">
               <PropertyRef Name="did" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="cepid_tbAnuncianteEndereco_tbCep_fk">
-          <End Role="tbCep" Type="Self.tbCep" Multiplicity="0..1" />
-          <End Role="tbAnuncianteEndereco" Type="Self.tbAnuncianteEndereco" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbCep">
-              <PropertyRef Name="cepid" />
-            </Principal>
-            <Dependent Role="tbAnuncianteEndereco">
-              <PropertyRef Name="cepid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2157,7 +2100,6 @@
           <EntitySet Name="tbAnunciante" EntityType="Self.tbAnunciante" />
           <EntitySet Name="tbAnuncianteDestaque" EntityType="Self.tbAnuncianteDestaque" />
           <EntitySet Name="tbAnuncianteDestaqueStatus" EntityType="Self.tbAnuncianteDestaqueStatus" />
-          <EntitySet Name="tbAnuncianteEndereco" EntityType="Self.tbAnuncianteEndereco" />
           <EntitySet Name="tbAnuncioFuncionalidade" EntityType="Self.tbAnuncioFuncionalidade" />
           <EntitySet Name="tbAnuncioImg" EntityType="Self.tbAnuncioImg" />
           <EntitySet Name="tbBan" EntityType="Self.tbBan" />
@@ -2202,10 +2144,6 @@
             <End Role="tbAnunciante" EntitySet="tbAnunciante" />
             <End Role="tbAnuncianteDestaque" EntitySet="tbAnuncianteDestaque" />
           </AssociationSet>
-          <AssociationSet Name="pid_tbAnuncianteEndereco_tbAnunciante_fk" Association="Self.pid_tbAnuncianteEndereco_tbAnunciante_fk">
-            <End Role="tbAnunciante" EntitySet="tbAnunciante" />
-            <End Role="tbAnuncianteEndereco" EntitySet="tbAnuncianteEndereco" />
-          </AssociationSet>
           <AssociationSet Name="pid_tbCreditoCompra_tbAnunciante_fk" Association="Self.pid_tbCreditoCompra_tbAnunciante_fk">
             <End Role="tbAnunciante" EntitySet="tbAnunciante" />
             <End Role="tbCreditoCompra" EntitySet="tbCreditoCompra" />
@@ -2229,10 +2167,6 @@
           <AssociationSet Name="did_tbAnuncianteDestaque_tbDestaque_fk" Association="Self.did_tbAnuncianteDestaque_tbDestaque_fk">
             <End Role="tbDestaque" EntitySet="tbDestaque" />
             <End Role="tbAnuncianteDestaque" EntitySet="tbAnuncianteDestaque" />
-          </AssociationSet>
-          <AssociationSet Name="cepid_tbAnuncianteEndereco_tbCep_fk" Association="Self.cepid_tbAnuncianteEndereco_tbCep_fk">
-            <End Role="tbCep" EntitySet="tbCep" />
-            <End Role="tbAnuncianteEndereco" EntitySet="tbAnuncianteEndereco" />
           </AssociationSet>
           <AssociationSet Name="fid_tbAnuncioFuncionalidade_tbFuncionalidade_fk" Association="Self.fid_tbAnuncioFuncionalidade_tbFuncionalidade_fk">
             <End Role="tbFuncionalidade" EntitySet="tbFuncionalidade" />
@@ -2390,6 +2324,10 @@
           <AssociationSet Name="pgid_tbPermissaoSubGrupo_tbPermissaoGrupo_fk" Association="cliquemixModel.pgid_tbPermissaoSubGrupo_tbPermissaoGrupo_fk">
             <End Role="tbPermissaoGrupo" EntitySet="tbPermissaoGrupo" />
             <End Role="tbPermissaoSubGrupo" EntitySet="tbPermissaoSubGrupo" />
+          </AssociationSet>
+          <AssociationSet Name="cepid_tbAnunciante_tbCep_fk" Association="cliquemixModel.cepid_tbAnunciante_tbCep_fk">
+            <End Role="tbCep" EntitySet="tbCep" />
+            <End Role="tbAnunciante" EntitySet="tbAnunciante" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="tbAnuncio">
@@ -2575,6 +2513,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="cepid_tbAnunciante_tbCep_fk">
+          <End Type="cliquemixModel.tbCep" Role="tbCep" Multiplicity="0..1" />
+          <End Type="cliquemixModel.tbAnunciante" Role="tbAnunciante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbCep">
+              <PropertyRef Name="cepid" />
+            </Principal>
+            <Dependent Role="tbAnunciante">
+              <PropertyRef Name="cepid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2584,6 +2534,9 @@
           <EntitySetMapping Name="tbAnunciante">
             <EntityTypeMapping TypeName="cliquemixModel.tbAnunciante">
               <MappingFragment StoreEntitySet="tbAnunciante">
+                <ScalarProperty Name="complemento_endereco" ColumnName="complemento_endereco" />
+                <ScalarProperty Name="numero_endereco" ColumnName="numero_endereco" />
+                <ScalarProperty Name="cepid" ColumnName="cepid" />
                 <ScalarProperty Name="telCelular2" ColumnName="telCelular2" />
                 <ScalarProperty Name="telCelular1" ColumnName="telCelular1" />
                 <ScalarProperty Name="telComercial" ColumnName="telComercial" />
@@ -2624,17 +2577,6 @@
               <MappingFragment StoreEntitySet="tbAnuncianteDestaqueStatus">
                 <ScalarProperty Name="adsid" ColumnName="adsid" />
                 <ScalarProperty Name="dsAnuncianteDestaqueStatus" ColumnName="dsAnuncianteDestaqueStatus" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbAnuncianteEndereco">
-            <EntityTypeMapping TypeName="cliquemixModel.tbAnuncianteEndereco">
-              <MappingFragment StoreEntitySet="tbAnuncianteEndereco">
-                <ScalarProperty Name="peid" ColumnName="peid" />
-                <ScalarProperty Name="pid" ColumnName="pid" />
-                <ScalarProperty Name="cepid" ColumnName="cepid" />
-                <ScalarProperty Name="numero" ColumnName="numero" />
-                <ScalarProperty Name="complemento" ColumnName="complemento" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
