@@ -23,6 +23,7 @@ namespace Cliquemix.Models
         public int eid { get; set; }
         public string nomeEstado { get; set; }
         public string sgEstado { get; set; }
+        public Nullable<int> ibge { get; set; }
     
         public virtual ICollection<tbCampanhaAnuncioLocalizacao> tbCampanhaAnuncioLocalizacao { get; set; }
         public virtual ICollection<tbCidade> tbCidade { get; set; }

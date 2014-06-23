@@ -206,6 +206,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Administrador\UsersController.cs" />
+    <Compile Include="Controllers\Anunciante\AnuncianteController.cs" />
     <Compile Include="Controllers\Anunciante\CampanhaController.cs" />
     <Compile Include="Controllers\Anunciante\DestaqueController.cs" />
     <Compile Include="Controllers\Anunciante\MenuAnuncianteController.cs" />
@@ -247,6 +248,9 @@
     <Compile Include="Models\tbAnuncianteDestaqueStatus.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tbAnuncianteEndereco.cs">
+      <DependentUpon>Cliquemix.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbAnuncio.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
@@ -254,6 +258,9 @@
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbAnuncioImg.cs">
+      <DependentUpon>Cliquemix.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbBairro.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbBan.cs">
@@ -586,6 +593,11 @@
     <Content Include="Views\Breadcrumbs\Breadcrumbs-Anuncio-List.cshtml" />
     <Content Include="Views\Account\Logout.cshtml" />
     <Content Include="Views\Endereco\Index.cshtml" />
+    <Content Include="Views\Anunciante\Create.cshtml" />
+    <Content Include="Views\Anunciante\Delete.cshtml" />
+    <Content Include="Views\Anunciante\Details.cshtml" />
+    <Content Include="Views\Anunciante\Edit.cshtml" />
+    <Content Include="Views\Anunciante\Index.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

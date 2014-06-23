@@ -7,12 +7,12 @@
       <Diagram DiagramId="1f327c6d9e964535b9611caed62a7f48" Name="Diagram1" ZoomLevel="72">
         <EntityTypeShape EntityType="cliquemixModel.tbAnunciante" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbAnuncianteDestaque" Width="1.5" PointX="8.25" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbAnuncianteDestaqueStatus" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbAnuncianteDestaqueStatus" Width="1.5" PointX="6" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbAnuncioFuncionalidade" Width="1.5" PointX="19.5" PointY="17.5" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbAnuncioImg" Width="1.5" PointX="13.5" PointY="21" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbBan" Width="1.5" PointX="8" PointY="10" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbBanner" Width="1.5" PointX="8.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbBannerImg" Width="1.5" PointX="11" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbBanner" Width="1.5" PointX="8.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbBannerImg" Width="1.5" PointX="11" PointY="2.375" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbBanTipo" Width="1.5" PointX="5.75" PointY="20.25" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbCalculoCondicao" Width="1.5" PointX="6" PointY="6.5" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbCalculoCondicaoPagto" Width="1.5" PointX="3.75" PointY="15.375" IsExpanded="true" />
@@ -22,7 +22,7 @@
         <EntityTypeShape EntityType="cliquemixModel.tbCampanhaAnuncioLocalizacao" Width="1.5" PointX="18.75" PointY="13.25" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbCampanhaAnuncioStatus" Width="1.5" PointX="11.25" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbCampanhaStatus" Width="1.5" PointX="6" PointY="17.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbCep" Width="1.5" PointX="3.125" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbCep" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbCidade" Width="1.5" PointX="16.5" PointY="17.5" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbCondicaoPagto" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbConsumidor" Width="1.5" PointX="13.5" PointY="9.625" IsExpanded="true" />
@@ -95,6 +95,11 @@
         <AssociationConnector Association="cliquemixModel.pgid_tbPermissao_tbPermissaoGrupo_fk" />
         <AssociationConnector Association="cliquemixModel.psgid_tbPermissao_tbPermissaoSubGrupo_fk" />
         <AssociationConnector Association="cliquemixModel.pgid_tbPermissaoSubGrupo_tbPermissaoGrupo_fk" />
+        <EntityTypeShape EntityType="cliquemixModel.tbAnuncianteEndereco" Width="1.5" PointX="0.625" PointY="1.625" />
+        <EntityTypeShape EntityType="cliquemixModel.tbBairro" Width="1.5" PointX="14.125" PointY="28.5" />
+        <AssociationConnector Association="cliquemixModel.pid_tbAnuncianteEndereco_tbAnunciante_fk" />
+        <AssociationConnector Association="cliquemixModel.cepid_tbAnuncianteEndereco_tbCep_fk" />
+        <AssociationConnector Association="cliquemixModel.cid_tbBairro_tbCidade_fk" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

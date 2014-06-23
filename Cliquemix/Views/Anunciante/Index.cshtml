@@ -1,0 +1,190 @@
+﻿@model IEnumerable<Cliquemix.Models.tbAnunciante>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.cnpj)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.razaoSocial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nmFantasia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.contato)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.im)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.site)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.obs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.saldoCreditos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.leuTermo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telResidencial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telComercial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telCelular1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telCelular2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.numero_endereco)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.complemento_endereco)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dsPais)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dsEstado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dsCidade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dsBairro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dsLogradouro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cep)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbCondicaoPagto.descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbTos.titulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbUsers.username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbRamoAtividade.descricao)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.cnpj)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.razaoSocial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nmFantasia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.contato)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.im)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.site)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.obs)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.saldoCreditos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.leuTermo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telResidencial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telComercial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telCelular1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telCelular2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.numero_endereco)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.complemento_endereco)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dsPais)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dsEstado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dsCidade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dsBairro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dsLogradouro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cep)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbCondicaoPagto.descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbTos.titulo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbUsers.username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbRamoAtividade.descricao)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.pid }) |
+            @Html.ActionLink("Details", "Details", new { id=item.pid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.pid })
+        </td>
+    </tr>
+}
+
+</table>

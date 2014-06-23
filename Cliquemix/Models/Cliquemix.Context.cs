@@ -69,5 +69,7 @@ namespace Cliquemix.Models
         public virtual DbSet<tbUsersLogAcesso> tbUsersLogAcesso { get; set; }
         public virtual DbSet<tbPermissaoGrupo> tbPermissaoGrupo { get; set; }
         public virtual DbSet<tbPermissaoSubGrupo> tbPermissaoSubGrupo { get; set; }
+        public virtual DbSet<tbAnuncianteEndereco> tbAnuncianteEndereco { get; set; }
+        public virtual DbSet<tbBairro> tbBairro { get; set; }
     }
 }

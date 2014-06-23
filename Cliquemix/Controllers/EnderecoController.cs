@@ -9,7 +9,6 @@ namespace Cliquemix.Controllers
 {
     public class EnderecoController : Controller
     {
-        private int a1;
         //
         // GET: /Endereco/
         public ActionResult Index()

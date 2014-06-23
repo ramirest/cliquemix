@@ -12,20 +12,12 @@ namespace Cliquemix.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tbCep
+    public partial class tbBairro
     {
-        public tbCep()
-        {
-            this.tbAnuncianteEndereco = new HashSet<tbAnuncianteEndereco>();
-        }
+        public int baiid { get; set; }
+        public string nomeBairro { get; set; }
+        public int cid { get; set; }
     
-        public int cepid { get; set; }
-        public string dsEstado { get; set; }
-        public string dsCidade { get; set; }
-        public string dsLogradouro { get; set; }
-        public string cep { get; set; }
-        public string dsBairro { get; set; }
-    
-        public virtual ICollection<tbAnuncianteEndereco> tbAnuncianteEndereco { get; set; }
+        public virtual tbCidade tbCidade { get; set; }
     }
 }
