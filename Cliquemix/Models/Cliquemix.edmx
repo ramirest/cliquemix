@@ -12,8 +12,14 @@
           <Property Name="pid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="cnpj" Type="varchar" MaxLength="18" Nullable="false" />
           <Property Name="razaoSocial" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="nmFantasia" Type="varchar" MaxLength="100" />
+          <Property Name="nmFantasia" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="contato" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="numero_endereco" Type="varchar" MaxLength="10" />
+          <Property Name="complemento_endereco" Type="varchar" MaxLength="50" />
+          <Property Name="telResidencial" Type="varchar" MaxLength="15" />
+          <Property Name="telComercial" Type="varchar" MaxLength="15" />
+          <Property Name="telCelular1" Type="varchar" MaxLength="15" />
+          <Property Name="telCelular2" Type="varchar" MaxLength="15" />
           <Property Name="ie" Type="varchar" MaxLength="45" />
           <Property Name="im" Type="varchar" MaxLength="45" />
           <Property Name="email" Type="varchar" MaxLength="45" />
@@ -25,13 +31,12 @@
           <Property Name="saldoCreditos" Type="decimal" Precision="11" Scale="3" />
           <Property Name="leuTermo" Type="int" />
           <Property Name="uid" Type="int" />
-          <Property Name="telResidencial" Type="varchar" MaxLength="15" />
-          <Property Name="telComercial" Type="varchar" MaxLength="15" />
-          <Property Name="telCelular1" Type="varchar" MaxLength="15" />
-          <Property Name="telCelular2" Type="varchar" MaxLength="15" />
-          <Property Name="cepid" Type="int" />
-          <Property Name="numero_endereco" Type="varchar" MaxLength="10" />
-          <Property Name="complemento_endereco" Type="varchar" MaxLength="50" />
+          <Property Name="dsPais" Type="varchar" MaxLength="50" />
+          <Property Name="dsEstado" Type="varchar" MaxLength="2" />
+          <Property Name="dsCidade" Type="varchar" MaxLength="100" />
+          <Property Name="dsBairro" Type="varchar" MaxLength="100" />
+          <Property Name="dsLogradouro" Type="varchar" MaxLength="200" />
+          <Property Name="cep" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="tbAnuncianteDestaque">
           <Key>
@@ -60,12 +65,12 @@
           <Property Name="url" Type="varchar" MaxLength="50" />
           <Property Name="dsAnuncio" Type="text" />
           <Property Name="videoAnuncio" Type="text" />
+          <Property Name="dtCriacao" Type="datetime" />
+          <Property Name="statusAnuncio" Type="varchar" MaxLength="50" />
           <Property Name="raid" Type="int" />
           <Property Name="comentar" Type="int" />
           <Property Name="curtir" Type="int" />
           <Property Name="compartilhar" Type="int" />
-          <Property Name="dtCriacao" Type="datetime" />
-          <Property Name="statusAnuncio" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tbAnuncioFuncionalidade">
           <Key>
@@ -196,9 +201,9 @@
           <Property Name="dsPais" Type="varchar" MaxLength="50" />
           <Property Name="dsEstado" Type="varchar" MaxLength="20" />
           <Property Name="dsCidade" Type="varchar" MaxLength="100" />
+          <Property Name="dsBairro" Type="varchar" MaxLength="100" />
           <Property Name="dsLogradouro" Type="varchar" MaxLength="200" />
           <Property Name="cep" Type="varchar" MaxLength="10" />
-          <Property Name="dsBairro" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="tbCidade">
           <Key>
@@ -571,18 +576,6 @@
             </Principal>
             <Dependent Role="tbCalculoCondicao">
               <PropertyRef Name="ccpid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="cepid_tbAnunciante_tbCep_fk">
-          <End Role="tbCep" Type="Self.tbCep" Multiplicity="0..1" />
-          <End Role="tbAnunciante" Type="Self.tbAnunciante" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbCep">
-              <PropertyRef Name="cepid" />
-            </Principal>
-            <Dependent Role="tbAnunciante">
-              <PropertyRef Name="cepid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1079,10 +1072,6 @@
             <End Role="tbCalculoCondicaoPagto" EntitySet="tbCalculoCondicaoPagto" />
             <End Role="tbCalculoCondicao" EntitySet="tbCalculoCondicao" />
           </AssociationSet>
-          <AssociationSet Name="cepid_tbAnunciante_tbCep_fk" Association="Self.cepid_tbAnunciante_tbCep_fk">
-            <End Role="tbCep" EntitySet="tbCep" />
-            <End Role="tbAnunciante" EntitySet="tbAnunciante" />
-          </AssociationSet>
           <AssociationSet Name="cid_tbCampanhaAnuncio_tbCampanha_fk" Association="Self.cid_tbCampanhaAnuncio_tbCampanha_fk">
             <End Role="tbCampanha" EntitySet="tbCampanha" />
             <End Role="tbCampanhaAnuncio" EntitySet="tbCampanhaAnuncio" />
@@ -1227,7 +1216,7 @@
           <Property Name="pid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="cnpj" Type="String" MaxLength="18" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="razaoSocial" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="nmFantasia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="nmFantasia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="contato" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ie" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="im" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
@@ -1250,10 +1239,14 @@
           <Property Name="telComercial" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="telCelular1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="telCelular2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="cepid" Type="Int32" />
           <Property Name="numero_endereco" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="complemento_endereco" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbCep" Relationship="cliquemixModel.cepid_tbAnunciante_tbCep_fk" FromRole="tbAnunciante" ToRole="tbCep" />
+          <Property Name="dsPais" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dsEstado" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="dsCidade" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dsBairro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dsLogradouro" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="cep" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tbAnuncianteDestaque">
           <Key>
@@ -1438,7 +1431,6 @@
           <Property Name="dsLogradouro" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="cep" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="dsBairro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbAnunciante" Relationship="cliquemixModel.cepid_tbAnunciante_tbCep_fk" FromRole="tbCep" ToRole="tbAnunciante" />
         </EntityType>
         <EntityType Name="tbCidade">
           <Key>
@@ -2325,10 +2317,6 @@
             <End Role="tbPermissaoGrupo" EntitySet="tbPermissaoGrupo" />
             <End Role="tbPermissaoSubGrupo" EntitySet="tbPermissaoSubGrupo" />
           </AssociationSet>
-          <AssociationSet Name="cepid_tbAnunciante_tbCep_fk" Association="cliquemixModel.cepid_tbAnunciante_tbCep_fk">
-            <End Role="tbCep" EntitySet="tbCep" />
-            <End Role="tbAnunciante" EntitySet="tbAnunciante" />
-          </AssociationSet>
         </EntityContainer>
         <EntityType Name="tbAnuncio">
           <Key>
@@ -2513,18 +2501,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="cepid_tbAnunciante_tbCep_fk">
-          <End Type="cliquemixModel.tbCep" Role="tbCep" Multiplicity="0..1" />
-          <End Type="cliquemixModel.tbAnunciante" Role="tbAnunciante" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbCep">
-              <PropertyRef Name="cepid" />
-            </Principal>
-            <Dependent Role="tbAnunciante">
-              <PropertyRef Name="cepid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2534,9 +2510,14 @@
           <EntitySetMapping Name="tbAnunciante">
             <EntityTypeMapping TypeName="cliquemixModel.tbAnunciante">
               <MappingFragment StoreEntitySet="tbAnunciante">
+                <ScalarProperty Name="cep" ColumnName="cep" />
+                <ScalarProperty Name="dsLogradouro" ColumnName="dsLogradouro" />
+                <ScalarProperty Name="dsBairro" ColumnName="dsBairro" />
+                <ScalarProperty Name="dsCidade" ColumnName="dsCidade" />
+                <ScalarProperty Name="dsEstado" ColumnName="dsEstado" />
+                <ScalarProperty Name="dsPais" ColumnName="dsPais" />
                 <ScalarProperty Name="complemento_endereco" ColumnName="complemento_endereco" />
                 <ScalarProperty Name="numero_endereco" ColumnName="numero_endereco" />
-                <ScalarProperty Name="cepid" ColumnName="cepid" />
                 <ScalarProperty Name="telCelular2" ColumnName="telCelular2" />
                 <ScalarProperty Name="telCelular1" ColumnName="telCelular1" />
                 <ScalarProperty Name="telComercial" ColumnName="telComercial" />

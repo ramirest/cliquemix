@@ -107,13 +107,8 @@
                                                         <form role="form">
                                                             <h4 class="page-header">Dados da Empresa:</h4>
                                                             <div class="form-group col-lg-6">
-                                                                @Html.LabelFor(model => model.cnpj, "CNPJ")
-                                                                @Html.TextBoxFor(model => model.cnpj, new { @class = "form-control", maxlength = "18", alt = "cnpj", id = "txtCnpj" })
-                                                                @Html.ValidationMessageFor(model => model.cnpj)
-                                                            </div>
-                                                            <div class="form-group col-lg-6">
                                                                 @Html.LabelFor(model => model.razaoSocial, "Razão Social")
-                                                                @Html.TextBoxFor(model => model.razaoSocial, new { @class = "form-control", maxlength = "100", alt = "razaoSocial", id = "txtRazaoSocial" })
+                                                                @Html.TextBoxFor(model => model.razaoSocial, new { @class = "form-control", maxlength = "100", alt = "razaoSocial", id = "txtRazaoSocial"})
                                                                 @Html.ValidationMessageFor(model => model.razaoSocial)
                                                             </div>
                                                             <div class="form-group col-lg-6">
@@ -121,25 +116,29 @@
                                                                 @Html.TextBoxFor(model => model.nmFantasia, new { @class = "form-control", maxlength = "100", alt = "nmFantasia", id = "txtnmFantasia" })
                                                                 @Html.ValidationMessageFor(model => model.nmFantasia)
                                                             </div>
-                                                            <div class="form-group col-lg-6">
-                                                                @Html.LabelFor(model => model.contato, "Contato")
-                                                                @Html.TextBoxFor(model => model.contato, new { @class = "form-control", maxlength = "45", alt = "contato", id = "txtContato" })
-                                                                @Html.ValidationMessageFor(model => model.contato)
+                                                            <div class="form-group col-lg-4">
+                                                                @Html.LabelFor(model => model.cnpj, "CNPJ")
+                                                                @Html.TextBoxFor(model => model.cnpj, new { @class = "form-control", maxlength = "18", alt = "cnpj", id = "txtCnpj" })
+                                                                @Html.ValidationMessageFor(model => model.cnpj)
                                                             </div>
-                                                            <div class="form-group col-lg-6">
+                                                            <div class="form-group col-lg-4">
                                                                 @Html.LabelFor(model => model.ie, "Inscrição Estadual")
                                                                 @Html.TextBoxFor(model => model.ie, new { @class = "form-control", maxlength = "45", alt = "ie", id = "txtie" })
                                                                 @Html.ValidationMessageFor(model => model.ie)
                                                             </div>
-                                                            <div class="form-group col-lg-6">
+                                                            <div class="form-group col-lg-4">
                                                                 @Html.LabelFor(model => model.im, "Inscrição Municipal")
                                                                 @Html.TextBoxFor(model => model.im, new { @class = "form-control", maxlength = "45", alt = "im", id = "txtim" })
                                                                 @Html.ValidationMessageFor(model => model.im)
                                                             </div>
-                                                            <div class="form-group col-lg-6">
+                                                            <div class="form-group col-lg-4">
+                                                                @Html.LabelFor(model => model.contato, "Contato")
+                                                                @Html.TextBoxFor(model => model.contato, new { @class = "form-control", maxlength = "45", alt = "contato", id = "txtContato" })
+                                                                @Html.ValidationMessageFor(model => model.contato)
+                                                            </div>
+                                                            <div class="form-group col-lg-4">
                                                                 @Html.Label("Ramo de Atividade")
-                                                                @Html.DropDownList("raid", string.Empty)                                                                
-                                                                @*Html.DropDownListFor(m => m.ProductId, new SelectList(model.Products, "ProductId", "Name"))*@
+                                                                @Html.DropDownList("raid", string.Empty)
                                                                 @Html.ValidationMessageFor(model => model.raid)
                                                             </div>
 
@@ -152,36 +151,36 @@
                                                         @*  Dados de Contato  *@
                                                         <br>
                                                         <form role="form">
-                                                                <h4 class="page-header">Dados de Contato:</h4>
+                                                            <h4 class="page-header">Dados de Contato:</h4>
                                                                 <div class="form-group col-lg-6">
-                                                                    @Html.LabelFor(model => model.im, "Inscrição Municipal")
-                                                                    @Html.TextBoxFor(model => model.im, new { @class = "form-control", maxlength = "45", alt = "im", id = "txtim" })
-                                                                    @Html.ValidationMessageFor(model => model.im)
+                                                                    @Html.LabelFor(model => model.email, "E-mail")
+                                                                    @Html.TextBoxFor(model => model.email, new { @class = "form-control", maxlength = "45", alt = "email", id = "txtEmail", placeholder = "exemplo@exemplo.com.br" })
+                                                                    @Html.ValidationMessageFor(model => model.email)
                                                                 </div>
                                                                 <div class="form-group col-lg-6">
+                                                                    @Html.LabelFor(model => model.site, "Endereço WEB")
+                                                                    @Html.TextBoxFor(model => model.site, new { @class = "form-control", maxlength = "50", alt = "site", id = "txtSite", placeholder = "http://" })
+                                                                    @Html.ValidationMessageFor(model => model.site)
+                                                                </div>
+                                                                <div class="form-group col-lg-3">
                                                                     @Html.LabelFor(model => model.telResidencial, "Telefone Residencial")
                                                                     @Html.TextBoxFor(model => model.telResidencial, new { @class = "form-control", maxlength = "15", alt = "telResidencial", id = "txtTelResidencial" })
                                                                     @Html.ValidationMessageFor(model => model.telResidencial)
                                                                 </div>
-                                                                <div class="form-group col-lg-6">
+                                                                <div class="form-group col-lg-3">
                                                                     @Html.LabelFor(model => model.telComercial, "Telefone Comercial")
                                                                     @Html.TextBoxFor(model => model.telComercial, new { @class = "form-control", maxlength = "15", alt = "telComercial", id = "txtTelComercial" })
                                                                     @Html.ValidationMessageFor(model => model.telComercial)
                                                                 </div>
-                                                                <div class="form-group col-lg-6">
+                                                                <div class="form-group col-lg-3">
                                                                     @Html.LabelFor(model => model.telCelular1, "Telefone Celular1")
                                                                     @Html.TextBoxFor(model => model.telCelular1, new { @class = "form-control", maxlength = "15", alt = "telCelular1", id = "txtCelular1" })
                                                                     @Html.ValidationMessageFor(model => model.telCelular1)
                                                                 </div>
-                                                                <div class="form-group col-lg-6">
+                                                                <div class="form-group col-lg-3">
                                                                     @Html.LabelFor(model => model.telCelular2, "Telefone Celular2")
                                                                     @Html.TextBoxFor(model => model.telCelular2, new { @class = "form-control", maxlength = "15", alt = "telCelular2", id = "txtCelular2" })
                                                                     @Html.ValidationMessageFor(model => model.telCelular2)
-                                                                </div>
-                                                                <div class="form-group col-lg-6">
-                                                                    @Html.LabelFor(model => model.site, "Endereço WEB")
-                                                                    @Html.TextBoxFor(model => model.site, new { @class = "form-control", maxlength = "50", alt = "site", id = "txtSite", placeholder="http://" })
-                                                                    @Html.ValidationMessageFor(model => model.site)
                                                                 </div>
                                                                 <div class="form-group col-lg-offset-9">
                                                                     <button type="button" onclick="$('#link1').click();" class="btn btn-default">Anterior</button>
@@ -194,28 +193,28 @@
                                                             <h4 class="page-header">Dados de Endereço:</h4>
                                                             <div class="form-group col-lg-3">
                                                                 @Html.Label("CEP")
-                                                                @Html.TextBoxFor(model => model.tbCep.cep, new { @class = "form-control", maxlength = "8", alt = "cep", id = "txtCep" })
-                                                                @Html.ValidationMessageFor(model => model.tbCep.cep)
+                                                                @Html.TextBoxFor(model => model.cep, new { @class = "form-control", maxlength = "8", alt = "cep", id = "txtCep" })
+                                                                @Html.ValidationMessageFor(model => model.cep)
                                                             </div>
                                                             <div class="form-group col-lg-3">
                                                                 @Html.Label("País")
-                                                                @Html.TextBoxFor(model => model.tbCep.dsPais, new { @class = "form-control", maxlength = "50", alt = "pais", id = "txtPais" })
+                                                                @Html.TextBoxFor(model => model.dsPais, new { @class = "form-control", maxlength = "50", alt = "pais", id = "txtPais" })
                                                             </div>
                                                             <div class="form-group col-lg-6">
                                                                 @Html.Label("Estado")
-                                                                @Html.TextBoxFor(model => model.tbCep.dsEstado, new { @class = "form-control", maxlength = "2", alt = "estado", id = "txtEstado" })
+                                                                @Html.TextBoxFor(model => model.dsEstado, new { @class = "form-control", maxlength = "2", alt = "estado", id = "txtEstado" })
                                                             </div>                                                           
                                                             <div class="form-group col-lg-2">
                                                                 @Html.Label("Cidade")
-                                                                @Html.TextBoxFor(model => model.tbCep.dsCidade, new { @class = "form-control", maxlength = "100", alt = "cidade", id = "txtCidade" })
+                                                                @Html.TextBoxFor(model => model.dsCidade, new { @class = "form-control", maxlength = "100", alt = "cidade", id = "txtCidade" })
                                                             </div>
                                                             <div class="form-group col-lg-2">
                                                                 @Html.Label("Bairro")
-                                                                @Html.TextBoxFor(model => model.tbCep.dsBairro, new { @class = "form-control", maxlength = "100", alt = "bairro", id = "txtBairro" })
+                                                                @Html.TextBoxFor(model => model.dsBairro, new { @class = "form-control", maxlength = "100", alt = "bairro", id = "txtBairro" })
                                                             </div>
                                                             <div class="form-group col-lg-2">
                                                                 @Html.Label("Endereço")
-                                                                @Html.TextBoxFor(model => model.tbCep.dsLogradouro, new { @class = "form-control", maxlength = "200", alt = "logradouro", id = "txtLogradouro" })
+                                                                @Html.TextBoxFor(model => model.dsLogradouro, new { @class = "form-control", maxlength = "200", alt = "logradouro", id = "txtLogradouro" })
                                                             </div>
                                                             <div class="form-group col-lg-2">
                                                                 @Html.Label("Número")
@@ -256,7 +255,7 @@
                                                                 <div class="input-group">
                                                                     <label style="padding-right: 12px;">Senha</label>
                                                                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                                                    @Html.PasswordFor(model => model.tbUsers.pwd, new { @class = "form-control" })
+                                                                    <p>@Html.PasswordFor(model => model.tbUsers.pwd, new { @class = "form-control" })</p>
                                                                 </div>
                                                             </div>
                                                             <div class="clearfix"></div>

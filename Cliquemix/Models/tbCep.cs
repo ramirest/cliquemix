@@ -14,11 +14,6 @@ namespace Cliquemix.Models
     
     public partial class tbCep
     {
-        public tbCep()
-        {
-            this.tbAnunciante = new HashSet<tbAnunciante>();
-        }
-    
         public int cepid { get; set; }
         public string dsPais { get; set; }
         public string dsEstado { get; set; }
@@ -26,7 +21,5 @@ namespace Cliquemix.Models
         public string dsLogradouro { get; set; }
         public string cep { get; set; }
         public string dsBairro { get; set; }
-    
-        public virtual ICollection<tbAnunciante> tbAnunciante { get; set; }
     }
 }

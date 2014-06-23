@@ -22,7 +22,7 @@
         <EntityTypeShape EntityType="cliquemixModel.tbCampanhaAnuncioLocalizacao" Width="1.5" PointX="18.75" PointY="13.25" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbCampanhaAnuncioStatus" Width="1.5" PointX="11.25" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbCampanhaStatus" Width="1.5" PointX="6" PointY="17.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbCep" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbCep" Width="1.5" PointX="3.125" PointY="0.625" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbCidade" Width="1.5" PointX="16.5" PointY="17.5" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbCondicaoPagto" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbConsumidor" Width="1.5" PointX="13.5" PointY="9.625" IsExpanded="true" />
@@ -95,7 +95,6 @@
         <AssociationConnector Association="cliquemixModel.pgid_tbPermissao_tbPermissaoGrupo_fk" />
         <AssociationConnector Association="cliquemixModel.psgid_tbPermissao_tbPermissaoSubGrupo_fk" />
         <AssociationConnector Association="cliquemixModel.pgid_tbPermissaoSubGrupo_tbPermissaoGrupo_fk" />
-        <AssociationConnector Association="cliquemixModel.cepid_tbAnunciante_tbCep_fk" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
