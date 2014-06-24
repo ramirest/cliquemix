@@ -14,7 +14,7 @@ namespace Cliquemix.Controllers.Administrador
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: /Users/
+        // GET: /Users//
         public ActionResult Index()
         {
             var tbusers = db.tbUsers.Include(t => t.tbUsersTipo);
