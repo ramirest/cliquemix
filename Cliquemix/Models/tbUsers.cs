@@ -20,6 +20,7 @@ namespace Cliquemix.Models
             this.tbBan = new HashSet<tbBan>();
             this.tbUsersPermissao = new HashSet<tbUsersPermissao>();
             this.tbUsersLogAcesso = new HashSet<tbUsersLogAcesso>();
+            this.tbLogSistema = new HashSet<tbLogSistema>();
         }
     
         public int uid { get; set; }
@@ -32,5 +33,6 @@ namespace Cliquemix.Models
         public virtual ICollection<tbUsersPermissao> tbUsersPermissao { get; set; }
         public virtual tbUsersTipo tbUsersTipo { get; set; }
         public virtual ICollection<tbUsersLogAcesso> tbUsersLogAcesso { get; set; }
+        public virtual ICollection<tbLogSistema> tbLogSistema { get; set; }
     }
 }

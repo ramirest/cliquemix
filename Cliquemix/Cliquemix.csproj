@@ -213,9 +213,11 @@
     <Compile Include="Controllers\Anunciante\MenuTopoAnuncianteController.cs" />
     <Compile Include="Controllers\Anunciante\PrincipalAnuncianteController.cs" />
     <Compile Include="Controllers\Anunciante\AnuncioController.cs" />
+    <Compile Include="Controllers\Anuncio2Controller.cs" />
     <Compile Include="Controllers\BreadcrumbsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EnderecoController.cs" />
+    <Compile Include="Controllers\tipoUsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -251,6 +253,9 @@
     <Compile Include="Models\tbAnuncianteEndereco.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tbAnuncianteTelefone.cs">
+      <DependentUpon>Cliquemix.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbAnuncio.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
@@ -258,6 +263,9 @@
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbAnuncioImg.cs">
+      <DependentUpon>Cliquemix.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbAnuncioStatus.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbBairro.cs">
@@ -329,6 +337,9 @@
     <Compile Include="Models\tbFuncionalidade.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tbLogSistema.cs">
+      <DependentUpon>Cliquemix.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbPais.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
@@ -362,6 +373,9 @@
     <Compile Include="Models\tbRamoAtividade.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tbTipoLogradouro.cs">
+      <DependentUpon>Cliquemix.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbTos.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
@@ -381,10 +395,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Cliquemix.mdf" />
-    <Content Include="App_Data\Cliquemix_log.ldf">
-      <DependentUpon>Cliquemix.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\demo.css" />
     <Content Include="Content\edicoes.css" />
     <Content Include="Content\Outros\bootstrap-theme.css" />
@@ -597,6 +607,11 @@
     <Content Include="Views\Anunciante\Details.cshtml" />
     <Content Include="Views\Anunciante\Edit.cshtml" />
     <Content Include="Views\Anunciante\Index.cshtml" />
+    <Content Include="Views\tipoUsers\Create.cshtml" />
+    <Content Include="Views\tipoUsers\Delete.cshtml" />
+    <Content Include="Views\tipoUsers\Details.cshtml" />
+    <Content Include="Views\tipoUsers\Edit.cshtml" />
+    <Content Include="Views\tipoUsers\Index.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -605,6 +620,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Images\Icons\" />
     <Folder Include="Images\Pictures\" />
   </ItemGroup>

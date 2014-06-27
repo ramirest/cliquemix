@@ -64,12 +64,16 @@ namespace Cliquemix.Models
         public virtual DbSet<tbUsers> tbUsers { get; set; }
         public virtual DbSet<tbUsersPermissao> tbUsersPermissao { get; set; }
         public virtual DbSet<tbUsersTipo> tbUsersTipo { get; set; }
-        public virtual DbSet<tbAnuncio> tbAnuncio { get; set; }
         public virtual DbSet<tbRamoAtividade> tbRamoAtividade { get; set; }
         public virtual DbSet<tbUsersLogAcesso> tbUsersLogAcesso { get; set; }
         public virtual DbSet<tbPermissaoGrupo> tbPermissaoGrupo { get; set; }
         public virtual DbSet<tbPermissaoSubGrupo> tbPermissaoSubGrupo { get; set; }
         public virtual DbSet<tbAnuncianteEndereco> tbAnuncianteEndereco { get; set; }
         public virtual DbSet<tbBairro> tbBairro { get; set; }
+        public virtual DbSet<tbLogSistema> tbLogSistema { get; set; }
+        public virtual DbSet<tbTipoLogradouro> tbTipoLogradouro { get; set; }
+        public virtual DbSet<tbAnuncianteTelefone> tbAnuncianteTelefone { get; set; }
+        public virtual DbSet<tbAnuncio> tbAnuncio { get; set; }
+        public virtual DbSet<tbAnuncioStatus> tbAnuncioStatus { get; set; }
     }
 }

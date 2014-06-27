@@ -20,12 +20,20 @@ namespace Cliquemix.Models
         }
     
         public int cepid { get; set; }
-        public string dsEstado { get; set; }
-        public string dsCidade { get; set; }
         public string dsLogradouro { get; set; }
         public string cep { get; set; }
-        public string dsBairro { get; set; }
+        public Nullable<int> eid { get; set; }
+        public Nullable<int> cid { get; set; }
+        public Nullable<int> baiid { get; set; }
+        public string tipoLogradouro { get; set; }
+        public string uf { get; set; }
+        public string abrevLogradouro { get; set; }
+        public Nullable<int> tlid { get; set; }
     
         public virtual ICollection<tbAnuncianteEndereco> tbAnuncianteEndereco { get; set; }
+        public virtual tbBairro tbBairro { get; set; }
+        public virtual tbCidade tbCidade { get; set; }
+        public virtual tbEstado tbEstado { get; set; }
+        public virtual tbTipoLogradouro tbTipoLogradouro { get; set; }
     }
 }

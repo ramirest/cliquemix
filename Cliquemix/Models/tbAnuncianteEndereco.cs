@@ -14,6 +14,11 @@ namespace Cliquemix.Models
     
     public partial class tbAnuncianteEndereco
     {
+        public tbAnuncianteEndereco()
+        {
+            this.tbAnunciante1 = new HashSet<tbAnunciante>();
+        }
+    
         public int peid { get; set; }
         public int pid { get; set; }
         public Nullable<int> cepid { get; set; }
@@ -22,5 +27,6 @@ namespace Cliquemix.Models
     
         public virtual tbAnunciante tbAnunciante { get; set; }
         public virtual tbCep tbCep { get; set; }
+        public virtual ICollection<tbAnunciante> tbAnunciante1 { get; set; }
     }
 }

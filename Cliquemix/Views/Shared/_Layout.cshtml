@@ -52,15 +52,14 @@
    
     @Scripts.Render("~/bundles/js-others")
     
-    <script>
-    $(document).ready(function () {
+<script>
+    $(document).ready(function ()
+    {
         $('#summernote').summernote(
-            {
-                height:300 
-            }
- 
-        );
-   });
+        {
+            height:200 
+        });
+    });
 
 //WYEING - Editor
     $('.summernote').summernote();
@@ -73,7 +72,7 @@
 
     $('.btn-toggle').click(function () {
         $(this).find('.btn').toggleClass('active');
-
+        
         if ($(this).find('.btn-primary').size() > 0) {
             $(this).find('.btn').toggleClass('btn-primary');
         }
@@ -86,28 +85,19 @@
         if ($(this).find('.btn-info').size() > 0) {
             $(this).find('.btn').toggleClass('btn-info');
         }
-
+        
         if ($(this).find('.btn-default').size() > 0) {
-            $(this).find('.btn').toggleClass('btn-default');
+            $(this).find('.btn').toggleClass('btn-white');
         }
+        
 
-
-        $(this).find('.btn').toggleClass('btn-white');
+        $(this).find('.btn').toggleClass('btn-default');
 
     });
-
-    $('form').submit(function () {
-        alert($(this["options"]).val());
-        return false;
-    });
-
-
-
 
 
 </script>
-
-   
+    
 
 </body>
 </html>

@@ -27,17 +27,18 @@ namespace Cliquemix.Models
         public string url { get; set; }
         public string dsAnuncio { get; set; }
         public string videoAnuncio { get; set; }
-        public Nullable<int> raid { get; set; }
-        public Nullable<int> comentar { get; set; }
-        public Nullable<int> curtir { get; set; }
-        public Nullable<int> compartilhar { get; set; }
         public Nullable<System.DateTime> dtCriacao { get; set; }
-        public string statusAnuncio { get; set; }
+        public Nullable<int> raid { get; set; }
+        public Nullable<bool> comentar { get; set; }
+        public Nullable<bool> curtir { get; set; }
+        public Nullable<bool> compartilhar { get; set; }
+        public Nullable<int> asid { get; set; }
     
         public virtual ICollection<tbAnuncioFuncionalidade> tbAnuncioFuncionalidade { get; set; }
         public virtual ICollection<tbAnuncioImg> tbAnuncioImg { get; set; }
         public virtual ICollection<tbCampanhaAnuncio> tbCampanhaAnuncio { get; set; }
         public virtual ICollection<tbPontosRede> tbPontosRede { get; set; }
         public virtual tbRamoAtividade tbRamoAtividade { get; set; }
+        public virtual tbAnuncioStatus tbAnuncioStatus { get; set; }
     }
 }

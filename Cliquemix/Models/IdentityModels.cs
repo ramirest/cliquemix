@@ -41,6 +41,7 @@ namespace Cliquemix.Models
         public System.Data.Entity.DbSet<Cliquemix.Models.tbCondicaoPagto> tbCondicaoPagto { get; set; }
 
         public System.Data.Entity.DbSet<Cliquemix.Models.tbTos> tbTos { get; set; }
+        public System.Data.Entity.DbSet<Cliquemix.Models.tbAnuncioStatus> TbAnuncioStatus{ get; set; }
 
     }
 }

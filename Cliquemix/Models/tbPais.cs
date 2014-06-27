@@ -17,11 +17,13 @@ namespace Cliquemix.Models
         public tbPais()
         {
             this.tbCampanhaAnuncioLocalizacao = new HashSet<tbCampanhaAnuncioLocalizacao>();
+            this.tbEstado = new HashSet<tbEstado>();
         }
     
         public int paid { get; set; }
         public string nomePais { get; set; }
     
         public virtual ICollection<tbCampanhaAnuncioLocalizacao> tbCampanhaAnuncioLocalizacao { get; set; }
+        public virtual ICollection<tbEstado> tbEstado { get; set; }
     }
 }

@@ -18,14 +18,18 @@ namespace Cliquemix.Models
         {
             this.tbCampanhaAnuncioLocalizacao = new HashSet<tbCampanhaAnuncioLocalizacao>();
             this.tbCidade = new HashSet<tbCidade>();
+            this.tbCep = new HashSet<tbCep>();
         }
     
         public int eid { get; set; }
         public string nomeEstado { get; set; }
         public string sgEstado { get; set; }
         public Nullable<int> ibge { get; set; }
+        public Nullable<int> paid { get; set; }
     
         public virtual ICollection<tbCampanhaAnuncioLocalizacao> tbCampanhaAnuncioLocalizacao { get; set; }
         public virtual ICollection<tbCidade> tbCidade { get; set; }
+        public virtual ICollection<tbCep> tbCep { get; set; }
+        public virtual tbPais tbPais { get; set; }
     }
 }

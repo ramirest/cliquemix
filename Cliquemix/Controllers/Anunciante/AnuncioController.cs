@@ -25,7 +25,7 @@ namespace Cliquemix.Controllers
         // GET: /Anuncio/
         public ActionResult ListAnuncio()
         {
-            var tbanuncio = db.tbAnuncios.Include(t => t.tbRamoAtividade);
+            var tbanuncio = db.tbAnuncios.Include(t => t.tbRamoAtividade).Include(r => r.tbAnuncioStatus);
             return View(tbanuncio.ToList());
         }
 
@@ -48,6 +48,7 @@ namespace Cliquemix.Controllers
         public ActionResult CreateAnuncio()
         {
             ViewBag.raid = new SelectList(db.tbRamoAtividade, "raid", "descricao");
+            ViewBag.asid = new SelectList(db.TbAnuncioStatus, "asid", "dsStatus");
             return View();
         }
 
@@ -56,7 +57,7 @@ namespace Cliquemix.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateAnuncio([Bind(Include = "tituloAnuncio,url,dsAnuncio,videoAnuncio,raid,comentar,curtir,compartilhar")] tbAnuncio tbanuncio)
+        public ActionResult CreateAnuncio([Bind(Include = "aid,tituloAnuncio,url,dsAnuncio,videoAnuncio,dtCriacao,raid,asid")] tbAnuncio tbanuncio)
         {
             if (ModelState.IsValid)
             {
@@ -66,6 +67,34 @@ namespace Cliquemix.Controllers
             }
 
             ViewBag.raid = new SelectList(db.tbRamoAtividade, "raid", "descricao", tbanuncio.raid);
+            ViewBag.asid = new SelectList(db.TbAnuncioStatus, "asid", "dsStatus", tbanuncio.asid);
+            return View(tbanuncio);
+        }
+
+        // GET: /Anuncio/Create
+        public ActionResult Create()
+        {
+            ViewBag.raid = new SelectList(db.tbRamoAtividade, "raid", "descricao");
+            ViewBag.asid = new SelectList(db.TbAnuncioStatus, "asid", "dsStatus");
+            return View();
+        }
+
+        // POST: /Anuncio/CreateAnuncio
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "aid,tituloAnuncio,url,dsAnuncio,videoAnuncio,dtCriacao,raid,asid")] tbAnuncio tbanuncio)
+        {
+            if (ModelState.IsValid)
+            {
+                db.tbAnuncios.Add(tbanuncio);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.raid = new SelectList(db.tbRamoAtividade, "raid", "descricao", tbanuncio.raid);
+            ViewBag.asid = new SelectList(db.TbAnuncioStatus, "asid", "dsStatus", tbanuncio.asid);
             return View(tbanuncio);
         }
 
