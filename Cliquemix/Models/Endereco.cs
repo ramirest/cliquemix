@@ -18,6 +18,7 @@ namespace Cliquemix.Models
 
         #region _Váriavies 
 
+        private string _pais;
         private string _uf;
         private string _cidade;
         private string _bairro;

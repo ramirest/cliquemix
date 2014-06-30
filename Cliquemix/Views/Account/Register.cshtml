@@ -7,7 +7,12 @@
 
 @{
     Layout = null;
-    string Cep = string.Empty;
+    string _pais = string.Empty;
+    string _estado = string.Empty;
+    string _cidade = string.Empty;
+    string _bairro = string.Empty;
+    string _endereco = string.Empty;
+    string _cep = string.Empty;
 }
 
 <!DOCTYPE html>
@@ -50,8 +55,7 @@
                 </div>
             </div>
         </nav>
-
-
+        
         <div id="page-wrapper" class="collapsed">
             <div class="page-content">
                 <div class="row">
@@ -193,8 +197,8 @@
                                                             <h4 class="page-header">Dados de Endereço:</h4>
                                                             <div class="form-group col-lg-3">
                                                                 @Html.Label("CEP")
-                                                                @Html.TextBoxFor(model => model.cep, new { @class = "form-control", maxlength = "8", alt = "cep", id = "txtCep" })
-                                                                @Html.ValidationMessageFor(model => model.cep)
+                                                                @Html.TextBox("Cep", new { @class = "form-control", maxlength = "8", alt = "cep", id = "txtCep" })
+                                                                <button type="button" onclick="$('#link2').click();" class="btn btn-default">Próximo</button>
                                                             </div>
                                                             <div class="form-group col-lg-3">
                                                                 @Html.Label("País")

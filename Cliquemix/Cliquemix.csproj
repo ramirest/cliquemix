@@ -574,11 +574,11 @@
     <Content Include="Views\MenuTopoAnunciante\MenuTopo.cshtml" />
     <Content Include="Views\PrincipalAnunciante\PrincipalAnunciante.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Anuncio\Create.cshtml" />
+    <Content Include="Views\Anuncio\_Create.cshtml" />
     <Content Include="Views\Anuncio\Delete.cshtml" />
     <Content Include="Views\Anuncio\Details.cshtml" />
     <Content Include="Views\Anuncio\Edit.cshtml" />
-    <Content Include="Views\Anuncio\Index.cshtml" />
+    <Content Include="Views\Anuncio\_Index.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />

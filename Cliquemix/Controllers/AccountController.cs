@@ -18,22 +18,10 @@ namespace Cliquemix.Controllers
         public ActionResult Search(string _cep)
         {
             //some operations goes here
-            //
-            string a1 = string.Empty;
-            tbAnunciante anunciante = new tbAnunciante();            
+            //            
+            tbAnunciante anunciante = new tbAnunciante();
             return View("Register"); //return some view to the user
         }
-
-        public void Pesquisar()
-        {
-            //endereco.localizarEnd(cep);
-            ViewBag.Pais = "";
-            ViewBag.Estado = "";
-            ViewBag.Cidade = "";
-            ViewBag.Bairro = "";
-            ViewBag.Logradouro = "";
-            ViewBag.CEP = "";
-        }        
 
         //
         // GET: /Account/Login
@@ -79,6 +67,12 @@ namespace Cliquemix.Controllers
             }
             return View(model);
         }
+        /*
+        public Action Buscar(string cep)
+        {
+            
+        }
+        */
 
         //
         // GET: /Account/Register
