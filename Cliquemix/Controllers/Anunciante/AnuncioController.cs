@@ -48,7 +48,7 @@ namespace Cliquemix.Controllers
         public ActionResult CreateAnuncio()
         {
             ViewBag.raid = new SelectList(db.tbRamoAtividade, "raid", "descricao");
-            ViewBag.asid = new SelectList(db.TbAnuncioStatus, "asid", "dsStatus");
+            ViewBag.asid = new SelectList(db.TbAnuncioStatus, "asid", "dsStatus");            
             return View();
         }
 
@@ -60,7 +60,7 @@ namespace Cliquemix.Controllers
         public ActionResult CreateAnuncio([Bind(Include = "aid,tituloAnuncio,url,dsAnuncio,videoAnuncio,dtCriacao,raid,asid")] tbAnuncio tbanuncio)
         {
             if (ModelState.IsValid)
-            {
+            {                
                 db.tbAnuncios.Add(tbanuncio);
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -88,7 +88,8 @@
                                                 <div class="form-group col-lg-offset-6"></div>
 
                                                 <div class="form-group col-lg-12">
-                                                    <div id="summernote">Seu texto aqui.</div>
+                                                    <div id="summernote"></div>
+                                                    @Html.TextAreaFor(m => m.dsAnuncio, new { @placeholder = "Digite seu texto aqui..." })
                                                 </div>
 
                                                 <div class="col-sm-offset-10 col-sm-1">
@@ -127,7 +128,6 @@
                                         </div>
 
                                         <div class="tab-pane fade in" id="infoImg">
-
                                             <form role="form">
                                                 <h4 class="page-header">Galeria de Imagens:</h4>
 
@@ -200,88 +200,62 @@
                                                 </div>
                                             </form>
                                         </div>
+
                                         <div class="tab-pane fade in" id="infoFunc">
-                                            <h4 class="page-header">Escolha as Funcionalidades:</h4>
-                                            <div class="form-group col-lg-12 ">
-                                                <div class="col-lg-3">
-                                                    @*@Html.CheckBoxFor(m => m.curtir)
-                                                    @Html.Label("Curtir")*@
-                                                </div>
-                                                    
-                                                <div class="col-lg-3">
-                                                    @*@Html.CheckBoxFor(m => m.comentar)
-                                                    @Html.Label("Comentar")*@
-                                                </div>
+                                            <form role="form">
+                                                <h4 class="page-header">Escolha as Funcionalidades:</h4>
+                                                <div class="form-group col-lg-12 ">
 
-                                                <div class="col-lg-3">
-                                                    @*@Html.CheckBoxFor(m => m.compartilhar)
-                                                    @Html.Label("Compartilhar")*@
-                                                </div>
+                                                    <div class="col-lg-3">
+                                                        <input type="checkbox" name="curtir" value="true" id="curtir">
+                                                        <input type="hidden" name="curtir" value="false">
+                                                        @Html.Label("Curtir")
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="col-lg-3">
+                                                        <input type="checkbox" id="comentar" name="comentar" value="true">
+                                                        <input type="hidden" name="comentar" value="false">
+                                                        @Html.Label("Comentar")
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="col-lg-3">
+                                                        <input type="checkbox" id="compartilhar" name="compartilhar" value="true">
+                                                        <input type="hidden" name="compartilhar" value="false">
+                                                        @Html.Label("Compartilhar")
+                                                    </div>
 
-                                                <div class="col-lg-9"></div>
-                                                <div class="clearfix"></div>
-                                            </div>
+                                                    <div class="col-lg-9"></div>
+                                                    <div class="clearfix"></div>
+
+                                                    <div class="form-group col-lg-12"></div>
+                                                    <div class="form-group col-lg-12"></div>
+                                                    <div class="form-group col-lg-12"></div>
+
+                                                </div>
+                                            </form>
                                         </div>
-@*
-            <div class="form-group">
-                @Html.Label("Título do Anúncio", new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.tituloAnuncio)
-                    @Html.ValidationMessageFor(model => model.tituloAnuncio)
-                </div>
-            </div>
 
-            <div class="form-group">
-                @Html.Label("URL do Anúncio", new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.url)
-                    @Html.ValidationMessageFor(model => model.url)
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.Label("Descrição do Anúncio", new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextAreaFor(model => model.dsAnuncio)
-                    @Html.ValidationMessageFor(model => model.dsAnuncio)
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.Label("Link do Vídeo", new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.videoAnuncio)
-                    @Html.ValidationMessageFor(model => model.videoAnuncio)
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.Label("Ramo de Atividade", new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("raid", String.Empty)
-                    @Html.ValidationMessageFor(model => model.raid)
-                </div>
-            </div>
-*@
-                                        <div class="form-group">
-                                            <div class="col-md-offset-2 col-md-10">
-                                                <input type="submit" value="Salvar" class="btn btn-default" />
-                                            </div>
-                                            <div>
-                                                @Html.ActionLink("Voltar", "Index")
-                                            </div>
+                                        <div class="form-group col-lg-offset-9">
+                                            <button type="button" onclick=" $('#lnk3').click(); " class="btn btn-default">Anterior</button>
+                                            <button type="submit" value="Salvar" class="btn btn-default">
+                                                <i class="fa fa-floppy-o"></i>Salvar
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
-                                </div>
+                            
+                            </div>
                         </div>
                     </div>
+
                 </div>
+
             </div>
             <!-- /.portlet-body -->
         </div>
         <!-- /.portlet -->
-
     </div>
-        <!-- /.col-lg-12 -->
+    <!-- /.col-lg-12 -->
 }

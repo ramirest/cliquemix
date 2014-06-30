@@ -18,201 +18,201 @@
 {
     @Html.AntiForgeryToken()
     <div class="row">
-                <div class="col-lg-12">
-                    <div class="portlet portlet-default">
-                        <div class="portlet-body">
-                            <ul id="userTab" class="nav nav-tabs">
-                                <li class="active">
-                                    <a href="#profile-settings" data-toggle="tab">Cadastro de Anúncio</a>
-                                </li>
-                            </ul>
-                            <div id="userTabContent" class="tab-content">
-                                <div class="tab-pane fade in active" id="profile-settings">
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <ul id="userSettings" class="nav nav-pills nav-stacked">
-                                                <li class="active">
-                                                    <a href="#infoBasico" data-toggle="tab" id="lnk1"><i class="fa fa-info-circle fa-fw"></i> Informações</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#infoVideo" data-toggle="tab" id="lnk2"><i class="fa fa-film fa-fw"></i> Video</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#infoImg" data-toggle="tab" id="lnk3"><i class="fa fa-picture-o fa-fw"></i> Imagens</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#infoFunc" data-toggle="tab" id="lnk4"><i class="fa fa-puzzle-piece fa-fw"></i> Funcionalidades</a>
-                                                </li>
-                                            </ul>
+        <div class="col-lg-12">
+            <div class="portlet portlet-default">
+                <div class="portlet-body">
+                    <ul id="userTab" class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#profile-settings" data-toggle="tab">Cadastro de Anúncio</a>
+                        </li>
+                    </ul>
+                    <div id="userTabContent" class="tab-content">
+                        <div class="tab-pane fade in active" id="profile-settings">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <ul id="userSettings" class="nav nav-pills nav-stacked">
+                                        <li class="active">
+                                            <a href="#infoBasico" data-toggle="tab" id="lnk1"><i class="fa fa-info-circle fa-fw"></i> Informações</a>
+                                        </li>
+                                        <li>
+                                            <a href="#infoVideo" data-toggle="tab" id="lnk2"><i class="fa fa-film fa-fw"></i> Video</a>
+                                        </li>
+                                        <li>
+                                            <a href="#infoImg" data-toggle="tab" id="lnk3"><i class="fa fa-picture-o fa-fw"></i> Imagens</a>
+                                        </li>
+                                        <li>
+                                            <a href="#infoFunc" data-toggle="tab" id="lnk4"><i class="fa fa-puzzle-piece fa-fw"></i> Funcionalidades</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="col-sm-9">
+                                    <div id="userSettingsContent" class="tab-content">
+                                        <div class="tab-pane fade in active" id="infoBasico">
+                                            @*  Dados da empresa  *@
+                                            <form role="form">
+                                                <h4 class="page-header">Informações do Anúncio:</h4>
+                                                <div class="form-group col-lg-6">
+                                                    @Html.Label("Título do Anúncio")
+                                                    @Html.TextBoxFor(model => model.tituloAnuncio, new {@class = "form-control"})
+                                                    @Html.ValidationMessageFor(model => model.tituloAnuncio)
+                                                </div>
+                                                        
+                                                <div class="form-group col-lg-6">
+                                                    @Html.Label("URL do Anúncio")
+                                                    @Html.TextBoxFor(model => model.url, new { @class = "form-control", placeholder = "Http://" })
+                                                </div>
+
+                                                <div class="clearfix"></div>
+                                                <div class="form-group col-lg-offset-6"></div>
+
+                                                <div class="form-group col-lg-6">
+                                                    @Html.Label("Ramo de Atividade")
+                                                    <div class="clearfix"></div>
+                                                    @Html.DropDownList("raid", String.Empty)
+                                                    @Html.ValidationMessageFor(model => model.raid)
+                                                </div>
+
+                                                <div class="form-group col-lg-6">
+                                                    @Html.Label("Status")
+                                                    <div class="clearfix"></div>
+                                                    @Html.DropDownList("asid", String.Empty)
+                                                    @Html.ValidationMessageFor(model => model.asid)
+                                                </div>
+
+                                                <div class="clearfix"></div>
+                                                <div class="form-group col-lg-offset-6"></div>
+
+                                                <div class="form-group col-lg-12">
+                                                    <div id="summernote">Seu texto aqui.</div>
+                                                </div>
+
+                                                <div class="col-sm-offset-10 col-sm-1">
+                                                    <button type="button" onclick=" $('#lnk2').click(); " class="btn btn-default">Próximo</button>
+                                                </div>
+                                            </form>
                                         </div>
 
-                                        <div class="col-sm-9">
-                                            <div id="userSettingsContent" class="tab-content">
-                                                <div class="tab-pane fade in active" id="infoBasico">
-                                                    @*  Dados da empresa  *@
-                                                    <form role="form">
-                                                        <h4 class="page-header">Informações do Anúncio:</h4>
-                                                        <div class="form-group col-lg-6">
-                                                            @Html.Label("Título do Anúncio")
-                                                            @Html.TextBoxFor(model => model.tituloAnuncio, new {@class = "form-control"})
-                                                            @Html.ValidationMessageFor(model => model.tituloAnuncio)
-                                                        </div>
-                                                        
-                                                        <div class="form-group col-lg-6">
-                                                            @Html.Label("URL do Anúncio")
-                                                            @Html.TextBoxFor(model => model.url, new { @class = "form-control", placeholder = "Http://" })
-                                                        </div>
-
-                                                        <div class="clearfix"></div>
-                                                        <div class="form-group col-lg-offset-6"></div>
-
-                                                        <div class="form-group col-lg-6">
-                                                            @Html.Label("Ramo de Atividade")
-                                                            <div class="clearfix"></div>
-                                                            @Html.DropDownList("raid", String.Empty)
-                                                            @Html.ValidationMessageFor(model => model.raid)
-                                                        </div>
-
-                                                        <div class="form-group col-lg-6">
-                                                            @Html.Label("Status")
-                                                            <div class="clearfix"></div>
-                                                            @Html.DropDownList("asid", String.Empty)
-                                                            @Html.ValidationMessageFor(model => model.asid)
-                                                        </div>
-
-                                                        <div class="clearfix"></div>
-                                                        <div class="form-group col-lg-offset-6"></div>
-
-                                                        <div class="form-group col-lg-12">
-                                                            <div id="summernote">Seu texto aqui.</div>
-                                                        </div>
-
-                                                        <div class="col-sm-offset-10 col-sm-1">
-                                                            <button type="button" onclick=" $('#lnk2').click(); " class="btn btn-default">Próximo</button>
-                                                        </div>
-                                                    </form>
+                                        <div class="tab-pane fade" id="infoVideo">
+                                            <form role="form">
+                                                <h4 class="page-header">Informações do Video:</h4>
+                                                <div class="form-group col-lg-6">
+                                                    @Html.Label("URL")
+                                                    @Html.TextBoxFor(model => model.videoAnuncio, new {@class = "form-control", placeholder = "Http://"})
                                                 </div>
 
-                                                <div class="tab-pane fade" id="infoVideo">
-                                                    <form role="form">
-                                                        <h4 class="page-header">Informações do Video:</h4>
-                                                        <div class="form-group col-lg-6">
-                                                            @Html.Label("URL")
-                                                            @Html.TextBoxFor(model => model.videoAnuncio, new {@class = "form-control", placeholder = "Http://"})
-                                                        </div>
+                                                <div class="form-group col-lg-offset-6">
 
-                                                        <div class="form-group col-lg-offset-6">
-
-                                                        </div>
-
-                                                        <div class="clearfix"></div>
-
-                                                        <div class="form-group col-lg-6">
-                                                            @Html.Label("Imagem do Vídeo")
-                                                            <input type="image" class="img-thumbnail" src="~/fonts/img/produto_sem_foto.gif">
-                                                        </div>
-
-                                                        <div class="clearfix"></div>
-
-                                                        <div class="form-group col-lg-offset-9">
-
-                                                            <button type="button" onclick=" $('#lnk1').click(); " class="btn btn-default">Anterior</button>
-                                                            <button type="button" onclick=" $('#lnk3').click(); " class="btn btn-default">Próximo</button>
-                                                        </div>
-                                                    </form>
                                                 </div>
 
-                                                <div class="tab-pane fade in" id="infoImg">
+                                                <div class="clearfix"></div>
 
-                                                    <form role="form">
-                                                        <h4 class="page-header">Galeria de Imagens:</h4>
-
-                                                        <div class="page-header upload-botao">
-                                                            <input type="file" class="filestyle " data-input="false" data-iconname="glyphicon-inbox">
-                                                        </div>
-
-                                                        <div class="col-lg-offset-6"></div>
-
-                                                        <div class="clearfix"></div>
-
-                                                        <div class="col-lg-12"></div>
-
-                                                        <div class="clearfix"></div>
-
-
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                                                                <a class="thumbnail" href="#">
-                                                                    <img class="img-responsive" src="http://placehold.it/400x300">
-                                                                </a>
-                                                            </div>
-
-                                                            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                                                                <a class="thumbnail" href="#">
-                                                                    <img class="img-responsive" src="http://placehold.it/400x300">
-                                                                </a>
-                                                            </div>
-
-                                                            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                                                                <a class="thumbnail" href="#">
-                                                                    <img class="img-responsive" src="http://placehold.it/400x300">
-                                                                </a>
-                                                            </div>
-
-                                                            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                                                                <a class="thumbnail" href="#">
-                                                                    <img class="img-responsive" src="http://placehold.it/400x300">
-                                                                </a>
-                                                            </div>
-
-                                                            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                                                                <a class="thumbnail" href="#">
-                                                                    <img class="img-responsive" src="http://placehold.it/400x300">
-                                                                </a>
-                                                            </div>
-
-                                                            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                                                                <a class="thumbnail" href="#">
-                                                                    <img class="img-responsive" src="http://placehold.it/400x300">
-                                                                </a>
-                                                            </div>
-
-                                                            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                                                                <a class="thumbnail" href="#">
-                                                                    <img class="img-responsive" src="http://placehold.it/400x300">
-                                                                </a>
-                                                            </div>
-
-                                                            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                                                                <a class="thumbnail" href="#">
-                                                                    <img class="img-responsive" src="http://placehold.it/400x300">
-                                                                </a>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="form-group col-lg-offset-9">
-                                                            <button type="button" onclick=" $('#lnk2').click(); " class="btn btn-default">Anterior</button>
-                                                            <button type="button" onclick=" $('#lnk4').click(); " class="btn btn-default">Próximo</button>
-                                                        </div>
-                                                    </form>
+                                                <div class="form-group col-lg-6">
+                                                    @Html.Label("Imagem do Vídeo")
+                                                    <input type="image" class="img-thumbnail" src="~/fonts/img/produto_sem_foto.gif">
                                                 </div>
 
-                                                <div class="tab-pane fade in" id="infoFunc">
-                                                    <form role="form">
-                                                        <h4 class="page-header">Escolha as Funcionalidades:</h4>
-                                                        <div class="form-group col-lg-12 ">                                                            
-                                                            <div class="col-lg-3">@*
-                                                                @Html.CheckBoxFor(m => m.curtir) 
-                                                                @Html.Label("Curtir")*@
-                                                            </div>
-                                                            <div class="col-lg-3">@*
+                                                <div class="clearfix"></div>
+
+                                                <div class="form-group col-lg-offset-9">
+
+                                                    <button type="button" onclick=" $('#lnk1').click(); " class="btn btn-default">Anterior</button>
+                                                    <button type="button" onclick=" $('#lnk3').click(); " class="btn btn-default">Próximo</button>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                        <div class="tab-pane fade in" id="infoImg">
+
+                                            <form role="form">
+                                                <h4 class="page-header">Galeria de Imagens:</h4>
+
+                                                <div class="page-header upload-botao">
+                                                    <input type="file" class="filestyle " data-input="false" data-iconname="glyphicon-inbox">
+                                                </div>
+
+                                                <div class="col-lg-offset-6"></div>
+
+                                                <div class="clearfix"></div>
+
+                                                <div class="col-lg-12"></div>
+
+                                                <div class="clearfix"></div>
+
+
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                                                        <a class="thumbnail" href="#">
+                                                            <img class="img-responsive" src="http://placehold.it/400x300">
+                                                        </a>
+                                                    </div>
+
+                                                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                                                        <a class="thumbnail" href="#">
+                                                            <img class="img-responsive" src="http://placehold.it/400x300">
+                                                        </a>
+                                                    </div>
+
+                                                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                                                        <a class="thumbnail" href="#">
+                                                            <img class="img-responsive" src="http://placehold.it/400x300">
+                                                        </a>
+                                                    </div>
+
+                                                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                                                        <a class="thumbnail" href="#">
+                                                            <img class="img-responsive" src="http://placehold.it/400x300">
+                                                        </a>
+                                                    </div>
+
+                                                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                                                        <a class="thumbnail" href="#">
+                                                            <img class="img-responsive" src="http://placehold.it/400x300">
+                                                        </a>
+                                                    </div>
+
+                                                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                                                        <a class="thumbnail" href="#">
+                                                            <img class="img-responsive" src="http://placehold.it/400x300">
+                                                        </a>
+                                                    </div>
+
+                                                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                                                        <a class="thumbnail" href="#">
+                                                            <img class="img-responsive" src="http://placehold.it/400x300">
+                                                        </a>
+                                                    </div>
+
+                                                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                                                        <a class="thumbnail" href="#">
+                                                            <img class="img-responsive" src="http://placehold.it/400x300">
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-lg-offset-9">
+                                                    <button type="button" onclick=" $('#lnk2').click(); " class="btn btn-default">Anterior</button>
+                                                    <button type="button" onclick=" $('#lnk4').click(); " class="btn btn-default">Próximo</button>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                        <div class="tab-pane fade in" id="infoFunc">
+                                            <form role="form">
+                                                <h4 class="page-header">Escolha as Funcionalidades:</h4>
+                                                <div class="form-group col-lg-12 ">                                                            
+                                                    <div class="col-lg-3">
+                                                        @Html.CheckBoxFor(m => m.curtir) 
+                                                        @Html.Label("Curtir")
+                                                    </div>
+                                                    <div class="col-lg-3">@*
                                                                 @Html.CheckBoxFor(m => m.comentar) 
                                                                 @Html.Label("Comentar")*@
-                                                            </div>
-                                                            <div class="col-lg-3">@*
+                                                    </div>
+                                                    <div class="col-lg-3">@*
                                                                 @Html.CheckBoxFor(m => m.compartilhar) 
                                                                 @Html.Label("Compartilhar")*@
-                                                            </div>
+                                                    </div>
                                                     
                                                     <div class="col-lg-9"></div>
                                                     <div class="clearfix"></div>
@@ -222,46 +222,44 @@
                                                         @Html.Label("Comentar")
                                                     </div>
                                                     *@
-                                                            <div class="col-lg-9"></div>
-                                                            <div class="clearfix"></div>
-                                                            @*
+                                                    <div class="col-lg-9"></div>
+                                                    <div class="clearfix"></div>
+                                                    @*
                                                     <div class="col-lg-3 padding-bottom-onoff">
                                                         @Html.CheckBoxFor(m => m.compartilhar, "Compartilhar")
                                                         @Html.Label("Compartilhar")
                                                     </div>
                                                     *@
-                                                        </div>
+                                                </div>
 
-                                                        <div class="col-lg-9"></div>
-                                                        <div class="clearfix"></div>
+                                                <div class="col-lg-9"></div>
+                                                <div class="clearfix"></div>
 
-                                                        <div class="form-group col-lg-12"></div>
-                                                        <div class="form-group col-lg-12"></div>
-                                                        <div class="form-group col-lg-12"></div>
+                                                <div class="form-group col-lg-12"></div>
+                                                <div class="form-group col-lg-12"></div>
+                                                <div class="form-group col-lg-12"></div>
 
-                                                        <div class="form-group col-lg-offset-9">
-                                                            <button type="button" onclick=" $('#lnk3').click(); " class="btn btn-default">Anterior</button>
-                                                            <input type="submit" value="Salvar" class="btn btn-default" />
-    @*
-                                                            <button type="submit" class="btn btn-default" id="Create" value="CreateAnuncio">
-                                                            <i class="fa fa-floppy-o"></i>
-                                                            Salvar
-                                                            </button>
-        *@
-
+                                                <div class="form-group col-lg-offset-9">
+                                                    <button type="button" onclick=" $('#lnk3').click(); " class="btn btn-default">Anterior</button>
+                                                    <button type="submit" value="Salvar" class="btn btn-default">
+                                                        <i class="fa fa-floppy-o"></i>Salvar</button>
                                                 </div>
                                             </form>
                                         </div>
+
                                     </div>
                                 </div>
+
                             </div>
+
                         </div>
+
                     </div>
+
                 </div>
                 <!-- /.portlet-body -->
             </div>
             <!-- /.portlet -->
-
         </div>
         <!-- /.col-lg-12 -->
     </div>
