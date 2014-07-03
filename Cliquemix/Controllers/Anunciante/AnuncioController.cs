@@ -21,7 +21,7 @@ namespace Cliquemix.Controllers
             var tbanuncio = db.tbAnuncios.Include(t => t.tbRamoAtividade);
             return View(tbanuncio.ToList());
         }
-
+        
         // GET: /Anuncio/
         public ActionResult ListAnuncio()
         {

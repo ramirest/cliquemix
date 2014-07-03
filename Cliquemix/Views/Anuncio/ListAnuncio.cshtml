@@ -42,7 +42,7 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <tr>
+                                <tr onclick="window.location = 'Edit/@item.aid'">
                                     <td class="text-center">
                                         @Html.DisplayFor(modelItem => item.aid)
                                     </td>

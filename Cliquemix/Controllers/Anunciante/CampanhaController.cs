@@ -88,7 +88,7 @@ namespace Cliquemix.Controllers.Anunciante
         public ActionResult Edit([Bind(Include="cid,tituloCampanha,dtInicio,dtTermino,did,csid")] tbCampanha tbcampanha)
         {
             if (ModelState.IsValid)
-            {
+            {                
                 db.Entry(tbcampanha).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

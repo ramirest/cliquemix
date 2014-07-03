@@ -213,7 +213,6 @@
     <Compile Include="Controllers\Anunciante\MenuTopoAnuncianteController.cs" />
     <Compile Include="Controllers\Anunciante\PrincipalAnuncianteController.cs" />
     <Compile Include="Controllers\Anunciante\AnuncioController.cs" />
-    <Compile Include="Controllers\Anuncio2Controller.cs" />
     <Compile Include="Controllers\BreadcrumbsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EnderecoController.cs" />
@@ -607,7 +606,6 @@
     <Content Include="Views\Breadcrumbs\Breadcrumbs-Anuncio-Edit.cshtml" />
     <Content Include="Views\Breadcrumbs\Breadcrumbs-Anuncio-List.cshtml" />
     <Content Include="Views\Account\Logout.cshtml" />
-    <Content Include="Views\Endereco\Index.cshtml" />
     <Content Include="Views\Anunciante\Create.cshtml" />
     <Content Include="Views\Anunciante\Delete.cshtml" />
     <Content Include="Views\Anunciante\Details.cshtml" />
@@ -618,6 +616,8 @@
     <Content Include="Views\tipoUsers\Details.cshtml" />
     <Content Include="Views\tipoUsers\Edit.cshtml" />
     <Content Include="Views\tipoUsers\Index.cshtml" />
+    <Content Include="Views\Endereco\Index.cshtml" />
+    <Content Include="Views\Endereco\DefinicaoArquitetura.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

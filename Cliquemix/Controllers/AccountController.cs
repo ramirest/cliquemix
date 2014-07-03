@@ -11,8 +11,7 @@ using System.Threading.Tasks;
 namespace Cliquemix.Controllers
 {
     public class AccountController : Controller
-    {
-        private Endereco endereco = new Endereco();
+    {       
         private ApplicationDbContext db = new ApplicationDbContext();
 
         public ActionResult Search(string _cep)

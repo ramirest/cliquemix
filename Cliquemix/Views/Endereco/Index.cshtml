@@ -1,30 +1,50 @@
-﻿@using System.Drawing
-@using System.Web.Razor.Text
-@using System.Web.UI.WebControls
+﻿@using System.Web.UI.WebControls
 @using Cliquemix.Models
-@model Cliquemix.Models.Endereco
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Index";    
     Layout = "~/Views/Shared/_Layout.cshtml";
-    Endereco endereco = new Endereco();
 }
 
-<h2>Index</h2>
+<script type="text/javascript"
+        src="~/Scripts/Outros/jquery-2.1.1.min.js"></script>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+<script type="text/javascript">    
+    //var meuValor = $("#txtCep").val();
+    function atualizarDefinicao() {
+        $.ajax(
+        {            
+            type: 'POST',
+            url: '/Endereco/DefinicaoArquitetura',
+            dataType: 'html',
+            //data: { teste: meuValor },
+            cache: false,
+            async: true,
+            success: function (data) {
+                $('#definicaoArquitetura').html(data);
+            }
+        });
+    }
+/*    
+    $(document).ready(function () {
+        setInterval(atualizarDefinicao, 30000);
+    });
+*/
+</script>
 
-    <div class="form-horizontal">
-        <h4>Endereço</h4>
-        <hr />
-        @Html.ValidationSummary(true)
+<div class="form-group col-lg-12">
+    <br/>
+    Última atualização completa desta página: @DateTime.Now.ToString("HH:mm:ss")
 
-        <div class="form-group col-lg-3">
-            @Html.LabelFor(model => model.cep, "CEP")
-            @Html.TextBoxFor(model => model.cep, new { @class = "form-control", maxlength = "10", alt = "cep", id = "txtCep"})
-            
-        </div>
+    <h3>Definição:</h3>
+    <div>
+        <input type="button" id="btnBuscar" value="Pesquisar" onclick="atualizarDefinicao();" />
+    </div>    
+
+    <div id="definicaoArquitetura">
+        @{
+            Html.RenderPartial("DefinicaoArquitetura");            
+        }
     </div>
-}
+
+</div>

@@ -1,174 +1,226 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Web;
-using System.Text;
-using System.Data;
 using System.Data.Common;
 using System.Data.Entity.Core.EntityClient;
-using System.ComponentModel.DataAnnotations;
-using Cliquemix.Models;
+using System.Text;
+using System.Data;
+using System.Data.Entity;
+using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 
 namespace Cliquemix.Models
 {
-    public partial class Endereco
+    public static class Endereco
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
-
-        #region _Váriavies 
-
-        private string _pais;
-        private string _uf;
-        private string _cidade;
-        private string _bairro;
-        private string _tipo_lagradouro;
-        private string _lagradouro;
-        private string _resultado;
-        private string _resultato_txt;
-        public string _cep;
-
+        #region "Váriavies"
+        private static int _cepid;
+        private static string _cep;
+        private static string _uf;
+        private static string _cidade;
+        private static string _bairro;
+        private static string _tipo_logradouro;
+        private static string _logradouro;
+        private static string _resultado;
+        private static string _resultato_txt;
         #endregion
 
-        #region _Propiedades 
-
-        public string cep
+        #region "Propiedades"
+        public static int Cepid
+        {
+            get { return _cepid; }
+            set { _cepid = value; }
+        }
+        public static string Cep
         {
             get { return _cep; }
             set { _cep = value; }
         }
-        public string UF
+        public static string UF
         {
             get { return _uf; }
+            set { _uf = value; }
         }
-
-        public string Cidade
+        public static string Cidade
         {
             get { return _cidade; }
+            set { _cidade = value; }
         }
-
-        public string Bairro
+        public static string Bairro
         {
             get { return _bairro; }
+            set { _bairro = value; }
         }
-
-        public string TipoLagradouro
+        public static string TipoLogradouro
         {
-            get { return _tipo_lagradouro; }
+            get { return _tipo_logradouro; }
+            set { _tipo_logradouro = value; }
         }
-
-        public string Lagradouro
+        public static string Logradouro
         {
-            get { return _lagradouro; }
+            get { return _logradouro; }
+            set { _logradouro = value; }
         }
-
-        public string Resultado
+        public static string Resultado
         {
             get { return _resultado; }
+            set { _resultado = value; }
         }
-
-        public string ResultadoTXT
+        public static string ResultadoTXT
         {
             get { return _resultato_txt; }
+            set { _resultato_txt = value; }
         }
+        #endregion        
 
+        #region "Construtor"
+
+        /// <summary>  
+        /// WebService para Busca de CEP  
+        ///  </summary>  
+        /// <param  name="CEP"></param>  
+        static Endereco()
+        {
+            Cep = "";
+            UF = "";
+            Cidade = "";
+            Bairro = "";
+            TipoLogradouro = "";
+            Logradouro = "";
+            Resultado = "0";
+            ResultadoTXT = "CEP não encontrado";
+        }
         #endregion
 
-        #region _Método Localizar Endereço {Validação CEP}
-
-        public void localizarEnd(string cep)
+        #region "Pesquisar CEP WebService"
+        public static void PesquisarWeb(string CEP)
         {
-            using (EntityConnection conn = new EntityConnection("name=cliquemixEntities"))
-            {
-                conn.Open();
-                string _QrySQL =
-                    @"SELECT tbCep.dsPais, tbCep.dsEstado, tbCep.dsCidade, tbCep.dsBairro, tbCep.dsLogradouro
-                    FROM cliquemixEntities.tbCep 
-                    WHERE tbCep.cep = @pCep";
+            UF = "";
+            Cidade = "";
+            Bairro = "";
+            TipoLogradouro = "";
+            Logradouro = "";
+            Resultado = "0";
+            ResultadoTXT = "CEP não encontrado";
 
-                EntityCommand cmd = new EntityCommand(_QrySQL, conn);
-                //
-                // Create two parameters and add them to 
-                // the EntityCommand's Parameters collection 
-                EntityParameter param1 = new EntityParameter();
-                param1.ParameterName = "pCep";
-                param1.Value = cep;
-
-                cmd.Parameters.Add(param1);
-
-                using (DbDataReader rdr = cmd.ExecuteReader(CommandBehavior.SequentialAccess))
-                {
-                    // Iterate through the collection of Contact items.
-                    while (rdr.Read())
-                    {
-                        /*
-                        this.dsPais = rdr["dsPais"].ToString();
-                        this.dsEstado = rdr["dsEstado"].ToString();
-                        this.dsCidade = rdr["dsCidade"].ToString();
-                        this.dsBairro = rdr["dsBairro"].ToString();
-                        this.dsLogradouro = rdr["dsLogradouro"].ToString();
-                        */
-                    }
-                }
-            }
-        }
-
-        #endregion
-
-
-        public Endereco()
-        {
-            _uf = "";
-            _cidade = "";
-            _bairro = "";
-            _tipo_lagradouro = "";
-            _lagradouro = "";
-            _resultado = "0";
-            _resultato_txt = "CEP não encontrado";
-            _cep = string.Empty;
-        }
-
-        public void pesquisar()
-        {
             //Cria um DataSet  baseado no retorno do XML  
             DataSet ds = new DataSet();
-            ds.ReadXml("http://cep.republicavirtual.com.br/web_cep.php?cep=" + cep.Replace ("-","").Trim()+ "&formato=xml");
+            ds.ReadXml("http://cep.republicavirtual.com.br/web_cep.php?cep=" + CEP.Replace("-", "").Trim() + "&formato=xml");
 
             if (ds != null)
             {
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    _resultado = ds.Tables[0].Rows[0]["resultado"].ToString();
+                    Resultado = ds.Tables[0].Rows[0]["resultado"].ToString();
                     switch (_resultado)
                     {
                         case "1":
-                            _uf = ds.Tables[0].Rows[0]["uf"].ToString().Trim();
-                            _cidade = ds.Tables[0].Rows[0]["cidade"].ToString().Trim();
-                            _bairro = ds.Tables[0].Rows[0]["bairro"].ToString().Trim();
-                            _tipo_lagradouro = ds.Tables[0].Rows[0]["tipo_logradouro"].ToString().Trim();
-                            _lagradouro = ds.Tables[0].Rows[0]["logradouro"].ToString().Trim();
-                            _resultato_txt = "CEP completo";
+                            UF = ds.Tables[0].Rows[0]["uf"].ToString().Trim();
+                            Cidade = ds.Tables[0].Rows[0]["cidade"].ToString().Trim();
+                            Bairro = ds.Tables[0].Rows[0]["bairro"].ToString().Trim();
+                            TipoLogradouro = ds.Tables[0].Rows[0]["tipo_logradouro"].ToString().Trim();
+                            Logradouro = ds.Tables[0].Rows[0]["logradouro"].ToString().Trim();
+                            ResultadoTXT = "CEP completo";
                             break;
                         case "2":
-                            _uf = ds.Tables[0].Rows[0]["uf"].ToString().Trim();
-                            _cidade = ds.Tables[0].Rows[0]["cidade"].ToString().Trim();
-                            _bairro = "";
-                            _tipo_lagradouro = "";
-                            _lagradouro = "";
-                            _resultato_txt = "CEP  único";
+                            UF = ds.Tables[0].Rows[0]["uf"].ToString().Trim();
+                            Cidade = ds.Tables[0].Rows[0]["cidade"].ToString().Trim();
+                            Bairro = "";
+                            TipoLogradouro = "";
+                            Logradouro = "";
+                            ResultadoTXT = "CEP  único";
                             break;
                         default:
-                            _uf = "";
-                            _cidade = "";
-                            _bairro = "";
-                            _tipo_lagradouro = "";
-                            _lagradouro = "";
-                            _resultato_txt = "CEP não  encontrado";
+                            UF = "";
+                            Cidade = "";
+                            Bairro = "";
+                            TipoLogradouro = "";
+                            Logradouro = "";
+                            ResultadoTXT = "CEP não  encontrado";
                             break;
                     }
+                }
+            }
+            //Exemplo do retorno da  WEB  
+            //<?xml version="1.0"  encoding="iso-8859-1"?>  
+            //<webservicecep>  
+            //<uf>RS</uf>  
+            //<cidade>Porto  Alegre</cidade>  
+            //<bairro>Passo  D'Areia</bairro>  
+            //<tipo_logradouro>Avenida</tipo_logradouro>  
+            //<logradouro>Assis Brasil</logradouro>  
+            //<resultado>1</resultado>  
+            //<resultado_txt>sucesso - cep  completo</resultado_txt>  
+            //</webservicecep>  
+        }
+        #endregion
+
+        #region "Pesquisar CEP Banco de Dados Local"
+        public static void PesquisarLocal(string CEP)
+        {
+            using (EntityConnection conn = new EntityConnection("name=cliquemixEntities"))
+            {
+                conn.Open();
+                string _QrySQL = @"SELECT tbCep.cepid, tbCep.cep, tbCep.tipoLogradouro, tbCep.dsLogradouro, tbBairro.nomeBairro, tbCidade.nomeCidade, tbEstado.sgEstado
+                                   FROM cliquemixEntities.tbCep 
+                                        inner join cliquemixEntities.tbBairro on tbCep.baiid = tbBairro.baiid
+		                                inner join cliquemixEntities.tbCidade on tbCep.cid = tbCidade.cid
+                                        inner join cliquemixEntities.tbEstado on tbCep.eid = tbEstado.eid
+                                   WHERE tbCep.cep like @pCep";
+
+                EntityCommand cmd = new EntityCommand(_QrySQL, conn);
+
+                // Create two parameters and add them to 
+                // the EntityCommand's Parameters collection 
+                EntityParameter param1 = new EntityParameter();
+                param1.ParameterName = "pCep";
+                param1.Value = CEP;
+
+                cmd.Parameters.Add(param1);
+                try
+                {
+                    using (DbDataReader rdr = cmd.ExecuteReader(CommandBehavior.SequentialAccess))
+                    {
+                        if (rdr.HasRows)
+                        {
+                            ResultadoTXT = "CEP completo";
+                            // Iterate through the collection of Contact items.
+                            while (rdr.Read())
+                            {
+                                Cepid = Convert.ToInt32(rdr["cepid"].ToString());
+                                Cep = rdr["cep"].ToString();
+                                TipoLogradouro = rdr["tipoLogradouro"].ToString();
+                                Logradouro = rdr["dsLogradouro"].ToString();
+                                Bairro = rdr["nomeBairro"].ToString();
+                                Cidade = rdr["nomeCidade"].ToString();
+                                UF = rdr["sgEstado"].ToString();
+                            }
+                        }
+                        else
+                        {
+                            retornaVazio();
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    retornaVazio();
+                    throw;
                 }
 
             }
         }
-}
+        #endregion
+
+        #region "Retorna vazio"
+        public static void retornaVazio()
+        {
+            UF = "";
+            Cidade = "";
+            Bairro = "";
+            TipoLogradouro = "";
+            Logradouro = "";
+            ResultadoTXT = "CEP não encontrado";
+        }
+        #endregion
+    }
 }

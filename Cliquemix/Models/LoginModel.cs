@@ -21,7 +21,7 @@ namespace Cliquemix.Models
         public bool Remember { get; set; }
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        #region _Método UserIsValid {Validação login de usuário} 
+        #region "Método UserIsValid {Validação login de usuário}"
         public bool UserIsValid(string user, string pwd)
         {
             using (EntityConnection conn = new EntityConnection("name=cliquemixEntities"))
