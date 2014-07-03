@@ -9,15 +9,14 @@
 <script type="text/javascript"
         src="~/Scripts/Outros/jquery-2.1.1.min.js"></script>
 
-<script type="text/javascript">    
-    //var meuValor = $("#txtCep").val();
+<script type="text/javascript">
+    //var pCep = $("input[id='txtCep']").val();
     function atualizarDefinicao() {
         $.ajax(
         {            
             type: 'POST',
-            url: '/Endereco/DefinicaoArquitetura',
+            url: '/Endereco/DefinicaoArquitetura/?cep=' + $("input[id='txtCep']").val(),
             dataType: 'html',
-            //data: { teste: meuValor },
             cache: false,
             async: true,
             success: function (data) {
@@ -37,6 +36,7 @@
     Última atualização completa desta página: @DateTime.Now.ToString("HH:mm:ss")
 
     <h3>Definição:</h3>
+
     <div>
         <input type="button" id="btnBuscar" value="Pesquisar" onclick="atualizarDefinicao();" />
     </div>    

@@ -1,61 +1,53 @@
-﻿@using System.Web.UI.WebControls
-@using Cliquemix.Models
+﻿
+    <h4 class="page-header">Endereço</h4>
 
-@using (Html.BeginForm("DefinicaoArquitetura", "Endereco"))
-{
-    <div class="col-sm-12">
-
-        <h4 class="page-header">Endereço</h4>
-
-        <div class="form-group col-lg-3">
-            @Html.Label("CEP")
-            <div class="clearfix"></div>
-            <input type="text" id="txtCep" name="txtCep" value="@ViewBag.Cep" class="form-control" />
-        </div>
-
+    <div class="form-group col-lg-3">
+        @Html.Label("CEP")
         <div class="clearfix"></div>
-        <div class="form-group col-lg-7">
-            @Html.Label("Endereço")
-            <div class="clearfix"></div>
-            <input type="text" id="txtEndereco" name="txtEndereco" value="@ViewBag.Endereco" class="form-control" />
-        </div>
-
-        <div class="form-group col-lg-2">
-            @Html.Label("Número")
-            <div class="clearfix"></div>
-            <input type="text" id="txtNumero" name="txtNumero" class="form-control" />
-        </div>
-
-        <div class="form-group col-lg-3">
-            @Html.Label("Tipo")
-            <div class="clearfix"></div>
-            <input type="text" id="txtTipo" name="txtTipo" value="@ViewBag.Tipo" class="form-control" />
-        </div>
-
-        <div class="form-group col-lg-5">
-            @Html.Label("Bairro")
-            <div class="clearfix"></div>
-            <input type="text" id="txtBairro" name="txtBairro" value="@ViewBag.Bairro" class="form-control" />
-        </div>
-
-        <div class="form-group col-lg-5">
-            @Html.Label("Cidade")
-            <div class="clearfix"></div>
-            <input type="text" id="txtCidade" name="txtCidade" value="@ViewBag.Cidade" class="form-control" />
-        </div>
-
-        <div class="form-group col-lg-2">
-            @Html.Label("Estado")
-            <div class="clearfix"></div>
-            <input type="text" id="txtEstado" name="txtEstado" value="@ViewBag.UF" class="form-control" />
-        </div>
-        <input type="submit" id="btnSalvar" value="Salvar" />
-        <br />
-
-        @ViewBag.Resultado
-        <br />
-        <div>
-            Última Definição desta PartialView em: @DateTime.Now.ToString("HH:mm:ss")
-        </div>
+        <input type="text" id="txtCep" name="txtCep" value="@ViewBag.Cep" class="form-control" />
     </div>
-}
+
+    <div class="clearfix"></div>
+    <div class="form-group col-lg-7">
+        @Html.Label("Endereço")
+        <div class="clearfix"></div>
+        <input type="text" id="txtEndereco" name="txtEndereco" value="@ViewBag.Endereco" class="form-control" />
+    </div>
+
+    <div class="form-group col-lg-2">
+        @Html.Label("Número")
+        <div class="clearfix"></div>
+        <input type="text" id="txtNumero" name="txtNumero" class="form-control" />
+    </div>
+
+    <div class="form-group col-lg-3">
+        @Html.Label("Tipo")
+        <div class="clearfix"></div>
+        <input type="text" id="txtTipo" name="txtTipo" value="@ViewBag.Tipo" class="form-control" />
+    </div>
+
+    <div class="form-group col-lg-5">
+        @Html.Label("Bairro")
+        <div class="clearfix"></div>
+        <input type="text" id="txtBairro" name="txtBairro" value="@ViewBag.Bairro" class="form-control" />
+    </div>
+
+    <div class="form-group col-lg-5">
+        @Html.Label("Cidade")
+        <div class="clearfix"></div>
+        <input type="text" id="txtCidade" name="txtCidade" value="@ViewBag.Cidade" class="form-control" />
+    </div>
+
+    <div class="form-group col-lg-2">
+        @Html.Label("Estado")
+        <div class="clearfix"></div>
+        <input type="text" id="txtEstado" name="txtEstado" value="@ViewBag.UF" class="form-control" />
+    </div>
+    <br/>
+    @ViewBag.Resultado
+    <br/><br />
+    <div>
+        Última Definição desta PartialView em: @DateTime.Now.ToString("HH:mm:ss")
+    </div>
+
+

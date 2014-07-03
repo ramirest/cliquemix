@@ -22,12 +22,12 @@ namespace Cliquemix.Controllers
         {
             return PartialView();
         }
-
         [HttpPost]
-        public PartialViewResult DefinicaoArquitetura(string txtCep)
+        public PartialViewResult DefinicaoArquitetura(string cep)
         {
-            Endereco.PesquisarLocal("35162351");
+            Endereco.PesquisarLocal(cep);
             ViewBag.Cep = Endereco.Cep;
+            ViewBag.Cepid = Endereco.Cepid;
             ViewBag.Endereco = Endereco.Logradouro;
             ViewBag.Bairro = Endereco.Bairro;
             ViewBag.Cidade = Endereco.Cidade;

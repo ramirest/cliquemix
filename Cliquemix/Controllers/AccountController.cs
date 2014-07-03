@@ -14,13 +14,6 @@ namespace Cliquemix.Controllers
     {       
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public ActionResult Search(string _cep)
-        {
-            //some operations goes here
-            //            
-            tbAnunciante anunciante = new tbAnunciante();
-            return View("Register"); //return some view to the user
-        }
 
         //
         // GET: /Account/Login
