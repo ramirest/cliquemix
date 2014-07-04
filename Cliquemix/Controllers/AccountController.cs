@@ -95,7 +95,7 @@ namespace Cliquemix.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register([Bind(Include = "pid,cnpj,razaoSocial,nmFantasia,contato,ie,im,email,site,cpid,raid,saldoCreditos,uid,telResidencial,telComercial,telCelular1,telCelular2")] tbAnunciante tbanunciante)
+        public ActionResult Register([Bind(Include = "cnpj,razaoSocial,nmFantasia,contato,ie,im,email,site,cpid,raid,saldoCreditos,uid,telResidencial,telComercial,telCelular1,telCelular2")] tbAnunciante tbanunciante)
         {
             if (ModelState.IsValid)
             {
