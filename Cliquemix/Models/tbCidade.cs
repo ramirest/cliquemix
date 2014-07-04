@@ -19,6 +19,7 @@ namespace Cliquemix.Models
             this.tbCampanhaAnuncioLocalizacao = new HashSet<tbCampanhaAnuncioLocalizacao>();
             this.tbBairro = new HashSet<tbBairro>();
             this.tbCep = new HashSet<tbCep>();
+            this.tbAnuncianteEndereco = new HashSet<tbAnuncianteEndereco>();
         }
     
         public int cid { get; set; }
@@ -32,5 +33,6 @@ namespace Cliquemix.Models
         public virtual tbEstado tbEstado { get; set; }
         public virtual ICollection<tbBairro> tbBairro { get; set; }
         public virtual ICollection<tbCep> tbCep { get; set; }
+        public virtual ICollection<tbAnuncianteEndereco> tbAnuncianteEndereco { get; set; }
     }
 }

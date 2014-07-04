@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using BLToolkit.Validation;
+
 namespace Cliquemix.Models
 {
     using System;
@@ -24,8 +26,9 @@ namespace Cliquemix.Models
         }
     
         public int uid { get; set; }
-        public string username { get; set; }
+        public string username { get; set; }        
         public string pwd { get; set; }
+        public string cPwd { get; set; }
         public int utid { get; set; }
     
         public virtual ICollection<tbAnunciante> tbAnunciante { get; set; }

@@ -24,9 +24,17 @@ namespace Cliquemix.Models
         public Nullable<int> cepid { get; set; }
         public string numero_endereco { get; set; }
         public string complemento_endereco { get; set; }
+        public Nullable<int> baiid { get; set; }
+        public Nullable<int> cid { get; set; }
+        public Nullable<int> eid { get; set; }
+        public Nullable<int> paid { get; set; }
     
         public virtual tbAnunciante tbAnunciante { get; set; }
         public virtual tbCep tbCep { get; set; }
         public virtual ICollection<tbAnunciante> tbAnunciante1 { get; set; }
+        public virtual tbBairro tbBairro { get; set; }
+        public virtual tbCidade tbCidade { get; set; }
+        public virtual tbEstado tbEstado { get; set; }
+        public virtual tbPais tbPais { get; set; }
     }
 }

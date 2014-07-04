@@ -113,6 +113,10 @@
         <AssociationConnector Association="cliquemixModel.raid_tbAnuncio_tbRamoAtividade_fk" />
         <EntityTypeShape EntityType="cliquemixModel.tbAnuncioStatus" Width="1.5" PointX="16" PointY="0.875" />
         <AssociationConnector Association="cliquemixModel.asid_tbAnuncio_tbAnuncioStatus_fk" />
+        <AssociationConnector Association="cliquemixModel.baiid_tbAnuncianteEndereco_tbBairro_fk" />
+        <AssociationConnector Association="cliquemixModel.cid_tbAnuncianteEndereco_tbCidade_fk" />
+        <AssociationConnector Association="cliquemixModel.eid_tbAnuncianteEndereco_tbEstado_fk" />
+        <AssociationConnector Association="cliquemixModel.paid_tbAnuncianteEndereco_tbPais_fk" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

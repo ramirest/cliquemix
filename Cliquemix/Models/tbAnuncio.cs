@@ -29,9 +29,9 @@ namespace Cliquemix.Models
         public string videoAnuncio { get; set; }
         public Nullable<System.DateTime> dtCriacao { get; set; }
         public Nullable<int> raid { get; set; }
-        public bool comentar { get; set; }
-        public bool curtir { get; set; }
-        public bool compartilhar { get; set; }
+        public Nullable<bool> comentar { get; set; }
+        public Nullable<bool> curtir { get; set; }
+        public Nullable<bool> compartilhar { get; set; }
         public Nullable<int> asid { get; set; }
     
         public virtual ICollection<tbAnuncioFuncionalidade> tbAnuncioFuncionalidade { get; set; }

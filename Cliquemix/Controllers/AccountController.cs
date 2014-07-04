@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using System.Web.UI.WebControls;
 using Cliquemix.Models;
 using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace Cliquemix.Controllers
 {
@@ -59,50 +63,57 @@ namespace Cliquemix.Controllers
             }
             return View(model);
         }
-        /*
-        public Action Buscar(string cep)
-        {
-            
-        }
-        */
 
         //
         // GET: /Account/Register
         public ActionResult Register()
         {
             ViewBag.raid = new SelectList(db.tbRamoAtividade, "raid", "descricao");
+            ViewBag.cpid = new SelectList(db.tbCondicaoPagto, "cpid", "descricao");
             return View();
         }
 
-/*
- *
-        //
-        // POST: /Account/Register
+        public PartialViewResult RegisterEndereco()
+        {
+            return PartialView();
+        }
+        
         [HttpPost]
-        [AllowAnonymous]
+        public PartialViewResult RegisterEndereco(string cep)
+        {
+            Endereco.PesquisarLocal(cep);
+            ViewBag.Cep = Endereco.Cep;
+            ViewBag.Cepid = Endereco.Cepid;
+            ViewBag.Endereco = Endereco.Logradouro;
+            ViewBag.Bairro = Endereco.Bairro;
+            ViewBag.Cidade = Endereco.Cidade;
+            ViewBag.UF = Endereco.UF;
+            ViewBag.Tipo = Endereco.TipoLogradouro;
+            ViewBag.Resultado = Endereco.ResultadoTXT;
+            return PartialView();
+        }
+
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public ActionResult Register([Bind(Include = "pid,cnpj,razaoSocial,nmFantasia,contato,ie,im,email,site,cpid,raid,saldoCreditos,uid,telResidencial,telComercial,telCelular1,telCelular2")] tbAnunciante tbanunciante)
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.UserName };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                var user = new ApplicationUser() { UserName = tbanunciante.tbUsers.username };
+                if (tbanunciante.tbUsers.pwd == tbanunciante.tbUsers.cPwd)
                 {
-                    await SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Index", "Home");
+                    db.tbAnunciantes.Add(tbanunciante);
+                    db.SaveChanges();
                 }
                 else
                 {
-                    AddErrors(result);
+                    ViewBag.Error = "Confirmação de senha inválida!";
+                    RedirectToAction("Register");
                 }
             }
-
-            // If we got this far, something failed, redisplay form
-            return View(model);
+            return View("Login");
         }
 
-*/
 
         //
         // GET: /Account/Logout
@@ -123,18 +134,6 @@ namespace Cliquemix.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Login", "Account");
         }
-
-/*
-        //
-        // POST: /Account/Logout
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Logout(bool sair)
-        {
-            FormsAuthentication.SignOut();
-            return RedirectToAction("PrincipalAnunciante", "PrincipalAnunciante");
-        }
-*/
 
 	}
 }

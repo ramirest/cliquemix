@@ -618,6 +618,7 @@
     <Content Include="Views\tipoUsers\Index.cshtml" />
     <Content Include="Views\Endereco\Index.cshtml" />
     <Content Include="Views\Endereco\DefinicaoArquitetura.cshtml" />
+    <Content Include="Views\Account\RegisterEndereco.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

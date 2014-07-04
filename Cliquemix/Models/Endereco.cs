@@ -12,9 +12,10 @@ namespace Cliquemix.Models
 {
     public static class Endereco
     {
-        #region "Váriavies"
+        #region "Váriaveis"
         private static int _cepid;
         private static string _cep;
+        private static string _pais;
         private static string _uf;
         private static string _cidade;
         private static string _bairro;
@@ -39,6 +40,11 @@ namespace Cliquemix.Models
         {
             get { return _uf; }
             set { _uf = value; }
+        }
+        public static string Pais
+        {
+            get { return _pais; }
+            set { _pais = value; }
         }
         public static string Cidade
         {
@@ -82,6 +88,7 @@ namespace Cliquemix.Models
         {
             Cep = "";
             UF = "";
+            Pais = "";
             Cidade = "";
             Bairro = "";
             TipoLogradouro = "";
@@ -160,11 +167,12 @@ namespace Cliquemix.Models
             using (EntityConnection conn = new EntityConnection("name=cliquemixEntities"))
             {
                 conn.Open();
-                string _QrySQL = @"SELECT tbCep.cepid, tbCep.cep, tbCep.tipoLogradouro, tbCep.dsLogradouro, tbBairro.nomeBairro, tbCidade.nomeCidade, tbEstado.sgEstado
+                string _QrySQL = @"SELECT tbCep.cepid, tbCep.cep, tbCep.tipoLogradouro, tbCep.dsLogradouro, tbBairro.nomeBairro, tbCidade.nomeCidade, tbEstado.sgEstado, tbPais.nomePais
                                    FROM cliquemixEntities.tbCep 
                                         inner join cliquemixEntities.tbBairro on tbCep.baiid = tbBairro.baiid
 		                                inner join cliquemixEntities.tbCidade on tbCep.cid = tbCidade.cid
                                         inner join cliquemixEntities.tbEstado on tbCep.eid = tbEstado.eid
+                                        left join cliquemixEntities.tbPais on tbEstado.paid = tbPais.paid
                                    WHERE tbCep.cep like @pCep";
 
                 EntityCommand cmd = new EntityCommand(_QrySQL, conn);
@@ -193,6 +201,7 @@ namespace Cliquemix.Models
                                 Bairro = rdr["nomeBairro"].ToString();
                                 Cidade = rdr["nomeCidade"].ToString();
                                 UF = rdr["sgEstado"].ToString();
+                                Pais = rdr["nomePais"].ToString();
                             }
                         }
                         else
@@ -214,6 +223,7 @@ namespace Cliquemix.Models
         #region "Retorna vazio"
         public static void retornaVazio()
         {
+            Pais = "";
             UF = "";
             Cidade = "";
             Bairro = "";

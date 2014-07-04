@@ -1,4 +1,5 @@
 ﻿@model Cliquemix.Models.tbAnunciante
+
 @using System.Security.Cryptography
 @using System.Web.Mvc;
 @using System.Web.UI.WebControls
@@ -12,40 +13,64 @@
 <!DOCTYPE html>
 
 <html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    
-    <link href="~/Content/plugins/pace/pace.css" rel="stylesheet">
-    <script src="~/Scripts/plugins/pace/pace.js"></script>
+    <head>
+        <script type="text/javascript"
+                src="~/Scripts/Outros/jquery-2.1.1.min.js"></script>
 
+        <script type="text/javascript">
+            //var pCep = $("input[id='txtCep']").val();
+            function atualizarDefinicao() {
+                $.ajax(
+                {
+                    type: 'POST',
+                    url: '/Account/RegisterEndereco/?cep=' + $("input[id='txtCep']").val(),
+                    dataType: 'html',
+                    cache: false,
+                    async: true,
+                    success: function (data) {
+                        $('#registerEndereco').html(data);
+                    }
+                });
+            }
+/*            
+            $(document).ready(function () {
+                $("input[id='txtCep']").onexit(atualizarDefinicao);
+                //setInterval(atualizarDefinicao, 30000);
+            });
+*/            
+        </script>        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+
+        <link href="~/Content/plugins/pace/pace.css" rel="stylesheet">
+        <script src="~/Scripts/plugins/pace/pace.js"></script>
+
+        <link href="~/Content/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     
-    <link href="~/Content/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+        <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel="stylesheet" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel="stylesheet" type="text/css">
+        <link href="~/fonts/icons/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="~/Content/style.css" rel="stylesheet">
+        <link href="~/Content/plugins.css" rel="stylesheet">
+        <link href="~/Content/edicoes.css" rel="stylesheet">
     
-    <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel="stylesheet" type="text/css">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel="stylesheet" type="text/css">
-    <link href="~/fonts/icons/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="~/Content/style.css" rel="stylesheet">
-    <link href="~/Content/plugins.css" rel="stylesheet">
-    <link href="~/Content/edicoes.css" rel="stylesheet">
+        <!--[if lt IE 9]>
+            <script src="~/Scripts/html5shiv.js"></script>
+            <script src="~/Scripts/respond.min.js"></script>
+        <![endif]-->
     
-    <!--[if lt IE 9]>
-      <script src="~/Scripts/html5shiv.js"></script>
-      <script src="~/Scripts/respond.min.js"></script>
-    <![endif]-->
-    
-</head>
+    </head>
 <body>
     <div id="wrapper ">
         <nav class="navbar-top" role="navigation">
             <div class="navbar-header">
                 <div class="nav-top">
                     
-                        <div class="navbar-brand">
-                            <a href="#">
-                                <img src="~/fonts/img/logo.png" class="img-responsive edit-tamanho-cadastro" alt="" />
-                            </a>
-                        </div>                   
+                    <div class="navbar-brand">
+                        <a href="#">
+                            <img src="~/fonts/img/logo.png" class="img-responsive edit-tamanho-cadastro" alt="" />
+                        </a>
+                    </div>                   
                 </div>
             </div>
         </nav>
@@ -94,190 +119,184 @@
                                                         <a href="#dadosEndereco" data-toggle="tab" id="link3"><i class="fa fa-globe fa-fw"></i>Dados de Endereço</a>
                                                     </li>
                                                     <li>
-                                                        <a href="#dadosUsuario" data-toggle="tab" id="link4"><i class="fa fa-user fa-fw"></i>Dados de Usuário</a>
+                                                        <a href="#dadosFinanceiro" data-toggle="tab" id="link5"><i class="fa fa-dollar fa-fw"></i>Dados Financeiro</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#dadosUsuario" data-toggle="tab" id="link4"><i class="fa fa-user fa-fw"></i> Dados de Usuário</a>
                                                     </li>
                                                 </ul>
                                             </div>
+                                            
                                             <div class="col-sm-9">
+                                                <form role="form">
                                                 <div id="userSettingsContent" class="tab-content">
                                                     <div class="tab-pane fade in active" id="dadosEmpresa">
-                                                        @*  Dados da empresa  *@
-                                                        <form role="form">
-                                                            <h4 class="page-header">Dados da Empresa:</h4>
-                                                            <div class="form-group col-lg-6">
-                                                                @Html.LabelFor(model => model.razaoSocial, "Razão Social")
-                                                                @Html.TextBoxFor(model => model.razaoSocial, new { @class = "form-control", maxlength = "100", alt = "razaoSocial", id = "txtRazaoSocial"})
-                                                                @Html.ValidationMessageFor(model => model.razaoSocial)
-                                                            </div>
-                                                            <div class="form-group col-lg-6">
-                                                                @Html.LabelFor(model => model.nmFantasia, "Nome Fantasia")
-                                                                @Html.TextBoxFor(model => model.nmFantasia, new { @class = "form-control", maxlength = "100", alt = "nmFantasia", id = "txtnmFantasia" })
-                                                                @Html.ValidationMessageFor(model => model.nmFantasia)
-                                                            </div>
-                                                            <div class="form-group col-lg-4">
-                                                                @Html.LabelFor(model => model.cnpj, "CNPJ")
-                                                                @Html.TextBoxFor(model => model.cnpj, new { @class = "form-control", maxlength = "18", alt = "cnpj", id = "txtCnpj" })
-                                                                @Html.ValidationMessageFor(model => model.cnpj)
-                                                            </div>
-                                                            <div class="form-group col-lg-4">
-                                                                @Html.LabelFor(model => model.ie, "Inscrição Estadual")
-                                                                @Html.TextBoxFor(model => model.ie, new { @class = "form-control", maxlength = "45", alt = "ie", id = "txtie" })
-                                                                @Html.ValidationMessageFor(model => model.ie)
-                                                            </div>
-                                                            <div class="form-group col-lg-4">
-                                                                @Html.LabelFor(model => model.im, "Inscrição Municipal")
-                                                                @Html.TextBoxFor(model => model.im, new { @class = "form-control", maxlength = "45", alt = "im", id = "txtim" })
-                                                                @Html.ValidationMessageFor(model => model.im)
-                                                            </div>
-                                                            <div class="form-group col-lg-4">
-                                                                @Html.LabelFor(model => model.contato, "Contato")
-                                                                @Html.TextBoxFor(model => model.contato, new { @class = "form-control", maxlength = "45", alt = "contato", id = "txtContato" })
-                                                                @Html.ValidationMessageFor(model => model.contato)
-                                                            </div>
-                                                            <div class="form-group col-lg-4">
-                                                                @Html.Label("Ramo de Atividade")
-                                                                @Html.DropDownList("raid", string.Empty)
-                                                                @Html.ValidationMessageFor(model => model.raid)
-                                                            </div>
-
-                                                            <div class="col-sm-offset-10 col-sm-1">
-                                                                <button type="button" onclick="$('#link2').click();" class="btn btn-default">Próximo</button>
-                                                            </div>
-                                                        </form>
+                                                        @*  Dados da empresa  *@                                                        
+                                                        <h4 class="page-header">Dados da Empresa:</h4>
+                                                        <div class="form-group col-lg-6">
+                                                            @Html.LabelFor(model => model.razaoSocial, "Razão Social")
+                                                            @Html.TextBoxFor(model => model.razaoSocial, new { @class = "form-control", maxlength = "100", alt = "razaoSocial", id = "txtRazaoSocial"})
+                                                            @Html.ValidationMessageFor(model => model.razaoSocial)
+                                                        </div>
+                                                        <div class="form-group col-lg-6">
+                                                            @Html.LabelFor(model => model.nmFantasia, "Nome Fantasia")
+                                                            @Html.TextBoxFor(model => model.nmFantasia, new { @class = "form-control", maxlength = "100", alt = "nmFantasia", id = "txtnmFantasia" })
+                                                            @Html.ValidationMessageFor(model => model.nmFantasia)
+                                                        </div>
+                                                        <div class="form-group col-lg-4">
+                                                            @Html.LabelFor(model => model.cnpj, "CNPJ")
+                                                            @Html.TextBoxFor(model => model.cnpj, new { @class = "form-control", maxlength = "18", alt = "cnpj", id = "txtCnpj" })
+                                                            @Html.ValidationMessageFor(model => model.cnpj)
+                                                        </div>
+                                                        <div class="form-group col-lg-4">
+                                                            @Html.LabelFor(model => model.ie, "Inscrição Estadual")
+                                                            @Html.TextBoxFor(model => model.ie, new { @class = "form-control", maxlength = "45", alt = "ie", id = "txtie" })
+                                                            @Html.ValidationMessageFor(model => model.ie)
+                                                        </div>
+                                                        <div class="form-group col-lg-4">
+                                                            @Html.LabelFor(model => model.im, "Inscrição Municipal")
+                                                            @Html.TextBoxFor(model => model.im, new { @class = "form-control", maxlength = "45", alt = "im", id = "txtim" })
+                                                            @Html.ValidationMessageFor(model => model.im)
+                                                        </div>
+                                                        <div class="form-group col-lg-4">
+                                                            @Html.LabelFor(model => model.contato, "Contato")
+                                                            @Html.TextBoxFor(model => model.contato, new { @class = "form-control", maxlength = "45", alt = "contato", id = "txtContato" })
+                                                            @Html.ValidationMessageFor(model => model.contato)
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                        <div class="form-group col-lg-offset-10">
+                                                            <button type="button" onclick="$('#link2').click();" class="btn btn-default">Próximo</button>
+                                                        </div>
                                                     </div>
+
                                                     <div class="tab-pane fade" id="dadosContato">
                                                         @*  Dados de Contato  *@
-                                                        <br>
-                                                        <form role="form">
-                                                            <h4 class="page-header">Dados de Contato:</h4>
-                                                                <div class="form-group col-lg-6">
-                                                                    @Html.LabelFor(model => model.email, "E-mail")
-                                                                    @Html.TextBoxFor(model => model.email, new { @class = "form-control", maxlength = "45", alt = "email", id = "txtEmail", placeholder = "exemplo@exemplo.com.br" })
-                                                                    @Html.ValidationMessageFor(model => model.email)
-                                                                </div>
-                                                                <div class="form-group col-lg-6">
-                                                                    @Html.LabelFor(model => model.site, "Endereço WEB")
-                                                                    @Html.TextBoxFor(model => model.site, new { @class = "form-control", maxlength = "50", alt = "site", id = "txtSite", placeholder = "http://" })
-                                                                    @Html.ValidationMessageFor(model => model.site)
-                                                                </div>
-                                                                <div class="form-group col-lg-3">
-                                                                    @Html.LabelFor(model => model.telResidencial, "Telefone Residencial")
-                                                                    @Html.TextBoxFor(model => model.telResidencial, new { @class = "form-control", maxlength = "15", alt = "telResidencial", id = "txtTelResidencial" })
-                                                                    @Html.ValidationMessageFor(model => model.telResidencial)
-                                                                </div>
-                                                                <div class="form-group col-lg-3">
-                                                                    @Html.LabelFor(model => model.telComercial, "Telefone Comercial")
-                                                                    @Html.TextBoxFor(model => model.telComercial, new { @class = "form-control", maxlength = "15", alt = "telComercial", id = "txtTelComercial" })
-                                                                    @Html.ValidationMessageFor(model => model.telComercial)
-                                                                </div>
-                                                                <div class="form-group col-lg-3">
-                                                                    @Html.LabelFor(model => model.telCelular1, "Telefone Celular1")
-                                                                    @Html.TextBoxFor(model => model.telCelular1, new { @class = "form-control", maxlength = "15", alt = "telCelular1", id = "txtCelular1" })
-                                                                    @Html.ValidationMessageFor(model => model.telCelular1)
-                                                                </div>
-                                                                <div class="form-group col-lg-3">
-                                                                    @Html.LabelFor(model => model.telCelular2, "Telefone Celular2")
-                                                                    @Html.TextBoxFor(model => model.telCelular2, new { @class = "form-control", maxlength = "15", alt = "telCelular2", id = "txtCelular2" })
-                                                                    @Html.ValidationMessageFor(model => model.telCelular2)
-                                                                </div>
-                                                                <div class="form-group col-lg-offset-9">
-                                                                    <button type="button" onclick="$('#link1').click();" class="btn btn-default">Anterior</button>
-                                                                    <button type="button" onclick="$('#link3').click();" class="btn btn-default">Próximo</button>
-                                                                </div>
-                                                        </form>
+                                                        <h4 class="page-header">Dados de Contato:</h4>
+                                                        <div class="form-group col-lg-6">
+                                                            @Html.LabelFor(model => model.email, "E-mail")
+                                                            @Html.TextBoxFor(model => model.email, new { @class = "form-control", maxlength = "45", alt = "email", id = "txtEmail", placeholder = "exemplo@exemplo.com.br" })
+                                                            @Html.ValidationMessageFor(model => model.email)
+                                                        </div>
+                                                        <div class="form-group col-lg-6">
+                                                            @Html.LabelFor(model => model.site, "Endereço WEB")
+                                                            @Html.TextBoxFor(model => model.site, new { @class = "form-control", maxlength = "50", alt = "site", id = "txtSite", placeholder = "http://" })
+                                                            @Html.ValidationMessageFor(model => model.site)
+                                                        </div>
+                                                        <div class="form-group col-lg-3">
+                                                            @Html.LabelFor(model => model.telResidencial, "Telefone Residencial")
+                                                            @Html.TextBoxFor(model => model.telResidencial, new { @class = "form-control", maxlength = "15", alt = "telResidencial", id = "txtTelResidencial" })
+                                                            @Html.ValidationMessageFor(model => model.telResidencial)
+                                                        </div>
+                                                        <div class="form-group col-lg-3">
+                                                            @Html.LabelFor(model => model.telComercial, "Telefone Comercial")
+                                                            @Html.TextBoxFor(model => model.telComercial, new { @class = "form-control", maxlength = "15", alt = "telComercial", id = "txtTelComercial" })
+                                                            @Html.ValidationMessageFor(model => model.telComercial)
+                                                        </div>
+                                                        <div class="form-group col-lg-3">
+                                                            @Html.LabelFor(model => model.telCelular1, "Telefone Celular1")
+                                                            @Html.TextBoxFor(model => model.telCelular1, new { @class = "form-control", maxlength = "15", alt = "telCelular1", id = "txtCelular1" })
+                                                            @Html.ValidationMessageFor(model => model.telCelular1)
+                                                        </div>
+                                                        <div class="form-group col-lg-3">
+                                                            @Html.LabelFor(model => model.telCelular2, "Telefone Celular2")
+                                                            @Html.TextBoxFor(model => model.telCelular2, new { @class = "form-control", maxlength = "15", alt = "telCelular2", id = "txtCelular2" })
+                                                            @Html.ValidationMessageFor(model => model.telCelular2)
+                                                        </div>
+                                                        <div class="clearfix"></div>                                                   
+                                                        <div class="form-group col-lg-offset-9">
+                                                            <button type="button" onclick="$('#link1').click();" class="btn btn-default">Anterior</button>
+                                                            <button type="button" onclick="$('#link3').click();" class="btn btn-default">Próximo</button>
+                                                        </div>
                                                     </div>
+
                                                     <div class="tab-pane fade in" id="dadosEndereco">
-                                                        <form role="form">
-                                                            <h4 class="page-header">Dados de Endereço:</h4>
-                                                            <div class="form-group col-lg-3">
-                                                                @Html.Label("CEP")
-                                                                @Html.TextBox("Cep", new { @class = "form-control", maxlength = "8", alt = "cep", id = "txtCep" })
-                                                                <button type="button" onclick="$('#link2').click();" class="btn btn-default">Próximo</button>
+                                                        <div id="registerEndereco">
+                                                            @{
+                                                                Html.RenderPartial("RegisterEndereco");
+                                                            }
+                                                        </div>                  
+                                                        <div class="clearfix"></div>
+                                                        <div class="clearfix"></div>
+                                                        <div class="form-group col-lg-offset-8">
+                                                            <button type="button" onclick="atualizarDefinicao();" class="btn btn-default" id="btnBuscar">Pesquisar</button>
+                                                            <button type="button" onclick="$('#link2').click();" class="btn btn-default">Anterior</button>
+                                                            <button type="button" onclick="$('#link5').click();" class="btn btn-default">Próximo</button>
+                                                        </div>
+                                                    </div>                                                                                                                
+
+                                                    <div class="tab-pane fade in" id="dadosUsuario">
+                                                        @*  Dados de Usuários  *@
+                                                        <h4 class="page-header">Dados de Usuário:</h4>
+                                                        <div class="form-group col-lg-6">
+                                                            <div class="input-group">
+                                                                @Html.Label("Usuário")
+                                                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                                @Html.TextBoxFor(model => model.tbUsers.username, new { @class = "form-control" })
                                                             </div>
-                                                            <div class="form-group col-lg-3">
-                                                                @Html.Label("País")
-                                                                @Html.TextBoxFor(model => model.dsPais, new { @class = "form-control", maxlength = "50", alt = "pais", id = "txtPais" })
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                        <div class="form-group col-lg-6">
+                                                            <div class="input-group">
+                                                                <label style="padding-right: 12px;">Senha</label>
+                                                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                                                @Html.PasswordFor(model => model.tbUsers.pwd, new { @class = "form-control" })
                                                             </div>
-                                                            <div class="form-group col-lg-6">
-                                                                @Html.Label("Estado")
-                                                                @Html.TextBoxFor(model => model.dsEstado, new { @class = "form-control", maxlength = "2", alt = "estado", id = "txtEstado" })
-                                                            </div>                                                           
-                                                            <div class="form-group col-lg-2">
-                                                                @Html.Label("Cidade")
-                                                                @Html.TextBoxFor(model => model.dsCidade, new { @class = "form-control", maxlength = "100", alt = "cidade", id = "txtCidade" })
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                        <div class="form-group col-lg-6">
+                                                            <div class="input-group">
+                                                                <label style="padding-right: 12px;">Confirme a Senha</label>
+                                                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                                                @Html.PasswordFor(model => model.tbUsers.cPwd, new { @class = "form-control" })
                                                             </div>
-                                                            <div class="form-group col-lg-2">
-                                                                @Html.Label("Bairro")
-                                                                @Html.TextBoxFor(model => model.dsBairro, new { @class = "form-control", maxlength = "100", alt = "bairro", id = "txtBairro" })
-                                                            </div>
-                                                            <div class="form-group col-lg-2">
-                                                                @Html.Label("Endereço")
-                                                                @Html.TextBoxFor(model => model.dsLogradouro, new { @class = "form-control", maxlength = "200", alt = "logradouro", id = "txtLogradouro" })
-                                                            </div>
-                                                            <div class="form-group col-lg-2">
-                                                                @Html.Label("Número")
-                                                                @Html.TextBoxFor(model => model.numero_endereco, new { @class = "form-control", maxlength = "10", alt = "numero", id = "txtNumero" })
-                                                            </div>
-                                                            <div class="form-group col-lg-2">
-                                                                @Html.Label("Complemento")
-                                                                @Html.TextBoxFor(model => model.complemento_endereco, new { @class = "form-control", maxlength = "50", alt = "complemento", id = "txtComplemento" })
-                                                            </div>
-                                                            <div class="form-group col-lg-offset-9">
-                                                                <button type="button" onclick="$('#link2').click();" class="btn btn-default">Anterior</button>
-                                                                <button type="button" onclick="$('#link4').click();" class="btn btn-default">Próximo</button>
-                                                            </div>
-                                                        </form>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+
+                                                        <div class="form-group col-lg-12"></div>
+                                                        <div class="form-group col-lg-12"></div>
+                                                        <div class="form-group col-lg-12"></div>
+
+                                                        <div class="form-group col-lg-12">
+                                                            Ao clicar em salvar, confirmo ter lido e concordado com todos os
+                                                            <a style="color: #1CC7D3; font-weight:bold;" href="#" target="_blank">termos do serviço.</a>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                        <div class="form-group col-lg-offset-9">
+                                                            <button type="button" onclick="$('#link5').click();" class="btn btn-default">Anterior</button>
+                                                            <button type="submit" class="btn btn-default" id="save" value="save"><i class="fa fa-floppy-o"></i>Salvar</button>
+                                                        </div>
                                                     </div>
                                                     
-                                                    <div class="tab-pane fade in" id="dadosUsuario">
-
-                                                        <form role="form">
-                                                            <h4 class="page-header">Dados de Usuário:</h4>
-                                                            <div class="form-group col-lg-6">
-                                                                <div class="input-group">
-                                                                    @Html.Label("Usuário")
-                                                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                                                    @Html.TextBoxFor(model => model.tbUsers.username, new { @class = "form-control" })
-                                                                </div>
-                                                            </div>
-
+                                                    <div class="tab-pane fade in" id="dadosFinanceiro">
+                                                        @*  Dados Financeiro  *@
+                                                        <h4 class="page-header">Dados Financeiro:</h4>
+                                                        <div class="form-group col-lg-4">
+                                                            @Html.Label("Ramo de Atividade")
                                                             <div class="clearfix"></div>
-                                                            <div class="form-group col-lg-6">
-                                                                <div class="input-group">
-                                                                    <label style="padding-right: 12px;">Senha</label>
-                                                                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                                                    @Html.PasswordFor(model => model.tbUsers.pwd, new { @class="form-control" })
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group col-lg-6">
-                                                                <div class="input-group">
-                                                                    <label style="padding-right: 12px;">Senha</label>
-                                                                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                                                    <p>@Html.PasswordFor(model => model.tbUsers.pwd, new { @class = "form-control" })</p>
-                                                                </div>
-                                                            </div>
+                                                            @Html.DropDownList("raid", null, string.Empty, new { style = "width:300px; height:35px" })
+                                                            @Html.ValidationMessageFor(model => model.raid)
+                                                        </div>
+                                                        <div class="form-group col-lg-4">
+                                                            @Html.Label("Condição de Pagamento")
                                                             <div class="clearfix"></div>
-
-                                                            <div class="form-group col-lg-12"></div>
-                                                            <div class="form-group col-lg-12"></div>
-                                                            <div class="form-group col-lg-12"></div>
-
-                                                            <div class="form-group col-lg-12">
-                                                                Ao clicar em salvar, confirmo ter lido e concordado com todos os
-                                                                <a style="color: #1CC7D3; font-weight:bold;" href="#" target="_blank">termos do serviço.</a>
-                                                            </div>
-
-                                                            <div class="form-group col-lg-offset-9">
-                                                                <button type="button" onclick="$('#link3').click();" class="btn btn-default">Anterior</button>
-                                                                <button type="submit" class="btn btn-default" id="save" value="save">
-                                                                    <i class="fa fa-floppy-o"></i>
-                                                                    Salvar
-                                                                </button>
-                                                            </div>
-                                                        </form>
-
+                                                            @Html.DropDownList("cpid", null, string.Empty, new { style = "width:300px; height:35px" })
+                                                            @Html.ValidationMessageFor(model => model.cpid)
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                        <div class="form-group col-lg-3">
+                                                            @Html.Label("Saldo de Créditos")
+                                                            <div class="clearfix"></div>
+                                                            @Html.TextBoxFor(model => model.saldoCreditos, new { @class = "form-control", maxlength = "15", alt = "saldoCreditos", id = "txtSaldoCreditos" })
+                                                            @Html.ValidationMessageFor(model => model.saldoCreditos)
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                        <div class="form-group col-lg-offset-9">
+                                                            <button type="button" onclick="$('#link3').click();" class="btn btn-default">Anterior</button>
+                                                            <button type="button" onclick="$('#link4').click();" class="btn btn-default">Próximo</button>
+                                                        </div>
                                                     </div>
                                                 </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -294,16 +313,9 @@
 
 
 
-
-
-
             </div>
         </div>
     </div>
-
-
-
-
 
 
 

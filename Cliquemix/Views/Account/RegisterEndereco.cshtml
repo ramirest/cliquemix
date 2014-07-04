@@ -1,0 +1,56 @@
+﻿<h4 class="page-header">Dados de Endereço:</h4>
+<div class="form-group col-lg-3">
+    @Html.Label("CEP")
+    <div class="clearfix"></div>
+    <input type="text" id="txtCep" name="txtCep" value="@ViewBag.Cep" class="form-control" maxlength="8"/>
+</div>
+@*
+    <div class="form-group col-lg-3">
+        @Html.Label("Tipo")
+        <div class="clearfix"></div>
+        <input type="text" id="txtTipo" name="txtTipo" value="@ViewBag.Tipo" class="form-control" />
+    </div>
+*@
+<div class="clearfix"></div>
+<div class="form-group col-lg-7">
+    @Html.Label("Endereço")
+    <div class="clearfix"></div>
+    <input type="text" id="txtEndereco" name="txtEndereco" value="@ViewBag.Endereco" class="form-control" maxlength="200"/>
+</div>
+
+<div class="form-group col-lg-2">
+    @Html.Label("Número")
+    <div class="clearfix"></div>
+    <input type="text" id="txtNumero" name="txtNumero" class="form-control" maxlength="10"/>
+</div>
+
+<div class="form-group col-lg-3">
+    @Html.Label("Complemento")
+    <div class="clearfix"></div>
+    <input type="text" id="txtComplemento" name="txtComplemento" class="form-control" maxlength="50"/>
+</div>
+
+<div class="form-group col-lg-4">
+    @Html.Label("Bairro")
+    <div class="clearfix"></div>
+    <input type="text" id="txtBairro" name="txtBairro" value="@ViewBag.Bairro" class="form-control" maxlength="100"/>
+</div>
+
+<div class="form-group col-lg-4">
+    @Html.Label("Cidade")
+    <div class="clearfix"></div>
+    <input type="text" id="txtCidade" name="txtCidade" value="@ViewBag.Cidade" class="form-control" maxlength="100"/>
+</div>
+
+<div class="form-group col-lg-2">
+    @Html.Label("Estado")
+    <div class="clearfix"></div>
+    <input type="text" id="txtEstado" name="txtEstado" value="@ViewBag.UF" class="form-control" maxlength="2"/>
+</div>
+@*
+<div class="form-group col-lg-3">
+    @Html.Label("País")
+    <div class="clearfix"></div>
+    <input type="text" id="txtPais" name="txtPais" value="@ViewBag.Pais" class="form-control" maxlength="20"/>
+</div>
+*@
