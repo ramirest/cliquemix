@@ -465,6 +465,13 @@
     <Content Include="Scripts\Outros\bootstrap.min.js" />
     <Content Include="Content\Outros\bootstrap-theme.css.map" />
     <Content Include="Content\Outros\bootstrap.css.map" />
+    <Content Include="Content\plugins\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\plugins\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\icons\font-awesome\fonts\fontawesome-webfont1.woff" />
+    <Content Include="fonts\icons\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\icons\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\icons\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\icons\font-awesome\fonts\FontAwesome.otf" />
     <EntityDeploy Include="Models\Cliquemix.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Cliquemix.Designer.cs</LastGenOutput>
@@ -482,13 +489,6 @@
       <DependentUpon>Cliquemix.edmx</DependentUpon>
       <LastGenOutput>Cliquemix.cs</LastGenOutput>
     </Content>
-    <Content Include="Content\plugins\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Content\plugins\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\icons\font-awesome\fonts\fontawesome-webfont1.woff" />
-    <Content Include="fonts\icons\font-awesome\fonts\fontawesome-webfont.eot" />
-    <Content Include="fonts\icons\font-awesome\fonts\fontawesome-webfont.ttf" />
-    <Content Include="fonts\icons\font-awesome\fonts\fontawesome-webfont.woff" />
-    <Content Include="fonts\icons\font-awesome\fonts\FontAwesome.otf" />
     <None Include="Scripts\Outros\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\Outros\jquery-2.1.1.js" />
     <Content Include="Scripts\Outros\jquery-2.1.1.min.js" />
@@ -619,6 +619,8 @@
     <Content Include="Views\Endereco\Index.cshtml" />
     <Content Include="Views\Endereco\DefinicaoArquitetura.cshtml" />
     <Content Include="Views\Account\RegisterEndereco.cshtml" />
+    <Content Include="Views\Anuncio\AnuncioImagem.cshtml" />
+    <Content Include="Views\Anunciante\CreateAnuncio.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

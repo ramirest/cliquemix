@@ -17,9 +17,9 @@ namespace Cliquemix.Models
         public tbAnunciante()
         {
             this.tbAnuncianteDestaque = new HashSet<tbAnuncianteDestaque>();
-            this.tbCreditoCompra = new HashSet<tbCreditoCompra>();
-            this.tbAnuncianteEndereco = new HashSet<tbAnuncianteEndereco>();
+            this.tbAnuncianteEndereco1 = new HashSet<tbAnuncianteEndereco>();
             this.tbAnuncianteTelefone = new HashSet<tbAnuncianteTelefone>();
+            this.tbCreditoCompra = new HashSet<tbCreditoCompra>();
         }
     
         public int pid { get; set; }
@@ -27,6 +27,10 @@ namespace Cliquemix.Models
         public string razaoSocial { get; set; }
         public string nmFantasia { get; set; }
         public string contato { get; set; }
+        public string telResidencial { get; set; }
+        public string telComercial { get; set; }
+        public string telCelular1 { get; set; }
+        public string telCelular2 { get; set; }
         public string ie { get; set; }
         public string im { get; set; }
         public string email { get; set; }
@@ -38,20 +42,16 @@ namespace Cliquemix.Models
         public Nullable<decimal> saldoCreditos { get; set; }
         public Nullable<int> leuTermo { get; set; }
         public Nullable<int> uid { get; set; }
-        public string telResidencial { get; set; }
-        public string telComercial { get; set; }
-        public string telCelular1 { get; set; }
-        public string telCelular2 { get; set; }
         public Nullable<int> peid { get; set; }
     
         public virtual tbCondicaoPagto tbCondicaoPagto { get; set; }
+        public virtual tbAnuncianteEndereco tbAnuncianteEndereco { get; set; }
         public virtual ICollection<tbAnuncianteDestaque> tbAnuncianteDestaque { get; set; }
+        public virtual ICollection<tbAnuncianteEndereco> tbAnuncianteEndereco1 { get; set; }
+        public virtual ICollection<tbAnuncianteTelefone> tbAnuncianteTelefone { get; set; }
         public virtual ICollection<tbCreditoCompra> tbCreditoCompra { get; set; }
+        public virtual tbRamoAtividade tbRamoAtividade { get; set; }
         public virtual tbTos tbTos { get; set; }
         public virtual tbUsers tbUsers { get; set; }
-        public virtual tbRamoAtividade tbRamoAtividade { get; set; }
-        public virtual ICollection<tbAnuncianteEndereco> tbAnuncianteEndereco { get; set; }
-        public virtual tbAnuncianteEndereco tbAnuncianteEndereco1 { get; set; }
-        public virtual ICollection<tbAnuncianteTelefone> tbAnuncianteTelefone { get; set; }
     }
 }

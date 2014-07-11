@@ -26,10 +26,10 @@ namespace Cliquemix.Models
         public int casid { get; set; }
         public Nullable<int> qtCliqueMax { get; set; }
     
+        public virtual tbAnuncio tbAnuncio { get; set; }
         public virtual tbCampanha tbCampanha { get; set; }
         public virtual ICollection<tbCampanhaAnuncioConsumidor> tbCampanhaAnuncioConsumidor { get; set; }
         public virtual ICollection<tbCampanhaAnuncioLocalizacao> tbCampanhaAnuncioLocalizacao { get; set; }
         public virtual tbCampanhaAnuncioStatus tbCampanhaAnuncioStatus { get; set; }
-        public virtual tbAnuncio tbAnuncio { get; set; }
     }
 }

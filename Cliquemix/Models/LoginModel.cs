@@ -70,7 +70,7 @@ namespace Cliquemix.Models
             logAcesso.dataHoraLog = DateTime.Now;
             logAcesso.timeOutLog = 60;
 
-            db.TbUsersLogAcessos.Add(logAcesso);
+            db.tbUsersLogAcesso.Add(logAcesso);
             db.SaveChanges();
         }        
 

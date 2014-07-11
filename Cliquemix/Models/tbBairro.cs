@@ -17,7 +17,6 @@ namespace Cliquemix.Models
         public tbBairro()
         {
             this.tbCep = new HashSet<tbCep>();
-            this.tbAnuncianteEndereco = new HashSet<tbAnuncianteEndereco>();
         }
     
         public int baiid { get; set; }
@@ -26,8 +25,7 @@ namespace Cliquemix.Models
         public string abrevBairro { get; set; }
         public string uf { get; set; }
     
-        public virtual tbCidade tbCidade { get; set; }
         public virtual ICollection<tbCep> tbCep { get; set; }
-        public virtual ICollection<tbAnuncianteEndereco> tbAnuncianteEndereco { get; set; }
+        public virtual tbCidade tbCidade { get; set; }
     }
 }

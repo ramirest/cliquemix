@@ -16,10 +16,9 @@ namespace Cliquemix.Models
     {
         public tbCidade()
         {
-            this.tbCampanhaAnuncioLocalizacao = new HashSet<tbCampanhaAnuncioLocalizacao>();
             this.tbBairro = new HashSet<tbBairro>();
+            this.tbCampanhaAnuncioLocalizacao = new HashSet<tbCampanhaAnuncioLocalizacao>();
             this.tbCep = new HashSet<tbCep>();
-            this.tbAnuncianteEndereco = new HashSet<tbAnuncianteEndereco>();
         }
     
         public int cid { get; set; }
@@ -29,10 +28,9 @@ namespace Cliquemix.Models
         public string uf { get; set; }
         public string dsCidade { get; set; }
     
-        public virtual ICollection<tbCampanhaAnuncioLocalizacao> tbCampanhaAnuncioLocalizacao { get; set; }
-        public virtual tbEstado tbEstado { get; set; }
         public virtual ICollection<tbBairro> tbBairro { get; set; }
+        public virtual ICollection<tbCampanhaAnuncioLocalizacao> tbCampanhaAnuncioLocalizacao { get; set; }
         public virtual ICollection<tbCep> tbCep { get; set; }
-        public virtual ICollection<tbAnuncianteEndereco> tbAnuncianteEndereco { get; set; }
+        public virtual tbEstado tbEstado { get; set; }
     }
 }

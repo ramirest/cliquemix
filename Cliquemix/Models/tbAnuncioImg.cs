@@ -16,7 +16,14 @@ namespace Cliquemix.Models
     {
         public int imgid { get; set; }
         public int aid { get; set; }
-        public string anuncioImg { get; set; }
+        public string imagem1 { get; set; }
+        public string imagem2 { get; set; }
+        public string imagem3 { get; set; }
+        public string imagem4 { get; set; }
+        public string imagem5 { get; set; }
+        public string imagem6 { get; set; }
+        public string imagem7 { get; set; }
+        public string imagem8 { get; set; }
     
         public virtual tbAnuncio tbAnuncio { get; set; }
     }

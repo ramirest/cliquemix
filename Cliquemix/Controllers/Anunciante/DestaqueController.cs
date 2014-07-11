@@ -10,6 +10,7 @@ using Cliquemix.Models;
 
 namespace Cliquemix.Controllers.Anunciante
 {
+    [Authorize]
     public class DestaqueController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

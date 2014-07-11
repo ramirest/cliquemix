@@ -16,25 +16,21 @@ namespace Cliquemix.Models
     {
         public tbAnuncianteEndereco()
         {
-            this.tbAnunciante1 = new HashSet<tbAnunciante>();
+            this.tbAnunciante = new HashSet<tbAnunciante>();
         }
     
         public int peid { get; set; }
         public int pid { get; set; }
-        public Nullable<int> cepid { get; set; }
         public string numero_endereco { get; set; }
         public string complemento_endereco { get; set; }
-        public Nullable<int> baiid { get; set; }
-        public Nullable<int> cid { get; set; }
-        public Nullable<int> eid { get; set; }
-        public Nullable<int> paid { get; set; }
+        public string nomeBairro { get; set; }
+        public string nomeCidade { get; set; }
+        public string ufEstado { get; set; }
+        public string nomePais { get; set; }
+        public string cep { get; set; }
+        public string endereco { get; set; }
     
-        public virtual tbAnunciante tbAnunciante { get; set; }
-        public virtual tbCep tbCep { get; set; }
-        public virtual ICollection<tbAnunciante> tbAnunciante1 { get; set; }
-        public virtual tbBairro tbBairro { get; set; }
-        public virtual tbCidade tbCidade { get; set; }
-        public virtual tbEstado tbEstado { get; set; }
-        public virtual tbPais tbPais { get; set; }
+        public virtual ICollection<tbAnunciante> tbAnunciante { get; set; }
+        public virtual tbAnunciante tbAnunciante1 { get; set; }
     }
 }

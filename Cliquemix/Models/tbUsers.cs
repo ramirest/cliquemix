@@ -7,8 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using BLToolkit.Validation;
-
 namespace Cliquemix.Models
 {
     using System;
@@ -20,22 +18,22 @@ namespace Cliquemix.Models
         {
             this.tbAnunciante = new HashSet<tbAnunciante>();
             this.tbBan = new HashSet<tbBan>();
-            this.tbUsersPermissao = new HashSet<tbUsersPermissao>();
-            this.tbUsersLogAcesso = new HashSet<tbUsersLogAcesso>();
             this.tbLogSistema = new HashSet<tbLogSistema>();
+            this.tbUsersLogAcesso = new HashSet<tbUsersLogAcesso>();
+            this.tbUsersPermissao = new HashSet<tbUsersPermissao>();
         }
     
         public int uid { get; set; }
-        public string username { get; set; }        
+        public string username { get; set; }
         public string pwd { get; set; }
-        public string cPwd { get; set; }
         public int utid { get; set; }
+        public string cpwd { get; set; }
     
         public virtual ICollection<tbAnunciante> tbAnunciante { get; set; }
         public virtual ICollection<tbBan> tbBan { get; set; }
+        public virtual ICollection<tbLogSistema> tbLogSistema { get; set; }
+        public virtual ICollection<tbUsersLogAcesso> tbUsersLogAcesso { get; set; }
         public virtual ICollection<tbUsersPermissao> tbUsersPermissao { get; set; }
         public virtual tbUsersTipo tbUsersTipo { get; set; }
-        public virtual ICollection<tbUsersLogAcesso> tbUsersLogAcesso { get; set; }
-        public virtual ICollection<tbLogSistema> tbLogSistema { get; set; }
     }
 }

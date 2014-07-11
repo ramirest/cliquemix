@@ -18,14 +18,14 @@ namespace Cliquemix.Controllers
         // GET: /Anuncio/
         public ActionResult Index()
         {
-            var tbanuncio = db.tbAnuncios.Include(t => t.tbRamoAtividade);
+            var tbanuncio = db.tbAnuncio.Include(t => t.tbRamoAtividade);
             return View(tbanuncio.ToList());
         }
         
         // GET: /Anuncio/
         public ActionResult ListAnuncio()
         {
-            var tbanuncio = db.tbAnuncios.Include(t => t.tbRamoAtividade).Include(r => r.tbAnuncioStatus);
+            var tbanuncio = db.tbAnuncio.Include(t => t.tbRamoAtividade).Include(r => r.tbAnuncioStatus);
             return View(tbanuncio.ToList());
         }
 
@@ -36,7 +36,7 @@ namespace Cliquemix.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tbAnuncio tbanuncio = db.tbAnuncios.Find(id);
+            tbAnuncio tbanuncio = db.tbAnuncio.Find(id);
             if (tbanuncio == null)
             {
                 return HttpNotFound();
@@ -48,7 +48,7 @@ namespace Cliquemix.Controllers
         public ActionResult CreateAnuncio()
         {
             ViewBag.raid = new SelectList(db.tbRamoAtividade, "raid", "descricao");
-            ViewBag.asid = new SelectList(db.TbAnuncioStatus, "asid", "dsStatus");            
+            ViewBag.asid = new SelectList(db.tbAnuncioStatus, "asid", "dsStatus");            
             return View();
         }
 
@@ -57,17 +57,15 @@ namespace Cliquemix.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateAnuncio([Bind(Include = "aid,tituloAnuncio,url,dsAnuncio,videoAnuncio,dtCriacao,raid,asid")] tbAnuncio tbanuncio)
+        public ActionResult CreateAnuncio([Bind(Include = "aid,tituloAnuncio,url,dsAnuncio,videoAnuncio,raid,comentar,curtir,compartilhar,asid,dtCriacao")] tbAnuncio tbanuncio)
         {
             if (ModelState.IsValid)
-            {                
-                db.tbAnuncios.Add(tbanuncio);
+            {
+                tbanuncio.dtCriacao = DateTime.Now;
+                db.tbAnuncio.Add(tbanuncio);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ListAnuncio");
             }
-
-            ViewBag.raid = new SelectList(db.tbRamoAtividade, "raid", "descricao", tbanuncio.raid);
-            ViewBag.asid = new SelectList(db.TbAnuncioStatus, "asid", "dsStatus", tbanuncio.asid);
             return View(tbanuncio);
         }
 
@@ -75,7 +73,7 @@ namespace Cliquemix.Controllers
         public ActionResult Create()
         {
             ViewBag.raid = new SelectList(db.tbRamoAtividade, "raid", "descricao");
-            ViewBag.asid = new SelectList(db.TbAnuncioStatus, "asid", "dsStatus");
+            ViewBag.asid = new SelectList(db.tbAnuncioStatus, "asid", "dsStatus");
             return View();
         }
 
@@ -84,17 +82,17 @@ namespace Cliquemix.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "aid,tituloAnuncio,url,dsAnuncio,videoAnuncio,dtCriacao,raid,asid")] tbAnuncio tbanuncio)
+        public ActionResult Create([Bind(Include = "aid,tituloAnuncio,url,dsAnuncio,videoAnuncio,raid,comentar,curtir,compartilhar,asid,dtCriacao")] tbAnuncio tbanuncio)
         {
             if (ModelState.IsValid)
             {
-                db.tbAnuncios.Add(tbanuncio);
+                db.tbAnuncio.Add(tbanuncio);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             ViewBag.raid = new SelectList(db.tbRamoAtividade, "raid", "descricao", tbanuncio.raid);
-            ViewBag.asid = new SelectList(db.TbAnuncioStatus, "asid", "dsStatus", tbanuncio.asid);
+            ViewBag.asid = new SelectList(db.tbAnuncioStatus, "asid", "dsStatus", tbanuncio.asid);
             return View(tbanuncio);
         }
 
@@ -105,12 +103,13 @@ namespace Cliquemix.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tbAnuncio tbanuncio = db.tbAnuncios.Find(id);
+            tbAnuncio tbanuncio = db.tbAnuncio.Find(id);
             if (tbanuncio == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.aaid = new SelectList(db.tbRamoAtividade, "raid", "descricao", tbanuncio.raid);
+            ViewBag.raid = new SelectList(db.tbRamoAtividade, "raid", "descricao", tbanuncio.raid);
+            ViewBag.asid = new SelectList(db.tbAnuncioStatus, "asid", "dsStatus", tbanuncio.asid);
             return View(tbanuncio);
         }
 
@@ -119,7 +118,7 @@ namespace Cliquemix.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "aid,tituloAnuncio,url,dsAnuncio,videoAnuncio,raid,comentar,curtir,compartilhar")] tbAnuncio tbanuncio)
+        public ActionResult Edit([Bind(Include = "aid,tituloAnuncio,url,dsAnuncio,videoAnuncio,raid,comentar,curtir,compartilhar,asid,dtCriacao")] tbAnuncio tbanuncio)
         {
             if (ModelState.IsValid)
             {
@@ -138,7 +137,7 @@ namespace Cliquemix.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tbAnuncio tbanuncio = db.tbAnuncios.Find(id);
+            tbAnuncio tbanuncio = db.tbAnuncio.Find(id);
             if (tbanuncio == null)
             {
                 return HttpNotFound();
@@ -151,11 +150,60 @@ namespace Cliquemix.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            tbAnuncio tbanuncio = db.tbAnuncios.Find(id);
-            db.tbAnuncios.Remove(tbanuncio);
+            tbAnuncio tbanuncio = db.tbAnuncio.Find(id);
+            db.tbAnuncio.Remove(tbanuncio);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        //Parcial View que retorna as imagens do anúncio
+        public PartialViewResult AnuncioImagem()
+        {
+            //var tbanunciante = db.tbAnunciante.Include(t => t.tbCondicaoPagto).Include(t => t.tbTos).Include(t => t.tbUsers).Include(t => t.tbRamoAtividade);
+            //return View(tbanunciante.ToList());
+            ViewBag.Img = "http://placehold.it/400x300";
+            //var tbanuncioimg = db.tbAnuncioImg.Include(t => t.tbAnuncio);
+            //ViewBag.AnuncioId = 18;
+            return PartialView();
+        }
+
+        //Partial View que salva uma nova imagem ao anúncio
+        [HttpPost]
+        public PartialViewResult AnuncioImagem(string imagem)
+            //[Bind(Include = "imgid,aid,anuncioImg1,anuncioImg2,anuncioImg3,anuncioImg4,anuncioImg5,anuncioImg6,anuncioImg7,anuncioImg8")]
+            //tbAnuncioImg tbAnuncioImg)
+        {
+            ViewBag.AnuncioId = 18;
+            ViewBag.Img1 = "http://placehold.it/400x300";
+            ViewBag.Img2 = "http://placehold.it/400x300";
+            ViewBag.Img3 = "http://placehold.it/400x300";
+            ViewBag.Img4 = "http://placehold.it/400x300";
+            ViewBag.Img5 = "http://placehold.it/400x300";
+            ViewBag.Img6 = "http://placehold.it/400x300";
+            ViewBag.Img7 = "http://placehold.it/400x300";
+            ViewBag.Img8 = "http://placehold.it/400x300";
+            return PartialView();
+        }
+
+        /*
+        // POST: /Anuncio/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "aid,tituloAnuncio,url,dsAnuncio,videoAnuncio,raid,comentar,curtir,compartilhar,asid,dtCriacao")] tbAnuncio tbanuncio)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(tbanuncio).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.aaid = new SelectList(db.tbRamoAtividade, "raid", "descricao", tbanuncio.raid);
+            return View(tbanuncio);
+        }
+
+        */
 
         protected override void Dispose(bool disposing)
         {

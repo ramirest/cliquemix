@@ -10,6 +10,7 @@ using Cliquemix.Models;
 
 namespace Cliquemix.Controllers.Anunciante
 {
+    [Authorize]
     public class CampanhaController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -17,7 +18,7 @@ namespace Cliquemix.Controllers.Anunciante
         // GET: /Campanha/
         public ActionResult Index()
         {
-            var tbcampanha = db.tbCampanhas.Include(t => t.tbCampanhaStatus).Include(t => t.tbDestaque);
+            var tbcampanha = db.tbCampanha.Include(t => t.tbCampanhaStatus).Include(t => t.tbDestaque);
             return View(tbcampanha.ToList());
         }
 
@@ -28,7 +29,7 @@ namespace Cliquemix.Controllers.Anunciante
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tbCampanha tbcampanha = db.tbCampanhas.Find(id);
+            tbCampanha tbcampanha = db.tbCampanha.Find(id);
             if (tbcampanha == null)
             {
                 return HttpNotFound();
@@ -53,7 +54,7 @@ namespace Cliquemix.Controllers.Anunciante
         {
             if (ModelState.IsValid)
             {
-                db.tbCampanhas.Add(tbcampanha);
+                db.tbCampanha.Add(tbcampanha);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -70,7 +71,7 @@ namespace Cliquemix.Controllers.Anunciante
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tbCampanha tbcampanha = db.tbCampanhas.Find(id);
+            tbCampanha tbcampanha = db.tbCampanha.Find(id);
             if (tbcampanha == null)
             {
                 return HttpNotFound();
@@ -105,7 +106,7 @@ namespace Cliquemix.Controllers.Anunciante
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tbCampanha tbcampanha = db.tbCampanhas.Find(id);
+            tbCampanha tbcampanha = db.tbCampanha.Find(id);
             if (tbcampanha == null)
             {
                 return HttpNotFound();
@@ -118,8 +119,8 @@ namespace Cliquemix.Controllers.Anunciante
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            tbCampanha tbcampanha = db.tbCampanhas.Find(id);
-            db.tbCampanhas.Remove(tbcampanha);
+            tbCampanha tbcampanha = db.tbCampanha.Find(id);
+            db.tbCampanha.Remove(tbcampanha);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

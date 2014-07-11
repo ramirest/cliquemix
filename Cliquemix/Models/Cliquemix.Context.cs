@@ -28,8 +28,13 @@ namespace Cliquemix.Models
         public virtual DbSet<tbAnunciante> tbAnunciante { get; set; }
         public virtual DbSet<tbAnuncianteDestaque> tbAnuncianteDestaque { get; set; }
         public virtual DbSet<tbAnuncianteDestaqueStatus> tbAnuncianteDestaqueStatus { get; set; }
+        public virtual DbSet<tbAnuncianteEndereco> tbAnuncianteEndereco { get; set; }
+        public virtual DbSet<tbAnuncianteTelefone> tbAnuncianteTelefone { get; set; }
+        public virtual DbSet<tbAnuncio> tbAnuncio { get; set; }
         public virtual DbSet<tbAnuncioFuncionalidade> tbAnuncioFuncionalidade { get; set; }
         public virtual DbSet<tbAnuncioImg> tbAnuncioImg { get; set; }
+        public virtual DbSet<tbAnuncioStatus> tbAnuncioStatus { get; set; }
+        public virtual DbSet<tbBairro> tbBairro { get; set; }
         public virtual DbSet<tbBan> tbBan { get; set; }
         public virtual DbSet<tbBanner> tbBanner { get; set; }
         public virtual DbSet<tbBannerImg> tbBannerImg { get; set; }
@@ -52,28 +57,23 @@ namespace Cliquemix.Models
         public virtual DbSet<tbDestaque> tbDestaque { get; set; }
         public virtual DbSet<tbEstado> tbEstado { get; set; }
         public virtual DbSet<tbFuncionalidade> tbFuncionalidade { get; set; }
+        public virtual DbSet<tbLogSistema> tbLogSistema { get; set; }
         public virtual DbSet<tbPais> tbPais { get; set; }
         public virtual DbSet<tbPermissao> tbPermissao { get; set; }
+        public virtual DbSet<tbPermissaoGrupo> tbPermissaoGrupo { get; set; }
+        public virtual DbSet<tbPermissaoSubGrupo> tbPermissaoSubGrupo { get; set; }
         public virtual DbSet<tbPontosRede> tbPontosRede { get; set; }
         public virtual DbSet<tbPremio> tbPremio { get; set; }
         public virtual DbSet<tbPremioConsumidor> tbPremioConsumidor { get; set; }
         public virtual DbSet<tbPremioDestaque> tbPremioDestaque { get; set; }
         public virtual DbSet<tbPremioImg> tbPremioImg { get; set; }
         public virtual DbSet<tbPremioNivel> tbPremioNivel { get; set; }
+        public virtual DbSet<tbRamoAtividade> tbRamoAtividade { get; set; }
+        public virtual DbSet<tbTipoLogradouro> tbTipoLogradouro { get; set; }
         public virtual DbSet<tbTos> tbTos { get; set; }
         public virtual DbSet<tbUsers> tbUsers { get; set; }
+        public virtual DbSet<tbUsersLogAcesso> tbUsersLogAcesso { get; set; }
         public virtual DbSet<tbUsersPermissao> tbUsersPermissao { get; set; }
         public virtual DbSet<tbUsersTipo> tbUsersTipo { get; set; }
-        public virtual DbSet<tbRamoAtividade> tbRamoAtividade { get; set; }
-        public virtual DbSet<tbUsersLogAcesso> tbUsersLogAcesso { get; set; }
-        public virtual DbSet<tbPermissaoGrupo> tbPermissaoGrupo { get; set; }
-        public virtual DbSet<tbPermissaoSubGrupo> tbPermissaoSubGrupo { get; set; }
-        public virtual DbSet<tbAnuncianteEndereco> tbAnuncianteEndereco { get; set; }
-        public virtual DbSet<tbBairro> tbBairro { get; set; }
-        public virtual DbSet<tbLogSistema> tbLogSistema { get; set; }
-        public virtual DbSet<tbTipoLogradouro> tbTipoLogradouro { get; set; }
-        public virtual DbSet<tbAnuncianteTelefone> tbAnuncianteTelefone { get; set; }
-        public virtual DbSet<tbAnuncio> tbAnuncio { get; set; }
-        public virtual DbSet<tbAnuncioStatus> tbAnuncioStatus { get; set; }
     }
 }

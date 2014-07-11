@@ -29,12 +29,11 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th class="text-center">Código</th>
                                 <th class="text-center">Título</th>
                                 <th class="text-center">Ramo</th>
                                 <th class="text-center">Video</th>
                                 @*<th class="text-center">Imagem</th>*@
-                                <th class="text-center">Data</th>
+                                <th class="text-center">Data de Criação</th>
                                 <th class="text-center">Status</th>
                                 <th class="text-center">Ações</th>
                             </tr>
@@ -43,9 +42,6 @@
                             @foreach (var item in Model)
                             {
                                 <tr onclick="window.location = 'Edit/@item.aid'">
-                                    <td class="text-center">
-                                        @Html.DisplayFor(modelItem => item.aid)
-                                    </td>
                                     <td class="text-center">
                                         @Html.DisplayFor(modelItem => item.tituloAnuncio)
                                     </td>
@@ -76,12 +72,11 @@
                             }
                             <thead class="rodape-tabela">
                                 <tr>
-                                    <th class="text-center">Código</th>
                                     <th class="text-center">Título</th>
                                     <th class="text-center">Ramo</th>
                                     <th class="text-center">Video</th>
                                     @*<th class="text-center">Imagem</th>*@
-                                    <th class="text-center">Data</th>
+                                    <th class="text-center">Data de Criação</th>
                                     <th class="text-center">Status</th>
                                     <th class="text-center">Ações</th>
                                 </tr>

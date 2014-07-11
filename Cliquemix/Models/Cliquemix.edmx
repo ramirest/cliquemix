@@ -10,7 +10,7 @@
             <PropertyRef Name="pid" />
           </Key>
           <Property Name="pid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="cnpj" Type="varchar" MaxLength="18" Nullable="false" />
+          <Property Name="cnpj" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="razaoSocial" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="nmFantasia" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="contato" Type="varchar" MaxLength="45" Nullable="false" />
@@ -55,13 +55,14 @@
           </Key>
           <Property Name="peid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="pid" Type="int" Nullable="false" />
-          <Property Name="cepid" Type="int" />
           <Property Name="numero_endereco" Type="varchar" MaxLength="10" />
           <Property Name="complemento_endereco" Type="varchar" MaxLength="50" />
-          <Property Name="baiid" Type="int" />
-          <Property Name="cid" Type="int" />
-          <Property Name="eid" Type="int" />
-          <Property Name="paid" Type="int" />
+          <Property Name="nomeBairro" Type="varchar" MaxLength="100" />
+          <Property Name="nomeCidade" Type="varchar" MaxLength="100" />
+          <Property Name="ufEstado" Type="varchar" MaxLength="2" />
+          <Property Name="nomePais" Type="varchar" MaxLength="50" />
+          <Property Name="cep" Type="varchar" MaxLength="10" />
+          <Property Name="endereco" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="tbAnuncianteTelefone">
           <Key>
@@ -102,7 +103,14 @@
           </Key>
           <Property Name="imgid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="aid" Type="int" Nullable="false" />
-          <Property Name="anuncioImg" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="imagem1" Type="varchar" MaxLength="255" />
+          <Property Name="imagem2" Type="varchar" MaxLength="255" />
+          <Property Name="imagem3" Type="varchar" MaxLength="255" />
+          <Property Name="imagem4" Type="varchar" MaxLength="255" />
+          <Property Name="imagem5" Type="varchar" MaxLength="255" />
+          <Property Name="imagem6" Type="varchar" MaxLength="255" />
+          <Property Name="imagem7" Type="varchar" MaxLength="255" />
+          <Property Name="imagem8" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="tbAnuncioStatus">
           <Key>
@@ -453,6 +461,7 @@
           <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="pwd" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="utid" Type="int" Nullable="false" />
+          <Property Name="cpwd" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tbUsersLogAcesso">
           <Key>
@@ -566,18 +575,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="baiid_tbAnuncianteEndereco_tbBairro_fk">
-          <End Role="tbBairro" Type="Self.tbBairro" Multiplicity="0..1" />
-          <End Role="tbAnuncianteEndereco" Type="Self.tbAnuncianteEndereco" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbBairro">
-              <PropertyRef Name="baiid" />
-            </Principal>
-            <Dependent Role="tbAnuncianteEndereco">
-              <PropertyRef Name="baiid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="baiid_tbCep_tbBairro_fk">
           <End Role="tbBairro" Type="Self.tbBairro" Multiplicity="0..1" />
           <End Role="tbCep" Type="Self.tbCep" Multiplicity="*" />
@@ -671,30 +668,6 @@
             </Principal>
             <Dependent Role="tbCalculoCondicao">
               <PropertyRef Name="ccpid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="cepid_tbAnuncianteEndereco_tbCep_fk">
-          <End Role="tbCep" Type="Self.tbCep" Multiplicity="0..1" />
-          <End Role="tbAnuncianteEndereco" Type="Self.tbAnuncianteEndereco" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbCep">
-              <PropertyRef Name="cepid" />
-            </Principal>
-            <Dependent Role="tbAnuncianteEndereco">
-              <PropertyRef Name="cepid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="cid_tbAnuncianteEndereco_tbCidade_fk">
-          <End Role="tbCidade" Type="Self.tbCidade" Multiplicity="0..1" />
-          <End Role="tbAnuncianteEndereco" Type="Self.tbAnuncianteEndereco" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbCidade">
-              <PropertyRef Name="cid" />
-            </Principal>
-            <Dependent Role="tbAnuncianteEndereco">
-              <PropertyRef Name="cid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -842,18 +815,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="eid_tbAnuncianteEndereco_tbEstado_fk">
-          <End Role="tbEstado" Type="Self.tbEstado" Multiplicity="0..1" />
-          <End Role="tbAnuncianteEndereco" Type="Self.tbAnuncianteEndereco" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbEstado">
-              <PropertyRef Name="eid" />
-            </Principal>
-            <Dependent Role="tbAnuncianteEndereco">
-              <PropertyRef Name="eid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="eid_tbCampanhaAnuncioLocalizacao_tbEstado_fk">
           <End Role="tbEstado" Type="Self.tbEstado" Multiplicity="0..1" />
           <End Role="tbCampanhaAnuncioLocalizacao" Type="Self.tbCampanhaAnuncioLocalizacao" Multiplicity="*" />
@@ -899,18 +860,6 @@
             </Principal>
             <Dependent Role="tbAnuncioFuncionalidade">
               <PropertyRef Name="fid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="paid_tbAnuncianteEndereco_tbPais_fk">
-          <End Role="tbPais" Type="Self.tbPais" Multiplicity="0..1" />
-          <End Role="tbAnuncianteEndereco" Type="Self.tbAnuncianteEndereco" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbPais">
-              <PropertyRef Name="paid" />
-            </Principal>
-            <Dependent Role="tbAnuncianteEndereco">
-              <PropertyRef Name="paid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1305,10 +1254,6 @@
             <End Role="tbAnuncioStatus" EntitySet="tbAnuncioStatus" />
             <End Role="tbAnuncio" EntitySet="tbAnuncio" />
           </AssociationSet>
-          <AssociationSet Name="baiid_tbAnuncianteEndereco_tbBairro_fk" Association="Self.baiid_tbAnuncianteEndereco_tbBairro_fk">
-            <End Role="tbBairro" EntitySet="tbBairro" />
-            <End Role="tbAnuncianteEndereco" EntitySet="tbAnuncianteEndereco" />
-          </AssociationSet>
           <AssociationSet Name="baiid_tbCep_tbBairro_fk" Association="Self.baiid_tbCep_tbBairro_fk">
             <End Role="tbBairro" EntitySet="tbBairro" />
             <End Role="tbCep" EntitySet="tbCep" />
@@ -1340,14 +1285,6 @@
           <AssociationSet Name="ccpid_tbCalculoCondicao_tbCalculoCondicaoPagto_fk" Association="Self.ccpid_tbCalculoCondicao_tbCalculoCondicaoPagto_fk">
             <End Role="tbCalculoCondicaoPagto" EntitySet="tbCalculoCondicaoPagto" />
             <End Role="tbCalculoCondicao" EntitySet="tbCalculoCondicao" />
-          </AssociationSet>
-          <AssociationSet Name="cepid_tbAnuncianteEndereco_tbCep_fk" Association="Self.cepid_tbAnuncianteEndereco_tbCep_fk">
-            <End Role="tbCep" EntitySet="tbCep" />
-            <End Role="tbAnuncianteEndereco" EntitySet="tbAnuncianteEndereco" />
-          </AssociationSet>
-          <AssociationSet Name="cid_tbAnuncianteEndereco_tbCidade_fk" Association="Self.cid_tbAnuncianteEndereco_tbCidade_fk">
-            <End Role="tbCidade" EntitySet="tbCidade" />
-            <End Role="tbAnuncianteEndereco" EntitySet="tbAnuncianteEndereco" />
           </AssociationSet>
           <AssociationSet Name="cid_tbBairro_tbCidade_fk" Association="Self.cid_tbBairro_tbCidade_fk">
             <End Role="tbCidade" EntitySet="tbCidade" />
@@ -1397,10 +1334,6 @@
             <End Role="tbDestaque" EntitySet="tbDestaque" />
             <End Role="tbPremioDestaque" EntitySet="tbPremioDestaque" />
           </AssociationSet>
-          <AssociationSet Name="eid_tbAnuncianteEndereco_tbEstado_fk" Association="Self.eid_tbAnuncianteEndereco_tbEstado_fk">
-            <End Role="tbEstado" EntitySet="tbEstado" />
-            <End Role="tbAnuncianteEndereco" EntitySet="tbAnuncianteEndereco" />
-          </AssociationSet>
           <AssociationSet Name="eid_tbCampanhaAnuncioLocalizacao_tbEstado_fk" Association="Self.eid_tbCampanhaAnuncioLocalizacao_tbEstado_fk">
             <End Role="tbEstado" EntitySet="tbEstado" />
             <End Role="tbCampanhaAnuncioLocalizacao" EntitySet="tbCampanhaAnuncioLocalizacao" />
@@ -1416,10 +1349,6 @@
           <AssociationSet Name="fid_tbAnuncioFuncionalidade_tbFuncionalidade_fk" Association="Self.fid_tbAnuncioFuncionalidade_tbFuncionalidade_fk">
             <End Role="tbFuncionalidade" EntitySet="tbFuncionalidade" />
             <End Role="tbAnuncioFuncionalidade" EntitySet="tbAnuncioFuncionalidade" />
-          </AssociationSet>
-          <AssociationSet Name="paid_tbAnuncianteEndereco_tbPais_fk" Association="Self.paid_tbAnuncianteEndereco_tbPais_fk">
-            <End Role="tbPais" EntitySet="tbPais" />
-            <End Role="tbAnuncianteEndereco" EntitySet="tbAnuncianteEndereco" />
           </AssociationSet>
           <AssociationSet Name="paid_tbCampanhaAnuncioLocalizacao_tbPais_fk" Association="Self.paid_tbCampanhaAnuncioLocalizacao_tbPais_fk">
             <End Role="tbPais" EntitySet="tbPais" />
@@ -1529,16 +1458,20 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="cliquemixModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="cliquemixModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="tbAnunciante">
           <Key>
             <PropertyRef Name="pid" />
           </Key>
           <Property Name="pid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="cnpj" Type="String" MaxLength="18" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cnpj" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="razaoSocial" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="nmFantasia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="contato" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telResidencial" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="telComercial" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="telCelular1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="telCelular2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="ie" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="im" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
@@ -1550,20 +1483,16 @@
           <Property Name="saldoCreditos" Type="Decimal" Precision="11" Scale="3" />
           <Property Name="leuTermo" Type="Int32" />
           <Property Name="uid" Type="Int32" />
+          <Property Name="peid" Type="Int32" />
           <NavigationProperty Name="tbCondicaoPagto" Relationship="Self.cpid_tbAnunciante_tbCondicaoPagto_fk" FromRole="tbAnunciante" ToRole="tbCondicaoPagto" />
+          <NavigationProperty Name="tbAnuncianteEndereco" Relationship="Self.peid_tbAnunciante_tbAnuncianteEndereco_peid_fk" FromRole="tbAnunciante" ToRole="tbAnuncianteEndereco" />
           <NavigationProperty Name="tbAnuncianteDestaque" Relationship="Self.pid_tbAnuncianteDestaque_tbAnunciante_fk" FromRole="tbAnunciante" ToRole="tbAnuncianteDestaque" />
+          <NavigationProperty Name="tbAnuncianteEndereco1" Relationship="Self.pid_tbAnuncianteEndereco_tbAnunciante_fk" FromRole="tbAnunciante" ToRole="tbAnuncianteEndereco" />
+          <NavigationProperty Name="tbAnuncianteTelefone" Relationship="Self.pid_tbAnuncianteTelefone_tbAnunciante_fk" FromRole="tbAnunciante" ToRole="tbAnuncianteTelefone" />
           <NavigationProperty Name="tbCreditoCompra" Relationship="Self.pid_tbCreditoCompra_tbAnunciante_fk" FromRole="tbAnunciante" ToRole="tbCreditoCompra" />
+          <NavigationProperty Name="tbRamoAtividade" Relationship="Self.raid_tbAnunciante_tbRamoAtividade_fk" FromRole="tbAnunciante" ToRole="tbRamoAtividade" />
           <NavigationProperty Name="tbTos" Relationship="Self.tid_tbAnunciante_tbTos_fk" FromRole="tbAnunciante" ToRole="tbTos" />
           <NavigationProperty Name="tbUsers" Relationship="Self.uid_tbAnunciante_tbUsers_fk" FromRole="tbAnunciante" ToRole="tbUsers" />
-          <NavigationProperty Name="tbRamoAtividade" Relationship="cliquemixModel.raid_tbAnunciante_tbRamoAtividade_fk" FromRole="tbAnunciante" ToRole="tbRamoAtividade" />
-          <Property Name="telResidencial" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="telComercial" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="telCelular1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="telCelular2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbAnuncianteEndereco" Relationship="cliquemixModel.pid_tbAnuncianteEndereco_tbAnunciante_fk" FromRole="tbAnunciante" ToRole="tbAnuncianteEndereco" />
-          <Property Name="peid" Type="Int32" />
-          <NavigationProperty Name="tbAnuncianteEndereco1" Relationship="cliquemixModel.peid_tbAnunciante_tbAnuncianteEndereco_peid_fk" FromRole="tbAnunciante" ToRole="tbAnuncianteEndereco" />
-          <NavigationProperty Name="tbAnuncianteTelefone" Relationship="cliquemixModel.pid_tbAnuncianteTelefone_tbAnunciante_fk" FromRole="tbAnunciante" ToRole="tbAnuncianteTelefone" />
         </EntityType>
         <EntityType Name="tbAnuncianteDestaque">
           <Key>
@@ -1588,6 +1517,55 @@
           <Property Name="dsAnuncianteDestaqueStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="tbAnuncianteDestaque" Relationship="Self.adsid_tbAnuncianteDestaque_tbAnuncianteDestaqueStatus_fk" FromRole="tbAnuncianteDestaqueStatus" ToRole="tbAnuncianteDestaque" />
         </EntityType>
+        <EntityType Name="tbAnuncianteEndereco">
+          <Key>
+            <PropertyRef Name="peid" />
+          </Key>
+          <Property Name="peid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pid" Type="Int32" Nullable="false" />
+          <Property Name="numero_endereco" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="complemento_endereco" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nomeBairro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="nomeCidade" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ufEstado" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="nomePais" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cep" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="endereco" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbAnunciante" Relationship="Self.peid_tbAnunciante_tbAnuncianteEndereco_peid_fk" FromRole="tbAnuncianteEndereco" ToRole="tbAnunciante" />
+          <NavigationProperty Name="tbAnunciante1" Relationship="Self.pid_tbAnuncianteEndereco_tbAnunciante_fk" FromRole="tbAnuncianteEndereco" ToRole="tbAnunciante" />
+        </EntityType>
+        <EntityType Name="tbAnuncianteTelefone">
+          <Key>
+            <PropertyRef Name="ptid" />
+          </Key>
+          <Property Name="ptid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pid" Type="Int32" Nullable="false" />
+          <Property Name="tipoTelefone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="numTelefone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbAnunciante" Relationship="Self.pid_tbAnuncianteTelefone_tbAnunciante_fk" FromRole="tbAnuncianteTelefone" ToRole="tbAnunciante" />
+        </EntityType>
+        <EntityType Name="tbAnuncio">
+          <Key>
+            <PropertyRef Name="aid" />
+          </Key>
+          <Property Name="aid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tituloAnuncio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="url" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dsAnuncio" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="videoAnuncio" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="raid" Type="Int32" />
+          <Property Name="comentar" Type="Boolean" />
+          <Property Name="curtir" Type="Boolean" />
+          <Property Name="compartilhar" Type="Boolean" />
+          <Property Name="asid" Type="Int32" />
+          <Property Name="dtCriacao" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbAnuncioFuncionalidade" Relationship="Self.aid_tbAnuncioFuncionalidade_tbAnuncio_fk" FromRole="tbAnuncio" ToRole="tbAnuncioFuncionalidade" />
+          <NavigationProperty Name="tbAnuncioImg" Relationship="Self.aid_tbAnuncioImg_tbAnuncio_fk" FromRole="tbAnuncio" ToRole="tbAnuncioImg" />
+          <NavigationProperty Name="tbCampanhaAnuncio" Relationship="Self.aid_tbCampanhaAnuncio_tbAnuncio_fk" FromRole="tbAnuncio" ToRole="tbCampanhaAnuncio" />
+          <NavigationProperty Name="tbPontosRede" Relationship="Self.aid_tbPontosRede_tbAnuncio_fk" FromRole="tbAnuncio" ToRole="tbPontosRede" />
+          <NavigationProperty Name="tbAnuncioStatus" Relationship="Self.asid_tbAnuncio_tbAnuncioStatus_fk" FromRole="tbAnuncio" ToRole="tbAnuncioStatus" />
+          <NavigationProperty Name="tbRamoAtividade" Relationship="Self.raid_tbAnuncio_tbRamoAtividade_fk" FromRole="tbAnuncio" ToRole="tbRamoAtividade" />
+        </EntityType>
         <EntityType Name="tbAnuncioFuncionalidade">
           <Key>
             <PropertyRef Name="afid" />
@@ -1595,8 +1573,8 @@
           <Property Name="afid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="aid" Type="Int32" Nullable="false" />
           <Property Name="fid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbAnuncio" Relationship="Self.aid_tbAnuncioFuncionalidade_tbAnuncio_fk" FromRole="tbAnuncioFuncionalidade" ToRole="tbAnuncio" />
           <NavigationProperty Name="tbFuncionalidade" Relationship="Self.fid_tbAnuncioFuncionalidade_tbFuncionalidade_fk" FromRole="tbAnuncioFuncionalidade" ToRole="tbFuncionalidade" />
-          <NavigationProperty Name="tbAnuncio" Relationship="cliquemixModel.aid_tbAnuncioFuncionalidade_tbAnuncio_fk" FromRole="tbAnuncioFuncionalidade" ToRole="tbAnuncio" />
         </EntityType>
         <EntityType Name="tbAnuncioImg">
           <Key>
@@ -1604,8 +1582,35 @@
           </Key>
           <Property Name="imgid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="aid" Type="Int32" Nullable="false" />
-          <Property Name="anuncioImg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="tbAnuncio" Relationship="cliquemixModel.aid_tbAnuncioImg_tbAnuncio_fk" FromRole="tbAnuncioImg" ToRole="tbAnuncio" />
+          <NavigationProperty Name="tbAnuncio" Relationship="Self.aid_tbAnuncioImg_tbAnuncio_fk" FromRole="tbAnuncioImg" ToRole="tbAnuncio" />
+          <Property Name="imagem1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="imagem2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="imagem3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="imagem4" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="imagem5" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="imagem6" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="imagem7" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="imagem8" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbAnuncioStatus">
+          <Key>
+            <PropertyRef Name="asid" />
+          </Key>
+          <Property Name="asid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dsStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbAnuncio" Relationship="Self.asid_tbAnuncio_tbAnuncioStatus_fk" FromRole="tbAnuncioStatus" ToRole="tbAnuncio" />
+        </EntityType>
+        <EntityType Name="tbBairro">
+          <Key>
+            <PropertyRef Name="baiid" />
+          </Key>
+          <Property Name="baiid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nomeBairro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cid" Type="Int32" Nullable="false" />
+          <Property Name="abrevBairro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="uf" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbCep" Relationship="Self.baiid_tbCep_tbBairro_fk" FromRole="tbBairro" ToRole="tbCep" />
+          <NavigationProperty Name="tbCidade" Relationship="Self.cid_tbBairro_tbCidade_fk" FromRole="tbBairro" ToRole="tbCidade" />
         </EntityType>
         <EntityType Name="tbBan">
           <Key>
@@ -1689,11 +1694,11 @@
           <Property Name="cid" Type="Int32" Nullable="false" />
           <Property Name="casid" Type="Int32" Nullable="false" />
           <Property Name="qtCliqueMax" Type="Int32" />
+          <NavigationProperty Name="tbAnuncio" Relationship="Self.aid_tbCampanhaAnuncio_tbAnuncio_fk" FromRole="tbCampanhaAnuncio" ToRole="tbAnuncio" />
           <NavigationProperty Name="tbCampanha" Relationship="Self.cid_tbCampanhaAnuncio_tbCampanha_fk" FromRole="tbCampanhaAnuncio" ToRole="tbCampanha" />
           <NavigationProperty Name="tbCampanhaAnuncioConsumidor" Relationship="Self.caid_tbCampanhaAnuncioConsumidor_tbCampanhaAnuncio_fk" FromRole="tbCampanhaAnuncio" ToRole="tbCampanhaAnuncioConsumidor" />
           <NavigationProperty Name="tbCampanhaAnuncioLocalizacao" Relationship="Self.caid_tbCampanhaAnuncioLocalizacao_tbCampanhaAnuncio_fk" FromRole="tbCampanhaAnuncio" ToRole="tbCampanhaAnuncioLocalizacao" />
           <NavigationProperty Name="tbCampanhaAnuncioStatus" Relationship="Self.casid_tbCampanhaAnuncio_tbCampanhaAnuncioStatus_fk" FromRole="tbCampanhaAnuncio" ToRole="tbCampanhaAnuncioStatus" />
-          <NavigationProperty Name="tbAnuncio" Relationship="cliquemixModel.aid_tbCampanhaAnuncio_tbAnuncio_fk" FromRole="tbCampanhaAnuncio" ToRole="tbAnuncio" />
         </EntityType>
         <EntityType Name="tbCampanhaAnuncioConsumidor">
           <Key>
@@ -1744,7 +1749,6 @@
           <Property Name="cepid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="dsLogradouro" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="cep" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbAnuncianteEndereco" Relationship="cliquemixModel.cepid_tbAnuncianteEndereco_tbCep_fk" FromRole="tbCep" ToRole="tbAnuncianteEndereco" />
           <Property Name="eid" Type="Int32" />
           <Property Name="cid" Type="Int32" />
           <Property Name="baiid" Type="Int32" />
@@ -1752,10 +1756,10 @@
           <Property Name="uf" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
           <Property Name="abrevLogradouro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="tlid" Type="Int32" />
-          <NavigationProperty Name="tbBairro" Relationship="cliquemixModel.baiid_tbCep_tbBairro_fk" FromRole="tbCep" ToRole="tbBairro" />
-          <NavigationProperty Name="tbCidade" Relationship="cliquemixModel.cid_tbCep_tbCidade_fk" FromRole="tbCep" ToRole="tbCidade" />
-          <NavigationProperty Name="tbEstado" Relationship="cliquemixModel.eid_tbCep_tbEstado_fk" FromRole="tbCep" ToRole="tbEstado" />
-          <NavigationProperty Name="tbTipoLogradouro" Relationship="cliquemixModel.tlid_tbCep_tbTipoLogradouro_fk" FromRole="tbCep" ToRole="tbTipoLogradouro" />
+          <NavigationProperty Name="tbBairro" Relationship="Self.baiid_tbCep_tbBairro_fk" FromRole="tbCep" ToRole="tbBairro" />
+          <NavigationProperty Name="tbCidade" Relationship="Self.cid_tbCep_tbCidade_fk" FromRole="tbCep" ToRole="tbCidade" />
+          <NavigationProperty Name="tbEstado" Relationship="Self.eid_tbCep_tbEstado_fk" FromRole="tbCep" ToRole="tbEstado" />
+          <NavigationProperty Name="tbTipoLogradouro" Relationship="Self.tlid_tbCep_tbTipoLogradouro_fk" FromRole="tbCep" ToRole="tbTipoLogradouro" />
         </EntityType>
         <EntityType Name="tbCidade">
           <Key>
@@ -1764,14 +1768,13 @@
           <Property Name="cid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nomeCidade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="eid" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tbCampanhaAnuncioLocalizacao" Relationship="Self.cid_tbCampanhaAnuncioLocalizacao_tbCidade_fk" FromRole="tbCidade" ToRole="tbCampanhaAnuncioLocalizacao" />
-          <NavigationProperty Name="tbEstado" Relationship="Self.eid_tbCidade_tbEstado_fk" FromRole="tbCidade" ToRole="tbEstado" />
           <Property Name="cep_cidade" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbBairro" Relationship="cliquemixModel.cid_tbBairro_tbCidade_fk" FromRole="tbCidade" ToRole="tbBairro" />
           <Property Name="uf" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
           <Property Name="dsCidade" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbCep" Relationship="cliquemixModel.cid_tbCep_tbCidade_fk" FromRole="tbCidade" ToRole="tbCep" />
-          <NavigationProperty Name="tbAnuncianteEndereco" Relationship="cliquemixModel.cid_tbAnuncianteEndereco_tbCidade_fk" FromRole="tbCidade" ToRole="tbAnuncianteEndereco" />
+          <NavigationProperty Name="tbBairro" Relationship="Self.cid_tbBairro_tbCidade_fk" FromRole="tbCidade" ToRole="tbBairro" />
+          <NavigationProperty Name="tbCampanhaAnuncioLocalizacao" Relationship="Self.cid_tbCampanhaAnuncioLocalizacao_tbCidade_fk" FromRole="tbCidade" ToRole="tbCampanhaAnuncioLocalizacao" />
+          <NavigationProperty Name="tbCep" Relationship="Self.cid_tbCep_tbCidade_fk" FromRole="tbCidade" ToRole="tbCep" />
+          <NavigationProperty Name="tbEstado" Relationship="Self.eid_tbCidade_tbEstado_fk" FromRole="tbCidade" ToRole="tbEstado" />
         </EntityType>
         <EntityType Name="tbCondicaoPagto">
           <Key>
@@ -1792,7 +1795,7 @@
           <Property Name="leuTermo" Type="Int32" />
           <Property Name="tid" Type="Int32" Nullable="false" />
           <NavigationProperty Name="tbCampanhaAnuncioConsumidor" Relationship="Self.cid_tbCampanhaAnuncioConsumidor_tbConsumidor_fk" FromRole="tbConsumidor" ToRole="tbCampanhaAnuncioConsumidor" />
-          <NavigationProperty Name="tbTos" Relationship="cliquemixModel.tid_tbConsumidor_tbTos_fk" FromRole="tbConsumidor" ToRole="tbTos" />
+          <NavigationProperty Name="tbTos" Relationship="Self.tid_tbConsumidor_tbTos_fk" FromRole="tbConsumidor" ToRole="tbTos" />
         </EntityType>
         <EntityType Name="tbCredito">
           <Key>
@@ -1848,13 +1851,12 @@
           <Property Name="eid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nomeEstado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="sgEstado" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="tbCampanhaAnuncioLocalizacao" Relationship="Self.eid_tbCampanhaAnuncioLocalizacao_tbEstado_fk" FromRole="tbEstado" ToRole="tbCampanhaAnuncioLocalizacao" />
-          <NavigationProperty Name="tbCidade" Relationship="Self.eid_tbCidade_tbEstado_fk" FromRole="tbEstado" ToRole="tbCidade" />
           <Property Name="ibge" Type="Int32" />
           <Property Name="paid" Type="Int32" />
-          <NavigationProperty Name="tbCep" Relationship="cliquemixModel.eid_tbCep_tbEstado_fk" FromRole="tbEstado" ToRole="tbCep" />
-          <NavigationProperty Name="tbPais" Relationship="cliquemixModel.paid_tbEstado_tbPais_fk" FromRole="tbEstado" ToRole="tbPais" />
-          <NavigationProperty Name="tbAnuncianteEndereco" Relationship="cliquemixModel.eid_tbAnuncianteEndereco_tbEstado_fk" FromRole="tbEstado" ToRole="tbAnuncianteEndereco" />
+          <NavigationProperty Name="tbCampanhaAnuncioLocalizacao" Relationship="Self.eid_tbCampanhaAnuncioLocalizacao_tbEstado_fk" FromRole="tbEstado" ToRole="tbCampanhaAnuncioLocalizacao" />
+          <NavigationProperty Name="tbCep" Relationship="Self.eid_tbCep_tbEstado_fk" FromRole="tbEstado" ToRole="tbCep" />
+          <NavigationProperty Name="tbCidade" Relationship="Self.eid_tbCidade_tbEstado_fk" FromRole="tbEstado" ToRole="tbCidade" />
+          <NavigationProperty Name="tbPais" Relationship="Self.paid_tbEstado_tbPais_fk" FromRole="tbEstado" ToRole="tbPais" />
         </EntityType>
         <EntityType Name="tbFuncionalidade">
           <Key>
@@ -1864,6 +1866,17 @@
           <Property Name="dsFuncionalidade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="tbAnuncioFuncionalidade" Relationship="Self.fid_tbAnuncioFuncionalidade_tbFuncionalidade_fk" FromRole="tbFuncionalidade" ToRole="tbAnuncioFuncionalidade" />
         </EntityType>
+        <EntityType Name="tbLogSistema">
+          <Key>
+            <PropertyRef Name="lsid" />
+          </Key>
+          <Property Name="lsid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uid" Type="Int32" />
+          <Property Name="dataHoraLog" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dsLog" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="dsControle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbUsers" Relationship="Self.uid_tbLogSistema_tbUsers_fk" FromRole="tbLogSistema" ToRole="tbUsers" />
+        </EntityType>
         <EntityType Name="tbPais">
           <Key>
             <PropertyRef Name="paid" />
@@ -1871,8 +1884,7 @@
           <Property Name="paid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nomePais" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="tbCampanhaAnuncioLocalizacao" Relationship="Self.paid_tbCampanhaAnuncioLocalizacao_tbPais_fk" FromRole="tbPais" ToRole="tbCampanhaAnuncioLocalizacao" />
-          <NavigationProperty Name="tbEstado" Relationship="cliquemixModel.paid_tbEstado_tbPais_fk" FromRole="tbPais" ToRole="tbEstado" />
-          <NavigationProperty Name="tbAnuncianteEndereco" Relationship="cliquemixModel.paid_tbAnuncianteEndereco_tbPais_fk" FromRole="tbPais" ToRole="tbAnuncianteEndereco" />
+          <NavigationProperty Name="tbEstado" Relationship="Self.paid_tbEstado_tbPais_fk" FromRole="tbPais" ToRole="tbEstado" />
         </EntityType>
         <EntityType Name="tbPermissao">
           <Key>
@@ -1880,11 +1892,30 @@
           </Key>
           <Property Name="peid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="dsPermissao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbUsersPermissao" Relationship="Self.peid_tbUsersPermissao_tbPermissao_fk" FromRole="tbPermissao" ToRole="tbUsersPermissao" />
           <Property Name="pgid" Type="Int32" />
           <Property Name="psgid" Type="Int32" />
-          <NavigationProperty Name="tbPermissaoGrupo" Relationship="cliquemixModel.pgid_tbPermissao_tbPermissaoGrupo_fk" FromRole="tbPermissao" ToRole="tbPermissaoGrupo" />
-          <NavigationProperty Name="tbPermissaoSubGrupo" Relationship="cliquemixModel.psgid_tbPermissao_tbPermissaoSubGrupo_fk" FromRole="tbPermissao" ToRole="tbPermissaoSubGrupo" />
+          <NavigationProperty Name="tbUsersPermissao" Relationship="Self.peid_tbUsersPermissao_tbPermissao_fk" FromRole="tbPermissao" ToRole="tbUsersPermissao" />
+          <NavigationProperty Name="tbPermissaoGrupo" Relationship="Self.pgid_tbPermissao_tbPermissaoGrupo_fk" FromRole="tbPermissao" ToRole="tbPermissaoGrupo" />
+          <NavigationProperty Name="tbPermissaoSubGrupo" Relationship="Self.psgid_tbPermissao_tbPermissaoSubGrupo_fk" FromRole="tbPermissao" ToRole="tbPermissaoSubGrupo" />
+        </EntityType>
+        <EntityType Name="tbPermissaoGrupo">
+          <Key>
+            <PropertyRef Name="pgid" />
+          </Key>
+          <Property Name="pgid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dsPermissaoGrupo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbPermissao" Relationship="Self.pgid_tbPermissao_tbPermissaoGrupo_fk" FromRole="tbPermissaoGrupo" ToRole="tbPermissao" />
+          <NavigationProperty Name="tbPermissaoSubGrupo" Relationship="Self.pgid_tbPermissaoSubGrupo_tbPermissaoGrupo_fk" FromRole="tbPermissaoGrupo" ToRole="tbPermissaoSubGrupo" />
+        </EntityType>
+        <EntityType Name="tbPermissaoSubGrupo">
+          <Key>
+            <PropertyRef Name="psgid" />
+          </Key>
+          <Property Name="psgid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dsPermissaoSubGrupo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pgid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbPermissao" Relationship="Self.psgid_tbPermissao_tbPermissaoSubGrupo_fk" FromRole="tbPermissaoSubGrupo" ToRole="tbPermissao" />
+          <NavigationProperty Name="tbPermissaoGrupo" Relationship="Self.pgid_tbPermissaoSubGrupo_tbPermissaoGrupo_fk" FromRole="tbPermissaoSubGrupo" ToRole="tbPermissaoGrupo" />
         </EntityType>
         <EntityType Name="tbPontosRede">
           <Key>
@@ -1893,7 +1924,7 @@
           <Property Name="pid" Type="Int32" Nullable="false" />
           <Property Name="aid" Type="Int32" Nullable="false" />
           <Property Name="qtPontos" Type="Double" Nullable="false" />
-          <NavigationProperty Name="tbAnuncio" Relationship="cliquemixModel.aid_tbPontosRede_tbAnuncio_fk" FromRole="tbPontosRede" ToRole="tbAnuncio" />
+          <NavigationProperty Name="tbAnuncio" Relationship="Self.aid_tbPontosRede_tbAnuncio_fk" FromRole="tbPontosRede" ToRole="tbAnuncio" />
         </EntityType>
         <EntityType Name="tbPremio">
           <Key>
@@ -1951,6 +1982,24 @@
           <Property Name="premioImg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="tbPremio" Relationship="Self.pnid_tbPremio_tbPremioNivel_fk" FromRole="tbPremioNivel" ToRole="tbPremio" />
         </EntityType>
+        <EntityType Name="tbRamoAtividade">
+          <Key>
+            <PropertyRef Name="raid" />
+          </Key>
+          <Property Name="raid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tbAnunciante" Relationship="Self.raid_tbAnunciante_tbRamoAtividade_fk" FromRole="tbRamoAtividade" ToRole="tbAnunciante" />
+          <NavigationProperty Name="tbAnuncio" Relationship="Self.raid_tbAnuncio_tbRamoAtividade_fk" FromRole="tbRamoAtividade" ToRole="tbAnuncio" />
+        </EntityType>
+        <EntityType Name="tbTipoLogradouro">
+          <Key>
+            <PropertyRef Name="tlid" />
+          </Key>
+          <Property Name="tlid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dsTipoLogradouro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="abrevTipoLogradouro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbCep" Relationship="Self.tlid_tbCep_tbTipoLogradouro_fk" FromRole="tbTipoLogradouro" ToRole="tbCep" />
+        </EntityType>
         <EntityType Name="tbTos">
           <Key>
             <PropertyRef Name="tid" />
@@ -1960,7 +2009,7 @@
           <Property Name="clausula" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="tipo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="tbAnunciante" Relationship="Self.tid_tbAnunciante_tbTos_fk" FromRole="tbTos" ToRole="tbAnunciante" />
-          <NavigationProperty Name="tbConsumidor" Relationship="cliquemixModel.tid_tbConsumidor_tbTos_fk" FromRole="tbTos" ToRole="tbConsumidor" />
+          <NavigationProperty Name="tbConsumidor" Relationship="Self.tid_tbConsumidor_tbTos_fk" FromRole="tbTos" ToRole="tbConsumidor" />
         </EntityType>
         <EntityType Name="tbUsers">
           <Key>
@@ -1970,12 +2019,27 @@
           <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="pwd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="utid" Type="Int32" Nullable="false" />
+          <Property Name="cpwd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tbAnunciante" Relationship="Self.uid_tbAnunciante_tbUsers_fk" FromRole="tbUsers" ToRole="tbAnunciante" />
           <NavigationProperty Name="tbBan" Relationship="Self.uid_tbBan_tbUsers_fk" FromRole="tbUsers" ToRole="tbBan" />
+          <NavigationProperty Name="tbLogSistema" Relationship="Self.uid_tbLogSistema_tbUsers_fk" FromRole="tbUsers" ToRole="tbLogSistema" />
+          <NavigationProperty Name="tbUsersLogAcesso" Relationship="Self.uid_tbUsersLogAcesso_tbUsers_fk" FromRole="tbUsers" ToRole="tbUsersLogAcesso" />
           <NavigationProperty Name="tbUsersPermissao" Relationship="Self.uid_tbUsersPermissao_tbUsers_fk" FromRole="tbUsers" ToRole="tbUsersPermissao" />
           <NavigationProperty Name="tbUsersTipo" Relationship="Self.utid_tbUsers_tbUsersTipo_fk" FromRole="tbUsers" ToRole="tbUsersTipo" />
-          <NavigationProperty Name="tbUsersLogAcesso" Relationship="cliquemixModel.uid_tbUsersLogAcesso_tbUsers_fk" FromRole="tbUsers" ToRole="tbUsersLogAcesso" />
-          <NavigationProperty Name="tbLogSistema" Relationship="cliquemixModel.uid_tbLogSistema_tbUsers_fk" FromRole="tbUsers" ToRole="tbLogSistema" />
+        </EntityType>
+        <EntityType Name="tbUsersLogAcesso">
+          <Key>
+            <PropertyRef Name="ulaid" />
+          </Key>
+          <Property Name="ulaid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uid" Type="Int32" Nullable="false" />
+          <Property Name="dataHoraLog" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="timeOutLog" Type="Int32" />
+          <Property Name="dataHoraExpiracao" Type="DateTime" Precision="3" />
+          <Property Name="idSessao" Type="Int32" />
+          <Property Name="sessaoExpirada" Type="Int32" />
+          <Property Name="nomeSessao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbUsers" Relationship="Self.uid_tbUsersLogAcesso_tbUsers_fk" FromRole="tbUsersLogAcesso" ToRole="tbUsers" />
         </EntityType>
         <EntityType Name="tbUsersPermissao">
           <Key>
@@ -2007,6 +2071,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="peid_tbAnunciante_tbAnuncianteEndereco_peid_fk">
+          <End Role="tbAnuncianteEndereco" Type="Self.tbAnuncianteEndereco" Multiplicity="0..1" />
+          <End Role="tbAnunciante" Type="Self.tbAnunciante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbAnuncianteEndereco">
+              <PropertyRef Name="peid" />
+            </Principal>
+            <Dependent Role="tbAnunciante">
+              <PropertyRef Name="peid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="pid_tbAnuncianteDestaque_tbAnunciante_fk">
           <End Role="tbAnunciante" Type="Self.tbAnunciante" Multiplicity="1" />
           <End Role="tbAnuncianteDestaque" Type="Self.tbAnuncianteDestaque" Multiplicity="*" />
@@ -2015,6 +2091,30 @@
               <PropertyRef Name="pid" />
             </Principal>
             <Dependent Role="tbAnuncianteDestaque">
+              <PropertyRef Name="pid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pid_tbAnuncianteEndereco_tbAnunciante_fk">
+          <End Role="tbAnunciante" Type="Self.tbAnunciante" Multiplicity="1" />
+          <End Role="tbAnuncianteEndereco" Type="Self.tbAnuncianteEndereco" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbAnunciante">
+              <PropertyRef Name="pid" />
+            </Principal>
+            <Dependent Role="tbAnuncianteEndereco">
+              <PropertyRef Name="pid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pid_tbAnuncianteTelefone_tbAnunciante_fk">
+          <End Role="tbAnunciante" Type="Self.tbAnunciante" Multiplicity="1" />
+          <End Role="tbAnuncianteTelefone" Type="Self.tbAnuncianteTelefone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbAnunciante">
+              <PropertyRef Name="pid" />
+            </Principal>
+            <Dependent Role="tbAnuncianteTelefone">
               <PropertyRef Name="pid" />
             </Dependent>
           </ReferentialConstraint>
@@ -2028,6 +2128,18 @@
             </Principal>
             <Dependent Role="tbCreditoCompra">
               <PropertyRef Name="pid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="raid_tbAnunciante_tbRamoAtividade_fk">
+          <End Role="tbRamoAtividade" Type="Self.tbRamoAtividade" Multiplicity="0..1" />
+          <End Role="tbAnunciante" Type="Self.tbAnunciante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbRamoAtividade">
+              <PropertyRef Name="raid" />
+            </Principal>
+            <Dependent Role="tbAnunciante">
+              <PropertyRef Name="raid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2091,6 +2203,78 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="aid_tbAnuncioFuncionalidade_tbAnuncio_fk">
+          <End Role="tbAnuncio" Type="Self.tbAnuncio" Multiplicity="1" />
+          <End Role="tbAnuncioFuncionalidade" Type="Self.tbAnuncioFuncionalidade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbAnuncio">
+              <PropertyRef Name="aid" />
+            </Principal>
+            <Dependent Role="tbAnuncioFuncionalidade">
+              <PropertyRef Name="aid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="aid_tbAnuncioImg_tbAnuncio_fk">
+          <End Role="tbAnuncio" Type="Self.tbAnuncio" Multiplicity="1" />
+          <End Role="tbAnuncioImg" Type="Self.tbAnuncioImg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbAnuncio">
+              <PropertyRef Name="aid" />
+            </Principal>
+            <Dependent Role="tbAnuncioImg">
+              <PropertyRef Name="aid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="aid_tbCampanhaAnuncio_tbAnuncio_fk">
+          <End Role="tbAnuncio" Type="Self.tbAnuncio" Multiplicity="1" />
+          <End Role="tbCampanhaAnuncio" Type="Self.tbCampanhaAnuncio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbAnuncio">
+              <PropertyRef Name="aid" />
+            </Principal>
+            <Dependent Role="tbCampanhaAnuncio">
+              <PropertyRef Name="aid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="aid_tbPontosRede_tbAnuncio_fk">
+          <End Role="tbAnuncio" Type="Self.tbAnuncio" Multiplicity="1" />
+          <End Role="tbPontosRede" Type="Self.tbPontosRede" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbAnuncio">
+              <PropertyRef Name="aid" />
+            </Principal>
+            <Dependent Role="tbPontosRede">
+              <PropertyRef Name="aid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="asid_tbAnuncio_tbAnuncioStatus_fk">
+          <End Role="tbAnuncioStatus" Type="Self.tbAnuncioStatus" Multiplicity="0..1" />
+          <End Role="tbAnuncio" Type="Self.tbAnuncio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbAnuncioStatus">
+              <PropertyRef Name="asid" />
+            </Principal>
+            <Dependent Role="tbAnuncio">
+              <PropertyRef Name="asid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="raid_tbAnuncio_tbRamoAtividade_fk">
+          <End Role="tbRamoAtividade" Type="Self.tbRamoAtividade" Multiplicity="0..1" />
+          <End Role="tbAnuncio" Type="Self.tbAnuncio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbRamoAtividade">
+              <PropertyRef Name="raid" />
+            </Principal>
+            <Dependent Role="tbAnuncio">
+              <PropertyRef Name="raid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fid_tbAnuncioFuncionalidade_tbFuncionalidade_fk">
           <End Role="tbFuncionalidade" Type="Self.tbFuncionalidade" Multiplicity="1" />
           <End Role="tbAnuncioFuncionalidade" Type="Self.tbAnuncioFuncionalidade" Multiplicity="*" />
@@ -2100,6 +2284,30 @@
             </Principal>
             <Dependent Role="tbAnuncioFuncionalidade">
               <PropertyRef Name="fid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="baiid_tbCep_tbBairro_fk">
+          <End Role="tbBairro" Type="Self.tbBairro" Multiplicity="0..1" />
+          <End Role="tbCep" Type="Self.tbCep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbBairro">
+              <PropertyRef Name="baiid" />
+            </Principal>
+            <Dependent Role="tbCep">
+              <PropertyRef Name="baiid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cid_tbBairro_tbCidade_fk">
+          <End Role="tbCidade" Type="Self.tbCidade" Multiplicity="1" />
+          <End Role="tbBairro" Type="Self.tbBairro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbCidade">
+              <PropertyRef Name="cid" />
+            </Principal>
+            <Dependent Role="tbBairro">
+              <PropertyRef Name="cid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2295,6 +2503,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="cid_tbCep_tbCidade_fk">
+          <End Role="tbCidade" Type="Self.tbCidade" Multiplicity="0..1" />
+          <End Role="tbCep" Type="Self.tbCep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbCidade">
+              <PropertyRef Name="cid" />
+            </Principal>
+            <Dependent Role="tbCep">
+              <PropertyRef Name="cid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="eid_tbCep_tbEstado_fk">
+          <End Role="tbEstado" Type="Self.tbEstado" Multiplicity="0..1" />
+          <End Role="tbCep" Type="Self.tbCep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbEstado">
+              <PropertyRef Name="eid" />
+            </Principal>
+            <Dependent Role="tbCep">
+              <PropertyRef Name="eid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tlid_tbCep_tbTipoLogradouro_fk">
+          <End Role="tbTipoLogradouro" Type="Self.tbTipoLogradouro" Multiplicity="0..1" />
+          <End Role="tbCep" Type="Self.tbCep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbTipoLogradouro">
+              <PropertyRef Name="tlid" />
+            </Principal>
+            <Dependent Role="tbCep">
+              <PropertyRef Name="tlid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="eid_tbCidade_tbEstado_fk">
           <End Role="tbEstado" Type="Self.tbEstado" Multiplicity="1" />
           <End Role="tbCidade" Type="Self.tbCidade" Multiplicity="*" />
@@ -2304,6 +2548,18 @@
             </Principal>
             <Dependent Role="tbCidade">
               <PropertyRef Name="eid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tid_tbConsumidor_tbTos_fk">
+          <End Role="tbTos" Type="Self.tbTos" Multiplicity="1" />
+          <End Role="tbConsumidor" Type="Self.tbConsumidor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbTos">
+              <PropertyRef Name="tid" />
+            </Principal>
+            <Dependent Role="tbConsumidor">
+              <PropertyRef Name="tid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2331,6 +2587,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="paid_tbEstado_tbPais_fk">
+          <End Role="tbPais" Type="Self.tbPais" Multiplicity="0..1" />
+          <End Role="tbEstado" Type="Self.tbEstado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPais">
+              <PropertyRef Name="paid" />
+            </Principal>
+            <Dependent Role="tbEstado">
+              <PropertyRef Name="paid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="uid_tbLogSistema_tbUsers_fk">
+          <End Role="tbUsers" Type="Self.tbUsers" Multiplicity="0..1" />
+          <End Role="tbLogSistema" Type="Self.tbLogSistema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsers">
+              <PropertyRef Name="uid" />
+            </Principal>
+            <Dependent Role="tbLogSistema">
+              <PropertyRef Name="uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="peid_tbUsersPermissao_tbPermissao_fk">
           <End Role="tbPermissao" Type="Self.tbPermissao" Multiplicity="1" />
           <End Role="tbUsersPermissao" Type="Self.tbUsersPermissao" Multiplicity="*" />
@@ -2340,6 +2620,42 @@
             </Principal>
             <Dependent Role="tbUsersPermissao">
               <PropertyRef Name="peid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pgid_tbPermissao_tbPermissaoGrupo_fk">
+          <End Role="tbPermissaoGrupo" Type="Self.tbPermissaoGrupo" Multiplicity="0..1" />
+          <End Role="tbPermissao" Type="Self.tbPermissao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPermissaoGrupo">
+              <PropertyRef Name="pgid" />
+            </Principal>
+            <Dependent Role="tbPermissao">
+              <PropertyRef Name="pgid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="psgid_tbPermissao_tbPermissaoSubGrupo_fk">
+          <End Role="tbPermissaoSubGrupo" Type="Self.tbPermissaoSubGrupo" Multiplicity="0..1" />
+          <End Role="tbPermissao" Type="Self.tbPermissao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPermissaoSubGrupo">
+              <PropertyRef Name="psgid" />
+            </Principal>
+            <Dependent Role="tbPermissao">
+              <PropertyRef Name="psgid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pgid_tbPermissaoSubGrupo_tbPermissaoGrupo_fk">
+          <End Role="tbPermissaoGrupo" Type="Self.tbPermissaoGrupo" Multiplicity="1" />
+          <End Role="tbPermissaoSubGrupo" Type="Self.tbPermissaoSubGrupo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPermissaoGrupo">
+              <PropertyRef Name="pgid" />
+            </Principal>
+            <Dependent Role="tbPermissaoSubGrupo">
+              <PropertyRef Name="pgid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2391,6 +2707,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="uid_tbUsersLogAcesso_tbUsers_fk">
+          <End Role="tbUsers" Type="Self.tbUsers" Multiplicity="1" />
+          <End Role="tbUsersLogAcesso" Type="Self.tbUsersLogAcesso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsers">
+              <PropertyRef Name="uid" />
+            </Principal>
+            <Dependent Role="tbUsersLogAcesso">
+              <PropertyRef Name="uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="uid_tbUsersPermissao_tbUsers_fk">
           <End Role="tbUsers" Type="Self.tbUsers" Multiplicity="1" />
           <End Role="tbUsersPermissao" Type="Self.tbUsersPermissao" Multiplicity="*" />
@@ -2419,8 +2747,13 @@
           <EntitySet Name="tbAnunciante" EntityType="Self.tbAnunciante" />
           <EntitySet Name="tbAnuncianteDestaque" EntityType="Self.tbAnuncianteDestaque" />
           <EntitySet Name="tbAnuncianteDestaqueStatus" EntityType="Self.tbAnuncianteDestaqueStatus" />
+          <EntitySet Name="tbAnuncianteEndereco" EntityType="Self.tbAnuncianteEndereco" />
+          <EntitySet Name="tbAnuncianteTelefone" EntityType="Self.tbAnuncianteTelefone" />
+          <EntitySet Name="tbAnuncio" EntityType="Self.tbAnuncio" />
           <EntitySet Name="tbAnuncioFuncionalidade" EntityType="Self.tbAnuncioFuncionalidade" />
           <EntitySet Name="tbAnuncioImg" EntityType="Self.tbAnuncioImg" />
+          <EntitySet Name="tbAnuncioStatus" EntityType="Self.tbAnuncioStatus" />
+          <EntitySet Name="tbBairro" EntityType="Self.tbBairro" />
           <EntitySet Name="tbBan" EntityType="Self.tbBan" />
           <EntitySet Name="tbBanner" EntityType="Self.tbBanner" />
           <EntitySet Name="tbBannerImg" EntityType="Self.tbBannerImg" />
@@ -2443,29 +2776,51 @@
           <EntitySet Name="tbDestaque" EntityType="Self.tbDestaque" />
           <EntitySet Name="tbEstado" EntityType="Self.tbEstado" />
           <EntitySet Name="tbFuncionalidade" EntityType="Self.tbFuncionalidade" />
+          <EntitySet Name="tbLogSistema" EntityType="Self.tbLogSistema" />
           <EntitySet Name="tbPais" EntityType="Self.tbPais" />
           <EntitySet Name="tbPermissao" EntityType="Self.tbPermissao" />
+          <EntitySet Name="tbPermissaoGrupo" EntityType="Self.tbPermissaoGrupo" />
+          <EntitySet Name="tbPermissaoSubGrupo" EntityType="Self.tbPermissaoSubGrupo" />
           <EntitySet Name="tbPontosRede" EntityType="Self.tbPontosRede" />
           <EntitySet Name="tbPremio" EntityType="Self.tbPremio" />
           <EntitySet Name="tbPremioConsumidor" EntityType="Self.tbPremioConsumidor" />
           <EntitySet Name="tbPremioDestaque" EntityType="Self.tbPremioDestaque" />
           <EntitySet Name="tbPremioImg" EntityType="Self.tbPremioImg" />
           <EntitySet Name="tbPremioNivel" EntityType="Self.tbPremioNivel" />
+          <EntitySet Name="tbRamoAtividade" EntityType="Self.tbRamoAtividade" />
+          <EntitySet Name="tbTipoLogradouro" EntityType="Self.tbTipoLogradouro" />
           <EntitySet Name="tbTos" EntityType="Self.tbTos" />
           <EntitySet Name="tbUsers" EntityType="Self.tbUsers" />
+          <EntitySet Name="tbUsersLogAcesso" EntityType="Self.tbUsersLogAcesso" />
           <EntitySet Name="tbUsersPermissao" EntityType="Self.tbUsersPermissao" />
           <EntitySet Name="tbUsersTipo" EntityType="Self.tbUsersTipo" />
           <AssociationSet Name="cpid_tbAnunciante_tbCondicaoPagto_fk" Association="Self.cpid_tbAnunciante_tbCondicaoPagto_fk">
             <End Role="tbCondicaoPagto" EntitySet="tbCondicaoPagto" />
             <End Role="tbAnunciante" EntitySet="tbAnunciante" />
           </AssociationSet>
+          <AssociationSet Name="peid_tbAnunciante_tbAnuncianteEndereco_peid_fk" Association="Self.peid_tbAnunciante_tbAnuncianteEndereco_peid_fk">
+            <End Role="tbAnuncianteEndereco" EntitySet="tbAnuncianteEndereco" />
+            <End Role="tbAnunciante" EntitySet="tbAnunciante" />
+          </AssociationSet>
           <AssociationSet Name="pid_tbAnuncianteDestaque_tbAnunciante_fk" Association="Self.pid_tbAnuncianteDestaque_tbAnunciante_fk">
             <End Role="tbAnunciante" EntitySet="tbAnunciante" />
             <End Role="tbAnuncianteDestaque" EntitySet="tbAnuncianteDestaque" />
           </AssociationSet>
+          <AssociationSet Name="pid_tbAnuncianteEndereco_tbAnunciante_fk" Association="Self.pid_tbAnuncianteEndereco_tbAnunciante_fk">
+            <End Role="tbAnunciante" EntitySet="tbAnunciante" />
+            <End Role="tbAnuncianteEndereco" EntitySet="tbAnuncianteEndereco" />
+          </AssociationSet>
+          <AssociationSet Name="pid_tbAnuncianteTelefone_tbAnunciante_fk" Association="Self.pid_tbAnuncianteTelefone_tbAnunciante_fk">
+            <End Role="tbAnunciante" EntitySet="tbAnunciante" />
+            <End Role="tbAnuncianteTelefone" EntitySet="tbAnuncianteTelefone" />
+          </AssociationSet>
           <AssociationSet Name="pid_tbCreditoCompra_tbAnunciante_fk" Association="Self.pid_tbCreditoCompra_tbAnunciante_fk">
             <End Role="tbAnunciante" EntitySet="tbAnunciante" />
             <End Role="tbCreditoCompra" EntitySet="tbCreditoCompra" />
+          </AssociationSet>
+          <AssociationSet Name="raid_tbAnunciante_tbRamoAtividade_fk" Association="Self.raid_tbAnunciante_tbRamoAtividade_fk">
+            <End Role="tbRamoAtividade" EntitySet="tbRamoAtividade" />
+            <End Role="tbAnunciante" EntitySet="tbAnunciante" />
           </AssociationSet>
           <AssociationSet Name="tid_tbAnunciante_tbTos_fk" Association="Self.tid_tbAnunciante_tbTos_fk">
             <End Role="tbTos" EntitySet="tbTos" />
@@ -2487,9 +2842,41 @@
             <End Role="tbDestaque" EntitySet="tbDestaque" />
             <End Role="tbAnuncianteDestaque" EntitySet="tbAnuncianteDestaque" />
           </AssociationSet>
+          <AssociationSet Name="aid_tbAnuncioFuncionalidade_tbAnuncio_fk" Association="Self.aid_tbAnuncioFuncionalidade_tbAnuncio_fk">
+            <End Role="tbAnuncio" EntitySet="tbAnuncio" />
+            <End Role="tbAnuncioFuncionalidade" EntitySet="tbAnuncioFuncionalidade" />
+          </AssociationSet>
+          <AssociationSet Name="aid_tbAnuncioImg_tbAnuncio_fk" Association="Self.aid_tbAnuncioImg_tbAnuncio_fk">
+            <End Role="tbAnuncio" EntitySet="tbAnuncio" />
+            <End Role="tbAnuncioImg" EntitySet="tbAnuncioImg" />
+          </AssociationSet>
+          <AssociationSet Name="aid_tbCampanhaAnuncio_tbAnuncio_fk" Association="Self.aid_tbCampanhaAnuncio_tbAnuncio_fk">
+            <End Role="tbAnuncio" EntitySet="tbAnuncio" />
+            <End Role="tbCampanhaAnuncio" EntitySet="tbCampanhaAnuncio" />
+          </AssociationSet>
+          <AssociationSet Name="aid_tbPontosRede_tbAnuncio_fk" Association="Self.aid_tbPontosRede_tbAnuncio_fk">
+            <End Role="tbAnuncio" EntitySet="tbAnuncio" />
+            <End Role="tbPontosRede" EntitySet="tbPontosRede" />
+          </AssociationSet>
+          <AssociationSet Name="asid_tbAnuncio_tbAnuncioStatus_fk" Association="Self.asid_tbAnuncio_tbAnuncioStatus_fk">
+            <End Role="tbAnuncioStatus" EntitySet="tbAnuncioStatus" />
+            <End Role="tbAnuncio" EntitySet="tbAnuncio" />
+          </AssociationSet>
+          <AssociationSet Name="raid_tbAnuncio_tbRamoAtividade_fk" Association="Self.raid_tbAnuncio_tbRamoAtividade_fk">
+            <End Role="tbRamoAtividade" EntitySet="tbRamoAtividade" />
+            <End Role="tbAnuncio" EntitySet="tbAnuncio" />
+          </AssociationSet>
           <AssociationSet Name="fid_tbAnuncioFuncionalidade_tbFuncionalidade_fk" Association="Self.fid_tbAnuncioFuncionalidade_tbFuncionalidade_fk">
             <End Role="tbFuncionalidade" EntitySet="tbFuncionalidade" />
             <End Role="tbAnuncioFuncionalidade" EntitySet="tbAnuncioFuncionalidade" />
+          </AssociationSet>
+          <AssociationSet Name="baiid_tbCep_tbBairro_fk" Association="Self.baiid_tbCep_tbBairro_fk">
+            <End Role="tbBairro" EntitySet="tbBairro" />
+            <End Role="tbCep" EntitySet="tbCep" />
+          </AssociationSet>
+          <AssociationSet Name="cid_tbBairro_tbCidade_fk" Association="Self.cid_tbBairro_tbCidade_fk">
+            <End Role="tbCidade" EntitySet="tbCidade" />
+            <End Role="tbBairro" EntitySet="tbBairro" />
           </AssociationSet>
           <AssociationSet Name="btid_tbBan_tbBanTipo_fk" Association="Self.btid_tbBan_tbBanTipo_fk">
             <End Role="tbBanTipo" EntitySet="tbBanTipo" />
@@ -2555,9 +2942,25 @@
             <End Role="tbPais" EntitySet="tbPais" />
             <End Role="tbCampanhaAnuncioLocalizacao" EntitySet="tbCampanhaAnuncioLocalizacao" />
           </AssociationSet>
+          <AssociationSet Name="cid_tbCep_tbCidade_fk" Association="Self.cid_tbCep_tbCidade_fk">
+            <End Role="tbCidade" EntitySet="tbCidade" />
+            <End Role="tbCep" EntitySet="tbCep" />
+          </AssociationSet>
+          <AssociationSet Name="eid_tbCep_tbEstado_fk" Association="Self.eid_tbCep_tbEstado_fk">
+            <End Role="tbEstado" EntitySet="tbEstado" />
+            <End Role="tbCep" EntitySet="tbCep" />
+          </AssociationSet>
+          <AssociationSet Name="tlid_tbCep_tbTipoLogradouro_fk" Association="Self.tlid_tbCep_tbTipoLogradouro_fk">
+            <End Role="tbTipoLogradouro" EntitySet="tbTipoLogradouro" />
+            <End Role="tbCep" EntitySet="tbCep" />
+          </AssociationSet>
           <AssociationSet Name="eid_tbCidade_tbEstado_fk" Association="Self.eid_tbCidade_tbEstado_fk">
             <End Role="tbEstado" EntitySet="tbEstado" />
             <End Role="tbCidade" EntitySet="tbCidade" />
+          </AssociationSet>
+          <AssociationSet Name="tid_tbConsumidor_tbTos_fk" Association="Self.tid_tbConsumidor_tbTos_fk">
+            <End Role="tbTos" EntitySet="tbTos" />
+            <End Role="tbConsumidor" EntitySet="tbConsumidor" />
           </AssociationSet>
           <AssociationSet Name="crid_tbCreditoCompra_tbCredito_fk" Association="Self.crid_tbCreditoCompra_tbCredito_fk">
             <End Role="tbCredito" EntitySet="tbCredito" />
@@ -2567,9 +2970,29 @@
             <End Role="tbDestaque" EntitySet="tbDestaque" />
             <End Role="tbPremioDestaque" EntitySet="tbPremioDestaque" />
           </AssociationSet>
+          <AssociationSet Name="paid_tbEstado_tbPais_fk" Association="Self.paid_tbEstado_tbPais_fk">
+            <End Role="tbPais" EntitySet="tbPais" />
+            <End Role="tbEstado" EntitySet="tbEstado" />
+          </AssociationSet>
+          <AssociationSet Name="uid_tbLogSistema_tbUsers_fk" Association="Self.uid_tbLogSistema_tbUsers_fk">
+            <End Role="tbUsers" EntitySet="tbUsers" />
+            <End Role="tbLogSistema" EntitySet="tbLogSistema" />
+          </AssociationSet>
           <AssociationSet Name="peid_tbUsersPermissao_tbPermissao_fk" Association="Self.peid_tbUsersPermissao_tbPermissao_fk">
             <End Role="tbPermissao" EntitySet="tbPermissao" />
             <End Role="tbUsersPermissao" EntitySet="tbUsersPermissao" />
+          </AssociationSet>
+          <AssociationSet Name="pgid_tbPermissao_tbPermissaoGrupo_fk" Association="Self.pgid_tbPermissao_tbPermissaoGrupo_fk">
+            <End Role="tbPermissaoGrupo" EntitySet="tbPermissaoGrupo" />
+            <End Role="tbPermissao" EntitySet="tbPermissao" />
+          </AssociationSet>
+          <AssociationSet Name="psgid_tbPermissao_tbPermissaoSubGrupo_fk" Association="Self.psgid_tbPermissao_tbPermissaoSubGrupo_fk">
+            <End Role="tbPermissaoSubGrupo" EntitySet="tbPermissaoSubGrupo" />
+            <End Role="tbPermissao" EntitySet="tbPermissao" />
+          </AssociationSet>
+          <AssociationSet Name="pgid_tbPermissaoSubGrupo_tbPermissaoGrupo_fk" Association="Self.pgid_tbPermissaoSubGrupo_tbPermissaoGrupo_fk">
+            <End Role="tbPermissaoGrupo" EntitySet="tbPermissaoGrupo" />
+            <End Role="tbPermissaoSubGrupo" EntitySet="tbPermissaoSubGrupo" />
           </AssociationSet>
           <AssociationSet Name="pnid_tbPremio_tbPremioNivel_fk" Association="Self.pnid_tbPremio_tbPremioNivel_fk">
             <End Role="tbPremioNivel" EntitySet="tbPremioNivel" />
@@ -2587,6 +3010,10 @@
             <End Role="tbPremio" EntitySet="tbPremio" />
             <End Role="tbPremioImg" EntitySet="tbPremioImg" />
           </AssociationSet>
+          <AssociationSet Name="uid_tbUsersLogAcesso_tbUsers_fk" Association="Self.uid_tbUsersLogAcesso_tbUsers_fk">
+            <End Role="tbUsers" EntitySet="tbUsers" />
+            <End Role="tbUsersLogAcesso" EntitySet="tbUsersLogAcesso" />
+          </AssociationSet>
           <AssociationSet Name="uid_tbUsersPermissao_tbUsers_fk" Association="Self.uid_tbUsersPermissao_tbUsers_fk">
             <End Role="tbUsers" EntitySet="tbUsers" />
             <End Role="tbUsersPermissao" EntitySet="tbUsersPermissao" />
@@ -2595,586 +3022,7 @@
             <End Role="tbUsersTipo" EntitySet="tbUsersTipo" />
             <End Role="tbUsers" EntitySet="tbUsers" />
           </AssociationSet>
-          <EntitySet Name="tbRamoAtividade" EntityType="cliquemixModel.tbRamoAtividade" />
-          <AssociationSet Name="raid_tbAnunciante_tbRamoAtividade_fk" Association="cliquemixModel.raid_tbAnunciante_tbRamoAtividade_fk">
-            <End Role="tbRamoAtividade" EntitySet="tbRamoAtividade" />
-            <End Role="tbAnunciante" EntitySet="tbAnunciante" />
-          </AssociationSet>
-          <EntitySet Name="tbUsersLogAcesso" EntityType="cliquemixModel.tbUsersLogAcesso" />
-          <AssociationSet Name="uid_tbUsersLogAcesso_tbUsers_fk" Association="cliquemixModel.uid_tbUsersLogAcesso_tbUsers_fk">
-            <End Role="tbUsers" EntitySet="tbUsers" />
-            <End Role="tbUsersLogAcesso" EntitySet="tbUsersLogAcesso" />
-          </AssociationSet>
-          <EntitySet Name="tbPermissaoGrupo" EntityType="cliquemixModel.tbPermissaoGrupo" />
-          <EntitySet Name="tbPermissaoSubGrupo" EntityType="cliquemixModel.tbPermissaoSubGrupo" />
-          <AssociationSet Name="pgid_tbPermissao_tbPermissaoGrupo_fk" Association="cliquemixModel.pgid_tbPermissao_tbPermissaoGrupo_fk">
-            <End Role="tbPermissaoGrupo" EntitySet="tbPermissaoGrupo" />
-            <End Role="tbPermissao" EntitySet="tbPermissao" />
-          </AssociationSet>
-          <AssociationSet Name="psgid_tbPermissao_tbPermissaoSubGrupo_fk" Association="cliquemixModel.psgid_tbPermissao_tbPermissaoSubGrupo_fk">
-            <End Role="tbPermissaoSubGrupo" EntitySet="tbPermissaoSubGrupo" />
-            <End Role="tbPermissao" EntitySet="tbPermissao" />
-          </AssociationSet>
-          <AssociationSet Name="pgid_tbPermissaoSubGrupo_tbPermissaoGrupo_fk" Association="cliquemixModel.pgid_tbPermissaoSubGrupo_tbPermissaoGrupo_fk">
-            <End Role="tbPermissaoGrupo" EntitySet="tbPermissaoGrupo" />
-            <End Role="tbPermissaoSubGrupo" EntitySet="tbPermissaoSubGrupo" />
-          </AssociationSet>
-          <EntitySet Name="tbAnuncianteEndereco" EntityType="cliquemixModel.tbAnuncianteEndereco" />
-          <EntitySet Name="tbBairro" EntityType="cliquemixModel.tbBairro" />
-          <AssociationSet Name="pid_tbAnuncianteEndereco_tbAnunciante_fk" Association="cliquemixModel.pid_tbAnuncianteEndereco_tbAnunciante_fk">
-            <End Role="tbAnunciante" EntitySet="tbAnunciante" />
-            <End Role="tbAnuncianteEndereco" EntitySet="tbAnuncianteEndereco" />
-          </AssociationSet>
-          <AssociationSet Name="cepid_tbAnuncianteEndereco_tbCep_fk" Association="cliquemixModel.cepid_tbAnuncianteEndereco_tbCep_fk">
-            <End Role="tbCep" EntitySet="tbCep" />
-            <End Role="tbAnuncianteEndereco" EntitySet="tbAnuncianteEndereco" />
-          </AssociationSet>
-          <AssociationSet Name="cid_tbBairro_tbCidade_fk" Association="cliquemixModel.cid_tbBairro_tbCidade_fk">
-            <End Role="tbCidade" EntitySet="tbCidade" />
-            <End Role="tbBairro" EntitySet="tbBairro" />
-          </AssociationSet>
-          <EntitySet Name="tbLogSistema" EntityType="cliquemixModel.tbLogSistema" />
-          <EntitySet Name="tbTipoLogradouro" EntityType="cliquemixModel.tbTipoLogradouro" />
-          <AssociationSet Name="baiid_tbCep_tbBairro_fk" Association="cliquemixModel.baiid_tbCep_tbBairro_fk">
-            <End Role="tbBairro" EntitySet="tbBairro" />
-            <End Role="tbCep" EntitySet="tbCep" />
-          </AssociationSet>
-          <AssociationSet Name="cid_tbCep_tbCidade_fk" Association="cliquemixModel.cid_tbCep_tbCidade_fk">
-            <End Role="tbCidade" EntitySet="tbCidade" />
-            <End Role="tbCep" EntitySet="tbCep" />
-          </AssociationSet>
-          <AssociationSet Name="eid_tbCep_tbEstado_fk" Association="cliquemixModel.eid_tbCep_tbEstado_fk">
-            <End Role="tbEstado" EntitySet="tbEstado" />
-            <End Role="tbCep" EntitySet="tbCep" />
-          </AssociationSet>
-          <AssociationSet Name="tlid_tbCep_tbTipoLogradouro_fk" Association="cliquemixModel.tlid_tbCep_tbTipoLogradouro_fk">
-            <End Role="tbTipoLogradouro" EntitySet="tbTipoLogradouro" />
-            <End Role="tbCep" EntitySet="tbCep" />
-          </AssociationSet>
-          <AssociationSet Name="paid_tbEstado_tbPais_fk" Association="cliquemixModel.paid_tbEstado_tbPais_fk">
-            <End Role="tbPais" EntitySet="tbPais" />
-            <End Role="tbEstado" EntitySet="tbEstado" />
-          </AssociationSet>
-          <AssociationSet Name="uid_tbLogSistema_tbUsers_fk" Association="cliquemixModel.uid_tbLogSistema_tbUsers_fk">
-            <End Role="tbUsers" EntitySet="tbUsers" />
-            <End Role="tbLogSistema" EntitySet="tbLogSistema" />
-          </AssociationSet>
-          <AssociationSet Name="peid_tbAnunciante_tbAnuncianteEndereco_peid_fk" Association="cliquemixModel.peid_tbAnunciante_tbAnuncianteEndereco_peid_fk">
-            <End Role="tbAnuncianteEndereco" EntitySet="tbAnuncianteEndereco" />
-            <End Role="tbAnunciante" EntitySet="tbAnunciante" />
-          </AssociationSet>
-          <AssociationSet Name="tid_tbConsumidor_tbTos_fk" Association="cliquemixModel.tid_tbConsumidor_tbTos_fk">
-            <End Role="tbTos" EntitySet="tbTos" />
-            <End Role="tbConsumidor" EntitySet="tbConsumidor" />
-          </AssociationSet>
-          <EntitySet Name="tbAnuncianteTelefone" EntityType="cliquemixModel.tbAnuncianteTelefone" />
-          <AssociationSet Name="pid_tbAnuncianteTelefone_tbAnunciante_fk" Association="cliquemixModel.pid_tbAnuncianteTelefone_tbAnunciante_fk">
-            <End Role="tbAnunciante" EntitySet="tbAnunciante" />
-            <End Role="tbAnuncianteTelefone" EntitySet="tbAnuncianteTelefone" />
-          </AssociationSet>
-          <EntitySet Name="tbAnuncio" EntityType="cliquemixModel.tbAnuncio" />
-          <AssociationSet Name="aid_tbAnuncioFuncionalidade_tbAnuncio_fk" Association="cliquemixModel.aid_tbAnuncioFuncionalidade_tbAnuncio_fk">
-            <End Role="tbAnuncio" EntitySet="tbAnuncio" />
-            <End Role="tbAnuncioFuncionalidade" EntitySet="tbAnuncioFuncionalidade" />
-          </AssociationSet>
-          <AssociationSet Name="aid_tbAnuncioImg_tbAnuncio_fk" Association="cliquemixModel.aid_tbAnuncioImg_tbAnuncio_fk">
-            <End Role="tbAnuncio" EntitySet="tbAnuncio" />
-            <End Role="tbAnuncioImg" EntitySet="tbAnuncioImg" />
-          </AssociationSet>
-          <AssociationSet Name="aid_tbCampanhaAnuncio_tbAnuncio_fk" Association="cliquemixModel.aid_tbCampanhaAnuncio_tbAnuncio_fk">
-            <End Role="tbAnuncio" EntitySet="tbAnuncio" />
-            <End Role="tbCampanhaAnuncio" EntitySet="tbCampanhaAnuncio" />
-          </AssociationSet>
-          <AssociationSet Name="aid_tbPontosRede_tbAnuncio_fk" Association="cliquemixModel.aid_tbPontosRede_tbAnuncio_fk">
-            <End Role="tbAnuncio" EntitySet="tbAnuncio" />
-            <End Role="tbPontosRede" EntitySet="tbPontosRede" />
-          </AssociationSet>
-          <AssociationSet Name="raid_tbAnuncio_tbRamoAtividade_fk" Association="cliquemixModel.raid_tbAnuncio_tbRamoAtividade_fk">
-            <End Role="tbRamoAtividade" EntitySet="tbRamoAtividade" />
-            <End Role="tbAnuncio" EntitySet="tbAnuncio" />
-          </AssociationSet>
-          <EntitySet Name="tbAnuncioStatus" EntityType="cliquemixModel.tbAnuncioStatus" />
-          <AssociationSet Name="asid_tbAnuncio_tbAnuncioStatus_fk" Association="cliquemixModel.asid_tbAnuncio_tbAnuncioStatus_fk">
-            <End Role="tbAnuncioStatus" EntitySet="tbAnuncioStatus" />
-            <End Role="tbAnuncio" EntitySet="tbAnuncio" />
-          </AssociationSet>
-          <AssociationSet Name="baiid_tbAnuncianteEndereco_tbBairro_fk" Association="cliquemixModel.baiid_tbAnuncianteEndereco_tbBairro_fk">
-            <End Role="tbBairro" EntitySet="tbBairro" />
-            <End Role="tbAnuncianteEndereco" EntitySet="tbAnuncianteEndereco" />
-          </AssociationSet>
-          <AssociationSet Name="cid_tbAnuncianteEndereco_tbCidade_fk" Association="cliquemixModel.cid_tbAnuncianteEndereco_tbCidade_fk">
-            <End Role="tbCidade" EntitySet="tbCidade" />
-            <End Role="tbAnuncianteEndereco" EntitySet="tbAnuncianteEndereco" />
-          </AssociationSet>
-          <AssociationSet Name="eid_tbAnuncianteEndereco_tbEstado_fk" Association="cliquemixModel.eid_tbAnuncianteEndereco_tbEstado_fk">
-            <End Role="tbEstado" EntitySet="tbEstado" />
-            <End Role="tbAnuncianteEndereco" EntitySet="tbAnuncianteEndereco" />
-          </AssociationSet>
-          <AssociationSet Name="paid_tbAnuncianteEndereco_tbPais_fk" Association="cliquemixModel.paid_tbAnuncianteEndereco_tbPais_fk">
-            <End Role="tbPais" EntitySet="tbPais" />
-            <End Role="tbAnuncianteEndereco" EntitySet="tbAnuncianteEndereco" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="tbRamoAtividade">
-          <Key>
-            <PropertyRef Name="raid" />
-          </Key>
-          <Property Name="raid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="descricao" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbAnunciante" Relationship="cliquemixModel.raid_tbAnunciante_tbRamoAtividade_fk" FromRole="tbRamoAtividade" ToRole="tbAnunciante" />
-          <NavigationProperty Name="tbAnuncio" Relationship="cliquemixModel.raid_tbAnuncio_tbRamoAtividade_fk" FromRole="tbRamoAtividade" ToRole="tbAnuncio" />
-        </EntityType>
-        <Association Name="raid_tbAnunciante_tbRamoAtividade_fk">
-          <End Type="cliquemixModel.tbRamoAtividade" Role="tbRamoAtividade" Multiplicity="0..1" />
-          <End Type="cliquemixModel.tbAnunciante" Role="tbAnunciante" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbRamoAtividade">
-              <PropertyRef Name="raid" />
-            </Principal>
-            <Dependent Role="tbAnunciante">
-              <PropertyRef Name="raid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="tbUsersLogAcesso">
-          <Key>
-            <PropertyRef Name="ulaid" />
-          </Key>
-          <Property Name="ulaid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="uid" Type="Int32" Nullable="false" />
-          <Property Name="dataHoraLog" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="timeOutLog" Type="Int32" />
-          <NavigationProperty Name="tbUsers" Relationship="cliquemixModel.uid_tbUsersLogAcesso_tbUsers_fk" FromRole="tbUsersLogAcesso" ToRole="tbUsers" />
-          <Property Name="dataHoraExpiracao" Type="DateTime" Precision="3" />
-          <Property Name="idSessao" Type="Int32" />
-          <Property Name="sessaoExpirada" Type="Int32" />
-          <Property Name="nomeSessao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <Association Name="uid_tbUsersLogAcesso_tbUsers_fk">
-          <End Type="cliquemixModel.tbUsers" Role="tbUsers" Multiplicity="1" />
-          <End Type="cliquemixModel.tbUsersLogAcesso" Role="tbUsersLogAcesso" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbUsers">
-              <PropertyRef Name="uid" />
-            </Principal>
-            <Dependent Role="tbUsersLogAcesso">
-              <PropertyRef Name="uid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="tbPermissaoGrupo">
-          <Key>
-            <PropertyRef Name="pgid" />
-          </Key>
-          <Property Name="pgid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="dsPermissaoGrupo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbPermissao" Relationship="cliquemixModel.pgid_tbPermissao_tbPermissaoGrupo_fk" FromRole="tbPermissaoGrupo" ToRole="tbPermissao" />
-          <NavigationProperty Name="tbPermissaoSubGrupo" Relationship="cliquemixModel.pgid_tbPermissaoSubGrupo_tbPermissaoGrupo_fk" FromRole="tbPermissaoGrupo" ToRole="tbPermissaoSubGrupo" />
-        </EntityType>
-        <EntityType Name="tbPermissaoSubGrupo">
-          <Key>
-            <PropertyRef Name="psgid" />
-          </Key>
-          <Property Name="psgid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="dsPermissaoSubGrupo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="pgid" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tbPermissao" Relationship="cliquemixModel.psgid_tbPermissao_tbPermissaoSubGrupo_fk" FromRole="tbPermissaoSubGrupo" ToRole="tbPermissao" />
-          <NavigationProperty Name="tbPermissaoGrupo" Relationship="cliquemixModel.pgid_tbPermissaoSubGrupo_tbPermissaoGrupo_fk" FromRole="tbPermissaoSubGrupo" ToRole="tbPermissaoGrupo" />
-        </EntityType>
-        <Association Name="pgid_tbPermissao_tbPermissaoGrupo_fk">
-          <End Type="cliquemixModel.tbPermissaoGrupo" Role="tbPermissaoGrupo" Multiplicity="0..1" />
-          <End Type="cliquemixModel.tbPermissao" Role="tbPermissao" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbPermissaoGrupo">
-              <PropertyRef Name="pgid" />
-            </Principal>
-            <Dependent Role="tbPermissao">
-              <PropertyRef Name="pgid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="psgid_tbPermissao_tbPermissaoSubGrupo_fk">
-          <End Type="cliquemixModel.tbPermissaoSubGrupo" Role="tbPermissaoSubGrupo" Multiplicity="0..1" />
-          <End Type="cliquemixModel.tbPermissao" Role="tbPermissao" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbPermissaoSubGrupo">
-              <PropertyRef Name="psgid" />
-            </Principal>
-            <Dependent Role="tbPermissao">
-              <PropertyRef Name="psgid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="pgid_tbPermissaoSubGrupo_tbPermissaoGrupo_fk">
-          <End Type="cliquemixModel.tbPermissaoGrupo" Role="tbPermissaoGrupo" Multiplicity="1" />
-          <End Type="cliquemixModel.tbPermissaoSubGrupo" Role="tbPermissaoSubGrupo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbPermissaoGrupo">
-              <PropertyRef Name="pgid" />
-            </Principal>
-            <Dependent Role="tbPermissaoSubGrupo">
-              <PropertyRef Name="pgid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="tbAnuncianteEndereco">
-          <Key>
-            <PropertyRef Name="peid" />
-          </Key>
-          <Property Name="peid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="pid" Type="Int32" Nullable="false" />
-          <Property Name="cepid" Type="Int32" />
-          <Property Name="numero_endereco" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="complemento_endereco" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbAnunciante" Relationship="cliquemixModel.pid_tbAnuncianteEndereco_tbAnunciante_fk" FromRole="tbAnuncianteEndereco" ToRole="tbAnunciante" />
-          <NavigationProperty Name="tbCep" Relationship="cliquemixModel.cepid_tbAnuncianteEndereco_tbCep_fk" FromRole="tbAnuncianteEndereco" ToRole="tbCep" />
-          <NavigationProperty Name="tbAnunciante1" Relationship="cliquemixModel.peid_tbAnunciante_tbAnuncianteEndereco_peid_fk" FromRole="tbAnuncianteEndereco" ToRole="tbAnunciante" />
-          <Property Name="baiid" Type="Int32" />
-          <Property Name="cid" Type="Int32" />
-          <Property Name="eid" Type="Int32" />
-          <Property Name="paid" Type="Int32" />
-          <NavigationProperty Name="tbBairro" Relationship="cliquemixModel.baiid_tbAnuncianteEndereco_tbBairro_fk" FromRole="tbAnuncianteEndereco" ToRole="tbBairro" />
-          <NavigationProperty Name="tbCidade" Relationship="cliquemixModel.cid_tbAnuncianteEndereco_tbCidade_fk" FromRole="tbAnuncianteEndereco" ToRole="tbCidade" />
-          <NavigationProperty Name="tbEstado" Relationship="cliquemixModel.eid_tbAnuncianteEndereco_tbEstado_fk" FromRole="tbAnuncianteEndereco" ToRole="tbEstado" />
-          <NavigationProperty Name="tbPais" Relationship="cliquemixModel.paid_tbAnuncianteEndereco_tbPais_fk" FromRole="tbAnuncianteEndereco" ToRole="tbPais" />
-        </EntityType>
-        <EntityType Name="tbBairro">
-          <Key>
-            <PropertyRef Name="baiid" />
-          </Key>
-          <Property Name="baiid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nomeBairro" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="cid" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tbCidade" Relationship="cliquemixModel.cid_tbBairro_tbCidade_fk" FromRole="tbBairro" ToRole="tbCidade" />
-          <Property Name="abrevBairro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="uf" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbCep" Relationship="cliquemixModel.baiid_tbCep_tbBairro_fk" FromRole="tbBairro" ToRole="tbCep" />
-          <NavigationProperty Name="tbAnuncianteEndereco" Relationship="cliquemixModel.baiid_tbAnuncianteEndereco_tbBairro_fk" FromRole="tbBairro" ToRole="tbAnuncianteEndereco" />
-        </EntityType>
-        <Association Name="pid_tbAnuncianteEndereco_tbAnunciante_fk">
-          <End Type="cliquemixModel.tbAnunciante" Role="tbAnunciante" Multiplicity="1" />
-          <End Type="cliquemixModel.tbAnuncianteEndereco" Role="tbAnuncianteEndereco" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbAnunciante">
-              <PropertyRef Name="pid" />
-            </Principal>
-            <Dependent Role="tbAnuncianteEndereco">
-              <PropertyRef Name="pid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="cepid_tbAnuncianteEndereco_tbCep_fk">
-          <End Type="cliquemixModel.tbCep" Role="tbCep" Multiplicity="0..1" />
-          <End Type="cliquemixModel.tbAnuncianteEndereco" Role="tbAnuncianteEndereco" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbCep">
-              <PropertyRef Name="cepid" />
-            </Principal>
-            <Dependent Role="tbAnuncianteEndereco">
-              <PropertyRef Name="cepid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="cid_tbBairro_tbCidade_fk">
-          <End Type="cliquemixModel.tbCidade" Role="tbCidade" Multiplicity="1" />
-          <End Type="cliquemixModel.tbBairro" Role="tbBairro" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbCidade">
-              <PropertyRef Name="cid" />
-            </Principal>
-            <Dependent Role="tbBairro">
-              <PropertyRef Name="cid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="tbLogSistema">
-          <Key>
-            <PropertyRef Name="lsid" />
-          </Key>
-          <Property Name="lsid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="uid" Type="Int32" />
-          <Property Name="dataHoraLog" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="dsLog" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="dsControle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbUsers" Relationship="cliquemixModel.uid_tbLogSistema_tbUsers_fk" FromRole="tbLogSistema" ToRole="tbUsers" />
-        </EntityType>
-        <EntityType Name="tbTipoLogradouro">
-          <Key>
-            <PropertyRef Name="tlid" />
-          </Key>
-          <Property Name="tlid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="dsTipoLogradouro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="abrevTipoLogradouro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbCep" Relationship="cliquemixModel.tlid_tbCep_tbTipoLogradouro_fk" FromRole="tbTipoLogradouro" ToRole="tbCep" />
-        </EntityType>
-        <Association Name="baiid_tbCep_tbBairro_fk">
-          <End Type="cliquemixModel.tbBairro" Role="tbBairro" Multiplicity="0..1" />
-          <End Type="cliquemixModel.tbCep" Role="tbCep" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbBairro">
-              <PropertyRef Name="baiid" />
-            </Principal>
-            <Dependent Role="tbCep">
-              <PropertyRef Name="baiid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="cid_tbCep_tbCidade_fk">
-          <End Type="cliquemixModel.tbCidade" Role="tbCidade" Multiplicity="0..1" />
-          <End Type="cliquemixModel.tbCep" Role="tbCep" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbCidade">
-              <PropertyRef Name="cid" />
-            </Principal>
-            <Dependent Role="tbCep">
-              <PropertyRef Name="cid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="eid_tbCep_tbEstado_fk">
-          <End Type="cliquemixModel.tbEstado" Role="tbEstado" Multiplicity="0..1" />
-          <End Type="cliquemixModel.tbCep" Role="tbCep" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbEstado">
-              <PropertyRef Name="eid" />
-            </Principal>
-            <Dependent Role="tbCep">
-              <PropertyRef Name="eid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="tlid_tbCep_tbTipoLogradouro_fk">
-          <End Type="cliquemixModel.tbTipoLogradouro" Role="tbTipoLogradouro" Multiplicity="0..1" />
-          <End Type="cliquemixModel.tbCep" Role="tbCep" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbTipoLogradouro">
-              <PropertyRef Name="tlid" />
-            </Principal>
-            <Dependent Role="tbCep">
-              <PropertyRef Name="tlid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="paid_tbEstado_tbPais_fk">
-          <End Type="cliquemixModel.tbPais" Role="tbPais" Multiplicity="0..1" />
-          <End Type="cliquemixModel.tbEstado" Role="tbEstado" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbPais">
-              <PropertyRef Name="paid" />
-            </Principal>
-            <Dependent Role="tbEstado">
-              <PropertyRef Name="paid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="uid_tbLogSistema_tbUsers_fk">
-          <End Type="cliquemixModel.tbUsers" Role="tbUsers" Multiplicity="0..1" />
-          <End Type="cliquemixModel.tbLogSistema" Role="tbLogSistema" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbUsers">
-              <PropertyRef Name="uid" />
-            </Principal>
-            <Dependent Role="tbLogSistema">
-              <PropertyRef Name="uid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="peid_tbAnunciante_tbAnuncianteEndereco_peid_fk">
-          <End Type="cliquemixModel.tbAnuncianteEndereco" Role="tbAnuncianteEndereco" Multiplicity="0..1" />
-          <End Type="cliquemixModel.tbAnunciante" Role="tbAnunciante" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbAnuncianteEndereco">
-              <PropertyRef Name="peid" />
-            </Principal>
-            <Dependent Role="tbAnunciante">
-              <PropertyRef Name="peid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="tid_tbConsumidor_tbTos_fk">
-          <End Type="cliquemixModel.tbTos" Role="tbTos" Multiplicity="1" />
-          <End Type="cliquemixModel.tbConsumidor" Role="tbConsumidor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbTos">
-              <PropertyRef Name="tid" />
-            </Principal>
-            <Dependent Role="tbConsumidor">
-              <PropertyRef Name="tid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="tbAnuncianteTelefone">
-          <Key>
-            <PropertyRef Name="ptid" />
-          </Key>
-          <Property Name="ptid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="pid" Type="Int32" Nullable="false" />
-          <Property Name="tipoTelefone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="numTelefone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbAnunciante" Relationship="cliquemixModel.pid_tbAnuncianteTelefone_tbAnunciante_fk" FromRole="tbAnuncianteTelefone" ToRole="tbAnunciante" />
-        </EntityType>
-        <Association Name="pid_tbAnuncianteTelefone_tbAnunciante_fk">
-          <End Type="cliquemixModel.tbAnunciante" Role="tbAnunciante" Multiplicity="1" />
-          <End Type="cliquemixModel.tbAnuncianteTelefone" Role="tbAnuncianteTelefone" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbAnunciante">
-              <PropertyRef Name="pid" />
-            </Principal>
-            <Dependent Role="tbAnuncianteTelefone">
-              <PropertyRef Name="pid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="tbAnuncio">
-          <Key>
-            <PropertyRef Name="aid" />
-          </Key>
-          <Property Name="aid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="tituloAnuncio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="url" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="dsAnuncio" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="videoAnuncio" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
-          <Property Name="dtCriacao" Type="DateTime" Precision="3" />
-          <Property Name="raid" Type="Int32" />
-          <Property Name="comentar" Type="Boolean" />
-          <Property Name="curtir" Type="Boolean" />
-          <Property Name="compartilhar" Type="Boolean" />
-          <NavigationProperty Name="tbAnuncioFuncionalidade" Relationship="cliquemixModel.aid_tbAnuncioFuncionalidade_tbAnuncio_fk" FromRole="tbAnuncio" ToRole="tbAnuncioFuncionalidade" />
-          <NavigationProperty Name="tbAnuncioImg" Relationship="cliquemixModel.aid_tbAnuncioImg_tbAnuncio_fk" FromRole="tbAnuncio" ToRole="tbAnuncioImg" />
-          <NavigationProperty Name="tbCampanhaAnuncio" Relationship="cliquemixModel.aid_tbCampanhaAnuncio_tbAnuncio_fk" FromRole="tbAnuncio" ToRole="tbCampanhaAnuncio" />
-          <NavigationProperty Name="tbPontosRede" Relationship="cliquemixModel.aid_tbPontosRede_tbAnuncio_fk" FromRole="tbAnuncio" ToRole="tbPontosRede" />
-          <NavigationProperty Name="tbRamoAtividade" Relationship="cliquemixModel.raid_tbAnuncio_tbRamoAtividade_fk" FromRole="tbAnuncio" ToRole="tbRamoAtividade" />
-          <Property Name="asid" Type="Int32" />
-          <NavigationProperty Name="tbAnuncioStatus" Relationship="cliquemixModel.asid_tbAnuncio_tbAnuncioStatus_fk" FromRole="tbAnuncio" ToRole="tbAnuncioStatus" />
-        </EntityType>
-        <Association Name="aid_tbAnuncioFuncionalidade_tbAnuncio_fk">
-          <End Type="cliquemixModel.tbAnuncio" Role="tbAnuncio" Multiplicity="1" />
-          <End Type="cliquemixModel.tbAnuncioFuncionalidade" Role="tbAnuncioFuncionalidade" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbAnuncio">
-              <PropertyRef Name="aid" />
-            </Principal>
-            <Dependent Role="tbAnuncioFuncionalidade">
-              <PropertyRef Name="aid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="aid_tbAnuncioImg_tbAnuncio_fk">
-          <End Type="cliquemixModel.tbAnuncio" Role="tbAnuncio" Multiplicity="1" />
-          <End Type="cliquemixModel.tbAnuncioImg" Role="tbAnuncioImg" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbAnuncio">
-              <PropertyRef Name="aid" />
-            </Principal>
-            <Dependent Role="tbAnuncioImg">
-              <PropertyRef Name="aid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="aid_tbCampanhaAnuncio_tbAnuncio_fk">
-          <End Type="cliquemixModel.tbAnuncio" Role="tbAnuncio" Multiplicity="1" />
-          <End Type="cliquemixModel.tbCampanhaAnuncio" Role="tbCampanhaAnuncio" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbAnuncio">
-              <PropertyRef Name="aid" />
-            </Principal>
-            <Dependent Role="tbCampanhaAnuncio">
-              <PropertyRef Name="aid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="aid_tbPontosRede_tbAnuncio_fk">
-          <End Type="cliquemixModel.tbAnuncio" Role="tbAnuncio" Multiplicity="1" />
-          <End Type="cliquemixModel.tbPontosRede" Role="tbPontosRede" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbAnuncio">
-              <PropertyRef Name="aid" />
-            </Principal>
-            <Dependent Role="tbPontosRede">
-              <PropertyRef Name="aid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="raid_tbAnuncio_tbRamoAtividade_fk">
-          <End Type="cliquemixModel.tbRamoAtividade" Role="tbRamoAtividade" Multiplicity="0..1" />
-          <End Type="cliquemixModel.tbAnuncio" Role="tbAnuncio" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbRamoAtividade">
-              <PropertyRef Name="raid" />
-            </Principal>
-            <Dependent Role="tbAnuncio">
-              <PropertyRef Name="raid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="tbAnuncioStatus">
-          <Key>
-            <PropertyRef Name="asid" />
-          </Key>
-          <Property Name="asid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="dsStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tbAnuncio" Relationship="cliquemixModel.asid_tbAnuncio_tbAnuncioStatus_fk" FromRole="tbAnuncioStatus" ToRole="tbAnuncio" />
-        </EntityType>
-        <Association Name="asid_tbAnuncio_tbAnuncioStatus_fk">
-          <End Type="cliquemixModel.tbAnuncioStatus" Role="tbAnuncioStatus" Multiplicity="0..1" />
-          <End Type="cliquemixModel.tbAnuncio" Role="tbAnuncio" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbAnuncioStatus">
-              <PropertyRef Name="asid" />
-            </Principal>
-            <Dependent Role="tbAnuncio">
-              <PropertyRef Name="asid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="baiid_tbAnuncianteEndereco_tbBairro_fk">
-          <End Type="cliquemixModel.tbBairro" Role="tbBairro" Multiplicity="0..1" />
-          <End Type="cliquemixModel.tbAnuncianteEndereco" Role="tbAnuncianteEndereco" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbBairro">
-              <PropertyRef Name="baiid" />
-            </Principal>
-            <Dependent Role="tbAnuncianteEndereco">
-              <PropertyRef Name="baiid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="cid_tbAnuncianteEndereco_tbCidade_fk">
-          <End Type="cliquemixModel.tbCidade" Role="tbCidade" Multiplicity="0..1" />
-          <End Type="cliquemixModel.tbAnuncianteEndereco" Role="tbAnuncianteEndereco" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbCidade">
-              <PropertyRef Name="cid" />
-            </Principal>
-            <Dependent Role="tbAnuncianteEndereco">
-              <PropertyRef Name="cid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="eid_tbAnuncianteEndereco_tbEstado_fk">
-          <End Type="cliquemixModel.tbEstado" Role="tbEstado" Multiplicity="0..1" />
-          <End Type="cliquemixModel.tbAnuncianteEndereco" Role="tbAnuncianteEndereco" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbEstado">
-              <PropertyRef Name="eid" />
-            </Principal>
-            <Dependent Role="tbAnuncianteEndereco">
-              <PropertyRef Name="eid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="paid_tbAnuncianteEndereco_tbPais_fk">
-          <End Type="cliquemixModel.tbPais" Role="tbPais" Multiplicity="0..1" />
-          <End Type="cliquemixModel.tbAnuncianteEndereco" Role="tbAnuncianteEndereco" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbPais">
-              <PropertyRef Name="paid" />
-            </Principal>
-            <Dependent Role="tbAnuncianteEndereco">
-              <PropertyRef Name="paid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3184,16 +3032,15 @@
           <EntitySetMapping Name="tbAnunciante">
             <EntityTypeMapping TypeName="cliquemixModel.tbAnunciante">
               <MappingFragment StoreEntitySet="tbAnunciante">
-                <ScalarProperty Name="peid" ColumnName="peid" />
-                <ScalarProperty Name="telCelular2" ColumnName="telCelular2" />
-                <ScalarProperty Name="telCelular1" ColumnName="telCelular1" />
-                <ScalarProperty Name="telComercial" ColumnName="telComercial" />
-                <ScalarProperty Name="telResidencial" ColumnName="telResidencial" />
                 <ScalarProperty Name="pid" ColumnName="pid" />
                 <ScalarProperty Name="cnpj" ColumnName="cnpj" />
                 <ScalarProperty Name="razaoSocial" ColumnName="razaoSocial" />
                 <ScalarProperty Name="nmFantasia" ColumnName="nmFantasia" />
                 <ScalarProperty Name="contato" ColumnName="contato" />
+                <ScalarProperty Name="telResidencial" ColumnName="telResidencial" />
+                <ScalarProperty Name="telComercial" ColumnName="telComercial" />
+                <ScalarProperty Name="telCelular1" ColumnName="telCelular1" />
+                <ScalarProperty Name="telCelular2" ColumnName="telCelular2" />
                 <ScalarProperty Name="ie" ColumnName="ie" />
                 <ScalarProperty Name="im" ColumnName="im" />
                 <ScalarProperty Name="email" ColumnName="email" />
@@ -3205,6 +3052,7 @@
                 <ScalarProperty Name="saldoCreditos" ColumnName="saldoCreditos" />
                 <ScalarProperty Name="leuTermo" ColumnName="leuTermo" />
                 <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="peid" ColumnName="peid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3228,6 +3076,49 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tbAnuncianteEndereco">
+            <EntityTypeMapping TypeName="cliquemixModel.tbAnuncianteEndereco">
+              <MappingFragment StoreEntitySet="tbAnuncianteEndereco">
+                <ScalarProperty Name="peid" ColumnName="peid" />
+                <ScalarProperty Name="pid" ColumnName="pid" />
+                <ScalarProperty Name="numero_endereco" ColumnName="numero_endereco" />
+                <ScalarProperty Name="complemento_endereco" ColumnName="complemento_endereco" />
+                <ScalarProperty Name="nomeBairro" ColumnName="nomeBairro" />
+                <ScalarProperty Name="nomeCidade" ColumnName="nomeCidade" />
+                <ScalarProperty Name="ufEstado" ColumnName="ufEstado" />
+                <ScalarProperty Name="nomePais" ColumnName="nomePais" />
+                <ScalarProperty Name="cep" ColumnName="cep" />
+                <ScalarProperty Name="endereco" ColumnName="endereco" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbAnuncianteTelefone">
+            <EntityTypeMapping TypeName="cliquemixModel.tbAnuncianteTelefone">
+              <MappingFragment StoreEntitySet="tbAnuncianteTelefone">
+                <ScalarProperty Name="ptid" ColumnName="ptid" />
+                <ScalarProperty Name="pid" ColumnName="pid" />
+                <ScalarProperty Name="tipoTelefone" ColumnName="tipoTelefone" />
+                <ScalarProperty Name="numTelefone" ColumnName="numTelefone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbAnuncio">
+            <EntityTypeMapping TypeName="cliquemixModel.tbAnuncio">
+              <MappingFragment StoreEntitySet="tbAnuncio">
+                <ScalarProperty Name="aid" ColumnName="aid" />
+                <ScalarProperty Name="tituloAnuncio" ColumnName="tituloAnuncio" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="dsAnuncio" ColumnName="dsAnuncio" />
+                <ScalarProperty Name="videoAnuncio" ColumnName="videoAnuncio" />
+                <ScalarProperty Name="raid" ColumnName="raid" />
+                <ScalarProperty Name="comentar" ColumnName="comentar" />
+                <ScalarProperty Name="curtir" ColumnName="curtir" />
+                <ScalarProperty Name="compartilhar" ColumnName="compartilhar" />
+                <ScalarProperty Name="asid" ColumnName="asid" />
+                <ScalarProperty Name="dtCriacao" ColumnName="dtCriacao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tbAnuncioFuncionalidade">
             <EntityTypeMapping TypeName="cliquemixModel.tbAnuncioFuncionalidade">
               <MappingFragment StoreEntitySet="tbAnuncioFuncionalidade">
@@ -3240,9 +3131,35 @@
           <EntitySetMapping Name="tbAnuncioImg">
             <EntityTypeMapping TypeName="cliquemixModel.tbAnuncioImg">
               <MappingFragment StoreEntitySet="tbAnuncioImg">
+                <ScalarProperty Name="imagem8" ColumnName="imagem8" />
+                <ScalarProperty Name="imagem7" ColumnName="imagem7" />
+                <ScalarProperty Name="imagem6" ColumnName="imagem6" />
+                <ScalarProperty Name="imagem5" ColumnName="imagem5" />
+                <ScalarProperty Name="imagem4" ColumnName="imagem4" />
+                <ScalarProperty Name="imagem3" ColumnName="imagem3" />
+                <ScalarProperty Name="imagem2" ColumnName="imagem2" />
+                <ScalarProperty Name="imagem1" ColumnName="imagem1" />
                 <ScalarProperty Name="imgid" ColumnName="imgid" />
                 <ScalarProperty Name="aid" ColumnName="aid" />
-                <ScalarProperty Name="anuncioImg" ColumnName="anuncioImg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbAnuncioStatus">
+            <EntityTypeMapping TypeName="cliquemixModel.tbAnuncioStatus">
+              <MappingFragment StoreEntitySet="tbAnuncioStatus">
+                <ScalarProperty Name="asid" ColumnName="asid" />
+                <ScalarProperty Name="dsStatus" ColumnName="dsStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbBairro">
+            <EntityTypeMapping TypeName="cliquemixModel.tbBairro">
+              <MappingFragment StoreEntitySet="tbBairro">
+                <ScalarProperty Name="baiid" ColumnName="baiid" />
+                <ScalarProperty Name="nomeBairro" ColumnName="nomeBairro" />
+                <ScalarProperty Name="cid" ColumnName="cid" />
+                <ScalarProperty Name="abrevBairro" ColumnName="abrevBairro" />
+                <ScalarProperty Name="uf" ColumnName="uf" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3366,28 +3283,28 @@
           <EntitySetMapping Name="tbCep">
             <EntityTypeMapping TypeName="cliquemixModel.tbCep">
               <MappingFragment StoreEntitySet="tbCep">
-                <ScalarProperty Name="tlid" ColumnName="tlid" />
-                <ScalarProperty Name="abrevLogradouro" ColumnName="abrevLogradouro" />
-                <ScalarProperty Name="uf" ColumnName="uf" />
-                <ScalarProperty Name="tipoLogradouro" ColumnName="tipoLogradouro" />
-                <ScalarProperty Name="baiid" ColumnName="baiid" />
-                <ScalarProperty Name="cid" ColumnName="cid" />
-                <ScalarProperty Name="eid" ColumnName="eid" />
                 <ScalarProperty Name="cepid" ColumnName="cepid" />
                 <ScalarProperty Name="dsLogradouro" ColumnName="dsLogradouro" />
                 <ScalarProperty Name="cep" ColumnName="cep" />
+                <ScalarProperty Name="eid" ColumnName="eid" />
+                <ScalarProperty Name="cid" ColumnName="cid" />
+                <ScalarProperty Name="baiid" ColumnName="baiid" />
+                <ScalarProperty Name="tipoLogradouro" ColumnName="tipoLogradouro" />
+                <ScalarProperty Name="uf" ColumnName="uf" />
+                <ScalarProperty Name="abrevLogradouro" ColumnName="abrevLogradouro" />
+                <ScalarProperty Name="tlid" ColumnName="tlid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tbCidade">
             <EntityTypeMapping TypeName="cliquemixModel.tbCidade">
               <MappingFragment StoreEntitySet="tbCidade">
-                <ScalarProperty Name="dsCidade" ColumnName="dsCidade" />
-                <ScalarProperty Name="uf" ColumnName="uf" />
-                <ScalarProperty Name="cep_cidade" ColumnName="cep_cidade" />
                 <ScalarProperty Name="cid" ColumnName="cid" />
                 <ScalarProperty Name="nomeCidade" ColumnName="nomeCidade" />
                 <ScalarProperty Name="eid" ColumnName="eid" />
+                <ScalarProperty Name="cep_cidade" ColumnName="cep_cidade" />
+                <ScalarProperty Name="uf" ColumnName="uf" />
+                <ScalarProperty Name="dsCidade" ColumnName="dsCidade" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3457,11 +3374,11 @@
           <EntitySetMapping Name="tbEstado">
             <EntityTypeMapping TypeName="cliquemixModel.tbEstado">
               <MappingFragment StoreEntitySet="tbEstado">
-                <ScalarProperty Name="paid" ColumnName="paid" />
-                <ScalarProperty Name="ibge" ColumnName="ibge" />
                 <ScalarProperty Name="eid" ColumnName="eid" />
                 <ScalarProperty Name="nomeEstado" ColumnName="nomeEstado" />
                 <ScalarProperty Name="sgEstado" ColumnName="sgEstado" />
+                <ScalarProperty Name="ibge" ColumnName="ibge" />
+                <ScalarProperty Name="paid" ColumnName="paid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3470,6 +3387,17 @@
               <MappingFragment StoreEntitySet="tbFuncionalidade">
                 <ScalarProperty Name="fid" ColumnName="fid" />
                 <ScalarProperty Name="dsFuncionalidade" ColumnName="dsFuncionalidade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbLogSistema">
+            <EntityTypeMapping TypeName="cliquemixModel.tbLogSistema">
+              <MappingFragment StoreEntitySet="tbLogSistema">
+                <ScalarProperty Name="lsid" ColumnName="lsid" />
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="dataHoraLog" ColumnName="dataHoraLog" />
+                <ScalarProperty Name="dsLog" ColumnName="dsLog" />
+                <ScalarProperty Name="dsControle" ColumnName="dsControle" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3484,10 +3412,27 @@
           <EntitySetMapping Name="tbPermissao">
             <EntityTypeMapping TypeName="cliquemixModel.tbPermissao">
               <MappingFragment StoreEntitySet="tbPermissao">
-                <ScalarProperty Name="psgid" ColumnName="psgid" />
-                <ScalarProperty Name="pgid" ColumnName="pgid" />
                 <ScalarProperty Name="peid" ColumnName="peid" />
                 <ScalarProperty Name="dsPermissao" ColumnName="dsPermissao" />
+                <ScalarProperty Name="pgid" ColumnName="pgid" />
+                <ScalarProperty Name="psgid" ColumnName="psgid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbPermissaoGrupo">
+            <EntityTypeMapping TypeName="cliquemixModel.tbPermissaoGrupo">
+              <MappingFragment StoreEntitySet="tbPermissaoGrupo">
+                <ScalarProperty Name="pgid" ColumnName="pgid" />
+                <ScalarProperty Name="dsPermissaoGrupo" ColumnName="dsPermissaoGrupo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbPermissaoSubGrupo">
+            <EntityTypeMapping TypeName="cliquemixModel.tbPermissaoSubGrupo">
+              <MappingFragment StoreEntitySet="tbPermissaoSubGrupo">
+                <ScalarProperty Name="psgid" ColumnName="psgid" />
+                <ScalarProperty Name="dsPermissaoSubGrupo" ColumnName="dsPermissaoSubGrupo" />
+                <ScalarProperty Name="pgid" ColumnName="pgid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3551,6 +3496,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tbRamoAtividade">
+            <EntityTypeMapping TypeName="cliquemixModel.tbRamoAtividade">
+              <MappingFragment StoreEntitySet="tbRamoAtividade">
+                <ScalarProperty Name="raid" ColumnName="raid" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbTipoLogradouro">
+            <EntityTypeMapping TypeName="cliquemixModel.tbTipoLogradouro">
+              <MappingFragment StoreEntitySet="tbTipoLogradouro">
+                <ScalarProperty Name="tlid" ColumnName="tlid" />
+                <ScalarProperty Name="dsTipoLogradouro" ColumnName="dsTipoLogradouro" />
+                <ScalarProperty Name="abrevTipoLogradouro" ColumnName="abrevTipoLogradouro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tbTos">
             <EntityTypeMapping TypeName="cliquemixModel.tbTos">
               <MappingFragment StoreEntitySet="tbTos">
@@ -3568,6 +3530,21 @@
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="pwd" ColumnName="pwd" />
                 <ScalarProperty Name="utid" ColumnName="utid" />
+                <ScalarProperty Name="cpwd" ColumnName="cpwd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbUsersLogAcesso">
+            <EntityTypeMapping TypeName="cliquemixModel.tbUsersLogAcesso">
+              <MappingFragment StoreEntitySet="tbUsersLogAcesso">
+                <ScalarProperty Name="ulaid" ColumnName="ulaid" />
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="dataHoraLog" ColumnName="dataHoraLog" />
+                <ScalarProperty Name="timeOutLog" ColumnName="timeOutLog" />
+                <ScalarProperty Name="dataHoraExpiracao" ColumnName="dataHoraExpiracao" />
+                <ScalarProperty Name="idSessao" ColumnName="idSessao" />
+                <ScalarProperty Name="sessaoExpirada" ColumnName="sessaoExpirada" />
+                <ScalarProperty Name="nomeSessao" ColumnName="nomeSessao" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3585,126 +3562,6 @@
               <MappingFragment StoreEntitySet="tbUsersTipo">
                 <ScalarProperty Name="utid" ColumnName="utid" />
                 <ScalarProperty Name="dsUsersTipo" ColumnName="dsUsersTipo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbRamoAtividade">
-            <EntityTypeMapping TypeName="cliquemixModel.tbRamoAtividade">
-              <MappingFragment StoreEntitySet="tbRamoAtividade">
-                <ScalarProperty Name="descricao" ColumnName="descricao" />
-                <ScalarProperty Name="raid" ColumnName="raid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbUsersLogAcesso">
-            <EntityTypeMapping TypeName="cliquemixModel.tbUsersLogAcesso">
-              <MappingFragment StoreEntitySet="tbUsersLogAcesso">
-                <ScalarProperty Name="nomeSessao" ColumnName="nomeSessao" />
-                <ScalarProperty Name="sessaoExpirada" ColumnName="sessaoExpirada" />
-                <ScalarProperty Name="idSessao" ColumnName="idSessao" />
-                <ScalarProperty Name="dataHoraExpiracao" ColumnName="dataHoraExpiracao" />
-                <ScalarProperty Name="timeOutLog" ColumnName="timeOutLog" />
-                <ScalarProperty Name="dataHoraLog" ColumnName="dataHoraLog" />
-                <ScalarProperty Name="uid" ColumnName="uid" />
-                <ScalarProperty Name="ulaid" ColumnName="ulaid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbPermissaoGrupo">
-            <EntityTypeMapping TypeName="cliquemixModel.tbPermissaoGrupo">
-              <MappingFragment StoreEntitySet="tbPermissaoGrupo">
-                <ScalarProperty Name="dsPermissaoGrupo" ColumnName="dsPermissaoGrupo" />
-                <ScalarProperty Name="pgid" ColumnName="pgid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbPermissaoSubGrupo">
-            <EntityTypeMapping TypeName="cliquemixModel.tbPermissaoSubGrupo">
-              <MappingFragment StoreEntitySet="tbPermissaoSubGrupo">
-                <ScalarProperty Name="pgid" ColumnName="pgid" />
-                <ScalarProperty Name="dsPermissaoSubGrupo" ColumnName="dsPermissaoSubGrupo" />
-                <ScalarProperty Name="psgid" ColumnName="psgid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbAnuncianteEndereco">
-            <EntityTypeMapping TypeName="cliquemixModel.tbAnuncianteEndereco">
-              <MappingFragment StoreEntitySet="tbAnuncianteEndereco">
-                <ScalarProperty Name="paid" ColumnName="paid" />
-                <ScalarProperty Name="eid" ColumnName="eid" />
-                <ScalarProperty Name="cid" ColumnName="cid" />
-                <ScalarProperty Name="baiid" ColumnName="baiid" />
-                <ScalarProperty Name="complemento_endereco" ColumnName="complemento_endereco" />
-                <ScalarProperty Name="numero_endereco" ColumnName="numero_endereco" />
-                <ScalarProperty Name="cepid" ColumnName="cepid" />
-                <ScalarProperty Name="pid" ColumnName="pid" />
-                <ScalarProperty Name="peid" ColumnName="peid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbBairro">
-            <EntityTypeMapping TypeName="cliquemixModel.tbBairro">
-              <MappingFragment StoreEntitySet="tbBairro">
-                <ScalarProperty Name="uf" ColumnName="uf" />
-                <ScalarProperty Name="abrevBairro" ColumnName="abrevBairro" />
-                <ScalarProperty Name="cid" ColumnName="cid" />
-                <ScalarProperty Name="nomeBairro" ColumnName="nomeBairro" />
-                <ScalarProperty Name="baiid" ColumnName="baiid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbLogSistema">
-            <EntityTypeMapping TypeName="cliquemixModel.tbLogSistema">
-              <MappingFragment StoreEntitySet="tbLogSistema">
-                <ScalarProperty Name="dsControle" ColumnName="dsControle" />
-                <ScalarProperty Name="dsLog" ColumnName="dsLog" />
-                <ScalarProperty Name="dataHoraLog" ColumnName="dataHoraLog" />
-                <ScalarProperty Name="uid" ColumnName="uid" />
-                <ScalarProperty Name="lsid" ColumnName="lsid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbTipoLogradouro">
-            <EntityTypeMapping TypeName="cliquemixModel.tbTipoLogradouro">
-              <MappingFragment StoreEntitySet="tbTipoLogradouro">
-                <ScalarProperty Name="abrevTipoLogradouro" ColumnName="abrevTipoLogradouro" />
-                <ScalarProperty Name="dsTipoLogradouro" ColumnName="dsTipoLogradouro" />
-                <ScalarProperty Name="tlid" ColumnName="tlid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbAnuncianteTelefone">
-            <EntityTypeMapping TypeName="cliquemixModel.tbAnuncianteTelefone">
-              <MappingFragment StoreEntitySet="tbAnuncianteTelefone">
-                <ScalarProperty Name="numTelefone" ColumnName="numTelefone" />
-                <ScalarProperty Name="tipoTelefone" ColumnName="tipoTelefone" />
-                <ScalarProperty Name="pid" ColumnName="pid" />
-                <ScalarProperty Name="ptid" ColumnName="ptid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbAnuncio">
-            <EntityTypeMapping TypeName="cliquemixModel.tbAnuncio">
-              <MappingFragment StoreEntitySet="tbAnuncio">
-                <ScalarProperty Name="asid" ColumnName="asid" />
-                <ScalarProperty Name="compartilhar" ColumnName="compartilhar" />
-                <ScalarProperty Name="curtir" ColumnName="curtir" />
-                <ScalarProperty Name="comentar" ColumnName="comentar" />
-                <ScalarProperty Name="raid" ColumnName="raid" />
-                <ScalarProperty Name="dtCriacao" ColumnName="dtCriacao" />
-                <ScalarProperty Name="videoAnuncio" ColumnName="videoAnuncio" />
-                <ScalarProperty Name="dsAnuncio" ColumnName="dsAnuncio" />
-                <ScalarProperty Name="url" ColumnName="url" />
-                <ScalarProperty Name="tituloAnuncio" ColumnName="tituloAnuncio" />
-                <ScalarProperty Name="aid" ColumnName="aid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbAnuncioStatus">
-            <EntityTypeMapping TypeName="cliquemixModel.tbAnuncioStatus">
-              <MappingFragment StoreEntitySet="tbAnuncioStatus">
-                <ScalarProperty Name="dsStatus" ColumnName="dsStatus" />
-                <ScalarProperty Name="asid" ColumnName="asid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -10,6 +10,7 @@ using Cliquemix.Models;
 
 namespace Cliquemix.Controllers.Administrador
 {
+    [Authorize]
     public class UsersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

@@ -76,7 +76,7 @@ namespace Cliquemix.Models
             get { return _resultato_txt; }
             set { _resultato_txt = value; }
         }
-        #endregion        
+        #endregion
 
         #region "Construtor"
 
@@ -232,5 +232,6 @@ namespace Cliquemix.Models
             ResultadoTXT = "CEP não encontrado";
         }
         #endregion
+
     }
 }
