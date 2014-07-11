@@ -32,6 +32,7 @@ namespace Cliquemix.Models
         public virtual DbSet<tbAnuncianteTelefone> tbAnuncianteTelefone { get; set; }
         public virtual DbSet<tbAnuncio> tbAnuncio { get; set; }
         public virtual DbSet<tbAnuncioFuncionalidade> tbAnuncioFuncionalidade { get; set; }
+        public virtual DbSet<tbAnuncioImagens> tbAnuncioImagens { get; set; }
         public virtual DbSet<tbAnuncioImg> tbAnuncioImg { get; set; }
         public virtual DbSet<tbAnuncioStatus> tbAnuncioStatus { get; set; }
         public virtual DbSet<tbBairro> tbBairro { get; set; }

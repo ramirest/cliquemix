@@ -3,7 +3,6 @@
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    string imgSelecionado = string.Empty;
 }
 
 <script type="text/javascript"
@@ -11,29 +10,24 @@
 
 <script type="text/javascript">
 
-    function atualizarImagem() {
-        $.ajax(
-        {
-            type: 'POST',
-            url: '/Anuncio/AnuncioImagem?imagem=' + $("input[id='txtImg1']").val(),
-            dataType: 'html',
-            cache: false,
-            async: true,
-            success: function (data) {
-                $('#anuncioImagem').html(data);
-                //$("input[id='TbAnuncioImg_anuncioImg1']").val($("input[id='txtImg1']").val());
-            }
-        });
-    }
-
-    function carregarImagemInicial(urlImagem) {
-        //imgid,aid,anuncioImg1,anuncioImg2,anuncioImg3,anuncioImg4,anuncioImg5,anuncioImg6,anuncioImg7,anuncioImg8
-        $("input[id='TbAnuncioImg_anuncioImg1']").val($("input[id='txtImg1']").val());
-    };
-
     function opendialogbox(inputid, img) {
         document.getElementById(inputid).click();
-        $("input[id='txtImg1']").val($("input[id='flImagem']").val());
+        $("input[id='txtTemp']").val(img);
+    }
+
+
+    function onFileSelected(event) {
+        var selectedFile = event.target.files[0];
+        var reader = new FileReader();
+
+        var imgtag = document.getElementById($("input[id='txtTemp']").val());
+        imgtag.title = selectedFile.name;
+
+        reader.onload = function (event) {
+            imgtag.src = event.target.result;            
+        };
+
+        reader.readAsDataURL(selectedFile);
     }
 
 </script>
@@ -126,6 +120,7 @@
                                                                                                     
                                                 <div class="form-group col-lg-12">
                                                     <div id="summernote"></div>
+                                                    @Html.HiddenFor(model => model.dsAnuncio)
                                                 </div>
 
                                                 <div class="col-sm-offset-10 col-sm-1">
@@ -137,7 +132,7 @@
                                                 
                                                 <h4 class="page-header">Informações do Video:</h4>
                                                 <div class="form-group col-lg-6">
-                                                    @Html.Label("URL")
+                                                    @Html.Label("URL do Vídeo")
                                                     @Html.TextBoxFor(model => model.videoAnuncio, new { @class = "form-control", placeholder = "Http://" })
                                                 </div>
 
@@ -167,24 +162,21 @@
                                                 <div class="col-lg-offset-6"></div>
                                                 <div class="clearfix"></div>
                                                 <div class="clearfix"></div>
-                                                @imgSelecionado
                                                 <div id="anuncioImagem">
                                                     @{
-                                                        Html.RenderPartial("AnuncioImagem");                                                        
+                                                        Html.RenderPartial("UploadImagem");
                                                     }
                                                     @* Campos que armazenarão a url da imagem *@
-                                                    @Html.HiddenFor(model => model.TbAnuncioImg.imagem1)
-                                                    @Html.HiddenFor(model => model.TbAnuncioImg.imagem2)
-                                                    @Html.HiddenFor(model => model.TbAnuncioImg.imagem3)                                                    
+                                                    @Html.Hidden("txtTemp")                                                    
                                                 </div>                                                
                                             </div>
-
+                                            
 
                                             <div class="tab-pane fade in" id="infoFunc">
                                                 
                                                     <h4 class="page-header">Escolha as Funcionalidades:</h4>
                                                     <div class="form-group col-lg-12 ">
-
+                                                        
                                                         <div class="col-lg-3">
                                                             <input type="checkbox" name="curtir" value="true" id="curtir">
                                                             <input type="hidden" name="curtir" value="false">
@@ -204,7 +196,7 @@
                                                             <input type="hidden" name="compartilhar" value="false">
                                                             @Html.Label("Compartilhar")
                                                         </div>
-
+                                                            
                                                         <div class="col-lg-9"></div>
                                                         <div class="clearfix"></div>
 
@@ -212,14 +204,11 @@
                                                         <div class="form-group col-lg-12"></div>
                                                         <div class="form-group col-lg-12"></div>
                                                         <button type="button" onclick=" $('#lnk3').click(); " class="btn btn-default">Anterior</button>
-                                                        <button type="submit" value="Salvar" class="btn btn-default">
+                                                        <button type="submit" value="Salvar" class="btn btn-default" onclick="atualizaDescAnuncio();">
                                                             <i class="fa fa-floppy-o"></i>Salvar
                                                         </button>
-                                                    </div>
-                                                
+                                                    </div>                                                
                                             </div>
-
-
                                     </div>
                                 </div>
 

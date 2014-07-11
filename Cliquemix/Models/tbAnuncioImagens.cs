@@ -12,19 +12,14 @@ namespace Cliquemix.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tbAnuncioImg
+    public partial class tbAnuncioImagens
     {
-        public tbAnuncioImg()
-        {
-            this.tbAnuncioImagens = new HashSet<tbAnuncioImagens>();
-        }
+        public int aimg { get; set; }
+        public Nullable<int> imgid { get; set; }
+        public Nullable<int> aid { get; set; }
+        public Nullable<System.DateTime> dtCriacao { get; set; }
     
-        public int imgid { get; set; }
-        public string url_imagem { get; set; }
-        public string tipo { get; set; }
-        public Nullable<int> idTemp { get; set; }
-        public string tamanho { get; set; }
-    
-        public virtual ICollection<tbAnuncioImagens> tbAnuncioImagens { get; set; }
+        public virtual tbAnuncio tbAnuncio { get; set; }
+        public virtual tbAnuncioImg tbAnuncioImg { get; set; }
     }
 }

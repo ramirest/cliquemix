@@ -261,6 +261,9 @@
     <Compile Include="Models\tbAnuncioFuncionalidade.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tbAnuncioImagens.cs">
+      <DependentUpon>Cliquemix.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbAnuncioImg.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
@@ -400,6 +403,9 @@
     <Content Include="Content\Outros\bootstrap-theme.min.css" />
     <Content Include="Content\Outros\bootstrap.css" />
     <Content Include="Content\Outros\bootstrap.min.css" />
+    <Content Include="Content\Outros\uploadify-cancel.png" />
+    <Content Include="Content\Outros\uploadify.css" />
+    <Content Include="Content\Outros\uploadify.swf" />
     <Content Include="Content\plugins.css" />
     <Content Include="Content\plugins\bootstrap-datepicker\datepicker3.css" />
     <Content Include="Content\plugins\bootstrap-multiselect\bootstrap-multiselect.css" />
@@ -494,6 +500,8 @@
     <Content Include="Scripts\Outros\jquery-2.1.1.min.js" />
     <Content Include="Scripts\Outros\jquery-2.1.1.min.map" />
     <None Include="Scripts\Outros\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\Outros\jquery.uploadify.js" />
+    <Content Include="Scripts\Outros\jquery.uploadify.min.js" />
     <Content Include="Scripts\Outros\jquery.validate.js" />
     <Content Include="Scripts\Outros\jquery.validate.min.js" />
     <Content Include="Scripts\Outros\jquery.validate.unobtrusive.js" />
@@ -580,7 +588,6 @@
     <Content Include="Views\PrincipalAnunciante\PrincipalAnunciante.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Anuncio\_Create.cshtml" />
-    <Content Include="Views\Anuncio\Delete.cshtml" />
     <Content Include="Views\Anuncio\Details.cshtml" />
     <Content Include="Views\Anuncio\Edit.cshtml" />
     <Content Include="Views\Anuncio\_Index.cshtml" />
@@ -621,6 +628,7 @@
     <Content Include="Views\Account\RegisterEndereco.cshtml" />
     <Content Include="Views\Anuncio\AnuncioImagem.cshtml" />
     <Content Include="Views\Anunciante\CreateAnuncio.cshtml" />
+    <Content Include="Views\Anuncio\UploadImagem.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -630,6 +638,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\Fotos\" />
     <Folder Include="Images\Icons\" />
     <Folder Include="Images\Pictures\" />
   </ItemGroup>

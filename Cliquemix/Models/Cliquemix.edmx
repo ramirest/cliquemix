@@ -97,20 +97,24 @@
           <Property Name="aid" Type="int" Nullable="false" />
           <Property Name="fid" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="tbAnuncioImagens">
+          <Key>
+            <PropertyRef Name="aimg" />
+          </Key>
+          <Property Name="aimg" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="imgid" Type="int" />
+          <Property Name="aid" Type="int" />
+          <Property Name="dtCriacao" Type="datetime" />
+        </EntityType>
         <EntityType Name="tbAnuncioImg">
           <Key>
             <PropertyRef Name="imgid" />
           </Key>
           <Property Name="imgid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="aid" Type="int" Nullable="false" />
-          <Property Name="imagem1" Type="varchar" MaxLength="255" />
-          <Property Name="imagem2" Type="varchar" MaxLength="255" />
-          <Property Name="imagem3" Type="varchar" MaxLength="255" />
-          <Property Name="imagem4" Type="varchar" MaxLength="255" />
-          <Property Name="imagem5" Type="varchar" MaxLength="255" />
-          <Property Name="imagem6" Type="varchar" MaxLength="255" />
-          <Property Name="imagem7" Type="varchar" MaxLength="255" />
-          <Property Name="imagem8" Type="varchar" MaxLength="255" />
+          <Property Name="url_imagem" Type="varchar" MaxLength="255" />
+          <Property Name="tipo" Type="varchar" MaxLength="20" />
+          <Property Name="idTemp" Type="int" />
+          <Property Name="tamanho" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="tbAnuncioStatus">
           <Key>
@@ -527,14 +531,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="aid_tbAnuncioImg_tbAnuncio_fk">
-          <End Role="tbAnuncio" Type="Self.tbAnuncio" Multiplicity="1" />
-          <End Role="tbAnuncioImg" Type="Self.tbAnuncioImg" Multiplicity="*" />
+        <Association Name="aid_tbAnuncioImagens_tbAnuncioImg_fk">
+          <End Role="tbAnuncio" Type="Self.tbAnuncio" Multiplicity="0..1" />
+          <End Role="tbAnuncioImagens" Type="Self.tbAnuncioImagens" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tbAnuncio">
               <PropertyRef Name="aid" />
             </Principal>
-            <Dependent Role="tbAnuncioImg">
+            <Dependent Role="tbAnuncioImagens">
               <PropertyRef Name="aid" />
             </Dependent>
           </ReferentialConstraint>
@@ -863,6 +867,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="imgid_tbAnuncioImagens_tbAnuncioImg_fk">
+          <End Role="tbAnuncioImg" Type="Self.tbAnuncioImg" Multiplicity="0..1" />
+          <End Role="tbAnuncioImagens" Type="Self.tbAnuncioImagens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbAnuncioImg">
+              <PropertyRef Name="imgid" />
+            </Principal>
+            <Dependent Role="tbAnuncioImagens">
+              <PropertyRef Name="imgid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="paid_tbCampanhaAnuncioLocalizacao_tbPais_fk">
           <End Role="tbPais" Type="Self.tbPais" Multiplicity="1" />
           <End Role="tbCampanhaAnuncioLocalizacao" Type="Self.tbCampanhaAnuncioLocalizacao" Multiplicity="*" />
@@ -1183,6 +1199,7 @@
           <EntitySet Name="tbAnuncianteTelefone" EntityType="Self.tbAnuncianteTelefone" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbAnuncio" EntityType="Self.tbAnuncio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbAnuncioFuncionalidade" EntityType="Self.tbAnuncioFuncionalidade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbAnuncioImagens" EntityType="Self.tbAnuncioImagens" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbAnuncioImg" EntityType="Self.tbAnuncioImg" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbAnuncioStatus" EntityType="Self.tbAnuncioStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbBairro" EntityType="Self.tbBairro" Schema="dbo" store:Type="Tables" />
@@ -1238,9 +1255,9 @@
             <End Role="tbAnuncio" EntitySet="tbAnuncio" />
             <End Role="tbAnuncioFuncionalidade" EntitySet="tbAnuncioFuncionalidade" />
           </AssociationSet>
-          <AssociationSet Name="aid_tbAnuncioImg_tbAnuncio_fk" Association="Self.aid_tbAnuncioImg_tbAnuncio_fk">
+          <AssociationSet Name="aid_tbAnuncioImagens_tbAnuncioImg_fk" Association="Self.aid_tbAnuncioImagens_tbAnuncioImg_fk">
             <End Role="tbAnuncio" EntitySet="tbAnuncio" />
-            <End Role="tbAnuncioImg" EntitySet="tbAnuncioImg" />
+            <End Role="tbAnuncioImagens" EntitySet="tbAnuncioImagens" />
           </AssociationSet>
           <AssociationSet Name="aid_tbCampanhaAnuncio_tbAnuncio_fk" Association="Self.aid_tbCampanhaAnuncio_tbAnuncio_fk">
             <End Role="tbAnuncio" EntitySet="tbAnuncio" />
@@ -1349,6 +1366,10 @@
           <AssociationSet Name="fid_tbAnuncioFuncionalidade_tbFuncionalidade_fk" Association="Self.fid_tbAnuncioFuncionalidade_tbFuncionalidade_fk">
             <End Role="tbFuncionalidade" EntitySet="tbFuncionalidade" />
             <End Role="tbAnuncioFuncionalidade" EntitySet="tbAnuncioFuncionalidade" />
+          </AssociationSet>
+          <AssociationSet Name="imgid_tbAnuncioImagens_tbAnuncioImg_fk" Association="Self.imgid_tbAnuncioImagens_tbAnuncioImg_fk">
+            <End Role="tbAnuncioImg" EntitySet="tbAnuncioImg" />
+            <End Role="tbAnuncioImagens" EntitySet="tbAnuncioImagens" />
           </AssociationSet>
           <AssociationSet Name="paid_tbCampanhaAnuncioLocalizacao_tbPais_fk" Association="Self.paid_tbCampanhaAnuncioLocalizacao_tbPais_fk">
             <End Role="tbPais" EntitySet="tbPais" />
@@ -1560,7 +1581,7 @@
           <Property Name="asid" Type="Int32" />
           <Property Name="dtCriacao" Type="DateTime" Precision="3" />
           <NavigationProperty Name="tbAnuncioFuncionalidade" Relationship="Self.aid_tbAnuncioFuncionalidade_tbAnuncio_fk" FromRole="tbAnuncio" ToRole="tbAnuncioFuncionalidade" />
-          <NavigationProperty Name="tbAnuncioImg" Relationship="Self.aid_tbAnuncioImg_tbAnuncio_fk" FromRole="tbAnuncio" ToRole="tbAnuncioImg" />
+          <NavigationProperty Name="tbAnuncioImagens" Relationship="Self.aid_tbAnuncioImagens_tbAnuncioImg_fk" FromRole="tbAnuncio" ToRole="tbAnuncioImagens" />
           <NavigationProperty Name="tbCampanhaAnuncio" Relationship="Self.aid_tbCampanhaAnuncio_tbAnuncio_fk" FromRole="tbAnuncio" ToRole="tbCampanhaAnuncio" />
           <NavigationProperty Name="tbPontosRede" Relationship="Self.aid_tbPontosRede_tbAnuncio_fk" FromRole="tbAnuncio" ToRole="tbPontosRede" />
           <NavigationProperty Name="tbAnuncioStatus" Relationship="Self.asid_tbAnuncio_tbAnuncioStatus_fk" FromRole="tbAnuncio" ToRole="tbAnuncioStatus" />
@@ -1576,21 +1597,27 @@
           <NavigationProperty Name="tbAnuncio" Relationship="Self.aid_tbAnuncioFuncionalidade_tbAnuncio_fk" FromRole="tbAnuncioFuncionalidade" ToRole="tbAnuncio" />
           <NavigationProperty Name="tbFuncionalidade" Relationship="Self.fid_tbAnuncioFuncionalidade_tbFuncionalidade_fk" FromRole="tbAnuncioFuncionalidade" ToRole="tbFuncionalidade" />
         </EntityType>
+        <EntityType Name="tbAnuncioImagens">
+          <Key>
+            <PropertyRef Name="aimg" />
+          </Key>
+          <Property Name="aimg" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="imgid" Type="Int32" />
+          <Property Name="aid" Type="Int32" />
+          <Property Name="dtCriacao" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbAnuncio" Relationship="Self.aid_tbAnuncioImagens_tbAnuncioImg_fk" FromRole="tbAnuncioImagens" ToRole="tbAnuncio" />
+          <NavigationProperty Name="tbAnuncioImg" Relationship="Self.imgid_tbAnuncioImagens_tbAnuncioImg_fk" FromRole="tbAnuncioImagens" ToRole="tbAnuncioImg" />
+        </EntityType>
         <EntityType Name="tbAnuncioImg">
           <Key>
             <PropertyRef Name="imgid" />
           </Key>
           <Property Name="imgid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="aid" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tbAnuncio" Relationship="Self.aid_tbAnuncioImg_tbAnuncio_fk" FromRole="tbAnuncioImg" ToRole="tbAnuncio" />
-          <Property Name="imagem1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="imagem2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="imagem3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="imagem4" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="imagem5" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="imagem6" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="imagem7" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="imagem8" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="url_imagem" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbAnuncioImagens" Relationship="Self.imgid_tbAnuncioImagens_tbAnuncioImg_fk" FromRole="tbAnuncioImg" ToRole="tbAnuncioImagens" />
+          <Property Name="tipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="idTemp" Type="Int32" />
+          <Property Name="tamanho" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tbAnuncioStatus">
           <Key>
@@ -2215,14 +2242,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="aid_tbAnuncioImg_tbAnuncio_fk">
-          <End Role="tbAnuncio" Type="Self.tbAnuncio" Multiplicity="1" />
-          <End Role="tbAnuncioImg" Type="Self.tbAnuncioImg" Multiplicity="*" />
+        <Association Name="aid_tbAnuncioImagens_tbAnuncioImg_fk">
+          <End Role="tbAnuncio" Type="Self.tbAnuncio" Multiplicity="0..1" />
+          <End Role="tbAnuncioImagens" Type="Self.tbAnuncioImagens" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tbAnuncio">
               <PropertyRef Name="aid" />
             </Principal>
-            <Dependent Role="tbAnuncioImg">
+            <Dependent Role="tbAnuncioImagens">
               <PropertyRef Name="aid" />
             </Dependent>
           </ReferentialConstraint>
@@ -2284,6 +2311,18 @@
             </Principal>
             <Dependent Role="tbAnuncioFuncionalidade">
               <PropertyRef Name="fid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="imgid_tbAnuncioImagens_tbAnuncioImg_fk">
+          <End Role="tbAnuncioImg" Type="Self.tbAnuncioImg" Multiplicity="0..1" />
+          <End Role="tbAnuncioImagens" Type="Self.tbAnuncioImagens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbAnuncioImg">
+              <PropertyRef Name="imgid" />
+            </Principal>
+            <Dependent Role="tbAnuncioImagens">
+              <PropertyRef Name="imgid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2751,6 +2790,7 @@
           <EntitySet Name="tbAnuncianteTelefone" EntityType="Self.tbAnuncianteTelefone" />
           <EntitySet Name="tbAnuncio" EntityType="Self.tbAnuncio" />
           <EntitySet Name="tbAnuncioFuncionalidade" EntityType="Self.tbAnuncioFuncionalidade" />
+          <EntitySet Name="tbAnuncioImagens" EntityType="Self.tbAnuncioImagens" />
           <EntitySet Name="tbAnuncioImg" EntityType="Self.tbAnuncioImg" />
           <EntitySet Name="tbAnuncioStatus" EntityType="Self.tbAnuncioStatus" />
           <EntitySet Name="tbBairro" EntityType="Self.tbBairro" />
@@ -2846,9 +2886,9 @@
             <End Role="tbAnuncio" EntitySet="tbAnuncio" />
             <End Role="tbAnuncioFuncionalidade" EntitySet="tbAnuncioFuncionalidade" />
           </AssociationSet>
-          <AssociationSet Name="aid_tbAnuncioImg_tbAnuncio_fk" Association="Self.aid_tbAnuncioImg_tbAnuncio_fk">
+          <AssociationSet Name="aid_tbAnuncioImagens_tbAnuncioImg_fk" Association="Self.aid_tbAnuncioImagens_tbAnuncioImg_fk">
             <End Role="tbAnuncio" EntitySet="tbAnuncio" />
-            <End Role="tbAnuncioImg" EntitySet="tbAnuncioImg" />
+            <End Role="tbAnuncioImagens" EntitySet="tbAnuncioImagens" />
           </AssociationSet>
           <AssociationSet Name="aid_tbCampanhaAnuncio_tbAnuncio_fk" Association="Self.aid_tbCampanhaAnuncio_tbAnuncio_fk">
             <End Role="tbAnuncio" EntitySet="tbAnuncio" />
@@ -2869,6 +2909,10 @@
           <AssociationSet Name="fid_tbAnuncioFuncionalidade_tbFuncionalidade_fk" Association="Self.fid_tbAnuncioFuncionalidade_tbFuncionalidade_fk">
             <End Role="tbFuncionalidade" EntitySet="tbFuncionalidade" />
             <End Role="tbAnuncioFuncionalidade" EntitySet="tbAnuncioFuncionalidade" />
+          </AssociationSet>
+          <AssociationSet Name="imgid_tbAnuncioImagens_tbAnuncioImg_fk" Association="Self.imgid_tbAnuncioImagens_tbAnuncioImg_fk">
+            <End Role="tbAnuncioImg" EntitySet="tbAnuncioImg" />
+            <End Role="tbAnuncioImagens" EntitySet="tbAnuncioImagens" />
           </AssociationSet>
           <AssociationSet Name="baiid_tbCep_tbBairro_fk" Association="Self.baiid_tbCep_tbBairro_fk">
             <End Role="tbBairro" EntitySet="tbBairro" />
@@ -3128,19 +3172,24 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tbAnuncioImagens">
+            <EntityTypeMapping TypeName="cliquemixModel.tbAnuncioImagens">
+              <MappingFragment StoreEntitySet="tbAnuncioImagens">
+                <ScalarProperty Name="aimg" ColumnName="aimg" />
+                <ScalarProperty Name="imgid" ColumnName="imgid" />
+                <ScalarProperty Name="aid" ColumnName="aid" />
+                <ScalarProperty Name="dtCriacao" ColumnName="dtCriacao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tbAnuncioImg">
             <EntityTypeMapping TypeName="cliquemixModel.tbAnuncioImg">
               <MappingFragment StoreEntitySet="tbAnuncioImg">
-                <ScalarProperty Name="imagem8" ColumnName="imagem8" />
-                <ScalarProperty Name="imagem7" ColumnName="imagem7" />
-                <ScalarProperty Name="imagem6" ColumnName="imagem6" />
-                <ScalarProperty Name="imagem5" ColumnName="imagem5" />
-                <ScalarProperty Name="imagem4" ColumnName="imagem4" />
-                <ScalarProperty Name="imagem3" ColumnName="imagem3" />
-                <ScalarProperty Name="imagem2" ColumnName="imagem2" />
-                <ScalarProperty Name="imagem1" ColumnName="imagem1" />
+                <ScalarProperty Name="tamanho" ColumnName="tamanho" />
+                <ScalarProperty Name="idTemp" ColumnName="idTemp" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
                 <ScalarProperty Name="imgid" ColumnName="imgid" />
-                <ScalarProperty Name="aid" ColumnName="aid" />
+                <ScalarProperty Name="url_imagem" ColumnName="url_imagem" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
