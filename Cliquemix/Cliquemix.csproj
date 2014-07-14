@@ -240,6 +240,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\PermissaoAcesso.cs" />
+    <Compile Include="Models\ProcFunc.cs" />
     <Compile Include="Models\tbAnunciante.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>

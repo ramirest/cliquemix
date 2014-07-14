@@ -1,29 +1,39 @@
-﻿@model IEnumerable<Cliquemix.Models.tbAnuncioImg>
+﻿@using System.Web.UI.WebControls
+@model IEnumerable<Cliquemix.Models.tbAnuncioImg>
 
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>UploadImagem</title>
-    <!--Ficaria assim a disposição-->
-    <script src="~/Scripts/Outros/jquery-2.1.1.js"></script>
-    <script src="~/Scripts/Outros/jquery.uploadify.js"></script>
-    <link href="~/Content/Outros/uploadify.css" rel="stylesheet" />
-    <!--Fim da diposição-->
-</head>
+@try
+{
+    foreach (var item in Model)
+    {
+        String _src = "http://localhost:35543/Images/Fotos/" +
+                      String.Format("{0:000000000}", item.idTemp) +
+                      String.Format("{0:000}", item.idTempItem) +
+                      ".jpeg";
+        
+        <div class="col-lg-4">
+            <div class="thumbnail">
+                <img src="@_src" height="150" width="200" />
+                <div class="caption">
+                    <p>
+                        <div class="btn-group navbar-right">
+                            <a class="btn btn-white btn-sm"><i class="fa fa-search-plus"></i></a>
+                            <a class="btn btn-default btn-sm"><i class="fa fa-times"></i></a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+}
+catch (Exception)
+{
+    <br/>
 
-<body>
-    <div>
-        <input type="file" name="Filedata" id="Filedata" />
-    </div>
+    <label style="color: #34495E; font-weight: normal; font-size: 20px">
+        Ainda não foi cadastrado imagens para esse anúncio
+    </label>
 
-    <script>
-        var idAlbum = '1';
-        $(function () {
-            $('#Filedata').uploadify({
-                'swf': '/Content/Outros/uploadify.swf',
-                'uploader': '/Anuncio/UploadImagem',
-                'method': 'post',
-                'formData': { 'idAlbum': idAlbum }
-            });
-        });
-    </script>
-</body>
+    <div class="clearfix"></div>
+    <div class="clearfix"></div>
+}

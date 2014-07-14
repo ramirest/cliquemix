@@ -8,6 +8,7 @@ using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
 using Cliquemix.Models;
+using Microsoft.Ajax.Utilities;
 
 namespace Cliquemix.Controllers
 {
@@ -161,38 +162,14 @@ namespace Cliquemix.Controllers
             return RedirectToAction("Index");
         }
 
-        /*
-        //Parcial View que retorna as imagens do anúncio
-        public PartialViewResult AnuncioImagem()
-        {
-            ViewBag.Img = "http://placehold.it/400x300";
-            return PartialView();
-        }
-        
-        //Partial View que salva uma nova imagem ao anúncio
-        [HttpPost]
-        public PartialViewResult AnuncioImagem(string _img1, string _img2, string _img3, string _img4, string _img5, string _img6, string _img7, string _img8)
-            //[Bind(Include = "imgid,aid,anuncioImg1,anuncioImg2,anuncioImg3,anuncioImg4,anuncioImg5,anuncioImg6,anuncioImg7,anuncioImg8")]
-            //tbAnuncioImg tbAnuncioImg)
-        {
-            ViewBag.Img1 = _img1;
-            ViewBag.Img2 = _img2;
-            ViewBag.Img3 = _img3;
-            ViewBag.Img4 = _img4;
-            ViewBag.Img5 = _img5;
-            ViewBag.Img6 = _img6;
-            ViewBag.Img7 = _img7;
-            ViewBag.Img8 = _img8;
-            return null;
-        }
-        */
+
         [HttpGet]
         public ActionResult UploadImagem()
         {
-            var tbAnuncioImg = db.tbAnuncioImg.ToList();            
-            if (tbAnuncioImg.Count > 0)
+            var tbAnuncioImg = db.tbAnuncioImg;
+            if (tbAnuncioImg.Any())
             {
-                return PartialView(tbAnuncioImg);
+                return PartialView(tbAnuncioImg.ToList());
             }
             else
             {
@@ -203,28 +180,26 @@ namespace Cliquemix.Controllers
         [HttpPost]
         public String UploadImagem(HttpPostedFileBase filedata, int? idAlbum)
         {
-            VlrTempImg = random.Next(1000, 100000);
-            filedata.SaveAs(Server.MapPath("~/Images/Fotos/") + VlrTempImg.ToString()+".jpeg");
-            //filedata.SaveAs(Server.MapPath("~/Images/Fotos/") + filedata.FileName);
-            return "1";
-        }
-
-        public int RetornaCodigoTipoUsuario(string _tipo)
-        {
-            var a = (from tipo in db.tbUsersTipo where tipo.dsUsersTipo == _tipo select tipo).First();
-            return a.utid;
-        }
-
-        public bool AnuncioTemImagem(string _nomeUsuario)
-        {
-            try
+            tbAnuncioImg tbAnuncioImg = new tbAnuncioImg();
+            //sVariavelNova = sVariavel.Substring(0, 3);// Aproveitar os 3 primeiros caracteres
+            string tempId = String.Format("{0:000000000}", idAlbum); // Ex: "000000015"
+            string tempIdItem = String.Format("{0:000}", RetornaItemImagem(idAlbum)); // Ex: "001"
+            if (tempIdItem == "000")
             {
-                var a = (from usu in db.tbUsers where usu.username == _nomeUsuario select usu).First();
-                return true;
+                return null;
             }
-            catch (Exception)
+            else
             {
-                return false;
+                tbAnuncioImg.url_imagem = Server.MapPath("~/Images/Fotos/") + tempId + tempIdItem + ".jpeg";
+                tbAnuncioImg.tipo = "jpeg";
+                tbAnuncioImg.idTemp = Convert.ToInt32(tempId);
+                tbAnuncioImg.idTempItem = Convert.ToInt32(tempIdItem);
+                tbAnuncioImg.tamanho = Convert.ToString(filedata.ContentLength);
+                db.tbAnuncioImg.Add(tbAnuncioImg);
+                db.SaveChanges();
+                filedata.SaveAs(Server.MapPath("~/Images/Fotos/") + tempId + tempIdItem + ".jpeg");
+                UploadImagem();
+                return Convert.ToString(idAlbum);
             }
         }
 
@@ -236,5 +211,28 @@ namespace Cliquemix.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+        public int RetornaItemImagem(int? temp)
+        {
+            int i = 1;
+            try
+            {                
+                do
+                {
+                    var a = (from img in db.tbAnuncioImg where img.idTemp == temp && img.idTempItem == i select img).First();
+                    //where cust.City=="London" && cust.Name == "Devon"
+                    i++;
+                }
+                while (i < 10);
+            }
+            catch (Exception)
+            {
+                return i;
+                throw;
+            }
+            return 0;
+        }
+
     }
 }

@@ -24,6 +24,7 @@ namespace Cliquemix.Models
         public string tipo { get; set; }
         public Nullable<int> idTemp { get; set; }
         public string tamanho { get; set; }
+        public Nullable<int> idTempItem { get; set; }
     
         public virtual ICollection<tbAnuncioImagens> tbAnuncioImagens { get; set; }
     }

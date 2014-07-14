@@ -101,8 +101,8 @@
           <Key>
             <PropertyRef Name="aimg" />
           </Key>
-          <Property Name="aimg" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="imgid" Type="int" />
+          <Property Name="aimg" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="imgid" Type="bigint" />
           <Property Name="aid" Type="int" />
           <Property Name="dtCriacao" Type="datetime" />
         </EntityType>
@@ -110,11 +110,12 @@
           <Key>
             <PropertyRef Name="imgid" />
           </Key>
-          <Property Name="imgid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="imgid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="url_imagem" Type="varchar" MaxLength="255" />
           <Property Name="tipo" Type="varchar" MaxLength="20" />
-          <Property Name="idTemp" Type="int" />
+          <Property Name="idTemp" Type="bigint" />
           <Property Name="tamanho" Type="varchar" MaxLength="20" />
+          <Property Name="idTempItem" Type="int" />
         </EntityType>
         <EntityType Name="tbAnuncioStatus">
           <Key>
@@ -1618,6 +1619,7 @@
           <Property Name="tipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="idTemp" Type="Int32" />
           <Property Name="tamanho" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="idTempItem" Type="Int32" />
         </EntityType>
         <EntityType Name="tbAnuncioStatus">
           <Key>
@@ -3185,6 +3187,7 @@
           <EntitySetMapping Name="tbAnuncioImg">
             <EntityTypeMapping TypeName="cliquemixModel.tbAnuncioImg">
               <MappingFragment StoreEntitySet="tbAnuncioImg">
+                <ScalarProperty Name="idTempItem" ColumnName="idTempItem" />
                 <ScalarProperty Name="tamanho" ColumnName="tamanho" />
                 <ScalarProperty Name="idTemp" ColumnName="idTemp" />
                 <ScalarProperty Name="tipo" ColumnName="tipo" />

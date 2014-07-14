@@ -1,52 +1,68 @@
-﻿@model Cliquemix.Models.tbAnuncio
+﻿@using System.Security.Cryptography
+@using System.Web.UI.WebControls
+@using Cliquemix.Models;
+@model Cliquemix.Models.tbAnuncio
 
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    Random random = new Random();
+    ViewBag.CodImagem = ProcFunc.RetornaProxCodTempImgAnuncio();
 }
 
 <script type="text/javascript"
         src="~/Scripts/Outros/jquery-2.1.1.min.js"></script>
+<script src="~/Scripts/Outros/jquery-2.1.1.js"></script>
+<script src="~/Scripts/Outros/jquery.uploadify.js"></script>
+<link href="~/Content/Outros/uploadify.css" rel="stylesheet" />
 
 <script type="text/javascript">
 
-    function opendialogbox(inputid, img) {
-        document.getElementById(inputid).click();
-        $("input[id='txtTemp']").val(img);
-    }
+    var idAlbum = @ViewBag.CodImagem
+    $(function () {
+        $('#Filedata').uploadify({
+            'swf': '/Content/Outros/uploadify.swf',
+            'uploader': '/Anuncio/UploadImagem',
+            'method': 'post',
+            'formData': { 
+                'idAlbum': idAlbum
+            }            
+        });
+        atualizarImagens();
+    });
 
-
-    function onFileSelected(event) {
-        var selectedFile = event.target.files[0];
-        var reader = new FileReader();
-
-        var imgtag = document.getElementById($("input[id='txtTemp']").val());
-        imgtag.title = selectedFile.name;
-
-        reader.onload = function (event) {
-            imgtag.src = event.target.result;            
-        };
-
-        reader.readAsDataURL(selectedFile);
+    function atualizarImagens() {
+        $.ajax(
+        {
+            type: 'GET',
+            url: '/Anuncio/UploadImagem/',
+            dataType: 'html',
+            cache: false,
+            async: true,
+            success: function (data) {
+                $('#upload_Imagem').html(data);
+            }
+        });
     }
 
 </script>
 
-
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="page-title">
-                <h1>
-                    Anunciante
-                    <small>Criar Anúncio</small>
-                </h1>
-                @RenderPage("~/Views/Breadcrumbs/Breadcrumbs-Anuncio.cshtml")
-            </div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="page-title">
+            <h1>
+                Anunciante
+                <small>Criar Anúncio</small>
+            </h1>
+            @RenderPage("~/Views/Breadcrumbs/Breadcrumbs-Anuncio.cshtml")
         </div>
     </div>
+</div>
+
 
 @using (Html.BeginForm())
 {
+    @ViewBag.CodImagem
     @Html.AntiForgeryToken()        
     <div class="row">
             <div class="col-lg-12">
@@ -150,65 +166,70 @@
                                                 <div class="clearfix"></div>
                                                 
                                                 <div class="form-group col-lg-offset-9">
-
                                                     <button type="button" onclick=" $('#lnk1').click(); " class="btn btn-default">Anterior</button>
                                                     <button type="button" onclick=" $('#lnk3').click(); " class="btn btn-default">Próximo</button>
-                                                </div>                                                
+                                                </div>
                                             </div>
 
 
-                                            <div class="tab-pane fade in" id="infoImg">                                            
+                                            <div class="tab-pane fade in" id="infoImg">
                                                 <h4 class="page-header">Galeria de Imagens:</h4>
                                                 <div class="col-lg-offset-6"></div>
                                                 <div class="clearfix"></div>
+                                                <div>
+                                                    <input type="file" name="Filedata" id="Filedata" value="Upload de Imagem" onchange="atualizarImagens();"/>
+                                                </div>
                                                 <div class="clearfix"></div>
-                                                <div id="anuncioImagem">
+                                                <div id="upload_Imagem">
                                                     @{
                                                         Html.RenderPartial("UploadImagem");
                                                     }
                                                     @* Campos que armazenarão a url da imagem *@
-                                                    @Html.Hidden("txtTemp")                                                    
-                                                </div>                                                
+
+                                                </div>
+                                                <button type="button" id="btnTeste" onclick="atualizarImagens();">Atualizar</button>
+                                                @Html.Hidden("txtTemp")
+                                                <div class="form-group col-lg-offset-9">
+                                                    <button type="button" onclick=" $('#lnk2').click(); " class="btn btn-default">Anterior</button>
+                                                    <button type="button" onclick=" $('#lnk4').click(); " class="btn btn-default">Próximo</button>
+                                                </div>
                                             </div>
                                             
 
                                             <div class="tab-pane fade in" id="infoFunc">
-                                                
-                                                    <h4 class="page-header">Escolha as Funcionalidades:</h4>
-                                                    <div class="form-group col-lg-12 ">
-                                                        
-                                                        <div class="col-lg-3">
-                                                            <input type="checkbox" name="curtir" value="true" id="curtir">
-                                                            <input type="hidden" name="curtir" value="false">
-                                                            @Html.Label("Curtir")
-                                                        </div>
-                                                        <div class="clearfix"></div>
-                                                        <div class="clearfix"></div>
-                                                        <div class="col-lg-3">
-                                                            <input type="checkbox" name="comentar" value="true" id="comentar">
-                                                            <input type="hidden" name="comentar" value="false">
-                                                            @Html.Label("Comentar")
-                                                        </div>
-                                                        <div class="clearfix"></div>
-                                                        <div class="clearfix"></div>
-                                                        <div class="col-lg-3">
-                                                            <input type="checkbox" name="compartilhar" value="true" id="compartilhar">
-                                                            <input type="hidden" name="compartilhar" value="false">
-                                                            @Html.Label("Compartilhar")
-                                                        </div>
-                                                            
-                                                        <div class="col-lg-9"></div>
-                                                        <div class="clearfix"></div>
-
-                                                        <div class="form-group col-lg-12"></div>
-                                                        <div class="form-group col-lg-12"></div>
-                                                        <div class="form-group col-lg-12"></div>
-                                                        <button type="button" onclick=" $('#lnk3').click(); " class="btn btn-default">Anterior</button>
-                                                        <button type="submit" value="Salvar" class="btn btn-default" onclick="atualizaDescAnuncio();">
-                                                            <i class="fa fa-floppy-o"></i>Salvar
-                                                        </button>
-                                                    </div>                                                
+                                                <h4 class="page-header">Escolha as Funcionalidades:</h4>
+                                                <div class="form-group col-lg-12 ">                                                        
+                                                    <div class="col-lg-3">
+                                                        <input type="checkbox" name="curtir" value="true" id="curtir">
+                                                        <input type="hidden" name="curtir" value="false">
+                                                        @Html.Label("Curtir")
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="col-lg-3">
+                                                        <input type="checkbox" name="comentar" value="true" id="comentar">
+                                                        <input type="hidden" name="comentar" value="false">
+                                                        @Html.Label("Comentar")
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="col-lg-3">
+                                                        <input type="checkbox" name="compartilhar" value="true" id="compartilhar">
+                                                        <input type="hidden" name="compartilhar" value="false">
+                                                        @Html.Label("Compartilhar")
+                                                    </div>                                                            
+                                                    <div class="col-lg-9"></div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="form-group col-lg-12"></div>
+                                                    <div class="form-group col-lg-12"></div>
+                                                    <div class="form-group col-lg-12"></div>
+                                                    <button type="button" onclick=" $('#lnk3').click(); " class="btn btn-default">Anterior</button>
+                                                    <button type="submit" value="Salvar" class="btn btn-default" onclick="atualizaDescAnuncio();">
+                                                        <i class="fa fa-floppy-o"></i>Salvar
+                                                    </button>
+                                                </div>
                                             </div>
+
                                     </div>
                                 </div>
 

@@ -56,7 +56,7 @@ namespace Cliquemix
                        "~/Scripts/plugins/datatables/jquery.dataTables.js",
                        "~/Scripts/plugins/datatables/datatables-bs3.js",
                        "~/Scripts/plugins/summernote/summernote.min.js",
-                       "~/Scripts/plugins/bootstrap-filestyle/bootstrap-filestyle.min.js",
+                       //"~/Scripts/plugins/bootstrap-filestyle/bootstrap-filestyle.min.js",
                        "~/Scripts/flex.js"
                        ));
 
