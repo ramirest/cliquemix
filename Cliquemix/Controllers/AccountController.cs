@@ -102,8 +102,10 @@ namespace Cliquemix.Controllers
             if (ModelState.IsValid)
             {
                 string _usuario = @Request.Form.Get("tbUsers.username");
+                string _pwd = @Request.Form.Get("tbUsers.pwd");
+                string _cpwd = @Request.Form.Get("tbUsers.cpwd");
                 //Caso o usuário e senha estejam vazios ele não processa
-                if (string.IsNullOrEmpty(_usuario) || string.IsNullOrEmpty(@Request.Form.Get("tbUsers.pwd")))
+                if (string.IsNullOrEmpty(_usuario) || string.IsNullOrEmpty(_pwd))
                 {
                     ViewBag.Error = "Login ou password não podem estar vazios";
                     return View(tbanunciante);
@@ -115,23 +117,25 @@ namespace Cliquemix.Controllers
                     return View(tbanunciante);
                 }
                 //Verifica se a senha atende os padrões de senha do sistema (SE A SENHA É FORTE)
-                if (verificaSenhaForte(@Request.Form.Get("tbUsers.pwd")))
+                if (!verificaSenhaForte(_pwd))
                 {
-                    
+                    ViewBag.Error = "A senha informada não é segura";
+                    return View(tbanunciante);
                 }
                 //Caso a senha seja diferente da confirmação ele não processa
-                else if ((@Request.Form.Get("tbUsers.pwd")) != (@Request.Form.Get("tbUsers.cPwd")))
+                else if (_pwd != _cpwd)
                 {
                     ViewBag.Error = "A Senha e a Confirmação devem ser idênticas";
                     return View(tbanunciante);
                 }
                 else
                 {
-                    //*** Salvar dados na tabela de Usuário ***                    
+                    ViewBag.Error = "";
+                    //*** Salvar dados na tabela de Usuário ***
                     tbUsers users = new tbUsers();
-                    users.username = _usuario;
-                    users.pwd = @Request.Form.Get("tbUsers.pwd");
-                    users.cpwd = @Request.Form.Get("tbUsers.cpwd");
+                    users.username = _usuario; //50
+                    users.pwd = ProcFunc.CryptographyPass(_pwd); //50
+                    users.cpwd = users.pwd; //50
                     users.utid = RetornaCodigoTipoUsuario("Anunciante");
                     db.tbUsers.Add(users);
                     db.SaveChanges();
@@ -190,6 +194,7 @@ namespace Cliquemix.Controllers
             return RedirectToAction("Login", "Account");
         }
 
+
         public void criarEnderecoAnunciante(tbAnuncianteEndereco anuncianteEndereco)
         {
             db.tbAnuncianteEndereco.Add(anuncianteEndereco);
@@ -227,13 +232,14 @@ namespace Cliquemix.Controllers
                 return false;
             if (!senha.Any(c => char.IsDigit(c)))
                 return false;
-            if (!senha.Any(c => char.IsUpper(c)))
-                return false;
-            if (!senha.Any(c => char.IsLower(c)))
-                return false;
-            if (!senha.Any(c => char.IsSymbol(c)))
-                return false;
-
+            //if (!senha.Any(c => char.IsUpper(c)))  //Verifica se a senha contém letras Maiúsculas
+                //return false;
+            //if (!senha.Any(c => char.IsLower(c)))  //Verifica se a senha contém letras Minúsculas
+                //return false;
+            //if (!senha.Any(c => char.IsSymbol(c))) //Verifica se a senha contém algum síbolo { @, #, $, etc. }
+                //return false;
+            
+            /* Verifica se a senha contém caracteres repetidos 
             var contadorRepetido = 0;
             var ultimoCaracter = '\0';
             foreach (var c in senha) 
@@ -245,7 +251,7 @@ namespace Cliquemix.Controllers
                 if (contadorRepetido == 2)
                     return false;
                 ultimoCaracter = c;
-            }
+            }*/
             return true;
         }
 

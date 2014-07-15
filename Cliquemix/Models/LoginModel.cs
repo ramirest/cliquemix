@@ -41,7 +41,7 @@ namespace Cliquemix.Models
 
                 EntityParameter param2 = new EntityParameter();
                 param2.ParameterName = "senha";
-                param2.Value = pwd;
+                param2.Value = ProcFunc.ValidCryptographyPass(pwd);
 
                 cmd.Parameters.Add(param1);
                 cmd.Parameters.Add(param2);

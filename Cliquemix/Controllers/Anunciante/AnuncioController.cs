@@ -16,8 +16,6 @@ namespace Cliquemix.Controllers
     [Authorize]
     public class AnuncioController : Controller
     {
-        private Random random = new Random();
-        private int VlrTempImg = 0;
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: /Anuncio/
@@ -53,21 +51,21 @@ namespace Cliquemix.Controllers
         public ActionResult CreateAnuncio()
         {
             ViewBag.raid = new SelectList(db.tbRamoAtividade, "raid", "descricao");
-            ViewBag.asid = new SelectList(db.tbAnuncioStatus, "asid", "dsStatus");            
+            ViewBag.asid = new SelectList(db.tbAnuncioStatus, "asid", "dsStatus");
             return View();
         }
 
         // POST: /Anuncio/CreateAnuncio
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateAnuncio([Bind(Include = "tituloAnuncio,url,dsAnuncio,raid,asid,videoAnuncio,comentar,curtir,idTempImg," +
+        public ActionResult CreateAnuncio([Bind(Include = "tituloAnuncio,url,dsAnuncio,raid,pid,asid,videoAnuncio,comentar,curtir,idTempImg," +
                                                           "compartilhar,dtCriacao,imagem1,imagem2,imagem3,imagem4,imagem5,imagem6,imagem7,imagem8")] tbAnuncio tbanuncio)
         {
             if (ModelState.IsValid)
             {
-                string teste = @Request.Form.Get("idTempImg");
+                tbanuncio.pid = ProcFunc.RetornarCodigoAnunciante(User.Identity.GetUserName());
                 tbanuncio.dtCriacao = DateTime.Now;
                 db.tbAnuncio.Add(tbanuncio);
                 db.SaveChanges();
@@ -84,24 +82,6 @@ namespace Cliquemix.Controllers
             return View();
         }
 
-        // POST: /Anuncio/CreateAnuncio
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "aid,tituloAnuncio,url,dsAnuncio,videoAnuncio,raid,comentar,curtir,compartilhar,asid,dtCriacao,idTempImg")] tbAnuncio tbanuncio)
-        {
-            if (ModelState.IsValid)
-            {
-                db.tbAnuncio.Add(tbanuncio);
-                db.SaveChanges();
-                return RedirectToAction("ListAnuncio");
-            }
-
-            ViewBag.raid = new SelectList(db.tbRamoAtividade, "raid", "descricao", tbanuncio.raid);
-            ViewBag.asid = new SelectList(db.tbAnuncioStatus, "asid", "dsStatus", tbanuncio.asid);
-            return View(tbanuncio);
-        }
 
         // GET: /Anuncio/Edit/5
         public ActionResult Edit(int? id)

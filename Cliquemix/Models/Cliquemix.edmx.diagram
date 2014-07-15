@@ -114,6 +114,7 @@
         <AssociationConnector Association="cliquemixModel.uid_tbUsersLogAcesso_tbUsers_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.uid_tbUsersPermissao_tbUsers_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.utid_tbUsers_tbUsersTipo_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="cliquemixModel.pid_tbAnuncio_tbAnunciante_fk" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

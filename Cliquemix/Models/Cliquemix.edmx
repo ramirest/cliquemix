@@ -88,6 +88,7 @@
           <Property Name="compartilhar" Type="bit" />
           <Property Name="asid" Type="int" />
           <Property Name="dtCriacao" Type="datetime" />
+          <Property Name="pid" Type="int" />
         </EntityType>
         <EntityType Name="tbAnuncioFuncionalidade">
           <Key>
@@ -988,6 +989,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="pid_tbAnuncio_tbAnunciante_fk">
+          <End Role="tbAnunciante" Type="Self.tbAnunciante" Multiplicity="0..1" />
+          <End Role="tbAnuncio" Type="Self.tbAnuncio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbAnunciante">
+              <PropertyRef Name="pid" />
+            </Principal>
+            <Dependent Role="tbAnuncio">
+              <PropertyRef Name="pid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="pid_tbCreditoCompra_tbAnunciante_fk">
           <End Role="tbAnunciante" Type="Self.tbAnunciante" Multiplicity="1" />
           <End Role="tbCreditoCompra" Type="Self.tbCreditoCompra" Multiplicity="*" />
@@ -1408,6 +1421,10 @@
             <End Role="tbAnunciante" EntitySet="tbAnunciante" />
             <End Role="tbAnuncianteTelefone" EntitySet="tbAnuncianteTelefone" />
           </AssociationSet>
+          <AssociationSet Name="pid_tbAnuncio_tbAnunciante_fk" Association="Self.pid_tbAnuncio_tbAnunciante_fk">
+            <End Role="tbAnunciante" EntitySet="tbAnunciante" />
+            <End Role="tbAnuncio" EntitySet="tbAnuncio" />
+          </AssociationSet>
           <AssociationSet Name="pid_tbCreditoCompra_tbAnunciante_fk" Association="Self.pid_tbCreditoCompra_tbAnunciante_fk">
             <End Role="tbAnunciante" EntitySet="tbAnunciante" />
             <End Role="tbCreditoCompra" EntitySet="tbCreditoCompra" />
@@ -1515,6 +1532,7 @@
           <NavigationProperty Name="tbRamoAtividade" Relationship="Self.raid_tbAnunciante_tbRamoAtividade_fk" FromRole="tbAnunciante" ToRole="tbRamoAtividade" />
           <NavigationProperty Name="tbTos" Relationship="Self.tid_tbAnunciante_tbTos_fk" FromRole="tbAnunciante" ToRole="tbTos" />
           <NavigationProperty Name="tbUsers" Relationship="Self.uid_tbAnunciante_tbUsers_fk" FromRole="tbAnunciante" ToRole="tbUsers" />
+          <NavigationProperty Name="tbAnuncio" Relationship="cliquemixModel.pid_tbAnuncio_tbAnunciante_fk" FromRole="tbAnunciante" ToRole="tbAnuncio" />
         </EntityType>
         <EntityType Name="tbAnuncianteDestaque">
           <Key>
@@ -1587,6 +1605,8 @@
           <NavigationProperty Name="tbPontosRede" Relationship="Self.aid_tbPontosRede_tbAnuncio_fk" FromRole="tbAnuncio" ToRole="tbPontosRede" />
           <NavigationProperty Name="tbAnuncioStatus" Relationship="Self.asid_tbAnuncio_tbAnuncioStatus_fk" FromRole="tbAnuncio" ToRole="tbAnuncioStatus" />
           <NavigationProperty Name="tbRamoAtividade" Relationship="Self.raid_tbAnuncio_tbRamoAtividade_fk" FromRole="tbAnuncio" ToRole="tbRamoAtividade" />
+          <Property Name="pid" Type="Int32" />
+          <NavigationProperty Name="tbAnunciante" Relationship="cliquemixModel.pid_tbAnuncio_tbAnunciante_fk" FromRole="tbAnuncio" ToRole="tbAnunciante" />
         </EntityType>
         <EntityType Name="tbAnuncioFuncionalidade">
           <Key>
@@ -3068,7 +3088,23 @@
             <End Role="tbUsersTipo" EntitySet="tbUsersTipo" />
             <End Role="tbUsers" EntitySet="tbUsers" />
           </AssociationSet>
+          <AssociationSet Name="pid_tbAnuncio_tbAnunciante_fk" Association="cliquemixModel.pid_tbAnuncio_tbAnunciante_fk">
+            <End Role="tbAnunciante" EntitySet="tbAnunciante" />
+            <End Role="tbAnuncio" EntitySet="tbAnuncio" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="pid_tbAnuncio_tbAnunciante_fk">
+          <End Type="cliquemixModel.tbAnunciante" Role="tbAnunciante" Multiplicity="0..1" />
+          <End Type="cliquemixModel.tbAnuncio" Role="tbAnuncio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbAnunciante">
+              <PropertyRef Name="pid" />
+            </Principal>
+            <Dependent Role="tbAnuncio">
+              <PropertyRef Name="pid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3151,6 +3187,7 @@
           <EntitySetMapping Name="tbAnuncio">
             <EntityTypeMapping TypeName="cliquemixModel.tbAnuncio">
               <MappingFragment StoreEntitySet="tbAnuncio">
+                <ScalarProperty Name="pid" ColumnName="pid" />
                 <ScalarProperty Name="aid" ColumnName="aid" />
                 <ScalarProperty Name="tituloAnuncio" ColumnName="tituloAnuncio" />
                 <ScalarProperty Name="url" ColumnName="url" />

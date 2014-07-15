@@ -1,6 +1,7 @@
 ﻿@using System.Security.Cryptography
 @using System.Web.UI.WebControls
 @using Cliquemix.Models;
+@using Microsoft.AspNet.Identity
 @model Cliquemix.Models.tbAnuncio
 
 @{
@@ -8,7 +9,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     Random random = new Random();
     ViewBag.CodImagem = ProcFunc.RetornaProxCodTempImgAnuncio();
-    ViewBag.CodAnunciante
+    ViewBag.CodAnunciante = ProcFunc.RetornarCodigoAnunciante(User.Identity.GetUserName());
 }
 
 <script type="text/javascript"
@@ -100,7 +101,7 @@
                                         <div id="userSettingsContent" class="tab-content">
                                             <div class="tab-pane fade in active" id="infoBasico">
                                                 @*  Dados do Anúncio  *@
-                                                
+                                                @Html.HiddenFor(model => model.pid)
                                                 <h4 class="page-header">Informações do Anúncio:</h4>
                                                 <div class="form-group col-lg-6">
                                                     @Html.Label("Título do Anúncio")

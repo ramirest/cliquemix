@@ -7,7 +7,11 @@
 @using Cliquemix.Models
 
 @{
+    ApplicationDbContext db = new ApplicationDbContext();
     Layout = null;
+    ViewBag.Error = string.Empty;
+    ViewBag.raid = new SelectList(db.tbRamoAtividade, "raid", "descricao");
+    ViewBag.cpid = new SelectList(db.tbCondicaoPagto.SqlQuery("SELECT * FROM dbo.tbCondicaoPagto WHERE ativo = 1"), "cpid", "descricao");    
 }
 
 <!DOCTYPE html>
@@ -310,9 +314,18 @@
                                                                     @*<input type="password" id="cpwd" class="form-control" />*@
                                                                 </div>
                                                             </div>
+                                                            <div class="form-group col-lg-10">
+                                                                <h1 style="color: #34495E; font-weight: normal; font-size: 12px;">
+                                                                    A senha deverá conter 6 a 12 caracteres
+                                                                </h1>
+                                                                <h1 style="color: #34495E; font-weight: normal; font-size: 12px;">
+                                                                    A senha deverá conter pelo menos 1 número
+                                                                </h1>
+                                                            </div>
                                                             <div class="clearfix"></div>
 
                                                             <div class="form-group col-lg-12"></div>
+                                                            @ViewBag.Error
                                                             <div class="form-group col-lg-12"></div>
                                                             <div class="form-group col-lg-12"></div>
 

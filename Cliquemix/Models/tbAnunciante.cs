@@ -20,6 +20,7 @@ namespace Cliquemix.Models
             this.tbAnuncianteEndereco1 = new HashSet<tbAnuncianteEndereco>();
             this.tbAnuncianteTelefone = new HashSet<tbAnuncianteTelefone>();
             this.tbCreditoCompra = new HashSet<tbCreditoCompra>();
+            this.tbAnuncio = new HashSet<tbAnuncio>();
         }
     
         public int pid { get; set; }
@@ -53,5 +54,6 @@ namespace Cliquemix.Models
         public virtual tbRamoAtividade tbRamoAtividade { get; set; }
         public virtual tbTos tbTos { get; set; }
         public virtual tbUsers tbUsers { get; set; }
+        public virtual ICollection<tbAnuncio> tbAnuncio { get; set; }
     }
 }
