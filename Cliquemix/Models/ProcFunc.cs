@@ -1,7 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Data.Common;
 using System.Data.Entity.Core.EntityClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Data;
@@ -58,6 +59,73 @@ namespace Cliquemix.Models
                 
         #endregion
 
+        #region "Criar Diretórios - Somente Raíz"
+        public static void CriarDiretorio(string pFolderRaiz)
+        {            
+            try
+            {
+                string pathString = @pFolderRaiz;
+                if (!Directory.Exists(pathString))
+                {
+                    Directory.CreateDirectory(pathString);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        #endregion
+
+        #region "Criar Diretórios - Raíz + SubFolder1"
+        public static void CriarDiretorio(string pFolderRaiz, string pSubFolder1)
+        {            
+            try
+            {
+                string pathString = Path.Combine(@pFolderRaiz, @pSubFolder1);
+                if (!Directory.Exists(pathString))
+                {
+                    Directory.CreateDirectory(pathString);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        #endregion
+
+        #region "Criar Diretórios - Raíz + SubFolder1 + SubFolder2"
+        public static void CriarDiretorio(string pFolderRaiz, string pSubFolder1, string pSubFolder2)
+        {
+            try
+            {
+                string pathString = Path.Combine(@pFolderRaiz, @pSubFolder1, @pSubFolder2);
+                if (!Directory.Exists(pathString))
+                {
+                    Directory.CreateDirectory(pathString);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        #endregion
+
+        #region "Mover arquivos de um local ao outro"
+        public static void MoverArquivosEntrePastas(string pOrigem, string pDestino)
+        {
+            try
+            {
+                Directory.Move(pOrigem, pDestino);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+        #endregion
 
     }
 }

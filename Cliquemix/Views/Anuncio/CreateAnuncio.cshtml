@@ -185,10 +185,10 @@
                                                         Html.RenderPartial("UploadImagem");
                                                     }
                                                     @* Campos que armazenarão a url da imagem *@
-
                                                 </div>
                                                 <button type="button" id="btnTeste" onclick="atualizarImagens();">Atualizar</button>
                                                 @Html.Hidden("txtTemp")
+                                                <input type="hidden" id="idTempImg" name="idTempImg" value=@ViewBag.CodImagem />
                                                 <div class="form-group col-lg-offset-9">
                                                     <button type="button" onclick=" $('#lnk2').click(); " class="btn btn-default">Anterior</button>
                                                     <button type="button" onclick=" $('#lnk4').click(); " class="btn btn-default">Próximo</button>

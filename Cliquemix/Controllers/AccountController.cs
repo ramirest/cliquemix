@@ -142,12 +142,23 @@ namespace Cliquemix.Controllers
                     anuncianteEndereco.nomeBairro = @Request.Form.Get("tbAnuncianteEndereco.nomeBairro");
                     anuncianteEndereco.nomeCidade = @Request.Form.Get("tbAnuncianteEndereco.nomeCidade");
                     anuncianteEndereco.ufEstado = @Request.Form.Get("tbAnuncianteEndereco.ufEstado");
-                    anuncianteEndereco.nomePais = @Request.Form.Get("tbAnuncianteEndereco.cep");
-                    anuncianteEndereco.cep = @Request.Form.Get("tbAnuncianteEndereco.numero_endereco");
-                    anuncianteEndereco.numero_endereco = @Request.Form.Get("tbAnuncianteEndereco.complemento_endereco");
+                    anuncianteEndereco.nomePais = @Request.Form.Get("tbAnuncianteEndereco.nomePais");
+                    anuncianteEndereco.cep = @Request.Form.Get("tbAnuncianteEndereco.cep");
+                    anuncianteEndereco.numero_endereco = @Request.Form.Get("tbAnuncianteEndereco.numero_endereco");
+                    anuncianteEndereco.complemento_endereco = @Request.Form.Get("tbAnuncianteEndereco.complemento_endereco");
                     anuncianteEndereco.pid = RetornaCodigoAnunciante(tbanunciante.cnpj);
                     db.tbAnuncianteEndereco.Add(anuncianteEndereco);
-                    db.SaveChanges();                    
+                    db.SaveChanges();  
+                  
+                    /*** Criar diretórios para arquivos do anúnciante ***/
+                    ProcFunc.CriarDiretorio(Server.MapPath("~/Arquivos/Anunciantes/"),
+                        String.Format("{0:000000}", anuncianteEndereco.pid));
+                    /*** Criar diretórios para arquivos do anúnciante ***/
+                    ProcFunc.CriarDiretorio(Server.MapPath("~/Arquivos/Anunciantes/"),
+                        String.Format("{0:000000}", anuncianteEndereco.pid), "Perfil");
+                    /*** Criar diretórios para arquivos do anúnciante ***/
+                    ProcFunc.CriarDiretorio(Server.MapPath("~/Arquivos/Anunciantes/"),
+                        String.Format("{0:000000}", anuncianteEndereco.pid), "Anúncios");
                 }
             }
             return View("Login");

@@ -61,13 +61,13 @@ namespace Cliquemix.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateAnuncio([Bind(Include = "tituloAnuncio,url,dsAnuncio,raid,asid,videoAnuncio,comentar,curtir," +
+        public ActionResult CreateAnuncio([Bind(Include = "tituloAnuncio,url,dsAnuncio,raid,asid,videoAnuncio,comentar,curtir,idTempImg," +
                                                           "compartilhar,dtCriacao,imagem1,imagem2,imagem3,imagem4,imagem5,imagem6,imagem7,imagem8")] tbAnuncio tbanuncio)
         {
             if (ModelState.IsValid)
             {
+                string teste = @Request.Form.Get("idTempImg");
                 tbanuncio.dtCriacao = DateTime.Now;
-                string teste = @Request.Form.Get("Imagem1");
                 db.tbAnuncio.Add(tbanuncio);
                 db.SaveChanges();
                 return RedirectToAction("ListAnuncio");
@@ -88,13 +88,13 @@ namespace Cliquemix.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "aid,tituloAnuncio,url,dsAnuncio,videoAnuncio,raid,comentar,curtir,compartilhar,asid,dtCriacao")] tbAnuncio tbanuncio)
+        public ActionResult Create([Bind(Include = "aid,tituloAnuncio,url,dsAnuncio,videoAnuncio,raid,comentar,curtir,compartilhar,asid,dtCriacao,idTempImg")] tbAnuncio tbanuncio)
         {
             if (ModelState.IsValid)
             {
                 db.tbAnuncio.Add(tbanuncio);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ListAnuncio");
             }
 
             ViewBag.raid = new SelectList(db.tbRamoAtividade, "raid", "descricao", tbanuncio.raid);
@@ -124,7 +124,7 @@ namespace Cliquemix.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "aid,tituloAnuncio,url,dsAnuncio,videoAnuncio,raid,comentar,curtir,compartilhar,asid,dtCriacao")] tbAnuncio tbanuncio)
+        public ActionResult Edit([Bind(Include = "aid,tituloAnuncio,url,dsAnuncio,videoAnuncio,raid,comentar,curtir,compartilhar,asid,dtCriacao,idTempImg")] tbAnuncio tbanuncio)
         {
             if (ModelState.IsValid)
             {

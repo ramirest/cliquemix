@@ -207,8 +207,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Administrador\UsersController.cs" />
     <Compile Include="Controllers\Anunciante\AnuncianteController.cs" />
-    <Compile Include="Controllers\Anunciante\CampanhaController.cs" />
-    <Compile Include="Controllers\Anunciante\DestaqueController.cs" />
     <Compile Include="Controllers\Anunciante\MenuAnuncianteController.cs" />
     <Compile Include="Controllers\Anunciante\MenuTopoAnuncianteController.cs" />
     <Compile Include="Controllers\Anunciante\PrincipalAnuncianteController.cs" />
@@ -600,16 +598,6 @@
     <Content Include="Views\Anuncio\ListAnuncio.cshtml" />
     <Content Include="Views\Anuncio\UpdateAnuncio.cshtml" />
     <Content Include="Views\Breadcrumbs\Breadcrumbs-Anuncio.cshtml" />
-    <Content Include="Views\Campanha\Create.cshtml" />
-    <Content Include="Views\Campanha\Delete.cshtml" />
-    <Content Include="Views\Campanha\Details.cshtml" />
-    <Content Include="Views\Campanha\Edit.cshtml" />
-    <Content Include="Views\Campanha\Index.cshtml" />
-    <Content Include="Views\Destaque\Create.cshtml" />
-    <Content Include="Views\Destaque\Delete.cshtml" />
-    <Content Include="Views\Destaque\Details.cshtml" />
-    <Content Include="Views\Destaque\Edit.cshtml" />
-    <Content Include="Views\Destaque\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Breadcrumbs\Breadcrumbs-Anuncio-Edit.cshtml" />
     <Content Include="Views\Breadcrumbs\Breadcrumbs-Anuncio-List.cshtml" />
@@ -639,6 +627,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Arquivos\Anunciantes\" />
     <Folder Include="Images\Fotos\" />
     <Folder Include="Images\Icons\" />
     <Folder Include="Images\Pictures\" />
