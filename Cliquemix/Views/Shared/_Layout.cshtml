@@ -21,6 +21,18 @@
     <link href="~/Content/plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet">
     <link href="~/Content/plugins/datatables/datatables.css" rel="stylesheet">
     <link href="~/Content/Outros/uploadify.css" rel="stylesheet" />
+
+
+<!-- <link href="~/Content/plugins/bootstrap-timepicker/bootstrap-timepicker.min.css" rel="stylesheet">-->
+    <link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" type="text/css" rel="stylesheet">
+    <link href="~/Content/plugins/bootstrap-tokenfield/tokenfield-typeahead.css" rel="stylesheet">
+    <link href="~/Content/plugins/bootstrap-tokenfield/bootstrap-tokenfield.css" rel="stylesheet">
+    <link href="~/Content/plugins/bootstrap-datepicker/datepicker3.css" rel="stylesheet">
+    <link href="~/Content/timeline.css" rel="stylesheet" />
+
+
+
+
     
     <link href="~/Content/plugins/summernote/summernote.css" rel="stylesheet" />
     <link href="~/Content/plugins/summernote/summernote-bs3.css" rel="stylesheet" />
@@ -50,6 +62,15 @@
     @*aa*@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     @Scripts.Render("~/bundles/js-default")
+
+    <script src="~/Scripts/plugins/bootstrap-tokenfield/bootstrap-tokenfield.min.js"></script>
+    <script src="~/Scripts/plugins/bootstrap-tokenfield/scrollspy.js"></script>
+    <script src="~/Scripts/plugins/bootstrap-tokenfield/affix.js"></script>
+    <script src="~/Scripts/plugins/bootstrap-tokenfield/typeahead.min.js"></script>
+    <script src="~/Scripts/plugins/bootstrap-maxlength/bootstrap-maxlength.js"></script>
+    <script src="~/Scripts/plugins/bootstrap-timepicker/bootstrap-timepicker.min.js"></script>
+    <script src="~/Scripts/plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+
     <script src="~/Scripts/Outros/jquery.uploadify.js"></script>
     @Scripts.Render("~/bundles/js-others")
     
@@ -99,6 +120,17 @@
 
 </script>
     
+    <script>
+        $(function () {
+            $(".datepicker").datepicker({
+                showOn: "button"
+            });
+
+            $('.timepicker').timepicker();
+        });
+    </script>    
+
+
 
 </body>
 </html>
