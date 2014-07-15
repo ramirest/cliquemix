@@ -1,11 +1,14 @@
 ﻿@using System.Web.UI.WebControls
+@using Cliquemix.Models;
+@using Microsoft.AspNet.Identity
 @model IEnumerable<Cliquemix.Models.tbAnuncioImg>
 
 @try
 {
     foreach (var item in Model)
     {
-        String _src = "http://localhost:35543/Images/Fotos/" +
+        String _src = "http://localhost:35543/Arquivos/Anunciantes/" +
+                      String.Format("{0:000000}", ProcFunc.RetornarCodigoAnunciante(User.Identity.GetUserName())) + "/Anúncios/" +
                       String.Format("{0:000000000}", item.idTemp) +
                       String.Format("{0:000}", item.idTempItem) +
                       ".jpeg";

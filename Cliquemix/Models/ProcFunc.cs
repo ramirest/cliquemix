@@ -2,7 +2,6 @@
 using System.IO;
 using System.Data.Common;
 using System.Data.Entity.Core.EntityClient;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Data;
@@ -128,42 +127,18 @@ namespace Cliquemix.Models
             #region "Retornar o Código do Anunciante"
             public static int RetornarCodigoAnunciante(string pUsuario)
             {
-                using (EntityConnection conn = new EntityConnection("name=cliquemixEntities"))
+                try
                 {
-                    conn.Open();
-                    string _QrySQL = @"select tbAnunciante.pid 
-                                        from cliquemixEntities.tbAnunciante 
-                                        where tbAnunciante.uid = 
-                                        (select tbUsers.uid from cliquemixEntities.tbUsers where tbUsers.username = '" + @pUsuario + "')";
-
-                    EntityCommand cmd = new EntityCommand(_QrySQL, conn);
-
-                    try
-                    {
-                        using (DbDataReader rdr = cmd.ExecuteReader(CommandBehavior.SequentialAccess))
-                        {
-                            if (rdr.HasRows)
-                            {
-                                // Iterate through the collection of Contact items.
-                                while (rdr.Read())
-                                {
-                                    return Convert.ToInt32(rdr[0].ToString());
-                                }
-                            }
-                            else
-                            {
-                                return 0;
-                            }
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        return 0;
-                        throw;
-                    }
-
+                    ApplicationDbContext db = new ApplicationDbContext();
+                    var u = (from usu in db.tbUsers where usu.username == pUsuario select usu).First();
+                    var a = (from anunciante in db.tbAnunciante where anunciante.uid == u.uid select anunciante).First();
+                    return a.pid;
                 }
-                return 0;
+                catch (Exception)
+                {
+                    return 0;
+                    throw;
+                }
             }
             #endregion
 

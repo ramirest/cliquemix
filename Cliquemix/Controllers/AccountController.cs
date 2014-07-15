@@ -195,7 +195,7 @@ namespace Cliquemix.Controllers
         }
 
 
-        public void criarEnderecoAnunciante(tbAnuncianteEndereco anuncianteEndereco)
+        public void CriarEnderecoAnunciante(tbAnuncianteEndereco anuncianteEndereco)
         {
             db.tbAnuncianteEndereco.Add(anuncianteEndereco);
             db.SaveChanges();

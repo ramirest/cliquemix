@@ -65,7 +65,7 @@ namespace Cliquemix.Controllers
         {
             if (ModelState.IsValid)
             {
-                tbanuncio.pid = ProcFunc.RetornarCodigoAnunciante(User.Identity.GetUserName());
+                tbanuncio.pid = RetornaCodigoAnunciante(RetornaCodigoUsuario(User.Identity.GetUserName()));
                 tbanuncio.dtCriacao = DateTime.Now;
                 db.tbAnuncio.Add(tbanuncio);
                 db.SaveChanges();
@@ -165,12 +165,13 @@ namespace Cliquemix.Controllers
             //sVariavelNova = sVariavel.Substring(0, 3);// Aproveitar os 3 primeiros caracteres
             string tempId = String.Format("{0:000000000}", idAlbum); // Ex: "000000015"
             string tempIdItem = String.Format("{0:000}", RetornaItemImagem(idAlbum)); // Ex: "001"
-            Int32 codAnunciante = ProcFunc.RetornarCodigoAnunciante(User.Identity.GetUserName());
+            int codAnunciante = RetornaCodigoAnunciante(RetornaCodigoUsuario(User.Identity.GetUserName()));
 
             if (codAnunciante > 0)
             {
                 string urlDestino = Server.MapPath("~/Arquivos/Anunciantes/") +
-                                    String.Format("{0:000000}", codAnunciante) + "/Anúncios/";
+                                    String.Format("{0:000000}", codAnunciante) + "\\Anúncios\\";
+                /*** Cria diretório para arquivos do anúnciante ***/
                 if (tempIdItem == "000")
                 {
                     return null;
@@ -224,6 +225,18 @@ namespace Cliquemix.Controllers
                 throw;
             }
             return 0;
+        }
+
+        public int RetornaCodigoUsuario(string _nomeUsuario)
+        {
+            var a = (from usu in db.tbUsers where usu.username == _nomeUsuario select usu).First();
+            return a.uid;
+        }
+
+        public int RetornaCodigoAnunciante(int _codUsuario)
+        {
+            var a = (from anunciante in db.tbAnunciante where anunciante.uid == _codUsuario select anunciante).First();
+            return a.pid;
         }
 
     }
