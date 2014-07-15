@@ -56,76 +56,120 @@ namespace Cliquemix.Models
                 return 1;
             }
             #endregion
-                
-        #endregion
 
-        #region "Criar Diretórios - Somente Raíz"
-        public static void CriarDiretorio(string pFolderRaiz)
-        {            
-            try
+            #region "Criar Diretórios - Somente Raíz"
+            public static void CriarDiretorio(string pFolderRaiz)
             {
-                string pathString = @pFolderRaiz;
-                if (!Directory.Exists(pathString))
+                try
                 {
-                    Directory.CreateDirectory(pathString);
+                    string pathString = @pFolderRaiz;
+                    if (!Directory.Exists(pathString))
+                    {
+                        Directory.CreateDirectory(pathString);
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
                 }
             }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-        #endregion
+            #endregion
 
-        #region "Criar Diretórios - Raíz + SubFolder1"
-        public static void CriarDiretorio(string pFolderRaiz, string pSubFolder1)
-        {            
-            try
+            #region "Criar Diretórios - Raíz + SubFolder1"
+            public static void CriarDiretorio(string pFolderRaiz, string pSubFolder1)
             {
-                string pathString = Path.Combine(@pFolderRaiz, @pSubFolder1);
-                if (!Directory.Exists(pathString))
+                try
                 {
-                    Directory.CreateDirectory(pathString);
+                    string pathString = Path.Combine(@pFolderRaiz, @pSubFolder1);
+                    if (!Directory.Exists(pathString))
+                    {
+                        Directory.CreateDirectory(pathString);
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
                 }
             }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-        #endregion
+            #endregion
 
-        #region "Criar Diretórios - Raíz + SubFolder1 + SubFolder2"
-        public static void CriarDiretorio(string pFolderRaiz, string pSubFolder1, string pSubFolder2)
-        {
-            try
+            #region "Criar Diretórios - Raíz + SubFolder1 + SubFolder2"
+            public static void CriarDiretorio(string pFolderRaiz, string pSubFolder1, string pSubFolder2)
             {
-                string pathString = Path.Combine(@pFolderRaiz, @pSubFolder1, @pSubFolder2);
-                if (!Directory.Exists(pathString))
+                try
                 {
-                    Directory.CreateDirectory(pathString);
+                    string pathString = Path.Combine(@pFolderRaiz, @pSubFolder1, @pSubFolder2);
+                    if (!Directory.Exists(pathString))
+                    {
+                        Directory.CreateDirectory(pathString);
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
                 }
             }
-            catch (Exception)
+            #endregion
+
+            #region "Mover arquivos de um local ao outro"
+            public static void MoverArquivosEntrePastas(string pOrigem, string pDestino)
             {
-                throw;
+                try
+                {
+                    Directory.Move(pOrigem, pDestino);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
             }
-        }
+            #endregion
+
+            #region "Retornar o Código do Anunciante"
+            public static int RetornarCodigoAnunciante(string pUsuario)
+            {
+                using (EntityConnection conn = new EntityConnection("name=cliquemixEntities"))
+                {
+                    conn.Open();
+                    string _QrySQL = @"select tbAnunciante.pid 
+                                        from cliquemixEntities.tbAnunciante 
+                                        where tbAnunciante.uid = 
+                                        (select tbUsers.uid from cliquemixEntities.tbUsers where tbUsers.username = '" + @pUsuario + "')";
+
+                    EntityCommand cmd = new EntityCommand(_QrySQL, conn);
+
+                    try
+                    {
+                        using (DbDataReader rdr = cmd.ExecuteReader(CommandBehavior.SequentialAccess))
+                        {
+                            if (rdr.HasRows)
+                            {
+                                // Iterate through the collection of Contact items.
+                                while (rdr.Read())
+                                {
+                                    return Convert.ToInt32(rdr[0].ToString());
+                                }
+                            }
+                            else
+                            {
+                                return 0;
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        return 0;
+                        throw;
+                    }
+
+                }
+                return 0;
+            }
+            #endregion
+
         #endregion
 
-        #region "Mover arquivos de um local ao outro"
-        public static void MoverArquivosEntrePastas(string pOrigem, string pDestino)
-        {
-            try
-            {
-                Directory.Move(pOrigem, pDestino);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
-        #endregion
+
 
     }
 }

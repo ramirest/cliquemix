@@ -114,6 +114,11 @@ namespace Cliquemix.Controllers
                     ViewBag.Error = "O Login informado já existe";
                     return View(tbanunciante);
                 }
+                //Verifica se a senha atende os padrões de senha do sistema (SE A SENHA É FORTE)
+                if (verificaSenhaForte(@Request.Form.Get("tbUsers.pwd")))
+                {
+                    
+                }
                 //Caso a senha seja diferente da confirmação ele não processa
                 else if ((@Request.Form.Get("tbUsers.pwd")) != (@Request.Form.Get("tbUsers.cPwd")))
                 {
@@ -150,13 +155,13 @@ namespace Cliquemix.Controllers
                     db.tbAnuncianteEndereco.Add(anuncianteEndereco);
                     db.SaveChanges();  
                   
-                    /*** Criar diretórios para arquivos do anúnciante ***/
+                    /*** Cria diretório para arquivos do anúnciante ***/
                     ProcFunc.CriarDiretorio(Server.MapPath("~/Arquivos/Anunciantes/"),
                         String.Format("{0:000000}", anuncianteEndereco.pid));
-                    /*** Criar diretórios para arquivos do anúnciante ***/
+                    /*** Cria diretório para o perfil do anúnciante ***/
                     ProcFunc.CriarDiretorio(Server.MapPath("~/Arquivos/Anunciantes/"),
                         String.Format("{0:000000}", anuncianteEndereco.pid), "Perfil");
-                    /*** Criar diretórios para arquivos do anúnciante ***/
+                    /*** Cria diretório para imagens de anúncios do anúnciante ***/
                     ProcFunc.CriarDiretorio(Server.MapPath("~/Arquivos/Anunciantes/"),
                         String.Format("{0:000000}", anuncianteEndereco.pid), "Anúncios");
                 }
@@ -214,6 +219,34 @@ namespace Cliquemix.Controllers
             {                               
                 return false;
             }
+        }
+
+        public static Boolean verificaSenhaForte(string senha)
+        {
+            if (senha.Length < 6 || senha.Length > 12)
+                return false;
+            if (!senha.Any(c => char.IsDigit(c)))
+                return false;
+            if (!senha.Any(c => char.IsUpper(c)))
+                return false;
+            if (!senha.Any(c => char.IsLower(c)))
+                return false;
+            if (!senha.Any(c => char.IsSymbol(c)))
+                return false;
+
+            var contadorRepetido = 0;
+            var ultimoCaracter = '\0';
+            foreach (var c in senha) 
+            {
+                if (c == ultimoCaracter)
+                    contadorRepetido++;
+                else
+                    contadorRepetido = 0;
+                if (contadorRepetido == 2)
+                    return false;
+                ultimoCaracter = c;
+            }
+            return true;
         }
 
         public int RetornaCodigoUsuario(string _nomeUsuario)

@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using Cliquemix.Models;
 using Microsoft.Ajax.Utilities;
+using Microsoft.AspNet.Identity;
 
 namespace Cliquemix.Controllers
 {
@@ -184,22 +185,33 @@ namespace Cliquemix.Controllers
             //sVariavelNova = sVariavel.Substring(0, 3);// Aproveitar os 3 primeiros caracteres
             string tempId = String.Format("{0:000000000}", idAlbum); // Ex: "000000015"
             string tempIdItem = String.Format("{0:000}", RetornaItemImagem(idAlbum)); // Ex: "001"
-            if (tempIdItem == "000")
+            Int32 codAnunciante = ProcFunc.RetornarCodigoAnunciante(User.Identity.GetUserName());
+
+            if (codAnunciante > 0)
             {
-                return null;
+                string urlDestino = Server.MapPath("~/Arquivos/Anunciantes/") +
+                                    String.Format("{0:000000}", codAnunciante) + "/Anúncios/";
+                if (tempIdItem == "000")
+                {
+                    return null;
+                }
+                else
+                {
+                    tbAnuncioImg.url_imagem = urlDestino + tempId + tempIdItem + ".jpeg";
+                    tbAnuncioImg.tipo = "jpeg";
+                    tbAnuncioImg.idTemp = Convert.ToInt32(tempId);
+                    tbAnuncioImg.idTempItem = Convert.ToInt32(tempIdItem);
+                    tbAnuncioImg.tamanho = Convert.ToString(filedata.ContentLength);
+                    db.tbAnuncioImg.Add(tbAnuncioImg);
+                    db.SaveChanges();
+                    filedata.SaveAs(urlDestino + tempId + tempIdItem + ".jpeg");
+                    UploadImagem();
+                    return Convert.ToString(idAlbum);
+                }
             }
             else
             {
-                tbAnuncioImg.url_imagem = Server.MapPath("~/Images/Fotos/") + tempId + tempIdItem + ".jpeg";
-                tbAnuncioImg.tipo = "jpeg";
-                tbAnuncioImg.idTemp = Convert.ToInt32(tempId);
-                tbAnuncioImg.idTempItem = Convert.ToInt32(tempIdItem);
-                tbAnuncioImg.tamanho = Convert.ToString(filedata.ContentLength);
-                db.tbAnuncioImg.Add(tbAnuncioImg);
-                db.SaveChanges();
-                filedata.SaveAs(Server.MapPath("~/Images/Fotos/") + tempId + tempIdItem + ".jpeg");
-                UploadImagem();
-                return Convert.ToString(idAlbum);
+                return "O usuário logado não tem uma pasta para os arquivos";
             }
         }
 
