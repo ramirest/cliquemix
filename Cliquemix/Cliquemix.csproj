@@ -213,6 +213,8 @@
     <Compile Include="Controllers\Anunciante\AnuncioController.cs" />
     <Compile Include="Controllers\BreadcrumbsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CampanhaController.cs" />
+    <Compile Include="Controllers\CreditoController.cs" />
     <Compile Include="Controllers\EnderecoController.cs" />
     <Compile Include="Controllers\tipoUsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -428,6 +430,7 @@
     <Content Include="Content\plugins\summernote\summernote-bs3.css" />
     <Content Include="Content\plugins\summernote\summernote.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\timeline.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\icons\font-awesome\css\font-awesome.css" />
     <Content Include="fonts\icons\font-awesome\css\font-awesome.min.css" />
@@ -437,6 +440,7 @@
     <Content Include="fonts\img\datatables\sort_both.png" />
     <Content Include="fonts\img\flex-admin-logo%401x.png" />
     <Content Include="fonts\img\flex-admin-logo.png" />
+    <Content Include="fonts\img\linha.png" />
     <Content Include="fonts\img\logo.fw.png" />
     <Content Include="fonts\img\logo.png" />
     <Content Include="fonts\img\logo2.png" />
@@ -465,6 +469,7 @@
     <Content Include="Scripts\demo\validation-demo.js" />
     <Content Include="Scripts\demo\wysiwyg-demo.js" />
     <Content Include="Scripts\flex.js" />
+    <Content Include="Scripts\holder.js" />
     <Content Include="Scripts\html5shiv.js" />
     <Content Include="Scripts\Outros\bootstrap.js" />
     <Content Include="Scripts\Outros\bootstrap.min.js" />
@@ -618,6 +623,17 @@
     <Content Include="Views\Anuncio\AnuncioImagem.cshtml" />
     <Content Include="Views\Anunciante\CreateAnuncio.cshtml" />
     <Content Include="Views\Anuncio\UploadImagem.cshtml" />
+    <Content Include="Views\Campanha\CreateCampanha.cshtml" />
+    <Content Include="Views\Campanha\DeleteCampanha.cshtml" />
+    <Content Include="Views\Campanha\ListCampanha.cshtml" />
+    <Content Include="Views\Campanha\UpdateCampanha.cshtml" />
+    <Content Include="Views\Campanha\ViewerCampanha.cshtml" />
+    <Content Include="Views\Credito\BuyCredit.cshtml" />
+    <Content Include="Views\Credito\ManagerCredit.cshtml" />
+    <Content Include="Views\Breadcrumbs\Breadcrumbs-Campanha-List.cshtml" />
+    <Content Include="Views\Breadcrumbs\Breadcrumbs-Campanha.cshtml" />
+    <Content Include="Views\Breadcrumbs\Breadcrumbs-Credito-Gerenciar.cshtml" />
+    <Content Include="Views\Breadcrumbs\Breadcrumbs-Credito.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
