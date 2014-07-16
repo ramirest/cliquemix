@@ -12,8 +12,8 @@
         <EntityTypeShape EntityType="cliquemixModel.tbAnuncianteTelefone" Width="1.5" PointX="5.25" PointY="17.625" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbAnuncio" Width="1.5" PointX="9" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbAnuncioFuncionalidade" Width="1.5" PointX="11.25" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbAnuncioImagens" Width="1.5" PointX="11.25" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbAnuncioImg" Width="1.5" PointX="9" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbAnuncioImagens" Width="1.5" PointX="11.375" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbAnuncioImg" Width="1.5" PointX="8.875" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbAnuncioStatus" Width="1.5" PointX="6.75" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbBairro" Width="1.5" PointX="19.5" PointY="9.25" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbBan" Width="1.5" PointX="9" PointY="21.5" IsExpanded="true" />
@@ -115,6 +115,14 @@
         <AssociationConnector Association="cliquemixModel.uid_tbUsersPermissao_tbUsers_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.utid_tbUsers_tbUsersTipo_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.pid_tbAnuncio_tbAnunciante_fk" />
+        <EntityTypeShape EntityType="cliquemixModel.tbConfigPadrao" Width="1.5" PointX="17" PointY="17.125" />
+        <AssociationConnector Association="cliquemixModel.asid_tbConfigPadrao_tbAnuncioStatus_fk" />
+        <AssociationConnector Association="cliquemixModel.utid_tbConfigPadrao_tbUsersTipo_fk" />
+        <EntityTypeShape EntityType="cliquemixModel.tbAnuncioImgLog" Width="1.5" PointX="19.25" PointY="15.125" />
+        <AssociationConnector Association="cliquemixModel.aid_tbAnuncioImgLog_tbAnuncio_fk" />
+        <AssociationConnector Association="cliquemixModel.asid_tbAnuncioImgLog_tbAnuncioStatus_fk" />
+        <AssociationConnector Association="cliquemixModel.uid_tbAnuncioImgLog_tbUsers_fk" />
+        <AssociationConnector Association="cliquemixModel.aid_tbAnuncioImg_tbAnuncio_fk" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

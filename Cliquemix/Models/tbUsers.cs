@@ -21,6 +21,7 @@ namespace Cliquemix.Models
             this.tbLogSistema = new HashSet<tbLogSistema>();
             this.tbUsersLogAcesso = new HashSet<tbUsersLogAcesso>();
             this.tbUsersPermissao = new HashSet<tbUsersPermissao>();
+            this.tbAnuncioImgLog = new HashSet<tbAnuncioImgLog>();
         }
     
         public int uid { get; set; }
@@ -35,5 +36,6 @@ namespace Cliquemix.Models
         public virtual ICollection<tbUsersLogAcesso> tbUsersLogAcesso { get; set; }
         public virtual ICollection<tbUsersPermissao> tbUsersPermissao { get; set; }
         public virtual tbUsersTipo tbUsersTipo { get; set; }
+        public virtual ICollection<tbAnuncioImgLog> tbAnuncioImgLog { get; set; }
     }
 }

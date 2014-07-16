@@ -17,11 +17,15 @@ namespace Cliquemix.Models
         public tbAnuncioStatus()
         {
             this.tbAnuncio = new HashSet<tbAnuncio>();
+            this.tbConfigPadrao = new HashSet<tbConfigPadrao>();
+            this.tbAnuncioImgLog = new HashSet<tbAnuncioImgLog>();
         }
     
         public int asid { get; set; }
         public string dsStatus { get; set; }
     
         public virtual ICollection<tbAnuncio> tbAnuncio { get; set; }
+        public virtual ICollection<tbConfigPadrao> tbConfigPadrao { get; set; }
+        public virtual ICollection<tbAnuncioImgLog> tbAnuncioImgLog { get; set; }
     }
 }

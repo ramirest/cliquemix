@@ -12,18 +12,13 @@ namespace Cliquemix.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tbUsersTipo
+    public partial class tbConfigPadrao
     {
-        public tbUsersTipo()
-        {
-            this.tbUsers = new HashSet<tbUsers>();
-            this.tbConfigPadrao = new HashSet<tbConfigPadrao>();
-        }
+        public int cfgid { get; set; }
+        public Nullable<int> asid { get; set; }
+        public Nullable<int> utid { get; set; }
     
-        public int utid { get; set; }
-        public string dsUsersTipo { get; set; }
-    
-        public virtual ICollection<tbUsers> tbUsers { get; set; }
-        public virtual ICollection<tbConfigPadrao> tbConfigPadrao { get; set; }
+        public virtual tbAnuncioStatus tbAnuncioStatus { get; set; }
+        public virtual tbUsersTipo tbUsersTipo { get; set; }
     }
 }

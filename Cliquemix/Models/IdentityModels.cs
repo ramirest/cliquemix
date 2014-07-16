@@ -6,17 +6,18 @@ using System;
 using System.Data.Entity.Infrastructure;
 
 namespace Cliquemix.Models
-{    
+{
     // You can add profile data for the user by adding more properties to your ApplicationUser
     // class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
 
-    }    
+    }
+
     public partial class ApplicationDbContext : DbContext
     {
 
-        public ApplicationDbContext(): base("name=cliquemixEntities")
+        public ApplicationDbContext() : base("name=cliquemixEntities")
         {
         }
 
@@ -76,6 +77,8 @@ namespace Cliquemix.Models
         public virtual DbSet<tbUsersLogAcesso> tbUsersLogAcesso { get; set; }
         public virtual DbSet<tbUsersPermissao> tbUsersPermissao { get; set; }
         public virtual DbSet<tbUsersTipo> tbUsersTipo { get; set; }
-
+        public virtual DbSet<tbConfigPadrao> tbConfigPadrao { get; set; }
+        public virtual DbSet<tbAnuncioImgLog> TbAnuncioImgLogs { get; set; }
     }
+
 }

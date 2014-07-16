@@ -7,6 +7,7 @@ using System.Net;
 using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
+using BLToolkit.Data.Linq;
 using Cliquemix.Models;
 using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
@@ -17,18 +18,11 @@ namespace Cliquemix.Controllers
     public class AnuncioController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
-        // GET: /Anuncio/
-        public ActionResult Index()
-        {
-            var tbanuncio = db.tbAnuncio.Include(t => t.tbRamoAtividade);
-            return View(tbanuncio.ToList());
-        }
         
-        // GET: /Anuncio/
+        // GET: /Anuncio/ListAnuncio
         public ActionResult ListAnuncio()
         {
-            var tbanuncio = db.tbAnuncio.Include(t => t.tbRamoAtividade).Include(r => r.tbAnuncioStatus);
+            var tbanuncio = db.tbAnuncio.Include(t => t.tbRamoAtividade).Include(r => r.tbAnuncioStatus).Where(m => m.pid == RetornaCodigoAnunciante(RetornaCodigoUsuario(User.Identity.GetUserName())));
             return View(tbanuncio.ToList());
         }
 
@@ -56,32 +50,25 @@ namespace Cliquemix.Controllers
         }
 
         // POST: /Anuncio/CreateAnuncio
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateAnuncio([Bind(Include = "tituloAnuncio,url,dsAnuncio,raid,pid,asid,videoAnuncio,comentar,curtir,idTempImg," +
+        public ActionResult CreateAnuncio([Bind(Include = "tituloAnuncio,url,dsAnuncio,raid,pid,videoAnuncio,comentar,curtir,idTempImg," +
                                                           "compartilhar,dtCriacao,imagem1,imagem2,imagem3,imagem4,imagem5,imagem6,imagem7,imagem8")] tbAnuncio tbanuncio)
         {
             if (ModelState.IsValid)
             {
                 tbanuncio.pid = RetornaCodigoAnunciante(RetornaCodigoUsuario(User.Identity.GetUserName()));
                 tbanuncio.dtCriacao = DateTime.Now;
+                tbanuncio.asid = RetornaStatusPadraoAnuncio();
                 db.tbAnuncio.Add(tbanuncio);
                 db.SaveChanges();
+                SalvarLogAnuncio(tbanuncio.aid, (int)tbanuncio.asid, RetornaCodigoUsuario(User.Identity.GetUserName()), "Sim");
+                AlterarImgAnuncioSalvo(tbanuncio.aid, Convert.ToInt32(Request.Form.Get("idTempImg")));
+
                 return RedirectToAction("ListAnuncio");
             }
             return View(tbanuncio);
         }
-
-        // GET: /Anuncio/Create
-        public ActionResult Create()
-        {
-            ViewBag.raid = new SelectList(db.tbRamoAtividade, "raid", "descricao");
-            ViewBag.asid = new SelectList(db.tbAnuncioStatus, "asid", "dsStatus");
-            return View();
-        }
-
 
         // GET: /Anuncio/Edit/5
         public ActionResult Edit(int? id)
@@ -111,7 +98,7 @@ namespace Cliquemix.Controllers
             {
                 db.Entry(tbanuncio).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ListAnuncio");
             }
             ViewBag.aaid = new SelectList(db.tbRamoAtividade, "raid", "descricao", tbanuncio.raid);
             return View(tbanuncio);
@@ -140,14 +127,14 @@ namespace Cliquemix.Controllers
             tbAnuncio tbanuncio = db.tbAnuncio.Find(id);
             db.tbAnuncio.Remove(tbanuncio);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("ListAnuncio");
         }
 
 
         [HttpGet]
-        public ActionResult UploadImagem()
+        public ActionResult UploadImagem(int temp)
         {
-            var tbAnuncioImg = db.tbAnuncioImg;
+            var tbAnuncioImg = db.tbAnuncioImg.Where(m=>m.idTemp == temp);
             if (tbAnuncioImg.Any())
             {
                 return PartialView(tbAnuncioImg.ToList());
@@ -186,7 +173,6 @@ namespace Cliquemix.Controllers
                     db.tbAnuncioImg.Add(tbAnuncioImg);
                     db.SaveChanges();
                     filedata.SaveAs(urlDestino + tempId + tempIdItem + ".jpeg");
-                    UploadImagem();
                     return Convert.ToString(idAlbum);
                 }
             }
@@ -231,6 +217,36 @@ namespace Cliquemix.Controllers
         {
             var a = (from usu in db.tbUsers where usu.username == _nomeUsuario select usu).First();
             return a.uid;
+        }
+
+        public void SalvarLogAnuncio(int _aid, int _asid, int _uid, string _imgRename)
+        {
+            tbAnuncioImgLog tbAnuncioImgLog = new tbAnuncioImgLog();
+            tbAnuncioImgLog.aid = _aid;
+            tbAnuncioImgLog.asid = _asid;
+            tbAnuncioImgLog.uid = _uid;
+            tbAnuncioImgLog.dtMovimento = DateTime.Now;
+            tbAnuncioImgLog.imagensRenomeadas = _imgRename;
+            db.TbAnuncioImgLogs.Add(tbAnuncioImgLog);
+            db.SaveChanges();
+        }
+
+        public int RetornaStatusPadraoAnuncio()
+        {
+            var a = (from status in db.tbConfigPadrao select status).First();
+            return (int) a.asid;
+        }
+
+        public void AlterarImgAnuncioSalvo(int pAid, int pIdTemp)
+        {
+            List<tbAnuncioImg> img = new List<tbAnuncioImg>();
+            
+            foreach (var item in img.Where(a => a.idTemp == pIdTemp))
+            {
+                item.aid = pAid;
+                item.idTemp = pAid;
+                item.tempRenomeado = true;
+            }
         }
 
         public int RetornaCodigoAnunciante(int _codUsuario)

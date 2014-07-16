@@ -268,6 +268,9 @@
     <Compile Include="Models\tbAnuncioImg.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tbAnuncioImgLog.cs">
+      <DependentUpon>Cliquemix.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbAnuncioStatus.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
@@ -317,6 +320,9 @@
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbCondicaoPagto.cs">
+      <DependentUpon>Cliquemix.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbConfigPadrao.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbConsumidor.cs">
