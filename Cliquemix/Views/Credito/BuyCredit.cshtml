@@ -54,10 +54,13 @@
         @Html.Hidden("tcod")
         <br />
         <div class="form-group" id="detalhesCredito">
-            @{
-                Html.RenderPartial("DetalhesCredito");
-            }
-            @* Informa os detalhes do pacote de créditos *@
+            <div class="row pricing-circle">
+                @{
+                    Html.RenderPartial("DetalhesCredito");
+                }
+                @* Informa os detalhes do pacote de créditos *@
+            </div>
+            
         </div>
         <br /><br /><br /><br /><br /><br />
         <div class="form-group" style="margin-left:0%;">

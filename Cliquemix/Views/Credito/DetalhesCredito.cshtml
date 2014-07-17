@@ -1,39 +1,78 @@
-﻿@using System.Globalization
-@model IEnumerable<Cliquemix.Models.tbCredito>
+﻿<ul class="plan plan2 featured">
+    <li class="plan-name">
+        <h3>Standard</h3>
+    </li>
+    <li class="plan-price">
+        <div>
+            <span class="price">
+                <sup>$</sup>
+                39
+            </span>
+            <small>month</small>
+        </div>
+    </li>
+    <li>
+        <strong>5GB</strong>
+        Storage
+    </li>
+    <li>
+        <strong>1GB</strong>
+        RAM
+    </li>
+    <li>
+        <strong>400GB</strong>
+        Bandwidth
+    </li>
+    <li>
+        <strong>10</strong>
+        Email Address
+    </li>
+    <li>
+        <strong>Forum</strong>
+        Support
+    </li>
 
-@try
-{
-    foreach (var item in Model)
+</ul>
+
+
+@*
+    @using System.Globalization
+    @model IEnumerable<Cliquemix.Models.tbCredito>
+
+    @try
     {
-        <br/>
-        <br/>
-    
-        @Html.Label("Título", new {style = "width: 120px; color: #34495E; font-weight: 600; font-size: 14px"})
-        @Html.Label(item.tituloPacote)
-        <div class="clearfix"></div>
-    
-        @Html.Label("Qtde de Créditos", new { style = "width: 120px; color: #34495E; font-weight: 600; font-size: 14px" })    
-        @Html.Label(item.qtCredito.ToString())
-        <div class="clearfix"></div>
+        foreach (var item in Model)
+        {
+            <br/>
+            <br/>
 
-        @Html.Label("Valor do Pacote", new { style = "width: 120px; color: #34495E; font-weight: 600; font-size: 14px" })
-        @Html.Label(String.Format(new CultureInfo("pt-BR"), "{0:C}", item.vlCredito.ToString()))
-        <div class="clearfix"></div>
-            
-        @Html.Label("Promocional", new { style = "width: 120px; color: #34495E; font-weight: 600; font-size: 14px" })
-        if (item.promocional == true)
-        {
-            @Html.Label("Sim")
+            @Html.Label("Título", new {style = "width: 120px; color: #34495E; font-weight: 600; font-size: 14px"})
+            @Html.Label(item.tituloPacote)
+            <div class="clearfix"></div>
+
+            @Html.Label("Qtde de Créditos", new { style = "width: 120px; color: #34495E; font-weight: 600; font-size: 14px" })
+            @Html.Label(item.qtCredito.ToString())
+            <div class="clearfix"></div>
+
+            @Html.Label("Valor do Pacote", new { style = "width: 120px; color: #34495E; font-weight: 600; font-size: 14px" })
+            @Html.Label(String.Format(new CultureInfo("pt-BR"), "{0:C}", item.vlCredito.ToString()))
+            <div class="clearfix"></div>
+
+            @Html.Label("Promocional", new { style = "width: 120px; color: #34495E; font-weight: 600; font-size: 14px" })
+            if (item.promocional == true)
+            {
+                @Html.Label("Sim")
+            }
+            else
+            {
+                @Html.Label("Não")
+            }
         }
-        else
-        {
-            @Html.Label("Não")
-        }
+
     }
-
-}
-catch (Exception)
-{
-    <div class="clearfix"></div>
-    <div class="clearfix"></div>
-}
+    catch (Exception)
+    {
+        <div class="clearfix"></div>
+        <div class="clearfix"></div>
+    }
+*@
