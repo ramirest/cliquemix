@@ -1,4 +1,5 @@
-﻿@using Cliquemix.Models;
+﻿@using System.Web.UI.WebControls
+@using Cliquemix.Models;
 @using Microsoft.AspNet.Identity
 @model Cliquemix.Models.tbCampanha
 
@@ -117,7 +118,8 @@
                                                                 <i class="fa fa-calendar"></i>
                                                             </button>
                                                         </span>
-                                                        <input id="dtInicio" class="form-control datepicker" type="text" style="max-width: 100px;" />
+                                                        @Html.TextBoxFor(model => model.dtInicio, new {@class="form-control datepicker", Style="max-width: 100px"})
+                                                        @*<input id="dtInicio" class="form-control datepicker" type="text" style="max-width: 100px;" />*@
                                                     </div>
                                                 </div>
                                             </div>
@@ -130,7 +132,7 @@
                                                             <i class="fa fa-clock-o"></i>
                                                         </button>
                                                     </span>
-                                                    <input id="hrInicio" class="form-control bootstrap-timepicker" type="text" style="max-width: 100px;" />
+                                                    <input id="timepicker1" class="form-control bootstrap-timepicker" type="text" style="max-width: 100px;" />
                                                 </div>
                                             </div>
                                             
@@ -146,7 +148,8 @@
                                                                 <i class="fa fa-calendar"></i>
                                                             </button>
                                                         </span>
-                                                        <input id="dtTermino" class="form-control datepicker" type="text" style="max-width: 100px;" />
+                                                        @Html.TextBoxFor(model => model.dtTermino, new { @class = "form-control datepicker", Style = "max-width: 100px" })
+                                                        @*<input id="dtTermino" class="form-control datepicker" type="text" style="max-width: 100px;" />*@
                                                     </div>
                                                 </div>
                                             </div>
@@ -159,7 +162,7 @@
                                                             <i class="fa fa-clock-o"></i>
                                                         </button>
                                                     </span>
-                                                    <input id="hrTermino" class="form-control bootstrap-timepicker" type="text" style="max-width: 100px;" />
+                                                    <input id="timepicker1" class="form-control bootstrap-timepicker" type="text" style="max-width: 100px;" />
                                                 </div>
                                             </div>
 
@@ -234,7 +237,7 @@
                                                 <button type="button" onclick=" $('#lnk4').click(); " class="btn btn-default">Próximo</button>
                                             </div>
                                         </div>
-                                   
+
 
                                         <div class="tab-pane fade in" id="infoGL">
                                             <h4 class="page-header">Aonde seus anúncios irão ser exibidos?</h4>

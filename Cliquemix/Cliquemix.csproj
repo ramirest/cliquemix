@@ -337,6 +337,9 @@
     <Compile Include="Models\tbCreditoDesconta.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tbCreditoPromocional.cs">
+      <DependentUpon>Cliquemix.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbDestaque.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
@@ -640,6 +643,7 @@
     <Content Include="Views\Breadcrumbs\Breadcrumbs-Credito-Gerenciar.cshtml" />
     <Content Include="Views\Breadcrumbs\Breadcrumbs-Credito.cshtml" />
     <Content Include="Views\Campanha\AnunciosCampanha.cshtml" />
+    <Content Include="Views\Credito\DetalhesCredito.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -50,13 +50,13 @@ namespace Test_AspNet.Controllers
         }
 
         [HttpGet]
-        //public ActionResult AnunciosCampanha(int pCodCampanha)
-        public ActionResult AnunciosCampanha()
+        public ActionResult AnunciosCampanha(int pCodCampanha)
+        //public ActionResult AnunciosCampanha()
         {
             try
             {
-                //var tbCampanhaAnuncio = db.tbCampanhaAnuncio.Where(m => m.cid == pCodCampanha);
-                var tbCampanhaAnuncio = db.tbCampanhaAnuncio;
+                var tbCampanhaAnuncio = db.tbCampanhaAnuncio.Where(m => m.cid == pCodCampanha);
+                //var tbCampanhaAnuncio = db.tbCampanhaAnuncio;
                 if (tbCampanhaAnuncio.Any())
                 {
                     return PartialView(tbCampanhaAnuncio.ToList());

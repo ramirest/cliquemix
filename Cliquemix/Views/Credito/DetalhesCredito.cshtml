@@ -1,0 +1,30 @@
+﻿@model Cliquemix.Models.tbCredito
+
+@{
+    try
+    {
+        @Html.DisplayFor(model => model.crid)
+        <br />
+        <br />
+        <div class="form-group col-lg-2">
+            @Html.Label("Item", new { style = "color: #34495E; font-weight: 600; font-size: 14px" })
+            <div class="clearfix"></div>
+            @Html.DisplayFor(model => model.crid)
+        </div>
+        <div class="form-group col-lg-3">
+            @Html.Label("Quantidade de Créditos", new { style = "color: #34495E; font-weight: 600; font-size: 14px" })
+            <div class="clearfix"></div>
+            @Html.DisplayFor(model => model.qtCredito)
+        </div>
+        <div class="form-group col-lg-4">
+            @Html.Label("Valor do Pacote", new { style = "color: #34495E; font-weight: 600; font-size: 14px" })
+            <div class="clearfix"></div>
+            @Html.DisplayFor(model => model.qtCredito)
+        </div>
+    }
+    
+    catch (Exception)
+    {
+        throw;
+    }
+}

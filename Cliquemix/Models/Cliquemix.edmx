@@ -314,6 +314,9 @@
           <Property Name="crid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="qtCredito" Type="float" />
           <Property Name="vlCredito" Type="numeric" Precision="11" Scale="2" />
+          <Property Name="promocional" Type="bit" />
+          <Property Name="tituloPacote" Type="varchar" MaxLength="50" />
+          <Property Name="dsCredito" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="tbCreditoCompra">
           <Key>
@@ -333,6 +336,16 @@
           <Property Name="saldoCreditoIni" Type="float" />
           <Property Name="saldoCreditoFin" Type="float" />
           <Property Name="dtOcorrido" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbCreditoPromocional">
+          <Key>
+            <PropertyRef Name="crpid" />
+          </Key>
+          <Property Name="crpid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="crid" Type="int" />
+          <Property Name="dtInicioPromocao" Type="datetime" />
+          <Property Name="dtFinalPromocao" Type="datetime" />
+          <Property Name="uid" Type="int" />
         </EntityType>
         <EntityType Name="tbDestaque">
           <Key>
@@ -854,6 +867,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="crid_tbCreditoPromocional_tbCredito_fk">
+          <End Role="tbCredito" Type="Self.tbCredito" Multiplicity="0..1" />
+          <End Role="tbCreditoPromocional" Type="Self.tbCreditoPromocional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbCredito">
+              <PropertyRef Name="crid" />
+            </Principal>
+            <Dependent Role="tbCreditoPromocional">
+              <PropertyRef Name="crid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="csid_tbCampanha_tbCampanhaStatus_fk">
           <End Role="tbCampanhaStatus" Type="Self.tbCampanhaStatus" Multiplicity="1" />
           <End Role="tbCampanha" Type="Self.tbCampanha" Multiplicity="*" />
@@ -1274,6 +1299,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="uid_tbCreditoPromocional_tbUsers_fk">
+          <End Role="tbUsers" Type="Self.tbUsers" Multiplicity="0..1" />
+          <End Role="tbCreditoPromocional" Type="Self.tbCreditoPromocional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsers">
+              <PropertyRef Name="uid" />
+            </Principal>
+            <Dependent Role="tbCreditoPromocional">
+              <PropertyRef Name="uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="uid_tbLogSistema_tbUsers_fk">
           <End Role="tbUsers" Type="Self.tbUsers" Multiplicity="0..1" />
           <End Role="tbLogSistema" Type="Self.tbLogSistema" Multiplicity="*" />
@@ -1367,6 +1404,7 @@
           <EntitySet Name="tbCredito" EntityType="Self.tbCredito" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbCreditoCompra" EntityType="Self.tbCreditoCompra" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbCreditoDesconta" EntityType="Self.tbCreditoDesconta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbCreditoPromocional" EntityType="Self.tbCreditoPromocional" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbDestaque" EntityType="Self.tbDestaque" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbEstado" EntityType="Self.tbEstado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbFuncionalidade" EntityType="Self.tbFuncionalidade" Schema="dbo" store:Type="Tables" />
@@ -1496,6 +1534,10 @@
           <AssociationSet Name="crid_tbCreditoCompra_tbCredito_fk" Association="Self.crid_tbCreditoCompra_tbCredito_fk">
             <End Role="tbCredito" EntitySet="tbCredito" />
             <End Role="tbCreditoCompra" EntitySet="tbCreditoCompra" />
+          </AssociationSet>
+          <AssociationSet Name="crid_tbCreditoPromocional_tbCredito_fk" Association="Self.crid_tbCreditoPromocional_tbCredito_fk">
+            <End Role="tbCredito" EntitySet="tbCredito" />
+            <End Role="tbCreditoPromocional" EntitySet="tbCreditoPromocional" />
           </AssociationSet>
           <AssociationSet Name="csid_tbCampanha_tbCampanhaStatus_fk" Association="Self.csid_tbCampanha_tbCampanhaStatus_fk">
             <End Role="tbCampanhaStatus" EntitySet="tbCampanhaStatus" />
@@ -1636,6 +1678,10 @@
           <AssociationSet Name="uid_tbBan_tbUsers_fk" Association="Self.uid_tbBan_tbUsers_fk">
             <End Role="tbUsers" EntitySet="tbUsers" />
             <End Role="tbBan" EntitySet="tbBan" />
+          </AssociationSet>
+          <AssociationSet Name="uid_tbCreditoPromocional_tbUsers_fk" Association="Self.uid_tbCreditoPromocional_tbUsers_fk">
+            <End Role="tbUsers" EntitySet="tbUsers" />
+            <End Role="tbCreditoPromocional" EntitySet="tbCreditoPromocional" />
           </AssociationSet>
           <AssociationSet Name="uid_tbLogSistema_tbUsers_fk" Association="Self.uid_tbLogSistema_tbUsers_fk">
             <End Role="tbUsers" EntitySet="tbUsers" />
@@ -2031,6 +2077,10 @@
           <Property Name="qtCredito" Type="Double" />
           <Property Name="vlCredito" Type="Decimal" Precision="11" Scale="2" />
           <NavigationProperty Name="tbCreditoCompra" Relationship="Self.crid_tbCreditoCompra_tbCredito_fk" FromRole="tbCredito" ToRole="tbCreditoCompra" />
+          <Property Name="promocional" Type="Boolean" />
+          <NavigationProperty Name="tbCreditoPromocional" Relationship="cliquemixModel.crid_tbCreditoPromocional_tbCredito_fk" FromRole="tbCredito" ToRole="tbCreditoPromocional" />
+          <Property Name="tituloPacote" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dsCredito" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tbCreditoCompra">
           <Key>
@@ -2253,6 +2303,7 @@
           <NavigationProperty Name="tbUsersPermissao" Relationship="Self.uid_tbUsersPermissao_tbUsers_fk" FromRole="tbUsers" ToRole="tbUsersPermissao" />
           <NavigationProperty Name="tbUsersTipo" Relationship="Self.utid_tbUsers_tbUsersTipo_fk" FromRole="tbUsers" ToRole="tbUsersTipo" />
           <NavigationProperty Name="tbAnuncioImgLog" Relationship="cliquemixModel.uid_tbAnuncioImgLog_tbUsers_fk" FromRole="tbUsers" ToRole="tbAnuncioImgLog" />
+          <NavigationProperty Name="tbCreditoPromocional" Relationship="cliquemixModel.uid_tbCreditoPromocional_tbUsers_fk" FromRole="tbUsers" ToRole="tbCreditoPromocional" />
         </EntityType>
         <EntityType Name="tbUsersLogAcesso">
           <Key>
@@ -3306,6 +3357,15 @@
             <End Role="tbAnunciante" EntitySet="tbAnunciante" />
             <End Role="tbCampanha" EntitySet="tbCampanha" />
           </AssociationSet>
+          <EntitySet Name="tbCreditoPromocional" EntityType="cliquemixModel.tbCreditoPromocional" />
+          <AssociationSet Name="crid_tbCreditoPromocional_tbCredito_fk" Association="cliquemixModel.crid_tbCreditoPromocional_tbCredito_fk">
+            <End Role="tbCredito" EntitySet="tbCredito" />
+            <End Role="tbCreditoPromocional" EntitySet="tbCreditoPromocional" />
+          </AssociationSet>
+          <AssociationSet Name="uid_tbCreditoPromocional_tbUsers_fk" Association="cliquemixModel.uid_tbCreditoPromocional_tbUsers_fk">
+            <End Role="tbUsers" EntitySet="tbUsers" />
+            <End Role="tbCreditoPromocional" EntitySet="tbCreditoPromocional" />
+          </AssociationSet>
         </EntityContainer>
         <Association Name="pid_tbAnuncio_tbAnunciante_fk">
           <End Type="cliquemixModel.tbAnunciante" Role="tbAnunciante" Multiplicity="0..1" />
@@ -3446,6 +3506,42 @@
             </Principal>
             <Dependent Role="tbCampanha">
               <PropertyRef Name="pid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tbCreditoPromocional">
+          <Key>
+            <PropertyRef Name="crpid" />
+          </Key>
+          <Property Name="crpid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="crid" Type="Int32" />
+          <Property Name="dtInicioPromocao" Type="DateTime" Precision="3" />
+          <Property Name="dtFinalPromocao" Type="DateTime" Precision="3" />
+          <Property Name="uid" Type="Int32" />
+          <NavigationProperty Name="tbCredito" Relationship="cliquemixModel.crid_tbCreditoPromocional_tbCredito_fk" FromRole="tbCreditoPromocional" ToRole="tbCredito" />
+          <NavigationProperty Name="tbUsers" Relationship="cliquemixModel.uid_tbCreditoPromocional_tbUsers_fk" FromRole="tbCreditoPromocional" ToRole="tbUsers" />
+        </EntityType>
+        <Association Name="crid_tbCreditoPromocional_tbCredito_fk">
+          <End Type="cliquemixModel.tbCredito" Role="tbCredito" Multiplicity="0..1" />
+          <End Type="cliquemixModel.tbCreditoPromocional" Role="tbCreditoPromocional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbCredito">
+              <PropertyRef Name="crid" />
+            </Principal>
+            <Dependent Role="tbCreditoPromocional">
+              <PropertyRef Name="crid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="uid_tbCreditoPromocional_tbUsers_fk">
+          <End Type="cliquemixModel.tbUsers" Role="tbUsers" Multiplicity="0..1" />
+          <End Type="cliquemixModel.tbCreditoPromocional" Role="tbCreditoPromocional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsers">
+              <PropertyRef Name="uid" />
+            </Principal>
+            <Dependent Role="tbCreditoPromocional">
+              <PropertyRef Name="uid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3768,6 +3864,9 @@
           <EntitySetMapping Name="tbCredito">
             <EntityTypeMapping TypeName="cliquemixModel.tbCredito">
               <MappingFragment StoreEntitySet="tbCredito">
+                <ScalarProperty Name="dsCredito" ColumnName="dsCredito" />
+                <ScalarProperty Name="tituloPacote" ColumnName="tituloPacote" />
+                <ScalarProperty Name="promocional" ColumnName="promocional" />
                 <ScalarProperty Name="crid" ColumnName="crid" />
                 <ScalarProperty Name="qtCredito" ColumnName="qtCredito" />
                 <ScalarProperty Name="vlCredito" ColumnName="vlCredito" />
@@ -4031,6 +4130,17 @@
                 <ScalarProperty Name="dsPacote" ColumnName="dsPacote" />
                 <ScalarProperty Name="tituloPacote" ColumnName="tituloPacote" />
                 <ScalarProperty Name="pcid" ColumnName="pcid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbCreditoPromocional">
+            <EntityTypeMapping TypeName="cliquemixModel.tbCreditoPromocional">
+              <MappingFragment StoreEntitySet="tbCreditoPromocional">
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="dtFinalPromocao" ColumnName="dtFinalPromocao" />
+                <ScalarProperty Name="dtInicioPromocao" ColumnName="dtInicioPromocao" />
+                <ScalarProperty Name="crid" ColumnName="crid" />
+                <ScalarProperty Name="crpid" ColumnName="crpid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

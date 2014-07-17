@@ -4,70 +4,67 @@
 
 <div class="portlet-body">
     <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="text-center">#</th>
+                    <th class="text-center">Título</th>
+                    <th class="text-center">Ramo</th>
+                    <th class="text-center">Video</th>
+                    <th class="text-center">Imagem</th>
+                    <th class="text-center">Data</th>
+                    <th class="text-center">Ações</th>
+                </tr>
+            </thead>
+            @try
+            {
 
-        @try
-        {
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th class="text-center">#</th>
-                        <th class="text-center">Título</th>
-                        <th class="text-center">Ramo</th>
-                        <th class="text-center">Video</th>
-                        <th class="text-center">Imagem</th>
-                        <th class="text-center">Data</th>
-                        <th class="text-center">Ações</th>
-                    </tr>
-                </thead>
-                @foreach (var item in Model)
+                foreach (var item in Model)
                 {
-                <tbody>
-                    <tr>
-                        <td class="text-center">
-                            @Html.DisplayFor(modelItem => item.aid) @* Código do Anúncio *@
-                        </td>
-                        <td class="text-center">
-                            @Html.DisplayFor(modelItem => item.tbAnuncio.tituloAnuncio) @* Título do Anúncio *@
-                        </td>
-                        <td class="text-center">
-                            @Html.DisplayFor(modelItem => item.tbAnuncio.tbRamoAtividade.descricao) @* Ramo de Atividade *@
-                        </td>
-                        <td class="text-center">
-                            @Html.DisplayFor(modelItem => "Não") @* Anúncio tem Vídeo *@
-                        </td>
-                        <td class="text-center">
-                            @Html.DisplayFor(modelItem => "Sim") @* Anúncio tem Imagem *@
-                        </td>
-                        <td class="text-center">
-                            @Html.DisplayFor(modelItem => item.dtMovimento) @* Data de Vínculo do Anúncio à Campanha *@
-                        </td>
-                        <td class="text-center">
+                    <tbody>
+                        <tr>
+                            <td class="text-center">
+                                @Html.DisplayFor(modelItem => item.aid) @* Código do Anúncio *@
+                            </td>
+                            <td class="text-center">
+                                @Html.DisplayFor(modelItem => item.tbAnuncio.tituloAnuncio) @* Título do Anúncio *@
+                            </td>
+                            <td class="text-center">
+                                @Html.DisplayFor(modelItem => item.tbAnuncio.tbRamoAtividade.descricao) @* Ramo de Atividade *@
+                            </td>
+                            <td class="text-center">
+                                @Html.DisplayFor(modelItem => "Não") @* Anúncio tem Vídeo *@
+                            </td>
+                            <td class="text-center">
+                                @Html.DisplayFor(modelItem => "Sim") @* Anúncio tem Imagem *@
+                            </td>
+                            <td class="text-center">
+                                @Html.DisplayFor(modelItem => item.dtMovimento) @* Data de Vínculo do Anúncio à Campanha *@
+                            </td>
+                            <td class="text-center">
 
-                            <a href="#" title="Excluir">
-                                <i class="fa fa-times"></i>
-                            </a>
-                        </td>
-                    </tr>
-                </tbody>
+                                <a href="#" title="Excluir">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
                 }
-            </table>
 
+            }
+            catch (Exception)
+            {
+                <br />
+                <label style="color: #34495E; font-weight: normal; font-size: 20px">
+                    Não existem anúncios nessa campanha
+                </label>
 
-        }
-        catch (Exception)
-        {
-            <br />
+                <div class="clearfix"></div>
+                <div class="clearfix"></div>
 
-            <label style="color: #34495E; font-weight: normal; font-size: 20px">
-                Não existem anúncios nessa campanha
-            </label>
+            }
 
-            <div class="clearfix"></div>
-            <div class="clearfix"></div>
-
-        }
-
-
+        </table>
     </div>
 
 </div>
