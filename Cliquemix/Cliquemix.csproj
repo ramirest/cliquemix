@@ -211,6 +211,7 @@
     <Compile Include="Controllers\Anunciante\MenuTopoAnuncianteController.cs" />
     <Compile Include="Controllers\Anunciante\PrincipalAnuncianteController.cs" />
     <Compile Include="Controllers\Anunciante\AnuncioController.cs" />
+    <Compile Include="Controllers\Anunciante\RelatorioAnuncianteController.cs" />
     <Compile Include="Controllers\BreadcrumbsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CampanhaController.cs" />
@@ -644,6 +645,11 @@
     <Content Include="Views\Breadcrumbs\Breadcrumbs-Credito.cshtml" />
     <Content Include="Views\Campanha\AnunciosCampanha.cshtml" />
     <Content Include="Views\Credito\DetalhesCredito.cshtml" />
+    <Content Include="Views\RelatorioAnunciante\RelAnun.cshtml" />
+    <Content Include="Views\RelatorioAnunciante\RelAnunPrincipal.cshtml" />
+    <Content Include="Views\RelatorioAnunciante\RelCamp.cshtml" />
+    <Content Include="Views\RelatorioAnunciante\RelMov.cshtml" />
+    <Content Include="Views\RelatorioAnunciante\RelPrem.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

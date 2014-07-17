@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using System.Web.UI.WebControls;
 
-namespace Test_AspNet.Controllers.Anunciante
+namespace Cliquemix.Controllers.Anunciante
 {
     public class PrincipalAnuncianteController : Controller
     {

@@ -7,7 +7,7 @@ using System.Web.Mvc;
 using Cliquemix.Models;
 using Microsoft.AspNet.Identity;
 
-namespace Test_AspNet.Controllers
+namespace Cliquemix.Controllers
 {
     public class CampanhaController : Controller
     {

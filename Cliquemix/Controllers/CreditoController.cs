@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using Cliquemix.Models;
 
-namespace Test_AspNet.Controllers
+namespace Cliquemix.Controllers
 {
     public class CreditoController : Controller
     {
