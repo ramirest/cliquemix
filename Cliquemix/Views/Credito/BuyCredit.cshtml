@@ -6,7 +6,7 @@
         $.ajax(
         {
             type: 'GET',
-            url: '/Credito/DetalhesCredito/?pCodPacote=11', //+ $("input[id='crid']").val(),
+            url: '/Credito/DetalhesCredito/?pCodPacote='+ $("input[id='tcod']").val(),
             dataType: 'html',
             cache: false,
             async: true,
@@ -15,6 +15,13 @@
             }
         });
     }
+
+    function AtualizaCod() {
+        var obj = document.getElementById("crid");
+        $("input[id='tcod']").val(obj.options[obj.selectedIndex].value);
+        detalhesCredito();
+    };
+
 </script>
 
 <div class="row">
@@ -40,20 +47,18 @@
     </div>
 
     
-    <div class="form-group col-lg-6">
+    <div class="form-group col-lg-12">
         @Html.Label("Selecione o Pacote")
         <div class="clearfix"></div>
-        @Html.DropDownListFor(model => model.crid, null, string.Empty, new { style = "width:300px; height:34px", onchange="detalhesCredito();"})
-        <button class="btn btn-default" onclick="detalhesCredito();">Atualizar</button>
-        @Html.HiddenFor(model => model.crid)
+        @Html.DropDownListFor(model => model.crid, null, string.Empty, new { style = "width:300px; height:34px", onchange = "AtualizaCod();" })
+        @Html.Hidden("tcod")
         <br />
-        <div id="detalhesCredito">
+        <div class="form-group" id="detalhesCredito">
             @{
                 Html.RenderPartial("DetalhesCredito");
             }
             @* Informa os detalhes do pacote de créditos *@
         </div>
-
         <br /><br /><br /><br /><br /><br />
         <div class="form-group" style="margin-left:0%;">
             <button type="submit" class="btn btn-default">

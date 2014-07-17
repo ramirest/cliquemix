@@ -1,37 +1,39 @@
-﻿@model IEnumerable<Cliquemix.Models.tbCredito>
+﻿@using System.Globalization
+@model IEnumerable<Cliquemix.Models.tbCredito>
 
 @try
 {
     foreach (var item in Model)
     {
-        <div class="form-group col-lg-2">
-            @Html.Label("Quantidade de Créditos", new { style = "color: #34495E; font-weight: 600; font-size: 14px" })
-            <div class="clearfix"></div>
-            @Html.Display(item.crid.ToString())
-        </div>
-        <div class="form-group col-lg-2">
-            @Html.Label("Item", new { style = "color: #34495E; font-weight: 600; font-size: 14px" })
-            <div class="clearfix"></div>
-            @Html.Display(item.crid.ToString())
-        </div>
-        <div class="form-group col-lg-2">
-            @Html.Label("Item", new { style = "color: #34495E; font-weight: 600; font-size: 14px" })
-            <div class="clearfix"></div>
-            @Html.Display(item.crid.ToString())
-        </div>
-        <div class="form-group col-lg-2">
-            @Html.Label("Item", new { style = "color: #34495E; font-weight: 600; font-size: 14px" })
-            <div class="clearfix"></div>
-            @Html.Display(item.crid.ToString())
-        </div>
-        <div class="form-group col-lg-2">
-            @Html.Label("Item", new { style = "color: #34495E; font-weight: 600; font-size: 14px" })
-            <div class="clearfix"></div>
-            @Html.Display(item.crid.ToString())
-        </div>
+        <br/>
+        <br/>
+    
+        @Html.Label("Título", new {style = "width: 120px; color: #34495E; font-weight: 600; font-size: 14px"})
+        @Html.Label(item.tituloPacote)
+        <div class="clearfix"></div>
+    
+        @Html.Label("Qtde de Créditos", new { style = "width: 120px; color: #34495E; font-weight: 600; font-size: 14px" })    
+        @Html.Label(item.qtCredito.ToString())
+        <div class="clearfix"></div>
+
+        @Html.Label("Valor do Pacote", new { style = "width: 120px; color: #34495E; font-weight: 600; font-size: 14px" })
+        @Html.Label(String.Format(new CultureInfo("pt-BR"), "{0:C}", item.vlCredito.ToString()))
+        <div class="clearfix"></div>
+            
+        @Html.Label("Promocional", new { style = "width: 120px; color: #34495E; font-weight: 600; font-size: 14px" })
+        if (item.promocional == true)
+        {
+            @Html.Label("Sim")
+        }
+        else
+        {
+            @Html.Label("Não")
+        }
     }
+
 }
 catch (Exception)
 {
-    throw;
+    <div class="clearfix"></div>
+    <div class="clearfix"></div>
 }
