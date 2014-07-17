@@ -35,15 +35,15 @@ namespace Test_AspNet.Controllers
 
         [HttpGet]
         //public ActionResult DetalhesCredito(int pCodPacote)
-        public ActionResult DetalhesCredito()
+        public ActionResult DetalhesCredito(int pCodPacote)
         {
             try
             {
-                int pCodCredito = Convert.ToInt32(Request.Form.Get("crid"));
-                var tbCredito = db.tbCredito.Where(m => m.crid == pCodCredito);
+                //int pCodCredito = Convert.ToInt32(Request.Form.Get("crid"));
+                var tbCredito = db.tbCredito.Where(m => m.crid == pCodPacote);
                 if (tbCredito.Any())
                 {
-                    return PartialView();
+                    return PartialView(tbCredito);
                 }
                 else
                 {
