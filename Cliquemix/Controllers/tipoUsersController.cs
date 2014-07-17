@@ -6,12 +6,13 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using Cliquemix.Models;
 
 namespace Cliquemix.Controllers
 {
     [Authorize]
-    public class tipoUsersController : Controller
+    public class TipoUsersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 

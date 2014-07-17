@@ -123,6 +123,9 @@
         <AssociationConnector Association="cliquemixModel.asid_tbAnuncioImgLog_tbAnuncioStatus_fk" />
         <AssociationConnector Association="cliquemixModel.uid_tbAnuncioImgLog_tbUsers_fk" />
         <AssociationConnector Association="cliquemixModel.aid_tbAnuncioImg_tbAnuncio_fk" />
+        <EntityTypeShape EntityType="cliquemixModel.tbPacoteClique" Width="1.5" PointX="0.75" PointY="0.875" />
+        <AssociationConnector Association="cliquemixModel.pcid_tbCampanhaAnuncio_fk" />
+        <AssociationConnector Association="cliquemixModel.pid_tbCampanha_tbAnunciante_fk" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

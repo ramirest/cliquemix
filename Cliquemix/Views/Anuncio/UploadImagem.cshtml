@@ -7,13 +7,13 @@
 {
     foreach (var item in Model)
     {
-        //String _src = "http://localhost:35543/Arquivos/Anunciantes/" +
-        String _src = "~/Arquivos/Anunciantes/" +
-                      String.Format("{0:000000}", ProcFunc.RetornarCodigoAnunciante(User.Identity.GetUserName())) + "/Anúncios/" +
+        String _src = "http://localhost:35543/Arquivos/Anunciantes/" +
+        //String _src = "~/Arquivos/Anunciantes/" +
+                      String.Format("{0:000000}", ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName())) + "/Anúncios/" +
                       String.Format("{0:000000000}", item.idTemp) +
                       String.Format("{0:000}", item.idTempItem) +
                       ".jpeg";
-        
+
         <div class="col-lg-4">
             <div class="thumbnail">
                 <img src="@_src" height="150" width="200" />

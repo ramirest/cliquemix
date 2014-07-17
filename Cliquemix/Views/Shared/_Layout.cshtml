@@ -2,6 +2,7 @@
 @using Cliquemix.Controllers
 @using Cliquemix.Controllers.Anunciante
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +22,6 @@
     <link href="~/Content/plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet">
     <link href="~/Content/plugins/datatables/datatables.css" rel="stylesheet">
     <link href="~/Content/Outros/uploadify.css" rel="stylesheet" />
-
 
 <!-- <link href="~/Content/plugins/bootstrap-timepicker/bootstrap-timepicker.min.css" rel="stylesheet">-->
     <link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" type="text/css" rel="stylesheet">
@@ -49,9 +49,9 @@
 
 <body>
     <div id="wrapper">
+        @RenderPage("~/Views/Account/Logout.cshtml")
         @RenderPage("~/Views/MenuTopoAnunciante/MenuTopo.cshtml")
-        @RenderPage("~/Views/MenuAnunciante/MenuAnunciante.cshtml")
-        @RenderPage("~/Views/Account/Logout.cshtml") 
+        @RenderPage("~/Views/MenuAnunciante/MenuAnunciante.cshtml") 
         <div id="page-wrapper">
             <div class="page-content">
                 @RenderBody() 

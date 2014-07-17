@@ -136,12 +136,12 @@ namespace Cliquemix.Controllers
                     users.username = _usuario; //50
                     users.pwd = ProcFunc.CryptographyPass(_pwd); //50
                     users.cpwd = users.pwd; //50
-                    users.utid = RetornaCodigoTipoUsuario("Anunciante");
+                    users.utid = ProcFunc.RetornaCodigoTipoUsuario("Anunciante");
                     db.tbUsers.Add(users);
                     db.SaveChanges();
 
                     //*** Salvar dados na tabela de Anunciante ***
-                    tbanunciante.uid = RetornaCodigoUsuario(_usuario);
+                    tbanunciante.uid = ProcFunc.RetornaCodigoUsuario(_usuario);
                     db.tbAnunciante.Add(tbanunciante);
                     db.SaveChanges();                    
                     
@@ -155,7 +155,7 @@ namespace Cliquemix.Controllers
                     anuncianteEndereco.cep = @Request.Form.Get("tbAnuncianteEndereco.cep");
                     anuncianteEndereco.numero_endereco = @Request.Form.Get("tbAnuncianteEndereco.numero_endereco");
                     anuncianteEndereco.complemento_endereco = @Request.Form.Get("tbAnuncianteEndereco.complemento_endereco");
-                    anuncianteEndereco.pid = RetornaCodigoAnunciante(tbanunciante.cnpj);
+                    anuncianteEndereco.pid = ProcFunc.RetornarCodigoAnuncianteCnpj(tbanunciante.cnpj);
                     db.tbAnuncianteEndereco.Add(anuncianteEndereco);
                     db.SaveChanges();  
                   
@@ -201,18 +201,6 @@ namespace Cliquemix.Controllers
             db.SaveChanges();
         }
 
-        public int RetornaCodigoAnunciante(string _cnpj)
-        {
-            var a = (from cont in db.tbAnunciante where cont.cnpj == _cnpj select cont).First();
-            return a.pid;
-        }
-
-        public int RetornaCodigoTipoUsuario(string _tipo)
-        {
-            var a = (from tipo in db.tbUsersTipo where tipo.dsUsersTipo == _tipo select tipo).First();
-            return a.utid;
-        }
-
         public bool UsuarioExiste(string _nomeUsuario)
         {
             try
@@ -255,10 +243,5 @@ namespace Cliquemix.Controllers
             return true;
         }
 
-        public int RetornaCodigoUsuario(string _nomeUsuario)
-        {
-            var a = (from usu in db.tbUsers where usu.username == _nomeUsuario select usu).First();
-            return a.uid;
-        }
-    }
+     }
 }

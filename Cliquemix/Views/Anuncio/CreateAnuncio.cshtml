@@ -5,17 +5,15 @@
 @model Cliquemix.Models.tbAnuncio
 
 @{
-    ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.CodImagem = ProcFunc.RetornaProxCodTempImgAnuncio();
-    ViewBag.CodAnunciante = ProcFunc.RetornarCodigoAnunciante(User.Identity.GetUserName());
+    ViewBag.CodAnunciante = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());
 }
 
-<script type="text/javascript"
-        src="~/Scripts/Outros/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="~/Scripts/Outros/jquery-2.1.1.min.js"></script>
 <script src="~/Scripts/Outros/jquery-2.1.1.js"></script>
 <script src="~/Scripts/Outros/jquery.uploadify.js"></script>
 <link href="~/Content/Outros/uploadify.css" rel="stylesheet" />
+
 
 <script type="text/javascript">
 
@@ -27,7 +25,7 @@
             'method': 'post',
             'formData': { 
                 'idAlbum': idAlbum
-            }            
+            }
         });
         atualizarImagens();
     });
@@ -172,7 +170,9 @@
                                                 <div class="clearfix"></div>
                                                 <div>
                                                     <input type="file" name="Filedata" id="Filedata" value="Upload de Imagem" onchange="atualizarImagens();"/>
+                                                    <button type="button" class="btn btn-toolbar" onclick="atualizarImagens();">Atualizar</button>
                                                 </div>
+
                                                 <div class="clearfix"></div>
                                                 <div id="upload_Imagem">
                                                     @{
@@ -180,7 +180,6 @@
                                                     }
                                                     @* Campos que armazenarão a url da imagem *@
                                                 </div>
-                                                <button type="button" id="btnTeste" onclick="atualizarImagens();">Atualizar</button>
                                                 @Html.Hidden("txtTemp")
                                                 <input type="hidden" id="idTempImg" name="idTempImg" value=@ViewBag.CodImagem />
                                                 <div class="form-group col-lg-offset-9">
