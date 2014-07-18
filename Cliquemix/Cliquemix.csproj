@@ -413,10 +413,21 @@
   <ItemGroup>
     <Content Include="Content\demo.css" />
     <Content Include="Content\edicoes.css" />
+    <Content Include="Content\Outros\bootstrap-3.1.1\css\bootstrap-theme.css" />
+    <Content Include="Content\Outros\bootstrap-3.1.1\css\bootstrap-theme.min.css" />
+    <Content Include="Content\Outros\bootstrap-3.1.1\css\bootstrap.css" />
+    <Content Include="Content\Outros\bootstrap-3.1.1\css\bootstrap.min.css" />
+    <Content Include="Content\Outros\bootstrap-3.1.1\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Outros\bootstrap-3.1.1\js\bootstrap.js" />
+    <Content Include="Content\Outros\bootstrap-3.1.1\js\bootstrap.min.js" />
     <Content Include="Content\Outros\bootstrap-theme.css" />
     <Content Include="Content\Outros\bootstrap-theme.min.css" />
     <Content Include="Content\Outros\bootstrap.css" />
     <Content Include="Content\Outros\bootstrap.min.css" />
+    <Content Include="Content\Outros\font-awesome-4.1.0\css\font-awesome.css" />
+    <Content Include="Content\Outros\font-awesome-4.1.0\css\font-awesome.min.css" />
+    <Content Include="Content\Outros\font-awesome-4.1.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Outros\Site.css" />
     <Content Include="Content\Outros\uploadify-cancel.png" />
     <Content Include="Content\Outros\uploadify.css" />
     <Content Include="Content\Outros\uploadify.swf" />
@@ -469,7 +480,6 @@
     <Content Include="fonts\img\widget-bg-morning.jpg" />
     <Content Include="fonts\Outros\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Outros\Site.css" />
     <Content Include="Scripts\demo\advanced-form-demo.js" />
     <Content Include="Scripts\demo\advanced-tables-demo.js" />
     <Content Include="Scripts\demo\buttons-demo.js" />
@@ -486,10 +496,6 @@
     <Content Include="Scripts\html5shiv.js" />
     <Content Include="Scripts\Outros\bootstrap.js" />
     <Content Include="Scripts\Outros\bootstrap.min.js" />
-    <Content Include="Content\Outros\bootstrap-theme.css.map" />
-    <Content Include="Content\Outros\bootstrap.css.map" />
-    <Content Include="Content\plugins\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Content\plugins\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\icons\font-awesome\fonts\fontawesome-webfont1.woff" />
     <Content Include="fonts\icons\font-awesome\fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\icons\font-awesome\fonts\fontawesome-webfont.ttf" />
@@ -512,6 +518,45 @@
       <DependentUpon>Cliquemix.edmx</DependentUpon>
       <LastGenOutput>Cliquemix.cs</LastGenOutput>
     </Content>
+    <Content Include="Content\Outros\bootstrap-3.1.1\css\bootstrap-theme.css.map" />
+    <Content Include="Content\Outros\bootstrap-3.1.1\css\bootstrap.css.map" />
+    <Content Include="Content\Outros\bootstrap-3.1.1\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\Outros\bootstrap-3.1.1\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\Outros\bootstrap-3.1.1\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\Outros\font-awesome-4.1.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\Outros\font-awesome-4.1.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\Outros\font-awesome-4.1.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\Outros\font-awesome-4.1.0\fonts\FontAwesome.otf" />
+    <Content Include="Content\Outros\font-awesome-4.1.0\less\bordered-pulled.less" />
+    <Content Include="Content\Outros\font-awesome-4.1.0\less\core.less" />
+    <Content Include="Content\Outros\font-awesome-4.1.0\less\fixed-width.less" />
+    <Content Include="Content\Outros\font-awesome-4.1.0\less\font-awesome.less" />
+    <Content Include="Content\Outros\font-awesome-4.1.0\less\icons.less" />
+    <Content Include="Content\Outros\font-awesome-4.1.0\less\larger.less" />
+    <Content Include="Content\Outros\font-awesome-4.1.0\less\list.less" />
+    <Content Include="Content\Outros\font-awesome-4.1.0\less\mixins.less" />
+    <Content Include="Content\Outros\font-awesome-4.1.0\less\path.less" />
+    <Content Include="Content\Outros\font-awesome-4.1.0\less\rotated-flipped.less" />
+    <Content Include="Content\Outros\font-awesome-4.1.0\less\spinning.less" />
+    <Content Include="Content\Outros\font-awesome-4.1.0\less\stacked.less" />
+    <Content Include="Content\Outros\font-awesome-4.1.0\less\variables.less" />
+    <Content Include="Content\Outros\font-awesome-4.1.0\scss\font-awesome.scss" />
+    <Content Include="Content\Outros\font-awesome-4.1.0\scss\_bordered-pulled.scss" />
+    <Content Include="Content\Outros\font-awesome-4.1.0\scss\_core.scss" />
+    <Content Include="Content\Outros\font-awesome-4.1.0\scss\_fixed-width.scss" />
+    <Content Include="Content\Outros\font-awesome-4.1.0\scss\_icons.scss" />
+    <Content Include="Content\Outros\font-awesome-4.1.0\scss\_larger.scss" />
+    <Content Include="Content\Outros\font-awesome-4.1.0\scss\_list.scss" />
+    <Content Include="Content\Outros\font-awesome-4.1.0\scss\_mixins.scss" />
+    <Content Include="Content\Outros\font-awesome-4.1.0\scss\_path.scss" />
+    <Content Include="Content\Outros\font-awesome-4.1.0\scss\_rotated-flipped.scss" />
+    <Content Include="Content\Outros\font-awesome-4.1.0\scss\_spinning.scss" />
+    <Content Include="Content\Outros\font-awesome-4.1.0\scss\_stacked.scss" />
+    <Content Include="Content\Outros\font-awesome-4.1.0\scss\_variables.scss" />
+    <Content Include="Content\plugins\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\plugins\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\Outros\bootstrap-theme.css.map" />
+    <Content Include="Content\Outros\bootstrap.css.map" />
     <None Include="Scripts\Outros\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\Outros\jquery-2.1.1.js" />
     <Content Include="Scripts\Outros\jquery-2.1.1.min.js" />
