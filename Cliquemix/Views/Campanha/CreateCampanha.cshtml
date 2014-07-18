@@ -103,9 +103,14 @@
                                             <h4 class="page-header">Informações da Campanha:</h4>
                                             <div class="form-group col-lg-6">
                                                 <label>Título</label>
-                                                <input id="tituloCampanha" type="text" class="form-control" value="" style="max-width: 334px">
+                                                @Html.TextBoxFor(model => model.tituloCampanha, new {@class="form-control", style="max-width: 334px"})
                                             </div>
-                                            
+                                            <div class="form-group col-lg-6">
+                                                @Html.Label("Selecione o Destaque")
+                                                <div class="clearfix"></div>
+                                                @Html.DropDownList("did", null, string.Empty, new { style = "width:300px; height:34px" })
+                                            </div>
+
                                             <div class="clearfix"></div>
 
                                             <div class="form-group col-lg-3">
@@ -123,6 +128,12 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            @{
+                                                @Html.TextBoxFor(model => model.dtInicio, new { @value = DateTime.Now })
+                                                @Html.TextBoxFor(model => model.dtTermino, new { @value = DateTime.Now.AddDays(30) })
+                                                @Html.TextBoxFor(model => model.pid, new { @value = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName()) })
+                                                @Html.TextBoxFor(model => model.csid, new { @value = ProcFunc.RetornaStatusPadraoCampanha() })
+                                            }
 
                                             <div class="form-group col-lg-3">
                                                 <label>Hora de Início</label>
@@ -132,7 +143,8 @@
                                                             <i class="fa fa-clock-o"></i>
                                                         </button>
                                                     </span>
-                                                    <input id="timepicker1" class="form-control bootstrap-timepicker" type="text" style="max-width: 100px;" />
+                                                    @*@Html.TextBox("hrInicio", new { @class = "form-control timepicker", Style = "max-width: 100px" })*@
+                                                    <input id="hrInicio" class="form-control timepicker" type="text" style="max-width: 100px;" />
                                                 </div>
                                             </div>
                                             
@@ -162,7 +174,8 @@
                                                             <i class="fa fa-clock-o"></i>
                                                         </button>
                                                     </span>
-                                                    <input id="timepicker1" class="form-control bootstrap-timepicker" type="text" style="max-width: 100px;" />
+                                                    @*@Html.TextBox("hrTermino", new { @class = "form-control timepicker", Style = "max-width: 100px" })*@
+                                                    <input id="hrTermino" class="form-control timepicker" type="text" style="max-width: 100px;" />
                                                 </div>
                                             </div>
 
@@ -193,7 +206,6 @@
                                                             </div>
                                                             <div class="clearfix"></div>
                                                         </div>
-                                                        
                                                         <div id="carregaAnuncios">
                                                             @{
                                                                 Html.RenderPartial("AnunciosCampanha");

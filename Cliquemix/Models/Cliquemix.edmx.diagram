@@ -129,6 +129,9 @@
         <EntityTypeShape EntityType="cliquemixModel.tbCreditoPromocional" Width="1.5" PointX="14.25" PointY="20.625" />
         <AssociationConnector Association="cliquemixModel.crid_tbCreditoPromocional_tbCredito_fk" />
         <AssociationConnector Association="cliquemixModel.uid_tbCreditoPromocional_tbUsers_fk" />
+        <EntityTypeShape EntityType="cliquemixModel.tbDestaqueDuracao" Width="1.5" PointX="3.75" PointY="27.125" />
+        <AssociationConnector Association="cliquemixModel.ddid_tbDestaque_tbDestaqueDuracao_fk" />
+        <AssociationConnector Association="cliquemixModel.csid_tbConfigPadrao_tbCampanhaStatus_fk" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

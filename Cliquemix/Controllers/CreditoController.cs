@@ -34,18 +34,24 @@ namespace Cliquemix.Controllers
         }
 
         [HttpGet]
+        public ActionResult DetalhesCredito()
+        {
+            return PartialView();
+        }
+
+        [HttpPost]
         public ActionResult DetalhesCredito(int pCodPacote)
         {
             try
             {
-                var tbCredito = db.tbCredito.Where(m => m.crid == pCodPacote);
+                var tbCredito = db.tbCredito.Where(c => c.crid == pCodPacote);
                 if (tbCredito.Any())
                 {
                     return PartialView(tbCredito.ToList());
                 }
                 else
                 {
-                    return null;
+                    return PartialView();
                 }
             }
             catch (Exception)

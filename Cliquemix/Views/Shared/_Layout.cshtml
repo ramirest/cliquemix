@@ -8,7 +8,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> CliqueMix - Sicove.</title>
+    <title> CliqueMix - Sicove</title>
     <link href="~/Content/plugins/pace/pace.css" rel="stylesheet">
     <script src="~/Scripts/plugins/pace/pace.js"></script>
     <link href="~/Content/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -23,7 +23,7 @@
     <link href="~/Content/plugins/datatables/datatables.css" rel="stylesheet">
     <link href="~/Content/Outros/uploadify.css" rel="stylesheet" />
 
-<!-- <link href="~/Content/plugins/bootstrap-timepicker/bootstrap-timepicker.min.css" rel="stylesheet">-->
+    <link href="~/Content/plugins/bootstrap-timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
     <link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" type="text/css" rel="stylesheet">
     <link href="~/Content/plugins/bootstrap-tokenfield/tokenfield-typeahead.css" rel="stylesheet">
     <link href="~/Content/plugins/bootstrap-tokenfield/bootstrap-tokenfield.css" rel="stylesheet">
@@ -33,14 +33,14 @@
 
 
 
-    
+
     <link href="~/Content/plugins/summernote/summernote.css" rel="stylesheet" />
     <link href="~/Content/plugins/summernote/summernote-bs3.css" rel="stylesheet" />
-    
+
     <link href="~/Content/style.css" rel="stylesheet">
     <link href="~/Content/plugins.css" rel="stylesheet">
-    <link href="~/Content/edicoes.css" rel="stylesheet"/>
-    
+    <link href="~/Content/edicoes.css" rel="stylesheet" />
+
     <!--[if lt IE 9]>
       <script src="~/Scripts/html5shiv.js"></script>
       <script src="~/Scripts/respond.min.js"></script>
@@ -51,14 +51,14 @@
     <div id="wrapper">
         @RenderPage("~/Views/Account/Logout.cshtml")
         @RenderPage("~/Views/MenuTopoAnunciante/MenuTopo.cshtml")
-        @RenderPage("~/Views/MenuAnunciante/MenuAnunciante.cshtml") 
+        @RenderPage("~/Views/MenuAnunciante/MenuAnunciante.cshtml")
         <div id="page-wrapper">
             <div class="page-content">
-                @RenderBody() 
+                @RenderBody()
             </div>
         </div>
     </div>
-    
+
     @*aa*@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     @Scripts.Render("~/bundles/js-default")
@@ -73,53 +73,52 @@
 
     <script src="~/Scripts/Outros/jquery.uploadify.js"></script>
     @Scripts.Render("~/bundles/js-others")
-    
-<script>
-    $(document).ready(function ()
-    {
-        $('#summernote').summernote(
-        {
-            height:200 
+
+    <script>
+        $(document).ready(function () {
+            $('#summernote').summernote(
+            {
+                height: 200
+            });
         });
-    });
 
-//WYEING - Editor
-    $('.summernote').summernote();
+        //WYEING - Editor
+        $('.summernote').summernote();
 
-// Botao de fazer upload de fotos em anuncios
-    $(":file").filestyle({ input: false });
-    $(":file").filestyle({ iconName: "glyphicon-inbox" });
-
+        // Botao de fazer upload de fotos em anuncios
+        $(":file").filestyle({ input: false });
+        $(":file").filestyle({ iconName: "glyphicon-inbox" });
 
 
-    $('.btn-toggle').click(function () {
-        $(this).find('.btn').toggleClass('active');
-        
-        if ($(this).find('.btn-primary').size() > 0) {
-            $(this).find('.btn').toggleClass('btn-primary');
-        }
-        if ($(this).find('.btn-danger').size() > 0) {
-            $(this).find('.btn').toggleClass('btn-danger');
-        }
-        if ($(this).find('.btn-success').size() > 0) {
-            $(this).find('.btn').toggleClass('btn-success');
-        }
-        if ($(this).find('.btn-info').size() > 0) {
-            $(this).find('.btn').toggleClass('btn-info');
-        }
-        
-        if ($(this).find('.btn-default').size() > 0) {
-            $(this).find('.btn').toggleClass('btn-white');
-        }
-        
 
-        $(this).find('.btn').toggleClass('btn-default');
+        $('.btn-toggle').click(function () {
+            $(this).find('.btn').toggleClass('active');
 
-    });
+            if ($(this).find('.btn-primary').size() > 0) {
+                $(this).find('.btn').toggleClass('btn-primary');
+            }
+            if ($(this).find('.btn-danger').size() > 0) {
+                $(this).find('.btn').toggleClass('btn-danger');
+            }
+            if ($(this).find('.btn-success').size() > 0) {
+                $(this).find('.btn').toggleClass('btn-success');
+            }
+            if ($(this).find('.btn-info').size() > 0) {
+                $(this).find('.btn').toggleClass('btn-info');
+            }
+
+            if ($(this).find('.btn-default').size() > 0) {
+                $(this).find('.btn').toggleClass('btn-white');
+            }
 
 
-</script>
-    
+            $(this).find('.btn').toggleClass('btn-default');
+
+        });
+
+
+    </script>
+
     <script>
         $(function () {
             $(".datepicker").datepicker({
@@ -128,7 +127,7 @@
 
             $('.timepicker').timepicker();
         });
-    </script>    
+    </script>
 
 
 

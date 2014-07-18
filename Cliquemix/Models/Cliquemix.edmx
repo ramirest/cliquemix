@@ -297,6 +297,7 @@
           <Property Name="cfgid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="asid" Type="int" />
           <Property Name="utid" Type="int" />
+          <Property Name="csid" Type="int" />
         </EntityType>
         <EntityType Name="tbConsumidor">
           <Key>
@@ -315,7 +316,7 @@
           <Property Name="qtCredito" Type="float" />
           <Property Name="vlCredito" Type="numeric" Precision="11" Scale="2" />
           <Property Name="promocional" Type="bit" />
-          <Property Name="tituloPacote" Type="varchar" MaxLength="50" />
+          <Property Name="tituloPacote" Type="varchar" MaxLength="20" />
           <Property Name="dsCredito" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="tbCreditoCompra">
@@ -355,10 +356,21 @@
           <Property Name="tituloDestaque" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="qtCredito" Type="float" />
           <Property Name="tmpEspera" Type="float" Nullable="false" />
-          <Property Name="durCampanha" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="qtDurCampanha" Type="float" Nullable="false" />
           <Property Name="dsDestaque" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="imgDestaque" Type="varchar" MaxLength="200" />
+          <Property Name="ddid" Type="int" />
+          <Property Name="qtDuracao" Type="float" />
+        </EntityType>
+        <EntityType Name="tbDestaqueDuracao">
+          <Key>
+            <PropertyRef Name="ddid" />
+          </Key>
+          <Property Name="ddid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="50" />
+          <Property Name="nome" Type="varchar" MaxLength="20" />
+          <Property Name="item" Type="varchar" MaxLength="20" />
+          <Property Name="tempo" Type="float" />
+          <Property Name="ativo" Type="bit" />
         </EntityType>
         <EntityType Name="tbEstado">
           <Key>
@@ -891,6 +903,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="csid_tbConfigPadrao_tbCampanhaStatus_fk">
+          <End Role="tbCampanhaStatus" Type="Self.tbCampanhaStatus" Multiplicity="0..1" />
+          <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbCampanhaStatus">
+              <PropertyRef Name="csid" />
+            </Principal>
+            <Dependent Role="tbConfigPadrao">
+              <PropertyRef Name="csid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ddid_tbDestaque_tbDestaqueDuracao_fk">
+          <End Role="tbDestaqueDuracao" Type="Self.tbDestaqueDuracao" Multiplicity="0..1" />
+          <End Role="tbDestaque" Type="Self.tbDestaque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbDestaqueDuracao">
+              <PropertyRef Name="ddid" />
+            </Principal>
+            <Dependent Role="tbDestaque">
+              <PropertyRef Name="ddid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="did_tbAnuncianteDestaque_tbDestaque_fk">
           <End Role="tbDestaque" Type="Self.tbDestaque" Multiplicity="1" />
           <End Role="tbAnuncianteDestaque" Type="Self.tbAnuncianteDestaque" Multiplicity="*" />
@@ -1406,6 +1442,7 @@
           <EntitySet Name="tbCreditoDesconta" EntityType="Self.tbCreditoDesconta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbCreditoPromocional" EntityType="Self.tbCreditoPromocional" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbDestaque" EntityType="Self.tbDestaque" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbDestaqueDuracao" EntityType="Self.tbDestaqueDuracao" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbEstado" EntityType="Self.tbEstado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbFuncionalidade" EntityType="Self.tbFuncionalidade" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbLogSistema" EntityType="Self.tbLogSistema" Schema="dbo" store:Type="Tables" />
@@ -1542,6 +1579,14 @@
           <AssociationSet Name="csid_tbCampanha_tbCampanhaStatus_fk" Association="Self.csid_tbCampanha_tbCampanhaStatus_fk">
             <End Role="tbCampanhaStatus" EntitySet="tbCampanhaStatus" />
             <End Role="tbCampanha" EntitySet="tbCampanha" />
+          </AssociationSet>
+          <AssociationSet Name="csid_tbConfigPadrao_tbCampanhaStatus_fk" Association="Self.csid_tbConfigPadrao_tbCampanhaStatus_fk">
+            <End Role="tbCampanhaStatus" EntitySet="tbCampanhaStatus" />
+            <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+          </AssociationSet>
+          <AssociationSet Name="ddid_tbDestaque_tbDestaqueDuracao_fk" Association="Self.ddid_tbDestaque_tbDestaqueDuracao_fk">
+            <End Role="tbDestaqueDuracao" EntitySet="tbDestaqueDuracao" />
+            <End Role="tbDestaque" EntitySet="tbDestaque" />
           </AssociationSet>
           <AssociationSet Name="did_tbAnuncianteDestaque_tbDestaque_fk" Association="Self.did_tbAnuncianteDestaque_tbDestaque_fk">
             <End Role="tbDestaque" EntitySet="tbDestaque" />
@@ -2013,6 +2058,7 @@
           <Property Name="csid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="dsCampStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="tbCampanha" Relationship="Self.csid_tbCampanha_tbCampanhaStatus_fk" FromRole="tbCampanhaStatus" ToRole="tbCampanha" />
+          <NavigationProperty Name="tbConfigPadrao" Relationship="cliquemixModel.csid_tbConfigPadrao_tbCampanhaStatus_fk" FromRole="tbCampanhaStatus" ToRole="tbConfigPadrao" />
         </EntityType>
         <EntityType Name="tbCep">
           <Key>
@@ -2079,7 +2125,7 @@
           <NavigationProperty Name="tbCreditoCompra" Relationship="Self.crid_tbCreditoCompra_tbCredito_fk" FromRole="tbCredito" ToRole="tbCreditoCompra" />
           <Property Name="promocional" Type="Boolean" />
           <NavigationProperty Name="tbCreditoPromocional" Relationship="cliquemixModel.crid_tbCreditoPromocional_tbCredito_fk" FromRole="tbCredito" ToRole="tbCreditoPromocional" />
-          <Property Name="tituloPacote" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tituloPacote" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="dsCredito" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tbCreditoCompra">
@@ -2112,13 +2158,14 @@
           <Property Name="tituloDestaque" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="qtCredito" Type="Double" />
           <Property Name="tmpEspera" Type="Double" Nullable="false" />
-          <Property Name="durCampanha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="qtDurCampanha" Type="Double" Nullable="false" />
           <Property Name="dsDestaque" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="imgDestaque" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tbAnuncianteDestaque" Relationship="Self.did_tbAnuncianteDestaque_tbDestaque_fk" FromRole="tbDestaque" ToRole="tbAnuncianteDestaque" />
           <NavigationProperty Name="tbCampanha" Relationship="Self.did_tbCampanha_tbDestaque_fk" FromRole="tbDestaque" ToRole="tbCampanha" />
           <NavigationProperty Name="tbPremioDestaque" Relationship="Self.did_TbPremioDestaque_tbDestaque_fk" FromRole="tbDestaque" ToRole="tbPremioDestaque" />
+          <Property Name="ddid" Type="Int32" />
+          <Property Name="qtDuracao" Type="Double" />
+          <NavigationProperty Name="tbDestaqueDuracao" Relationship="cliquemixModel.ddid_tbDestaque_tbDestaqueDuracao_fk" FromRole="tbDestaque" ToRole="tbDestaqueDuracao" />
         </EntityType>
         <EntityType Name="tbEstado">
           <Key>
@@ -3366,6 +3413,15 @@
             <End Role="tbUsers" EntitySet="tbUsers" />
             <End Role="tbCreditoPromocional" EntitySet="tbCreditoPromocional" />
           </AssociationSet>
+          <EntitySet Name="tbDestaqueDuracao" EntityType="cliquemixModel.tbDestaqueDuracao" />
+          <AssociationSet Name="ddid_tbDestaque_tbDestaqueDuracao_fk" Association="cliquemixModel.ddid_tbDestaque_tbDestaqueDuracao_fk">
+            <End Role="tbDestaqueDuracao" EntitySet="tbDestaqueDuracao" />
+            <End Role="tbDestaque" EntitySet="tbDestaque" />
+          </AssociationSet>
+          <AssociationSet Name="csid_tbConfigPadrao_tbCampanhaStatus_fk" Association="cliquemixModel.csid_tbConfigPadrao_tbCampanhaStatus_fk">
+            <End Role="tbCampanhaStatus" EntitySet="tbCampanhaStatus" />
+            <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+          </AssociationSet>
         </EntityContainer>
         <Association Name="pid_tbAnuncio_tbAnunciante_fk">
           <End Type="cliquemixModel.tbAnunciante" Role="tbAnunciante" Multiplicity="0..1" />
@@ -3388,6 +3444,8 @@
           <Property Name="utid" Type="Int32" />
           <NavigationProperty Name="tbAnuncioStatus" Relationship="cliquemixModel.asid_tbConfigPadrao_tbAnuncioStatus_fk" FromRole="tbConfigPadrao" ToRole="tbAnuncioStatus" />
           <NavigationProperty Name="tbUsersTipo" Relationship="cliquemixModel.utid_tbConfigPadrao_tbUsersTipo_fk" FromRole="tbConfigPadrao" ToRole="tbUsersTipo" />
+          <Property Name="csid" Type="Int32" />
+          <NavigationProperty Name="tbCampanhaStatus" Relationship="cliquemixModel.csid_tbConfigPadrao_tbCampanhaStatus_fk" FromRole="tbConfigPadrao" ToRole="tbCampanhaStatus" />
         </EntityType>
         <Association Name="asid_tbConfigPadrao_tbAnuncioStatus_fk">
           <End Type="cliquemixModel.tbAnuncioStatus" Role="tbAnuncioStatus" Multiplicity="0..1" />
@@ -3542,6 +3600,42 @@
             </Principal>
             <Dependent Role="tbCreditoPromocional">
               <PropertyRef Name="uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tbDestaqueDuracao">
+          <Key>
+            <PropertyRef Name="ddid" />
+          </Key>
+          <Property Name="ddid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nome" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="item" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="tempo" Type="Double" />
+          <Property Name="ativo" Type="Boolean" />
+          <NavigationProperty Name="tbDestaque" Relationship="cliquemixModel.ddid_tbDestaque_tbDestaqueDuracao_fk" FromRole="tbDestaqueDuracao" ToRole="tbDestaque" />
+        </EntityType>
+        <Association Name="ddid_tbDestaque_tbDestaqueDuracao_fk">
+          <End Type="cliquemixModel.tbDestaqueDuracao" Role="tbDestaqueDuracao" Multiplicity="0..1" />
+          <End Type="cliquemixModel.tbDestaque" Role="tbDestaque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbDestaqueDuracao">
+              <PropertyRef Name="ddid" />
+            </Principal>
+            <Dependent Role="tbDestaque">
+              <PropertyRef Name="ddid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="csid_tbConfigPadrao_tbCampanhaStatus_fk">
+          <End Type="cliquemixModel.tbCampanhaStatus" Role="tbCampanhaStatus" Multiplicity="0..1" />
+          <End Type="cliquemixModel.tbConfigPadrao" Role="tbConfigPadrao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbCampanhaStatus">
+              <PropertyRef Name="csid" />
+            </Principal>
+            <Dependent Role="tbConfigPadrao">
+              <PropertyRef Name="csid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3897,12 +3991,12 @@
           <EntitySetMapping Name="tbDestaque">
             <EntityTypeMapping TypeName="cliquemixModel.tbDestaque">
               <MappingFragment StoreEntitySet="tbDestaque">
+                <ScalarProperty Name="qtDuracao" ColumnName="qtDuracao" />
+                <ScalarProperty Name="ddid" ColumnName="ddid" />
                 <ScalarProperty Name="did" ColumnName="did" />
                 <ScalarProperty Name="tituloDestaque" ColumnName="tituloDestaque" />
                 <ScalarProperty Name="qtCredito" ColumnName="qtCredito" />
                 <ScalarProperty Name="tmpEspera" ColumnName="tmpEspera" />
-                <ScalarProperty Name="durCampanha" ColumnName="durCampanha" />
-                <ScalarProperty Name="qtDurCampanha" ColumnName="qtDurCampanha" />
                 <ScalarProperty Name="dsDestaque" ColumnName="dsDestaque" />
                 <ScalarProperty Name="imgDestaque" ColumnName="imgDestaque" />
               </MappingFragment>
@@ -4105,6 +4199,7 @@
           <EntitySetMapping Name="tbConfigPadrao">
             <EntityTypeMapping TypeName="cliquemixModel.tbConfigPadrao">
               <MappingFragment StoreEntitySet="tbConfigPadrao">
+                <ScalarProperty Name="csid" ColumnName="csid" />
                 <ScalarProperty Name="utid" ColumnName="utid" />
                 <ScalarProperty Name="asid" ColumnName="asid" />
                 <ScalarProperty Name="cfgid" ColumnName="cfgid" />
@@ -4141,6 +4236,18 @@
                 <ScalarProperty Name="dtInicioPromocao" ColumnName="dtInicioPromocao" />
                 <ScalarProperty Name="crid" ColumnName="crid" />
                 <ScalarProperty Name="crpid" ColumnName="crpid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbDestaqueDuracao">
+            <EntityTypeMapping TypeName="cliquemixModel.tbDestaqueDuracao">
+              <MappingFragment StoreEntitySet="tbDestaqueDuracao">
+                <ScalarProperty Name="ativo" ColumnName="ativo" />
+                <ScalarProperty Name="tempo" ColumnName="tempo" />
+                <ScalarProperty Name="item" ColumnName="item" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="ddid" ColumnName="ddid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

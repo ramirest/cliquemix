@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using Cliquemix.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Cliquemix.Controllers
 {
@@ -14,21 +15,19 @@ namespace Cliquemix.Controllers
         public ActionResult CreateCampanha()
         {
             ViewBag.pcid = new SelectList(db.tbPacoteClique, "pcid", "qtdeCliques");
-            ViewBag.codCampanha = 0;
+            ViewBag.did = new SelectList(db.tbDestaque, "did", "tituloDestaque");
             return View();
         }
 
-        // POST: Campanha
-        // POST: /Anuncio/CreateAnuncio
+        // POST: /Anuncio/CreateCampanha
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateCampanha([Bind(Include = "tituloCampanha, dtInicio, hrInicio, dtTermino, hrTermino, pcid")] tbCampanha tbCampanha)
+        public ActionResult CreateCampanha([Bind(Include = "tituloCampanha, dtInicio, dtTermino, did, csid, pid")] tbCampanha tbCampanha)
         {
             if (ModelState.IsValid)
             {
                 db.tbCampanha.Add(tbCampanha);
                 db.SaveChanges();
-
                 return RedirectToAction("ListCampanha");
             }
             return View(tbCampanha);
