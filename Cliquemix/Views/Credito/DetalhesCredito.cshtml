@@ -1,38 +1,50 @@
-﻿<ul class="plan plan2 featured">
-    <li class="plan-name">
-        <h3>Standard</h3>
-    </li>
-    <li class="plan-price">
-        <div>
-            <span class="price">
-                <sup>$</sup>
-                39
-            </span>
-            <small>month</small>
-        </div>
-    </li>
-    <li>
-        <strong>5GB</strong>
-        Storage
-    </li>
-    <li>
-        <strong>1GB</strong>
-        RAM
-    </li>
-    <li>
-        <strong>400GB</strong>
-        Bandwidth
-    </li>
-    <li>
-        <strong>10</strong>
-        Email Address
-    </li>
-    <li>
-        <strong>Forum</strong>
-        Support
-    </li>
+﻿@using System.Globalization
+@model IEnumerable<Cliquemix.Models.tbCredito>
 
-</ul>
+@try
+{
+    foreach (var item in Model)
+    {
+        <ul class="plan plan2 featured">
+            <li class="plan-name">
+                <h3>@item.tituloPacote</h3>
+            </li>
+            <li class="plan-price">
+                <div>
+                    <span class="price">
+                        <sup>R$</sup>
+                        @String.Format("{0:C}", item.vlCredito)
+                    </span>
+                    @*<small>month</small>*@
+                </div>
+            </li>
+            <li>
+                <strong>@item.qtCredito.ToString()</strong>
+                Créditos
+            </li>
+            <li>
+                <strong>Preço</strong>
+                @if (item.promocional == true)
+                {
+                    @Html.Label("Promocional", new {style="font-weight: normal"})
+                }
+                else
+                {
+                    @Html.Label("Real", new { style = "font-weight: normal" })
+                }
+            </li>
+            <li>
+                @item.dsCredito
+            </li>
+        </ul>
+    }
+
+}
+catch (Exception)
+{
+    <div class="clearfix"></div>
+    <div class="clearfix"></div>
+}
 
 
 @*
