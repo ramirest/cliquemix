@@ -12,3 +12,29 @@
     max-width: 70%;
     margin-top: -4%;
 }
+
+.upload-botao {
+    margin-top: -12px;
+}
+
+.padding-bottom-onoff {
+    padding-bottom: 20px;
+}
+
+
+thead.rodape-tabela {
+    border-top: 2px solid #DDD;
+    border-bottom-style: hidden;
+}
+
+.flutuar {
+    margin-left: 10px;
+}
+
+.input-append {
+    
+}
+
+.color-theme {
+    color: #54677A;
+}
