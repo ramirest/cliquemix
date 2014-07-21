@@ -19,19 +19,31 @@ namespace Cliquemix.Controllers
             return View();
         }
 
+
         // POST: /Anuncio/CreateCampanha
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateCampanha([Bind(Include = "tituloCampanha, dtInicio, dtTermino, did, csid, pid")] tbCampanha tbCampanha)
+        public ActionResult CreateCampanha([Bind(Include = "cid,tituloCampanha,did,pcid")] tbCampanha tbCampanha)
         {
+            string dtInicio = Request.Form.Get("dtInicio");
+            string dtTermino = Request.Form.Get("dtTermino");
+            string hrInicio = Request.Form.Get("hrInicio");
+            string hrTermino = Request.Form.Get("hrTermino");
+            tbCampanha.dtInicio = Convert.ToDateTime(dtInicio);
+            tbCampanha.dtTermino = Convert.ToDateTime(dtTermino);
+            tbCampanha.csid = ProcFunc.RetornaStatusPadraoCampanha();
+            tbCampanha.pid = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());
             if (ModelState.IsValid)
             {
                 db.tbCampanha.Add(tbCampanha);
                 db.SaveChanges();
                 return RedirectToAction("ListCampanha");
             }
+            ViewBag.pcid = new SelectList(db.tbPacoteClique, "pcid", "qtdCliques");
+            ViewBag.did = new SelectList(db.tbDestaque, "did", "tituloDestaque");
             return View(tbCampanha);
         }
+
 
         public ActionResult UpdateCampanha()
         {
@@ -78,5 +90,11 @@ namespace Cliquemix.Controllers
         {
             return View();
         }
+
+        public ActionResult NovoAnuncioCampanha()
+        {
+            return PartialView();
+        }
+
     }
 }

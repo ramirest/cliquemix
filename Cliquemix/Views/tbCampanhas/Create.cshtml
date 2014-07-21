@@ -1,0 +1,153 @@
+﻿@model Cliquemix.Models.tbCampanha
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+    @using (Html.BeginForm()) 
+    {
+        @Html.AntiForgeryToken()
+        
+        <div class="form-horizontal">
+            <h4>tbCampanha</h4>
+            <hr />
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+                @Html.LabelFor(model => model.tituloCampanha, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.tituloCampanha)
+                    @Html.ValidationMessageFor(model => model.tituloCampanha)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.dtInicio, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.dtInicio)
+                    @Html.ValidationMessageFor(model => model.dtInicio)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.dtTermino, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.dtTermino)
+                    @Html.ValidationMessageFor(model => model.dtTermino)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.did, "did", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("did", String.Empty)
+                    @Html.ValidationMessageFor(model => model.did)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.csid, "csid", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("csid", String.Empty)
+                    @Html.ValidationMessageFor(model => model.csid)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.pid, "pid", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("pid", String.Empty)
+                    @Html.ValidationMessageFor(model => model.pid)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+    
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                            <div class="form-group col-lg-3">
+                                                <label>Data de Início</label>
+                                                <div id="sandbox-container">
+                                                    <div class="input-group">
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-default add-on " type="button">
+                                                                <i class="fa fa-calendar"></i>
+                                                            </button>
+                                                        </span>
+                                                        @Html.TextBoxFor(model => model.dtInicio, new {@class="form-control datepicker", Style="max-width: 100px"})
+                                                        @*<input id="dtInicio" class="form-control datepicker" type="text" style="max-width: 100px;" />*@
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group col-lg-3">
+                                                <label>Hora de Início</label>
+                                                <div class="input-append bootstrap-timepicker input-group">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-default add-on" type="button">
+                                                            <i class="fa fa-clock-o"></i>
+                                                        </button>
+                                                    </span>
+                                                    @Html.TextBox("hrInicio", new { @class = "form-control timepicker", Style = "max-width: 100px" })
+                                                    @*<input id="hrInicio" class="form-control timepicker" type="text" style="max-width: 100px;" />*@
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="clearfix"></div>
+
+                                            <div class="form-group col-lg-3">
+                                                <label>Data de Término</label>
+                                                <div id="sandbox-container">
+                                                    <div class="input-group">
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-default add-on " type="button">
+                                                                <i class="fa fa-calendar"></i>
+                                                            </button>
+                                                        </span>
+                                                        @Html.TextBoxFor(model => model.dtTermino, new { @class = "form-control datepicker", Style = "max-width: 100px" })
+                                                        @*<input id="dtTermino" class="form-control datepicker" type="text" style="max-width: 100px;" />*@
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group col-lg-3">
+                                                <label>Hora de Término</label>
+                                                <div class="input-append bootstrap-timepicker input-group">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-default add-on" type="button">
+                                                            <i class="fa fa-clock-o"></i>
+                                                        </button>
+                                                    </span>
+                                                    @Html.TextBox("hrTermino", new { @class = "form-control timepicker", Style = "max-width: 100px" })
+                                                    @*<input id="hrTermino" class="form-control timepicker" type="text" style="max-width: 100px;" />*@
+                                                </div>
+                                            </div>

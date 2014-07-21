@@ -212,6 +212,7 @@
     <Compile Include="Controllers\Anunciante\PrincipalAnuncianteController.cs" />
     <Compile Include="Controllers\Anunciante\AnuncioController.cs" />
     <Compile Include="Controllers\Anunciante\RelatorioAnuncianteController.cs" />
+    <Compile Include="Controllers\Anunciante\tbCampanhasController.cs" />
     <Compile Include="Controllers\BreadcrumbsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CampanhaController.cs" />
@@ -653,6 +654,12 @@
     <Content Include="Views\RelatorioAnunciante\RelCamp.cshtml" />
     <Content Include="Views\RelatorioAnunciante\RelMov.cshtml" />
     <Content Include="Views\RelatorioAnunciante\RelPrem.cshtml" />
+    <Content Include="Views\tbCampanhas\Create.cshtml" />
+    <Content Include="Views\tbCampanhas\Delete.cshtml" />
+    <Content Include="Views\tbCampanhas\Details.cshtml" />
+    <Content Include="Views\tbCampanhas\Edit.cshtml" />
+    <Content Include="Views\tbCampanhas\Index.cshtml" />
+    <Content Include="Views\Campanha\NovoAnuncioCampanha.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
