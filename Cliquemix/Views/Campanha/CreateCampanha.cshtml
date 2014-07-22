@@ -48,6 +48,26 @@
         });
     }
 
+    function detalhesCredito() {
+        $.ajax(
+        {
+            type: 'POST',
+            url: '/Campanha/InfoDestaque/?pCodDestaque='+ $("input[id='tcod']").val(),
+            dataType: 'html',
+            cache: true,
+            async: true,
+            success: function(data) {
+                $('#detalhesCredito').html(data);
+            }
+        });
+    }
+
+    function AtualizaCod() {
+        var obj = document.getElementById("crid");
+        $("input[id='tcod']").val(obj.options[obj.selectedIndex].value);
+        detalhesCredito();
+    };
+
 </script>
 
 
@@ -66,7 +86,6 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
     <div class="row">
         <div class="col-lg-12">
             <div class="portlet portlet-default">
@@ -108,9 +127,16 @@
                                             <div class="form-group col-lg-6">
                                                 @Html.Label("Selecione o Destaque")
                                                 <div class="clearfix"></div>
-                                                @Html.DropDownList("did", null, string.Empty, new { style = "width:300px; height:34px" })
+                                                @Html.DropDownList("did", null, string.Empty, new { style = "width:300px; height:34px", onchange = "AtualizaCod();" })
                                             </div>
                                             
+                                            <div class="col-lg-6" id="InfoDestaque">
+                                                @{
+                                                    Html.RenderPartial("InfoDestaque");
+                                                }
+                                                @* Informa os detalhes do pacote de créditos *@
+                                            </div>
+
                                             <div class="form-group col-lg-3">
                                                 <label>Data de Início</label>
                                                 <div id="sandbox-container">
@@ -171,16 +197,35 @@
                                                 <button type="button" onclick=" $('#lnk2').click(); " class="btn btn-default">Próximo</button>
                                             </div>
                                         </div>
-                                                
-                                    
+                                        
+
                                         <div class="tab-pane fade in" id="infoAnun">
                                             <h4 class="page-header">Vincular anúncios à campanha:</h4>
 
                                             <div class="page-header upload-botao">
-                                                <a href="#" title="Adicionar anúncio" style="padding-right: 82px;">
-                                                    <i id="add" class="fa  fa-plus-square fa-2x"></i>
-                                                    <label style="float: right; margin-right: 87%; margin-top: 0.5%">Adicionar</label>
-                                                </a>
+                                                @*<button type="button" class="btn btn-default fa fa-plus-square" data-toggle="modal" data-target="#flexModal">*@
+                                                <button type="button" class="btn btn-default fa fa-plus-square" data-toggle="modal" data-target="#flexModal">
+                                                    Adicionar Anúncio
+                                                </button>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="modal modal-flex fade" id="flexModal" tabindex="-1" role="dialog" aria-labelledby="flexModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog" style="min-width: 60%;">
+                                                            <div class="modal-content">
+                                                                <div id="carregaAnuncios">
+                                                                    @{
+                                                                        Html.RenderAction("NovoAnuncioCampanha");
+                                                                    }
+                                                                    @* Lista os Anúncios da Campanha *@
+                                                                </div>
+                                                            </div>
+                                                            <!-- /.modal-content -->
+                                                        </div>
+                                                        <!-- /.modal-dialog -->
+                                                    </div>
+                                                </div>
                                             </div>
 
                                             <div class="row">
@@ -216,64 +261,84 @@
                                         </div>
 
 
-                                        <div class="tab-pane fade" id="infoCli">
-                                            <br>
-                                            <h4 class="page-header">Quantidades de cliques que o usuário poderá clicar por anúncio:</h4>
-                                            <div class="form-group col-lg-6">
-                                                @Html.Label("Selecione o Pacote")
-                                                <div class="clearfix"></div>
-                                                @Html.DropDownList("pcid", null, string.Empty, new { style = "width:300px; height:34px" })
-                                            </div>
 
-                                            <div class="form-group col-lg-offset-6">
 
-                                            </div>
-                                            
-                                            <div class="clearfix"></div>
-                                            
-                                            <div class="form-group col-lg-offset-9">
 
-                                                <button type="button" onclick=" $('#lnk2').click(); " class="btn btn-default">Anterior</button>
-                                                <button type="button" onclick=" $('#lnk4').click(); " class="btn btn-default">Próximo</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                            <div class="tab-pane fade" id="infoCli">
+                                                                <h4 class="page-header">Quantidades de cliques que o usuário poderá clicar por anúncio:</h4>
+                                                                <div class="form-group col-lg-6">
+                                                                    @Html.Label("Selecione o Pacote")
+                                                                    <div class="clearfix"></div>
+                                                                    @Html.DropDownList("pcid", null, string.Empty, new { style = "width:300px; height:34px" })
+                                                                </div>
+
+                                                                <div class="form-group col-lg-offset-6">
+
+                                                                </div>
+
+                                                                <div class="clearfix"></div>
+
+                                                                <div class="form-group col-lg-offset-9">
+
+                                                                    <button type="button" onclick=" $('#lnk2').click(); " class="btn btn-default">Anterior</button>
+                                                                    <button type="button" onclick=" $('#lnk4').click(); " class="btn btn-default">Próximo</button>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="tab-pane fade in" id="infoGL">
+                                                                <h4 class="page-header">Aonde seus anúncios irão ser exibidos?</h4>
+                                                                <div class="form-group col-lg-12 "></div>
+
+                                                                <div class="col-lg-9">
+                                                                    <label style="color: #34495E;">País</label>
+                                                                </div>
+
+                                                                <div class="col-lg-9">
+                                                                    <label style="color: #34495E;">Estado</label>
+                                                                </div>
+
+                                                                <div class="col-lg-9">
+                                                                    <label style="color: #34495E;">Cidade</label>
+                                                                </div>
+
+                                                                <div class="clearfix"></div>
+
+                                                                <div class="form-group col-lg-12"></div>
+                                                                <div class="form-group col-lg-12"></div>
+                                                                <div class="form-group col-lg-12"></div>
+                                                                <div class="form-group col-lg-offset-9">
+                                                                    <button type="button" onclick=" $('#lnk3').click(); " class="btn btn-default">Anterior</button>
+                                                                    <button type="submit" class="btn btn-default" id="save" value="save">
+                                                                        <i class="fa fa-floppy-o"></i>
+                                                                        Salvar
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-
-
-                                        <div class="tab-pane fade in" id="infoGL">
-                                            <h4 class="page-header">Aonde seus anúncios irão ser exibidos?</h4>
-                                            <div class="form-group col-lg-12 "></div>
-
-                                            <div class="col-lg-9">
-                                                <label style="color: #34495E;">País</label>
-                                            </div>
-
-                                            <div class="col-lg-9">
-                                                <label style="color: #34495E;">Estado</label>
-                                            </div>
-
-                                            <div class="col-lg-9">
-                                                <label style="color: #34495E;">Cidade</label>
-                                            </div>
-
-                                            <div class="clearfix"></div>
-
-                                            <div class="form-group col-lg-12"></div>
-                                            <div class="form-group col-lg-12"></div>
-                                            <div class="form-group col-lg-12"></div>
-                                            <div class="form-group col-lg-offset-9">
-                                                <button type="button" onclick=" $('#lnk3').click(); " class="btn btn-default">Anterior</button>
-                                                <button type="submit" class="btn btn-default" id="save" value="save">
-                                                    <i class="fa fa-floppy-o"></i>
-                                                    Salvar
-                                                </button>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <!-- /.portlet-body -->
             </div>

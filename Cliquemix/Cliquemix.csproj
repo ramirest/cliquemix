@@ -660,6 +660,7 @@
     <Content Include="Views\tbCampanhas\Edit.cshtml" />
     <Content Include="Views\tbCampanhas\Index.cshtml" />
     <Content Include="Views\Campanha\NovoAnuncioCampanha.cshtml" />
+    <Content Include="Views\Campanha\InfoDestaque.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
