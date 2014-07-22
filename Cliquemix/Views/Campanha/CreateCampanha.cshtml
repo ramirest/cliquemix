@@ -52,19 +52,19 @@
         $.ajax(
         {
             type: 'POST',
-            url: '/Campanha/InfoDestaque/?pCodDestaque='+ $("input[id='tcod']").val(),
+            url: '/Campanha/InfoDestaque/?pCodDestaque='+ $("input[id='tdid']").val(),
             dataType: 'html',
             cache: true,
             async: true,
             success: function(data) {
-                $('#detalhesCredito').html(data);
+                $('#InfoDestaque').html(data);
             }
         });
     }
 
     function AtualizaCod() {
-        var obj = document.getElementById("crid");
-        $("input[id='tcod']").val(obj.options[obj.selectedIndex].value);
+        var obj = document.getElementById("did");
+        $("input[id='tdid']").val(obj.options[obj.selectedIndex].value);
         detalhesCredito();
     };
 
@@ -129,7 +129,7 @@
                                                 <div class="clearfix"></div>
                                                 @Html.DropDownList("did", null, string.Empty, new { style = "width:300px; height:34px", onchange = "AtualizaCod();" })
                                             </div>
-                                            
+                                            @Html.Hidden("tdid")
                                             <div class="col-lg-6" id="InfoDestaque">
                                                 @{
                                                     Html.RenderPartial("InfoDestaque");
