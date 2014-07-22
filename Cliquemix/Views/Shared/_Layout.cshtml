@@ -33,14 +33,14 @@
 
 
 
-
+    
     <link href="~/Content/plugins/summernote/summernote.css" rel="stylesheet" />
     <link href="~/Content/plugins/summernote/summernote-bs3.css" rel="stylesheet" />
-
+    
     <link href="~/Content/style.css" rel="stylesheet">
     <link href="~/Content/plugins.css" rel="stylesheet">
     <link href="~/Content/edicoes.css" rel="stylesheet" />
-
+    
     <!--[if lt IE 9]>
       <script src="~/Scripts/html5shiv.js"></script>
       <script src="~/Scripts/respond.min.js"></script>
@@ -51,16 +51,19 @@
     <div id="wrapper">
         @RenderPage("~/Views/Account/Logout.cshtml")
         @RenderPage("~/Views/MenuTopoAnunciante/MenuTopo.cshtml")
-        @RenderPage("~/Views/MenuAnunciante/MenuAnunciante.cshtml")
+        @RenderPage("~/Views/MenuAnunciante/MenuAnunciante.cshtml") 
         <div id="page-wrapper">
             <div class="page-content">
-                @RenderBody()
+                @RenderBody() 
             </div>
         </div>
     </div>
-
+    
     @*aa*@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
     @Scripts.Render("~/bundles/js-default")
 
     <script src="~/Scripts/plugins/bootstrap-tokenfield/bootstrap-tokenfield.min.js"></script>
@@ -73,52 +76,52 @@
 
     <script src="~/Scripts/Outros/jquery.uploadify.js"></script>
     @Scripts.Render("~/bundles/js-others")
-
-    <script>
+    
+<script>
         $(document).ready(function () {
-            $('#summernote').summernote(
-            {
+        $('#summernote').summernote(
+        {
                 height: 200
-            });
         });
+    });
 
-        //WYEING - Editor
-        $('.summernote').summernote();
+//WYEING - Editor
+    $('.summernote').summernote();
 
-        // Botao de fazer upload de fotos em anuncios
-        $(":file").filestyle({ input: false });
-        $(":file").filestyle({ iconName: "glyphicon-inbox" });
-
-
-
-        $('.btn-toggle').click(function () {
-            $(this).find('.btn').toggleClass('active');
-
-            if ($(this).find('.btn-primary').size() > 0) {
-                $(this).find('.btn').toggleClass('btn-primary');
-            }
-            if ($(this).find('.btn-danger').size() > 0) {
-                $(this).find('.btn').toggleClass('btn-danger');
-            }
-            if ($(this).find('.btn-success').size() > 0) {
-                $(this).find('.btn').toggleClass('btn-success');
-            }
-            if ($(this).find('.btn-info').size() > 0) {
-                $(this).find('.btn').toggleClass('btn-info');
-            }
-
-            if ($(this).find('.btn-default').size() > 0) {
-                $(this).find('.btn').toggleClass('btn-white');
-            }
+// Botao de fazer upload de fotos em anuncios
+    $(":file").filestyle({ input: false });
+    $(":file").filestyle({ iconName: "glyphicon-inbox" });
 
 
-            $(this).find('.btn').toggleClass('btn-default');
 
-        });
+    $('.btn-toggle').click(function () {
+        $(this).find('.btn').toggleClass('active');
+        
+        if ($(this).find('.btn-primary').size() > 0) {
+            $(this).find('.btn').toggleClass('btn-primary');
+        }
+        if ($(this).find('.btn-danger').size() > 0) {
+            $(this).find('.btn').toggleClass('btn-danger');
+        }
+        if ($(this).find('.btn-success').size() > 0) {
+            $(this).find('.btn').toggleClass('btn-success');
+        }
+        if ($(this).find('.btn-info').size() > 0) {
+            $(this).find('.btn').toggleClass('btn-info');
+        }
+        
+        if ($(this).find('.btn-default').size() > 0) {
+            $(this).find('.btn').toggleClass('btn-white');
+        }
+        
+
+        $(this).find('.btn').toggleClass('btn-default');
+
+    });
 
 
-    </script>
-
+</script>
+    
     <script>
         $(function () {
             $(".datepicker").datepicker({
@@ -127,7 +130,7 @@
 
             $('.timepicker').timepicker();
         });
-    </script>
+    </script>    
 
 
 

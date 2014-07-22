@@ -209,6 +209,7 @@
     <Compile Include="Controllers\Anunciante\AnuncianteController.cs" />
     <Compile Include="Controllers\Anunciante\MenuAnuncianteController.cs" />
     <Compile Include="Controllers\Anunciante\MenuTopoAnuncianteController.cs" />
+    <Compile Include="Controllers\Anunciante\PerfilAnuncianteController.cs" />
     <Compile Include="Controllers\Anunciante\PrincipalAnuncianteController.cs" />
     <Compile Include="Controllers\Anunciante\AnuncioController.cs" />
     <Compile Include="Controllers\Anunciante\RelatorioAnuncianteController.cs" />
@@ -452,9 +453,11 @@
     <Content Include="fonts\icons\font-awesome\css\font-awesome.css" />
     <Content Include="fonts\icons\font-awesome\css\font-awesome.min.css" />
     <Content Include="fonts\icons\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\img\boss-image.png" />
     <Content Include="fonts\img\checkmark.png" />
     <Content Include="fonts\img\datatables\sort_asc.png" />
     <Content Include="fonts\img\datatables\sort_both.png" />
+    <Content Include="fonts\img\empresario-M.jpg" />
     <Content Include="fonts\img\flex-admin-logo%401x.png" />
     <Content Include="fonts\img\flex-admin-logo.png" />
     <Content Include="fonts\img\linha.png" />
@@ -661,6 +664,12 @@
     <Content Include="Views\tbCampanhas\Index.cshtml" />
     <Content Include="Views\Campanha\NovoAnuncioCampanha.cshtml" />
     <Content Include="Views\Campanha\InfoDestaque.cshtml" />
+    <Content Include="Views\PerfilAnunciante\EditarPerfilDadosContato.cshtml" />
+    <Content Include="Views\PerfilAnunciante\EditarPerfilDadosEmpresa.cshtml" />
+    <Content Include="Views\PerfilAnunciante\EditarPerfilDadosEndereco.cshtml" />
+    <Content Include="Views\PerfilAnunciante\EditarPerfilDadosUsuario.cshtml" />
+    <Content Include="Views\PerfilAnunciante\PerfilAnunciante.cshtml" />
+    <Content Include="Views\PerfilAnunciante\PerfilAnunciantePrincipal.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
