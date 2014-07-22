@@ -5,17 +5,21 @@
     function detalhesCredito() {
         $.ajax(
         {
-            type: 'GET',
+            type: 'POST',
             url: '/Credito/DetalhesCredito/?pCodPacote='+ $("input[id='tcod']").val(),
             dataType: 'html',
-            cache: false,
+            cache: true,
             async: true,
             success: function(data) {
                 $('#detalhesCredito').html(data);
             }
         });
     }
-
+    /*
+    function loadPartialViewTeste() {
+            $('#detalhesCredito').load('/Credito/DetalhesCredito');
+    }
+    */
     function AtualizaCod() {
         var obj = document.getElementById("crid");
         $("input[id='tcod']").val(obj.options[obj.selectedIndex].value);
@@ -63,7 +67,6 @@
                 </div>
             </div>
         </div>
-        <br /><br /><br /><br /><br /><br />
         <div class="form-group" style="margin-left:0%;">
             <button type="submit" class="btn btn-default">
                 <i class="fa fa-usd"></i>

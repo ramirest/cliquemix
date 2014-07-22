@@ -179,6 +179,16 @@ namespace Cliquemix.Models
             }
             #endregion
 
+            #region "Retornar o Código do Status Padrão para a Campanha"
+            public static int RetornaStatusPadraoCampanha()
+            {
+                var a = (from status in db.tbConfigPadrao select status).First();
+                if (a.csid != null) return (int) a.csid;
+                else return 0;
+            }
+
+        #endregion
+
             #region "Criptografar Senha"
             public static string CryptographyPass(string input)
             {                

@@ -80,5 +80,6 @@ namespace Cliquemix.Models
         public virtual DbSet<tbAnuncioImgLog> tbAnuncioImgLog { get; set; }
         public virtual DbSet<tbPacoteClique> tbPacoteClique { get; set; }
         public virtual DbSet<tbCreditoPromocional> tbCreditoPromocional { get; set; }
+        public virtual DbSet<tbDestaqueDuracao> tbDestaqueDuracao { get; set; }
     }
 }

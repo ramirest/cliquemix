@@ -17,8 +17,10 @@ namespace Cliquemix.Models
         public int cfgid { get; set; }
         public Nullable<int> asid { get; set; }
         public Nullable<int> utid { get; set; }
+        public Nullable<int> csid { get; set; }
     
         public virtual tbAnuncioStatus tbAnuncioStatus { get; set; }
         public virtual tbUsersTipo tbUsersTipo { get; set; }
+        public virtual tbCampanhaStatus tbCampanhaStatus { get; set; }
     }
 }
