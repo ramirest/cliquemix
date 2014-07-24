@@ -52,13 +52,13 @@ namespace Cliquemix.Controllers
         {
             if (ModelState.IsValid)
             {
-                tbanuncio.pid = ProcFunc.RetornarCodigoAnuncianteCodUsuario(ProcFunc.RetornaCodigoUsuario(User.Identity.GetUserName()));
+                tbanuncio.pid = ProcFunc.RetornarCodigoAnuncianteCodUsuario(ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName()));
                 tbanuncio.dtCriacao = DateTime.Now;
-                tbanuncio.asid = ProcFunc.RetornaStatusPadraoAnuncio();
+                tbanuncio.asid = ProcFunc.RetornarStatusPadraoAnuncio();
                 db.tbAnuncio.Add(tbanuncio);
                 db.SaveChanges();
                 AlterarImgAnuncioSalvo(tbanuncio.aid, Convert.ToInt32(Request.Form.Get("idTempImg")));
-                SalvarLogAnuncio(tbanuncio.aid, (int)tbanuncio.asid, ProcFunc.RetornaCodigoUsuario(User.Identity.GetUserName()), "Sim");
+                SalvarLogAnuncio(tbanuncio.aid, (int)tbanuncio.asid, ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName()), "Sim");
 
                 return RedirectToAction("ListAnuncio");
             }
@@ -147,7 +147,7 @@ namespace Cliquemix.Controllers
             //sVariavelNova = sVariavel.Substring(0, 3);// Aproveitar os 3 primeiros caracteres
             string tempId = String.Format("{0:000000000}", idAlbum); // Ex: "000000015"
             string tempIdItem = String.Format("{0:000}", RetornaItemImagem(idAlbum)); // Ex: "001"
-            int codAnunciante = ProcFunc.RetornarCodigoAnuncianteCodUsuario(ProcFunc.RetornaCodigoUsuario(User.Identity.GetUserName()));
+            int codAnunciante = ProcFunc.RetornarCodigoAnuncianteCodUsuario(ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName()));
 
             if (codAnunciante > 0)
             {
@@ -227,7 +227,7 @@ namespace Cliquemix.Controllers
             
             string tempId = String.Format("{0:000000000}", pIdTemp); // Ex: "000000015"
             string aid = String.Format("{0:000000000}", pAid); // Ex: "000000015"
-            int codAnunciante = ProcFunc.RetornarCodigoAnuncianteCodUsuario(ProcFunc.RetornaCodigoUsuario(User.Identity.GetUserName()));
+            int codAnunciante = ProcFunc.RetornarCodigoAnuncianteCodUsuario(ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName()));
             
             foreach (var item in img)
             {

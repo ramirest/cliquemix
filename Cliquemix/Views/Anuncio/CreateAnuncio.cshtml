@@ -5,7 +5,7 @@
 @model Cliquemix.Models.tbAnuncio
 
 @{
-    ViewBag.CodImagem = ProcFunc.RetornaProxCodTempImgAnuncio();
+    ViewBag.CodImagem = ProcFunc.RetornarProxCodTempImgAnuncio();
     ViewBag.CodAnunciante = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());
 }
 

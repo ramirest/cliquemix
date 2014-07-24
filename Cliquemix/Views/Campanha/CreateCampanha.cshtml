@@ -3,10 +3,6 @@
 @using Microsoft.AspNet.Identity
 @model Cliquemix.Models.tbCampanha
 
-@{
-    ViewBag.CodCampanha = 0;
-}
-
 <script>
     $(document).ready(function () {
         $('#btnRight').click(function (e) {
@@ -38,7 +34,7 @@
         $.ajax(
         {
             type: 'GET',
-            url: '/Campanha/AnunciosCampanha/?pCodCampanha=' + @ViewBag.CodCampanha,
+            url: '/Campanha/AnunciosCampanha/?pCodCampanha=' + @ViewBag.ctid,
             dataType: 'html',
             cache: false,
             async: true,
@@ -48,7 +44,7 @@
         });
     }
 
-    function detalhesCredito() {
+    function detalhesDestaque() {
         $.ajax(
         {
             type: 'POST',
@@ -62,10 +58,30 @@
         });
     }
 
-    function AtualizaCod() {
+    function detalhesDestaque() {
+        $.ajax(
+        {
+            type: 'POST',
+            url: '/Campanha/InfoDestaque/?pCodDestaque='+ $("input[id='tdid']").val(),
+            dataType: 'html',
+            cache: true,
+            async: true,
+            success: function(data) {
+                $('#InfoDestaque').html(data);
+            }
+        });
+    }
+
+    function AtualizaCodDid() {
         var obj = document.getElementById("did");
-        $("input[id='tdid']").val(obj.options[obj.selectedIndex].value);
-        detalhesCredito();
+        $('#tdid').val(obj.options[obj.selectedIndex].value);
+        //detalhesDestaque();
+    };
+
+    function AtualizaCodPcid() {
+        var obj = document.getElementById("pcid");
+        $("input[id='tpcid']").val(obj.options[obj.selectedIndex].value);
+        //detalhesDestaque();
     };
 
 </script>
@@ -124,12 +140,18 @@
                                                 <label>Título</label>
                                                 @Html.TextBoxFor(model => model.tituloCampanha, new {@class="form-control", style="max-width: 334px"})
                                             </div>
+                                            
+                                            @Html.Hidden("ctid")
+
                                             <div class="form-group col-lg-6">
                                                 @Html.Label("Selecione o Destaque")
                                                 <div class="clearfix"></div>
-                                                @Html.DropDownList("did", null, string.Empty, new { style = "width:300px; height:34px", onchange = "AtualizaCod();" })
+                                                @Html.DropDownList("did", null, string.Empty, new { style = "width:300px; height:34px", onchange = "AtualizaCodDid();" })
+                                                @Html.Hidden("tdid")
                                             </div>
-                                            @Html.Hidden("tdid")
+
+                                            <div class="clearfix"></div>
+
                                             <div class="col-lg-6" id="InfoDestaque">
                                                 @{
                                                     Html.RenderPartial("InfoDestaque");
@@ -137,6 +159,8 @@
                                                 @* Informa os detalhes do pacote de créditos *@
                                             </div>
 
+                                            <div class="clearfix"></div>
+                                            
                                             <div class="form-group col-lg-3">
                                                 <label>Data de Início</label>
                                                 <div id="sandbox-container">
@@ -201,144 +225,129 @@
 
                                         <div class="tab-pane fade in" id="infoAnun">
                                             <h4 class="page-header">Vincular anúncios à campanha:</h4>
-
-                                            <div class="page-header upload-botao">
-                                                @*<button type="button" class="btn btn-default fa fa-plus-square" data-toggle="modal" data-target="#flexModal">*@
-                                                <button type="button" class="btn btn-default fa fa-plus-square" data-toggle="modal" data-target="#flexModal">
-                                                    Adicionar Anúncio
-                                                </button>
-                                            </div>
-
+                                            
                                             <div class="row">
-                                                <div class="col-lg-12">
-                                                    <div class="modal modal-flex fade" id="flexModal" tabindex="-1" role="dialog" aria-labelledby="flexModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog" style="min-width: 60%;">
-                                                            <div class="modal-content">
-                                                                <div id="carregaAnuncios">
-                                                                    @{
-                                                                        Html.RenderAction("NovoAnuncioCampanha");
-                                                                    }
-                                                                    @* Lista os Anúncios da Campanha *@
+                                                    <div class="col-lg-12">
+                                                        <div class="modal modal-flex fade" id="flexModal" tabindex="-1" role="dialog" aria-labelledby="flexModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog" style="min-width: 60%;">
+                                                                <div class="modal-content">
+                                                                    <div id="carregaAnuncios">
+                                                                        @{
+                                                                            Html.RenderAction("NovoAnuncioCampanha", new { pCodTempCampanha = @ViewBag.ctid });
+                                                                        }
+                                                                        @* Lista os Anúncios da Campanha *@
+                                                                    </div>
                                                                 </div>
+                                                                <!-- /.modal-content -->
                                                             </div>
-                                                            <!-- /.modal-content -->
+                                                            <!-- /.modal-dialog -->
                                                         </div>
-                                                        <!-- /.modal-dialog -->
                                                     </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <!-- Basic Responsive Table -->
+                                                    <div class="col-lg-12">
+                                                        <div class="portlet portlet-default">
+                                                            <div class="portlet-heading">
+                                                                <div class="portlet-title">
+                                                                    <h4 class="flutuar">Lista de Anúncios</h4>
+                                                                </div>
+                                                                <div class="portlet-widgets">
+                                                                    <a href="#" data-toggle="modal" data-target="#flexModal" data-placement="top" title="Novo Anúncio">
+                                                                        <i class="fa fa-plus-square"></i>
+                                                                    </a>
+                                                                    <span class="divider"></span>
+                                                                    <a href="javascript:;" data-placement="top" title="Atualizar" onclick="atualizarAnuncios();">
+                                                                        <i class="fa fa-refresh"></i>
+                                                                    </a>
+                                                                    <span class="divider"></span>
+                                                                </div>
+                                                                <div class="clearfix"></div>
+                                                            </div>
+                                                            <div id="carregaAnuncios">
+                                                                @{
+                                                                    Html.RenderPartial("AnunciosCampanha");
+                                                                }
+                                                                @* Lista os Anúncios da Campanha *@
+                                                            </div>
+
+                                                        </div>
+                                                        <!-- /.portlet -->
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+
+                                                </div>
+
+                                                <div class="form-group col-lg-offset-9">
+                                                    <button type="button" onclick=" $('#lnk1').click(); " class="btn btn-default">Anterior</button>
+                                                    <button type="button" onclick=" $('#lnk3').click(); " class="btn btn-default">Próximo</button>
                                                 </div>
                                             </div>
 
-                                            <div class="row">
-                                                <!-- Basic Responsive Table -->
-                                                <div class="col-lg-12">
-                                                    <div class="portlet portlet-default">
-                                                        <div class="portlet-heading">
-                                                            <div class="portlet-title">
 
-                                                                <h4 class="flutuar">Lista de Anúncios</h4>
-                                                            </div>
-                                                            <div class="clearfix"></div>
-                                                        </div>
-                                                        <div id="carregaAnuncios">
-                                                            @{
-                                                                Html.RenderPartial("AnunciosCampanha");
-                                                            }
-                                                            @* Lista os Anúncios da Campanha *@
-                                                        </div>
 
-                                                    </div>
-                                                    <!-- /.portlet -->
-                                                </div>
+
+
+                                        <div class="tab-pane fade" id="infoCli">
+                                            <h4 class="page-header">Quantidades de cliques que o usuário poderá clicar por anúncio:</h4>
+                                            <div class="form-group col-lg-6">
+                                                @Html.Label("Selecione o Pacote")
+                                                <div class="clearfix"></div>
+                                                @Html.DropDownList("pcid", null, string.Empty, new { style = "width:300px; height:34px", onchange = "AtualizaCodPcid();" })
+                                                @Html.Hidden("tpcid")
                                             </div>
-                                            <div class="row">
+
+                                            <div class="form-group col-lg-offset-6">
 
                                             </div>
+
+                                            <div class="clearfix"></div>
 
                                             <div class="form-group col-lg-offset-9">
-                                                <button type="button" onclick=" $('#lnk1').click(); " class="btn btn-default">Anterior</button>
-                                                <button type="button" onclick=" $('#lnk3').click(); " class="btn btn-default">Próximo</button>
+
+                                                <button type="button" onclick=" $('#lnk2').click(); " class="btn btn-default">Anterior</button>
+                                                <button type="button" onclick=" $('#lnk4').click(); " class="btn btn-default">Próximo</button>
                                             </div>
                                         </div>
 
 
+                                        <div class="tab-pane fade in" id="infoGL">
+                                            <h4 class="page-header">Aonde seus anúncios irão ser exibidos?</h4>
+                                            <div class="form-group col-lg-12 "></div>
 
+                                            <div class="col-lg-9">
+                                                <label style="color: #34495E;">País</label>
+                                            </div>
 
+                                            <div class="col-lg-9">
+                                                <label style="color: #34495E;">Estado</label>
+                                            </div>
 
+                                            <div class="col-lg-9">
+                                                <label style="color: #34495E;">Cidade</label>
+                                            </div>
 
+                                            <div class="clearfix"></div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                                            <div class="tab-pane fade" id="infoCli">
-                                                                <h4 class="page-header">Quantidades de cliques que o usuário poderá clicar por anúncio:</h4>
-                                                                <div class="form-group col-lg-6">
-                                                                    @Html.Label("Selecione o Pacote")
-                                                                    <div class="clearfix"></div>
-                                                                    @Html.DropDownList("pcid", null, string.Empty, new { style = "width:300px; height:34px" })
-                                                                </div>
-
-                                                                <div class="form-group col-lg-offset-6">
-
-                                                                </div>
-
-                                                                <div class="clearfix"></div>
-
-                                                                <div class="form-group col-lg-offset-9">
-
-                                                                    <button type="button" onclick=" $('#lnk2').click(); " class="btn btn-default">Anterior</button>
-                                                                    <button type="button" onclick=" $('#lnk4').click(); " class="btn btn-default">Próximo</button>
-                                                                </div>
-                                                            </div>
-
-
-                                                            <div class="tab-pane fade in" id="infoGL">
-                                                                <h4 class="page-header">Aonde seus anúncios irão ser exibidos?</h4>
-                                                                <div class="form-group col-lg-12 "></div>
-
-                                                                <div class="col-lg-9">
-                                                                    <label style="color: #34495E;">País</label>
-                                                                </div>
-
-                                                                <div class="col-lg-9">
-                                                                    <label style="color: #34495E;">Estado</label>
-                                                                </div>
-
-                                                                <div class="col-lg-9">
-                                                                    <label style="color: #34495E;">Cidade</label>
-                                                                </div>
-
-                                                                <div class="clearfix"></div>
-
-                                                                <div class="form-group col-lg-12"></div>
-                                                                <div class="form-group col-lg-12"></div>
-                                                                <div class="form-group col-lg-12"></div>
-                                                                <div class="form-group col-lg-offset-9">
-                                                                    <button type="button" onclick=" $('#lnk3').click(); " class="btn btn-default">Anterior</button>
-                                                                    <button type="submit" class="btn btn-default" id="save" value="save">
-                                                                        <i class="fa fa-floppy-o"></i>
-                                                                        Salvar
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            <div class="form-group col-lg-12"></div>
+                                            <div class="form-group col-lg-12"></div>
+                                            <div class="form-group col-lg-12"></div>
+                                            <div class="form-group col-lg-offset-9">
+                                                <button type="button" onclick=" $('#lnk3').click(); " class="btn btn-default">Anterior</button>
+                                                <button type="submit" class="btn btn-default" id="save" value="save">
+                                                    <i class="fa fa-floppy-o"></i>
+                                                    Salvar
+                                                </button>
                                             </div>
                                         </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- /.portlet-body -->
             </div>

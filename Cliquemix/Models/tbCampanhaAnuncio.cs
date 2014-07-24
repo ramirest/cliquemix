@@ -22,17 +22,16 @@ namespace Cliquemix.Models
     
         public int caid { get; set; }
         public int aid { get; set; }
-        public int cid { get; set; }
+        public Nullable<int> cid { get; set; }
         public int casid { get; set; }
-        public Nullable<int> qtCliqueMax { get; set; }
-        public Nullable<int> pcid { get; set; }
         public Nullable<System.DateTime> dtMovimento { get; set; }
+        public Nullable<int> ctid { get; set; }
     
         public virtual tbAnuncio tbAnuncio { get; set; }
         public virtual tbCampanha tbCampanha { get; set; }
         public virtual ICollection<tbCampanhaAnuncioConsumidor> tbCampanhaAnuncioConsumidor { get; set; }
         public virtual ICollection<tbCampanhaAnuncioLocalizacao> tbCampanhaAnuncioLocalizacao { get; set; }
         public virtual tbCampanhaAnuncioStatus tbCampanhaAnuncioStatus { get; set; }
-        public virtual tbPacoteClique tbPacoteClique { get; set; }
+        public virtual tbCampanhaTmp tbCampanhaTmp { get; set; }
     }
 }

@@ -15,12 +15,16 @@ namespace Cliquemix.Models
     public partial class tbConfigPadrao
     {
         public int cfgid { get; set; }
-        public Nullable<int> asid { get; set; }
-        public Nullable<int> utid { get; set; }
-        public Nullable<int> csid { get; set; }
+        public Nullable<int> spna { get; set; }
+        public Nullable<int> spnc { get; set; }
+        public Nullable<int> tpua { get; set; }
+        public Nullable<int> spadc { get; set; }
+        public Nullable<int> spnac { get; set; }
     
         public virtual tbAnuncioStatus tbAnuncioStatus { get; set; }
-        public virtual tbUsersTipo tbUsersTipo { get; set; }
+        public virtual tbAnuncioStatus tbAnuncioStatus1 { get; set; }
         public virtual tbCampanhaStatus tbCampanhaStatus { get; set; }
+        public virtual tbUsersTipo tbUsersTipo { get; set; }
+        public virtual tbCampanhaAnuncioStatus tbCampanhaAnuncioStatus { get; set; }
     }
 }

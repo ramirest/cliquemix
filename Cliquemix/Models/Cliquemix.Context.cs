@@ -34,6 +34,7 @@ namespace Cliquemix.Models
         public virtual DbSet<tbAnuncioFuncionalidade> tbAnuncioFuncionalidade { get; set; }
         public virtual DbSet<tbAnuncioImagens> tbAnuncioImagens { get; set; }
         public virtual DbSet<tbAnuncioImg> tbAnuncioImg { get; set; }
+        public virtual DbSet<tbAnuncioImgLog> tbAnuncioImgLog { get; set; }
         public virtual DbSet<tbAnuncioStatus> tbAnuncioStatus { get; set; }
         public virtual DbSet<tbBairro> tbBairro { get; set; }
         public virtual DbSet<tbBan> tbBan { get; set; }
@@ -42,8 +43,6 @@ namespace Cliquemix.Models
         public virtual DbSet<tbBanTipo> tbBanTipo { get; set; }
         public virtual DbSet<tbCalculoCondicao> tbCalculoCondicao { get; set; }
         public virtual DbSet<tbCalculoCondicaoPagto> tbCalculoCondicaoPagto { get; set; }
-        public virtual DbSet<tbCampanha> tbCampanha { get; set; }
-        public virtual DbSet<tbCampanhaAnuncio> tbCampanhaAnuncio { get; set; }
         public virtual DbSet<tbCampanhaAnuncioConsumidor> tbCampanhaAnuncioConsumidor { get; set; }
         public virtual DbSet<tbCampanhaAnuncioLocalizacao> tbCampanhaAnuncioLocalizacao { get; set; }
         public virtual DbSet<tbCampanhaAnuncioStatus> tbCampanhaAnuncioStatus { get; set; }
@@ -51,14 +50,19 @@ namespace Cliquemix.Models
         public virtual DbSet<tbCep> tbCep { get; set; }
         public virtual DbSet<tbCidade> tbCidade { get; set; }
         public virtual DbSet<tbCondicaoPagto> tbCondicaoPagto { get; set; }
+        public virtual DbSet<tbConfigPadrao> tbConfigPadrao { get; set; }
         public virtual DbSet<tbConsumidor> tbConsumidor { get; set; }
         public virtual DbSet<tbCredito> tbCredito { get; set; }
         public virtual DbSet<tbCreditoCompra> tbCreditoCompra { get; set; }
         public virtual DbSet<tbCreditoDesconta> tbCreditoDesconta { get; set; }
+        public virtual DbSet<tbCreditoPromocional> tbCreditoPromocional { get; set; }
         public virtual DbSet<tbDestaque> tbDestaque { get; set; }
+        public virtual DbSet<tbDestaqueAnunciante> tbDestaqueAnunciante { get; set; }
+        public virtual DbSet<tbDestaqueDuracao> tbDestaqueDuracao { get; set; }
         public virtual DbSet<tbEstado> tbEstado { get; set; }
         public virtual DbSet<tbFuncionalidade> tbFuncionalidade { get; set; }
         public virtual DbSet<tbLogSistema> tbLogSistema { get; set; }
+        public virtual DbSet<tbPacoteClique> tbPacoteClique { get; set; }
         public virtual DbSet<tbPais> tbPais { get; set; }
         public virtual DbSet<tbPermissao> tbPermissao { get; set; }
         public virtual DbSet<tbPermissaoGrupo> tbPermissaoGrupo { get; set; }
@@ -76,10 +80,8 @@ namespace Cliquemix.Models
         public virtual DbSet<tbUsersLogAcesso> tbUsersLogAcesso { get; set; }
         public virtual DbSet<tbUsersPermissao> tbUsersPermissao { get; set; }
         public virtual DbSet<tbUsersTipo> tbUsersTipo { get; set; }
-        public virtual DbSet<tbConfigPadrao> tbConfigPadrao { get; set; }
-        public virtual DbSet<tbAnuncioImgLog> tbAnuncioImgLog { get; set; }
-        public virtual DbSet<tbPacoteClique> tbPacoteClique { get; set; }
-        public virtual DbSet<tbCreditoPromocional> tbCreditoPromocional { get; set; }
-        public virtual DbSet<tbDestaqueDuracao> tbDestaqueDuracao { get; set; }
+        public virtual DbSet<tbCampanha> tbCampanha { get; set; }
+        public virtual DbSet<tbCampanhaAnuncio> tbCampanhaAnuncio { get; set; }
+        public virtual DbSet<tbCampanhaTmp> tbCampanhaTmp { get; set; }
     }
 }

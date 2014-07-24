@@ -16,14 +16,14 @@ namespace Cliquemix.Models
     {
         public tbUsersTipo()
         {
-            this.tbUsers = new HashSet<tbUsers>();
             this.tbConfigPadrao = new HashSet<tbConfigPadrao>();
+            this.tbUsers = new HashSet<tbUsers>();
         }
     
         public int utid { get; set; }
         public string dsUsersTipo { get; set; }
     
-        public virtual ICollection<tbUsers> tbUsers { get; set; }
         public virtual ICollection<tbConfigPadrao> tbConfigPadrao { get; set; }
+        public virtual ICollection<tbUsers> tbUsers { get; set; }
     }
 }

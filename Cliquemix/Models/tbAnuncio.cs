@@ -18,10 +18,10 @@ namespace Cliquemix.Models
         {
             this.tbAnuncioFuncionalidade = new HashSet<tbAnuncioFuncionalidade>();
             this.tbAnuncioImagens = new HashSet<tbAnuncioImagens>();
-            this.tbCampanhaAnuncio = new HashSet<tbCampanhaAnuncio>();
-            this.tbPontosRede = new HashSet<tbPontosRede>();
-            this.tbAnuncioImgLog = new HashSet<tbAnuncioImgLog>();
             this.tbAnuncioImg = new HashSet<tbAnuncioImg>();
+            this.tbAnuncioImgLog = new HashSet<tbAnuncioImgLog>();
+            this.tbPontosRede = new HashSet<tbPontosRede>();
+            this.tbCampanhaAnuncio = new HashSet<tbCampanhaAnuncio>();
         }
     
         public int aid { get; set; }
@@ -37,14 +37,14 @@ namespace Cliquemix.Models
         public Nullable<System.DateTime> dtCriacao { get; set; }
         public Nullable<int> pid { get; set; }
     
+        public virtual tbAnunciante tbAnunciante { get; set; }
         public virtual ICollection<tbAnuncioFuncionalidade> tbAnuncioFuncionalidade { get; set; }
         public virtual ICollection<tbAnuncioImagens> tbAnuncioImagens { get; set; }
-        public virtual ICollection<tbCampanhaAnuncio> tbCampanhaAnuncio { get; set; }
+        public virtual ICollection<tbAnuncioImg> tbAnuncioImg { get; set; }
+        public virtual ICollection<tbAnuncioImgLog> tbAnuncioImgLog { get; set; }
         public virtual ICollection<tbPontosRede> tbPontosRede { get; set; }
         public virtual tbAnuncioStatus tbAnuncioStatus { get; set; }
         public virtual tbRamoAtividade tbRamoAtividade { get; set; }
-        public virtual tbAnunciante tbAnunciante { get; set; }
-        public virtual ICollection<tbAnuncioImgLog> tbAnuncioImgLog { get; set; }
-        public virtual ICollection<tbAnuncioImg> tbAnuncioImg { get; set; }
+        public virtual ICollection<tbCampanhaAnuncio> tbCampanhaAnuncio { get; set; }
     }
 }

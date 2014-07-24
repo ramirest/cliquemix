@@ -19,6 +19,7 @@ namespace Cliquemix.Models
         public System.DateTime dataHoraLog { get; set; }
         public string dsLog { get; set; }
         public string dsControle { get; set; }
+        public string tipoMovimento { get; set; }
     
         public virtual tbUsers tbUsers { get; set; }
     }

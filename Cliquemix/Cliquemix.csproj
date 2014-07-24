@@ -213,7 +213,6 @@
     <Compile Include="Controllers\Anunciante\PrincipalAnuncianteController.cs" />
     <Compile Include="Controllers\Anunciante\AnuncioController.cs" />
     <Compile Include="Controllers\Anunciante\RelatorioAnuncianteController.cs" />
-    <Compile Include="Controllers\Anunciante\tbCampanhasController.cs" />
     <Compile Include="Controllers\BreadcrumbsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CampanhaController.cs" />
@@ -316,6 +315,9 @@
     <Compile Include="Models\tbCampanhaStatus.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tbCampanhaTmp.cs">
+      <DependentUpon>Cliquemix.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbCep.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
@@ -344,6 +346,9 @@
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbDestaque.cs">
+      <DependentUpon>Cliquemix.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbDestaqueAnunciante.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbDestaqueDuracao.cs">
@@ -628,11 +633,6 @@
     <Content Include="Views\Anunciante\Details.cshtml" />
     <Content Include="Views\Anunciante\Edit.cshtml" />
     <Content Include="Views\Anunciante\Index.cshtml" />
-    <Content Include="Views\tipoUsers\Create.cshtml" />
-    <Content Include="Views\tipoUsers\Delete.cshtml" />
-    <Content Include="Views\tipoUsers\Details.cshtml" />
-    <Content Include="Views\tipoUsers\Edit.cshtml" />
-    <Content Include="Views\tipoUsers\Index.cshtml" />
     <Content Include="Views\Endereco\Index.cshtml" />
     <Content Include="Views\Endereco\DefinicaoArquitetura.cshtml" />
     <Content Include="Views\Account\RegisterEndereco.cshtml" />
@@ -657,11 +657,6 @@
     <Content Include="Views\RelatorioAnunciante\RelCamp.cshtml" />
     <Content Include="Views\RelatorioAnunciante\RelMov.cshtml" />
     <Content Include="Views\RelatorioAnunciante\RelPrem.cshtml" />
-    <Content Include="Views\tbCampanhas\Create.cshtml" />
-    <Content Include="Views\tbCampanhas\Delete.cshtml" />
-    <Content Include="Views\tbCampanhas\Details.cshtml" />
-    <Content Include="Views\tbCampanhas\Edit.cshtml" />
-    <Content Include="Views\tbCampanhas\Index.cshtml" />
     <Content Include="Views\Campanha\NovoAnuncioCampanha.cshtml" />
     <Content Include="Views\Campanha\InfoDestaque.cshtml" />
     <Content Include="Views\PerfilAnunciante\EditarPerfilDadosContato.cshtml" />

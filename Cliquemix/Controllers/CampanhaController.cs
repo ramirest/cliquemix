@@ -17,6 +17,7 @@ namespace Cliquemix.Controllers
         {
             ViewBag.pcid = new SelectList(db.tbPacoteClique, "pcid", "qtdeCliques");
             ViewBag.did = new SelectList(db.tbDestaque, "did", "tituloDestaque");
+            ViewBag.ctid = ProcFunc.CriarCodTempCampanha(Session.SessionID);
             return View();
         }
 
@@ -34,19 +35,26 @@ namespace Cliquemix.Controllers
             DateTime dtTermino = DateTime.Parse(Request.Form.Get("dtTermino"), culturaAmericana);
             DateTime hrInicio = DateTime.Parse(Request.Form.Get("hrInicio"), culturaAmericana);
             DateTime hrTermino = DateTime.Parse(Request.Form.Get("hrTermino"), culturaAmericana);
-            
+
             tbCampanha.dtInicio = new DateTime(dtInicio.Year, dtInicio.Month, dtInicio.Day, hrInicio.Hour, hrInicio.Minute, hrInicio.Second);
             tbCampanha.dtTermino = new DateTime(dtTermino.Year, dtTermino.Month, dtTermino.Day, hrTermino.Hour, hrTermino.Minute, hrTermino.Second);
-            tbCampanha.csid = ProcFunc.RetornaStatusPadraoCampanha();
+            tbCampanha.csid = ProcFunc.RetornarStatusPadraoCampanha();
             tbCampanha.pid = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());
+            tbCampanha.ctid = Convert.ToInt32(Request.Form.Get("ctid"));
             if (ModelState.IsValid)
             {
                 db.tbCampanha.Add(tbCampanha);
                 db.SaveChanges();
-                //SalvarLogAnuncio(tbanuncio.aid, (int)tbanuncio.asid, ProcFunc.RetornaCodigoUsuario(User.Identity.GetUserName()), "Sim");
+
+                ProcFunc.AtualizarCodTempAnunciosCampanha(tbCampanha.ctid, tbCampanha.cid);
+                
+                //Salvar Log do Sistema
+                ProcFunc.SalvarLog(ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName()),
+                    "Cadastro de uma nova Campanha", this.ToString(), "POST");
+                
                 return RedirectToAction("ListCampanha");
             }
-            ViewBag.pcid = new SelectList(db.tbPacoteClique, "pcid", "qtdCliques");
+            ViewBag.pcid = new SelectList(db.tbPacoteClique, "pcid", "qtdeCliques");
             ViewBag.did = new SelectList(db.tbDestaque, "did", "tituloDestaque");
             return View(tbCampanha);
         }
@@ -70,7 +78,7 @@ namespace Cliquemix.Controllers
         {
             try
             {
-                var tbCampanhaAnuncio = db.tbCampanhaAnuncio.Where(m => m.cid == pCodCampanha);
+                var tbCampanhaAnuncio = db.tbCampanhaAnuncio.Where(m => m.ctid == pCodCampanha);
                 //var tbCampanhaAnuncio = db.tbCampanhaAnuncio;
                 if (tbCampanhaAnuncio.Any())
                 {
@@ -98,11 +106,13 @@ namespace Cliquemix.Controllers
             return View();
         }
 
+
         [HttpGet]
         public ActionResult InfoDestaque()
         {
             return PartialView();
         }
+
 
         [HttpPost]
         public ActionResult InfoDestaque(int pCodDestaque)
@@ -126,12 +136,17 @@ namespace Cliquemix.Controllers
             }
         }
 
-
-        public ActionResult NovoAnuncioCampanha()
+        [HttpGet]
+        public ActionResult NovoAnuncioCampanha(int pCodTempCampanha)
         {
-            var tbanuncio = db.tbAnuncio.Include(t => t.tbRamoAtividade).Include(r => r.tbAnuncioStatus);
+            int codAnunciante = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());
+            int codStatus = ProcFunc.RetornarStatusPadraoAnuncioDisponivelParaCampanha();
+            var tbanuncio = db.tbAnuncio.Include(t => t.tbRamoAtividade).Include(r => r.tbAnuncioStatus).
+                Where(a => a.pid == codAnunciante);//.Where(m => m.asid == codStatus);
+
             if (tbanuncio.Any())
             {
+                ViewBag.ctid = pCodTempCampanha;
                 return PartialView(tbanuncio.ToList());
             }
             else
@@ -140,28 +155,34 @@ namespace Cliquemix.Controllers
             }
         }
 
-
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult NovoAnuncioCampanha(int codAnuncio)
+        public ActionResult NovoAnuncioCampanha(int taid, int ctid)
         {
-            //if ()
-            return null;
+            try
+            {
+                tbCampanhaAnuncio tbCampanhaAnuncio = new tbCampanhaAnuncio();
+                if (ProcFunc.VerificarAnuncioDisponivelParaCampanha(taid))
+                {
+                    tbCampanhaAnuncio.aid = taid;
+                    //tbCampanhaAnuncio.cid = pCodTempCampanha;
+                    tbCampanhaAnuncio.ctid = ctid;
+                    tbCampanhaAnuncio.casid = ProcFunc.RetornarStatusPadraoAnuncioDisponivelParaCampanha();
+                    tbCampanhaAnuncio.dtMovimento = DateTime.Now;
+
+                    if (ModelState.IsValid)
+                    {
+                        db.tbCampanhaAnuncio.Add(tbCampanhaAnuncio);
+                        db.SaveChanges();
+                        //return null;
+                    }
+                }
+                return null;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
-
-
-        public void SalvarLogAnuncio(int _aid, int _asid, int _uid, string _imgRename)
-        {
-            tbAnuncioImgLog tbAnuncioImgLog = new tbAnuncioImgLog();
-            tbAnuncioImgLog.aid = _aid;
-            tbAnuncioImgLog.asid = _asid;
-            tbAnuncioImgLog.uid = _uid;
-            tbAnuncioImgLog.dtMovimento = DateTime.Now;
-            tbAnuncioImgLog.imagensRenomeadas = _imgRename;
-            db.tbAnuncioImgLog.Add(tbAnuncioImgLog);
-            db.SaveChanges();
-        }
-
 
     }
 }

@@ -136,12 +136,12 @@ namespace Cliquemix.Controllers
                     users.username = _usuario; //50
                     users.pwd = ProcFunc.CryptographyPass(_pwd); //50
                     users.cpwd = users.pwd; //50
-                    users.utid = ProcFunc.RetornaCodigoTipoUsuario("Anunciante");
+                    users.utid = ProcFunc.RetornarCodigoTipoUsuario("Anunciante");
                     db.tbUsers.Add(users);
                     db.SaveChanges();
 
                     //*** Salvar dados na tabela de Anunciante ***
-                    tbanunciante.uid = ProcFunc.RetornaCodigoUsuario(_usuario);
+                    tbanunciante.uid = ProcFunc.RetornarCodigoUsuario(_usuario);
                     db.tbAnunciante.Add(tbanunciante);
                     db.SaveChanges();                    
                     

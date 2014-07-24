@@ -12,18 +12,14 @@ namespace Cliquemix.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tbPacoteClique
+    public partial class tbDestaqueAnunciante
     {
-        public tbPacoteClique()
-        {
-            this.tbCampanha = new HashSet<tbCampanha>();
-        }
+        public int daid { get; set; }
+        public Nullable<int> did { get; set; }
+        public Nullable<int> pid { get; set; }
+        public Nullable<System.DateTime> dtMovimento { get; set; }
     
-        public int pcid { get; set; }
-        public string tituloPacote { get; set; }
-        public string dsPacote { get; set; }
-        public Nullable<int> qtdeCliques { get; set; }
-    
-        public virtual ICollection<tbCampanha> tbCampanha { get; set; }
+        public virtual tbAnunciante tbAnunciante { get; set; }
+        public virtual tbDestaque tbDestaque { get; set; }
     }
 }

@@ -24,8 +24,8 @@ namespace Cliquemix.Models
         public int caid { get; set; }
         public int contCliqueConsu { get; set; }
     
-        public virtual tbCampanhaAnuncio tbCampanhaAnuncio { get; set; }
         public virtual ICollection<tbPremioConsumidor> tbPremioConsumidor { get; set; }
         public virtual tbConsumidor tbConsumidor { get; set; }
+        public virtual tbCampanhaAnuncio tbCampanhaAnuncio { get; set; }
     }
 }

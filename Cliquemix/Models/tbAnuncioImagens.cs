@@ -14,8 +14,8 @@ namespace Cliquemix.Models
     
     public partial class tbAnuncioImagens
     {
-        public int aimg { get; set; }
-        public Nullable<int> imgid { get; set; }
+        public long aimg { get; set; }
+        public Nullable<long> imgid { get; set; }
         public Nullable<int> aid { get; set; }
         public Nullable<System.DateTime> dtCriacao { get; set; }
     

@@ -20,9 +20,9 @@ namespace Cliquemix.Models
         public Nullable<int> eid { get; set; }
         public Nullable<int> cid { get; set; }
     
-        public virtual tbCampanhaAnuncio tbCampanhaAnuncio { get; set; }
         public virtual tbCidade tbCidade { get; set; }
         public virtual tbEstado tbEstado { get; set; }
         public virtual tbPais tbPais { get; set; }
+        public virtual tbCampanhaAnuncio tbCampanhaAnuncio { get; set; }
     }
 }

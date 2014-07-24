@@ -19,16 +19,16 @@ namespace Cliquemix.Models
             this.tbAnuncioImagens = new HashSet<tbAnuncioImagens>();
         }
     
-        public int imgid { get; set; }
+        public long imgid { get; set; }
         public string url_imagem { get; set; }
         public string tipo { get; set; }
-        public Nullable<int> idTemp { get; set; }
+        public Nullable<long> idTemp { get; set; }
         public string tamanho { get; set; }
         public Nullable<int> idTempItem { get; set; }
         public Nullable<bool> tempRenomeado { get; set; }
         public Nullable<int> aid { get; set; }
     
-        public virtual ICollection<tbAnuncioImagens> tbAnuncioImagens { get; set; }
         public virtual tbAnuncio tbAnuncio { get; set; }
+        public virtual ICollection<tbAnuncioImagens> tbAnuncioImagens { get; set; }
     }
 }

@@ -26,10 +26,14 @@ namespace Cliquemix.Models
         public int did { get; set; }
         public int csid { get; set; }
         public Nullable<int> pid { get; set; }
+        public Nullable<int> pcid { get; set; }
+        public Nullable<int> ctid { get; set; }
     
+        public virtual tbAnunciante tbAnunciante { get; set; }
         public virtual ICollection<tbCampanhaAnuncio> tbCampanhaAnuncio { get; set; }
         public virtual tbCampanhaStatus tbCampanhaStatus { get; set; }
         public virtual tbDestaque tbDestaque { get; set; }
-        public virtual tbAnunciante tbAnunciante { get; set; }
+        public virtual tbPacoteClique tbPacoteClique { get; set; }
+        public virtual tbCampanhaTmp tbCampanhaTmp { get; set; }
     }
 }
