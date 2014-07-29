@@ -9,6 +9,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Web.Mvc;
 using System.Security;
+using BLToolkit.Data.Sql;
 
 namespace Cliquemix.Models
 {
@@ -247,6 +248,49 @@ namespace Cliquemix.Models
             var a = (from status in db.tbConfigPadrao select status).First();
             if (a.spadc != null) return (int)a.spadc;
             else return 0;
+        }
+
+        #endregion
+
+        #region "Validação da campanha para novos anúncios"
+
+        // Tudo = 4 [Não existe anúncio para vincular] *
+        public static bool ExisteAnuncioParaVincular(int pCodAnunciante)
+        {
+            try
+            {
+                int s = RetornarStatusPadraoAnuncioDisponivelParaCampanha();
+                var a = (from ad in db.tbAnuncio where ad.asid == s select ad).ToList();
+                var c = (from ca in a where ca.pid == pCodAnunciante select ca).ToList();
+
+                if (c.Count > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
+            }
+        }
+
+        // Tudo = 2 [Campanha já contém um anúncio vinculado] *
+        public static bool CampanhaContemAnuncio(int pCodCampanha)
+        {
+            try
+            {
+                var a = (from ca in db.tbCampanhaAnuncio where ca.ctid == pCodCampanha select ca).First();
+                if (a.caid > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
+            }
         }
 
         #endregion

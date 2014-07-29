@@ -1,0 +1,36 @@
+﻿
+<script>
+    function validar() {
+        $.ajax(
+        {
+            type: 'GET',
+            url: '/Dialog/CreateAlbumPartial',
+            dataType: 'html',
+            cache: true,
+            async: true,
+            success: function (data) {
+                $('#conteudo').html(data);
+            }
+        });
+    }
+</script>
+
+<div class="modal modal-flex fade" id="flexModal" tabindex="-1" role="dialog" aria-labelledby="flexModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="min-width: 60%;">
+        <div class="modal-content" id="conteudo">
+            @{
+                Html.RenderPartial("CreateAlbumPartial");
+            }
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<input type="text" id="txtValidar"/>
+
+<a href="#" id="abrir" data-toggle="modal" data-target="#flexModal" data-placement="top" title="Novo Anúncio" onclick="validar();">
+    <i class="fa fa-plus-square"></i>
+</a>
+
+<button onclick="validar();">Validar</button>

@@ -156,7 +156,7 @@
 				if (!dates[lang])
 					lang = defaults.language;
 			}
-			o.language = lang;
+		    o.language = lang;
 
 			switch(o.startView){
 				case 2:
