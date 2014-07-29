@@ -36,6 +36,19 @@ namespace Cliquemix
                        "~/Scripts/plugins/pace/pace.js"
                         ));
 
+
+
+            bundles.Add(new ScriptBundle("~/bundles/js-masterslider").Include(
+                       "~/Scripts/js-master-slider/jquery.easing.min.js",
+                       "~/Scripts/js-master-slider/masterslider.min.js",
+                       "~/Scripts/js-master-slider/masterslider.partialview.dev.js",
+                       "~/Scripts/js-master-slider/jquery.prettyPhoto.js",
+                       "~/Scripts/js-master-slider/"
+                        ));
+
+
+
+
             bundles.Add(new ScriptBundle("~/bundles/js-others").Include(
                       "~/Scripts/plugins/popupoverlay/logout.js",
                        "~/Scripts/plugins/hisrc/hisrc.js",
