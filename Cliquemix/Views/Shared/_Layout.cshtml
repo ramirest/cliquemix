@@ -22,12 +22,20 @@
     <link href="~/Content/plugins/datatables/datatables.css" rel="stylesheet">
     <link href="~/Content/Outros/uploadify.css" rel="stylesheet" />
     
+
+    <link href="css/plugins/ladda/ladda-themeless.min.css" rel="stylesheet">
+    <link href="css/plugins/bootstrap-multiselect/bootstrap-multiselect.css" rel="stylesheet">
+
     <link href="~/Content/plugins/bootstrap-timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
     <link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" type="text/css" rel="stylesheet">
     <link href="~/Content/plugins/bootstrap-tokenfield/tokenfield-typeahead.css" rel="stylesheet">
     <link href="~/Content/plugins/bootstrap-tokenfield/bootstrap-tokenfield.css" rel="stylesheet">
     <link href="~/Content/plugins/bootstrap-datepicker/datepicker3.css" rel="stylesheet">
     <link href="~/Content/timeline.css" rel="stylesheet" />
+    
+
+
+
     
     <link href="~/Content/plugins/summernote/summernote.css" rel="stylesheet" />
     <link href="~/Content/plugins/summernote/summernote-bs3.css" rel="stylesheet" />
@@ -83,6 +91,11 @@
     <script src="~/Scripts/plugins/messenger/messenger.min.js"></script>
     <script src="~/Scripts/plugins/messenger/messenger-theme-flat.js"></script>
     <script src="~/Scripts/plugins/bootstrap-multiselect/bootstrap-multiselect.js"></script>
+    <script src="~/Scripts/plugins/pace/pace.js"></script>
+
+
+
+
     @Scripts.Render("~/bundles/js-others")
     
 <script>
@@ -127,7 +140,6 @@
 
     });
 
-
 </script>
     
     <script>
@@ -139,6 +151,29 @@
             $('.timepicker').timepicker();
         });
     </script>    
+
+    <script type="text/javascript">
+
+        var slider = new MasterSlider();
+        slider.setup('masterslider', {
+            width: 760,
+            height: 400,
+            space: 10,
+            loop: true,
+            view: 'prtialwave'
+        });
+
+        slider.control('arrows');
+        slider.control('bullets');
+        slider.control('lightbox');
+        slider.control('slideinfo', { insertTo: "#partial-view-1", autohide: false });
+        slider.control('circletimer', { color: "#FFFFFF", stroke: 9 });
+
+
+        $(document).ready(function () {
+            $("a[rel^='prettyPhoto']").prettyPhoto();
+        });
+    </script>
 
 
 
