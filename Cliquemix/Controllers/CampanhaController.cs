@@ -21,12 +21,12 @@ namespace Cliquemix.Controllers
         // GET: Campanha
         public ActionResult CreateCampanha()
         {
-            ViewBag.pcid = new SelectList(db.tbPacoteClique, "pcid", "qtdeCliques");
-            ViewBag.did = new SelectList(db.tbDestaque, "did", "tituloDestaque");
+            ViewBag.pcid = new SelectList(db.tbPacoteClique.OrderBy(p => p.qtdeCliques), "pcid", "qtdeCliques");
+            ViewBag.did = new SelectList(db.tbDestaque.OrderBy(d => d.dsDestaque), "did", "tituloDestaque");
             ViewBag.ctid = ProcFunc.CriarCodTempCampanha(Session.SessionID);
-            ViewBag.paid = new SelectList(db.tbPais, "paid", "nomePais");
-            ViewBag.eid = new SelectList(db.tbEstado, "eid", "sgEstado");
-            ViewBag.cid = new SelectList(db.tbCidade, "cid", "nomeCidade");
+            ViewBag.paid = new SelectList(db.tbPais.OrderBy(p => p.nomePais), "paid", "nomePais");
+            ViewBag.eid = new SelectList(db.tbEstado.OrderBy(e => e.nomeEstado), "eid", "sgEstado");
+            ViewBag.cid = new SelectList(db.tbCidade.OrderBy(c => c.nomeCidade), "cid", "nomeCidade");
             ViewBag.Tudo = 1;
             return View();
         }
