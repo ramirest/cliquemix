@@ -82,6 +82,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -217,6 +218,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CampanhaController.cs" />
     <Compile Include="Controllers\CreditoController.cs" />
+    <Compile Include="Controllers\DialogController.cs" />
     <Compile Include="Controllers\EnderecoController.cs" />
     <Compile Include="Controllers\TipoUsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -657,7 +659,6 @@
     <Content Include="Views\RelatorioAnunciante\RelCamp.cshtml" />
     <Content Include="Views\RelatorioAnunciante\RelMov.cshtml" />
     <Content Include="Views\RelatorioAnunciante\RelPrem.cshtml" />
-    <Content Include="Views\Campanha\NovoAnuncioCampanha.cshtml" />
     <Content Include="Views\Campanha\InfoDestaque.cshtml" />
     <Content Include="Views\PerfilAnunciante\EditarPerfilDadosContato.cshtml" />
     <Content Include="Views\PerfilAnunciante\EditarPerfilDadosEmpresa.cshtml" />
@@ -665,6 +666,8 @@
     <Content Include="Views\PerfilAnunciante\EditarPerfilDadosUsuario.cshtml" />
     <Content Include="Views\PerfilAnunciante\PerfilAnunciante.cshtml" />
     <Content Include="Views\PerfilAnunciante\PerfilAnunciantePrincipal.cshtml" />
+    <Content Include="Views\Dialog\Index.cshtml" />
+    <Content Include="Views\Campanha\NovoAnuncio.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

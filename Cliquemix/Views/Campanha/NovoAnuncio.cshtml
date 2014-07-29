@@ -1,0 +1,203 @@
+﻿@model IEnumerable<Cliquemix.Models.tbAnuncio>
+
+<script>
+    
+    $("#txtFiltrar").keyup(function(event){
+        if(event.keyCode == 13){
+            $("#btnFiltrar").click();
+        }
+    });
+
+    $("#txtFiltrar").keydown(function(event){
+        if(event.keyCode == 13){
+            $("#btnFiltrar").click();
+        }
+    });
+
+    function buscar() {
+        $.ajax(
+        {
+            type: 'GET',
+            url: '/Campanha/NovoAnuncio/?txt=' + document.getElementById('txtFiltrar').value+'&pCodCampanha='+@ViewBag.ctid,
+            dataType: 'html',
+            cache: true,
+            async: true,
+            success: function (data) {
+                $('#conteudo').html(data);
+                $('#informativo').html();
+            }
+        });
+    }
+
+    function NovoAnuncio() {
+        $.ajax(
+        {
+            type: 'POST', //taid, ctid
+            url: '/Campanha/NovoAnuncio/?taid=' + document.getElementById('anuncio').value+'&ctid='+@ViewBag.ctid,
+            dataType: 'html',
+            cache: true,
+            async: true,
+            success: function () {
+                $('#btnFechar').click();
+            }
+        });
+    }
+
+    function anuncioSelecionado(item) {
+        document.getElementById('anuncio').value = item.value;
+    }
+
+</script>
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="flexModalLabel">Adicionar Anúncio à Campanha</h4>
+    <div class="input-group col-lg-6" style="margin-top: 2%;">
+        <input id="txtFiltrar" name="txtFiltrar" type="text" class="form-control" style="width: 400px;" />
+        <span class="input-group-btn">
+            <button id="btnFiltrar" name="btnFiltrar" class="btn btn-green" type="button" onclick="buscar();"><i class="fa fa-search"></i></button>
+        </span>
+    </div>
+</div>
+
+<input type="hidden" id="anuncio" name="anuncio"/>
+<div class="modal-body">
+    <div class="row">
+        <!-- Basic Responsive Table -->
+        <div class="col-lg-12">
+            <div class="portlet portlet-default">
+                <div class="portlet-heading">
+                    <div class="portlet-title">
+                        <h4 class="flutuar">Lista de Anúncios</h4>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="portlet-body">
+                    <div class="table-responsive" id="conteudo">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Título</th>
+                                    <th class="text-center">Ramo</th>
+                                    <th class="text-center">Video</th>
+                                    <th class="text-center">Imagem</th>
+                                    @*<th class="text-center">Data</th>*@
+                                    <th class="text-center">Selecione</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @try
+                                {
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td align=center style="width: 200px;">
+                                                @Html.DisplayTextFor(modelItem => item.tituloAnuncio)
+                                            </td>
+                                            <td align=center style="width: 200px;">
+                                                @Html.DisplayFor(modelItem => item.tbRamoAtividade.descricao)
+                                            </td>
+                                            <td align=center style="width: 60px;">
+                                                @if (item.videoAnuncio != string.Empty)
+                                                {
+                                                    @Html.Label("Sim", new { style = "align-content: center" })
+                                                }
+                                                else
+                                                {
+                                                    @Html.Label("Não")
+                                                }
+                                            </td>
+                                            <td align=center style="width: 60px;">
+                                                @if (item.tbAnuncioImagens.ToList().Count > 0)
+                                                {
+                                                    @Html.Label("Sim")
+                                                }
+                                                else
+                                                {
+                                                    @Html.Label("Não")
+                                                }
+                                            </td>@*
+                                            <td align=center style="width: 150px;">
+                                                @Html.DisplayFor(modelItem => item.dtCriacao)
+                                            </td>*@
+                                            <td align=center style="width: 50px;">
+                                                <input type="radio" name="optAnuncio" value="@item.aid" onchange="anuncioSelecionado(this);" />
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+
+                                catch (Exception)
+                                {
+                                    <label style="color: #34495E; font-weight: normal; font-size: 16px">
+                                        Não existem anúncios disponíveis para essa campanha
+                                    </label>
+                                }
+                                @*
+                            <thead class="rodape-tabela">
+                                <tr>
+                                    <th class="text-center">Título</th>
+                                    <th class="text-center">Ramo</th>
+                                    <th class="text-center">Video</th>
+                                    <th class="text-center">Imagem</th>
+                                    @*<th class="text-center">Data</th>
+                                    <th class="text-center">Selecione</th>
+                                </tr>
+                            </thead>*@
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- /.portlet -->
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <div class="col-md-9" id="informativo">
+        @if (ViewBag.Tudo == 1)
+        {
+            // Tudo = 1 [Disponível para novo anúncio] AZUL
+            <div class="alert alert-info alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <strong>Disponível!</strong> Existem anúncios disponíveis para essa campanha.
+            </div>
+        }
+        else if (ViewBag.Tudo == 2)
+        {
+            // Tudo = 2 [Campanha já contém um anúncio vinculado] VERMELHO
+            <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <strong>Aviso! </strong> A Campanha já contém um anúncio.
+            </div>
+        }
+        else if (ViewBag.Tudo == 3)
+        {
+            // Tudo = 3 [Anúncio cadastrado com sucesso] VERDE
+            <div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <strong>Sucesso!</strong> O Anúncio foi adicionado à campanha.
+            </div>
+        }
+        else if (ViewBag.Tudo == 4)
+        {
+            // Tudo = 4 [Não existe anúncio para vincular] AMARELO
+            <div class="alert alert-warning alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <strong>Aviso! </strong> Não existem anúncios disponíveis.
+            </div>
+        }
+        else
+        {
+            // Tudo = 5 [Exception] VERMELHO
+            <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <strong>Error! </strong> Ocorreu um erro inesperado...
+            </div>
+        }
+    </div>
+    
+    <button type="button" id="btnFechar" name="btnFechar" class="btn btn-default" data-dismiss="modal">Fechar</button>
+    <button type="button" id="btnAdicionar" name="btnAdicionar" class="btn btn-default" onclick="NovoAnuncio();"><i class="fa fa-plus"></i> Adicionar</button>
+</div>
