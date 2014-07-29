@@ -197,8 +197,6 @@
                                             </div>
                                             
                                             @Html.Hidden("ctid")
-
-                                            <div class="clearfix"></div>
                                                                                         
                                             <div class="form-group col-lg-3">
                                                 <label>Data de Início</label>
@@ -227,49 +225,51 @@
                                             </div>
 
                                             <div class="clearfix"></div>
+                                            <div class="form-group col-lg-6"></div>
 
-                                            <div class="form-group col-lg-3">
-                                                <label>Data de Término</label>
-                                                <div id="sandbox-container">
-                                                    <div class="input-group">
-                                                        <span class="input-group-btn">
-                                                            <button class="btn btn-default add-on " type="button">
-                                                                <i class="fa fa-calendar"></i>
-                                                            </button>
-                                                        </span>
-                                                        <input id="dtTermino" name="dtTermino" class="form-control datepicker" type="text" style="max-width: 100px;" onchange="VerificaData(this.value, this.id);" />
+
+                                                <div class="form-group col-lg-3">
+                                                    <label>Data de Término</label>
+                                                    <div id="sandbox-container">
+                                                        <div class="input-group">
+                                                            <span class="input-group-btn">
+                                                                <button class="btn btn-default add-on " type="button">
+                                                                    <i class="fa fa-calendar"></i>
+                                                                </button>
+                                                            </span>
+                                                            <input id="dtTermino" name="dtTermino" class="form-control datepicker" type="text" style="max-width: 100px;" onchange="VerificaData(this.value, this.id);" />
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
 
-                                            <div class="form-group col-lg-3">
-                                                <label>Hora de Término</label>
-                                                <div class="input-append bootstrap-timepicker input-group">
-                                                    <span class="input-group-btn">
-                                                        <button class="btn btn-default add-on" type="button">
-                                                            <i class="fa fa-clock-o"></i>
-                                                        </button>
-                                                    </span>
-                                                    <input id="hrTermino" name="hrTermino" class="form-control timepicker" type="text" style="max-width: 100px;" />
+                                                <div class="form-group col-lg-3">
+                                                    <label>Hora de Término</label>
+                                                    <div class="input-append bootstrap-timepicker input-group">
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-default add-on" type="button">
+                                                                <i class="fa fa-clock-o"></i>
+                                                            </button>
+                                                        </span>
+                                                        <input id="hrTermino" name="hrTermino" class="form-control timepicker" type="text" style="max-width: 100px;" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="clearfix"></div>
+
+                                                <div class="form-group col-lg-6">
+                                                    <label>Selecione o Destaque</label>
+                                                    <div class="clearfix"></div>
+                                                    @Html.DropDownList("did", null, string.Empty, new { style = "width:334px; height:34px", onchange = "AtualizaCodDid();" })
+                                                    @Html.Hidden("tdid")
+                                                </div>
+
+                                                <div class="clearfix"></div>
+                                                <div class="clearfix"></div>
+
+                                                <div class="col-sm-offset-10 col-sm-1">
+                                                    <button type="button" onclick=" $('#lnk2').click(); " class="btn btn-default">Próximo</button>
                                                 </div>
                                             </div>
-
-                                            <div class="clearfix"></div>
-                                            
-                                            <div class="form-group col-lg-6">
-                                                @Html.Label("Selecione o Destaque")
-                                                <div class="clearfix"></div>
-                                                @Html.DropDownList("did", null, string.Empty, new { style = "width:300px; height:34px", onchange = "AtualizaCodDid();" })
-                                                @Html.Hidden("tdid")
-                                            </div>
-
-                                            <div class="clearfix"></div>
-                                            <div class="clearfix"></div>
-                                            
-                                            <div class="col-sm-offset-10 col-sm-1">
-                                                <button type="button" onclick=" $('#lnk2').click(); " class="btn btn-default">Próximo</button>
-                                            </div>
-                                        </div>
 
                                         <div class="tab-pane fade in" id="infoAnun">
                                             <h4 class="page-header">Vincular Anúncio à Campanha:</h4>
