@@ -26,6 +26,11 @@ namespace Cliquemix.Controllers.Anunciante
             return View();
         }
 
+        public ActionResult RelDest()
+        {
+            return View();
+        }
+
         public ActionResult RelMov()
         {
             return View();

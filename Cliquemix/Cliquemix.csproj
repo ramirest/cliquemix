@@ -217,6 +217,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CampanhaController.cs" />
     <Compile Include="Controllers\CreditoController.cs" />
+    <Compile Include="Controllers\DestaqueController.cs" />
     <Compile Include="Controllers\EnderecoController.cs" />
     <Compile Include="Controllers\TipoUsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -421,6 +422,23 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css-master-slider\default\light-skin-1-retina.png" />
+    <Content Include="Content\css-master-slider\default\light-skin-1.png" />
+    <Content Include="Content\css-master-slider\default\style.css" />
+    <Content Include="Content\css-master-slider\grab.cur" />
+    <Content Include="Content\css-master-slider\grab.png" />
+    <Content Include="Content\css-master-slider\grabbing.cur" />
+    <Content Include="Content\css-master-slider\grabbing.png" />
+    <Content Include="Content\css-master-slider\loading-1-dark.gif" />
+    <Content Include="Content\css-master-slider\loading-1-light.gif" />
+    <Content Include="Content\css-master-slider\loading-1.gif" />
+    <Content Include="Content\css-master-slider\loading-2-dark.gif" />
+    <Content Include="Content\css-master-slider\loading-2-light.gif" />
+    <Content Include="Content\css-master-slider\loading-2.gif" />
+    <Content Include="Content\css-master-slider\masterslider.css" />
+    <Content Include="Content\css-master-slider\ms-partialview.css" />
+    <Content Include="Content\css-master-slider\prettyPhoto.css" />
+    <Content Include="Content\css-master-slider\video-close-btn.png" />
     <Content Include="Content\demo.css" />
     <Content Include="Content\edicoes.css" />
     <Content Include="Content\Outros\bootstrap-theme.css" />
@@ -465,6 +483,59 @@
     <Content Include="fonts\img\empresario-M.jpg" />
     <Content Include="fonts\img\flex-admin-logo%401x.png" />
     <Content Include="fonts\img\flex-admin-logo.png" />
+    <Content Include="fonts\img\images\prettyPhoto\dark_rounded\btnNext.png" />
+    <Content Include="fonts\img\images\prettyPhoto\dark_rounded\btnPrevious.png" />
+    <Content Include="fonts\img\images\prettyPhoto\dark_rounded\contentPattern.png" />
+    <Content Include="fonts\img\images\prettyPhoto\dark_rounded\default_thumbnail.gif" />
+    <Content Include="fonts\img\images\prettyPhoto\dark_rounded\loader.gif" />
+    <Content Include="fonts\img\images\prettyPhoto\dark_rounded\sprite.png" />
+    <Content Include="fonts\img\images\prettyPhoto\dark_square\btnNext.png" />
+    <Content Include="fonts\img\images\prettyPhoto\dark_square\btnPrevious.png" />
+    <Content Include="fonts\img\images\prettyPhoto\dark_square\contentPattern.png" />
+    <Content Include="fonts\img\images\prettyPhoto\dark_square\default_thumbnail.gif" />
+    <Content Include="fonts\img\images\prettyPhoto\dark_square\loader.gif" />
+    <Content Include="fonts\img\images\prettyPhoto\dark_square\sprite.png" />
+    <Content Include="fonts\img\images\prettyPhoto\default\default_thumb.png" />
+    <Content Include="fonts\img\images\prettyPhoto\default\loader.gif" />
+    <Content Include="fonts\img\images\prettyPhoto\default\sprite.png" />
+    <Content Include="fonts\img\images\prettyPhoto\default\sprite_next.png" />
+    <Content Include="fonts\img\images\prettyPhoto\default\sprite_prev.png" />
+    <Content Include="fonts\img\images\prettyPhoto\default\sprite_x.png" />
+    <Content Include="fonts\img\images\prettyPhoto\default\sprite_y.png" />
+    <Content Include="fonts\img\images\prettyPhoto\facebook\btnNext.png" />
+    <Content Include="fonts\img\images\prettyPhoto\facebook\btnPrevious.png" />
+    <Content Include="fonts\img\images\prettyPhoto\facebook\contentPatternBottom.png" />
+    <Content Include="fonts\img\images\prettyPhoto\facebook\contentPatternLeft.png" />
+    <Content Include="fonts\img\images\prettyPhoto\facebook\contentPatternRight.png" />
+    <Content Include="fonts\img\images\prettyPhoto\facebook\contentPatternTop.png" />
+    <Content Include="fonts\img\images\prettyPhoto\facebook\default_thumbnail.gif" />
+    <Content Include="fonts\img\images\prettyPhoto\facebook\loader.gif" />
+    <Content Include="fonts\img\images\prettyPhoto\facebook\sprite.png" />
+    <Content Include="fonts\img\images\prettyPhoto\lightbox-btn.png" />
+    <Content Include="fonts\img\images\prettyPhoto\light_rounded\btnNext.png" />
+    <Content Include="fonts\img\images\prettyPhoto\light_rounded\btnPrevious.png" />
+    <Content Include="fonts\img\images\prettyPhoto\light_rounded\default_thumbnail.gif" />
+    <Content Include="fonts\img\images\prettyPhoto\light_rounded\loader.gif" />
+    <Content Include="fonts\img\images\prettyPhoto\light_rounded\sprite.png" />
+    <Content Include="fonts\img\images\prettyPhoto\light_square\btnNext.png" />
+    <Content Include="fonts\img\images\prettyPhoto\light_square\btnPrevious.png" />
+    <Content Include="fonts\img\images\prettyPhoto\light_square\default_thumbnail.gif" />
+    <Content Include="fonts\img\images\prettyPhoto\light_square\loader.gif" />
+    <Content Include="fonts\img\images\prettyPhoto\light_square\sprite.png" />
+    <Content Include="fonts\img\img-exemples-destaques\photo-destaque-cortina.png" />
+    <Content Include="fonts\img\img-exemples-destaques\photo-destaque-letreiro.png" />
+    <Content Include="fonts\img\img-exemples-destaques\photo-destaque-principal.png" />
+    <Content Include="fonts\img\img-exemples-destaques\photo-destaque-sanfon.png" />
+    <Content Include="fonts\img\img-master-slider\1.jpg" />
+    <Content Include="fonts\img\img-master-slider\2.jpg" />
+    <Content Include="fonts\img\img-master-slider\3.jpg" />
+    <Content Include="fonts\img\img-master-slider\4.jpg" />
+    <Content Include="fonts\img\img-master-slider\5.jpg" />
+    <Content Include="fonts\img\img-master-slider\6.jpg" />
+    <Content Include="fonts\img\img-master-slider\7.jpg" />
+    <Content Include="fonts\img\img-master-slider\8.jpg" />
+    <Content Include="fonts\img\img-master-slider\cover.jpg" />
+    <Content Include="fonts\img\img-master-slider\Destaque-Banner.png" />
     <Content Include="fonts\img\linha.png" />
     <Content Include="fonts\img\logo.fw.png" />
     <Content Include="fonts\img\logo.png" />
@@ -496,6 +567,12 @@
     <Content Include="Scripts\flex.js" />
     <Content Include="Scripts\holder.js" />
     <Content Include="Scripts\html5shiv.js" />
+    <Content Include="Scripts\js-master-slider\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\js-master-slider\jquery.easing.min.js" />
+    <Content Include="Scripts\js-master-slider\jquery.prettyPhoto.js" />
+    <Content Include="Scripts\js-master-slider\masterslider.min.js" />
+    <Content Include="Scripts\js-master-slider\masterslider.partialview.dev.js" />
+    <Content Include="Scripts\js-master-slider\masterslider.partialview.js" />
     <Content Include="Scripts\Outros\bootstrap.js" />
     <Content Include="Scripts\Outros\bootstrap.min.js" />
     <Content Include="Content\Outros\bootstrap-theme.css.map" />
@@ -524,6 +601,7 @@
       <DependentUpon>Cliquemix.edmx</DependentUpon>
       <LastGenOutput>Cliquemix.cs</LastGenOutput>
     </Content>
+    <Content Include="fonts\img\images\prettyPhoto\default\Thumbs.db" />
     <None Include="Scripts\Outros\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\Outros\jquery-2.1.1.js" />
     <Content Include="Scripts\Outros\jquery-2.1.1.min.js" />
@@ -665,6 +743,8 @@
     <Content Include="Views\PerfilAnunciante\EditarPerfilDadosUsuario.cshtml" />
     <Content Include="Views\PerfilAnunciante\PerfilAnunciante.cshtml" />
     <Content Include="Views\PerfilAnunciante\PerfilAnunciantePrincipal.cshtml" />
+    <Content Include="Views\Destaque\EscolheDestaque.cshtml" />
+    <Content Include="Views\Destaque\ListDestaque.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
