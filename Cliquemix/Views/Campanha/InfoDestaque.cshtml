@@ -1,25 +1,40 @@
-﻿@using System.Globalization
-@model IEnumerable<Cliquemix.Models.tbDestaque>
+﻿@*
+@model Cliquemix.Models.tbDestaque
 
 @try
 {
-    foreach (var item in Model)
-    {
-        <div class="portlet portlet-green">
-            <div class="portlet-heading">
-                <div class="portlet-title">
-                    <h4 style="align-content: center;">Informações do Destaque</h4>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="portlet-body">
-                <h3>Popover Demo</h3>
-                <h3>Popover Directions</h3>
-            </div>
-        </div>
-    }
+    @Html.HiddenFor(m => m.did)
+    <div class="portlet-body">
+        <label class="col-sm-7" style="font-weight: bold">Título</label>
+        <div class="clearfix"></div>
+        @Html.LabelFor(m => m.tituloDestaque, new {@class = "col-sm-7", style = "font-weight: normal"})
+        <div class="clearfix"></div>
+        <br />
+        <label class="col-sm-4" style="font-size: 12px; font-weight: bold;">Tempo de Espera</label>
+        <label class="col-sm-4" style="font-size: 12px; font-weight: bold;">Valor do Destaque</label>
+        <label class="col-sm-4" style="font-size: 12px; font-weight: bold;">Tempo de Duração</label>
+        <div class="clearfix"></div>
+        @Html.LabelFor(m => m.tmpEspera, new {@class = "col-sm-4", style = "font-size: 12px; font-weight: normal"})
+        <i class="fa fa-money"></i>@Html.LabelFor(m => m.qtCredito, new {@class = "col-sm-4", style = "font-size: 12px; font-weight: normal"})
+        @Html.LabelFor(m => m.qtDuracao + " Dias", new {@class = "col-sm-4", style = "font-size: 12px; font-weight: normal"})
+        <div class="clearfix"></div>
+    </div>
 }
 catch (Exception)
 {
-    <br /><br />
-}
+    <div class="portlet-body">
+        <label class="col-sm-7" style="font-weight: bold">Título</label>
+        <div class="clearfix"></div>
+        @Html.Label("Título", new { @class = "col-sm-7", style = "font-weight: normal" })
+        <div class="clearfix"></div>
+        <br />
+        <label class="col-sm-4" style="font-size: 12px; font-weight: bold;">Tempo de Espera</label>
+        <label class="col-sm-4" style="font-size: 12px; font-weight: bold;">Valor do Destaque</label>
+        <label class="col-sm-4" style="font-size: 12px; font-weight: bold;">Tempo de Duração</label>
+        <div class="clearfix"></div>
+        @Html.Label("Tempo de Espera", new { @class = "col-sm-4", style = "font-size: 12px; font-weight: normal" })
+        <i class="fa fa-money"></i>@Html.Label("Valor do Destaque", new { @class = "col-sm-4", style = "font-size: 12px; font-weight: normal" })
+        @Html.Label("Duração (em dias)", new { @class = "col-sm-4", style = "font-size: 12px; font-weight: normal" })
+        <div class="clearfix"></div>
+    </div>
+}*@
