@@ -114,7 +114,7 @@
 
     function AtualizaCodDestaque() {
         var obj = document.getElementById("did");
-        alert(obj.options[obj.selectedIndex].value);
+        document.getElementById('tdid').value = obj.options[obj.selectedIndex].value;
         //document.getElementById('tdid').value = obj.options[obj.selectedIndex].value;
         //$("input[id='tdid']").val(obj.options[obj.selectedIndex].value);
         //detalhesDestaque();
