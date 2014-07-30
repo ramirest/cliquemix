@@ -140,6 +140,7 @@
         <EntityTypeShape EntityType="cliquemixModel.tbCampanhaTmp" Width="1.5" PointX="0.75" PointY="3.875" />
         <AssociationConnector Association="cliquemixModel.ctid_tbCampanha_tbCampanhaTmp_fk" />
         <AssociationConnector Association="cliquemixModel.ctid_tbCampanhaAnuncio_tbCampanhaTmp_fk" />
+        <AssociationConnector Association="cliquemixModel.pcid_tbDestaque_tbPacoteClique_fk" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

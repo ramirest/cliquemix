@@ -184,6 +184,15 @@ namespace Cliquemix.Models
         }
         #endregion
 
+        #region "Retornar Início e Término padrão de publicação da Campanha"
+        public static int RetornarInicioTerminoPadraoPublicacaoCampanha()
+        {
+            var it = (from config in db.tbConfigPadrao select config).First();
+            if (it.itppc != null) return (int) it.itppc;
+            else return 0;
+        }
+        #endregion
+
         #region "Retornar o Código do Status Padrão para uma Nova Campanha"
         public static int RetornarStatusPadraoCampanha()
         {

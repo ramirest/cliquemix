@@ -30,11 +30,13 @@ namespace Cliquemix.Models
         public string imgDestaque { get; set; }
         public Nullable<int> ddid { get; set; }
         public Nullable<double> qtDuracao { get; set; }
+        public Nullable<int> pcid { get; set; }
     
         public virtual ICollection<tbAnuncianteDestaque> tbAnuncianteDestaque { get; set; }
         public virtual tbDestaqueDuracao tbDestaqueDuracao { get; set; }
         public virtual ICollection<tbDestaqueAnunciante> tbDestaqueAnunciante { get; set; }
         public virtual ICollection<tbPremioDestaque> tbPremioDestaque { get; set; }
         public virtual ICollection<tbCampanha> tbCampanha { get; set; }
+        public virtual tbPacoteClique tbPacoteClique { get; set; }
     }
 }

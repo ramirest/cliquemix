@@ -17,6 +17,7 @@ namespace Cliquemix.Models
         public tbPacoteClique()
         {
             this.tbCampanha = new HashSet<tbCampanha>();
+            this.tbDestaque = new HashSet<tbDestaque>();
         }
     
         public int pcid { get; set; }
@@ -25,5 +26,6 @@ namespace Cliquemix.Models
         public Nullable<int> qtdeCliques { get; set; }
     
         public virtual ICollection<tbCampanha> tbCampanha { get; set; }
+        public virtual ICollection<tbDestaque> tbDestaque { get; set; }
     }
 }

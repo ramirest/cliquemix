@@ -668,6 +668,7 @@
     <Content Include="Views\PerfilAnunciante\PerfilAnunciantePrincipal.cshtml" />
     <Content Include="Views\Dialog\Index.cshtml" />
     <Content Include="Views\Campanha\NovoAnuncio.cshtml" />
+    <Content Include="Views\Campanha\InfoPacoteClique.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -37,17 +37,40 @@ namespace Cliquemix.Controllers
         //[ValidateAntiForgeryToken]
         public ActionResult CreateCampanha([Bind(Include = "cid,tituloCampanha,did,pcid")] tbCampanha tbCampanha)
         {
+            
             // Cria uma instância com as informações da cultura americana
             CultureInfo culturaAmericana = new CultureInfo("en-US");
-
+            /*
             // Converte a string para um valor DateTime
             DateTime dtInicio = DateTime.Parse(Request.Form.Get("dtInicio"), culturaAmericana);
             DateTime dtTermino = DateTime.Parse(Request.Form.Get("dtTermino"), culturaAmericana);
             DateTime hrInicio = DateTime.Parse(Request.Form.Get("hrInicio"), culturaAmericana);
             DateTime hrTermino = DateTime.Parse(Request.Form.Get("hrTermino"), culturaAmericana);
-
-            tbCampanha.dtInicio = new DateTime(dtInicio.Year, dtInicio.Month, dtInicio.Day, hrInicio.Hour, hrInicio.Minute, hrInicio.Second);
-            tbCampanha.dtTermino = new DateTime(dtTermino.Year, dtTermino.Month, dtTermino.Day, hrTermino.Hour, hrTermino.Minute, hrTermino.Second);
+            */
+            if (ProcFunc.RetornarInicioTerminoPadraoPublicacaoCampanha() == 0) // 0 = Iniciar ao Publicar e Término no fim dos cliques
+            {
+                tbCampanha.dtInicio = DateTime.Now;
+                tbCampanha.dtTermino = new DateTime();
+            }
+            else if (ProcFunc.RetornarInicioTerminoPadraoPublicacaoCampanha() == 2) // 2 = Definido manualmente pelos administradores
+            {
+                tbCampanha.dtInicio = new DateTime();
+                tbCampanha.dtTermino = new DateTime();                
+            }
+            else if (ProcFunc.RetornarInicioTerminoPadraoPublicacaoCampanha() == 3) // 3 = Informar somente o Início e Término no fim dos cliques
+            {
+                DateTime dtInicio = DateTime.Parse(Request.Form.Get("dtInicio"), culturaAmericana);
+                DateTime hrInicio = DateTime.Parse(Request.Form.Get("hrInicio"), culturaAmericana);
+                tbCampanha.dtInicio = new DateTime(dtInicio.Year, dtInicio.Month, dtInicio.Day, hrInicio.Hour, hrInicio.Minute, hrInicio.Second);
+                tbCampanha.dtTermino = new DateTime();
+            }
+            else if (ProcFunc.RetornarInicioTerminoPadraoPublicacaoCampanha() == 4) // 4 = Informar somente o Término e Início ao publicar
+            {
+                tbCampanha.dtInicio = DateTime.Now;
+                DateTime dtTermino = DateTime.Parse(Request.Form.Get("dtInicio"), culturaAmericana);
+                DateTime hrTermino = DateTime.Parse(Request.Form.Get("hrInicio"), culturaAmericana);
+                tbCampanha.dtTermino = new DateTime(dtTermino.Year, dtTermino.Month, dtTermino.Day, hrTermino.Hour, hrTermino.Minute, hrTermino.Second);
+            }
             tbCampanha.csid = ProcFunc.RetornarStatusPadraoCampanha();
             tbCampanha.pid = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());
             tbCampanha.ctid = Convert.ToInt32(Request.Form.Get("ctid"));
@@ -130,10 +153,10 @@ namespace Cliquemix.Controllers
         {
             try
             {
-                var tbDestaque = db.tbDestaque.Where(d => d.did == pCodDestaque).First();
-                if (tbDestaque.did >= 0)
+                var tbDestaque = db.tbDestaque.Where(c => c.did == pCodDestaque);
+                if (tbDestaque.Any())
                 {
-                    return PartialView(tbDestaque);
+                    return PartialView(tbDestaque.ToList());
                 }
                 else
                 {
@@ -271,7 +294,6 @@ namespace Cliquemix.Controllers
             }
             return null;
         }
-
 
     }
 }

@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Cliquemix.Models.tbPacoteClique>
+
+@try
+{
+    foreach (var item in Model)
+    {
+        <label class="col-sm-7" style="font-weight: bold">Título</label>
+        <div class="clearfix"></div>
+        @Html.Label(item.tituloPacote, new { @class = "col-sm-7", style = "font-weight: normal" })
+        <div class="clearfix"></div>
+        <br />
+        <label class="col-sm-4" style="font-size: 12px; font-weight: bold;">Qtde de Cliques</label>
+        <div class="clearfix"></div>
+        @Html.Label(item.dsPacote, new { @class = "col-sm-4", style = "font-size: 12px; font-weight: normal" })
+        <div class="clearfix"></div>
+        <br />
+        <label class="col-sm-4" style="font-size: 12px; font-weight: bold;">Tempo de Espera</label>
+        <div class="clearfix"></div>
+        @Html.Label(item.dsPacote, new { @class = "col-sm-4", style = "font-size: 12px; font-weight: normal" })
+        <div class="clearfix"></div>
+    }
+}
+catch (Exception)
+{
+    <br />
+}

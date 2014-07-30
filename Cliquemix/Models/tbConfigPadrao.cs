@@ -20,6 +20,7 @@ namespace Cliquemix.Models
         public Nullable<int> tpua { get; set; }
         public Nullable<int> spadc { get; set; }
         public Nullable<int> spnac { get; set; }
+        public Nullable<int> itppc { get; set; }
     
         public virtual tbAnuncioStatus tbAnuncioStatus { get; set; }
         public virtual tbAnuncioStatus tbAnuncioStatus1 { get; set; }
