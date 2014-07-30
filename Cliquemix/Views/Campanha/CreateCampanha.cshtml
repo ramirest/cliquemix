@@ -11,7 +11,7 @@
     // Tudo = 4 [Não existe anúncio para vincular]
 }
 
-<script>    
+<script>
     $(document).ready(function () {
         $('#btnRight').click(function (e) {
             var selectedOpts = $('#lstBox1 option:selected');
@@ -52,10 +52,10 @@
         });
     }
 
-    function VerificaData(digData, id) 
+    function VerificaData(digData, id)
     {
         var bis_to = 0;
-        var data = digData; 
+        var data = digData;
         var tam = data.length;
         var ano_max = 2100;
         var ano_min = 1900;
@@ -66,45 +66,45 @@
             document.getElementById(id).value = dia +"/"+ mes +"/"+ ano;
             if ((ano > ano_min)||(ano < ano_max))
             {
-                switch (mes) 
+                switch (mes)
                 {
-                case '01':
-                case '03':
-                case '05':
-                case '07':
-                case '08':
-                case '10':
-                case '12':
-                    if  (dia <= 31) 
-                    {
-                        return true;
-                    }
-                    break;
-				
-                case '04':		
-                case '06':
-                case '09':
-                case '11':
-                    if  (dia <= 30) 
-                    {
-                        return true;
-                    }
-                    break;
-                case '02':
-                    /* Validando ano Bis---to / fevereiro / dia */ 
-                    if ((ano % 4 == 0) || (ano % 100 == 0) || (ano % 400 == 0)) 
-                    { 
-                        bis_to = 1; 
-                    } 
-                    if ((bis_to == 1) && (dia <= 29)) 
-                    { 
-                        return true;				 
-                    } 
-                    if ((bis_to != 1) && (dia <= 28)) 
-                    { 
-                        return true; 
-                    }
-                    break;					
+                    case '01':
+                    case '03':
+                    case '05':
+                    case '07':
+                    case '08':
+                    case '10':
+                    case '12':
+                        if  (dia <= 31)
+                        {
+                            return true;
+                        }
+                        break;
+
+                    case '04':
+                    case '06':
+                    case '09':
+                    case '11':
+                        if  (dia <= 30)
+                        {
+                            return true;
+                        }
+                        break;
+                    case '02':
+                        /* Validando ano Bis---to / fevereiro / dia */
+                        if ((ano % 4 == 0) || (ano % 100 == 0) || (ano % 400 == 0))
+                        {
+                            bis_to = 1;
+                        }
+                        if ((bis_to == 1) && (dia <= 29))
+                        {
+                            return true;
+                        }
+                        if ((bis_to != 1) && (dia <= 28))
+                        {
+                            return true;
+                        }
+                        break;
                 }
             }
         }
@@ -119,7 +119,7 @@
         //$("input[id='tdid']").val(obj.options[obj.selectedIndex].value);
         //detalhesDestaque();
     };
-
+    
     function detalhesDestaque() {
         $.ajax(
         {
@@ -244,34 +244,34 @@
                                             <div class="clearfix"></div>
                                             <div class="form-group col-lg-6"></div>
 
-                                                <div class="form-group col-lg-3">
-                                                    <label>Data de Término</label>
-                                                    <div id="sandbox-container">
-                                                        <div class="input-group">
-                                                            <span class="input-group-btn">
-                                                                <button class="btn btn-default add-on " type="button">
-                                                                    <i class="fa fa-calendar"></i>
-                                                                </button>
-                                                            </span>
-                                                            <input id="dtTermino" name="dtTermino" class="form-control datepicker" type="text" style="max-width: 100px;" onchange="VerificaData(this.value, this.id);" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group col-lg-3">
-                                                    <label>Hora de Término</label>
-                                                    <div class="input-append bootstrap-timepicker input-group">
+                                            <div class="form-group col-lg-3">
+                                                <label>Data de Término</label>
+                                                <div id="sandbox-container">
+                                                    <div class="input-group">
                                                         <span class="input-group-btn">
-                                                            <button class="btn btn-default add-on" type="button">
-                                                                <i class="fa fa-clock-o"></i>
+                                                            <button class="btn btn-default add-on " type="button">
+                                                                <i class="fa fa-calendar"></i>
                                                             </button>
                                                         </span>
-                                                        <input id="hrTermino" name="hrTermino" class="form-control timepicker" type="text" style="max-width: 100px;" />
+                                                        <input id="dtTermino" name="dtTermino" class="form-control datepicker" type="text" style="max-width: 100px;" onchange="VerificaData(this.value, this.id);" />
                                                     </div>
                                                 </div>
+                                            </div>
 
-                                                <div class="clearfix"></div>
+                                            <div class="form-group col-lg-3">
+                                                <label>Hora de Término</label>
+                                                <div class="input-append bootstrap-timepicker input-group">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-default add-on" type="button">
+                                                            <i class="fa fa-clock-o"></i>
+                                                        </button>
+                                                    </span>
+                                                    <input id="hrTermino" name="hrTermino" class="form-control timepicker" type="text" style="max-width: 100px;" />
+                                                </div>
+                                            </div>
 
+                                            <div class="clearfix"></div>
+                                            
                                             <br/><br/>
 
                                             <div class="col-sm-offset-10 col-sm-1">
@@ -312,24 +312,24 @@
                                                             <label id="tmpEspera" class="col-sm-4" style="font-size: 12px; font-weight: normal"></label>
                                                             <label id="qtcredito" class="col-sm-4" style="font-size: 12px; font-weight: normal"><i class="fa fa-money"></i></label>
                                                             <label id="qtDuracao" class="col-sm-4" style="font-size: 12px; font-weight: normal"></label>
-                                                    <div class="clearfix"></div>
+                                                            <div class="clearfix"></div>
                                                         </div>
                                                     </div>
                                                     <div class="portlet-footer">
                                                         <label style="font-size: 12px; font-weight: bold">Código do Destaque:   </label>
-                                                        <label id="tdid" style="font-size: 12px; font-weight: normal"></label>
+                                                        @*<label id="tdid" style="font-size: 12px; font-weight: normal"></label>*@
                                                     </div>
                                                 </div>
-                                                </div>
+                                            </div>
 
-                                                <div class="clearfix"></div>
+                                            <div class="clearfix"></div>
 
                                             <div class="form-group col-lg-offset-9">
 
                                                 <button type="button" onclick=" $('#lnk1').click(); " class="btn btn-default">Anterior</button>
                                                 <button type="button" onclick=" $('#lnk3').click(); " class="btn btn-default">Próximo</button>
-                                                </div>
                                             </div>
+                                        </div>
 
                                         
 
@@ -434,7 +434,16 @@
                                             </div>
                                             <div class="clearfix"></div>
 
+                                            <div id="multiSelect" class="panel-collapse collapse in">
+                                                <p>
+                                                    <select id="multiselect4" multiple="multiple"></select>
+                                                </p>
+                                            </div>
 
+
+
+
+                                            
                                             <div class="form-group col-lg-12"></div>
                                             <div class="form-group col-lg-12"></div>
                                             <div class="form-group col-lg-12"></div>
