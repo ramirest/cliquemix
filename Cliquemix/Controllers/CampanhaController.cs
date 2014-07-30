@@ -130,10 +130,10 @@ namespace Cliquemix.Controllers
         {
             try
             {
-                var tbDestaque = db.tbDestaque.Where(d => d.did == pCodDestaque);
-                if (tbDestaque.Any())
+                var tbDestaque = db.tbDestaque.Where(d => d.did == pCodDestaque).First();
+                if (tbDestaque.did >= 0)
                 {
-                    return PartialView(tbDestaque.ToList());
+                    return PartialView(tbDestaque);
                 }
                 else
                 {
@@ -272,35 +272,6 @@ namespace Cliquemix.Controllers
             return null;
         }
 
-/*
-        [DataObjectMethod(DataObjectMethodType.Delete)]
-        public void DeleteEmployee(Employee z)
-        public void Delete(int campanha)
-        {
-            using (var ctx = new tbCampanhaAnuncio())
-            {
-                var x = (from y in ctx.Employees
-                         where y.EmployeeId == z.EmployeeId
-                         select y).FirstOrDefault();
-                ctx.DeleteObject(x);
-                ctx.SaveChanges();
-            }
 
-            try
-            {
-                var a = (from ca in db.tbCampanhaAnuncio where ca.ctid == campanha select ca).ToList();
-                db.tbCampanhaAnuncio.Delete(m => m.ctid == campanha);
-                db.SaveChanges();
-                db.tbCampanhaAnuncio.Delete();
-                return null;
-            }
-            catch (Exception e)
-            {
-                return null;
-                throw;
-            }
-        }
-
-/***/
     }
 }

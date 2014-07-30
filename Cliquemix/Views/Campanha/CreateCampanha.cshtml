@@ -11,7 +11,7 @@
     // Tudo = 4 [Não existe anúncio para vincular]
 }
 
-<script>    
+<script>
     $(document).ready(function () {
         $('#btnRight').click(function (e) {
             var selectedOpts = $('#lstBox1 option:selected');
@@ -24,8 +24,6 @@
             $(selectedOpts).remove();
             e.preventDefault();
         });
-
-        $('#multiselect1').multiselect();
 
         $('#btnLeft').click(function (e) {
             var selectedOpts = $('#lstBox2 option:selected');
@@ -54,10 +52,10 @@
         });
     }
 
-    function VerificaData(digData, id) 
+    function VerificaData(digData, id)
     {
         var bis_to = 0;
-        var data = digData; 
+        var data = digData;
         var tam = data.length;
         var ano_max = 2100;
         var ano_min = 1900;
@@ -68,45 +66,45 @@
             document.getElementById(id).value = dia +"/"+ mes +"/"+ ano;
             if ((ano > ano_min)||(ano < ano_max))
             {
-                switch (mes) 
+                switch (mes)
                 {
-                case '01':
-                case '03':
-                case '05':
-                case '07':
-                case '08':
-                case '10':
-                case '12':
-                    if  (dia <= 31) 
-                    {
-                        return true;
-                    }
-                    break;
-				
-                case '04':		
-                case '06':
-                case '09':
-                case '11':
-                    if  (dia <= 30) 
-                    {
-                        return true;
-                    }
-                    break;
-                case '02':
-                    /* Validando ano Bis---to / fevereiro / dia */ 
-                    if ((ano % 4 == 0) || (ano % 100 == 0) || (ano % 400 == 0)) 
-                    { 
-                        bis_to = 1; 
-                    } 
-                    if ((bis_to == 1) && (dia <= 29)) 
-                    { 
-                        return true;				 
-                    } 
-                    if ((bis_to != 1) && (dia <= 28)) 
-                    { 
-                        return true; 
-                    }
-                    break;					
+                    case '01':
+                    case '03':
+                    case '05':
+                    case '07':
+                    case '08':
+                    case '10':
+                    case '12':
+                        if  (dia <= 31)
+                        {
+                            return true;
+                        }
+                        break;
+
+                    case '04':
+                    case '06':
+                    case '09':
+                    case '11':
+                        if  (dia <= 30)
+                        {
+                            return true;
+                        }
+                        break;
+                    case '02':
+                        /* Validando ano Bis---to / fevereiro / dia */
+                        if ((ano % 4 == 0) || (ano % 100 == 0) || (ano % 400 == 0))
+                        {
+                            bis_to = 1;
+                        }
+                        if ((bis_to == 1) && (dia <= 29))
+                        {
+                            return true;
+                        }
+                        if ((bis_to != 1) && (dia <= 28))
+                        {
+                            return true;
+                        }
+                        break;
                 }
             }
         }
@@ -114,11 +112,28 @@
         return false;
     }
 
-    function AtualizaCodDid() {
+    function AtualizaCodDestaque() {
         var obj = document.getElementById("did");
-        $('#tdid').val(obj.options[obj.selectedIndex].value);
+        alert(obj.options[obj.selectedIndex].value);
+        //document.getElementById('tdid').value = obj.options[obj.selectedIndex].value;
+        //$("input[id='tdid']").val(obj.options[obj.selectedIndex].value);
         //detalhesDestaque();
     };
+    
+    function detalhesDestaque() {
+        $.ajax(
+        {
+            type: 'POST',
+            url: '/Campanha/InfoDestaque/?pCodDestaque='+ $("input[id='tdid']").val(),
+            dataType: 'html',
+            cache: true,
+            async: true,
+            success: function(data) {
+                //$('#detalhesCredito').html(data);
+            }
+        });
+    }
+
 
     function AtualizaCodPcid() {
         var obj = document.getElementById("pcid");
@@ -176,13 +191,16 @@
                                             <a href="#infoBasico" data-toggle="tab" id="lnk1"><i class="fa fa-info-circle fa-fw"></i> Informações</a>
                                         </li>
                                         <li>
-                                            <a href="#infoAnun" data-toggle="tab" id="lnk2"><i class="fa fa-thumb-tack fa-fw"></i> Vincular Anúncios</a>
+                                            <a href="#infoDestaque" data-toggle="tab" id="lnk2"><i class="fa fa-bookmark fa-fw"></i> Destaque</a>
                                         </li>
                                         <li>
-                                            <a href="#infoCli" data-toggle="tab" id="lnk3"><i class="fa fa-hand-o-down fa-fw"></i> Quantidade de Cliques</a>
+                                            <a href="#infoAnun" data-toggle="tab" id="lnk3"><i class="fa fa-thumb-tack fa-fw"></i> Vincular Anúncios</a>
                                         </li>
                                         <li>
-                                            <a href="#infoGL" data-toggle="tab" id="lnk4"><i class="fa fa-globe fa-fw"></i> Geo Localização</a>
+                                            <a href="#infoCli" data-toggle="tab" id="lnk4"><i class="fa fa-hand-o-down fa-fw"></i> Quantidade de Cliques</a>
+                                        </li>
+                                        <li>
+                                            <a href="#infoGL" data-toggle="tab" id="lnk5"><i class="fa fa-globe fa-fw"></i> Geo Localização</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -195,7 +213,6 @@
                                                 <label>Título</label>
                                                 @Html.TextBoxFor(model => model.tituloCampanha, new {@class="form-control", style="max-width: 334px"})
                                             </div>
-                                            
                                             @Html.Hidden("ctid")
                                                                                         
                                             <div class="form-group col-lg-3">
@@ -227,49 +244,94 @@
                                             <div class="clearfix"></div>
                                             <div class="form-group col-lg-6"></div>
 
-
-                                                <div class="form-group col-lg-3">
-                                                    <label>Data de Término</label>
-                                                    <div id="sandbox-container">
-                                                        <div class="input-group">
-                                                            <span class="input-group-btn">
-                                                                <button class="btn btn-default add-on " type="button">
-                                                                    <i class="fa fa-calendar"></i>
-                                                                </button>
-                                                            </span>
-                                                            <input id="dtTermino" name="dtTermino" class="form-control datepicker" type="text" style="max-width: 100px;" onchange="VerificaData(this.value, this.id);" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group col-lg-3">
-                                                    <label>Hora de Término</label>
-                                                    <div class="input-append bootstrap-timepicker input-group">
+                                            <div class="form-group col-lg-3">
+                                                <label>Data de Término</label>
+                                                <div id="sandbox-container">
+                                                    <div class="input-group">
                                                         <span class="input-group-btn">
-                                                            <button class="btn btn-default add-on" type="button">
-                                                                <i class="fa fa-clock-o"></i>
+                                                            <button class="btn btn-default add-on " type="button">
+                                                                <i class="fa fa-calendar"></i>
                                                             </button>
                                                         </span>
-                                                        <input id="hrTermino" name="hrTermino" class="form-control timepicker" type="text" style="max-width: 100px;" />
+                                                        <input id="dtTermino" name="dtTermino" class="form-control datepicker" type="text" style="max-width: 100px;" onchange="VerificaData(this.value, this.id);" />
                                                     </div>
                                                 </div>
+                                            </div>
 
-                                                <div class="clearfix"></div>
-
-                                                <div class="form-group col-lg-6">
-                                                    <label>Selecione o Destaque</label>
-                                                    <div class="clearfix"></div>
-                                                    @Html.DropDownList("did", null, string.Empty, new { style = "width:334px; height:34px", onchange = "AtualizaCodDid();" })
-                                                    @Html.Hidden("tdid")
-                                                </div>
-
-                                                <div class="clearfix"></div>
-                                                <div class="clearfix"></div>
-
-                                                <div class="col-sm-offset-10 col-sm-1">
-                                                    <button type="button" onclick=" $('#lnk2').click(); " class="btn btn-default">Próximo</button>
+                                            <div class="form-group col-lg-3">
+                                                <label>Hora de Término</label>
+                                                <div class="input-append bootstrap-timepicker input-group">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-default add-on" type="button">
+                                                            <i class="fa fa-clock-o"></i>
+                                                        </button>
+                                                    </span>
+                                                    <input id="hrTermino" name="hrTermino" class="form-control timepicker" type="text" style="max-width: 100px;" />
                                                 </div>
                                             </div>
+
+                                            <div class="clearfix"></div>
+                                            
+                                            <br/><br/>
+
+                                            <div class="col-sm-offset-10 col-sm-1">
+                                                <button type="button" onclick=" $('#lnk2').click(); " class="btn btn-default">Próximo</button>
+                                            </div>
+                                        </div>
+
+                                        
+                                        <div class="tab-pane fade" id="infoDestaque">
+                                            <h4 class="page-header">Informações sobre o Destaque da Campanha</h4>
+
+                                            <div class="col-lg-12">
+                                                <div class="portlet portlet-default">
+                                                    <div class="portlet-heading">
+                                                        <div class="portlet-title">
+                                                            <h4>Selecione o Destaque </h4>
+                                                            @Html.DropDownList("did", null, string.Empty, new { style = "width:334px; height:34px", onchange = "AtualizaCodDestaque();" })
+                                                            <br/><label> </label>
+                                                        </div>
+                                                        <div class="portlet-widgets">
+                                                            <span class="divider"></span>
+                                                            <a data-toggle="collapse" data-parent="#accordion" href="#defaultPortlet"><i class="fa fa-chevron-down"></i></a>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                    <div id="defaultPortlet" class="panel-collapse collapse in">
+                                                        <div class="portlet-body">
+                                                            <label class="col-sm-7" style="font-weight: bold">Título</label>
+                                                            <div class="clearfix"></div>
+                                                            @Html.Label("tituloDestaque", new { @class = "col-sm-7", style = "font-weight: normal" })
+                                                            <input type="text" id="tdid"/>
+                                                            <div class="clearfix"></div>
+                                                            <br />
+                                                            <label class="col-sm-4" style="font-size: 12px; font-weight: bold;">Tempo de Espera</label>
+                                                            <label class="col-sm-4" style="font-size: 12px; font-weight: bold;">Valor do Destaque</label>
+                                                            <label class="col-sm-4" style="font-size: 12px; font-weight: bold;">Tempo de Duração</label>
+                                                            <div class="clearfix"></div>
+                                                            <label id="tmpEspera" class="col-sm-4" style="font-size: 12px; font-weight: normal"></label>
+                                                            <label id="qtcredito" class="col-sm-4" style="font-size: 12px; font-weight: normal"><i class="fa fa-money"></i></label>
+                                                            <label id="qtDuracao" class="col-sm-4" style="font-size: 12px; font-weight: normal"></label>
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="portlet-footer">
+                                                        <label style="font-size: 12px; font-weight: bold">Código do Destaque:   </label>
+                                                        @*<label id="tdid" style="font-size: 12px; font-weight: normal"></label>*@
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="clearfix"></div>
+
+                                            <div class="form-group col-lg-offset-9">
+
+                                                <button type="button" onclick=" $('#lnk1').click(); " class="btn btn-default">Anterior</button>
+                                                <button type="button" onclick=" $('#lnk3').click(); " class="btn btn-default">Próximo</button>
+                                            </div>
+                                        </div>
+
+                                        
 
                                         <div class="tab-pane fade in" id="infoAnun">
                                             <h4 class="page-header">Vincular Anúncio à Campanha:</h4>
@@ -317,8 +379,8 @@
                                                 </div>
 
                                                 <div class="form-group col-lg-offset-9">
-                                                    <button type="button" onclick=" $('#lnk1').click(); " class="btn btn-default">Anterior</button>
-                                                    <button type="button" onclick=" $('#lnk3').click(); " class="btn btn-default">Próximo</button>
+                                                    <button type="button" onclick=" $('#lnk2').click(); " class="btn btn-default">Anterior</button>
+                                                    <button type="button" onclick=" $('#lnk4').click(); " class="btn btn-default">Próximo</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -342,8 +404,8 @@
 
                                             <div class="form-group col-lg-offset-9">
 
-                                                <button type="button" onclick=" $('#lnk2').click(); " class="btn btn-default">Anterior</button>
-                                                <button type="button" onclick=" $('#lnk4').click(); " class="btn btn-default">Próximo</button>
+                                                <button type="button" onclick=" $('#lnk3').click(); " class="btn btn-default">Anterior</button>
+                                                <button type="button" onclick=" $('#lnk5').click(); " class="btn btn-default">Próximo</button>
                                             </div>
                                         </div>
 
@@ -371,13 +433,12 @@
                                                 @Html.DropDownList("cid", null, string.Empty, new { style = "width:300px; height:34px" })
                                             </div>
                                             <div class="clearfix"></div>
-
-
+                                            
                                             <div class="form-group col-lg-12"></div>
                                             <div class="form-group col-lg-12"></div>
                                             <div class="form-group col-lg-12"></div>
                                             <div class="form-group col-lg-offset-9">
-                                                <button type="button" onclick=" $('#lnk3').click(); " class="btn btn-default">Anterior</button>
+                                                <button type="button" onclick=" $('#lnk4').click(); " class="btn btn-default">Anterior</button>
                                                 <button type="submit" class="btn btn-default" id="save" value="save">
                                                     <i class="fa fa-floppy-o"></i>
                                                     Salvar
