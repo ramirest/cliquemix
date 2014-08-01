@@ -42,7 +42,11 @@
                             </h4>
                         </div>
                         <div class="portlet-widgets">
-                            <button class="btn btn-white btn-xs"><i class="fa fa-plus-circle"></i> Novo Usuário</button>
+                            @Html.ActionLink("Novo Usuário", "Register", "Account", new
+                            {
+                                @class = "btn btn-white btn-xs",
+                                style = "color: #333333;"
+                            })
                         </div>
                         <div class="clearfix"></div>
                     </div>

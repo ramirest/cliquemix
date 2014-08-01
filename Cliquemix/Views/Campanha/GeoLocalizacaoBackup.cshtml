@@ -1,0 +1,127 @@
+﻿@using Cliquemix.Models
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="~/Scripts/plugins/bootstrap/bootstrap.min.js"></script>
+<script src="~/Scripts/plugins/bootstrap-multiselect/bootstrap-multiselect.js"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#multiEstados').multiselect({
+            includeSelectAllOption: true,
+            maxHeight: 250,
+            buttonClass: 'btn btn-default'
+        });
+
+        $('#multiCidades').multiselect({
+            includeSelectAllOption: true,
+            enableFiltering: true,
+            maxHeight: 230,
+            buttonClass: 'btn btn-default'
+        });
+    });
+
+
+    function GetCidade(item) {
+        $.ajax(
+        {
+            type: 'POST',
+            url: '/Campanha/GeoLocalizacao/?estados=' + item,
+            dataType: 'html',
+            cache: false,
+            async: true,
+            success: function (data) {
+                $('#dadosCidade').html(data);
+                //GetCidade(string[] estados)
+                //$('#multiCidades').html(data);
+            }
+        });
+    }
+
+    function GetCidades() {
+        var select1 = document.getElementById("multiEstados");
+        var selected1 = [];
+        for (var i = 0; i < select1.length; i++) {
+            if (select1.options[i].selected) {
+                selected1.push(select1.options[i].value);
+                //alert(select1.options[i].value)
+            }
+        }
+        GetCidade(selected1);
+    }
+</script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group col-lg-6" id="dadosPais">
+        <h3>País
+            <br/>
+            <small>Brasil</small>
+        </h3>
+    </div>
+    <div class="clearfix"></div>
+
+
+    <div class="form-group col-lg-6" id="dadosEstado">
+        <h3>
+            Estados
+            <br />
+            @try
+            {
+                @SelectExtensions.ListBox(Html, "estados", ViewBag.estados, new {id = "multiEstados", name = "multiEstados"}) @*multiselect3*@
+            }
+            catch (Exception)
+            {
+                var db = new ApplicationDbContext();
+                var iEstado = new List<SelectListItem>();
+
+                foreach (var iUf in db.tbEstado)
+                {
+                    iEstado.Add(new SelectListItem
+                    {
+                        Text = iUf.sgEstado,
+                        Value = iUf.eid.ToString(),
+                        //if (iUf == 0) Selected = false
+                        //else Selected = false
+                        Selected = false
+                    });
+                }
+                ViewBag.estados = iEstado.OrderBy(e => e.Text).ToList();
+                @SelectExtensions.ListBox(Html, "estados", ViewBag.estados, new {id = "multiEstados", name = "multiEstados"}) @*multiselect3*@
+            }
+        </h3>
+    </div>
+    <div class="clearfix"></div>
+
+
+    <div class="form-group col-lg-6" id="dadosCidade">
+        <h3>
+            Cidades
+            <br />
+            @try
+            {
+                @SelectExtensions.ListBox(Html, "cidades", ViewBag.cidades, new {id = "multiCidades", name = "multiCidades"}) @*multiselect4*@
+            }
+            catch (Exception)
+            {
+                var db = new ApplicationDbContext();
+                var iCidade = new List<SelectListItem>();
+                foreach (var iCid in db.tbCidade.Where(c => c.eid == 14))
+                {
+                    iCidade.Add(new SelectListItem
+                    {
+                        Text = iCid.nomeCidade,
+                        Value = iCid.cid.ToString(),
+                        Selected = false
+                    });
+                }
+                ViewBag.cidades = iCidade.OrderBy(e => e.Text).ToList();
+                @SelectExtensions.ListBox(Html, "cidades", ViewBag.cidades, new {id = "multiCidades", name = "multiCidades"}) @*multiselect4*@
+            }
+        </h3>
+    </div>
+    <div class="clearfix"></div>
+
+    <button type="button" class="btn btn-default" id="btnCidade" name="btnCidade" onclick=" GetCidades(); ">Filtrar</button>
+}

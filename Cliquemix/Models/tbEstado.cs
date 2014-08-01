@@ -16,7 +16,7 @@ namespace Cliquemix.Models
     {
         public tbEstado()
         {
-            this.tbCampanhaAnuncioLocalizacao = new HashSet<tbCampanhaAnuncioLocalizacao>();
+            this.tbCampanhaLocalizacao = new HashSet<tbCampanhaLocalizacao>();
             this.tbCep = new HashSet<tbCep>();
             this.tbCidade = new HashSet<tbCidade>();
         }
@@ -27,7 +27,7 @@ namespace Cliquemix.Models
         public Nullable<int> ibge { get; set; }
         public Nullable<int> paid { get; set; }
     
-        public virtual ICollection<tbCampanhaAnuncioLocalizacao> tbCampanhaAnuncioLocalizacao { get; set; }
+        public virtual ICollection<tbCampanhaLocalizacao> tbCampanhaLocalizacao { get; set; }
         public virtual ICollection<tbCep> tbCep { get; set; }
         public virtual ICollection<tbCidade> tbCidade { get; set; }
         public virtual tbPais tbPais { get; set; }

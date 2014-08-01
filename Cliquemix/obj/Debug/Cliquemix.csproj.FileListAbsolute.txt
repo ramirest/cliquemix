@@ -1,0 +1,162 @@
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Cliquemix.dll.config
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Cliquemix.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Cliquemix.pdb
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Antlr3.Runtime.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\BLToolkit.4.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\BLToolkit.Data.DataProvider.MySql.4.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\EntityFramework.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\EntityFramework.SqlServer.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\EntLibContrib.Data.MySql.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.AspNet.Identity.Core.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.Owin.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.Owin.Security.Cookies.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.Owin.Security.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.Owin.Security.Facebook.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.Owin.Security.Google.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.Owin.Security.OAuth.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.Owin.Security.Twitter.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.Practices.EnterpriseLibrary.Data.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.Practices.ServiceLocation.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.Practices.Unity.Configuration.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.Practices.Unity.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.Practices.Unity.Interception.Configuration.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.Practices.Unity.Interception.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.Web.Infrastructure.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Newtonsoft.Json.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Owin.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\System.Net.Http.Formatting.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\System.Web.Helpers.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\System.Web.Http.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\System.Web.Http.WebHost.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\System.Web.Mvc.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\System.Web.Optimization.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\System.Web.Razor.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\System.Web.WebPages.Deployment.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\System.Web.WebPages.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\System.Web.WebPages.Razor.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\WebGrease.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\EntityFramework.xml
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\EntityFramework.SqlServer.xml
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\EntLibContrib.Data.MySql.pdb
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\EntLibContrib.Data.MySql.xml
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.Practices.EnterpriseLibrary.Common.xml
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.Practices.EnterpriseLibrary.Data.xml
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.Practices.ServiceLocation.pdb
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.Practices.ServiceLocation.xml
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.Practices.Unity.xml
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.Practices.Unity.Configuration.xml
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.Practices.Unity.Interception.xml
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.Practices.Unity.Interception.Configuration.xml
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\System.Web.Helpers.xml
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\System.Web.Mvc.xml
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\System.Web.Optimization.xml
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\System.Web.Razor.xml
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\System.Web.WebPages.xml
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\System.Web.WebPages.Deployment.xml
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\System.Web.WebPages.Razor.xml
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Newtonsoft.Json.xml
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Antlr3.Runtime.pdb
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\System.Net.Http.Formatting.xml
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\System.Web.Http.xml
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\System.Web.Http.WebHost.xml
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.AspNet.Identity.Core.xml
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.Owin.xml
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.Owin.Security.xml
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.Owin.Security.Facebook.xml
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.Owin.Security.Cookies.xml
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.Owin.Security.OAuth.xml
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.Owin.Security.Google.xml
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.Owin.Security.Twitter.xml
+E:\Sicove\Sistema de Click\Repos\Cliquemix\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\Sicove\Sistema de Click\Repos\Cliquemix\obj\Debug\Cliquemix.csprojResolveAssemblyReference.cache
+E:\Sicove\Sistema de Click\Repos\Cliquemix\obj\Debug\Cliquemix.dll
+E:\Sicove\Sistema de Click\Repos\Cliquemix\obj\Debug\Cliquemix.pdb
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\obj\Debug\Cliquemix.csprojResolveAssemblyReference.cache
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\obj\Debug\Cliquemix.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\obj\Debug\Cliquemix.pdb
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Cliquemix.dll.config
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Cliquemix.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Cliquemix.pdb
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Antlr3.Runtime.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\BLToolkit.4.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\BLToolkit.Data.DataProvider.MySql.4.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\EntityFramework.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\EntityFramework.SqlServer.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\EntLibContrib.Data.MySql.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.AspNet.Identity.Core.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Owin.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Owin.Security.Cookies.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Owin.Security.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Owin.Security.Facebook.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Owin.Security.Google.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Owin.Security.OAuth.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Owin.Security.Twitter.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Practices.EnterpriseLibrary.Data.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Practices.ServiceLocation.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Practices.Unity.Configuration.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Practices.Unity.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Practices.Unity.Interception.Configuration.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Practices.Unity.Interception.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Web.Infrastructure.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Newtonsoft.Json.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Owin.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\System.Net.Http.Formatting.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\System.Web.Helpers.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\System.Web.Http.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\System.Web.Http.WebHost.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\System.Web.Mvc.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\System.Web.Optimization.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\System.Web.Razor.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\System.Web.WebPages.Deployment.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\System.Web.WebPages.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\System.Web.WebPages.Razor.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\WebGrease.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\EntityFramework.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\EntityFramework.SqlServer.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\EntLibContrib.Data.MySql.pdb
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\EntLibContrib.Data.MySql.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Practices.EnterpriseLibrary.Common.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Practices.EnterpriseLibrary.Data.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Practices.ServiceLocation.pdb
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Practices.ServiceLocation.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Practices.Unity.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Practices.Unity.Configuration.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Practices.Unity.Interception.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Practices.Unity.Interception.Configuration.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\System.Web.Helpers.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\System.Web.Mvc.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\System.Web.Optimization.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\System.Web.Razor.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\System.Web.WebPages.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\System.Web.WebPages.Deployment.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\System.Web.WebPages.Razor.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Newtonsoft.Json.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Antlr3.Runtime.pdb
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\System.Net.Http.Formatting.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\System.Web.Http.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\System.Web.Http.WebHost.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.AspNet.Identity.Core.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Owin.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Owin.Security.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Owin.Security.Facebook.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Owin.Security.Cookies.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Owin.Security.OAuth.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Owin.Security.Google.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Owin.Security.Twitter.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Owin.Security.MicrosoftAccount.xml

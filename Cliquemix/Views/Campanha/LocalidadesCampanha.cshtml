@@ -1,0 +1,94 @@
+﻿@model IEnumerable<Cliquemix.Models.tbCampanhaLocalizacao>
+
+<script>
+    function excluirLocalidade() {
+        $.ajax(
+        {
+            type: 'POST', //Delete(int campanha)
+            url: '/Campanha/Delete/?campanha='+@ViewBag.CodCampanha,
+            //ExcluirAnuncioCampanha(int campanha)
+            dataType: 'html',
+            cache: true,
+            async: true,
+            success: function() {
+                $('btnCancelar').click();
+            }
+        });
+    }
+</script>
+
+<div class="portlet-body">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="text-center">País</th>
+                    <th class="text-center">Estado</th>
+                    <th class="text-center">Cidade</th>
+                    <th class="text-center">Ações</th>
+                </tr>
+            </thead>
+            @try
+            {
+                foreach (var item in Model)
+                {
+                    <tbody>
+                        <tr>
+                            <td class="text-center">
+                                @Html.DisplayFor(modelItem => item.tbPais.nomePais) @* Nome do País *@
+                            </td>
+                            <td class="text-center">
+                                @Html.DisplayFor(modelItem => item.tbEstado.sgEstado) @* Sigla do Estado *@
+                            </td>
+                            <td class="text-center">
+                                @Html.DisplayFor(modelItem => item.tbCidade.nomeCidade) @* Nome da Cidade *@
+                            </td>
+                            <td class="text-center">
+                                <a class="btn btn-orange" title="Excluir" data-toggle="modal" data-target="#excluir"
+                                   data-placement="top" href="#" data-popup-ordinal="2" id="btnExcluir">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                }
+                <div class="modal modal-flex fade" id="excluir" tabindex="-1" role="dialog" aria-labelledby="flexModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" style="min-width: 50%;">
+                        <div class="modal-content" id="conteudo">
+                            <!-- Excluir Notification Box -->
+                            <div class="logout-message">
+                                <h3>
+                                    <i class="fa fa-sign-out text-green"></i> Excluir
+                                </h3>
+                                <p>Clique no botão excluir para confirmar.</p>
+                                <ul class="list-inline">
+                                    <li>
+                                        <button type="button" id="btnExcluirAnuncio" class="btn btn-green" onclick="excluirAnuncio();">
+                                            <strong>Excluir</strong>
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button type="button" id="btnCancelar" class="btn btn-green" data-dismiss="modal">Cancel</button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- /#Excluir -->
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+            }
+            catch (Exception)
+            {
+                <br />
+                <label style="color: #34495E; font-weight: normal; font-size: 20px">
+                    Campanha disponível para todas as localidades
+                </label>
+
+                <div class="clearfix"></div>
+                <div class="clearfix"></div>
+            }
+        </table>
+    </div>
+</div>

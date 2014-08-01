@@ -1,0 +1,324 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EntLibContrib.Data.MySql</name>
+    </assembly>
+    <members>
+        <member name="T:EntLibContrib.Data.MySql.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Data.MySql.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Data.MySql.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Data.MySql.Properties.Resources.ExceptionCommandNotSqlCommand">
+            <summary>
+              Looks up a localized string similar to The command must be a SqlCommand..
+            </summary>
+        </member>
+        <member name="P:EntLibContrib.Data.MySql.Properties.Resources.ExceptionMessageUpdateDataSetRowFailure">
+            <summary>
+              Looks up a localized string similar to Failed to update row .
+            </summary>
+        </member>
+        <member name="T:EntLibContrib.Data.MySql.MySqlDatabase">
+            <summary>
+            Represents a MySQL Database.
+            </summary>
+            <remarks>
+            	<para>Internally uses MySQL Provider from MySQL (MySQL.Data) to connect to the database.</para>
+            	<para>Revision 1: Wesley Hobbie    Date: 20 January 2006 - Updated for Enterprise Library 2.0</para>
+            	<para>Revision 2: Wesley Hobbie    Date: 6 February 2007 - Updated to use MySQL Driver 5.0.3</para>
+            	<para>Revision 3: Steve Phillips   Date: 23 May 2009 - Updated to use EntLib 4.1 core and MySQL Driver 6.0.3</para>
+            	<para>Revision 4: Jeremi Bourgault Date: 19 October 2011 - Updated to use EntLib 5 core and MySQL Driver 6.4.4</para>
+            </remarks>
+            <author>Wesley Hobbie</author>
+            <version>5.0.505.0</version>
+            <date>05/23/2009</date>
+        </member>
+        <member name="F:EntLibContrib.Data.MySql.MySqlDatabase.ParameterToken">
+            <summary>
+            The parameter token used to delimit parameters for the MySQL database.
+            </summary>
+            <remarks>MySQL now recognises '?' as its preferred parameter token, however the .NET data
+            provider is still using the '@' sign</remarks>
+        </member>
+        <member name="M:EntLibContrib.Data.MySql.MySqlDatabase.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Data.MySql.MySqlDatabase"/> class
+            with a connection string.
+            </summary>
+            <param name="connectionString">The connection string.</param>
+        </member>
+        <member name="M:EntLibContrib.Data.MySql.MySqlDatabase.AddInParameter(System.Data.Common.DbCommand,System.String,MySql.Data.MySqlClient.MySqlDbType)">
+            <summary>
+            Adds a new In <see cref="T:System.Data.Common.DbParameter"/> object to the given
+            <paramref name="command"/>.
+            </summary>
+            <param name="command">The command to add the in parameter.</param>
+            <param name="name">The name of the parameter.</param>
+            <param name="dbType">One of the <see cref="T:MySql.Data.MySqlClient.MySqlDbType"/>
+            values.</param>
+            <remarks>
+            This version of the method is used when you can have the same
+            parameter object multiple times with different values.
+            </remarks>
+        </member>
+        <member name="M:EntLibContrib.Data.MySql.MySqlDatabase.AddInParameter(System.Data.Common.DbCommand,System.String,MySql.Data.MySqlClient.MySqlDbType,System.Object)">
+            <summary>
+            Adds a new In <see cref="T:System.Data.Common.DbParameter"/> object to the given
+            <paramref name="command"/>.
+            </summary>
+            <param name="command">The commmand to add the parameter.</param>
+            <param name="name">The name of the parameter.</param>
+            <param name="dbType">One of the <see cref="T:MySql.Data.MySqlClient.MySqlDbType"/>
+            values.</param>
+            <param name="value">The value of the parameter.</param>
+        </member>
+        <member name="M:EntLibContrib.Data.MySql.MySqlDatabase.AddInParameter(System.Data.Common.DbCommand,System.String,MySql.Data.MySqlClient.MySqlDbType,System.String,System.Data.DataRowVersion)">
+            <summary>
+            Adds a new In <see cref="T:System.Data.Common.DbParameter"/> object to the given
+            <paramref name="command"/>.
+            </summary>
+            <param name="command">The command to add the parameter.</param>
+            <param name="name">The name of the parameter.</param>
+            <param name="dbType">One of the <see cref="T:MySql.Data.MySqlClient.MySqlDbType"/>
+            values.</param>
+            <param name="sourceColumn">The name of the source column
+            mapped to the DataSet and used for loading or returning the value.</param>
+            <param name="sourceVersion">One of the
+            <see cref="T:System.Data.DataRowVersion"/> values.</param>
+        </member>
+        <member name="M:EntLibContrib.Data.MySql.MySqlDatabase.AddOutParameter(System.Data.Common.DbCommand,System.String,MySql.Data.MySqlClient.MySqlDbType,System.Int32)">
+            <summary>
+            Adds a new Out <see cref="T:System.Data.Common.DbParameter"/> object to the given
+            <paramref name="command"/>.
+            </summary>
+            <param name="command">The command to add the out parameter.</param>
+            <param name="name">The name of the parameter.</param>
+            <param name="dbType">One of the <see cref="T:MySql.Data.MySqlClient.MySqlDbType"/>
+            values.</param>
+            <param name="size">The maximum size of the data within the
+            column.</param>
+        </member>
+        <member name="M:EntLibContrib.Data.MySql.MySqlDatabase.AddParameter(System.Data.Common.DbCommand,System.String,MySql.Data.MySqlClient.MySqlDbType,System.Int32,System.Data.ParameterDirection,System.Boolean,System.Byte,System.Byte,System.String,System.Data.DataRowVersion,System.Object)">
+            <summary>
+            Adds a new instance of a <see cref="T:System.Data.Common.DbParameter"/> object to
+            the command.
+            </summary>
+            <param name="command">The command to add the parameter.</param>
+            <param name="name">The name of the parameter.</param>
+            <param name="dbType">One of the <see cref="T:System.Data.DbType"/> values.</param>
+            <param name="size">The maximum size of the data within the
+            column.</param>
+            <param name="direction">One of the
+            <see cref="T:System.Data.ParameterDirection"/> values.</param>
+            <param name="nullable">A value indicating whether the
+            parameter accepts <see langword="null"/> (<b>Nothing</b> in Visual
+            Basic) values.</param>
+            <param name="precision">The maximum number of digits used to
+            represent the <paramref name="value"/>.</param>
+            <param name="scale">The number of decimal places to which
+            <paramref name="value"/> is resolved.</param>
+            <param name="sourceColumn">The name of the source column
+            mapped to the DataSet and used for loading or returning the
+            <paramref name="value"/>.</param>
+            <param name="sourceVersion">One of the
+            <see cref="T:System.Data.DataRowVersion"/> values.</param>
+            <param name="value">The value of the parameter.</param>
+        </member>
+        <member name="M:EntLibContrib.Data.MySql.MySqlDatabase.AddParameter(System.Data.Common.DbCommand,System.String,MySql.Data.MySqlClient.MySqlDbType,System.Data.ParameterDirection,System.String,System.Data.DataRowVersion,System.Object)">
+            <summary>
+            Adds a new instance of a <see cref="T:System.Data.Common.DbParameter"/> object to
+            the command.
+            </summary>
+            <param name="command">The command to add the parameter.</param>
+            <param name="name">The name of the parameter.</param>
+            <param name="dbType">One of the <see cref="T:MySql.Data.MySqlClient.MySqlDbType"/>
+            values.</param>
+            <param name="direction">One of the
+            <see cref="T:System.Data.ParameterDirection"/> values.</param>
+            <param name="sourceColumn">The name of the source column
+            mapped to the DataSet and used for loading or returning the
+            <paramref name="value"/>.</param>
+            <param name="sourceVersion">One of the
+            <see cref="T:System.Data.DataRowVersion"/> values.</param>
+            <param name="value">The value of the parameter.</param>
+        </member>
+        <member name="M:EntLibContrib.Data.MySql.MySqlDatabase.BuildParameterName(System.String)">
+            <summary>
+            Builds a value parameter name for the current database.
+            </summary>
+            <param name="name">The name of the parameter.</param>
+            <returns>A correctly formatted parameter name.</returns>
+        </member>
+        <member name="M:EntLibContrib.Data.MySql.MySqlDatabase.ConfigureParameter(MySql.Data.MySqlClient.MySqlParameter,System.String,MySql.Data.MySqlClient.MySqlDbType,System.Int32,System.Data.ParameterDirection,System.Boolean,System.Byte,System.Byte,System.String,System.Data.DataRowVersion,System.Object)">
+            <summary>
+            Configures a given <see cref="T:System.Data.Common.DbParameter"/>.
+            </summary>
+            <param name="parameter">The parameter.</param>
+            <param name="name">The name of the parameter.</param>
+            <param name="dbType">One of the <see cref="T:MySql.Data.MySqlClient.MySqlDbType"/>
+            values.</param>
+            <param name="size">The maximum size of the data within the
+            column.</param>
+            <param name="direction">One of the
+            <see cref="T:System.Data.ParameterDirection"/> values.</param>
+            <param name="nullable">A value indicating whether the
+            parameter accepts <see langword="null"/> (<b>Nothing</b> in Visual
+            Basic) values.</param>
+            <param name="precision">The maximum number of digits used to
+            represent the <paramref name="value"/>.</param>
+            <param name="scale">The number of decimal places to which
+            <paramref name="value"/> is resolved.</param>
+            <param name="sourceColumn">The name of the source column
+            mapped to the DataSet and used for loading or returning the
+            <paramref name="value"/>.</param>
+            <param name="sourceVersion">One of the
+            <see cref="T:System.Data.DataRowVersion"/> values.</param>
+            <param name="value">The value of the parameter.</param>
+        </member>
+        <member name="M:EntLibContrib.Data.MySql.MySqlDatabase.CreateParameter(System.String,MySql.Data.MySqlClient.MySqlDbType,System.Int32,System.Data.ParameterDirection,System.Boolean,System.Byte,System.Byte,System.String,System.Data.DataRowVersion,System.Object)">
+            <summary>
+            Adds a new instance of a <see cref="T:System.Data.Common.DbParameter"/> object.
+            </summary>
+            <param name="name">The name of the parameter.</param>
+            <param name="dbType">One of the <see cref="T:System.Data.DbType"/> values.</param>
+            <param name="size">The maximum size of the data within the
+            column.</param>
+            <param name="direction">One of the
+            <see cref="T:System.Data.ParameterDirection"/> values.</param>
+            <param name="nullable">A value indicating whether the
+            parameter accepts <see langword="null"/> (<b>Nothing</b> in Visual
+            Basic) values.</param>
+            <param name="precision">The maximum number of digits used to
+            represent the <paramref name="value"/>.</param>
+            <param name="scale">The number of decimal places to which
+            <paramref name="value"/> is resolved.</param>
+            <param name="sourceColumn">The name of the source column
+            mapped to the DataSet and used for loading or returning the
+            <paramref name="value"/>.</param>
+            <param name="sourceVersion">One of the
+            <see cref="T:System.Data.DataRowVersion"/> values.</param>
+            <param name="value">The value of the parameter.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EntLibContrib.Data.MySql.MySqlDatabase.DeriveParameters(System.Data.Common.DbCommand)">
+            <summary>
+            Retrieves parameter information from the stored procedure specified
+            in the <see cref="T:System.Data.Common.DbCommand"/> and populates the Parameters
+            collection of the specified <see cref="T:System.Data.Common.DbCommand"/> object.
+            </summary>
+            <param name="discoveryCommand">The <see cref="T:System.Data.Common.DbCommand"/> to do
+            the discovery.</param>
+            <remarks>The <see cref="T:System.Data.Common.DbCommand"/> must be a
+            <see cref="T:MySql.Data.MySqlClient.MySqlCommand"/> instance.</remarks>
+        </member>
+        <member name="M:EntLibContrib.Data.MySql.MySqlDatabase.SameNumberOfParametersAndValues(System.Data.Common.DbCommand,System.Object[])">
+            <summary>
+            Determines if the number of parameters in the command matches the
+            array of parameter values.
+            </summary>
+            <param name="command">The <see cref="T:System.Data.Common.DbCommand"/> containing the
+            parameters.</param>
+            <param name="values">The array of parameter values.</param>
+            <returns>
+            	<see langword="true"/> if the number of parameters and
+            values match; otherwise, <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="M:EntLibContrib.Data.MySql.MySqlDatabase.SetUpRowUpdatedEvent(System.Data.Common.DbDataAdapter)">
+            <summary>
+            Sets the RowUpdated event for the data adapter.
+            </summary>
+            <param name="adapter">The <see cref="T:System.Data.Common.DbDataAdapter"/> to set the
+            event.</param>
+        </member>
+        <member name="M:EntLibContrib.Data.MySql.MySqlDatabase.CheckIfMySqlCommand(System.Data.Common.DbCommand)">
+            <summary>
+            Checks if a database command is a MySql command and converts.
+            </summary>
+            <param name="command">The command.</param>
+            <returns>converted MySqlCommand</returns>
+        </member>
+        <member name="M:EntLibContrib.Data.MySql.MySqlDatabase.OnMySqlRowUpdated(System.Object,MySql.Data.MySqlClient.MySqlRowUpdatedEventArgs)">
+            <summary>
+            Called when [my SQL row updated].
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="rowThatCouldNotBeWritten">The <see cref="T:MySql.Data.MySqlClient.MySqlRowUpdatedEventArgs"/> instance containing the event data.</param>
+            <devdoc>
+            Listens for the RowUpdate event on a data adapter to support
+            UpdateBehavior.Continue
+            </devdoc>
+        </member>
+        <member name="T:EntLibContrib.Data.MySql.Configuration.MySqlDatabaseData">
+            <summary>
+            Describes a <see cref="T:EntLibContrib.Data.MySql.MySqlDatabase"/> instance, aggregating information from a
+            <see cref="T:System.Configuration.ConnectionStringSettings"/>.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Data.MySql.Configuration.MySqlDatabaseData.#ctor(System.Configuration.ConnectionStringSettings,Microsoft.Practices.EnterpriseLibrary.Common.Configuration.IConfigurationSource)">
+             <summary>
+             Initializes a new instance of the <see cref="T:EntLibContrib.Data.MySql.MySqlDatabase"/> class with a connection string and a configuration
+             source.
+            </summary>
+            <param name="connectionStringSettings">The <see cref="T:System.Configuration.ConnectionStringSettings"/> for the represented database.</param>
+            <param name="configurationSource">The <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.IConfigurationSource"/> from which additional information can 
+             be retrieved if necessary.</param>
+        </member>
+        <member name="M:EntLibContrib.Data.MySql.Configuration.MySqlDatabaseData.GetRegistrations">
+            <summary>
+            Creates a <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ContainerModel.TypeRegistration"/> instance describing the database represented by 
+            this configuration object.
+            </summary>
+            <returns>A <see cref="T:Microsoft.Practices.EnterpriseLibrary.Common.Configuration.ContainerModel.TypeRegistration"/> instance describing a database.</returns>
+        </member>
+        <member name="T:EntLibContrib.Data.MySql.ConnectionException">
+            <summary>
+            Extends Exception to be specific to errors that occur in connection
+            with a connection.
+            </summary>
+            <remarks>
+            Revision 1: Steve Phillips  Date: 23 May 2009 - Updated to use EntLib 4.1 core
+            </remarks>
+            <author>Wesley Hobbie</author>
+            <version>4.1</version>
+            <date>05/23/2009</date>
+        </member>
+        <member name="M:EntLibContrib.Data.MySql.ConnectionException.#ctor">
+            <summary>
+            Creates a throwable ConnectionException.
+            </summary>
+        </member>
+        <member name="M:EntLibContrib.Data.MySql.ConnectionException.#ctor(System.String)">
+            <summary>
+            Creates a throwable ConnectionException.
+            </summary>
+            <param name="message">A message related to the exception</param>
+        </member>
+        <member name="M:EntLibContrib.Data.MySql.ConnectionException.#ctor(System.String,System.Exception)">
+            <summary>
+            Creates a throwable ConnectionException.
+            </summary>
+            <param name="message">A message related to the exception</param>
+            <param name="innerException">The inner exception</param>
+        </member>
+        <member name="M:EntLibContrib.Data.MySql.ConnectionException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EntLibContrib.Data.MySql.ConnectionException"/> class.
+            </summary>
+            <param name="info">The object that holds the serialized object data.</param>
+            <param name="context">The contextual information about the source or destination.</param>
+        </member>
+    </members>
+</doc>

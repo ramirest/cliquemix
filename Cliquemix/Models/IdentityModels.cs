@@ -47,9 +47,10 @@ namespace Cliquemix.Models
         public virtual DbSet<tbCampanha> tbCampanha { get; set; }
         public virtual DbSet<tbCampanhaAnuncio> tbCampanhaAnuncio { get; set; }
         public virtual DbSet<tbCampanhaAnuncioConsumidor> tbCampanhaAnuncioConsumidor { get; set; }
-        public virtual DbSet<tbCampanhaAnuncioLocalizacao> tbCampanhaAnuncioLocalizacao { get; set; }
         public virtual DbSet<tbCampanhaAnuncioStatus> tbCampanhaAnuncioStatus { get; set; }
+        public virtual DbSet<tbCampanhaLocalizacao> tbCampanhaLocalizacao { get; set; }
         public virtual DbSet<tbCampanhaStatus> tbCampanhaStatus { get; set; }
+        public virtual DbSet<tbCampanhaTmp> tbCampanhaTmp { get; set; }
         public virtual DbSet<tbCep> tbCep { get; set; }
         public virtual DbSet<tbCidade> tbCidade { get; set; }
         public virtual DbSet<tbCondicaoPagto> tbCondicaoPagto { get; set; }
@@ -83,7 +84,6 @@ namespace Cliquemix.Models
         public virtual DbSet<tbUsersLogAcesso> tbUsersLogAcesso { get; set; }
         public virtual DbSet<tbUsersPermissao> tbUsersPermissao { get; set; }
         public virtual DbSet<tbUsersTipo> tbUsersTipo { get; set; }
-        public virtual DbSet<tbCampanhaTmp> tbCampanhaTmp { get; set; }
     }
 
 }

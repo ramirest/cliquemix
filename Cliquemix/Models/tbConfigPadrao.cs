@@ -24,8 +24,8 @@ namespace Cliquemix.Models
     
         public virtual tbAnuncioStatus tbAnuncioStatus { get; set; }
         public virtual tbAnuncioStatus tbAnuncioStatus1 { get; set; }
+        public virtual tbCampanhaAnuncioStatus tbCampanhaAnuncioStatus { get; set; }
         public virtual tbCampanhaStatus tbCampanhaStatus { get; set; }
         public virtual tbUsersTipo tbUsersTipo { get; set; }
-        public virtual tbCampanhaAnuncioStatus tbCampanhaAnuncioStatus { get; set; }
     }
 }

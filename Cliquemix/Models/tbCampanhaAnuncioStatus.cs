@@ -16,14 +16,14 @@ namespace Cliquemix.Models
     {
         public tbCampanhaAnuncioStatus()
         {
-            this.tbConfigPadrao = new HashSet<tbConfigPadrao>();
             this.tbCampanhaAnuncio = new HashSet<tbCampanhaAnuncio>();
+            this.tbConfigPadrao = new HashSet<tbConfigPadrao>();
         }
     
         public int casid { get; set; }
         public string dsCampAnunStatus { get; set; }
     
-        public virtual ICollection<tbConfigPadrao> tbConfigPadrao { get; set; }
         public virtual ICollection<tbCampanhaAnuncio> tbCampanhaAnuncio { get; set; }
+        public virtual ICollection<tbConfigPadrao> tbConfigPadrao { get; set; }
     }
 }

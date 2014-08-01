@@ -1,0 +1,102 @@
+﻿<style>
+    html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
+</style>
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+
+<script src="~/Scripts/plugins/ladda/spin.min.js"></script>
+<script src="~/Scripts/plugins/ladda/ladda.min.js"></script>
+<script src="~/Scripts/plugins/bootstrap-multiselect/bootstrap-multiselect.js"></script>
+
+<!-- THEME SCRIPTS -->
+<script src="~/Scripts/flex.js"></script>
+<script src="~/Scripts/demo/buttons-demo.js"></script>
+
+<script>
+    function initialize() {
+        var fenway = new google.maps.LatLng(42.345573, -71.098326);
+        var mapOptions = {
+            center: fenway,
+            zoom: 14
+        };
+        var map = new google.maps.Map(
+            document.getElementById('map-canvas'), mapOptions);
+        var panoramaOptions = {
+            position: fenway,
+            pov: {
+                heading: 34,
+                pitch: 10
+            }
+        };
+        var panorama = new google.maps.StreetViewPanorama(document.getElementById('pano'), panoramaOptions);
+        map.setStreetView(panorama);
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+    // Ladda Button Spinners
+    // Bind normal buttons
+    Ladda.bind('div:not(.progress-demo) button.ladda-button', {
+        timeout: 2000
+    });
+
+    // Bind progress buttons and simulate loading progress
+    Ladda.bind('.progress-demo button', {
+        callback: function (instance) {
+            var progress = 0;
+            var interval = setInterval(function () {
+                progress = Math.min(progress + Math.random() * 0.1, 1);
+                instance.setProgress(progress);
+
+                if (progress === 1) {
+                    instance.stop();
+                    clearInterval(interval);
+                }
+            }, 200);
+        }
+    });
+</script>
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" style="margin-left: 1%;" id="flexModalLabel">Informe uma cidade para publicação</h4>
+    <div class="input-group col-lg-7" style="margin-top: 2%; margin-left: 1%;">
+        <input id="txtFiltrar" name="txtFiltrar" type="text" placeholder="Informe a cidade" autocomplete="off" class="form-control" style="width: 400px;" />
+        <span class="input-group-btn">
+            <button class="btn btn-green ladda-button" data-style="contract" id="btnFiltrar" name="btnFiltrar" type="button" onclick="buscar();">
+                <span class="ladda-label"><i class="fa fa-search"></i> Pesquisar</span>
+                <span class="ladda-spinner"></span><span class="ladda-spinner"></span><div class="ladda-progress" style="width: 100px;"></div>
+            </button>
+            <span class="divider"></span>
+            <button id="btnAdicionar" name="btnAdicionar" class="btn btn-green" type="button" onclick="NovoAnuncio();">
+                <i class="fa fa-plus"></i> Adicionar
+            </button>
+        </span>
+    </div>
+</div>
+
+<div class="modal-body">
+    <div class="row">
+        <!-- Basic Responsive Table -->
+        <div class="col-lg-12">
+            <div class="portlet portlet-default">
+                <div class="portlet-heading">
+                    <div class="portlet-title">
+                        <h4 class="flutuar">Geolocalização</h4>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="portlet-body">
+                    <div id="map-canvas" style="width: 590px; height: 300px"></div>
+                    @*<div id="pano" style="position:absolute; left:410px; top: 8px; width: 400px; height: 300px;"></div>*@
+                </div>
+            </div>
+        </div>
+        <!-- /.portlet -->
+    </div>
+</div>
+

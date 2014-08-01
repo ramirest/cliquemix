@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using BLToolkit.Data.Linq;
 using BLToolkit.Data.Sql;
@@ -128,6 +129,31 @@ namespace Cliquemix.Controllers
                 return PartialView();
                 throw;
             }
+        }
+
+        [HttpGet]
+        public ActionResult LocalidadesCampanha(int pCodCampanha)
+        {/*
+            try
+            {
+                var tbCampanhaAnuncio = db.tbCampanhaAnuncio.Where(m => m.ctid == pCodCampanha);
+                if (tbCampanhaAnuncio.Any())
+                {
+                    ViewBag.Tudo = 2;
+                    ViewBag.CodCampanha = pCodCampanha;
+                    return PartialView(tbCampanhaAnuncio.ToList());
+                }
+                else
+                {
+                    return PartialView();
+                }
+            }
+            catch (Exception)
+            {
+                return PartialView();
+                throw;
+            }*/
+            return PartialView();
         }
 
         public ActionResult DeleteCampanha()
@@ -283,7 +309,7 @@ namespace Cliquemix.Controllers
         
         // POST: CampanhaAnuncio/Delete/5
         [HttpPost]
-        public ActionResult Delete(int campanha)
+        public ActionResult DeleteAnuncio(int campanha)
         {
             List<tbCampanhaAnuncio> campanhaAnuncio = db.tbCampanhaAnuncio.Where(m => m.ctid == campanha).ToList();
 
@@ -295,5 +321,103 @@ namespace Cliquemix.Controllers
             return null;
         }
 
+        // POST: CampanhaLocalizacao/DeleteLocalidade/5
+        [HttpPost]
+        public ActionResult DeleteLocalidade(int pCodLocalidade)
+        {
+            List<tbCampanhaLocalizacao> campanhaLocalidade = db.tbCampanhaLocalizacao.Where(m => m.clid == pCodLocalidade).ToList();
+
+            foreach (var item in campanhaLocalidade)
+            {
+                db.tbCampanhaLocalizacao.Remove(item);
+                db.SaveChanges();
+            }
+            return null;
+        }
+
+        [HttpGet]
+        public ActionResult GeoLocalizacao(int pCodCampanha)
+        {
+            return PartialView();
+        }
+
     }
 }
+
+
+
+/*
+
+foreach (var item in Model)
+            {
+                IEnumerable<SelectListItem> items = ((IEnumerable<SelectListItem>)ViewData["CurrID"]).ToList().Select(c => new SelectListItem
+                {
+                    Value = c.Value.ToString(),
+                    Text = c.Text.ToString(),
+                    Selected = Convert.ToInt32(c.Value) == item.CurrID
+                });
+*/
+
+
+
+
+
+
+/*  BACKUP GeoLocalizaçãoBackup
+
+        [HttpGet]
+        public ActionResult GeoLocalizacao()
+        {
+            var iEstado = new List<SelectListItem>();
+            var iCidade = new List<SelectListItem>();
+
+            foreach (var iUf in db.tbEstado)
+            {
+                iEstado.Add(new SelectListItem
+                {
+                    Text = iUf.sgEstado,
+                    Value = iUf.eid.ToString(),
+                    Selected = false
+                });
+            }
+            
+            foreach (var iCid in db.tbCidade.Where(c => c.eid == 14))
+            {
+                iCidade.Add(new SelectListItem
+                {
+                    Text = iCid.nomeCidade,
+                    Value = iCid.cid.ToString(),
+                    Selected = false
+                });
+            }
+            
+
+            ViewBag.estados = iEstado.OrderBy(e => e.Text).ToList();
+            ViewBag.cidades = iCidade.OrderBy(e => e.Text).ToList();
+            return PartialView();
+        }
+
+        [HttpPost]
+        public ActionResult GeoLocalizacao(string estados)
+        {
+            var iCidade = new List<SelectListItem>();
+            string[] array = estados.Split(',');
+            foreach (string value in array)
+            {
+                var a = Convert.ToInt32(value);
+                Convert.ToInt32(value);
+                foreach (var iCid in db.tbCidade.Where(c => c.eid == a))
+                {
+                    iCidade.Add(new SelectListItem
+                    {
+                        Text = iCid.nomeCidade,
+                        Value = iCid.nomeCidade,
+                        Selected = false
+                    });
+                }
+            }
+            ViewBag.cidades = iCidade.OrderBy(e => e.Text).ToList();
+            return PartialView();
+            //return null;
+        }
+*/

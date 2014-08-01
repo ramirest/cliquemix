@@ -41,7 +41,7 @@ $(document).ready(function() {
 
     $('#multiselect3').multiselect({
         includeSelectAllOption: true,
-        buttonClass: 'btn btn-blue'
+        buttonClass: 'btn btn-default'
     });
 
     // Add options for example 28.
@@ -53,7 +53,7 @@ $(document).ready(function() {
         includeSelectAllOption: true,
         enableFiltering: true,
         maxHeight: 250,
-        buttonClass: 'btn btn-orange'
+        buttonClass: 'btn btn-default'
     });
 
 });

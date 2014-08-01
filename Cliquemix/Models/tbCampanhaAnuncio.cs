@@ -17,7 +17,6 @@ namespace Cliquemix.Models
         public tbCampanhaAnuncio()
         {
             this.tbCampanhaAnuncioConsumidor = new HashSet<tbCampanhaAnuncioConsumidor>();
-            this.tbCampanhaAnuncioLocalizacao = new HashSet<tbCampanhaAnuncioLocalizacao>();
         }
     
         public int caid { get; set; }
@@ -30,7 +29,6 @@ namespace Cliquemix.Models
         public virtual tbAnuncio tbAnuncio { get; set; }
         public virtual tbCampanha tbCampanha { get; set; }
         public virtual ICollection<tbCampanhaAnuncioConsumidor> tbCampanhaAnuncioConsumidor { get; set; }
-        public virtual ICollection<tbCampanhaAnuncioLocalizacao> tbCampanhaAnuncioLocalizacao { get; set; }
         public virtual tbCampanhaAnuncioStatus tbCampanhaAnuncioStatus { get; set; }
         public virtual tbCampanhaTmp tbCampanhaTmp { get; set; }
     }

@@ -11,7 +11,8 @@
     // Tudo = 4 [Não existe anúncio para vincular]
 }
 
-<script>
+<script type="text/javascript">
+    
     $(document).ready(function () {
         $('#btnRight').click(function (e) {
             var selectedOpts = $('#lstBox1 option:selected');
@@ -48,6 +49,20 @@
             async: true,
             success: function(data) {
                 $('#carregaAnuncios').html(data);
+            }
+        });
+    }
+
+    function atualizarLocalidades() {
+        $.ajax(
+        {
+            type: 'GET',
+            url: '/Campanha/LocalidadesCampanha/?pCodCampanha=' + @ViewBag.ctid,
+            dataType: 'html',
+            cache: false,
+            async: true,
+            success: function(data) {
+                $('#carregaLocalidades').html(data);
             }
         });
     }
@@ -159,6 +174,19 @@
                 $('#conteudo').html(data);
             }
         });
+
+        function novaLocalidade() {
+            $.ajax(
+            {
+                type: 'GET',
+                url: '/Campanha/GeoLocalizacao/?pCodCampanha='+@ViewBag.ctid, //string txt, int pCodCampanha
+                dataType: 'html',
+                cache: true,
+                async: true,
+                success: function (data) {
+                    $('#GeoConteudo').html(data);
+                }
+            });
     }
 </script>
 
@@ -217,69 +245,74 @@
                                             <h4 class="page-header">Informações da Campanha:</h4>
                                             <div class="form-group col-lg-6">
                                                 <label>Título</label>
-                                                @Html.TextBoxFor(model => model.tituloCampanha, new {@class="form-control", style="max-width: 334px"})
+                                                @Html.TextBoxFor(model => model.tituloCampanha, new { @class = "form-control", style = "max-width: 334px" })
                                             </div>
                                             @Html.Hidden("ctid")
-                                            
-                                            
-                                            @*                                                                                        
-                                            <div class="form-group col-lg-3">
-                                                <label>Data de Início</label>
-                                                <div id="sandbox-container">
-                                                    <div class="input-group">
-                                                        <span class="input-group-btn">
-                                                            <button class="btn btn-default add-on " type="button">
-                                                                <i class="fa fa-calendar"></i>
-                                                            </button>
-                                                        </span>
-                                                        <input id="dtInicio" name="dtInicio" class="form-control datepicker" type="text" style="max-width: 100px;" onchange="VerificaData(this.value, this.id);" />
+
+
+                                            @if (ProcFunc.RetornarInicioTerminoPadraoPublicacaoCampanha() == 1)
+                                            {
+                                                <div class="form-group col-lg-3">
+                                                    <label>Data de Início</label>
+                                                    <div id="sandbox-container">
+                                                        <div class="input-group">
+                                                            <span class="input-group-btn">
+                                                                <button class="btn btn-default add-on " type="button">
+                                                                    <i class="fa fa-calendar"></i>
+                                                                </button>
+                                                            </span>
+                                                            <input id="dtInicio" name="dtInicio" class="form-control datepicker" type="text" style="max-width: 100px;" onchange=" VerificaData(this.value, this.id); " />
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
 
-                                            <div class="form-group col-lg-3">
-                                                <label>Hora de Início</label>
-                                                <div class="input-append bootstrap-timepicker input-group">
-                                                    <span class="input-group-btn">
-                                                        <button class="btn btn-default add-on" type="button">
-                                                            <i class="fa fa-clock-o"></i>
-                                                        </button>
-                                                    </span>
-                                                    <input id="hrInicio" name="hrInicio" class="form-control timepicker" type="text" style="max-width: 100px;" onchange="VerificaData(this.value, this.id);" />
-                                                </div>
-                                            </div>
-
-                                            <div class="clearfix"></div>
-                                            <div class="form-group col-lg-6"></div>
-
-                                            <div class="form-group col-lg-3">
-                                                <label>Data de Término</label>
-                                                <div id="sandbox-container">
-                                                    <div class="input-group">
+                                                <div class="form-group col-lg-3">
+                                                    <label>Hora de Início</label>
+                                                    <div class="input-append bootstrap-timepicker input-group">
                                                         <span class="input-group-btn">
-                                                            <button class="btn btn-default add-on " type="button">
-                                                                <i class="fa fa-calendar"></i>
+                                                            <button class="btn btn-default add-on" type="button">
+                                                                <i class="fa fa-clock-o"></i>
                                                             </button>
                                                         </span>
-                                                        <input id="dtTermino" name="dtTermino" class="form-control datepicker" type="text" style="max-width: 100px;" onchange="VerificaData(this.value, this.id);" />
+                                                        <input id="hrInicio" name="hrInicio" class="form-control timepicker" type="text" style="max-width: 100px;" onchange=" VerificaData(this.value, this.id); " />
                                                     </div>
                                                 </div>
-                                            </div>
 
-                                            <div class="form-group col-lg-3">
-                                                <label>Hora de Término</label>
-                                                <div class="input-append bootstrap-timepicker input-group">
-                                                    <span class="input-group-btn">
-                                                        <button class="btn btn-default add-on" type="button">
-                                                            <i class="fa fa-clock-o"></i>
-                                                        </button>
-                                                    </span>
-                                                    <input id="hrTermino" name="hrTermino" class="form-control timepicker" type="text" style="max-width: 100px;" />
+                                                <div class="clearfix"></div>
+                                                <div class="form-group col-lg-6"></div>
+
+                                                <div class="form-group col-lg-3">
+                                                    <label>Data de Término</label>
+                                                    <div id="sandbox-container">
+                                                        <div class="input-group">
+                                                            <span class="input-group-btn">
+                                                                <button class="btn btn-default add-on " type="button">
+                                                                    <i class="fa fa-calendar"></i>
+                                                                </button>
+                                                            </span>
+                                                            <input id="dtTermino" name="dtTermino" class="form-control datepicker" type="text" style="max-width: 100px;" onchange=" VerificaData(this.value, this.id); " />
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-*@
-                                            <div class="clearfix"></div>
-                                            
+
+                                                <div class="form-group col-lg-3">
+                                                    <label>Hora de Término</label>
+                                                    <div class="input-append bootstrap-timepicker input-group">
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-default add-on" type="button">
+                                                                <i class="fa fa-clock-o"></i>
+                                                            </button>
+                                                        </span>
+                                                        <input id="hrTermino" name="hrTermino" class="form-control timepicker" type="text" style="max-width: 100px;" />
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            }
+                                            else
+                                            {
+                                                <div class="clearfix"></div>
+                                            }
+
                                             <div class="col-lg-12">
                                                 <div class="portlet portlet-default">
                                                     <div class="portlet-heading">
@@ -311,19 +344,19 @@
                                                     </div>*@
                                                 </div>
                                             </div>
-                                            
-                                            <br/><br/>
+
+                                            <br /><br />
 
                                             <div class="col-sm-offset-10 col-sm-1">
                                                 <button type="button" onclick=" $('#lnk3').click(); " class="btn btn-default">Próximo</button>
                                             </div>
                                         </div>
 
-                                        
+
                                         <div class="tab-pane fade" id="infoDestaque">
                                             <h4 class="page-header">Informações sobre o Destaque da Campanha</h4>
 
-                                            
+
                                             @* REMOVIDO AS INFORMAÇÕES DO DESTAQUE *@
 
 
@@ -335,7 +368,7 @@
                                                 <button type="button" onclick=" $('#lnk3').click(); " class="btn btn-default">Próximo</button>
                                             </div>
                                         </div>
-                                        
+
 
                                         <div class="tab-pane fade in" id="infoAnun">
                                             <h4 class="page-header">Vincular Anúncio à Campanha:</h4>
@@ -412,48 +445,59 @@
                                             </div>
                                         </div>
                                         *@
-
+                                        
+                                        
                                         <div class="tab-pane fade in" id="infoGL">
-                                            <h4 class="page-header">Aonde seus anúncios irão ser exibidos?</h4>
-
-                                            <div class="form-group col-lg-6">
-                                                @Html.Label("País")
-                                                <div class="clearfix"></div>
-                                                @Html.DropDownList("paid", null, string.Empty, new { style = "width:300px; height:34px" })
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            
-                                            <div class="form-group col-lg-6">
-                                                @Html.Label("Estado")
-                                                <div class="clearfix"></div>
-                                                @Html.DropDownList("eid", null, string.Empty, new { style = "width:300px; height:34px" })
-                                            </div>
-                                            <div class="clearfix"></div>
-
-                                            <div class="form-group col-lg-6">
-                                                @Html.Label("Cidade")
-                                                <div class="clearfix"></div>
-                                                @Html.DropDownList("cid", null, string.Empty, new { style = "width:300px; height:34px" })
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            
-                                            <div id="multiSelect" class="panel-collapse collapse in">
-                                                <p>
-                                                    <select id="multiselect4" multiple="multiple"></select>
-                                                </p>
+                                            <h4 class="page-header">Geolocalização da Campanha</h4>
+                                            <div class="modal modal-flex fade" id="GeoModal" tabindex="-1" role="dialog" aria-labelledby="flexModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" style="min-width: 50%;">
+                                                    <div class="modal-content" id="GeoConteudo">
+                                                        @{
+                                                            Html.RenderPartial("GeoLocalizacao");
+                                                        }
+                                                    </div>
+                                                    <!-- /.modal-content -->
+                                                </div>
+                                                <!-- /.modal-dialog -->
                                             </div>
 
+                                            <div class="row">
+                                                <!-- Basic Responsive Table -->
+                                                <div class="col-lg-12">
+                                                    <div class="portlet portlet-default">
+                                                        <div class="portlet-heading">
+                                                            <div class="portlet-title">
+                                                                <h4 class="flutuar">Localidades da Campanha</h4>
+                                                            </div>
+                                                            <div class="portlet-widgets">
+                                                                <a href="#" id="abriGeo" data-toggle="modal" data-target="#GeoModal" data-placement="top" title="Nova Localidade" onclick="novaLocalidade();">
+                                                                    <i class="fa fa-plus-square"></i>
+                                                                </a>
+                                                                <span class="divider"></span>
+                                                                <a href="javascript:;" data-placement="top" title="Atualizar" onclick="atualizarLocalidades();">
+                                                                    <i class="fa fa-refresh"></i>
+                                                                </a>
+                                                                <span class="divider"></span>
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                        <div id="carregaLocalidades">
+                                                            @{
+                                                                Html.RenderPartial("LocalidadesCampanha");
+                                                            }
+                                                            @* Lista os Anúncios da Campanha *@
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.portlet -->
+                                                </div>
 
-
-                                            <div class="form-group col-lg-12"></div>
-                                            <div class="form-group col-lg-12"></div>
-                                            <div class="form-group col-lg-12"></div>
-                                            <div class="form-group col-lg-offset-9">
-                                                <button type="button" onclick=" $('#lnk3').click(); " class="btn btn-default">Anterior</button>
-                                                <button type="submit" class="btn btn-default" id="save" value="save">
-                                                    <i class="fa fa-floppy-o"></i>
-                                                    Salvar
-                                                </button>
+                                                <div class="form-group col-lg-offset-9">
+                                                    <button type="button" onclick=" $('#lnk3').click(); " class="btn btn-default">Anterior</button>
+                                                    <button type="submit" class="btn btn-default" id="save" value="save">
+                                                        <i class="fa fa-floppy-o"></i>
+                                                        Salvar
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
 
