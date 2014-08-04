@@ -46,6 +46,10 @@
     <Reference Include="BLToolkit.Data.DataProvider.MySql.4">
       <HintPath>..\packages\BLToolkit.MySql.4.1.21\lib\net40\BLToolkit.Data.DataProvider.MySql.4.dll</HintPath>
     </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.5\lib\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -56,6 +60,12 @@
     </Reference>
     <Reference Include="EntLibContrib.Data.MySql">
       <HintPath>..\packages\EntLibContrib.Data.MySql.5.0.505.0\lib\NET35\EntLibContrib.Data.MySql.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlReportControl">
+      <HintPath>..\packages\HtmlReportControl.1.1.0.1\lib\net40\HtmlReportControl.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\packages\iTextSharp.5.4.5\lib\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common">
@@ -79,6 +89,19 @@
     <Reference Include="Microsoft.Practices.Unity.Interception.Configuration">
       <HintPath>..\packages\Unity.Interception.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Interception.Configuration.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\MicosoftReportViewerWebForms_v11.1.0.1\lib\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+    </Reference>
+    <Reference Include="Report">
+      <HintPath>..\packages\dois.report.1.4.0.125\lib\net40\Report.dll</HintPath>
+    </Reference>
+    <Reference Include="Report.Base">
+      <HintPath>..\packages\dois.report.1.4.0.125\lib\net40\Report.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="ReportViewerForMvc">
+      <HintPath>..\packages\ReportViewerForMvc.1.0.1\lib\net45\ReportViewerForMvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -93,6 +116,7 @@
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
@@ -217,6 +241,7 @@
     <Compile Include="Controllers\CampanhaController.cs" />
     <Compile Include="Controllers\CreditoController.cs" />
     <Compile Include="Controllers\EnderecoController.cs" />
+    <Compile Include="Controllers\TesteController.cs" />
     <Compile Include="Controllers\TipoUsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -442,6 +467,31 @@
     <Content Include="Content\Outros\uploadify.css" />
     <Content Include="Content\Outros\uploadify.swf" />
     <Content Include="Content\plugins.css" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\autosuggest_inquisitor.css" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\._as_pointer.gif" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\._hl_corner_bl.gif" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\._hl_corner_br.gif" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\._hl_corner_tl.gif" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\._hl_corner_tr.gif" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\._ul_corner_bl.gif" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\._ul_corner_br.gif" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\._ul_corner_tl.gif" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\._ul_corner_tr.gif" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\as_pointer.gif" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\hl_corner_bl.gif" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\hl_corner_br.gif" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\hl_corner_tl.gif" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\hl_corner_tr.gif" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\ul_corner_bl.gif" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\ul_corner_br.gif" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\ul_corner_tl.gif" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\ul_corner_tr.gif" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\_source\._as_pointer.png" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\_source\._li_corner.png" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\_source\._ul_corner.png" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\_source\as_pointer.png" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\_source\li_corner.png" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\_source\ul_corner.png" />
     <Content Include="Content\plugins\bootstrap-datepicker\datepicker3.css" />
     <Content Include="Content\plugins\bootstrap-multiselect\bootstrap-multiselect.css" />
     <Content Include="Content\plugins\bootstrap-social\bootstrap-social.css" />
@@ -490,6 +540,7 @@
     <Content Include="fonts\img\widget-bg-morning.jpg" />
     <Content Include="fonts\Outros\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="ReportViewerWebForm.aspx" />
     <Content Include="Scripts\demo\advanced-form-demo.js" />
     <Content Include="Scripts\demo\advanced-tables-demo.js" />
     <Content Include="Scripts\demo\buttons-demo.js" />
@@ -567,6 +618,12 @@
       <DependentUpon>Cliquemix.edmx</DependentUpon>
       <LastGenOutput>Cliquemix.cs</LastGenOutput>
     </Content>
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\.DS_Store" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\._.DS_Store" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\.DS_Store" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\._.DS_Store" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\_source\.DS_Store" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\_source\._.DS_Store" />
     <None Include="Scripts\Outros\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\Outros\jquery-2.1.1.js" />
     <Content Include="Scripts\Outros\jquery-2.1.1.min.js" />
@@ -579,9 +636,14 @@
     <Content Include="Scripts\Outros\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\Outros\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\Outros\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Outros\Teste\busca.js" />
+    <Content Include="Scripts\Outros\Teste\noticias.js" />
     <Content Include="Scripts\Outros\respond.js" />
     <Content Include="Scripts\Outros\respond.min.js" />
     <Content Include="Scripts\Outros\_references.js" />
+    <Content Include="Scripts\plugins\AutoSuggest_2.1.3\._bsn.AutoSuggest_2.1.3.js" />
+    <Content Include="Scripts\plugins\AutoSuggest_2.1.3\bsn.AutoSuggest_2.1.3.js" />
+    <Content Include="Scripts\plugins\AutoSuggest_2.1.3\bsn.AutoSuggest_2.1.3_comp.js" />
     <Content Include="Scripts\plugins\bootstrap-datepicker\bootstrap-datepicker.js" />
     <Content Include="Scripts\plugins\bootstrap-filestyle\bootstrap-filestyle.min.js" />
     <Content Include="Scripts\plugins\bootstrap-maxlength\bootstrap-maxlength.js" />
@@ -722,6 +784,9 @@
     <Content Include="Views\Campanha\GeoLocalizacaoBackup.cshtml" />
     <Content Include="Views\Campanha\GeoLocalizacao.cshtml" />
     <Content Include="Views\Campanha\LocalidadesCampanha.cshtml" />
+    <Content Include="Scripts\plugins\AutoSuggest_2.1.3\.DS_Store" />
+    <Content Include="Scripts\plugins\AutoSuggest_2.1.3\._.DS_Store" />
+    <Content Include="Views\Teste\Index.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -736,7 +801,6 @@
     <Folder Include="Images\Icons\" />
     <Folder Include="Images\Pictures\" />
     <Folder Include="Relatórios\" />
-    <Folder Include="Views\Teste\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\Outros\glyphicons-halflings-regular.woff" />

@@ -1,10 +1,28 @@
-﻿<style>
+﻿@model IEnumerable<Cliquemix.Models.tbCidade>
+
+@{
+    Layout = null;
+}
+
+<style>
     html, body, #map-canvas {
         height: 100%;
         margin: 0px;
         padding: 0px;
     }
 </style>
+
+<!-- GLOBAL SCRIPTS -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="~/Scripts/plugins/bootstrap/bootstrap.min.js"></script>
+<script src="~/Scripts/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="~/Scripts/plugins/popupoverlay/jquery.popupoverlay.js"></script>
+<script src="~/Scripts/plugins/popupoverlay/defaults.js"></script>
+<!-- /#logout -->
+<!-- Logout Notification jQuery -->
+<script src="~/Scripts/plugins/popupoverlay/logout.js"></script>
+<!-- HISRC Retina Images -->
+<script src="~/Scripts/plugins/hisrc/hisrc.js"></script>
 
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 
@@ -59,25 +77,58 @@
             }, 200);
         }
     });
+
+    function filtrarCidades() {
+        var cidade = document.getElementById('txtFiltrarCidade').value;
+        $.ajax(
+        {
+            type: 'POST',
+            url: '/Campanha/GeoLocalizacao/?cidade=' + cidade,
+            dataType: 'html',
+            cache: false,
+            async: true,
+            success: function(data) {
+                $('#menuCidades').html(data);
+            }
+        });
+    }
+
 </script>
+
 
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
     <h4 class="modal-title" style="margin-left: 1%;" id="flexModalLabel">Informe uma cidade para publicação</h4>
-    <div class="input-group col-lg-7" style="margin-top: 2%; margin-left: 1%;">
-        <input id="txtFiltrar" name="txtFiltrar" type="text" placeholder="Informe a cidade" autocomplete="off" class="form-control" style="width: 400px;" />
+    <h6 style="margin-left: 1%;">Informe <strong>TODOS</strong> para todas as cidades do(s) estado(s) selecionado(s)</h6>
+    <div class="input-group btn-group col-lg-10" style="margin-top: 2%; margin-left: 1%;">
         <span class="input-group-btn">
-            <button class="btn btn-green ladda-button" data-style="contract" id="btnFiltrar" name="btnFiltrar" type="button" onclick="buscar();">
-                <span class="ladda-label"><i class="fa fa-search"></i> Pesquisar</span>
-                <span class="ladda-spinner"></span><span class="ladda-spinner"></span><div class="ladda-progress" style="width: 100px;"></div>
+            <input id="txtFiltrarCidade" name="txtFiltrarCidade" type="text" placeholder="Informe a cidade" autocomplete="off" class="form-control" style="width: 530px;" />
+            <ul id="menuCidades" class="dropdown-menu" style="width: 530px;" role="menu">
+            @try
+            {
+                foreach (var item in Model)
+                {
+                    <li>
+                        <a href="#">@item.nomeCidade</a>
+                    </li>
+                }
+            }
+            catch (Exception)
+            {
+                <div class="clearfix"></div>
+            }
+            </ul>
+            <button id="btnFiltrar" name="btnFiltrar" class="btn btn-green" type="button" data-toggle="dropdown" onclick="filtrarCidades();">
+                <i class="fa fa-search"></i>
             </button>
             <span class="divider"></span>
             <button id="btnAdicionar" name="btnAdicionar" class="btn btn-green" type="button" onclick="NovoAnuncio();">
-                <i class="fa fa-plus"></i> Adicionar
+                <i class="fa fa-plus"></i>
             </button>
         </span>
     </div>
 </div>
+
 
 <div class="modal-body">
     <div class="row">
@@ -99,4 +150,3 @@
         <!-- /.portlet -->
     </div>
 </div>
-

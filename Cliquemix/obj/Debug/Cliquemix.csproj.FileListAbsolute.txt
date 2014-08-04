@@ -160,3 +160,12 @@ E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Owin.Security.OAuth.
 E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Owin.Security.Google.xml
 E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Owin.Security.Twitter.xml
 E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\DocumentFormat.OpenXml.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\HtmlReportControl.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\itextsharp.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Microsoft.ReportViewer.WebForms.DLL
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Report.Base.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Report.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\ReportViewerForMvc.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\itextsharp.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\en\HtmlReportControl.resources.dll

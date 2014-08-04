@@ -18,17 +18,6 @@
 <script type="text/javascript">
 
     var idAlbum = @ViewBag.CodImagem
-    $(function () {
-        $('#Filedata').uploadify({
-            'swf': '/Content/Outros/uploadify.swf',
-            'uploader': '/Anuncio/UploadImagem',
-            'method': 'post',
-            'formData': { 
-                'idAlbum': idAlbum
-            }
-        });
-        atualizarImagens();
-    });
 
     function atualizarImagens() {
         $.ajax(
@@ -43,6 +32,21 @@
             }
         });
     }
+
+    $(function () {
+        $('#Filedata').uploadify({
+            'swf': '/Content/Outros/uploadify.swf',
+            'uploader': '/Anuncio/UploadImagem',
+            'method': 'post',
+            'formData': { 
+                'idAlbum': idAlbum
+            },
+            success: function() {
+                atualizarImagens();
+            }
+        });
+        atualizarImagens();
+    });
 
 </script>
 

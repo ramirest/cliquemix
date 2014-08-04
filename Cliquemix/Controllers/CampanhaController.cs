@@ -338,7 +338,15 @@ namespace Cliquemix.Controllers
         [HttpGet]
         public ActionResult GeoLocalizacao(int pCodCampanha)
         {
+            var tbcidade = db.tbCidade.Include(t => t.tbEstado).ToList();
             return PartialView();
+        }
+
+        [HttpPost]
+        public ActionResult GeoLocalizacao(string cidade)
+        {
+            var tbcidade = db.tbCidade.Include(t => t.tbEstado).Where(m => m.nomeCidade.Contains(cidade)).ToList();
+            return null;
         }
 
     }
