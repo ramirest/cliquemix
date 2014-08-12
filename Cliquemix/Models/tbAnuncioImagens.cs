@@ -18,8 +18,5 @@ namespace Cliquemix.Models
         public Nullable<long> imgid { get; set; }
         public Nullable<int> aid { get; set; }
         public Nullable<System.DateTime> dtCriacao { get; set; }
-    
-        public virtual tbAnuncio tbAnuncio { get; set; }
-        public virtual tbAnuncioImg tbAnuncioImg { get; set; }
     }
 }

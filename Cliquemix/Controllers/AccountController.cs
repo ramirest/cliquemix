@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -9,10 +7,6 @@ using System.Web.Security;
 using System.Web.UI.WebControls;
 using BLToolkit.Data.Linq;
 using Cliquemix.Models;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
 
 namespace Cliquemix.Controllers
 {
@@ -39,8 +33,10 @@ namespace Cliquemix.Controllers
                 if (model.UserIsValid(model.Username, model.Password))
                 {
                     iResult = 1;
+                    var expira = 30; //Expiração da Sessão
+
                     var _authTicket = new FormsAuthenticationTicket(iResult, model.Username + "-" + Convert.ToString(1),
-                        DateTime.Now, DateTime.Now.AddMinutes(30), model.Remember, model.Username);
+                        DateTime.Now, DateTime.Now.AddMinutes(expira), model.Remember, model.Username);
                     var _encryptTicket = FormsAuthentication.Encrypt(_authTicket);
                     var _authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, _encryptTicket);                    
                     Response.Cookies.Add(_authCookie);
@@ -52,6 +48,7 @@ namespace Cliquemix.Controllers
                     }
                     else
                     {
+                        LoginModel._salvarLog(model.CodUsuario, expira, iResult, Session.SessionID);
                         return RedirectToAction("PrincipalAnunciante", "PrincipalAnunciante");
                     }
                 }
@@ -173,8 +170,6 @@ namespace Cliquemix.Controllers
             return View("Login");
         }
 
-
-        //
         // GET: /Account/Logout
         public ActionResult Logout()
         {
@@ -184,10 +179,11 @@ namespace Cliquemix.Controllers
             return RedirectToAction("PrincipalAnunciante", "PrincipalAnunciante");
         }
 
+
         //Método que realiza o Logout
         // POST: /Account/LogOff
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult _Logout()
         {
             FormsAuthentication.SignOut();

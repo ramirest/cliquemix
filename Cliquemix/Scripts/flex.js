@@ -57,9 +57,9 @@ $(function() {
     $('.tooltip-sidebar-toggle, .tooltip-sidebar-logout').tooltip({
         selector: "[data-toggle=tooltip]",
         container: "body"
-    })
+    });
 
-})
+});
 
 //HISRC Responsive Images
 $(document).ready(function() {

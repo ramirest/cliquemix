@@ -93,6 +93,12 @@
       <Private>True</Private>
       <HintPath>..\packages\MicosoftReportViewerWebForms_v11.1.0.1\lib\Microsoft.ReportViewer.WebForms.DLL</HintPath>
     </Reference>
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="Report">
       <HintPath>..\packages\dois.report.1.4.0.125\lib\net40\Report.dll</HintPath>
     </Reference>
@@ -229,6 +235,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Administrador\PrincipalAdministradorController.cs" />
     <Compile Include="Controllers\Administrador\UsersController.cs" />
     <Compile Include="Controllers\Anunciante\AnuncianteController.cs" />
     <Compile Include="Controllers\Anunciante\MenuAnuncianteController.cs" />
@@ -241,6 +248,7 @@
     <Compile Include="Controllers\CampanhaController.cs" />
     <Compile Include="Controllers\CreditoController.cs" />
     <Compile Include="Controllers\EnderecoController.cs" />
+    <Compile Include="Controllers\Inicial\InicialController.cs" />
     <Compile Include="Controllers\TesteController.cs" />
     <Compile Include="Controllers\TipoUsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -262,12 +270,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Cliquemix.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Cliquemix1.Designer.cs" />
     <Compile Include="Models\Endereco.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\PermissaoAcesso.cs" />
     <Compile Include="Models\ProcFunc.cs" />
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>Cliquemix.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbAnunciante.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
@@ -286,6 +296,12 @@
     <Compile Include="Models\tbAnuncio.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tbAnuncioCategoria.cs">
+      <DependentUpon>Cliquemix.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbAnuncioCodTemp.cs">
+      <DependentUpon>Cliquemix.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbAnuncioFuncionalidade.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
@@ -296,6 +312,9 @@
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbAnuncioImgLog.cs">
+      <DependentUpon>Cliquemix.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbAnuncioLog.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbAnuncioStatus.cs">
@@ -370,6 +389,9 @@
     <Compile Include="Models\tbCreditoPromocional.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tbCreditoStatus.cs">
+      <DependentUpon>Cliquemix.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbDestaque.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
@@ -383,6 +405,9 @@
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbFuncionalidade.cs">
+      <DependentUpon>Cliquemix.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbFuncionalidadeLog.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbLogSistema.cs">
@@ -442,12 +467,18 @@
     <Compile Include="Models\tbUsersTipo.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\VwAnunciosCriadosAnunciante.cs">
+      <DependentUpon>Cliquemix.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\demo.css" />
     <Content Include="Content\edicoes.css" />
+    <Content Include="Content\Inicial\bootstrap-tour.html" />
+    <Content Include="Content\Inicial\bootstrap.min.css" />
+    <Content Include="Content\Inicial\style.css" />
     <Content Include="Content\Outros\bootstrap-3.1.1\css\bootstrap-theme.css" />
     <Content Include="Content\Outros\bootstrap-3.1.1\css\bootstrap-theme.min.css" />
     <Content Include="Content\Outros\bootstrap-3.1.1\css\bootstrap.css" />
@@ -466,6 +497,7 @@
     <Content Include="Content\Outros\uploadify-cancel.png" />
     <Content Include="Content\Outros\uploadify.css" />
     <Content Include="Content\Outros\uploadify.swf" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\plugins.css" />
     <Content Include="Content\plugins\AutoSuggest_2.1.3\autosuggest_inquisitor.css" />
     <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\._as_pointer.gif" />
@@ -540,6 +572,50 @@
     <Content Include="fonts\img\widget-bg-morning.jpg" />
     <Content Include="fonts\Outros\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\Inicial\blog\blog_1.jpg" />
+    <Content Include="Images\Inicial\blog\blog_2.jpg" />
+    <Content Include="Images\Inicial\blog\blog_3.jpg" />
+    <Content Include="Images\Inicial\blog\blog_4.jpg" />
+    <Content Include="Images\Inicial\blog\blog_5.jpg" />
+    <Content Include="Images\Inicial\blog\blog_6.jpg" />
+    <Content Include="Images\Inicial\customer_1.png" />
+    <Content Include="Images\Inicial\customer_2.png" />
+    <Content Include="Images\Inicial\customer_3.png" />
+    <Content Include="Images\Inicial\customer_4.png" />
+    <Content Include="Images\Inicial\customer_5.png" />
+    <Content Include="Images\Inicial\customer_6.png" />
+    <Content Include="Images\Inicial\gallery\gallery_1.jpg" />
+    <Content Include="Images\Inicial\gallery\gallery_2.jpg" />
+    <Content Include="Images\Inicial\gallery\gallery_3.jpg" />
+    <Content Include="Images\Inicial\gallery\gallery_4.jpg" />
+    <Content Include="Images\Inicial\gallery\gallery_5.jpg" />
+    <Content Include="Images\Inicial\gallery\gallery_6.jpg" />
+    <Content Include="Images\Inicial\gallery\modal_1.jpg" />
+    <Content Include="Images\Inicial\gallery\modal_2.jpg" />
+    <Content Include="Images\Inicial\gallery\modal_3.jpg" />
+    <Content Include="Images\Inicial\gallery\modal_4.jpg" />
+    <Content Include="Images\Inicial\gallery\modal_5.jpg" />
+    <Content Include="Images\Inicial\gallery\modal_6.jpg" />
+    <Content Include="Images\Inicial\headers\first.jpg" />
+    <Content Include="Images\Inicial\headers\first_macbook.png" />
+    <Content Include="Images\Inicial\headers\first_macbook_2.png" />
+    <Content Include="Images\Inicial\headers\first_macbook_3.png" />
+    <Content Include="Images\Inicial\headers\third.jpg" />
+    <Content Include="Images\Inicial\logo.png" />
+    <Content Include="Images\Inicial\oneclick.png" />
+    <Content Include="Images\Inicial\preload.gif" />
+    <Content Include="Images\Inicial\slide_1.jpg" />
+    <Content Include="Images\Inicial\slide_2.jpg" />
+    <Content Include="Images\Inicial\slide_3.jpg" />
+    <Content Include="Images\Inicial\team\team_1.jpg" />
+    <Content Include="Images\Inicial\team\team_2.jpg" />
+    <Content Include="Images\Inicial\team\team_3.jpg" />
+    <Content Include="Images\Inicial\team\team_4.jpg" />
+    <Content Include="Images\Inicial\works_1.jpg" />
+    <Content Include="Images\Inicial\works_2.jpg" />
+    <Content Include="Images\Pictures\imgDemoVideo.jpg" />
+    <Content Include="Images\Pictures\modeloViewAnuncio.jpg" />
+    <Content Include="Images\Vídeos\Sicove.mp4" />
     <Content Include="ReportViewerWebForm.aspx" />
     <Content Include="Scripts\demo\advanced-form-demo.js" />
     <Content Include="Scripts\demo\advanced-tables-demo.js" />
@@ -555,6 +631,25 @@
     <Content Include="Scripts\flex.js" />
     <Content Include="Scripts\holder.js" />
     <Content Include="Scripts\html5shiv.js" />
+    <Content Include="Scripts\Inicial\bigmodals.html" />
+    <Content Include="Scripts\Inicial\bootstrap.min.js" />
+    <Content Include="Scripts\Inicial\bootstrap.tour.cookie.html" />
+    <Content Include="Scripts\Inicial\bootstrap.tour.min.html" />
+    <Content Include="Scripts\Inicial\custom.js" />
+    <Content Include="Scripts\Inicial\guideline.main.js" />
+    <Content Include="Scripts\Inicial\guideline.steps.js" />
+    <Content Include="Scripts\Inicial\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\Inicial\jquery.easing.js" />
+    <Content Include="Scripts\Inicial\jquery.fitvids.min.js" />
+    <Content Include="Scripts\Inicial\jquery.form.js" />
+    <Content Include="Scripts\Inicial\jquery.nicescroll.min.js" />
+    <Content Include="Scripts\Inicial\jquery.promin.html" />
+    <Content Include="Scripts\Inicial\jquery.touchwipe.min.js" />
+    <Content Include="Scripts\Inicial\modals.js" />
+    <Content Include="Scripts\Inicial\modernizr.js" />
+    <Content Include="Scripts\Inicial\retina.js" />
+    <Content Include="Scripts\Inicial\skrollr.js" />
+    <Content Include="Scripts\Inicial\toucheffects.js" />
     <Content Include="Scripts\Outros\bootstrap.js" />
     <Content Include="Scripts\Outros\bootstrap.min.js" />
     <Content Include="fonts\icons\font-awesome\fonts\fontawesome-webfont1.woff" />
@@ -601,6 +696,17 @@
     <Content Include="Content\plugins\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\Outros\bootstrap-theme.css.map" />
     <Content Include="Content\Outros\bootstrap.css.map" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\.DS_Store" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\._.DS_Store" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\.DS_Store" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\._.DS_Store" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\_source\.DS_Store" />
+    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\_source\._.DS_Store" />
+    <Content Include="Images\Inicial\blog\Descr.WD3" />
+    <Content Include="Images\Inicial\Descr.WD3" />
+    <Content Include="Images\Inicial\gallery\Descr.WD3" />
+    <Content Include="Images\Inicial\headers\Descr.WD3" />
+    <Content Include="Images\Inicial\team\Descr.WD3" />
     <EntityDeploy Include="Models\Cliquemix.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Cliquemix.Designer.cs</LastGenOutput>
@@ -618,12 +724,6 @@
       <DependentUpon>Cliquemix.edmx</DependentUpon>
       <LastGenOutput>Cliquemix.cs</LastGenOutput>
     </Content>
-    <Content Include="Content\plugins\AutoSuggest_2.1.3\.DS_Store" />
-    <Content Include="Content\plugins\AutoSuggest_2.1.3\._.DS_Store" />
-    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\.DS_Store" />
-    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\._.DS_Store" />
-    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\_source\.DS_Store" />
-    <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\_source\._.DS_Store" />
     <None Include="Scripts\Outros\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\Outros\jquery-2.1.1.js" />
     <Content Include="Scripts\Outros\jquery-2.1.1.min.js" />
@@ -687,6 +787,11 @@
     <Content Include="Scripts\plugins\summernote\summernote.min.js" />
     <Content Include="Scripts\plugins\validate\jquery.validate.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\Views\Anuncio\Anuncio.js" />
+    <Content Include="Views\Inicial\components.html" />
+    <Content Include="Views\Inicial\favicon.ico" />
+    <Content Include="Views\Inicial\index.html" />
+    <Content Include="Views\Inicial\thumbnail.png" />
     <Content Include="Views\Shared\favicon.ico" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -728,10 +833,10 @@
     <Content Include="Views\Anuncio\CreateAnuncio.cshtml" />
     <Content Include="Views\Anuncio\ListAnuncio.cshtml" />
     <Content Include="Views\Anuncio\UpdateAnuncio.cshtml" />
-    <Content Include="Views\Breadcrumbs\Breadcrumbs-Anuncio.cshtml" />
+    <Content Include="Views\Breadcrumbs\Breadcrumbs-Anuncio-CreateAnuncio.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Breadcrumbs\Breadcrumbs-Anuncio-Edit.cshtml" />
-    <Content Include="Views\Breadcrumbs\Breadcrumbs-Anuncio-List.cshtml" />
+    <Content Include="Views\Breadcrumbs\Breadcrumbs-Anuncio-VisualizarAnuncio.cshtml" />
+    <Content Include="Views\Breadcrumbs\Breadcrumbs-Anuncio-ListAnuncio.cshtml" />
     <Content Include="Views\Account\Logout.cshtml" />
     <Content Include="Views\Anunciante\Create.cshtml" />
     <Content Include="Views\Anunciante\Delete.cshtml" />
@@ -753,11 +858,11 @@
     <Content Include="Views\Campanha\DeleteCampanha.cshtml" />
     <Content Include="Views\Campanha\ListCampanha.cshtml" />
     <Content Include="Views\Campanha\UpdateCampanha.cshtml" />
-    <Content Include="Views\Campanha\ViewerCampanha.cshtml" />
+    <Content Include="Views\Campanha\VisualizarCampanha.cshtml" />
     <Content Include="Views\Credito\BuyCredit.cshtml" />
     <Content Include="Views\Credito\ManagerCredit.cshtml" />
-    <Content Include="Views\Breadcrumbs\Breadcrumbs-Campanha-List.cshtml" />
-    <Content Include="Views\Breadcrumbs\Breadcrumbs-Campanha.cshtml" />
+    <Content Include="Views\Breadcrumbs\Breadcrumbs-Campanha-ListCampanha.cshtml" />
+    <Content Include="Views\Breadcrumbs\Breadcrumbs-Campanha-CreateCampanha.cshtml" />
     <Content Include="Views\Breadcrumbs\Breadcrumbs-Credito-Gerenciar.cshtml" />
     <Content Include="Views\Breadcrumbs\Breadcrumbs-Credito.cshtml" />
     <Content Include="Views\Campanha\AnunciosCampanha.cshtml" />
@@ -787,6 +892,12 @@
     <Content Include="Scripts\plugins\AutoSuggest_2.1.3\.DS_Store" />
     <Content Include="Scripts\plugins\AutoSuggest_2.1.3\._.DS_Store" />
     <Content Include="Views\Teste\Index.cshtml" />
+    <Content Include="Views\Anuncio\VisualizarAnuncio.cshtml" />
+    <Content Include="Views\Breadcrumbs\Breadcrumbs-Campanha-VisualizarCampanha.cshtml" />
+    <Content Include="Views\Inicial\Index.cshtml" />
+    <Content Include="Views\PrincipalAdministrador\PrincipalAdministrador.cshtml" />
+    <Content Include="Views\Breadcrumbs\Breadcrumbs-Anuncio-UpdateAnuncio.cshtml" />
+    <Content Include="Views\Anuncio\ImagensAnuncio.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -795,11 +906,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Aplicação\" />
     <Folder Include="App_Data\" />
     <Folder Include="Arquivos\Anunciantes\" />
     <Folder Include="Images\Fotos\" />
     <Folder Include="Images\Icons\" />
-    <Folder Include="Images\Pictures\" />
     <Folder Include="Relatórios\" />
   </ItemGroup>
   <ItemGroup>

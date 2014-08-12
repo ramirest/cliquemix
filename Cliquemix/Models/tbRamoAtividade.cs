@@ -17,13 +17,11 @@ namespace Cliquemix.Models
         public tbRamoAtividade()
         {
             this.tbAnunciante = new HashSet<tbAnunciante>();
-            this.tbAnuncio = new HashSet<tbAnuncio>();
         }
     
         public int raid { get; set; }
         public string descricao { get; set; }
     
         public virtual ICollection<tbAnunciante> tbAnunciante { get; set; }
-        public virtual ICollection<tbAnuncio> tbAnuncio { get; set; }
     }
 }

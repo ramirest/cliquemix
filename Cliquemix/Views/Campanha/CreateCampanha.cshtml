@@ -199,7 +199,7 @@
                 <small>Criar Campanha</small>
                 <input type="hidden" id="ctid" name="ctid" value="@ViewBag.ctid"/>
             </h1>
-            @RenderPage("~/Views/Breadcrumbs/Breadcrumbs-Campanha.cshtml")
+            @RenderPage("~/Views/Breadcrumbs/Breadcrumbs-Campanha-CreateCampanha.cshtml")
         </div>
     </div>
 </div>
@@ -223,16 +223,16 @@
                                     <ul id="userSettings" class="nav nav-pills nav-stacked">
                                         <li class="active">
                                             <a href="#infoBasico" data-toggle="tab" id="lnk1"><i class="fa fa-info-circle fa-fw"></i> Informações</a>
-                                        </li>@*
+                                        </li>
                                         <li>
                                             <a href="#infoDestaque" data-toggle="tab" id="lnk2"><i class="fa fa-bookmark fa-fw"></i> Destaque</a>
-                                        </li>*@
+                                        </li>
                                         <li>
                                             <a href="#infoAnun" data-toggle="tab" id="lnk3"><i class="fa fa-thumb-tack fa-fw"></i> Vincular Anúncios</a>
-                                        </li>@*
+                                        </li>
                                         <li>
-                                            <a href="#infoCli" data-toggle="tab" id="lnk4"><i class="fa fa-hand-o-down fa-fw"></i> Quantidade de Cliques</a>
-                                        </li>*@
+                                            <a href="#infoResumo" data-toggle="tab" id="lnk4"><i class="fa fa-hand-o-down fa-fw"></i> Resumo da Campanha</a>
+                                        </li>
                                         <li>
                                             <a href="#infoGL" data-toggle="tab" id="lnk5"><i class="fa fa-globe fa-fw"></i> Geo Localização</a>
                                         </li>
@@ -420,8 +420,7 @@
                                         </div>
 
 
-                                        @*
-                                        <div class="tab-pane fade" id="infoCli">
+                                        <div class="tab-pane fade" id="infoResumo">
                                             <h4 class="page-header">Quantidades de cliques que o usuário poderá clicar por anúncio:</h4>
                                             <div class="form-group col-lg-6">
                                                 @Html.Label("Selecione o Pacote")
@@ -442,7 +441,6 @@
                                                 <button type="button" onclick=" $('#lnk5').click(); " class="btn btn-default">Próximo</button>
                                             </div>
                                         </div>
-                                        *@
                                         
                                         
                                         <div class="tab-pane fade in" id="infoGL">

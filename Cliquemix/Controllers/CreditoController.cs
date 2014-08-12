@@ -8,6 +8,7 @@ using Cliquemix.Models;
 
 namespace Cliquemix.Controllers
 {
+    [Authorize]
     public class CreditoController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

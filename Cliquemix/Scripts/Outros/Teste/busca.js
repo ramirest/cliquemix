@@ -1,4 +1,11 @@
-﻿var ID = function (id) { return document.getElementById(id); },
+﻿/*
+     Titulo - Estado
+     Mensagem - Cidade
+     Data - Pais
+     Fonte
+*/
+
+var ID = function (id) { return document.getElementById(id); },
 createObj = function (tag) { return document.createElement(tag); },
 buscar = function (texto) {
     var div = ID('mostrarBusca'),

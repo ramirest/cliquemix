@@ -78,7 +78,7 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">Título</th>
-                                    <th class="text-center">Ramo</th>
+                                    <th class="text-center">Categoria</th>
                                     <th class="text-center">Video</th>
                                     <th class="text-center">Imagem</th>
                                     @*<th class="text-center">Data</th>*@
@@ -95,7 +95,7 @@
                                                 @Html.DisplayTextFor(modelItem => item.tituloAnuncio)
                                             </td>
                                             <td align=center style="width: 200px;">
-                                                @Html.DisplayFor(modelItem => item.tbRamoAtividade.descricao)
+                                                @Html.DisplayFor(modelItem => item.tbAnuncioCategoria.dsCategoria)
                                             </td>
                                             <td align=center style="width: 60px;">
                                                 @if (item.videoAnuncio != string.Empty)

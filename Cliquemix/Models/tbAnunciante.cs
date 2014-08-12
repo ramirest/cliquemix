@@ -46,6 +46,9 @@ namespace Cliquemix.Models
         public Nullable<int> leuTermo { get; set; }
         public Nullable<int> uid { get; set; }
         public Nullable<int> peid { get; set; }
+        public string cpf { get; set; }
+        public string rg { get; set; }
+        public string pis { get; set; }
     
         public virtual tbCondicaoPagto tbCondicaoPagto { get; set; }
         public virtual tbAnuncianteEndereco tbAnuncianteEndereco { get; set; }

@@ -14,11 +14,6 @@ namespace Cliquemix.Models
     
     public partial class tbAnuncioImg
     {
-        public tbAnuncioImg()
-        {
-            this.tbAnuncioImagens = new HashSet<tbAnuncioImagens>();
-        }
-    
         public long imgid { get; set; }
         public string url_imagem { get; set; }
         public string tipo { get; set; }
@@ -29,6 +24,5 @@ namespace Cliquemix.Models
         public Nullable<int> aid { get; set; }
     
         public virtual tbAnuncio tbAnuncio { get; set; }
-        public virtual ICollection<tbAnuncioImagens> tbAnuncioImagens { get; set; }
     }
 }

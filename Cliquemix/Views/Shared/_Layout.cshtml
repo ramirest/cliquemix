@@ -1,6 +1,7 @@
 ﻿@using System.Web.UI.WebControls
 @using Cliquemix.Controllers
 @using Cliquemix.Controllers.Anunciante
+@using DocumentFormat.OpenXml.Math
 
 
 <!DOCTYPE html>
@@ -10,6 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> CliqueMix - Sicove</title>
     <link href="~/Content/plugins/pace/pace.css" rel="stylesheet">
+    <script src="~/Scripts/plugins/pace/pace.js"></script>
+
     <link href="~/Content/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel="stylesheet" type="text/css">
@@ -65,6 +68,7 @@
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
     @Scripts.Render("~/bundles/js-default")
+   
 
     <script src="~/Scripts/plugins/bootstrap-tokenfield/bootstrap-tokenfield.min.js"></script>
     <script src="~/Scripts/plugins/bootstrap-tokenfield/scrollspy.js"></script>
@@ -77,24 +81,12 @@
     <script src="~/Scripts/plugins/ladda/ladda.min.js"></script>
     <script src="~/Scripts/plugins/bootstrap-multiselect/bootstrap-multiselect.js"></script>
     <script src="~/Scripts/Outros/jquery.uploadify.js"></script>
-    <script src="~/Scripts/plugins/bootstrap/bootstrap.min.js"></script>
-    <script src="~/Scripts/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-    <script src="~/Scripts/plugins/popupoverlay/jquery.popupoverlay.js"></script>
-    <script src="~/Scripts/plugins/popupoverlay/logout.js"></script>
-    <script src="~/Scripts/plugins/popupoverlay/defaults.js"></script>
-    <script src="~/Scripts/plugins/hisrc/hisrc.js"></script>
-    <script src="~/Scripts/plugins/datatables/jquery.dataTables.js"></script>
-    <script src="~/Scripts/plugins/datatables/datatables-bs3.js"></script>
-    <script src="~/Scripts/flex.js"></script>
-    
-    <script src="~/Scripts/plugins/messenger/messenger.min.js"></script>
-    <script src="~/Scripts/plugins/messenger/messenger-theme-flat.js"></script>
-   
-    <script src="~/Scripts/plugins/pace/pace.js"></script>
 
     @Scripts.Render("~/bundles/js-others")
     
-<script>
+    @Scripts.Render("~/bundles/js-flot")
+
+    <script>
         $(document).ready(function () {
         
         $('#summernote').summernote(

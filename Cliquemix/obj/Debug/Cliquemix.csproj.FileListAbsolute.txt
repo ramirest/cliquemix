@@ -169,3 +169,7 @@ E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Report.dll
 E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\ReportViewerForMvc.dll
 E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\itextsharp.xml
 E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\en\HtmlReportControl.resources.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\PagedList.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\PagedList.Mvc.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\PagedList.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\PagedList.Mvc.xml

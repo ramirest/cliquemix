@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace Cliquemix.Controllers.Anunciante
 {
+    [Authorize]
     public class RelatorioAnuncianteController : Controller
     {
         //

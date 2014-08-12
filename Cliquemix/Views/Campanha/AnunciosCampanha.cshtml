@@ -25,7 +25,7 @@
                 <tr>
                     <th class="text-center">Código</th>
                     <th class="text-center">Título</th>
-                    <th class="text-center">Ramo</th>
+                    <th class="text-center">Categoria</th>
                     <th class="text-center">Video</th>
                     <th class="text-center">Imagem</th>
                     <th class="text-center">Data</th>
@@ -45,7 +45,7 @@
                                 @Html.DisplayFor(modelItem => item.tbAnuncio.tituloAnuncio) @* Título do Anúncio *@
                             </td>
                             <td class="text-center">
-                                @Html.DisplayFor(modelItem => item.tbAnuncio.tbRamoAtividade.descricao) @* Ramo de Atividade *@
+                                @Html.DisplayFor(modelItem => item.tbAnuncio.tbAnuncioCategoria.dsCategoria) @* Ramo de Atividade *@
                             </td>
                             <td class="text-center">
                                 @if (item.tbAnuncio.videoAnuncio == null) // Anúncio tem Vídeo ?

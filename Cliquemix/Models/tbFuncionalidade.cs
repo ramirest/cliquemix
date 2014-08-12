@@ -17,11 +17,13 @@ namespace Cliquemix.Models
         public tbFuncionalidade()
         {
             this.tbAnuncioFuncionalidade = new HashSet<tbAnuncioFuncionalidade>();
+            this.tbFuncionalidadeLog = new HashSet<tbFuncionalidadeLog>();
         }
     
         public int fid { get; set; }
         public string dsFuncionalidade { get; set; }
     
         public virtual ICollection<tbAnuncioFuncionalidade> tbAnuncioFuncionalidade { get; set; }
+        public virtual ICollection<tbFuncionalidadeLog> tbFuncionalidadeLog { get; set; }
     }
 }

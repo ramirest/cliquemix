@@ -4,6 +4,7 @@
 @{
     string a = string.Empty;
 }
+
 <!-- begin SIDE NAVIGATION -->
 <nav class="navbar-side" role="navigation">
     <div class="navbar-collapse sidebar-collapse collapse">
@@ -22,8 +23,11 @@
                         {
                             @Html.Label(User.Identity.GetUserName());
                         }
-
-                    </span> <a style="color: inherit" class="logout_open" href="#logout" data-toggle="tooltip" data-placement="top" title="Logout"><i class="fa fa-sign-out"></i></a>
+                        
+                        <a class="logout_open" style="color: inherit" title="Logout" href="~/Account/Logout">
+                            <i class="fa fa-sign-out"></i>
+                        </a>
+                    </span>
                 </p>
                 <div class="clearfix"></div>
             </li>
@@ -31,7 +35,7 @@
            
             <!-- begin DASHBOARD LINK -->
             <li>                
-                <a href="http://localhost:35543">
+                <a href="~/PrincipalAnunciante/PrincipalAnunciante">
                     <i class="fa fa-dashboard"></i> Dashboard
                 </a>
             </li>
@@ -125,3 +129,43 @@
 </nav>
 <!-- /.navbar-side -->
 <!-- end SIDE NAVIGATION -->
+
+<script>
+    function LogoutCliqueMix() {
+        $.ajax(
+        {
+            type: 'POST',
+            url: '/Account/_Logout',
+            dataType: 'html',
+            cache: false,
+            async: true,
+            success: function() {
+                document.getElementById('btnCancelarLogout').click();
+                location.href = "/Account/Login";
+            }
+        });
+    }
+</script>
+
+
+<div id="logout">
+    <div class="logout-message">
+        <img class="img-circle img-logout" src="~/fonts/img/profile-pic.jpg" alt="">
+        <h3>
+            <i class="fa fa-sign-out text-green"></i> <p>Pronto para sair?</p>
+        </h3>
+        <p>Selecione "Sair" se você estiver pronto<br> para terminar a sua sessão.</p>
+        <ul class="list-inline">
+            <li>
+                <button type="button" class="btn btn-green" id="btnLogout" name="btnLogout" onclick="LogoutCliqueMix();">
+                    <strong>Logout</strong>
+                </button>
+            </li>
+            <li>
+                <button id="btnCancelarLogout" name="btnCancelarLogout" class="logout_close btn btn-green">
+                    Cancelar
+                </button>
+            </li>
+        </ul>
+    </div>
+</div>

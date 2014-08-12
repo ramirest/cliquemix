@@ -15,6 +15,7 @@ using System.Net;
 
 namespace Cliquemix.Controllers
 {
+    [Authorize]
     public class CampanhaController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -102,8 +103,8 @@ namespace Cliquemix.Controllers
         // GET: /Campanha/ListCampanha
         public ActionResult ListCampanha()
         {
-            var tbcampanha = db.tbCampanha.Include(t => t.tbCampanhaStatus).Include(r => r.tbDestaque);
-            return View(tbcampanha.ToList());
+            var tbcampanha = db.tbCampanha.Include(t => t.tbCampanhaStatus).Include(r => r.tbDestaque).ToList();
+            return View(tbcampanha);
         }
 
         [HttpGet]
@@ -223,7 +224,7 @@ namespace Cliquemix.Controllers
                 {
                     int codAnunciante = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());
                     int codStatus = ProcFunc.RetornarStatusPadraoAnuncioDisponivelParaCampanha();
-                    var tbanuncio = db.tbAnuncio.Include(t => t.tbRamoAtividade).Include(r => r.tbAnuncioStatus).
+                    var tbanuncio = db.tbAnuncio.Include(t => t.tbAnuncioCategoria).Include(r => r.tbAnuncioStatus).
                         Where(a => a.pid == codAnunciante); //.Where(m => m.asid == codStatus);
                     if (tbanuncio.Any())
                     {
@@ -264,7 +265,7 @@ namespace Cliquemix.Controllers
 
                     if (txt == null)
                     {
-                        var tbanuncio = db.tbAnuncio.Include(t => t.tbRamoAtividade).Include(r => r.tbAnuncioStatus).
+                        var tbanuncio = db.tbAnuncio.Include(t => t.tbAnuncioCategoria).Include(r => r.tbAnuncioStatus).
                             Where(a => a.pid == codAnunciante); //.Where(m => m.asid == codStatus);
                         if (tbanuncio.Any())
                         {
@@ -281,7 +282,7 @@ namespace Cliquemix.Controllers
                     }
                     else
                     {
-                        var tbanuncio = db.tbAnuncio.Include(t => t.tbRamoAtividade).Include(r => r.tbAnuncioStatus).
+                        var tbanuncio = db.tbAnuncio.Include(t => t.tbAnuncioCategoria).Include(r => r.tbAnuncioStatus).
                             Where(a => a.pid == codAnunciante).Where(m => m.tituloAnuncio.Contains(txt));
                         if (tbanuncio.Any())
                         {
@@ -346,7 +347,7 @@ namespace Cliquemix.Controllers
         public ActionResult GeoLocalizacao(string cidade)
         {
             var tbcidade = db.tbCidade.Include(t => t.tbEstado).Where(m => m.nomeCidade.Contains(cidade)).ToList();
-            return null;
+            return PartialView(tbcidade);
         }
 
     }

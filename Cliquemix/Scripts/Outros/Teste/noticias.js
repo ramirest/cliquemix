@@ -1,9 +1,9 @@
 ﻿//Todas as notícias que serão buscadas
 var Noticias = [
  {
-     Titulo: 'Notebooks do Google devem chegar ao Brasil em até 6 meses',
-     Mensagem: 'O consumidor brasileiro poderá ter acesso aos dois modelos de hromebooks anunciados no início do mês nos Estados Unidos em até seis meses, segundo o diretor de produtos da gigante das buscas da internet, Caesar Sengupta. Os aparelhos, com sistema baseado em Linux e funcionamento 100% dependente de conexão à internet, começarão a ser vendidos nos EUA por preços a partir de US$ 350.Durante o Chrome I/O, evento realizado em San Francisco na última semana, o Google anunciou parceria com a Samsung e com a Acer para lançar os notebooks com sistema operacional Chrome OS no mercado.',
-     Data: '19/05/2011 18h56',
+     Titulo: 'MG',
+     Mensagem: 'Ipatinga',
+     Data: 'Brasil',
      Fonte: 'G1'
  },
  {

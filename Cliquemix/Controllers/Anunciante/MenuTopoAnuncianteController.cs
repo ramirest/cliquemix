@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace Cliquemix.Controllers.Anunciante
 {
+
     public class MenuTopoAnuncianteController : Controller
     {
         // GET: MenuTopoAnunciante

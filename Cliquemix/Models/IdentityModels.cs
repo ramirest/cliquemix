@@ -26,16 +26,20 @@ namespace Cliquemix.Models
             throw new UnintentionalCodeFirstException();
         }
 
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<tbAnunciante> tbAnunciante { get; set; }
         public virtual DbSet<tbAnuncianteDestaque> tbAnuncianteDestaque { get; set; }
         public virtual DbSet<tbAnuncianteDestaqueStatus> tbAnuncianteDestaqueStatus { get; set; }
         public virtual DbSet<tbAnuncianteEndereco> tbAnuncianteEndereco { get; set; }
         public virtual DbSet<tbAnuncianteTelefone> tbAnuncianteTelefone { get; set; }
         public virtual DbSet<tbAnuncio> tbAnuncio { get; set; }
+        public virtual DbSet<tbAnuncioCategoria> tbAnuncioCategoria { get; set; }
+        public virtual DbSet<tbAnuncioCodTemp> tbAnuncioCodTemp { get; set; }
         public virtual DbSet<tbAnuncioFuncionalidade> tbAnuncioFuncionalidade { get; set; }
         public virtual DbSet<tbAnuncioImagens> tbAnuncioImagens { get; set; }
         public virtual DbSet<tbAnuncioImg> tbAnuncioImg { get; set; }
         public virtual DbSet<tbAnuncioImgLog> tbAnuncioImgLog { get; set; }
+        public virtual DbSet<tbAnuncioLog> tbAnuncioLog { get; set; }
         public virtual DbSet<tbAnuncioStatus> tbAnuncioStatus { get; set; }
         public virtual DbSet<tbBairro> tbBairro { get; set; }
         public virtual DbSet<tbBan> tbBan { get; set; }
@@ -60,11 +64,13 @@ namespace Cliquemix.Models
         public virtual DbSet<tbCreditoCompra> tbCreditoCompra { get; set; }
         public virtual DbSet<tbCreditoDesconta> tbCreditoDesconta { get; set; }
         public virtual DbSet<tbCreditoPromocional> tbCreditoPromocional { get; set; }
+        public virtual DbSet<tbCreditoStatus> tbCreditoStatus { get; set; }
         public virtual DbSet<tbDestaque> tbDestaque { get; set; }
         public virtual DbSet<tbDestaqueAnunciante> tbDestaqueAnunciante { get; set; }
         public virtual DbSet<tbDestaqueDuracao> tbDestaqueDuracao { get; set; }
         public virtual DbSet<tbEstado> tbEstado { get; set; }
         public virtual DbSet<tbFuncionalidade> tbFuncionalidade { get; set; }
+        public virtual DbSet<tbFuncionalidadeLog> tbFuncionalidadeLog { get; set; }
         public virtual DbSet<tbLogSistema> tbLogSistema { get; set; }
         public virtual DbSet<tbPacoteClique> tbPacoteClique { get; set; }
         public virtual DbSet<tbPais> tbPais { get; set; }
@@ -84,6 +90,8 @@ namespace Cliquemix.Models
         public virtual DbSet<tbUsersLogAcesso> tbUsersLogAcesso { get; set; }
         public virtual DbSet<tbUsersPermissao> tbUsersPermissao { get; set; }
         public virtual DbSet<tbUsersTipo> tbUsersTipo { get; set; }
+        public virtual DbSet<VwAnunciosCriadosAnunciante> VwAnunciosCriadosAnunciante { get; set; }
+
     }
 
 }

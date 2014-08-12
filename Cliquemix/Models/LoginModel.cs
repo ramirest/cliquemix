@@ -7,11 +7,14 @@ using System.Data.Common;
 using System.Data.Entity.Core.EntityClient;
 using System.ComponentModel.DataAnnotations;
 using Cliquemix.Models;
+using Microsoft.Ajax.Utilities;
 
 namespace Cliquemix.Models
 {
     public class LoginModel
     {
+        public ApplicationDbContext db = new ApplicationDbContext();
+
         public int CodUsuario { get; set; }
         public int CodTipoUsuario { get; set; }
         [Required]
@@ -19,57 +22,36 @@ namespace Cliquemix.Models
         [Required]
         public string Password { get; set; }
         public bool Remember { get; set; }
-        private ApplicationDbContext db = new ApplicationDbContext();
 
         #region "Método UserIsValid {Validação login de usuário}"
         public bool UserIsValid(string user, string pwd)
         {
-            using (EntityConnection conn = new EntityConnection("name=cliquemixEntities"))
+            var senha = ProcFunc.CryptographyPass(pwd);
+            var u = (from usu in db.tbUsers 
+                     where usu.username == user  && usu.pwd == senha
+                     select usu).ToList();
+            if (u.Count > 0)
             {
-                conn.Open();
-                string _QrySQL = @"SELECT tbUsers.uid, tbUsers.username, tbUsers.utid
-                    FROM cliquemixEntities.tbUsers 
-                    WHERE tbUsers.username = @usu AND tbUsers.pwd = @senha";
-
-                EntityCommand cmd = new EntityCommand(_QrySQL, conn);
-
-                // Create two parameters and add them to 
-                // the EntityCommand's Parameters collection 
-                EntityParameter param1 = new EntityParameter();
-                param1.ParameterName = "usu";
-                param1.Value = user;
-
-                EntityParameter param2 = new EntityParameter();
-                param2.ParameterName = "senha";
-                param2.Value = ProcFunc.ValidCryptographyPass(pwd);
-
-                cmd.Parameters.Add(param1);
-                cmd.Parameters.Add(param2);
-
-                using (DbDataReader rdr = cmd.ExecuteReader(CommandBehavior.SequentialAccess))
-                {
-                    // Iterate through the collection of Contact items.
-                    while (rdr.Read())
-                    {
-                        CodUsuario = Convert.ToInt32(rdr["uid"].ToString());
-                        Username = rdr["username"].ToString();
-                        CodTipoUsuario = Convert.ToInt32(rdr["utid"].ToString());
-                        this._salvarLog();
-                        return true;
-                    }
-                    return false;
-                }                
+                CodUsuario = u.First().uid;
+                Username = u.First().username;
+                CodTipoUsuario = u.First().utid;
+                return true;
             }
+            return false;
         }
         #endregion
 
-        public void _salvarLog()
+        public static void _salvarLog(int pCodUsuario, int pTimeOut, int pIdSessao, string pSessao)
         {
+            ApplicationDbContext db = new ApplicationDbContext();
             tbUsersLogAcesso logAcesso = new tbUsersLogAcesso();
-            logAcesso.uid = CodUsuario;
+            logAcesso.uid = pCodUsuario;
             logAcesso.dataHoraLog = DateTime.Now;
-            logAcesso.timeOutLog = 60;
-
+            logAcesso.timeOutLog = pTimeOut;
+            logAcesso.dataHoraExpiracao = logAcesso.dataHoraLog.AddMinutes(pTimeOut);
+            logAcesso.idSessao = pIdSessao;
+            logAcesso.sessaoExpirada = 0;
+            logAcesso.nomeSessao = pSessao;
             db.tbUsersLogAcesso.Add(logAcesso);
             db.SaveChanges();
         }        

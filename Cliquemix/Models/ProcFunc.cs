@@ -7,9 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using System.Data.Entity;
+using System.Net;
+using System.Web;
 using System.Web.Mvc;
+using Cliquemix.Models;
+using Microsoft.AspNet.Identity;
 using System.Security;
-using BLToolkit.Data.Sql;
 
 namespace Cliquemix.Models
 {
@@ -17,7 +20,8 @@ namespace Cliquemix.Models
     {
 
         #region "Declaração de Variáveis"
-        public static ApplicationDbContext db = new ApplicationDbContext();
+        //public static ApplicationDbContext db = new ApplicationDbContext();
+        public static cliquemixEntities db = new cliquemixEntities();
         #endregion
 
         #region "Métodos"
@@ -168,6 +172,22 @@ namespace Cliquemix.Models
         }
         #endregion
 
+        #region "Retornar Tipo do Usuário Logado"
+        public static int RetornarTipoUsuarioLogado(string _nomeUsuario)
+        {
+            var a = (from usu in db.tbUsers where usu.username == _nomeUsuario select usu).First();
+            return a.utid;
+        }
+        #endregion
+
+        #region "Retornar Usuário Logado"
+        public static int RetornarUsuarioLogado()
+        {
+            //var a = (from usu in db.tbUsers where usu.username == _nomeUsuario select usu).First();
+            return 2;
+        }
+        #endregion
+
         #region "Retornar o Código do Tipo do Usuário"
         public static int RetornarCodigoTipoUsuario(string _tipo)
         {
@@ -200,8 +220,7 @@ namespace Cliquemix.Models
             if (a.spnc != null) return (int) a.spnc;
             else return 0;
         }
-
-    #endregion
+        #endregion
 
         #region "Criar Código Temporário para Campanha"
         public static int CriarCodTempCampanha(string pSession)
@@ -302,6 +321,46 @@ namespace Cliquemix.Models
             }
         }
 
+        #endregion
+
+        #region "Retornar o Código do Status Padrão para um Anúncio Excluído"
+        public static int RetornarStatusPadraoAnuncioExcluido()
+        {
+            var a = (from status in db.tbConfigPadrao select status).First();
+            return (int)a.spea;
+        }
+        #endregion
+
+        #region "Mudar Status do Anúncio Excluído"
+        public static void AnuncioExcluido(int pCodAnuncio)
+        {
+            var a = (from anuncio in db.tbAnuncio where anuncio.aid == pCodAnuncio select anuncio).First();
+            a.asid = RetornarStatusPadraoAnuncioExcluido();
+            db.SaveChanges();
+        }
+        #endregion
+
+        #region "Filtrar Cidades"
+        public static IList<tbCidade> FiltrarCidades(string pCidade)
+        {           
+            var cidades = db.tbCidade.ToList();
+            try
+            {
+                if (pCidade == "Todos")
+                {
+                    cidades = db.tbCidade.ToList();
+                }
+                else
+                {
+                    cidades = db.tbCidade.Where(m => m.nomeCidade.Contains(pCidade)).ToList();
+                }
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+            return cidades;
+        }
         #endregion
 
         #region "Salvar Log do Sistema"

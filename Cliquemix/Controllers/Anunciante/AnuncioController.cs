@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using Cliquemix.Models;
 using Microsoft.AspNet.Identity;
+using PagedList;
 
 namespace Cliquemix.Controllers
 {
@@ -13,42 +14,96 @@ namespace Cliquemix.Controllers
     public class AnuncioController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        
+
         // GET: /Anuncio/ListAnuncio
-        public ActionResult ListAnuncio()
+        public ActionResult ListAnuncio(int? pagina)
         {
-            var tbanuncio = db.tbAnuncio.Include(t => t.tbRamoAtividade).Include(r => r.tbAnuncioStatus);
-            return View(tbanuncio.ToList());
+            //var listaAnuncios = db.tbAnuncio.ToList();
+            int paginaTamanho = 6; //Define o número de elementos por página
+            int paginaNumero = (pagina ?? 1); //Define o número inicial da página como 1
+            var codAnunciante = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());
+            var cpea = ProcFunc.RetornarStatusPadraoAnuncioExcluido();
+            var tbanuncio = db.tbAnuncio.Include(t => t.tbAnuncioCategoria).Include(r => r.tbAnuncioStatus).
+                Where(m => m.pid == codAnunciante && m.asid != cpea).ToList();
+            return View(tbanuncio.ToPagedList(paginaNumero, paginaTamanho));
+            //return View(tbanuncio.ToList());
         }
 
+        // GET: Anuncio/UpdateAnuncio/5
+        public ActionResult UpdateAnuncio(int? id)
+        {        
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            tbAnuncio tbAnuncio = db.tbAnuncio.Find(id);
+            if (tbAnuncio == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.acid = new SelectList(db.tbAnuncioCategoria, "acid", "dsCategoria");
+            ViewBag.asid = new SelectList(db.tbAnuncioStatus, "asid", "dsStatus");
+            return View(tbAnuncio);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UpdateAnuncio([Bind(Include = "tituloAnuncio,url,dsAnuncio,acid,pid,videoAnuncio,comentar,curtir,idTempImg," +
+                                                          "compartilhar,dtCriacao,imagem1,imagem2,imagem3,imagem4,imagem5,imagem6,imagem7,imagem8")] tbAnuncio tbanuncio)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(tbanuncio).State = EntityState.Modified;
+                tbanuncio.pid = ProcFunc.RetornarCodigoAnuncianteCodUsuario(ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName()));
+                tbanuncio.dtCriacao = DateTime.Now;
+                tbanuncio.asid = ProcFunc.RetornarStatusPadraoAnuncio();
+                //db.tbAnuncio.Add(tbanuncio);
+                db.SaveChanges();
+                //AlterarImgAnuncioSalvo(tbanuncio.aid, Convert.ToInt32(Request.Form.Get("idTempImg")));
+                //SalvarLogAnuncio(tbanuncio.aid, (int)tbanuncio.asid, ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName()));
+                return RedirectToAction("ListAnuncio");
+            }
+            return View(tbanuncio);
+        }
+    
+
         // GET: /Anuncio/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult VisualizarAnuncio(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tbAnuncio tbanuncio = db.tbAnuncio.Find(id);
-            if (tbanuncio == null)
+            tbAnuncio tbAnuncio = db.tbAnuncio.Find(id);
+            if (tbAnuncio == null)
             {
                 return HttpNotFound();
             }
-            return View(tbanuncio);
+            if (tbAnuncio.pid == ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName()))
+            {
+                ViewBag.acid = new SelectList(db.tbAnuncioCategoria, "acid", "dsCategoria");
+                ViewBag.asid = new SelectList(db.tbAnuncioStatus, "asid", "dsStatus");
+                return View(tbAnuncio);
+            }
+            else
+                return HttpNotFound();
         }
+
 
         // GET: /Anuncio/Create
         public ActionResult CreateAnuncio()
         {
-            ViewBag.raid = new SelectList(db.tbRamoAtividade, "raid", "descricao");
+            ViewBag.acid = new SelectList(db.tbAnuncioCategoria, "acid", "dsCategoria");
             ViewBag.asid = new SelectList(db.tbAnuncioStatus, "asid", "dsStatus");
             return View();
         }
 
+
         // POST: /Anuncio/CreateAnuncio
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateAnuncio([Bind(Include = "tituloAnuncio,url,dsAnuncio,raid,pid,videoAnuncio,comentar,curtir,idTempImg," +
-                                                          "compartilhar,dtCriacao,imagem1,imagem2,imagem3,imagem4,imagem5,imagem6,imagem7,imagem8")] tbAnuncio tbanuncio)
+        public ActionResult CreateAnuncio([Bind(Include = "tituloAnuncio,url,dsAnuncio,acid,pid,videoAnuncio,comentar,curtir,idTempImg," +
+                                                          "compartilhar,dtCriacao,imagem1,imagem2,imagem3,imagem4,imagem5,imagem6,imagem7,imagem8,idTemp")] tbAnuncio tbanuncio)
         {
             if (ModelState.IsValid)
             {
@@ -58,46 +113,13 @@ namespace Cliquemix.Controllers
                 db.tbAnuncio.Add(tbanuncio);
                 db.SaveChanges();
                 AlterarImgAnuncioSalvo(tbanuncio.aid, Convert.ToInt32(Request.Form.Get("idTempImg")));
-                SalvarLogAnuncio(tbanuncio.aid, (int)tbanuncio.asid, ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName()), "Sim");
+                SalvarLogAnuncio(tbanuncio.aid, (int)tbanuncio.asid, ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName()));
 
                 return RedirectToAction("ListAnuncio");
             }
             return View(tbanuncio);
         }
 
-        // GET: /Anuncio/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            tbAnuncio tbanuncio = db.tbAnuncio.Find(id);
-            if (tbanuncio == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.raid = new SelectList(db.tbRamoAtividade, "raid", "descricao", tbanuncio.raid);
-            ViewBag.asid = new SelectList(db.tbAnuncioStatus, "asid", "dsStatus", tbanuncio.asid);
-            return View(tbanuncio);
-        }
-
-        // POST: /Anuncio/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "aid,tituloAnuncio,url,dsAnuncio,videoAnuncio,raid,comentar,curtir,compartilhar,asid,dtCriacao,idTempImg")] tbAnuncio tbanuncio)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(tbanuncio).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("ListAnuncio");
-            }
-            ViewBag.aaid = new SelectList(db.tbRamoAtividade, "raid", "descricao", tbanuncio.raid);
-            return View(tbanuncio);
-        }
 
         // GET: /Anuncio/Delete/5
         public ActionResult Delete(int? id)
@@ -114,14 +136,16 @@ namespace Cliquemix.Controllers
             return View(tbanuncio);
         }
 
+
         // POST: /Anuncio/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        [HttpPost]
         public ActionResult DeleteConfirmed(int id)
         {
             tbAnuncio tbanuncio = db.tbAnuncio.Find(id);
-            db.tbAnuncio.Remove(tbanuncio);
+            tbanuncio.asid = ProcFunc.RetornarStatusPadraoAnuncioExcluido();
+            db.Entry(tbanuncio).State = EntityState.Modified;
             db.SaveChanges();
+            //var a = tbanuncio.asid;
             return RedirectToAction("ListAnuncio");
         }
 
@@ -139,6 +163,7 @@ namespace Cliquemix.Controllers
                 return PartialView();
             }
         }
+
 
         [HttpPost]
         public String UploadImagem(HttpPostedFileBase filedata, int? idAlbum)
@@ -178,6 +203,7 @@ namespace Cliquemix.Controllers
             }
         }
 
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -209,17 +235,19 @@ namespace Cliquemix.Controllers
             return 0;
         }
 
-        public void SalvarLogAnuncio(int _aid, int _asid, int _uid, string _imgRename)
+
+        public void SalvarLogAnuncio(int _aid, int _asid, int _uid)
         {
-            tbAnuncioImgLog tbAnuncioImgLog = new tbAnuncioImgLog();
-            tbAnuncioImgLog.aid = _aid;
-            tbAnuncioImgLog.asid = _asid;
-            tbAnuncioImgLog.uid = _uid;
-            tbAnuncioImgLog.dtMovimento = DateTime.Now;
-            tbAnuncioImgLog.imagensRenomeadas = _imgRename;
-            db.tbAnuncioImgLog.Add(tbAnuncioImgLog);
+            tbAnuncioLog tbAnuncioLog = new tbAnuncioLog(); //Instancia a tabela de log do anúncio
+            tbAnuncioLog.aid = _aid; //Código do Anúncio
+            tbAnuncioLog.asid = _asid; //Status do Anúncio
+            tbAnuncioLog.uid = _uid; //Usuário responsável pela atualização
+            tbAnuncioLog.dtMovimento = DateTime.Now; //Data atual
+            //tbAnuncioLog.imagensRenomeadas = _imgRename;
+            db.tbAnuncioLog.Add(tbAnuncioLog);
             db.SaveChanges();
         }
+
 
         public void AlterarImgAnuncioSalvo(int pAid, int pIdTemp)
         {
@@ -244,6 +272,45 @@ namespace Cliquemix.Controllers
                 item.tempRenomeado = true;
             }
         }
+
+
+        [HttpGet]
+        public ActionResult ImagensAnuncio(int pIdTemp)
+        //Método que retornar todas as imagens do anúncio
+        //de acordo com o código temporário informado nas imagens (idTemp)
+        {/*
+            try
+            {
+                var tbAnuncioImg = db.tbAnuncioImg.Where(m => m.idTemp == pIdTemp);
+                if (tbAnuncioImg.Any())
+                {
+                    ViewBag.CodTemp = pIdTemp;
+                    return PartialView(tbAnuncioImg.ToList());
+                }
+
+
+
+
+                //var tbCampanhaAnuncio = db.tbCampanhaAnuncio.Where(m => m.ctid == pCodCampanha);
+                //if (tbCampanhaAnuncio.Any())
+                {
+                    ViewBag.Tudo = 2;
+                    //ViewBag.CodCampanha = pCodCampanha;
+                    //return PartialView(tbCampanhaAnuncio.ToList());
+                }
+                //else
+                {
+                  //  return PartialView();
+                }
+            }
+            catch (Exception)
+            {
+                return PartialView();
+                throw;
+            }*/
+            return View();
+        }
+
 
     }
 }

@@ -1,84 +1,11 @@
-﻿<html>
-<head>
-    <title> Busca em JavaScript </title>
-    <script type="text/javascript" src="~/Scripts/Outros/Teste/noticias.js"></script>
-    <script type="text/javascript" src="~/Scripts/Outros/Teste/busca.js"></script>
+﻿@{
+    Layout = null;
+}
 
-    <style type="text/css">
-        body {
-            font-size: 9px;
-        }
-
-        tr.zebra {
-            background: #f6f6f6;
-        }
-
-        tr:hover {
-            background: silver;
-        }
-    </style>
-    <script type="text/javascript">
-        window.onload = function () {
-            var textBusca = ID('textBusca');
-            //Encontra o objeto que vai ser responsável por
-            //disparar as buscas
-            textBusca.onkeydown = function () {
-                //caso tenha alguma busca para ser executada
-                if (this.time)
-                    clearTimeout(this.time);
-                //setando a busca para executar depois de 1/2 segundo
-                var fn = new Function('buscar("' + this.value + '")');
-                this.time = setTimeout(fn, 500);
-            }
-        }
-    </script>
-</head>
-    <body>
-        <div class="btn-group">
-            <button id="btnPesquisar" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
-                Default<span class="caret"></span>
-            </button>
-            <input type="text" class="form-control dropdown-toggle" data-toogle="dropdown" placeholder="Pesquisa..."/>
-            <ul class="dropdown-menu" role="menu">
-                <li>
-                    <a href="#">Action</a>
-                </li>
-                <li>
-                    <a href="#">Another action</a>
-                </li>
-                <li>
-                    <a href="#">Something else here</a>
-                </li>
-            </ul>
-        </div>        
-        
-        
-
-        <input type="text" id="textBusca" />
-        <div id="mostrarBusca">
-        </div>
-        
-        
-        <!-- GLOBAL SCRIPTS -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="~/Scripts/plugins/bootstrap/bootstrap.min.js"></script>
-        <script src="~/Scripts/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-        <script src="~/Scripts/plugins/popupoverlay/jquery.popupoverlay.js"></script>
-        <script src="~/Scripts/plugins/popupoverlay/defaults.js"></script>
-        <!-- /#logout -->
-        <!-- Logout Notification jQuery -->
-        <script src="~/Scripts/plugins/popupoverlay/logout.js"></script>
-        <!-- HISRC Retina Images -->
-        <script src="~/Scripts/plugins/hisrc/hisrc.js"></script>
-
-        <!-- PAGE LEVEL PLUGIN SCRIPTS -->
-        <script src="~/Scripts/plugins/ladda/spin.min.js"></script>
-        <script src="~/Scripts/plugins/ladda/ladda.min.js"></script>
-        <script src="~/Scripts/plugins/bootstrap-multiselect/bootstrap-multiselect.js"></script>
-
-        <!-- THEME SCRIPTS -->
-        <script src="~/Scripts/flex.js"></script>
-        <script src="~/Scripts/demo/buttons-demo.js"></script>
-
-    </body>
-</html>
+@using (Html.BeginForm())
+{
+    <input type="text" id="an" name="an" />
+    <div>
+        <button type="submit">Criar Diretórios</button>
+    </div>
+}

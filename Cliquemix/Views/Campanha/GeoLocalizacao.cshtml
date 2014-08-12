@@ -12,6 +12,24 @@
     }
 </style>
 
+<!-- PACE LOAD BAR PLUGIN - This creates the subtle load bar effect at the top of the page. -->
+<link href="~/Content/plugins/pace/pace.css" rel="stylesheet">
+
+<!-- GLOBAL STYLES - Include these on every page. -->
+<link href="~/Content/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel="stylesheet" type="text/css">
+<link href="~/fonts/icons/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+<!-- PAGE LEVEL PLUGIN STYLES -->
+<!-- THEME STYLES - Include these on every page. -->
+<link href="~/Content/style.css" rel="stylesheet">
+<link href="~/Content/plugins.css" rel="stylesheet">
+
+<!-- THEME DEMO STYLES - Use these styles for reference if needed. Otherwise they can be deleted. -->
+<link href="~/Content/demo.css" rel="stylesheet">
+
+
 <!-- GLOBAL SCRIPTS -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="~/Scripts/plugins/bootstrap/bootstrap.min.js"></script>
@@ -23,6 +41,7 @@
 <script src="~/Scripts/plugins/popupoverlay/logout.js"></script>
 <!-- HISRC Retina Images -->
 <script src="~/Scripts/plugins/hisrc/hisrc.js"></script>
+<script src="~/Scripts/plugins/pace/pace.js"></script>
 
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 
@@ -34,64 +53,66 @@
 <script src="~/Scripts/flex.js"></script>
 <script src="~/Scripts/demo/buttons-demo.js"></script>
 
-<script>
-    function initialize() {
-        var fenway = new google.maps.LatLng(42.345573, -71.098326);
-        var mapOptions = {
-            center: fenway,
-            zoom: 14
-        };
-        var map = new google.maps.Map(
-            document.getElementById('map-canvas'), mapOptions);
-        var panoramaOptions = {
-            position: fenway,
-            pov: {
-                heading: 34,
-                pitch: 10
-            }
-        };
-        var panorama = new google.maps.StreetViewPanorama(document.getElementById('pano'), panoramaOptions);
-        map.setStreetView(panorama);
-    }
+<script type="text/javascript">
 
-    google.maps.event.addDomListener(window, 'load', initialize);
-
-    // Ladda Button Spinners
-    // Bind normal buttons
-    Ladda.bind('div:not(.progress-demo) button.ladda-button', {
-        timeout: 2000
+    $(document).ready(function () {
+        //Itens globais ***
     });
 
-    // Bind progress buttons and simulate loading progress
-    Ladda.bind('.progress-demo button', {
-        callback: function (instance) {
-            var progress = 0;
-            var interval = setInterval(function () {
-                progress = Math.min(progress + Math.random() * 0.1, 1);
-                instance.setProgress(progress);
-
-                if (progress === 1) {
-                    instance.stop();
-                    clearInterval(interval);
+        function initialize() {
+            var fenway = new google.maps.LatLng(42.345573, -71.098326);
+            var mapOptions = {
+                center: fenway,
+                zoom: 14
+            };
+            var map = new google.maps.Map(
+                document.getElementById('map-canvas'), mapOptions);
+            var panoramaOptions = {
+                position: fenway,
+                pov: {
+                    heading: 34,
+                    pitch: 10
                 }
-            }, 200);
+            };
+            var panorama = new google.maps.StreetViewPanorama(document.getElementById('pano'), panoramaOptions);
+            map.setStreetView(panorama);
         }
-    });
 
-    function filtrarCidades() {
-        var cidade = document.getElementById('txtFiltrarCidade').value;
-        $.ajax(
-        {
-            type: 'POST',
-            url: '/Campanha/GeoLocalizacao/?cidade=' + cidade,
-            dataType: 'html',
-            cache: false,
-            async: true,
-            success: function(data) {
-                $('#menuCidades').html(data);
+        google.maps.event.addDomListener(window, 'load', initialize);
+
+        // Ladda Button Spinners
+        // Bind normal buttons
+        Ladda.bind('div:not(.progress-demo) button.ladda-button', {
+            timeout: 2000
+        });
+
+        // Bind progress buttons and simulate loading progress
+        Ladda.bind('.progress-demo button', {
+            callback: function (instance) {
+                var progress = 0;
+                var interval = setInterval(function () {
+                    progress = Math.min(progress + Math.random() * 0.1, 1);
+                    instance.setProgress(progress);
+
+                    if (progress === 1) {
+                        instance.stop();
+                        clearInterval(interval);
+                    }
+                }, 200);
             }
         });
-    }
+
+        // Add options for example 28.
+        for (var i=1; i <= 28; i++){
+            $('#multiselect4').append('<option value="' + i + '">' + i + '</option>');
+        }
+
+        $('#multiselect4').multiselect({
+            includeSelectAllOption: true,
+            enableFiltering: true,
+            maxHeight: 250,
+            buttonClass: 'btn btn-default'
+        });
 
 </script>
 
@@ -102,27 +123,13 @@
     <h6 style="margin-left: 1%;">Informe <strong>TODOS</strong> para todas as cidades do(s) estado(s) selecionado(s)</h6>
     <div class="input-group btn-group col-lg-10" style="margin-top: 2%; margin-left: 1%;">
         <span class="input-group-btn">
-            <input id="txtFiltrarCidade" name="txtFiltrarCidade" type="text" placeholder="Informe a cidade" autocomplete="off" class="form-control" style="width: 530px;" />
-            <ul id="menuCidades" class="dropdown-menu" style="width: 530px;" role="menu">
-            @try
-            {
-                foreach (var item in Model)
-                {
-                    <li>
-                        <a href="#">@item.nomeCidade</a>
-                    </li>
-                }
-            }
-            catch (Exception)
-            {
-                <div class="clearfix"></div>
-            }
-            </ul>
-            <button id="btnFiltrar" name="btnFiltrar" class="btn btn-green" type="button" data-toggle="dropdown" onclick="filtrarCidades();">
+            @*<input id="txtFiltrarCidade" name="txtFiltrarCidade" type="text" placeholder="Informe a cidade" autocomplete="off" class="form-control" style="width: 530px;" />
+            *@
+            <button id="btnFiltrar" name="btnFiltrar" class="btn btn-green" type="button" data-toggle="dropdown">
                 <i class="fa fa-search"></i>
             </button>
             <span class="divider"></span>
-            <button id="btnAdicionar" name="btnAdicionar" class="btn btn-green" type="button" onclick="NovoAnuncio();">
+            <button id="btnAdicionar" name="btnAdicionar" class="btn btn-green" type="button" data-toggle="dropdown">
                 <i class="fa fa-plus"></i>
             </button>
         </span>

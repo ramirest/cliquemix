@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Cliquemix.Models;
+using Microsoft.AspNet.Identity;
+using System.Security;
 
 namespace Cliquemix
 {
@@ -16,7 +19,7 @@ namespace Cliquemix
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "PrincipalAnunciante", action = "PrincipalAnunciante", id = UrlParameter.Optional }
+                defaults: new { controller = "Inicial", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

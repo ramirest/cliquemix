@@ -1,6 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="cliquemixModelStoreContainer" CdmEntityContainer="cliquemixEntities">
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="cliquemixModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="tbAnunciante">
       <EntityTypeMapping TypeName="cliquemixModel.tbAnunciante">
         <MappingFragment StoreEntitySet="tbAnunciante">
@@ -25,6 +36,9 @@
           <ScalarProperty Name="leuTermo" ColumnName="leuTermo" />
           <ScalarProperty Name="uid" ColumnName="uid" />
           <ScalarProperty Name="peid" ColumnName="peid" />
+          <ScalarProperty Name="cpf" ColumnName="cpf" />
+          <ScalarProperty Name="rg" ColumnName="rg" />
+          <ScalarProperty Name="pis" ColumnName="pis" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -82,13 +96,32 @@
           <ScalarProperty Name="url" ColumnName="url" />
           <ScalarProperty Name="dsAnuncio" ColumnName="dsAnuncio" />
           <ScalarProperty Name="videoAnuncio" ColumnName="videoAnuncio" />
-          <ScalarProperty Name="raid" ColumnName="raid" />
           <ScalarProperty Name="comentar" ColumnName="comentar" />
           <ScalarProperty Name="curtir" ColumnName="curtir" />
           <ScalarProperty Name="compartilhar" ColumnName="compartilhar" />
           <ScalarProperty Name="asid" ColumnName="asid" />
           <ScalarProperty Name="dtCriacao" ColumnName="dtCriacao" />
           <ScalarProperty Name="pid" ColumnName="pid" />
+          <ScalarProperty Name="acid" ColumnName="acid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbAnuncioCategoria">
+      <EntityTypeMapping TypeName="cliquemixModel.tbAnuncioCategoria">
+        <MappingFragment StoreEntitySet="tbAnuncioCategoria">
+          <ScalarProperty Name="acid" ColumnName="acid" />
+          <ScalarProperty Name="dsCategoria" ColumnName="dsCategoria" />
+          <ScalarProperty Name="ativo" ColumnName="ativo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbAnuncioCodTemp">
+      <EntityTypeMapping TypeName="cliquemixModel.tbAnuncioCodTemp">
+        <MappingFragment StoreEntitySet="tbAnuncioCodTemp">
+          <ScalarProperty Name="actid" ColumnName="actid" />
+          <ScalarProperty Name="dtMovimento" ColumnName="dtMovimento" />
+          <ScalarProperty Name="uid" ColumnName="uid" />
+          <ScalarProperty Name="aid" ColumnName="aid" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -134,6 +167,20 @@
           <ScalarProperty Name="dtMovimento" ColumnName="dtMovimento" />
           <ScalarProperty Name="uid" ColumnName="uid" />
           <ScalarProperty Name="imagensRenomeadas" ColumnName="imagensRenomeadas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbAnuncioLog">
+      <EntityTypeMapping TypeName="cliquemixModel.tbAnuncioLog">
+        <MappingFragment StoreEntitySet="tbAnuncioLog">
+          <ScalarProperty Name="allid" ColumnName="allid" />
+          <ScalarProperty Name="aid" ColumnName="aid" />
+          <ScalarProperty Name="asid" ColumnName="asid" />
+          <ScalarProperty Name="dtMovimento" ColumnName="dtMovimento" />
+          <ScalarProperty Name="uid" ColumnName="uid" />
+          <ScalarProperty Name="dsMovimento" ColumnName="dsMovimento" />
+          <ScalarProperty Name="dsMsgError" ColumnName="dsMsgError" />
+          <ScalarProperty Name="dsControle" ColumnName="dsControle" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -335,6 +382,7 @@
           <ScalarProperty Name="spadc" ColumnName="spadc" />
           <ScalarProperty Name="spnac" ColumnName="spnac" />
           <ScalarProperty Name="itppc" ColumnName="itppc" />
+          <ScalarProperty Name="spea" ColumnName="spea" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -367,6 +415,7 @@
           <ScalarProperty Name="pid" ColumnName="pid" />
           <ScalarProperty Name="crid" ColumnName="crid" />
           <ScalarProperty Name="dtCompra" ColumnName="dtCompra" />
+          <ScalarProperty Name="crsid" ColumnName="crsid" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -389,6 +438,14 @@
           <ScalarProperty Name="dtInicioPromocao" ColumnName="dtInicioPromocao" />
           <ScalarProperty Name="dtFinalPromocao" ColumnName="dtFinalPromocao" />
           <ScalarProperty Name="uid" ColumnName="uid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbCreditoStatus">
+      <EntityTypeMapping TypeName="cliquemixModel.tbCreditoStatus">
+        <MappingFragment StoreEntitySet="tbCreditoStatus">
+          <ScalarProperty Name="crsid" ColumnName="crsid" />
+          <ScalarProperty Name="dsCreditoStatus" ColumnName="dsCreditoStatus" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -445,6 +502,17 @@
         <MappingFragment StoreEntitySet="tbFuncionalidade">
           <ScalarProperty Name="fid" ColumnName="fid" />
           <ScalarProperty Name="dsFuncionalidade" ColumnName="dsFuncionalidade" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbFuncionalidadeLog">
+      <EntityTypeMapping TypeName="cliquemixModel.tbFuncionalidadeLog">
+        <MappingFragment StoreEntitySet="tbFuncionalidadeLog">
+          <ScalarProperty Name="flid" ColumnName="flid" />
+          <ScalarProperty Name="fid" ColumnName="fid" />
+          <ScalarProperty Name="uid" ColumnName="uid" />
+          <ScalarProperty Name="dtMovimento" ColumnName="dtMovimento" />
+          <ScalarProperty Name="dsMovimento" ColumnName="dsMovimento" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -631,6 +699,18 @@
         <MappingFragment StoreEntitySet="tbUsersTipo">
           <ScalarProperty Name="utid" ColumnName="utid" />
           <ScalarProperty Name="dsUsersTipo" ColumnName="dsUsersTipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VwAnunciosCriadosAnunciante">
+      <EntityTypeMapping TypeName="cliquemixModel.VwAnunciosCriadosAnunciante">
+        <MappingFragment StoreEntitySet="VwAnunciosCriadosAnunciante">
+          <ScalarProperty Name="Título" ColumnName="Título" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CNPJ" ColumnName="CNPJ" />
+          <ScalarProperty Name="CPF" ColumnName="CPF" />
+          <ScalarProperty Name="razaoSocial" ColumnName="razaoSocial" />
+          <ScalarProperty Name="nmFantasia" ColumnName="nmFantasia" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

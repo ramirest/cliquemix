@@ -20,9 +20,5 @@ namespace Cliquemix.Models
         public Nullable<System.DateTime> dtMovimento { get; set; }
         public Nullable<int> uid { get; set; }
         public string imagensRenomeadas { get; set; }
-    
-        public virtual tbAnuncio tbAnuncio { get; set; }
-        public virtual tbAnuncioStatus tbAnuncioStatus { get; set; }
-        public virtual tbUsers tbUsers { get; set; }
     }
 }

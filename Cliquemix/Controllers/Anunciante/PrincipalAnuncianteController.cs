@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace Cliquemix.Controllers.Anunciante
 {
+    [Authorize]
     public class PrincipalAnuncianteController : Controller
     {
         // GET: PrincipalAnunciante

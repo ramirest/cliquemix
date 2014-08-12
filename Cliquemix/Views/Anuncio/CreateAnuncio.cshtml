@@ -16,7 +16,6 @@
 
 
 <script type="text/javascript">
-
     var idAlbum = @ViewBag.CodImagem
 
     function atualizarImagens() {
@@ -47,7 +46,6 @@
         });
         atualizarImagens();
     });
-
 </script>
 
 <div class="row">
@@ -57,7 +55,7 @@
                 Anunciante
                 <small>Criar Anúncio</small>
             </h1>
-            @RenderPage("~/Views/Breadcrumbs/Breadcrumbs-Anuncio.cshtml")
+            @RenderPage("~/Views/Breadcrumbs/Breadcrumbs-Anuncio-CreateAnuncio.cshtml")
         </div>
     </div>
 </div>
@@ -65,7 +63,6 @@
 
 @using (Html.BeginForm())
 {
-    @ViewBag.CodImagem
     @Html.AntiForgeryToken()        
     <div class="row">
             <div class="col-lg-12">
@@ -119,10 +116,10 @@
                                                 <div class="form-group col-lg-offset-6"></div>
 
                                                 <div class="form-group col-lg-6">
-                                                    @Html.Label("Ramo de Atividade")
+                                                    @Html.Label("Categoria do Anúncio")
                                                     <div class="clearfix"></div>
-                                                    @Html.DropDownList("raid", null, string.Empty, new { style = "width:300px; height:34px" })
-                                                    @Html.ValidationMessageFor(model => model.raid)
+                                                    @Html.DropDownList("acid", null, string.Empty, new { style = "width:300px; height:34px" })
+                                                    @Html.ValidationMessageFor(model => model.acid)
                                                 </div>
 
                                                 <div class="form-group col-lg-offset-6"></div>
@@ -167,13 +164,67 @@
                                                 </div>
                                             </div>
 
-
+                                            @Html.HiddenFor(model => model.idTemp, new {@value = ProcFunc.RetornarProxCodTempImgAnuncio()})
                                             <div class="tab-pane fade in" id="infoImg">
+                                                <h4 class="page-header">Vincular Imagem ao Anúncio:</h4>
+                                                <div class="modal modal-flex fade" id="flexModal" tabindex="-1" role="dialog" aria-labelledby="flexModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" style="min-width: 60%;">
+                                                        <div class="modal-content" id="conteudo">
+                                                            @{
+                                                                Html.RenderPartial("UploadImagem");
+                                                            }
+                                                        </div>
+                                                        <!-- /.modal-content -->
+                                                    </div>
+                                                    <!-- /.modal-dialog -->
+                                                </div>
+
+                                                <div class="row">
+                                                    <!-- Basic Responsive Table -->
+                                                    <div class="col-lg-12">
+                                                        <div class="portlet portlet-default">
+                                                            <div class="portlet-heading">
+                                                                <div class="portlet-title">
+                                                                    <h4 class="flutuar">Imagens do Anúncio</h4>
+                                                                </div>
+                                                                <div class="portlet-widgets">
+                                                                    <a href="#" id="abrir" data-toggle="modal" data-target="#flexModal" data-placement="top" title="Nova Imagem" onclick="novaImagem();">
+                                                                        <i class="fa fa-plus-square"></i>
+                                                                    </a>
+                                                                    <span class="divider"></span>
+                                                                    <a href="javascript:;" data-placement="top" title="Atualizar" onclick="atualizarImagens();">
+                                                                        <i class="fa fa-refresh"></i>
+                                                                    </a>
+                                                                    <span class="divider"></span>
+                                                                </div>
+                                                                <div class="clearfix"></div>
+                                                            </div>
+                                                            <div id="carregarImagens">
+                                                                @{
+                                                                    Html.RenderPartial("ImagensAnuncio");
+                                                                }
+                                                                @* Lista os Anúncios da Campanha *@
+                                                            </div>
+                                                        </div>
+                                                        <!-- /.portlet -->
+                                                    </div>
+
+                                                    <div class="form-group col-lg-offset-9">
+                                                        <button type="button" onclick=" $('#lnk2').click(); " class="btn btn-default">Anterior</button>
+                                                        <button type="button" onclick=" $('#lnk4').click(); " class="btn btn-default">Próximo</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+
+                                            <div class="tab-pane fade in" id="infoImg2">
                                                 <h4 class="page-header">Galeria de Imagens:</h4>
                                                 <div class="col-lg-offset-6"></div>
                                                 <div class="clearfix"></div>
                                                 <div>
+                                                    @*Item que faz o upload de imagens*@
                                                     <input type="file" name="Filedata" id="Filedata" value="Upload de Imagem" onchange="atualizarImagens();"/>
+                                                    @*Botão que atualiza as imagens do anúncio*@
                                                     <button type="button" class="btn btn-toolbar" onclick="atualizarImagens();">Atualizar</button>
                                                 </div>
 

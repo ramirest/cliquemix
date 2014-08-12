@@ -53,6 +53,8 @@ namespace Cliquemix.Controllers.Administrador
         {
             if (ModelState.IsValid)
             {
+                tbusers.pwd = ProcFunc.CryptographyPass(tbusers.pwd); //50
+                tbusers.cpwd = tbusers.pwd; //50
                 db.tbUsers.Add(tbusers);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -75,6 +77,7 @@ namespace Cliquemix.Controllers.Administrador
                 return HttpNotFound();
             }
             ViewBag.utid = new SelectList(db.tbUsersTipo, "utid", "dsUsersTipo", tbusers.utid);
+            //tbusers.pwd = ProcFunc.ValidCryptographyPass(tbusers.pwd); //50
             return View(tbusers);
         }
 
@@ -87,6 +90,8 @@ namespace Cliquemix.Controllers.Administrador
         {
             if (ModelState.IsValid)
             {
+                tbusers.pwd = ProcFunc.CryptographyPass(tbusers.pwd); //50
+                tbusers.cpwd = tbusers.pwd; //50
                 db.Entry(tbusers).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

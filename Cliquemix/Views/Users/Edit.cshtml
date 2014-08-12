@@ -22,7 +22,7 @@
             <div class="form-horizontal">
                 <hr />
                 @Html.ValidationSummary(true)
-
+                @Html.HiddenFor(model => model.uid)
                 <div class="form-group">
                     @Html.Label("Usuário", new { @class = "control-label col-md-2" })
                     <div class="col-md-10">

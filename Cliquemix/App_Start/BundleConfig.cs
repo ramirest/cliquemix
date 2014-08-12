@@ -73,7 +73,12 @@ namespace Cliquemix
                        "~/Scripts/flex.js"
                        ));
 
-
+            bundles.Add(new ScriptBundle("~/bundles/js-flot").Include(
+                "~/Scripts/plugins/flot/jquery.flot.js",
+                "~/Scripts/plugins/flot/jquery.flot.tooltip.min.js",
+                "~/Scripts/plugins/flot/jquery.flot.resize.js",
+                "~/Scripts/plugins/flot/jquery.flot.pie.js",
+                "~/Scripts/plugins/flot/flot-demo-data.js"));
 
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862
