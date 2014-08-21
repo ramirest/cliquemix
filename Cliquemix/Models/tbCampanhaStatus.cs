@@ -18,6 +18,9 @@ namespace Cliquemix.Models
         {
             this.tbCampanha = new HashSet<tbCampanha>();
             this.tbConfigPadrao = new HashSet<tbConfigPadrao>();
+            this.tbConfigPadrao1 = new HashSet<tbConfigPadrao>();
+            this.tbConfigPadrao2 = new HashSet<tbConfigPadrao>();
+            this.tbConfigPadrao3 = new HashSet<tbConfigPadrao>();
         }
     
         public int csid { get; set; }
@@ -25,5 +28,8 @@ namespace Cliquemix.Models
     
         public virtual ICollection<tbCampanha> tbCampanha { get; set; }
         public virtual ICollection<tbConfigPadrao> tbConfigPadrao { get; set; }
+        public virtual ICollection<tbConfigPadrao> tbConfigPadrao1 { get; set; }
+        public virtual ICollection<tbConfigPadrao> tbConfigPadrao2 { get; set; }
+        public virtual ICollection<tbConfigPadrao> tbConfigPadrao3 { get; set; }
     }
 }

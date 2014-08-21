@@ -16,20 +16,20 @@ namespace Cliquemix.Models
     {
         public tbAnuncioStatus()
         {
-            this.tbAnuncio = new HashSet<tbAnuncio>();
             this.tbAnuncioLog = new HashSet<tbAnuncioLog>();
             this.tbConfigPadrao = new HashSet<tbConfigPadrao>();
             this.tbConfigPadrao1 = new HashSet<tbConfigPadrao>();
             this.tbConfigPadrao2 = new HashSet<tbConfigPadrao>();
+            this.tbAnuncio = new HashSet<tbAnuncio>();
         }
     
         public int asid { get; set; }
         public string dsStatus { get; set; }
     
-        public virtual ICollection<tbAnuncio> tbAnuncio { get; set; }
         public virtual ICollection<tbAnuncioLog> tbAnuncioLog { get; set; }
         public virtual ICollection<tbConfigPadrao> tbConfigPadrao { get; set; }
         public virtual ICollection<tbConfigPadrao> tbConfigPadrao1 { get; set; }
         public virtual ICollection<tbConfigPadrao> tbConfigPadrao2 { get; set; }
+        public virtual ICollection<tbAnuncio> tbAnuncio { get; set; }
     }
 }

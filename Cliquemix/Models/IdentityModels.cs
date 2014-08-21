@@ -25,8 +25,6 @@ namespace Cliquemix.Models
         {
             throw new UnintentionalCodeFirstException();
         }
-
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<tbAnunciante> tbAnunciante { get; set; }
         public virtual DbSet<tbAnuncianteDestaque> tbAnuncianteDestaque { get; set; }
         public virtual DbSet<tbAnuncianteDestaqueStatus> tbAnuncianteDestaqueStatus { get; set; }
@@ -36,9 +34,7 @@ namespace Cliquemix.Models
         public virtual DbSet<tbAnuncioCategoria> tbAnuncioCategoria { get; set; }
         public virtual DbSet<tbAnuncioCodTemp> tbAnuncioCodTemp { get; set; }
         public virtual DbSet<tbAnuncioFuncionalidade> tbAnuncioFuncionalidade { get; set; }
-        public virtual DbSet<tbAnuncioImagens> tbAnuncioImagens { get; set; }
         public virtual DbSet<tbAnuncioImg> tbAnuncioImg { get; set; }
-        public virtual DbSet<tbAnuncioImgLog> tbAnuncioImgLog { get; set; }
         public virtual DbSet<tbAnuncioLog> tbAnuncioLog { get; set; }
         public virtual DbSet<tbAnuncioStatus> tbAnuncioStatus { get; set; }
         public virtual DbSet<tbBairro> tbBairro { get; set; }
@@ -90,8 +86,6 @@ namespace Cliquemix.Models
         public virtual DbSet<tbUsersLogAcesso> tbUsersLogAcesso { get; set; }
         public virtual DbSet<tbUsersPermissao> tbUsersPermissao { get; set; }
         public virtual DbSet<tbUsersTipo> tbUsersTipo { get; set; }
-        public virtual DbSet<VwAnunciosCriadosAnunciante> VwAnunciosCriadosAnunciante { get; set; }
-
     }
 
 }

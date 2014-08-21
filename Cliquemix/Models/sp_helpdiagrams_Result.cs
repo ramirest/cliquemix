@@ -10,15 +10,13 @@
 namespace Cliquemix.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class tbAnuncioImgLog
+    public partial class sp_helpdiagrams_Result
     {
-        public int alid { get; set; }
-        public Nullable<int> aid { get; set; }
-        public Nullable<int> asid { get; set; }
-        public Nullable<System.DateTime> dtMovimento { get; set; }
-        public Nullable<int> uid { get; set; }
-        public string imagensRenomeadas { get; set; }
+        public string Database { get; set; }
+        public string Name { get; set; }
+        public int ID { get; set; }
+        public string Owner { get; set; }
+        public int OwnerID { get; set; }
     }
 }

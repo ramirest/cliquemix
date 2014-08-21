@@ -249,6 +249,7 @@
     <Compile Include="Controllers\CreditoController.cs" />
     <Compile Include="Controllers\EnderecoController.cs" />
     <Compile Include="Controllers\Inicial\InicialController.cs" />
+    <Compile Include="Controllers\tbAnunciosController.cs" />
     <Compile Include="Controllers\TesteController.cs" />
     <Compile Include="Controllers\TipoUsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -275,6 +276,12 @@
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\PermissaoAcesso.cs" />
     <Compile Include="Models\ProcFunc.cs" />
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Cliquemix.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>Cliquemix.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
@@ -305,13 +312,7 @@
     <Compile Include="Models\tbAnuncioFuncionalidade.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\tbAnuncioImagens.cs">
-      <DependentUpon>Cliquemix.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\tbAnuncioImg.cs">
-      <DependentUpon>Cliquemix.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tbAnuncioImgLog.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbAnuncioLog.cs">
@@ -467,9 +468,6 @@
     <Compile Include="Models\tbUsersTipo.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\VwAnunciosCriadosAnunciante.cs">
-      <DependentUpon>Cliquemix.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -543,6 +541,18 @@
     <Content Include="Content\plugins\messenger\messenger.css" />
     <Content Include="Content\plugins\morris\morris.css" />
     <Content Include="Content\plugins\pace\pace.css" />
+    <Content Include="Content\plugins\pirobox\ajax-loader.gif" />
+    <Content Include="Content\plugins\pirobox\close_t.gif" />
+    <Content Include="Content\plugins\pirobox\ie6_btn.gif" />
+    <Content Include="Content\plugins\pirobox\logo.jpg" />
+    <Content Include="Content\plugins\pirobox\next_t.gif" />
+    <Content Include="Content\plugins\pirobox\next_tt.gif" />
+    <Content Include="Content\plugins\pirobox\next_t_h.gif" />
+    <Content Include="Content\plugins\pirobox\pirobox.css" />
+    <Content Include="Content\plugins\pirobox\prev_t.gif" />
+    <Content Include="Content\plugins\pirobox\prev_tt.gif" />
+    <Content Include="Content\plugins\pirobox\prev_t_h.gif" />
+    <Content Include="Content\plugins\pirobox\p_r.gif" />
     <Content Include="Content\plugins\summernote\summernote-bs3.css" />
     <Content Include="Content\plugins\summernote\summernote.css" />
     <Content Include="Content\style.css" />
@@ -615,6 +625,27 @@
     <Content Include="Images\Inicial\works_2.jpg" />
     <Content Include="Images\Pictures\imgDemoVideo.jpg" />
     <Content Include="Images\Pictures\modeloViewAnuncio.jpg" />
+    <Content Include="Images\Pictures\pirobox\1.jpg" />
+    <Content Include="Images\Pictures\pirobox\10.jpg" />
+    <Content Include="Images\Pictures\pirobox\10_s.jpg" />
+    <Content Include="Images\Pictures\pirobox\1_s.jpg" />
+    <Content Include="Images\Pictures\pirobox\2.jpg" />
+    <Content Include="Images\Pictures\pirobox\2_bn.jpg" />
+    <Content Include="Images\Pictures\pirobox\2_s.jpg" />
+    <Content Include="Images\Pictures\pirobox\3.jpg" />
+    <Content Include="Images\Pictures\pirobox\3_s.jpg" />
+    <Content Include="Images\Pictures\pirobox\4.jpg" />
+    <Content Include="Images\Pictures\pirobox\4_s.jpg" />
+    <Content Include="Images\Pictures\pirobox\5.jpg" />
+    <Content Include="Images\Pictures\pirobox\5_s.jpg" />
+    <Content Include="Images\Pictures\pirobox\6.jpg" />
+    <Content Include="Images\Pictures\pirobox\6_s.jpg" />
+    <Content Include="Images\Pictures\pirobox\7.jpg" />
+    <Content Include="Images\Pictures\pirobox\7_s.jpg" />
+    <Content Include="Images\Pictures\pirobox\8.jpg" />
+    <Content Include="Images\Pictures\pirobox\8_s.jpg" />
+    <Content Include="Images\Pictures\pirobox\9.jpg" />
+    <Content Include="Images\Pictures\pirobox\9_s.jpg" />
     <Content Include="Images\Vídeos\Sicove.mp4" />
     <Content Include="ReportViewerWebForm.aspx" />
     <Content Include="Scripts\demo\advanced-form-demo.js" />
@@ -779,6 +810,10 @@
     <Content Include="Scripts\plugins\morris\morris.js" />
     <Content Include="Scripts\plugins\morris\raphael-2.1.0.min.js" />
     <Content Include="Scripts\plugins\pace\pace.js" />
+    <Content Include="Scripts\plugins\pirobox\jquery1.2.6.js" />
+    <Content Include="Scripts\plugins\pirobox\pirobox.js" />
+    <Content Include="Scripts\plugins\pirobox\pirobox_min.js" />
+    <Content Include="Scripts\plugins\pirobox\piroBox_packed.js" />
     <Content Include="Scripts\plugins\popupoverlay\defaults.js" />
     <Content Include="Scripts\plugins\popupoverlay\jquery.popupoverlay.js" />
     <Content Include="Scripts\plugins\popupoverlay\logout.js" />
@@ -786,11 +821,11 @@
     <Content Include="Scripts\plugins\sparkline\jquery.sparkline.min.js" />
     <Content Include="Scripts\plugins\summernote\summernote.min.js" />
     <Content Include="Scripts\plugins\validate\jquery.validate.min.js" />
+    <Content Include="Scripts\plugins\validate\MascaraValidacao\MascaraValidacao.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Views\Anuncio\Anuncio.js" />
     <Content Include="Views\Inicial\components.html" />
     <Content Include="Views\Inicial\favicon.ico" />
-    <Content Include="Views\Inicial\index.html" />
     <Content Include="Views\Inicial\thumbnail.png" />
     <Content Include="Views\Shared\favicon.ico" />
     <Content Include="Web.config">
@@ -825,7 +860,7 @@
     <Content Include="Views\MenuAnunciante\MenuAnunciante.cshtml" />
     <Content Include="Views\MenuTopoAnunciante\MenuTopo.cshtml" />
     <Content Include="Views\PrincipalAnunciante\PrincipalAnunciante.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Inicial\Register.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
@@ -850,7 +885,7 @@
     <Content Include="Views\tipoUsers\Index.cshtml" />
     <Content Include="Views\Endereco\Index.cshtml" />
     <Content Include="Views\Endereco\DefinicaoArquitetura.cshtml" />
-    <Content Include="Views\Account\RegisterEndereco.cshtml" />
+    <Content Include="Views\Inicial\RegisterEndereco.cshtml" />
     <Content Include="Views\Anuncio\AnuncioImagem.cshtml" />
     <Content Include="Views\Anunciante\CreateAnuncio.cshtml" />
     <Content Include="Views\Anuncio\UploadImagem.cshtml" />
@@ -897,7 +932,12 @@
     <Content Include="Views\Inicial\Index.cshtml" />
     <Content Include="Views\PrincipalAdministrador\PrincipalAdministrador.cshtml" />
     <Content Include="Views\Breadcrumbs\Breadcrumbs-Anuncio-UpdateAnuncio.cshtml" />
-    <Content Include="Views\Anuncio\ImagensAnuncio.cshtml" />
+    <Content Include="Views\Anuncio\NovaImagem.cshtml" />
+    <Content Include="Views\tbAnuncios\Create.cshtml" />
+    <Content Include="Views\tbAnuncios\Delete.cshtml" />
+    <Content Include="Views\tbAnuncios\Details.cshtml" />
+    <Content Include="Views\tbAnuncios\Edit.cshtml" />
+    <Content Include="Views\tbAnuncios\Index.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

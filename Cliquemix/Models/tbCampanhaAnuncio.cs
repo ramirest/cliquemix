@@ -26,10 +26,10 @@ namespace Cliquemix.Models
         public Nullable<System.DateTime> dtMovimento { get; set; }
         public Nullable<int> ctid { get; set; }
     
-        public virtual tbAnuncio tbAnuncio { get; set; }
         public virtual tbCampanha tbCampanha { get; set; }
         public virtual ICollection<tbCampanhaAnuncioConsumidor> tbCampanhaAnuncioConsumidor { get; set; }
         public virtual tbCampanhaAnuncioStatus tbCampanhaAnuncioStatus { get; set; }
         public virtual tbCampanhaTmp tbCampanhaTmp { get; set; }
+        public virtual tbAnuncio tbAnuncio { get; set; }
     }
 }

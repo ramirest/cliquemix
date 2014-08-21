@@ -25,7 +25,7 @@
     <Property Name="telCelular2" Type="varchar" MaxLength="15" />
     <Property Name="ie" Type="varchar" MaxLength="45" />
     <Property Name="im" Type="varchar" MaxLength="45" />
-    <Property Name="email" Type="varchar" MaxLength="45" />
+    <Property Name="email" Type="varchar" MaxLength="65" />
     <Property Name="site" Type="varchar" MaxLength="50" />
     <Property Name="obs" Type="varchar" MaxLength="100" />
     <Property Name="cpid" Type="int" />
@@ -38,6 +38,9 @@
     <Property Name="cpf" Type="varchar" MaxLength="30" />
     <Property Name="rg" Type="varchar" MaxLength="20" />
     <Property Name="pis" Type="varchar" MaxLength="20" />
+    <Property Name="tipo" Type="int" />
+    <Property Name="dtNascimento" Type="datetime" />
+    <Property Name="ativo" Type="bit" />
   </EntityType>
   <EntityType Name="tbAnuncianteDestaque">
     <Key>
@@ -97,6 +100,7 @@
     <Property Name="dtCriacao" Type="datetime" />
     <Property Name="pid" Type="int" />
     <Property Name="acid" Type="int" />
+    <Property Name="actid" Type="int" />
   </EntityType>
   <EntityType Name="tbAnuncioCategoria">
     <Key>
@@ -123,15 +127,6 @@
     <Property Name="aid" Type="int" Nullable="false" />
     <Property Name="fid" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="tbAnuncioImagens">
-    <Key>
-      <PropertyRef Name="aimg" />
-    </Key>
-    <Property Name="aimg" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="imgid" Type="bigint" />
-    <Property Name="aid" Type="int" />
-    <Property Name="dtCriacao" Type="datetime" />
-  </EntityType>
   <EntityType Name="tbAnuncioImg">
     <Key>
       <PropertyRef Name="imgid" />
@@ -139,22 +134,11 @@
     <Property Name="imgid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="url_imagem" Type="varchar" MaxLength="255" />
     <Property Name="tipo" Type="varchar" MaxLength="20" />
-    <Property Name="idTemp" Type="bigint" />
     <Property Name="tamanho" Type="varchar" MaxLength="20" />
-    <Property Name="idTempItem" Type="int" />
-    <Property Name="tempRenomeado" Type="bit" />
+    <Property Name="iditem" Type="int" />
     <Property Name="aid" Type="int" />
-  </EntityType>
-  <EntityType Name="tbAnuncioImgLog">
-    <Key>
-      <PropertyRef Name="alid" />
-    </Key>
-    <Property Name="alid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="aid" Type="int" />
-    <Property Name="asid" Type="int" />
-    <Property Name="dtMovimento" Type="datetime" />
-    <Property Name="uid" Type="int" />
-    <Property Name="imagensRenomeadas" Type="varchar" MaxLength="10" />
+    <Property Name="actid" Type="int" />
+    <Property Name="ativo" Type="bit" />
   </EntityType>
   <EntityType Name="tbAnuncioLog">
     <Key>
@@ -351,6 +335,11 @@
     <Property Name="spnac" Type="int" />
     <Property Name="itppc" Type="int" />
     <Property Name="spea" Type="int" />
+    <Property Name="spec" Type="int" />
+    <Property Name="pua" Type="varchar" MaxLength="200" />
+    <Property Name="spdc" Type="int" />
+    <Property Name="spcp" Type="int" />
+    <Property Name="qdptcp" Type="int" />
   </EntityType>
   <EntityType Name="tbConsumidor">
     <Key>
@@ -637,21 +626,6 @@
     <Property Name="utid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="dsUsersTipo" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'cliquemix.dbo.VwAnunciosCriadosAnunciante' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="VwAnunciosCriadosAnunciante">
-    <Key>
-      <PropertyRef Name="Título" />
-      <PropertyRef Name="razaoSocial" />
-      <PropertyRef Name="nmFantasia" />
-    </Key>
-    <Property Name="Título" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Status" Type="varchar" MaxLength="50" />
-    <Property Name="CNPJ" Type="varchar" MaxLength="30" />
-    <Property Name="CPF" Type="varchar" MaxLength="30" />
-    <Property Name="razaoSocial" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="nmFantasia" Type="varchar" MaxLength="100" Nullable="false" />
-  </EntityType>
   <Association Name="acid_tbAnuncio_tbAnuncioCategoria_fk">
     <End Role="tbAnuncioCategoria" Type="Self.tbAnuncioCategoria" Multiplicity="0..1" />
     <End Role="tbAnuncio" Type="Self.tbAnuncio" Multiplicity="*" />
@@ -661,6 +635,30 @@ warning 6002: The table/view 'cliquemix.dbo.VwAnunciosCriadosAnunciante' does no
       </Principal>
       <Dependent Role="tbAnuncio">
         <PropertyRef Name="acid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="actid_tbAnuncio_tbAnuncioCodTemp_fk">
+    <End Role="tbAnuncioCodTemp" Type="Self.tbAnuncioCodTemp" Multiplicity="0..1" />
+    <End Role="tbAnuncio" Type="Self.tbAnuncio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbAnuncioCodTemp">
+        <PropertyRef Name="actid" />
+      </Principal>
+      <Dependent Role="tbAnuncio">
+        <PropertyRef Name="actid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="actid_tbAnuncioImg_tbAnuncioCodTemp_fk">
+    <End Role="tbAnuncioCodTemp" Type="Self.tbAnuncioCodTemp" Multiplicity="0..1" />
+    <End Role="tbAnuncioImg" Type="Self.tbAnuncioImg" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbAnuncioCodTemp">
+        <PropertyRef Name="actid" />
+      </Principal>
+      <Dependent Role="tbAnuncioImg">
+        <PropertyRef Name="actid" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1432,6 +1430,30 @@ warning 6002: The table/view 'cliquemix.dbo.VwAnunciosCriadosAnunciante' does no
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="spcp_tbConfigPadrao_tbCampanhaStatus_fk">
+    <End Role="tbCampanhaStatus" Type="Self.tbCampanhaStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbCampanhaStatus">
+        <PropertyRef Name="csid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="spcp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="spdc_tbConfigPadrao_tbCampanhaStatus_fk">
+    <End Role="tbCampanhaStatus" Type="Self.tbCampanhaStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbCampanhaStatus">
+        <PropertyRef Name="csid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="spdc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="spea_tbConfigPadrao_tbAnuncioStatus_fk">
     <End Role="tbAnuncioStatus" Type="Self.tbAnuncioStatus" Multiplicity="0..1" />
     <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
@@ -1441,6 +1463,18 @@ warning 6002: The table/view 'cliquemix.dbo.VwAnunciosCriadosAnunciante' does no
       </Principal>
       <Dependent Role="tbConfigPadrao">
         <PropertyRef Name="spea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="spec_tbConfigPadrao_tbCampanhaStatus_fk">
+    <End Role="tbCampanhaStatus" Type="Self.tbCampanhaStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbCampanhaStatus">
+        <PropertyRef Name="csid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="spec" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1648,6 +1682,37 @@ warning 6002: The table/view 'cliquemix.dbo.VwAnunciosCriadosAnunciante' does no
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="cliquemixModelStoreContainer">
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbAnunciante" EntityType="Self.tbAnunciante" Schema="dbo" store:Type="Tables" />
@@ -1659,9 +1724,7 @@ warning 6002: The table/view 'cliquemix.dbo.VwAnunciosCriadosAnunciante' does no
     <EntitySet Name="tbAnuncioCategoria" EntityType="Self.tbAnuncioCategoria" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbAnuncioCodTemp" EntityType="Self.tbAnuncioCodTemp" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbAnuncioFuncionalidade" EntityType="Self.tbAnuncioFuncionalidade" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="tbAnuncioImagens" EntityType="Self.tbAnuncioImagens" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbAnuncioImg" EntityType="Self.tbAnuncioImg" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="tbAnuncioImgLog" EntityType="Self.tbAnuncioImgLog" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbAnuncioLog" EntityType="Self.tbAnuncioLog" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbAnuncioStatus" EntityType="Self.tbAnuncioStatus" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbBairro" EntityType="Self.tbBairro" Schema="dbo" store:Type="Tables" />
@@ -1713,19 +1776,17 @@ warning 6002: The table/view 'cliquemix.dbo.VwAnunciosCriadosAnunciante' does no
     <EntitySet Name="tbUsersLogAcesso" EntityType="Self.tbUsersLogAcesso" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbUsersPermissao" EntityType="Self.tbUsersPermissao" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbUsersTipo" EntityType="Self.tbUsersTipo" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="VwAnunciosCriadosAnunciante" EntityType="Self.VwAnunciosCriadosAnunciante" store:Type="Views" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [VwAnunciosCriadosAnunciante].[Título] AS [Título], 
-    [VwAnunciosCriadosAnunciante].[Status] AS [Status], 
-    [VwAnunciosCriadosAnunciante].[CNPJ] AS [CNPJ], 
-    [VwAnunciosCriadosAnunciante].[CPF] AS [CPF], 
-    [VwAnunciosCriadosAnunciante].[razaoSocial] AS [razaoSocial], 
-    [VwAnunciosCriadosAnunciante].[nmFantasia] AS [nmFantasia]
-    FROM [dbo].[VwAnunciosCriadosAnunciante] AS [VwAnunciosCriadosAnunciante]</DefiningQuery>
-    </EntitySet>
     <AssociationSet Name="acid_tbAnuncio_tbAnuncioCategoria_fk" Association="Self.acid_tbAnuncio_tbAnuncioCategoria_fk">
       <End Role="tbAnuncioCategoria" EntitySet="tbAnuncioCategoria" />
       <End Role="tbAnuncio" EntitySet="tbAnuncio" />
+    </AssociationSet>
+    <AssociationSet Name="actid_tbAnuncio_tbAnuncioCodTemp_fk" Association="Self.actid_tbAnuncio_tbAnuncioCodTemp_fk">
+      <End Role="tbAnuncioCodTemp" EntitySet="tbAnuncioCodTemp" />
+      <End Role="tbAnuncio" EntitySet="tbAnuncio" />
+    </AssociationSet>
+    <AssociationSet Name="actid_tbAnuncioImg_tbAnuncioCodTemp_fk" Association="Self.actid_tbAnuncioImg_tbAnuncioCodTemp_fk">
+      <End Role="tbAnuncioCodTemp" EntitySet="tbAnuncioCodTemp" />
+      <End Role="tbAnuncioImg" EntitySet="tbAnuncioImg" />
     </AssociationSet>
     <AssociationSet Name="adid_tbCreditoDesconta_tbAnuncianteDestaque_fk" Association="Self.adid_tbCreditoDesconta_tbAnuncianteDestaque_fk">
       <End Role="tbAnuncianteDestaque" EntitySet="tbAnuncianteDestaque" />
@@ -1983,8 +2044,20 @@ warning 6002: The table/view 'cliquemix.dbo.VwAnunciosCriadosAnunciante' does no
       <End Role="tbAnuncioStatus" EntitySet="tbAnuncioStatus" />
       <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
     </AssociationSet>
+    <AssociationSet Name="spcp_tbConfigPadrao_tbCampanhaStatus_fk" Association="Self.spcp_tbConfigPadrao_tbCampanhaStatus_fk">
+      <End Role="tbCampanhaStatus" EntitySet="tbCampanhaStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
+    <AssociationSet Name="spdc_tbConfigPadrao_tbCampanhaStatus_fk" Association="Self.spdc_tbConfigPadrao_tbCampanhaStatus_fk">
+      <End Role="tbCampanhaStatus" EntitySet="tbCampanhaStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
     <AssociationSet Name="spea_tbConfigPadrao_tbAnuncioStatus_fk" Association="Self.spea_tbConfigPadrao_tbAnuncioStatus_fk">
       <End Role="tbAnuncioStatus" EntitySet="tbAnuncioStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
+    <AssociationSet Name="spec_tbConfigPadrao_tbCampanhaStatus_fk" Association="Self.spec_tbConfigPadrao_tbCampanhaStatus_fk">
+      <End Role="tbCampanhaStatus" EntitySet="tbCampanhaStatus" />
       <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
     </AssociationSet>
     <AssociationSet Name="spna_tbConfigPadrao_tbAnuncioStatus_fk" Association="Self.spna_tbConfigPadrao_tbAnuncioStatus_fk">

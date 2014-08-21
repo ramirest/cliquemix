@@ -19,10 +19,10 @@ namespace Cliquemix.Models
             this.tbAnuncianteDestaque = new HashSet<tbAnuncianteDestaque>();
             this.tbAnuncianteEndereco1 = new HashSet<tbAnuncianteEndereco>();
             this.tbAnuncianteTelefone = new HashSet<tbAnuncianteTelefone>();
-            this.tbAnuncio = new HashSet<tbAnuncio>();
             this.tbCampanha = new HashSet<tbCampanha>();
             this.tbCreditoCompra = new HashSet<tbCreditoCompra>();
             this.tbDestaqueAnunciante = new HashSet<tbDestaqueAnunciante>();
+            this.tbAnuncio = new HashSet<tbAnuncio>();
         }
     
         public int pid { get; set; }
@@ -49,18 +49,21 @@ namespace Cliquemix.Models
         public string cpf { get; set; }
         public string rg { get; set; }
         public string pis { get; set; }
+        public Nullable<int> tipo { get; set; }
+        public Nullable<System.DateTime> dtNascimento { get; set; }
+        public Nullable<bool> ativo { get; set; }
     
         public virtual tbCondicaoPagto tbCondicaoPagto { get; set; }
         public virtual tbAnuncianteEndereco tbAnuncianteEndereco { get; set; }
         public virtual ICollection<tbAnuncianteDestaque> tbAnuncianteDestaque { get; set; }
         public virtual ICollection<tbAnuncianteEndereco> tbAnuncianteEndereco1 { get; set; }
         public virtual ICollection<tbAnuncianteTelefone> tbAnuncianteTelefone { get; set; }
-        public virtual ICollection<tbAnuncio> tbAnuncio { get; set; }
         public virtual ICollection<tbCampanha> tbCampanha { get; set; }
         public virtual ICollection<tbCreditoCompra> tbCreditoCompra { get; set; }
         public virtual ICollection<tbDestaqueAnunciante> tbDestaqueAnunciante { get; set; }
         public virtual tbRamoAtividade tbRamoAtividade { get; set; }
         public virtual tbTos tbTos { get; set; }
         public virtual tbUsers tbUsers { get; set; }
+        public virtual ICollection<tbAnuncio> tbAnuncio { get; set; }
     }
 }

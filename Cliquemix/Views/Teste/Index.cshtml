@@ -1,11 +1,32 @@
 ﻿@{
     Layout = null;
+    //Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm())
-{
-    <input type="text" id="an" name="an" />
-    <div>
-        <button type="submit">Criar Diretórios</button>
-    </div>
-}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <title>Formatacao de campos</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <script language="JavaScript" type="text/javascript" src="~/Scripts/plugins/validate/MascaraValidacao/MascaraValidacao.js"></script>
+</head>
+<body>
+    <form name="form1">
+        <br><br>CEP:
+        <input type="text" name="cep" onkeypress="MascaraCep(form1.cep);"
+               maxlength="10" onblur="ValidaCep(form1.cep)">
+        <br><br>DATA:
+        <input type="text" name="data" onkeypress="MascaraData(form1.data);"
+               maxlength="10" onblur="ValidaData(form1.data);">
+        <br><br>Telefone:
+        <input type="text" name="tel" onkeypress="MascaraTelefone(form1.tel);"
+               maxlength="14" onblur="ValidaTelefone(form1.tel);">
+        <br><br>CPF:
+        <input type="text" name="cpf" onblur="ValidarCPF(form1.cpf);"
+               onkeypress="MascaraCPF(form1.cpf);" maxlength="14">
+        <br><br>CNPJ:
+        <input type="text" name="cnpj" onkeypress="MascaraCNPJ(form1.cnpj);"
+               maxlength="18" onblur="ValidarCNPJ(form1.cnpj);">
+    </form>
+</body>
+</html>

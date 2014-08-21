@@ -21,34 +21,10 @@ namespace Cliquemix.Models
 
         #region "Declaração de Variáveis"
         //public static ApplicationDbContext db = new ApplicationDbContext();
-        public static cliquemixEntities db = new cliquemixEntities();
+        public static ApplicationDbContext db = new ApplicationDbContext();
         #endregion
 
         #region "Métodos"
-
-        #region "Retornar o Próximo Código Temporário da Imagem do Anúncio"
-        public static int RetornarProxCodTempImgAnuncio()
-        {
-            try
-            {
-                var item =
-                    db.tbAnuncioImg.Where(m => m.tempRenomeado == false)
-                        .OrderByDescending(i => i.idTemp)
-                        .FirstOrDefault();
-                //var item = db.tbAnuncioImg.MaxBy(i => i.Value);
-                //var a = (from img in db.tbAnuncioImg select img).Last();
-                if (item != null)
-                    return (int) (item.idTemp + 1);
-                else
-                    return 1;
-            }
-            catch (Exception)
-            {
-                return 1;
-                throw;
-            }
-        }
-        #endregion
 
         #region "Criar Diretórios - Somente Raíz"
         public static void CriarDiretorio(string pFolderRaiz)
@@ -103,7 +79,7 @@ namespace Cliquemix.Models
             }
         }
         #endregion
-            
+        
         #region "Mover arquivos de um local ao outro"
         public static void MoverArquivosEntrePastas(string pOrigem, string pDestino)
         {
@@ -115,6 +91,23 @@ namespace Cliquemix.Models
             {
                 Console.WriteLine(e.Message);
             }
+        }
+        #endregion
+
+        #region "Remover arquivo do diretório"
+        public static void RemoverArquivos(string pOrigem)
+        {
+            if (System.IO.File.Exists(@pOrigem))
+            {
+                try
+                {
+                    System.IO.File.Delete(@pOrigem);
+                }
+                catch (System.IO.IOException e)
+                {
+                    return;
+                }
+            }            
         }
         #endregion
 
@@ -207,7 +200,7 @@ namespace Cliquemix.Models
         #region "Retornar Início e Término padrão de publicação da Campanha"
         public static int RetornarInicioTerminoPadraoPublicacaoCampanha()
         {
-            var it = (from config in db.tbConfigPadrao select config).First();
+            var it = (from config in db.tbConfigPadrao where config.cfgid==1 select config).First();
             if (it.itppc != null) return (int) it.itppc;
             else return 0;
         }
@@ -331,12 +324,73 @@ namespace Cliquemix.Models
         }
         #endregion
 
+        #region "Retornar o Código do Status Padrão para uma Campanha Excluída"
+        public static int RetornarStatusPadraoCampanhaExcluida()
+        {
+            var a = (from status in db.tbConfigPadrao select status).First();
+            return (int)a.spec;
+        }
+        #endregion
+
+        #region "Retornar o Código do Status Padrão para uma Campanha Desativada"
+        public static int RetornarStatusPadraoCampanhaDesativada()
+        {
+            var a = (from status in db.tbConfigPadrao select status).First();
+            return (int)a.spdc;
+        }
+        #endregion
+
+        #region "Retornar o Código do Status Padrão para uma Campanha Programada"
+        public static int RetornarStatusPadraoCampanhaProgramada()
+        {
+            var a = (from status in db.tbConfigPadrao select status).First();
+            return (int)a.spcp;
+        }
+        #endregion
+
+        #region "Retornar Quantidade de Dias Padrão para Programar Término da Campanha"
+        public static int RetornarQtdeDiasPadraoTerminoCampanha()
+        {
+            var a = (from status in db.tbConfigPadrao select status).First();
+            return (int)a.qdptcp;
+        }
+        #endregion
+
         #region "Mudar Status do Anúncio Excluído"
         public static void AnuncioExcluido(int pCodAnuncio)
         {
             var a = (from anuncio in db.tbAnuncio where anuncio.aid == pCodAnuncio select anuncio).First();
             a.asid = RetornarStatusPadraoAnuncioExcluido();
             db.SaveChanges();
+        }
+        #endregion
+
+        #region "Inserir código do anúncio na tabela tbAnuncioCodTemp"
+        public static void InserirCodAnuncioTbAnuncioCodTemp(int? pCodTemp, int pCodAnuncio)
+        {
+            var a = (from act in db.tbAnuncioCodTemp where act.actid == pCodTemp select act).First();
+            a.aid = pCodAnuncio;
+            db.SaveChanges();
+        }
+        #endregion
+
+        #region "Inserir código do anúncio na tabela tbAnuncioImg"
+        public static void InserirCodAnuncioTbAnuncioImg(int? pCodTemp, int pCodAnuncio, int pIdUser)
+        {
+            try
+            {
+                var img = db.tbAnuncioImg.Where(m => m.actid == pCodTemp).ToList();
+                foreach (var item in img)
+                {
+                    item.aid = pCodAnuncio;
+                    db.Entry(item).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception e)
+            {
+                SalvarLog(pIdUser, e.Message, "Inserir código do anúncio na tabela tbAnuncioImg", "Ajuste Código Anúncio");
+            }
         }
         #endregion
 

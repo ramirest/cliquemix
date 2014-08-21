@@ -1,0 +1,121 @@
+﻿@model Cliquemix.Models.tbAnuncio
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>tbAnuncio</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tituloAnuncio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tituloAnuncio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.url)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.url)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dsAnuncio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dsAnuncio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.videoAnuncio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.videoAnuncio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.comentar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.comentar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.curtir)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.curtir)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.compartilhar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.compartilhar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dtCriacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dtCriacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbAnunciante.cnpj)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbAnunciante.cnpj)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbAnuncioCategoria.dsCategoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbAnuncioCategoria.dsCategoria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbAnuncioCodTemp.actid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbAnuncioCodTemp.actid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbAnuncioStatus.dsStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbAnuncioStatus.dsStatus)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

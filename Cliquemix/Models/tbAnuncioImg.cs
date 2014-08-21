@@ -17,12 +17,13 @@ namespace Cliquemix.Models
         public long imgid { get; set; }
         public string url_imagem { get; set; }
         public string tipo { get; set; }
-        public Nullable<long> idTemp { get; set; }
         public string tamanho { get; set; }
-        public Nullable<int> idTempItem { get; set; }
-        public Nullable<bool> tempRenomeado { get; set; }
+        public Nullable<int> iditem { get; set; }
         public Nullable<int> aid { get; set; }
+        public Nullable<int> actid { get; set; }
+        public Nullable<bool> ativo { get; set; }
     
+        public virtual tbAnuncioCodTemp tbAnuncioCodTemp { get; set; }
         public virtual tbAnuncio tbAnuncio { get; set; }
     }
 }

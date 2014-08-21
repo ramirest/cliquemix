@@ -5,7 +5,6 @@
 @model Cliquemix.Models.tbAnuncio
 
 @{
-    ViewBag.CodImagem = ProcFunc.RetornarProxCodTempImgAnuncio();
     ViewBag.CodAnunciante = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());
 }
 
@@ -14,45 +13,72 @@
 <script src="~/Scripts/Outros/jquery.uploadify.js"></script>
 <link href="~/Content/Outros/uploadify.css" rel="stylesheet" />
 
+<!-- PAGE LEVEL PLUGIN STYLES -->
+<link href="~/Content/plugins/summernote/summernote.css" rel="stylesheet">
+<link href="~/Content/plugins/summernote/summernote-bs3.css" rel="stylesheet">
 
 <script type="text/javascript">
-    var idAlbum = @ViewBag.CodImagem
+    var idAlbum = @ViewBag.actid
+    
+    $(function() {
+        var btn = document.getElementById('btnAtualizarImagens');
+        $('#Filedata').uploadify({
+            'swf': '/Content/Outros/uploadify.swf',
+            'uploader': '/Anuncio/UploadImagem',
+            'method': 'post',
+            'formData': {
+                'idAlbum': idAlbum
+            },
+            'onUploadComplete' : function(file) {
+                atualizarImagens();
+            }            
+        });
+    });
 
     function atualizarImagens() {
         $.ajax(
         {
             type: 'GET',
-            url: '/Anuncio/UploadImagem/?temp=' + @ViewBag.CodImagem,
+            url: '/Anuncio/UploadImagem/?temp=' + @ViewBag.actid,
             dataType: 'html',
             cache: false,
             async: true,
             success: function(data) {
-                $('#upload_Imagem').html(data);
+                $('#carregarImagens').html(data);
             }
         });
     }
 
-    $(function () {
-        $('#Filedata').uploadify({
-            'swf': '/Content/Outros/uploadify.swf',
-            'uploader': '/Anuncio/UploadImagem',
-            'method': 'post',
-            'formData': { 
-                'idAlbum': idAlbum
-            },
-            success: function() {
-                atualizarImagens();
-            }
+    $(document).ready(function() {
+        $('#summernote').summernote({
+            height: 200
         });
-        atualizarImagens();
+
+        $('#toolbarDiv').on('click', function() {
+            SalvarDescricao();
+        });
+
+        $('#dsDivAnuncio').on('keypress', function() {
+            SalvarDescricao();
+        });
     });
+
+    function SalvarDescricao() {
+        var conteudoDiv=document.getElementById('dsDivAnuncio').innerHTML;
+        document.getElementById("dsAnuncio").value = conteudoDiv;
+    }
+
+    function VoltarDescricao() {
+        var conteudo = document.getElementById("dsAnuncio").value;
+        document.getElementById('dsDivAnuncio').innerHTML = conteudo;
+    }
 </script>
 
 <div class="row">
     <div class="col-lg-12">
         <div class="page-title">
             <h1>
-                Anunciante
+                Anúncio
                 <small>Criar Anúncio</small>
             </h1>
             @RenderPage("~/Views/Breadcrumbs/Breadcrumbs-Anuncio-CreateAnuncio.cshtml")
@@ -108,28 +134,29 @@
                                                 </div>
 
                                                 <div class="form-group col-lg-6">
-                                                    @Html.Label("URL do Anúncio")
-                                                    @Html.TextBoxFor(model => model.url, new { @class = "form-control", placeholder = "Http://" })
-                                                </div>
-
-                                                <div class="clearfix"></div>
-                                                <div class="form-group col-lg-offset-6"></div>
-
-                                                <div class="form-group col-lg-6">
                                                     @Html.Label("Categoria do Anúncio")
                                                     <div class="clearfix"></div>
                                                     @Html.DropDownList("acid", null, string.Empty, new { style = "width:300px; height:34px" })
                                                     @Html.ValidationMessageFor(model => model.acid)
                                                 </div>
 
-                                                <div class="form-group col-lg-offset-6"></div>
-
+                                                @*
+                                                <div class="form-group col-lg-6">
+                                                    @Html.Label("URL do Anúncio")
+                                                    @Html.TextBoxFor(model => model.url, new { @class = "form-control", placeholder = "Http://" })
+                                                </div>
+                                                *@
                                                 <div class="clearfix"></div>
                                                 <div class="form-group col-lg-offset-6"></div>
-                                                                                                    
+
+                                                <div class="form-group col-lg-offset-6"></div>
+
                                                 <div class="form-group col-lg-12">
+                                                    <!-- Summernote CMS Example -->
+                                                    @Html.Label("Descrição do Anúncio")
+                                                    <div class="clearfix"></div>
                                                     <div id="summernote"></div>
-                                                    @Html.HiddenFor(model => model.dsAnuncio)
+                                                    <input type="text" id="dsAnuncio" name="dsAnuncio" style="width: 400px; height: 100px; display: none;"/>
                                                 </div>
 
                                                 <div class="col-sm-offset-10 col-sm-1">
@@ -164,21 +191,14 @@
                                                 </div>
                                             </div>
 
-                                            @Html.HiddenFor(model => model.idTemp, new {@value = ProcFunc.RetornarProxCodTempImgAnuncio()})
+
                                             <div class="tab-pane fade in" id="infoImg">
                                                 <h4 class="page-header">Vincular Imagem ao Anúncio:</h4>
-                                                <div class="modal modal-flex fade" id="flexModal" tabindex="-1" role="dialog" aria-labelledby="flexModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog" style="min-width: 60%;">
-                                                        <div class="modal-content" id="conteudo">
-                                                            @{
-                                                                Html.RenderPartial("UploadImagem");
-                                                            }
-                                                        </div>
-                                                        <!-- /.modal-content -->
-                                                    </div>
-                                                    <!-- /.modal-dialog -->
+                                                <input type="hidden" id="actid" name="actid" value="@ViewBag.actid" />
+                                                <div>
+                                                    <input type="file" name="Filedata" id="Filedata"/>
                                                 </div>
-
+                                                
                                                 <div class="row">
                                                     <!-- Basic Responsive Table -->
                                                     <div class="col-lg-12">
@@ -188,22 +208,23 @@
                                                                     <h4 class="flutuar">Imagens do Anúncio</h4>
                                                                 </div>
                                                                 <div class="portlet-widgets">
-                                                                    <a href="#" id="abrir" data-toggle="modal" data-target="#flexModal" data-placement="top" title="Nova Imagem" onclick="novaImagem();">
-                                                                        <i class="fa fa-plus-square"></i>
-                                                                    </a>
-                                                                    <span class="divider"></span>
-                                                                    <a href="javascript:;" data-placement="top" title="Atualizar" onclick="atualizarImagens();">
+                                                                    @*<a id="btnAtualizarImagens" href="javascript:;" 
+                                                                       data-placement="top" title="Atualizar" onclick="atualizarImagens();">
                                                                         <i class="fa fa-refresh"></i>
-                                                                    </a>
+                                                                        </a>*@
                                                                     <span class="divider"></span>
                                                                 </div>
                                                                 <div class="clearfix"></div>
                                                             </div>
-                                                            <div id="carregarImagens">
-                                                                @{
-                                                                    Html.RenderPartial("ImagensAnuncio");
-                                                                }
-                                                                @* Lista os Anúncios da Campanha *@
+                                                            <div class="row">
+                                                                <div class="col-lg-12">
+                                                                    <div id="carregarImagens" style="min-height: 100px;">
+                                                                        @{
+                                                                            Html.RenderPartial("UploadImagem");
+                                                                        }
+                                                                        @* Lista os Anúncios da Campanha *@
+                                                                    </div>                                                                    
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <!-- /.portlet -->
@@ -213,33 +234,6 @@
                                                         <button type="button" onclick=" $('#lnk2').click(); " class="btn btn-default">Anterior</button>
                                                         <button type="button" onclick=" $('#lnk4').click(); " class="btn btn-default">Próximo</button>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            
-
-                                            <div class="tab-pane fade in" id="infoImg2">
-                                                <h4 class="page-header">Galeria de Imagens:</h4>
-                                                <div class="col-lg-offset-6"></div>
-                                                <div class="clearfix"></div>
-                                                <div>
-                                                    @*Item que faz o upload de imagens*@
-                                                    <input type="file" name="Filedata" id="Filedata" value="Upload de Imagem" onchange="atualizarImagens();"/>
-                                                    @*Botão que atualiza as imagens do anúncio*@
-                                                    <button type="button" class="btn btn-toolbar" onclick="atualizarImagens();">Atualizar</button>
-                                                </div>
-
-                                                <div class="clearfix"></div>
-                                                <div id="upload_Imagem">
-                                                    @{
-                                                        Html.RenderPartial("UploadImagem");
-                                                    }
-                                                    @* Campos que armazenarão a url da imagem *@
-                                                </div>
-                                                @Html.Hidden("txtTemp")
-                                                <input type="hidden" id="idTempImg" name="idTempImg" value=@ViewBag.CodImagem />
-                                                <div class="form-group col-lg-offset-9">
-                                                    <button type="button" onclick=" $('#lnk2').click(); " class="btn btn-default">Anterior</button>
-                                                    <button type="button" onclick=" $('#lnk4').click(); " class="btn btn-default">Próximo</button>
                                                 </div>
                                             </div>
                                             
@@ -294,3 +288,6 @@
     </div>
     <!-- /.col-lg-12 -->
 }
+
+<!-- PAGE LEVEL PLUGIN SCRIPTS -->
+<script src="~/Scripts/plugins/summernote/summernote.min.js"></script>

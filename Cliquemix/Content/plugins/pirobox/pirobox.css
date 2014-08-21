@@ -1,0 +1,145 @@
+/* piroBox november 2008*/
+
+/*::::: GENERIC RULES ::::::::*/
+
+body{
+margin:0;
+padding:0;
+/*background:#000;*/
+font-family:Verdana;
+font-size:80%;
+text-align:left;
+}
+ul,li{
+list-style-type:none;
+margin:0;
+padding:0;
+}
+img{
+border:none;
+}
+p{
+margin:0;
+padding:0;
+}
+h1{
+margin:10px;
+padding:10px;
+font-weight:normal;
+color:#fff;
+}
+.gray1{
+color:#ff0000;
+font-style:italic;
+}
+h2{
+margin:10px;
+padding:10px;
+color:#000;
+font-size:18px;
+width:60%;
+}
+h3{
+margin:10px;
+padding:10px;
+color:#000;
+font-size:16px;
+font-weight:normal;
+}
+a{
+color:#fff;
+outline:none;
+text-decoration:none;
+}
+a:hover{
+color:#ff0000;
+outline:none;
+text-decoration:none;
+}
+
+/*::::: PIROBOX RULES::::::::*/
+
+.bg_thumbs{
+background:#15987e;/*::::: you can change overlay background-color here ::::::::*/
+position:fixed!important;
+position:absolute;
+top:0;
+left:0!important;
+left:-17px;
+width:100%;
+margin:0;
+padding:0;
+visibility:hidden;
+z-index:1001;
+display:none;
+}
+
+.unloader, .img_box{
+/*background:#000;/*::::: you can change img_box background-color here ::::::::*/
+}
+
+/*:::: YOU DON'T NEED TO CHANGE NOTHING ELSE IN THE CSS :::*/
+
+/*:::: PREV/NEXT inside rules ::::*/
+.box_next_in{position:absolute;top:0;height:90%;width:74px;right:0;overflow:hidden;z-index:1010;background:none;display:block;}
+a.next_in{position:absolute;z-index:1011;height:100%;width:74px;right:-74px;text-indent:-999em;display:block;background:url(next_tt.gif) top right no-repeat;}
+a:hover.next_in{background:url(next_tt.gif) top right no-repeat!important;background:url(next_tt.gif) center right no-repeat;}
+.box_previous_in{position:absolute;top:0;z-index:100012;height:90%;left:0;width:74px;overflow:hidden;background:none;display:block;}
+a.previous_in{position:absolute;z-index:100013;left:-74px;height:100%;width:74px;text-indent:-999em;display:block;background:url(prev_tt.gif) top left no-repeat;}
+a:hover.previous_in{background:url(prev_tt.gif) top left no-repeat!important;background:url(prev_tt.gif) center left no-repeat;}
+
+/*:::: PREV/NEXT outside rules ::::*/
+
+.box_next{position:fixed!important;position:absolute;top:50%;margin-top:-9px;height:18px;width:81px;right:0px!important;right:16px;overflow:hidden;z-index:1006;}
+a.next{position:fixed!important;position:absolute;text-indent:-999em;display:block;height:18px;width:81px;right:-81px;z-index:1007;background:url(next_t_h.gif) center right no-repeat;}
+a:hover.next{background:url(next_t.gif) center right no-repeat;}
+.box_previous{position:fixed!important;position:absolute;top:50%;margin-top:-9px;left:0;height:18px;width:81px;overflow:hidden;z-index:1008;}
+a.previous{z-index:1009;position:fixed!important;position:absolute;width:81px;left:-81px;text-indent:-999em;display:block;height:18px;background:url(prev_t_h.gif) center left no-repeat;}
+a:hover.previous{background:url(prev_t.gif) center left no-repeat;}
+
+/*:::: END PREV/NEXT rules ::::*/
+
+
+/*:::: IMG_BOX rules ::::*/
+
+.img_box{position:fixed!important;position:absolute;top:50%;left:50%;margin-top:-18px;margin-left:-25px;width:50px;height:50px;border:solid 1px;padding:2px!important;padding:1px;z-index:1002;visibility:hidden; overflow:hidden;}
+.img_box img{position:relative;top:0;left:0;border:none;padding:0;z-index:1003;}
+
+/*:::: END IMG_BOX rules ::::*/
+
+/*:::: CLOSE, LOADING rules ::::*/
+
+.thumbs_close{position:absolute;bottom:0;right:0;height:18px;width:81px;color:#fff;cursor:pointer;margin:0 5px 5px 0!important;margin:0 5px 3px 0;z-index:100014;background:url(close_t.gif) center right no-repeat!important;background:url(close_t.gif) center right no-repeat;visibility:hidden;}
+.loader{position:fixed!important;position:absolute;top:50%;left:50%;margin-top:-18px!important;margin-left:-22px!important;margin-top:-15px;margin-left:-20px;width:50px;height:50px;display:block;z-index:1007;}
+.loader img{border:none;padding:0!important;padding:0;background:none;}
+.unloader{visibility:visible;}
+.thumbs{visibility:hidden;}
+
+/*color: #54677A;*/
+
+/*Caption da Imagem ampliada*/
+.caption{ background:#15987e;position:absolute;bottom:0;left:0;margin:0 0 3px 3px!important;margin:0 0 1.5px 2px; color:#fff;visibility:hidden;display:block; padding:3px; z-index:100013; cursor:text}
+.caption p{ margin:0;padding:0; margin-right:82px; }
+.pre{visibility:hidden;display:none;}
+.end{display:none;}
+.begin{display:none;}
+
+/*:::: DEMO PAGE, LIST IMAGES rules (REMOVE OR CHANGE) ::::*/
+
+.gallery{float:left;padding:0;margin:0;width:930px;height:100%!important;height:auto;padding:5px;}
+.gallery ul{float:left;padding:0;margin:0!important;margin:0;}
+.gallery img{margin:0;padding:2px;height:139px;width:200px;}
+.gallery li{float:left;height:151px;width:212px;margin:10px!important;margin:5px;}
+.gallery li a{float:left;height:143px;width:204px;border:2px solid #333;}
+.gallery li a:hover{float:left;height:143px;width:204px;border:2px solid #000;}
+.gallery_in{float:left;padding:0;margin:0;width:930px;height:100%!important;height:auto;padding:5px;}
+.gallery_in ul{float:left;padding:0;margin:0!important;margin:0;}
+.gallery_in img{margin:0;padding:2px;height:139px;width:200px;}
+.gallery_in li{float:left;height:151px;width:212px;margin:10px!important;margin:5px;}
+.gallery_in li a{float:left;height:143px;width:204px;border:2px solid #333;}
+.gallery_in li a:hover{float:left;height:143px;width:204px;border:2px solid #000;}
+.single_box{float:left;padding:0;margin:0;width:232px;height:100%!important;height:auto;}
+.single{float:left;height:151px;width:212px;margin:10px!important;margin:5px;}
+.single img{margin:0;padding:2px;height:139px;width:200px;}
+.single a{float:left;height:143px;width:204px;border:2px solid #333;}
+.single a:hover{float:left;height:143px;width:204px;border:2px solid #000;}

@@ -22,12 +22,20 @@ namespace Cliquemix.Models
         public Nullable<int> spnac { get; set; }
         public Nullable<int> itppc { get; set; }
         public Nullable<int> spea { get; set; }
+        public Nullable<int> spec { get; set; }
+        public string pua { get; set; }
+        public Nullable<int> spdc { get; set; }
+        public Nullable<int> spcp { get; set; }
+        public Nullable<int> qdptcp { get; set; }
     
         public virtual tbAnuncioStatus tbAnuncioStatus { get; set; }
         public virtual tbAnuncioStatus tbAnuncioStatus1 { get; set; }
         public virtual tbAnuncioStatus tbAnuncioStatus2 { get; set; }
         public virtual tbCampanhaAnuncioStatus tbCampanhaAnuncioStatus { get; set; }
         public virtual tbCampanhaStatus tbCampanhaStatus { get; set; }
+        public virtual tbCampanhaStatus tbCampanhaStatus1 { get; set; }
         public virtual tbUsersTipo tbUsersTipo { get; set; }
+        public virtual tbCampanhaStatus tbCampanhaStatus2 { get; set; }
+        public virtual tbCampanhaStatus tbCampanhaStatus3 { get; set; }
     }
 }

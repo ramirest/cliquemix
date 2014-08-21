@@ -11,33 +11,47 @@
     // Tudo = 4 [Não existe anúncio para vincular]
 }
 
-<script type="text/javascript">
-    
-    $(document).ready(function () {
-        $('#btnRight').click(function (e) {
-            var selectedOpts = $('#lstBox1 option:selected');
-            if (selectedOpts.length == 0) {
-                alert("Nothing to move.");
-                e.preventDefault();
+<script language="JavaScript" type="text/javascript" src="~/Scripts/plugins/validate/MascaraValidacao/MascaraValidacao.js"></script>
+<script type="text/javascript" src="~/Scripts/Outros/jquery-2.1.1.min.js"></script>
+
+<script>
+
+    function AtualizaCodDestaque() {
+        var obj = document.getElementById('did');
+        var cod = obj.options[obj.selectedIndex].value;
+        document.getElementById('tdid').value = FormatNumberLength(cod, 6);
+        detalhesDestaque();
+    };
+
+    function detalhesDestaque() {
+        $.ajax(
+        {
+            type: 'POST',
+            url: '/Campanha/InfoDestaque/?pCodDestaque='+ document.getElementById('tdid').value,
+            dataType: 'html',
+            cache: true,
+            async: true,
+            success: function(data) {
+                $('#detalhesDestaque').html(data);
+                $('#detalhesDestaque2').html(data);
             }
-
-            $('#lstBox2').append($(selectedOpts).clone());
-            $(selectedOpts).remove();
-            e.preventDefault();
         });
+    }
 
-        $('#btnLeft').click(function (e) {
-            var selectedOpts = $('#lstBox2 option:selected');
-            if (selectedOpts.length == 0) {
-                alert("Nothing to move.");
-                e.preventDefault();
+    function salvarCampanha() {
+        $.ajax(
+        {
+            type: 'POST',
+            url: '/Campanha/CreateCampanha',
+            dataType: 'html',
+            cache: true,
+            async: true,
+            success: function(data) {
+                //$('#detalhesDestaque').html(data);
+                //$('#detalhesDestaque2').html(data);
             }
-
-            $('#lstBox1').append($(selectedOpts).clone());
-            $(selectedOpts).remove();
-            e.preventDefault();
         });
-    });
+    }
 
     function atualizarAnuncios() {
         $.ajax(
@@ -67,6 +81,71 @@
         });
     }
 
+    function AtualizaCodPcid() {
+        var obj = document.getElementById("pcid");
+        $("input[id='tpcid']").val(obj.options[obj.selectedIndex].value);
+        detalhesDestaque();
+    };
+
+    function novoAnuncio() {
+        $.ajax(
+        {
+            type: 'GET',
+            url: '/Campanha/NovoAnuncio/?pCodCampanha=' + @ViewBag.ctid, //string txt, int pCodCampanha
+            dataType: 'html',
+            cache: true,
+            async: true,
+            success: function(data) {
+                $('#conteudo').html(data);
+            }
+        });
+    }
+
+    function novaLocalidade() {
+        $.ajax(
+        {
+            type: 'GET',
+            url: '/Campanha/GeoLocalizacao/?pCodCampanha=' + @ViewBag.ctid, //string txt, int pCodCampanha
+            dataType: 'html',
+            cache: true,
+            async: true,
+            success: function(data) {
+                $('#GeoConteudo').html(data);
+            }
+        });
+    }
+
+</script>
+
+<script type="text/javascript">
+    
+    $(document).ready(function () {
+        $('#btnRight').click(function (e) {
+            var selectedOpts = $('#lstBox1 option:selected');
+            if (selectedOpts.length == 0) {
+                alert("Nothing to move.");
+                e.preventDefault();
+            }
+
+            $('#lstBox2').append($(selectedOpts).clone());
+            $(selectedOpts).remove();
+            e.preventDefault();
+        });
+
+        $('#btnLeft').click(function (e) {
+            var selectedOpts = $('#lstBox2 option:selected');
+            if (selectedOpts.length == 0) {
+                alert("Nothing to move.");
+                e.preventDefault();
+            }
+
+            $('#lstBox1').append($(selectedOpts).clone());
+            $(selectedOpts).remove();
+            e.preventDefault();
+        });
+    });
+
+
     function VerificaData(digData, id)
     {
         var bis_to = 0;
@@ -83,43 +162,43 @@
             {
                 switch (mes)
                 {
-                    case '01':
-                    case '03':
-                    case '05':
-                    case '07':
-                    case '08':
-                    case '10':
-                    case '12':
-                        if  (dia <= 31)
-                        {
-                            return true;
-                        }
-                        break;
+                case '01':
+                case '03':
+                case '05':
+                case '07':
+                case '08':
+                case '10':
+                case '12':
+                    if  (dia <= 31)
+                    {
+                        return true;
+                    }
+                    break;
 
-                    case '04':
-                    case '06':
-                    case '09':
-                    case '11':
-                        if  (dia <= 30)
-                        {
-                            return true;
-                        }
-                        break;
-                    case '02':
-                        /* Validando ano Bis---to / fevereiro / dia */
-                        if ((ano % 4 == 0) || (ano % 100 == 0) || (ano % 400 == 0))
-                        {
-                            bis_to = 1;
-                        }
-                        if ((bis_to == 1) && (dia <= 29))
-                        {
-                            return true;
-                        }
-                        if ((bis_to != 1) && (dia <= 28))
-                        {
-                            return true;
-                        }
-                        break;
+                case '04':
+                case '06':
+                case '09':
+                case '11':
+                    if  (dia <= 30)
+                    {
+                        return true;
+                    }
+                    break;
+                case '02':
+                    /* Validando ano Bis---to / fevereiro / dia */
+                    if ((ano % 4 == 0) || (ano % 100 == 0) || (ano % 400 == 0))
+                    {
+                        bis_to = 1;
+                    }
+                    if ((bis_to == 1) && (dia <= 29))
+                    {
+                        return true;
+                    }
+                    if ((bis_to != 1) && (dia <= 28))
+                    {
+                        return true;
+                    }
+                    break;
                 }
             }
         }
@@ -127,66 +206,13 @@
         return false;
     }
 
-    function AtualizaCodDestaque() {
-        var obj = document.getElementById("did");
-        document.getElementById('tdid').value = FormatNumberLength(obj.options[obj.selectedIndex].value, 6);
-        detalhesDestaque();
-    };
     
-    function detalhesDestaque() {
-        $.ajax(
-        {
-            type: 'POST',
-            url: '/Campanha/InfoDestaque/?pCodDestaque='+ document.getElementById('tdid').value,
-            dataType: 'html',
-            cache: true,
-            async: true,
-            success: function(data) {
-                $('#detalhesDestaque').html(data);
-            }
-        });
-    }
-
     function FormatNumberLength(num, length) {
         var r = "" + num;
         while (r.length < length) {
             r = "0" + r;
         }
         return r;
-    }
-
-
-    function AtualizaCodPcid() {
-        var obj = document.getElementById("pcid");
-        $("input[id='tpcid']").val(obj.options[obj.selectedIndex].value);
-        detalhesDestaque();
-    };
-
-    function novoAnuncio() {
-        $.ajax(
-        {
-            type: 'GET',
-            url: '/Campanha/NovoAnuncio/?pCodCampanha='+@ViewBag.ctid, //string txt, int pCodCampanha
-            dataType: 'html',
-            cache: true,
-            async: true,
-            success: function (data) {
-                $('#conteudo').html(data);
-            }
-        });
-
-        function novaLocalidade() {
-            $.ajax(
-            {
-                type: 'GET',
-                url: '/Campanha/GeoLocalizacao/?pCodCampanha='+@ViewBag.ctid, //string txt, int pCodCampanha
-                dataType: 'html',
-                cache: true,
-                async: true,
-                success: function (data) {
-                    $('#GeoConteudo').html(data);
-                }
-            });
     }
 </script>
 
@@ -195,7 +221,7 @@
     <div class="col-lg-12">
         <div class="page-title">
             <h1>
-                Anunciante
+                Campanha
                 <small>Criar Campanha</small>
                 <input type="hidden" id="ctid" name="ctid" value="@ViewBag.ctid"/>
             </h1>
@@ -232,10 +258,10 @@
                                         </li>
                                         <li>
                                             <a href="#infoResumo" data-toggle="tab" id="lnk4"><i class="fa fa-hand-o-down fa-fw"></i> Resumo da Campanha</a>
-                                        </li>
+                                        </li>@*
                                         <li>
                                             <a href="#infoGL" data-toggle="tab" id="lnk5"><i class="fa fa-globe fa-fw"></i> Geo Localização</a>
-                                        </li>
+                                        </li>*@
                                     </ul>
                                 </div>
                                 @Html.ValidationSummary(true)
@@ -243,12 +269,11 @@
                                     <div id="userSettingsContent" class="tab-content">
                                         <div class="tab-pane fade in active" id="infoBasico">
                                             <h4 class="page-header">Informações da Campanha:</h4>
-                                            <div class="form-group col-lg-6">
+                                            <div class="form-group col-lg-10">
                                                 <label>Título</label>
-                                                @Html.TextBoxFor(model => model.tituloCampanha, new { @class = "form-control", style = "max-width: 334px" })
+                                                @Html.TextBoxFor(model => model.tituloCampanha, new { @class = "form-control"})
                                             </div>
                                             @Html.Hidden("ctid")
-
 
                                             @if (ProcFunc.RetornarInicioTerminoPadraoPublicacaoCampanha() == 1)
                                             {
@@ -261,7 +286,18 @@
                                                                     <i class="fa fa-calendar"></i>
                                                                 </button>
                                                             </span>
-                                                            <input id="dtInicio" name="dtInicio" class="form-control datepicker" type="text" style="max-width: 100px;" onchange=" VerificaData(this.value, this.id); " />
+                                                            @Html.TextBoxFor(model => model.dtInicio,
+                                                                new
+                                                                {
+                                                                    @class = "form-control",
+                                                                    maxlength = "10",
+                                                                    style="max-width: 100px;",
+                                                                    alt = "dtInicio",
+                                                                    id = "dtInicio",
+                                                                    name = "dtInicio",
+                                                                    onblur = "ValidaData(this);",
+                                                                    onkeypress = "MascaraData(this);"
+                                                                })
                                                         </div>
                                                     </div>
                                                 </div>
@@ -274,7 +310,9 @@
                                                                 <i class="fa fa-clock-o"></i>
                                                             </button>
                                                         </span>
-                                                        <input id="hrInicio" name="hrInicio" class="form-control timepicker" type="text" style="max-width: 100px;" onchange=" VerificaData(this.value, this.id); " />
+                                                        <input id="hrInicio" name="hrInicio" class="form-control timepicker"
+                                                               type="text" style="max-width: 100px;"
+                                                               onchange="" />
                                                     </div>
                                                 </div>
 
@@ -308,17 +346,80 @@
                                                 </div>
                                                 <div class="clearfix"></div>
                                             }
+                                            else if (ProcFunc.RetornarInicioTerminoPadraoPublicacaoCampanha() == 3)
+                                            {
+                                                <div class="form-group col-lg-3">
+                                                    <label>Data de Início</label>
+                                                    <div id="sandbox-container">
+                                                        <div class="input-group">
+                                                            <span class="input-group-btn">
+                                                                <button class="btn btn-default add-on " type="button">
+                                                                    <i class="fa fa-calendar"></i>
+                                                                </button>
+                                                            </span>
+                                                            @Html.TextBoxFor(model => model.dtInicio,
+                                                                new
+                                                                {
+                                                                    @class = "form-control",
+                                                                    maxlength = "10",
+                                                                    style = "max-width: 100px;",
+                                                                    alt = "dtInicio",
+                                                                    id = "dtInicio",
+                                                                    name = "dtInicio",
+                                                                    onblur = "ValidaData(this);",
+                                                                    onkeypress = "MascaraData(this);",
+                                                                })
+                                                        </div>
+                                                    </div>
+                                                </div>                                                
+
+                                                <div class="form-group col-lg-3">
+                                                    <label>Hora de Início</label>
+                                                    <div class="input-append bootstrap-timepicker input-group">
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-default add-on" type="button">
+                                                                <i class="fa fa-clock-o"></i>
+                                                            </button>
+                                                        </span>
+                                                        <input id="hrInicio" name="hrInicio" class="form-control timepicker" type="text" style="max-width: 100px;" onchange=" VerificaData(this.value, this.id); " />
+                                                    </div>
+                                                </div>
+
+                                                <div class="clearfix"></div>
+                                                <div class="form-group col-lg-6"></div>
+
+                                            }
                                             else
                                             {
                                                 <div class="clearfix"></div>
                                             }
+
+                                            <br /><br />
+
+                                            <div class="col-sm-offset-10 col-sm-1">
+                                                <button type="button" onclick=" $('#lnk2').click(); " class="btn btn-default">Próximo</button>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="tab-pane fade" id="infoDestaque">
+                                            <h4 class="page-header">Informações sobre o Destaque da Campanha</h4>
+
+                                            @* REMOVIDO AS INFORMAÇÕES DO DESTAQUE *@
 
                                             <div class="col-lg-12">
                                                 <div class="portlet portlet-default">
                                                     <div class="portlet-heading">
                                                         <div class="portlet-title">
                                                             <h4>Selecione o Destaque </h4>
-                                                            @Html.DropDownList("did", null, string.Empty, new { style = "width:334px; height:34px", onchange = "AtualizaCodDestaque();" })
+                                                            @Html.DropDownList("did", null, string.Empty,
+                                                                new
+                                                                {
+                                                                    style = "width:334px; height:34px",
+                                                                    id = "did",
+                                                                    name = "did",
+                                                                    onchange = "AtualizaCodDestaque();"
+                                                                })
                                                             <br /><label> </label>
                                                         </div>
                                                         <div class="portlet-widgets">
@@ -333,35 +434,17 @@
                                                                 @{
                                                                     Html.RenderPartial("InfoDestaque");
                                                                 }
-                                                                <input type="hidden" id="tdid" name="tdid" />
                                                             </div>
                                                         </div>
-                                                    </div>@*
+                                                    </div>
                                                     <div class="portlet-footer">
-                                                        <label style="font-size: 12px; font-weight: bold">Código do Destaque:   </label>
-                                                        <input type=""/>
-                                                        <label id="tdid" style="font-size: 12px; font-weight: normal"></label>
-                                                    </div>*@
+                                                        <label id="tdid"></label>
+                                                    </div>
                                                 </div>
                                             </div>
 
-                                            <br /><br />
-
-                                            <div class="col-sm-offset-10 col-sm-1">
-                                                <button type="button" onclick=" $('#lnk3').click(); " class="btn btn-default">Próximo</button>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="tab-pane fade" id="infoDestaque">
-                                            <h4 class="page-header">Informações sobre o Destaque da Campanha</h4>
-
-                                            @* REMOVIDO AS INFORMAÇÕES DO DESTAQUE *@
-
-                                            <div class="clearfix"></div>
-
+                                            
                                             <div class="form-group col-lg-offset-9">
-
                                                 <button type="button" onclick=" $('#lnk1').click(); " class="btn btn-default">Anterior</button>
                                                 <button type="button" onclick=" $('#lnk3').click(); " class="btn btn-default">Próximo</button>
                                             </div>
@@ -413,21 +496,15 @@
                                                 </div>
 
                                                 <div class="form-group col-lg-offset-9">
-                                                    <button type="button" onclick=" $('#lnk1').click(); " class="btn btn-default">Anterior</button>
-                                                    <button type="button" onclick=" $('#lnk5').click(); " class="btn btn-default">Próximo</button>
+                                                    <button type="button" onclick=" $('#lnk2').click(); " class="btn btn-default">Anterior</button>
+                                                    <button type="button" onclick=" $('#lnk4').click(); " class="btn btn-default">Próximo</button>
                                                 </div>
                                             </div>
                                         </div>
 
 
                                         <div class="tab-pane fade" id="infoResumo">
-                                            <h4 class="page-header">Quantidades de cliques que o usuário poderá clicar por anúncio:</h4>
-                                            <div class="form-group col-lg-6">
-                                                @Html.Label("Selecione o Pacote")
-                                                <div class="clearfix"></div>
-                                                @Html.DropDownList("pcid", null, string.Empty, new { style = "width:300px; height:34px", onchange = "AtualizaCodPcid();" })
-                                                @Html.Hidden("tpcid")
-                                            </div>
+                                            <h4 class="page-header">Resumo da campanha</h4>
 
                                             <div class="form-group col-lg-offset-6">
 
@@ -436,9 +513,10 @@
                                             <div class="clearfix"></div>
 
                                             <div class="form-group col-lg-offset-9">
-
                                                 <button type="button" onclick=" $('#lnk3').click(); " class="btn btn-default">Anterior</button>
-                                                <button type="button" onclick=" $('#lnk5').click(); " class="btn btn-default">Próximo</button>
+                                                <button type="submit" class="btn btn-default" id="save" value="save">
+                                                    <i class="fa fa-floppy-o"></i>Salvar
+                                                </button>
                                             </div>
                                         </div>
                                         
@@ -487,13 +565,6 @@
                                                     <!-- /.portlet -->
                                                 </div>
 
-                                                <div class="form-group col-lg-offset-9">
-                                                    <button type="button" onclick=" $('#lnk3').click(); " class="btn btn-default">Anterior</button>
-                                                    <button type="submit" class="btn btn-default" id="save" value="save">
-                                                        <i class="fa fa-floppy-o"></i>
-                                                        Salvar
-                                                    </button>
-                                                </div>
                                             </div>
                                         </div>
 

@@ -1,0 +1,100 @@
+﻿@model IEnumerable<Cliquemix.Models.tbAnuncio>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.tituloAnuncio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.url)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dsAnuncio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.videoAnuncio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.comentar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.curtir)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.compartilhar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dtCriacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbAnunciante.cnpj)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbAnuncioCategoria.dsCategoria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbAnuncioCodTemp.actid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbAnuncioStatus.dsStatus)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tituloAnuncio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.url)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dsAnuncio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.videoAnuncio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.comentar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.curtir)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.compartilhar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dtCriacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbAnunciante.cnpj)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbAnuncioCategoria.dsCategoria)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbAnuncioCodTemp.actid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbAnuncioStatus.dsStatus)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.aid }) |
+            @Html.ActionLink("Details", "Details", new { id=item.aid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.aid })
+        </td>
+    </tr>
+}
+
+</table>

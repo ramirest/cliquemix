@@ -6,13 +6,38 @@
         {
             type: 'POST', //Delete(int campanha)
             url: '/Campanha/DeleteAnuncio/?campanha='+@ViewBag.CodCampanha,
-            //ExcluirAnuncioCampanha(int campanha)
             dataType: 'html',
             cache: true,
             async: true,
-            success: function() {
-                $('btnCancelar').click();
+            success: function () {
+                setTimeout(function() {
+                    success_message_demo();
+                }, 
+
+                setTimeout(function () {
+                    limparAviso();
+                    document.getElementById('btnAnunciosCampanhaCancelarExcluir').click();
+                    setTimeout(function() {
+                        atualizarAnuncios();
+                    }, 1000);
+                }, 3000), 1000);
             }
+        });
+    }
+
+    function limparAviso() {
+        Messenger().hideAll();
+    }
+
+    function success_message_demo() {
+        Messenger.options = {
+            extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
+            theme: 'flat'
+        }
+        Messenger().post({
+            message: 'O Anúncio selecionado foi excluído com sucesso!',
+            type: 'success',
+            showCloseButton: true
         });
     }
 </script>
@@ -74,40 +99,42 @@
                             </td>
 
                             <td class="text-center">
-                                <a class="btn btn-orange" title="Excluir" data-toggle="modal" data-target="#excluir"
-                                   data-placement="top" href="#" data-popup-ordinal="2" id="btnExcluir">
-                                    <i class="fa fa-times"></i>
+                                <a style="color: inherit" href="#excluirModal" data-toggle="modal" data-target="#excluirModal" data-placement="top" title="Excluir">
+                                    <i class="fa fa-trash-o"></i>
                                 </a>
                             </td>
                         </tr>
                     </tbody>
                 }
-                <div class="modal modal-flex fade" id="excluir" tabindex="-1" role="dialog" aria-labelledby="flexModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" style="min-width: 50%;">
-                        <div class="modal-content" id="conteudo">
-                            <!-- Excluir Notification Box -->
-                            <div class="logout-message">
-                                <h3>
-                                    <i class="fa fa-sign-out text-green"></i> Excluir
-                                </h3>
-                                <p>Clique no botão excluir para confirmar.</p>
-                                <ul class="list-inline">
-                                    <li>
-                                        <button type="button" id="btnExcluirAnuncio" class="btn btn-green" onclick="excluirAnuncio();">
-                                            <strong>Excluir</strong>
-                                        </button>
-                                    </li>
-                                    <li>
-                                        <button type="button" id="btnCancelar" class="btn btn-green" data-dismiss="modal">Cancel</button>
-                                    </li>
-                                </ul>
+
+                <div class="modal modal-flex fade center-block text-center" id="excluirModal" tabindex="-1" role="dialog" 
+                     aria-labelledby="flexModalLabel" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="width: 400px;">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4 class="modal-title" id="flexModalLabel">
+                                    <i class="fa fa-trash-o"></i>  Deseja Excluir?
+                                </h4>
                             </div>
-                            <!-- /#Excluir -->
+                            <div class="modal-body">
+                                <p>Selecione <strong>"Excluir Anúncio"</strong> para removê-lo.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" id="btnAnunciosCampanhaCancelarExcluir" name="btnAnunciosCampanhaCancelarExcluir"
+                                        class="btn btn-default" data-dismiss="modal">
+                                    Cancelar
+                                </button>
+                                <button type="button" id="btnAnunciosCampanhaExcluirAnuncio" name="btnAnunciosCampanhaExcluirAnuncio"
+                                        class="btn btn-green" onclick="excluirAnuncio();">
+                                    <strong>Excluir Anúncio</strong>
+                                </button>
+                            </div>
                         </div>
                         <!-- /.modal-content -->
                     </div>
                     <!-- /.modal-dialog -->
-                </div>
+                </div>               
             }
             catch (Exception)
             {

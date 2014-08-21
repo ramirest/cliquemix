@@ -1,15 +1,21 @@
 ﻿@model IEnumerable<Cliquemix.Models.tbAnuncio>
 
 <script>
-    
-    $("#txtFiltrar").keyup(function(event){
-        if(event.keyCode == 13){
+
+    $("#txtFiltrar").keypress(function(event) {
+        if (event.keyCode == 13) {
             $("#btnFiltrar").click();
         }
     });
 
-    $("#txtFiltrar").keydown(function(event){
-        if(event.keyCode == 13){
+    $("#txtFiltrar").keyup(function(event) {
+        if (event.keyCode == 13) {
+            $("#btnFiltrar").click();
+        }
+    });
+
+    $("#txtFiltrar").keydown(function(event) {
+        if (event.keyCode == 13) {
             $("#btnFiltrar").click();
         }
     });
@@ -18,42 +24,70 @@
         $.ajax(
         {
             type: 'GET',
-            url: '/Campanha/NovoAnuncio/?txt=' + document.getElementById('txtFiltrar').value+'&pCodCampanha='+@ViewBag.ctid,
+            url: '/Campanha/NovoAnuncio/?txt=' + document.getElementById('txtFiltrar').value + '&pCodCampanha=' + @ViewBag.ctid,
             dataType: 'html',
             cache: true,
             async: true,
-            success: function (data) {
+            success: function(data) {
                 $('#conteudo').html(data);
                 $('#informativo').html();
             }
         });
     }
 
+
     function NovoAnuncio() {
+        var taid = document.getElementById('anuncio').value;
+        var ctid = @ViewBag.ctid;
         $.ajax(
         {
             type: 'POST', //taid, ctid
-            url: '/Campanha/NovoAnuncio/?taid=' + document.getElementById('anuncio').value+'&ctid='+@ViewBag.ctid,
+            url: '/Campanha/NovoAnuncio/?taid=' + taid + '&ctid=' + ctid,
             dataType: 'html',
             cache: true,
             async: true,
             success: function () {
-                $('#btnFechar').click();
+                setTimeout(function() {
+                        success_message_demo();
+                    },
+                    setTimeout(function() {
+                        limparAviso();
+                        document.getElementById('btnFechar').click();
+                        setTimeout(function() {
+                            atualizarAnuncios();
+                        }, 1000);
+                    }, 3000), 1000);
             }
         });
     }
 
+
     function anuncioSelecionado(item) {
-        document.getElementById('anuncio').value = item.value;
+        document.getElementById('anuncio').value = item;
     }
 
+    function limparAviso() {
+        Messenger().hideAll();
+    }
+
+    function success_message_demo() {
+        Messenger.options = {
+            extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
+            theme: 'flat'
+        }
+        Messenger().post({
+            message: 'o anúncio selecionado foi incluído na campanha com sucesso!',
+            type: 'success',
+            showCloseButton: true
+        });
+    }
 </script>
 
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
     <h4 class="modal-title" id="flexModalLabel">Adicionar Anúncio à Campanha</h4>
     <div class="input-group col-lg-6" style="margin-top: 2%;">
-        <input id="txtFiltrar" name="txtFiltrar" type="text" class="form-control" style="width: 400px;" />
+        <input id="txtFiltrar" name="txtFiltrar" type="text" class="form-control" style="width: 400px;"/>
         <span class="input-group-btn">
             <button id="btnFiltrar" name="btnFiltrar" class="btn btn-green" type="button" onclick="buscar();"><i class="fa fa-search"></i></button>
         </span>
@@ -77,11 +111,11 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
+                                    <th class="text-center">ID</th>
                                     <th class="text-center">Título</th>
                                     <th class="text-center">Categoria</th>
                                     <th class="text-center">Video</th>
                                     <th class="text-center">Imagem</th>
-                                    @*<th class="text-center">Data</th>*@
                                     <th class="text-center">Selecione</th>
                                 </tr>
                             </thead>
@@ -91,6 +125,9 @@
                                     foreach (var item in Model)
                                     {
                                         <tr>
+                                            <td align=center style="width: 60px;">
+                                                @Html.DisplayTextFor(modelItem => item.aid)
+                                            </td>
                                             <td align=center style="width: 200px;">
                                                 @Html.DisplayTextFor(modelItem => item.tituloAnuncio)
                                             </td>
@@ -108,7 +145,7 @@
                                                 }
                                             </td>
                                             <td align=center style="width: 60px;">
-                                                @if (item.tbAnuncioImagens.ToList().Count > 0)
+                                                @if (item.tbAnuncioImg.ToList().Count > 0)
                                                 {
                                                     @Html.Label("Sim")
                                                 }
@@ -116,12 +153,9 @@
                                                 {
                                                     @Html.Label("Não")
                                                 }
-                                            </td>@*
-                                            <td align=center style="width: 150px;">
-                                                @Html.DisplayFor(modelItem => item.dtCriacao)
-                                            </td>*@
+                                            </td>
                                             <td align=center style="width: 50px;">
-                                                <input type="radio" name="optAnuncio" value="@item.aid" onchange="anuncioSelecionado(this);" />
+                                                <input type="radio" name="optAnuncio" value="@item.aid" onchange="anuncioSelecionado(this.value);" />
                                             </td>
                                         </tr>
                                     }
@@ -153,6 +187,7 @@
         </div>
     </div>
 </div>
+
 
 <div class="modal-footer">
     <div class="col-md-9" id="informativo">
@@ -199,5 +234,7 @@
     </div>
     
     <button type="button" id="btnFechar" name="btnFechar" class="btn btn-default" data-dismiss="modal">Fechar</button>
-    <button type="button" id="btnAdicionar" name="btnAdicionar" class="btn btn-default" onclick="NovoAnuncio();"><i class="fa fa-plus"></i> Adicionar</button>
+    <button type="button" id="btnAdicionar" name="btnAdicionar" class="btn btn-default" onclick="NovoAnuncio();">
+        <i class="fa fa-plus"></i> Adicionar
+    </button>
 </div>

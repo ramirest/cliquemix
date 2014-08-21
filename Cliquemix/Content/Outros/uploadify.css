@@ -8,6 +8,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 	position: relative;
 	margin-bottom: 1em;
 }
+
 .uploadify-button {
 	background-color: #505050;
 	background-image: linear-gradient(bottom, #505050 0%, #707070 100%);

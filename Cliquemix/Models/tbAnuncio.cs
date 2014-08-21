@@ -16,7 +16,7 @@ namespace Cliquemix.Models
     {
         public tbAnuncio()
         {
-            this.tbAnuncioCodTemp = new HashSet<tbAnuncioCodTemp>();
+            this.tbAnuncioCodTemp1 = new HashSet<tbAnuncioCodTemp>();
             this.tbAnuncioFuncionalidade = new HashSet<tbAnuncioFuncionalidade>();
             this.tbAnuncioImg = new HashSet<tbAnuncioImg>();
             this.tbAnuncioLog = new HashSet<tbAnuncioLog>();
@@ -36,10 +36,12 @@ namespace Cliquemix.Models
         public Nullable<System.DateTime> dtCriacao { get; set; }
         public Nullable<int> pid { get; set; }
         public Nullable<int> acid { get; set; }
+        public Nullable<int> actid { get; set; }
     
         public virtual tbAnunciante tbAnunciante { get; set; }
         public virtual tbAnuncioCategoria tbAnuncioCategoria { get; set; }
-        public virtual ICollection<tbAnuncioCodTemp> tbAnuncioCodTemp { get; set; }
+        public virtual tbAnuncioCodTemp tbAnuncioCodTemp { get; set; }
+        public virtual ICollection<tbAnuncioCodTemp> tbAnuncioCodTemp1 { get; set; }
         public virtual ICollection<tbAnuncioFuncionalidade> tbAnuncioFuncionalidade { get; set; }
         public virtual ICollection<tbAnuncioImg> tbAnuncioImg { get; set; }
         public virtual ICollection<tbAnuncioLog> tbAnuncioLog { get; set; }

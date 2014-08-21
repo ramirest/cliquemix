@@ -1,19 +1,81 @@
 ﻿@using Cliquemix.Models
+@using iTextSharp.text.pdf.qrcode
 @using Microsoft.AspNet.Identity
-@model IEnumerable<Cliquemix.Models.tbCampanha>
+@model PagedList.IPagedList<Cliquemix.Models.tbCampanha>
+
+<script>
+    function Delete() {
+        var a = document.getElementById('pCodCampanha').value;
+        $.ajax(
+        {
+            type: 'POST',
+            url: '/Campanha/DesativarCampanha/?id=' + a,
+            dataType: 'html',
+            cache: false,
+            async: true,
+            success: function () {
+                setTimeout(function () {
+                    success_message_demo();
+                },
+
+                setTimeout(function () {
+                    limparAviso();
+                    document.getElementById('btnListCampanhaCancelarExcluir').click();
+                    location.href = "/Campanha/ListCampanha";
+                }, 3000), 1000);
+            }
+        });
+    }
+
+    function limparAviso() {
+        Messenger().hideAll();
+    }
+
+    function retornaCodAnuncio(item) {
+        document.getElementById('pCodCampanha').value = item;
+    }
+
+    function success_message_demo() {
+        Messenger.options = {
+            extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
+            theme: 'flat'
+        }
+        Messenger().post({
+            message: 'A Campanha selecionada foi excluída com sucesso!',
+            type: 'success',
+            showCloseButton: true
+        });
+    }
+
+    function Visualizar(item) {
+        var a = item;
+        $.ajax(
+        {
+            type: 'GET',
+            url: '/Campanha/VisualizarCampanha/?id=' + a,
+            dataType: 'html',
+            cache: false,
+            async: true,
+            success: function () {
+                //location.href = "/Anuncio/VisualizarAnuncio";
+            }
+        });
+    }
+</script>
 
 <div class="row">
     <div class="col-lg-12">
         <div class="page-title">
             <h1>
-                Anunciante
-                <small>Gerir Campanha</small>
+                Campanha
+                <small>Lista de Campanhas</small>
             </h1>
             @RenderPage("~/Views/Breadcrumbs/Breadcrumbs-Campanha-ListCampanha.cshtml")
         </div>
     </div>
 </div>
 
+<input type="hidden" id="pCodCampanha" name="pCodCampanha" />
 
 <div class="row">
     <!-- Basic Responsive Table -->
@@ -34,13 +96,12 @@
                                 <th class="text-center">Título</th>
                                 <th class="text-center">Data de Início</th>
                                 <th class="text-center">Data de Término</th>
-                                <th class="text-center">Destaque</th>
                                 <th class="text-center">Status</th>
                                 <th class="text-center">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in Model.Where(m => m.pid == ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName())))
+                            @foreach (var item in Model)
                             {
                                 <tr>
                                     <td class="text-center">
@@ -53,34 +114,19 @@
                                         @Html.DisplayFor(modelItem => item.dtTermino)
                                     </td>
                                     <td class="text-center">
-                                        @Html.DisplayFor(modelItem => item.tbDestaque.tituloDestaque)
-                                    </td>
-                                    <td class="text-center">
                                         @Html.DisplayFor(modelItem => item.tbCampanhaStatus.dsCampStatus)
                                     </td>
                                     <td class="text-center">
-                                        <a href="#" title="Visualizar" style="padding-right: 10px;">
+                                        <a href="/Campanha/VisualizarCampanha/@item.cid" title="Visualizar" style="padding-right: 10px;">
                                             <i class="fa fa-search"></i>
                                         </a>
-                                        <a href="#" title="Editar" style="padding-right: 10px;">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                        <a href="#" title="Excluir">
-                                            <i class="fa fa-trash-o"></i>
+                                        <a style="color: inherit" href="#excluirModal" data-toggle="modal" data-target="#excluirModal" onclick="retornaCodCampanha(@item.cid);"
+                                           data-placement="top" title="Desativar Campanha">
+                                            <i class="fa fa-pause"></i>
                                         </a>
                                     </td>
                                 </tr>
                             }
-                            <thead class="rodape-tabela">
-                                <tr>
-                                    <th class="text-center">Título</th>
-                                    <th class="text-center">Data de Início</th>
-                                    <th class="text-center">Data de Término</th>
-                                    <th class="text-center">Destaque</th>
-                                    <th class="text-center">Status</th>
-                                    <th class="text-center">Ações</th>
-                                </tr>
-                            </thead>
                         </tbody>
                     </table>
                 </div>
@@ -90,26 +136,75 @@
     </div>
 </div>
 
-
 <div class="row">
     <div class="text-center">
         <ul class="pagination">
-            <li>
-                <a href="#">&laquo;</a>
-            </li>
+            @if (Model.HasPreviousPage)
+            {
+                <li>
+                    @Html.ActionLink("<<", "ListCampanha", new { pagina = 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+                    @Html.ActionLink("<", "ListCampanha", new { pagina = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+                </li>
+            }
+            else
+            {
+                <li class="disabled">
+                    <a><<</a>
+                    <a><</a>
+                </li>
+            }
             <li class="active">
-                <a href="#">1</a>
+                <a>@Model.PageNumber</a>
             </li>
-            <li>
-                <a href="#">2</a>
+            <li class="disabled">
+                <a>...</a>
             </li>
-            <li>
-                <a href="#">3</a>
+            <li class="disabled">
+                <a>@Model.PageCount</a>
             </li>
-            <li>
-                <a href="#">&raquo;</a>
-            </li>
+            @if (Model.HasNextPage)
+            {
+                <li>
+                    @Html.ActionLink(">", "ListCampanha", new { title = "Avançar", pagina = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+                    @Html.ActionLink(">>", "ListCampanha", new { pagina = Model.PageCount, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+                </li>
+            }
+            else
+            {
+                <li class="disabled">
+                    <a>></a>
+                    <a>>></a>
+                </li>
+            }
         </ul>
     </div>
+</div>
 
+
+<div class="modal modal-flex fade center-block text-center" id="excluirModal" tabindex="-1" role="dialog" aria-labelledby="flexModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 400px;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="flexModalLabel">
+                    <i class="fa fa-trash-o"></i>  Deseja Excluir?
+                </h4>
+            </div>
+            <div class="modal-body">
+                <p>Selecione <strong>"Desativar Campanha"</strong> para interromper a publicação.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnListCampanhaCancelarExcluir" name="btnListCampanhaCancelarExcluir"
+                        class="btn btn-default" data-dismiss="modal">
+                    Cancelar
+                </button>
+                <button type="button" id="btnListCampanhaDesativarCampanha" name="btnListCampanhaDesativarCampanha"
+                        class="btn btn-green" onclick="Delete();">
+                    <strong>Desativar Campanha</strong>
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
 </div>

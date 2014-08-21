@@ -18,7 +18,6 @@ namespace Cliquemix.Controllers
         // GET: /Anuncio/ListAnuncio
         public ActionResult ListAnuncio(int? pagina)
         {
-            //var listaAnuncios = db.tbAnuncio.ToList();
             int paginaTamanho = 6; //Define o número de elementos por página
             int paginaNumero = (pagina ?? 1); //Define o número inicial da página como 1
             var codAnunciante = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());
@@ -26,8 +25,8 @@ namespace Cliquemix.Controllers
             var tbanuncio = db.tbAnuncio.Include(t => t.tbAnuncioCategoria).Include(r => r.tbAnuncioStatus).
                 Where(m => m.pid == codAnunciante && m.asid != cpea).ToList();
             return View(tbanuncio.ToPagedList(paginaNumero, paginaTamanho));
-            //return View(tbanuncio.ToList());
         }
+        
 
         // GET: Anuncio/UpdateAnuncio/5
         public ActionResult UpdateAnuncio(int? id)
@@ -41,66 +40,71 @@ namespace Cliquemix.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.acid = new SelectList(db.tbAnuncioCategoria, "acid", "dsCategoria");
-            ViewBag.asid = new SelectList(db.tbAnuncioStatus, "asid", "dsStatus");
+            
+            ViewBag.actid = tbAnuncio.actid;
+            ViewBag.acid = new SelectList(db.tbAnuncioCategoria, "acid", "dsCategoria", tbAnuncio.acid);
+            //ViewBag.pid = new SelectList(db.tbAnunciante, "pid", "cnpj", tbAnuncio.pid);
+            //ViewBag.asid = new SelectList(db.tbAnuncioStatus, "asid", "dsStatus", tbAnuncio.asid);
             return View(tbAnuncio);
         }
 
+
         [HttpPost]
+        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
-        public ActionResult UpdateAnuncio([Bind(Include = "tituloAnuncio,url,dsAnuncio,acid,pid,videoAnuncio,comentar,curtir,idTempImg," +
-                                                          "compartilhar,dtCriacao,imagem1,imagem2,imagem3,imagem4,imagem5,imagem6,imagem7,imagem8")] tbAnuncio tbanuncio)
+        public ActionResult UpdateAnuncio([Bind(Include = "aid,tituloAnuncio,url,dsAnuncio,acid,pid,videoAnuncio,comentar,curtir,idTempImg," +
+                                                          "compartilhar,dtCriacao,imagem1,imagem2,imagem3,imagem4,imagem5,imagem6,imagem7,imagem8,idTemp")] tbAnuncio tbanuncio)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tbanuncio).State = EntityState.Modified;
-                tbanuncio.pid = ProcFunc.RetornarCodigoAnuncianteCodUsuario(ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName()));
-                tbanuncio.dtCriacao = DateTime.Now;
-                tbanuncio.asid = ProcFunc.RetornarStatusPadraoAnuncio();
-                //db.tbAnuncio.Add(tbanuncio);
-                db.SaveChanges();
-                //AlterarImgAnuncioSalvo(tbanuncio.aid, Convert.ToInt32(Request.Form.Get("idTempImg")));
-                //SalvarLogAnuncio(tbanuncio.aid, (int)tbanuncio.asid, ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName()));
+                try
+                {
+                    int? actid = Convert.ToInt32(Request.Form.Get("actid"));
+                    int? asid = Convert.ToInt32(Request.Form.Get("asid"));
+                    var url = Request.Form.Get("url");
+                    tbanuncio.url = url;
+                    tbanuncio.asid = asid;
+                    tbanuncio.actid = actid;
+                    db.Entry(tbanuncio).State = EntityState.Modified;
+                    db.SaveChanges();
+                    SalvarLogAnuncio(tbanuncio.aid, (int)tbanuncio.asid, ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName()), "UpdateAnuncio", "");
+                }
+                catch (Exception e)
+                {
+                    ProcFunc.SalvarLog(ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName()), e.Message,
+                        this.ControllerContext.Controller.ToString(),
+                        "Error - UpdateAnuncio " + tbanuncio.aid.ToString());
+                    ViewBag.actid = tbanuncio.actid;
+                    ViewBag.acid = new SelectList(db.tbAnuncioCategoria, "acid", "dsCategoria", tbanuncio.acid);
+                    ViewBag.pid = new SelectList(db.tbAnunciante, "pid", "cnpj", tbanuncio.pid);
+                    ViewBag.asid = new SelectList(db.tbAnuncioStatus, "asid", "dsStatus", tbanuncio.asid);
+                    return View(tbanuncio);
+                }
                 return RedirectToAction("ListAnuncio");
             }
             return View(tbanuncio);
         }
     
 
-        // GET: /Anuncio/Details/5
-        public ActionResult VisualizarAnuncio(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            tbAnuncio tbAnuncio = db.tbAnuncio.Find(id);
-            if (tbAnuncio == null)
-            {
-                return HttpNotFound();
-            }
-            if (tbAnuncio.pid == ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName()))
-            {
-                ViewBag.acid = new SelectList(db.tbAnuncioCategoria, "acid", "dsCategoria");
-                ViewBag.asid = new SelectList(db.tbAnuncioStatus, "asid", "dsStatus");
-                return View(tbAnuncio);
-            }
-            else
-                return HttpNotFound();
-        }
-
-
         // GET: /Anuncio/Create
         public ActionResult CreateAnuncio()
         {
             ViewBag.acid = new SelectList(db.tbAnuncioCategoria, "acid", "dsCategoria");
             ViewBag.asid = new SelectList(db.tbAnuncioStatus, "asid", "dsStatus");
+            tbAnuncioCodTemp act = new tbAnuncioCodTemp();
+            act.dtMovimento = DateTime.Now;
+            act.uid = ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName());
+            db.tbAnuncioCodTemp.Add(act);
+            db.SaveChanges();
+            ViewBag.actid = act.actid;
+            ProcFunc.CriarDiretorio(Server.MapPath("~/Arquivos/Anúncios/") + String.Format("{0:00000000}", act.actid), "Imagens");
             return View();
         }
 
 
         // POST: /Anuncio/CreateAnuncio
         [HttpPost]
+        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult CreateAnuncio([Bind(Include = "tituloAnuncio,url,dsAnuncio,acid,pid,videoAnuncio,comentar,curtir,idTempImg," +
                                                           "compartilhar,dtCriacao,imagem1,imagem2,imagem3,imagem4,imagem5,imagem6,imagem7,imagem8,idTemp")] tbAnuncio tbanuncio)
@@ -109,11 +113,23 @@ namespace Cliquemix.Controllers
             {
                 tbanuncio.pid = ProcFunc.RetornarCodigoAnuncianteCodUsuario(ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName()));
                 tbanuncio.dtCriacao = DateTime.Now;
+                tbanuncio.actid = Convert.ToInt32(Request.Form.Get("actid"));
                 tbanuncio.asid = ProcFunc.RetornarStatusPadraoAnuncio();
                 db.tbAnuncio.Add(tbanuncio);
                 db.SaveChanges();
-                AlterarImgAnuncioSalvo(tbanuncio.aid, Convert.ToInt32(Request.Form.Get("idTempImg")));
-                SalvarLogAnuncio(tbanuncio.aid, (int)tbanuncio.asid, ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName()));
+                try
+                {
+                    ProcFunc.InserirCodAnuncioTbAnuncioCodTemp(tbanuncio.actid, tbanuncio.aid);
+                    ProcFunc.InserirCodAnuncioTbAnuncioImg(tbanuncio.actid, tbanuncio.aid, ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName()));
+                    SalvarLogAnuncio(tbanuncio.aid, (int)tbanuncio.asid, ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName()), "CreateAnuncio", "");
+                }
+                catch (Exception e)
+                {
+                    ProcFunc.SalvarLog(ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName()), e.Message,
+                        this.ControllerContext.Controller.ToString(),
+                        "Error - CreateAnuncio");
+                    throw;
+                }
 
                 return RedirectToAction("ListAnuncio");
             }
@@ -151,9 +167,10 @@ namespace Cliquemix.Controllers
 
 
         [HttpGet]
-        public ActionResult UploadImagem(int temp)
+        public ActionResult UploadImagem(int? temp)
         {
-            var tbAnuncioImg = db.tbAnuncioImg.Where(m=>m.idTemp == temp);
+            var tbAnuncioImg = db.tbAnuncioImg.Where(m => m.actid == temp).
+                Where(m => m.ativo == true);
             if (tbAnuncioImg.Any())
             {
                 return PartialView(tbAnuncioImg.ToList());
@@ -165,19 +182,38 @@ namespace Cliquemix.Controllers
         }
 
 
+        // POST: /Anuncio/DeleteImagem/5
+        [HttpPost]
+        public ActionResult DeleteImagem(int id)
+        {
+            try
+            {
+                tbAnuncioImg tbAnuncioImg = db.tbAnuncioImg.Find(id);
+                db.tbAnuncioImg.Remove(tbAnuncioImg);
+                db.SaveChanges();
+                ProcFunc.RemoverArquivos(tbAnuncioImg.url_imagem);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+            return null;
+        }
+
+
         [HttpPost]
         public String UploadImagem(HttpPostedFileBase filedata, int? idAlbum)
         {
-            tbAnuncioImg tbAnuncioImg = new tbAnuncioImg();
-            //sVariavelNova = sVariavel.Substring(0, 3);// Aproveitar os 3 primeiros caracteres
-            string tempId = String.Format("{0:000000000}", idAlbum); // Ex: "000000015"
-            string tempIdItem = String.Format("{0:000}", RetornaItemImagem(idAlbum)); // Ex: "001"
+            var tbAnuncioImg = new tbAnuncioImg();
+            
+            string tempId = String.Format("{0:00000000}", idAlbum); // SERÁ A PASTA DO ANÚNCIO - Ex: "00000015"
+            string tempIdItem = String.Format("{0:000}", RetornaItemImagem(idAlbum)); // SERÁ O CÓDIGO DA IMAGEM - Ex: "001"
             int codAnunciante = ProcFunc.RetornarCodigoAnuncianteCodUsuario(ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName()));
 
             if (codAnunciante > 0)
             {
-                string urlDestino = Server.MapPath("~/Arquivos/Anunciantes/") +
-                                    String.Format("{0:000000}", codAnunciante) + "\\Anúncios\\";
+                string urlDestino = Server.MapPath("~/Arquivos/Anúncios/") +
+                                    tempId + "\\Imagens\\";
                 /*** Cria diretório para arquivos do anúnciante ***/
                 if (tempIdItem == "000")
                 {
@@ -185,21 +221,21 @@ namespace Cliquemix.Controllers
                 }
                 else
                 {
-                    tbAnuncioImg.url_imagem = urlDestino + tempId + tempIdItem + ".jpeg";
+                    tbAnuncioImg.url_imagem = urlDestino + tempIdItem + ".jpeg";
                     tbAnuncioImg.tipo = "jpeg";
-                    tbAnuncioImg.idTemp = Convert.ToInt32(tempId);
-                    tbAnuncioImg.idTempItem = Convert.ToInt32(tempIdItem);
+                    tbAnuncioImg.actid = Convert.ToInt32(tempId);
+                    tbAnuncioImg.iditem = Convert.ToInt32(tempIdItem);
                     tbAnuncioImg.tamanho = Convert.ToString(filedata.ContentLength);
-                    tbAnuncioImg.tempRenomeado = false;
+                    tbAnuncioImg.ativo = true;
                     db.tbAnuncioImg.Add(tbAnuncioImg);
                     db.SaveChanges();
-                    filedata.SaveAs(urlDestino + tempId + tempIdItem + ".jpeg");
+                    filedata.SaveAs(urlDestino + tempIdItem + ".jpeg");
                     return Convert.ToString(idAlbum);
                 }
             }
             else
             {
-                return "O usuário logado não tem uma pasta para os arquivos";
+                return "O anúncio não tem uma pasta para os arquivos";
             }
         }
 
@@ -221,8 +257,7 @@ namespace Cliquemix.Controllers
             {                
                 do
                 {
-                    var a = (from img in db.tbAnuncioImg where img.idTemp == temp && img.idTempItem == i select img).First();
-                    //where cust.City=="London" && cust.Name == "Devon"
+                    var a = (from img in db.tbAnuncioImg where img.actid == temp && img.iditem == i && img.ativo == true select img).First();
                     i++;
                 }
                 while (i < 10);
@@ -236,81 +271,19 @@ namespace Cliquemix.Controllers
         }
 
 
-        public void SalvarLogAnuncio(int _aid, int _asid, int _uid)
+        public void SalvarLogAnuncio(int _aid, int _asid, int _uid, string dsMovimento, string dsMsgError)
         {
-            tbAnuncioLog tbAnuncioLog = new tbAnuncioLog(); //Instancia a tabela de log do anúncio
+            var tbAnuncioLog = new tbAnuncioLog(); //Instancia a tabela de log do anúncio
             tbAnuncioLog.aid = _aid; //Código do Anúncio
             tbAnuncioLog.asid = _asid; //Status do Anúncio
             tbAnuncioLog.uid = _uid; //Usuário responsável pela atualização
             tbAnuncioLog.dtMovimento = DateTime.Now; //Data atual
-            //tbAnuncioLog.imagensRenomeadas = _imgRename;
+            tbAnuncioLog.dsControle = ControllerContext.RequestContext.ToString(); //Recebe o controle atual ("AnuncioController")
+            tbAnuncioLog.dsMovimento = dsMovimento;
+            tbAnuncioLog.dsMsgError = dsMsgError;
             db.tbAnuncioLog.Add(tbAnuncioLog);
             db.SaveChanges();
         }
-
-
-        public void AlterarImgAnuncioSalvo(int pAid, int pIdTemp)
-        {
-            var img = db.tbAnuncioImg.Where(a => a.idTemp == pIdTemp);
-            
-            string tempId = String.Format("{0:000000000}", pIdTemp); // Ex: "000000015"
-            string aid = String.Format("{0:000000000}", pAid); // Ex: "000000015"
-            int codAnunciante = ProcFunc.RetornarCodigoAnuncianteCodUsuario(ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName()));
-            
-            foreach (var item in img)
-            {
-                string tempIdItem = String.Format("{0:000}", item.idTempItem); // Ex: "001"
-                string url = Server.MapPath("~/Arquivos/Anunciantes/") +
-                                    String.Format("{0:000000}", codAnunciante) + "\\Anúncios\\";
-
-                ProcFunc.MoverArquivosEntrePastas(
-                    (url + tempId + tempIdItem + ".jpeg"), //Origem
-                    (url + aid + tempIdItem + ".jpeg")); //Destino
-
-                item.aid = pAid;
-                item.idTemp = pAid;
-                item.tempRenomeado = true;
-            }
-        }
-
-
-        [HttpGet]
-        public ActionResult ImagensAnuncio(int pIdTemp)
-        //Método que retornar todas as imagens do anúncio
-        //de acordo com o código temporário informado nas imagens (idTemp)
-        {/*
-            try
-            {
-                var tbAnuncioImg = db.tbAnuncioImg.Where(m => m.idTemp == pIdTemp);
-                if (tbAnuncioImg.Any())
-                {
-                    ViewBag.CodTemp = pIdTemp;
-                    return PartialView(tbAnuncioImg.ToList());
-                }
-
-
-
-
-                //var tbCampanhaAnuncio = db.tbCampanhaAnuncio.Where(m => m.ctid == pCodCampanha);
-                //if (tbCampanhaAnuncio.Any())
-                {
-                    ViewBag.Tudo = 2;
-                    //ViewBag.CodCampanha = pCodCampanha;
-                    //return PartialView(tbCampanhaAnuncio.ToList());
-                }
-                //else
-                {
-                  //  return PartialView();
-                }
-            }
-            catch (Exception)
-            {
-                return PartialView();
-                throw;
-            }*/
-            return View();
-        }
-
 
     }
 }

@@ -12,6 +12,7 @@ using BLToolkit.Data.Sql;
 using Cliquemix.Models;
 using Microsoft.AspNet.Identity;
 using System.Net;
+using PagedList;
 
 namespace Cliquemix.Controllers
 {
@@ -19,6 +20,20 @@ namespace Cliquemix.Controllers
     public class CampanhaController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+
+        // GET: /Campanha/ListCampanha
+        public ActionResult ListCampanha(int? pagina)
+        {
+            int paginaTamanho = 6; //Define o número de elementos por página
+            int paginaNumero = (pagina ?? 1); //Define o número inicial da página como 1
+            var codAnunciante = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());
+            var cpec = ProcFunc.RetornarStatusPadraoCampanhaExcluida();
+            var tbcampanha = db.tbCampanha.Include(a => a.tbAnunciante).Include(s => s.tbCampanhaStatus).
+                Include(c => c.tbCampanhaTmp).Include(d => d.tbDestaque).Include(p => p.tbPacoteClique).
+                Where(m => m.pid == codAnunciante && m.csid != cpec).ToList();
+            return View(tbcampanha.ToPagedList(paginaNumero, paginaTamanho));
+        }
+        
 
         // GET: Campanha
         public ActionResult CreateCampanha()
@@ -61,19 +76,30 @@ namespace Cliquemix.Controllers
             }
             else if (ProcFunc.RetornarInicioTerminoPadraoPublicacaoCampanha() == 3) // 3 = Informar somente o Início e Término no fim dos cliques
             {
-                DateTime dtInicio = DateTime.Parse(Request.Form.Get("dtInicio"), culturaAmericana);
-                DateTime hrInicio = DateTime.Parse(Request.Form.Get("hrInicio"), culturaAmericana);
+                DateTime dtInicio = DateTime.Parse(Request.Form.Get("dtInicio"));
+                DateTime hrInicio = DateTime.Parse(Request.Form.Get("hrInicio"));
                 tbCampanha.dtInicio = new DateTime(dtInicio.Year, dtInicio.Month, dtInicio.Day, hrInicio.Hour, hrInicio.Minute, hrInicio.Second);
-                tbCampanha.dtTermino = new DateTime();
+                var QtdeDiasTermino = ProcFunc.RetornarQtdeDiasPadraoTerminoCampanha();
+                tbCampanha.dtTermino = tbCampanha.dtInicio.AddDays(QtdeDiasTermino);
             }
             else if (ProcFunc.RetornarInicioTerminoPadraoPublicacaoCampanha() == 4) // 4 = Informar somente o Término e Início ao publicar
             {
                 tbCampanha.dtInicio = DateTime.Now;
-                DateTime dtTermino = DateTime.Parse(Request.Form.Get("dtInicio"), culturaAmericana);
-                DateTime hrTermino = DateTime.Parse(Request.Form.Get("hrInicio"), culturaAmericana);
+                DateTime dtTermino = DateTime.Parse(Request.Form.Get("dtInicio"));
+                DateTime hrTermino = DateTime.Parse(Request.Form.Get("hrInicio"));
                 tbCampanha.dtTermino = new DateTime(dtTermino.Year, dtTermino.Month, dtTermino.Day, hrTermino.Hour, hrTermino.Minute, hrTermino.Second);
             }
-            tbCampanha.csid = ProcFunc.RetornarStatusPadraoCampanha();
+
+            //Verifica se a data inicial informada é maior que a data atual
+            DateTime Inicio = new DateTime(tbCampanha.dtInicio.Year, tbCampanha.dtInicio.Month, tbCampanha.dtInicio.Day);
+            DateTime dtAtual = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            //Caso positivo o sistema seta para a configuração padrão de campanha programada
+            if (Inicio > dtAtual)
+                tbCampanha.csid = ProcFunc.RetornarStatusPadraoCampanhaProgramada();
+            //Caso negativo o sistema seta para a configuração padrão de nova campanha
+            else
+                tbCampanha.csid = ProcFunc.RetornarStatusPadraoCampanha();
+
             tbCampanha.pid = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());
             tbCampanha.ctid = Convert.ToInt32(Request.Form.Get("ctid"));
             if (ModelState.IsValid)
@@ -94,18 +120,6 @@ namespace Cliquemix.Controllers
             return View(tbCampanha);
         }
 
-
-        public ActionResult UpdateCampanha()
-        {
-            return View();
-        }
-
-        // GET: /Campanha/ListCampanha
-        public ActionResult ListCampanha()
-        {
-            var tbcampanha = db.tbCampanha.Include(t => t.tbCampanhaStatus).Include(r => r.tbDestaque).ToList();
-            return View(tbcampanha);
-        }
 
         [HttpGet]
         public ActionResult AnunciosCampanha(int pCodCampanha)
@@ -162,9 +176,26 @@ namespace Cliquemix.Controllers
             return View();
         }
 
-        public ActionResult ViewerCampanha()
+        // GET: /Anuncio/Details/5
+        public ActionResult VisualizarCampanha(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            tbCampanha tbCampanha = db.tbCampanha.Find(id);
+            if (tbCampanha == null)
+            {
+                return HttpNotFound();
+            }
+            if (tbCampanha.pid == ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName()))
+            {
+                //ViewBag.acid = new SelectList(db.tbAnuncioCategoria, "acid", "dsCategoria");
+                //ViewBag.asid = new SelectList(db.tbAnuncioStatus, "asid", "dsStatus");
+                return View(tbCampanha);
+            }
+            else
+                return HttpNotFound();
         }
 
 
@@ -225,11 +256,11 @@ namespace Cliquemix.Controllers
                     int codAnunciante = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());
                     int codStatus = ProcFunc.RetornarStatusPadraoAnuncioDisponivelParaCampanha();
                     var tbanuncio = db.tbAnuncio.Include(t => t.tbAnuncioCategoria).Include(r => r.tbAnuncioStatus).
-                        Where(a => a.pid == codAnunciante); //.Where(m => m.asid == codStatus);
+                        Where(a => a.pid == codAnunciante).Where(m => m.asid == codStatus).ToList();
                     if (tbanuncio.Any())
                     {
                         ViewBag.ctid = ctid;
-                        return PartialView(tbanuncio.ToList());
+                        return PartialView(tbanuncio);
                     }
                     return null;
                 }
@@ -266,12 +297,12 @@ namespace Cliquemix.Controllers
                     if (txt == null)
                     {
                         var tbanuncio = db.tbAnuncio.Include(t => t.tbAnuncioCategoria).Include(r => r.tbAnuncioStatus).
-                            Where(a => a.pid == codAnunciante); //.Where(m => m.asid == codStatus);
+                            Where(a => a.pid == codAnunciante).Where(m => m.asid == codStatus).ToList();
                         if (tbanuncio.Any())
                         {
                             ViewBag.Tudo = 1;
                             ViewBag.ctid = pCodCampanha;
-                            return PartialView(tbanuncio.ToList());
+                            return PartialView(tbanuncio);
                         }
                         else
                         {
@@ -283,12 +314,12 @@ namespace Cliquemix.Controllers
                     else
                     {
                         var tbanuncio = db.tbAnuncio.Include(t => t.tbAnuncioCategoria).Include(r => r.tbAnuncioStatus).
-                            Where(a => a.pid == codAnunciante).Where(m => m.tituloAnuncio.Contains(txt));
+                            Where(a => a.pid == codAnunciante).Where(m => m.tituloAnuncio.Contains(txt)).ToList();
                         if (tbanuncio.Any())
                         {
                             ViewBag.Tudo = 1;
                             ViewBag.ctid = pCodCampanha;
-                            return PartialView(tbanuncio.ToList());
+                            return PartialView(tbanuncio);
                         }
                         else
                         {
@@ -349,6 +380,18 @@ namespace Cliquemix.Controllers
             var tbcidade = db.tbCidade.Include(t => t.tbEstado).Where(m => m.nomeCidade.Contains(cidade)).ToList();
             return PartialView(tbcidade);
         }
+
+        // POST: /Campanha/DesativarCampanha/5
+        [HttpPost]
+        public ActionResult DesativarCampanha(int id)
+        {
+            tbCampanha tbCampanha = db.tbCampanha.Find(id);
+            tbCampanha.csid = ProcFunc.RetornarStatusPadraoCampanhaDesativada();
+            db.Entry(tbCampanha).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("ListCampanha");
+        }
+
 
     }
 }

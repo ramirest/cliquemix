@@ -1,42 +1,124 @@
 ﻿@using Cliquemix.Models;
+@using DocumentFormat.OpenXml.Wordprocessing
 @using Microsoft.AspNet.Identity
 @model IEnumerable<Cliquemix.Models.tbAnuncioImg>
 
+<script>
+    function Delete() {
+        var a = document.getElementById('pCodImagem').value;
+        $.ajax(
+        {
+            type: 'POST',
+            url: '/Anuncio/DeleteImagem/?id=' + a,
+            dataType: 'html',
+            cache: false,
+            async: true,
+            success: function () {
+                setTimeout(function() {
+                        success_message_demo();
+                    }, 
+                    setTimeout(function () {
+                        limparAviso();
+                        document.getElementById('btnUploadImagemCancelarExcluir').click();
+                        setTimeout(function() {
+                            atualizarImagens();
+                        }, 1000);
+                    }, 3000), 1000);
+            }
+        });
+    }
+
+    function limparAviso() {
+        Messenger().hideAll();
+    }
+
+    function retornaCodImagem(item) {
+        document.getElementById('pCodImagem').value = item;
+    }
+
+    function success_message_demo() {
+        Messenger.options = {
+            extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
+            theme: 'flat'
+        }
+        Messenger().post({
+            message: 'A imagem selecionada foi excluída com sucesso!',
+            type: 'success',
+            showCloseButton: true
+        });
+    }
+</script>
+
+<input type="hidden" id="pCodImagem" name="pCodImagem" />
+
 @try
 {
-    foreach (var item in Model)
-    {
-        String _src = "http://localhost:35543/Arquivos/Anunciantes/" +
-        //String _src = "~/Arquivos/Anunciantes/" +
-                      String.Format("{0:000000}", ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName())) + "/Anúncios/" +
-                      String.Format("{0:000000000}", item.idTemp) +
-                      String.Format("{0:000}", item.idTempItem) +
-                      ".jpeg";
+    <br/>
+        foreach (var item in Model)
+        {
+            var aaa = item.actid; //Variável usada para passar pelo TRY (Não tem necessidade)
+            String _src = "/Arquivos/Anúncios/" +
+                            String.Format("{0:00000000}", item.actid) + "/Imagens/" +
+                            String.Format("{0:000}", item.iditem) +
+                            ".jpeg";
 
-        <div class="col-lg-4">
-            <div class="thumbnail">
-                <img src="@_src" height="150" width="200" />
-                <div class="caption">
-                    <p>
-                        <div class="btn-group navbar-right">
-                            <a class="btn btn-white btn-sm"><i class="fa fa-search-plus"></i></a>
-                            <a class="btn btn-default btn-sm"><i class="fa fa-times"></i></a>
-                        </div>
-                        <div class="clearfix"></div>
-                    </p>
+            <div class="col-lg-4">
+                <div class="thumbnail">
+                    <img src="@_src" height="150" width="200" style="height: 150px; width: 200px;" />
+                    <div class="caption">
+                        <p>
+                            <div class="btn-group navbar-right">
+                                @*<a class="btn btn-white btn-sm" id="btnVisualizar" data-toggle="modal" data-target="#flexModal">
+                                        <i class="fa fa-search-plus"></i>
+                                    </a>*@
+                                <a style="color: inherit" href="#excluirModal" data-toggle="modal" data-target="#excluirModal"
+                                    onclick="retornaCodImagem(@item.imgid);"
+                                    data-placement="top" title="Excluir">
+                                    <i class="fa fa-trash-o"></i>
+                                </a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-    }    
+        }
 }
 catch (Exception)
 {
     <br/>
-
     <label style="color: #34495E; font-weight: normal; font-size: 20px">
-        Ainda não foi cadastrado imagens para esse anúncio
+        Imagens não disponíveis
     </label>
-
     <div class="clearfix"></div>
     <div class="clearfix"></div>
 }
+
+<div class="modal modal-flex fade center-block text-center" id="excluirModal" tabindex="-1" role="dialog"
+    aria-labelledby="flexModalLabel" aria-hidden="true" style="display: none;">
+   <div class="modal-dialog">
+       <div class="modal-content" style="width: 400px;">
+           <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+               <h4 class="modal-title" id="flexModalLabel">
+                   <i class="fa fa-trash-o"></i>  Deseja Excluir?
+               </h4>
+           </div>
+           <div class="modal-body">
+               <p>Selecione <strong>"Excluir Imagem"</strong> para removê-la.</p>
+           </div>
+           <div class="modal-footer">
+               <button type="button" id="btnUploadImagemCancelarExcluir" name="btnUploadImagemCancelarExcluir"
+                        class="btn btn-default" data-dismiss="modal">
+                    Cancelar
+                </button>
+                <button type="button" id="btnUploadImagemExcluirImagem" name="btnUploadImagemExcluirImagem"
+                        class="btn btn-green" onclick="Delete();">
+                    <strong>Excluir Imagem</strong>
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
