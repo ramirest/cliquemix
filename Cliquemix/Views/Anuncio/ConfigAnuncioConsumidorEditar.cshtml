@@ -1,0 +1,139 @@
+﻿@{ Layout = "~/Views/Shared/_LayoutCon.cshtml"; }
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="page-title">
+            <h1>
+                Configurações
+                <small>Consumidor</small>
+            </h1>
+            @RenderPage("~/Views/Breadcrumbs/Breadcrumbs-Consumidor-ConfigAnuncio.cshtml")
+        </div>
+    </div>
+</div>
+
+<style>
+    .btn-tcc {
+        background-color: #E0E7E8;
+        border-color: #98B0B3;
+        color: #696969;
+    }
+
+        .btn-tcc:hover {
+            background-color: #E0E7E8;
+            border-color: #98B0B3;
+            color: #696969;
+        }
+</style>
+
+<div class="portlet-body">
+    <ul id="userTab" class="nav nav-tabs">
+        <li class="active">
+            <a href="#overview" data-toggle="tab">Configurações - Tipo de categoria dos anúncios</a>
+        </li>
+    </ul>
+    <div id="userTabContent" class="tab-content">
+        <div class="tab-pane fade in active" id="overview">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="input-group">
+                                <input type="text" value="" class="form-control" placeholder="Digite aqui..." />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button"><i class="fa fa-plus-square"></i> </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-5 col-md-5">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="portlet portlet-default">
+
+                                    <div class="portlet-heading">
+                                        <div class="portlet-title">
+                                            <h4>Lista das categorias selecionadas: </h4>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+
+                                    <div class="portlet-body">
+                                        <div class="form-control-static">
+                                            <div class="btn btn-block btn-tcc btn-social">
+                                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                <span>Moda</span>
+                                            </div>
+
+                                            <div class="btn btn-block btn-tcc btn-social">
+                                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                <span>Eletrônicos</span>
+                                            </div>
+
+                                            <div class="btn btn-block btn-tcc btn-social">
+                                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                <span>Calçados</span>
+                                            </div>
+
+                                            <div class="btn btn-block btn-tcc btn-social">
+                                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                <span>Roupas Íntimas</span>
+                                            </div>
+
+                                            <div class="btn btn-block btn-tcc btn-social">
+                                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                <span>Agropecuária</span>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="clearfix"></div>
+
+                                        <hr />
+                                        <button type="submit" class="btn btn-default pull-right"><i class="fa fa-floppy-o"></i> Salvar</button>
+
+                                        <div class="clearfix"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                @*
+                    <div class="col-lg-3 col-md-4"><!--Inicio menu lateral-->
+                        <div class="portlet portlet-default">
+                            <div id="defaultPortlet" class="panel-collapse collapse in">
+                                <div class="portlet-body">
+                                    <h3>Atualizar perfil</h3>
+                                    <ul id="userSettings" class="nav nav-pills nav-stacked">
+                                        <li>
+                                            <a href="~/PerfilAnunciante/EditarPerfilDadosEmpresa"><i class="fa fa-building-o fa-fw"></i> Dados da Empresa</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="~/PerfilAnunciante/EditarPerfilDadosContato"><i class="fa fa-phone fa-fw"></i> Dados de Contato</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="~/PerfilAnunciante/EditarPerfilDadosEndereco"><i class="fa fa-globe fa-fw"></i>Dados de Endereço</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="~/PerfilAnunciante/EditarPerfilDadosUsuario"><i class="fa fa-user fa-fw"></i>Dados de Usuário</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  <!--Fim menu lateral-->
+                *@
+            </div>
+        </div>
+    </div>
+</div>

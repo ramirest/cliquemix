@@ -1,0 +1,355 @@
+﻿@{ Layout = "~/Views/Shared/_LayoutCon.cshtml"; }
+<style>
+    .sombra {
+        -webkit-box-shadow: 0px 5px 16px 0px rgba(50, 50, 50, 0.5);
+        -moz-box-shadow: 0px 5px 16px 0px rgba(50, 50, 50, 0.5);
+        box-shadow: 0px 5px 16px 0px rgba(50, 50, 50, 0.5);
+        z-index: 900;
+    }
+</style>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="page-title">
+            <h1>
+                Principal
+                <small>CliqueMix - Consumidor</small>
+            </h1>
+            @RenderPage("~/Views/Breadcrumbs/Breadcrumbs-Consumidor-Principal.cshtml")
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!--Inicio Row principal -->
+    <div class="col-lg-12">
+        <!--Inicio col-12 principal -->
+        <div class="row">
+            <!--Inicio Row-texto-area principal -->
+            <div class="col-lg-12">
+                <!--Inicio col-12 texto-area principal -->
+                <div class="portlet portlet-dark-blue">
+                    <!--Inicio portlet -->
+                    <div class="portlet-body">
+                        <!--Inicio portlet-body -->
+                        <ul id="userTab" class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#profile-settings" data-toggle="tab">Geral</a>
+                            </li>
+                        </ul>
+                        <!---------------------------- Inicio Dashboard - Geral ------------------------------------------------------->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="col-lg-4">
+                                    <div class="card-container sombra">
+                                        <div class="card card-dark-blue-theme hover">
+                                            <div class="front">
+                                                <h1>Cliques Feitos</h1>
+                                                <p id="users-count">233</p>
+                                                <span class="fa-stack fa-2x pull-right">
+                                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                                    <i class="fa fa-hand-o-down fa-stack-1x"></i>
+                                                    <span class="easypiechart" data-percent="100" data-line-width="4" data-size="80" data-line-cap="butt" data-animate="2000" data-target="#users-count" data-update="3000" data-bar-color="white" data-scale-color="false" data-track-color="rgba(0, 0, 0, 0.15)"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="card-container sombra">
+                                        <div class="card card-dark-blue-theme hover">
+                                            <div class="front">
+                                                <h1>Anúncios visualizados até hoje</h1>
+                                                <p id="users-count">1444</p>
+                                                <span class="fa-stack fa-2x pull-right">
+                                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                                    <i class="fa fa-eye fa-stack-1x"></i>
+                                                    <span class="easypiechart" data-percent="100" data-line-width="4" data-size="80" data-line-cap="butt" data-animate="2000" data-target="#users-count" data-update="3000" data-bar-color="white" data-scale-color="false" data-track-color="rgba(0, 0, 0, 0.15)"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="card-container sombra">
+                                        <div class="card card-dark-blue-theme hover">
+                                            <div class="front">
+                                                <h1>Pontos Adquiridos</h1>
+                                                <p id="users-count">23877</p>
+                                                <span class="fa-stack fa-2x pull-right">
+                                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                                    <i class="fa fa-star fa-stack-1x"></i>
+                                                    <span class="easypiechart" data-percent="100" data-line-width="4" data-size="80" data-line-cap="butt" data-animate="2000" data-target="#users-count" data-update="3000" data-bar-color="white" data-scale-color="false" data-track-color="rgba(0, 0, 0, 0.15)"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!---------------------------- Fim Dashboard - Geral ------------------------------------------------------->
+                    </div>
+                    <!--Fim portlet-body -->
+                </div>
+                <!--Fim portlet -->
+                <!--=============================================================================================================================-->
+
+                <div class="row">
+                    <!--Inicio Row-texto-area principal -->
+                    <div class="col-lg-12">
+                        <!--Inicio col-12 texto-area principal -->
+                        <div class="portlet portlet-dark-blue">
+                            <!--Inicio portlet -->
+                            <div class="portlet-body">
+                                <!--Inicio portlet-body -->
+                                <ul id="userTab" class="nav nav-tabs">
+                                    <li class="active">
+                                        <a href="#profile-settings" data-toggle="tab">Anúncios</a>
+                                    </li>
+                                </ul>
+                                <!---------------------------- Inicio Dashboard - Anuncios Mais clicados ------------------------------------------------------->
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <ul class="nav">
+                                            <li>
+                                                <div class="col-lg-4">
+                                                    <div class="bs-callout bs-callout-color-theme sombra">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <h3 style="margin-top: 0px; margin-bottom: 0px; color: #34495E;">Torneira Plus</h3>
+                                                            </div>
+
+                                                            <h6 class="col-lg-12" style="margin-top: 0px; color: #696969;">Casa e Construção</h6>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-lg-7">
+                                                                <p>
+                                                                    <i class="fa fa-hand-o-down color-theme"></i>
+                                                                    <span>2 / 30</span>
+                                                                </p>
+                                                            </div>
+
+                                                            <div class="col-lg-5">
+                                                                <span style="font-size:larger;">00:31:15</span>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li>
+                                                <div class="col-lg-4">
+                                                    <div class="bs-callout bs-callout-color-theme sombra">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <h3 style="margin-top: 0px; margin-bottom: 0px; color: #34495E;">HD Seagate</h3>
+                                                            </div>
+
+                                                            <h6 class="col-lg-12" style="margin-top: 0px; color: #696969;">Informática</h6>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-lg-7">
+                                                                <p>
+                                                                    <i class="fa fa-hand-o-down color-theme"></i>
+                                                                    <span>11 / 30</span>
+                                                                </p>
+                                                            </div>
+
+                                                            <div class="col-lg-5">
+                                                                <span style="font-size:larger;">00:11:34</span>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li>
+                                                <div class="col-lg-4">
+                                                    <div class="bs-callout bs-callout-color-theme sombra">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <h3 style="margin-top: 0px; margin-bottom: 0px; color: #34495E;">Canela Laser</h3>
+                                                            </div>
+
+                                                            <h6 class="col-lg-12" style="margin-top: 0px; color: #696969;">Acessórios</h6>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-lg-7">
+                                                                <p>
+                                                                    <i class="fa fa-hand-o-down color-theme"></i>
+                                                                    <span>9 / 10</span>
+                                                                </p>
+                                                            </div>
+
+                                                            <div class="col-lg-5">
+                                                                <span style="font-size:larger;">23:00:02</span>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li>
+                                                <div class="col-lg-4">
+                                                    <div class="bs-callout bs-callout-color-theme sombra">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <h3 style="margin-top: 0px; margin-bottom: 0px; color: #34495E;">Coeca Box</h3>
+                                                            </div>
+
+                                                            <h6 class="col-lg-12" style="margin-top: 0px; color: #696969;">Moda</h6>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-lg-7">
+                                                                <p>
+                                                                    <i class="fa fa-hand-o-down color-theme"></i>
+                                                                    <span>2 / 30</span>
+                                                                </p>
+                                                            </div>
+
+                                                            <div class="col-lg-5">
+                                                                <span style="font-size:larger;">14:06:08</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li>
+                                                <div class="col-lg-4">
+                                                    <div class="bs-callout bs-callout-color-theme sombra">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <h3 style="margin-top: 0px; margin-bottom: 0px; color: #34495E;">Mouse Razer</h3>
+                                                            </div>
+
+                                                            <h6 class="col-lg-12" style="margin-top: 0px; color: #696969;">Informática</h6>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-lg-7">
+                                                                <p>
+                                                                    <i class="fa fa-hand-o-down color-theme"></i>
+                                                                    <span>22 / 30</span>
+                                                                </p>
+                                                            </div>
+
+                                                            <div class="col-lg-5">
+                                                                <span style="font-size:larger;">00:09:55</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li>
+                                                <div class="col-lg-4">
+                                                    <div class="bs-callout sombra" style="border-left-color: #16a085; ">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <h3 style="margin-top: 0px; margin-bottom: 0px; color: #16a085; ">Ração Dog</h3>
+                                                            </div>
+
+                                                            <h6 class="col-lg-12" style="margin-top: 0px; color: #696969;">Agropecuária</h6>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-lg-7">
+                                                                <p>
+                                                                    <i class="fa fa-hand-o-down" style="color: #16a085; "></i>
+                                                                    <span>9 / 20</span>
+                                                                </p>
+                                                            </div>
+
+                                                            <div class="col-lg-5">
+                                                                <span style="font-size: larger; ">00:00:00</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                                <!---------------------------- Fim Dashboard - Anuncios Mais clicados ------------------------------------------------------->
+                                <!--=============================================================================================================================-->
+
+                                <div class="row">
+                                    <!-- Lista de Novidade  -->
+
+                                </div>
+
+
+                            </div>
+                            <!--Fim portlet-body -->
+                        </div>
+                        <!--Fim portlet -->
+                    </div>
+                    <!--Inicio col-12 texto-area principal -->
+                </div>
+                <!--Fim Row-texto-area principal -->
+                <!--INICIO Novidades -->
+@*
+    <div class="row">
+        <!--Inicio Row-texto-area principal -->
+        <div class="col-lg-12">
+            <!--Inicio col-12 texto-area principal -->
+            <div class="portlet portlet-dark-blue">
+                <!--Inicio portlet -->
+                <div class="portlet-body">
+                    <!--Inicio portlet-body -->
+                    <ul id="userTab" class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#profile-settings" data-toggle="tab">Novidades</a>
+                        </li>
+                    </ul>
+                    <!---------------------------- Inicio Dashboard - Cooldown dos anúncios ------------------------------------------------------->
+                   <div class="row">
+                        <div class="col-lg-12">
+
+                            <div class="col-lg-3" style="min-height:246px; width:233px;">
+                                <div class="tile dark-blue dash-demo-tile" style="min-height:235px;">
+                                    <h4><i class="fa fa-cloud fa-fw"></i> Novidade 1</h4>
+
+                                    <div id="easy-pie-1" class="easy-pie-chart" data-percent="86">
+                                        <span class="percent"></span>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+<!---------------------------- Fim Dashboard - Cooldown dos anúncios ------------------------------------------------------->
+<!--=============================================================================================================================-->
+
+                </div>
+                <!--Fim portlet-body -->
+            </div>
+            <!--Fim portlet -->
+        </div>
+        <!--Inicio col-12 texto-area principal -->
+    </div>
+
+
+                </div>
+                <!--Inicio col-12 texto-area principal -->
+            </div>
+            <!--Fim Row-texto-area principal -->
+        </div>
+        <!--Fim Col-12 principal -->
+    </div>
+    <!--Fim Row principal -->
+*@

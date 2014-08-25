@@ -1,0 +1,303 @@
+﻿@{ Layout = "~/Views/Shared/_LayoutAdmin.cshtml"; }
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="page-title">
+            <h1>
+                Administrador
+                <small>Criar Ban Consumidor</small>
+            </h1>
+            @RenderPage("~/Views/Breadcrumbs/Breadcrumbs-Ban-Consumidor-Criar.cshtml")
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="portlet portlet-default">
+            <div class="portlet-body">
+                <ul id="userTab" class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#overview" data-toggle="tab">Buscar - Consumidor</a>
+                    </li>
+                </ul>
+                <div id="userTabContent" class="tab-content">
+                    <div class="tab-pane fade in active" id="overview">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <form class="form-horizontal" role="form" action="#">
+                                            <div class="form-group">
+                                                <div class="col-lg-3">
+                                                    <select class="form-control">
+                                                        <option>Selecione</option>
+                                                        <option>Código</option>
+                                                        <option>Nome</option>
+                                                        <option>CPF</option>
+                                                        <option>RG</option>                                                      
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-lg-6">
+                                                    <input type="text" class="form-control">
+                                                </div>
+
+                                                <div class="col-lg-3">
+                                                    <button class="form-control btn-default" type="submit"><i class="fa fa-search"></i> Buscar</button>
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="portlet portlet-default">
+            <div class="portlet-body">
+                <ul id="userTab" class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#overview" data-toggle="tab">Dados - Consumidor</a>
+                    </li>
+                </ul>
+                <div id="userTabContent" class="tab-content">
+                    <div class="tab-pane fade in active" id="overview">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="col-lg-3"></div>
+                                        <div class="col-lg-6">
+                                            <form class="form-horizontal" role="form">
+                                                <div class="form-group">
+                                                    <label for="CodAnunciante" class="col-lg-3 control-label">Código:</label>
+                                                    <div class="col-lg-4">
+                                                        <input type="text" class="form-control" id="CodAnunciante" placeholder="">
+                                                    </div>
+                                                </div>                                               
+
+                                                <div class="form-group">
+                                                    <label for="CodAnunciante" class="col-lg-3 control-label">CPF:</label>
+                                                    <div class="col-lg-4">
+                                                        <input type="text" class="form-control" id="CodAnunciante" placeholder="___.___.___-__">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="CodAnunciante" class="col-lg-3 control-label">RG:</label>
+                                                    <div class="col-lg-4">
+                                                        <input type="text" class="form-control" id="CodAnunciante" placeholder="">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="CodAnunciante" class="col-lg-3 control-label">Nome:</label>
+                                                    <div class="col-lg-9">
+                                                        <input type="text" class="form-control" id="CodAnunciante" placeholder="">
+                                                    </div>
+                                                </div>
+                                              
+                                            </form>
+                                        </div>
+                                        <div class="col-lg-3"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="portlet portlet-default">
+            <div class="portlet-body">
+                <ul id="userTab" class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#overview" data-toggle="tab">Punições - Consumidor</a>
+                    </li>
+                </ul>
+                <div id="userTabContent" class="tab-content">
+                    <div class="tab-pane fade in active" id="overview">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12">
+                                <div class="row">
+                                    <div class="col-lg-12">
+
+                                        <div class="col-lg-12">
+                                            <form class="form-horizontal" role="form">
+
+                                                <div class="form-group col-lg-4">
+                                                    <label class="col-lg-3 control-label">Sistema:</label>
+                                                    <div class="col-lg-9">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" />
+                                                                Desconect. do sistema : <span class="h4">∞</span>.
+                                                            </label>
+                                                        </div>
+
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" />
+                                                                Desconect. do sistema : 24 hs.
+                                                            </label>
+                                                        </div>
+
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" />
+                                                                Desconect. do sistema : 07 dias.
+                                                            </label>
+                                                        </div>
+
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" />
+                                                                Desconect. do sistema : 15 dias.
+                                                            </label>
+                                                        </div>
+
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" />
+                                                                Desconect. do sistema : 30 dias.
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-lg-4">
+                                                    <label class="col-lg-3 control-label">Anúncios:</label>
+                                                    <div class="col-lg-9">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" />
+                                                                Proibido de clicar anúnc. : <span class="h4">∞</span>.
+                                                            </label>
+                                                        </div>
+
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" />
+                                                                Proibido de clicar anúnc. : 24 hs.
+                                                            </label>
+                                                        </div>
+
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" />
+                                                                Proibido de clicar anúnc. : 07 dias.
+                                                            </label>
+                                                        </div>
+
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" />
+                                                                Proibido de clicar anúnc. : 15 dias.
+                                                            </label>
+                                                        </div>
+
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" />
+                                                                Proibido de clicar anúnc. : 30 dias.
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-lg-4">
+                                                    <label class="col-lg-3 control-label">Pont. :</label>
+                                                    <div class="col-lg-9">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" />
+                                                                Zerar pontos.
+                                                            </label>
+                                                        </div>                                                       
+
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" />
+                                                                Proibido de ganhar pontos. : 24 hs.
+                                                            </label>
+                                                        </div>
+
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" />
+                                                                Proibido de ganhar pontos. : 07 dias.
+                                                            </label>
+                                                        </div>
+
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" />
+                                                                Proibido de ganhar pontos. : 15 dias.
+                                                            </label>
+                                                        </div>
+
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" />
+                                                                Proibido de ganhar pontos. : 30 dias.
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="form-group col-lg-12">
+                                                            <label for="CodAnunciante" class="col-lg-1 control-label">Obs:</label>
+                                                            <div class="col-lg-11">
+                                                                <textarea class="form-control" maxlength="255" id="textareaMax" cols="2"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <br />
+
+                                                <div class="row">
+                                                    <div class="col-lg-3"></div>
+                                                    <div class="col-lg-6">
+                                                        <button class="btn btn-lg btn-default btn-block" type="submit"><i class="fa fa-ban"></i> Banir</button>
+                                                    </div>
+                                                </div>
+
+
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -38,3 +38,270 @@ thead.rodape-tabela {
 .color-theme {
     color: #54677A;
 }
+
+btn-color-1 {
+
+}
+
+
+.card-container {
+      margin-bottom:20px;
+      min-height:80px;
+      position:relative;
+}
+
+.card-container .card {
+      height: 100%;
+      position: relative;
+      -webkit-perspective: 600px;
+      -moz-perspective: 600px;
+      -ms-perspective: 600px;
+      -o-perspective: 600px;
+      perspective: 600px;
+      width: 100%;
+      cursor: pointer;
+}
+
+.card-container .card .front {
+      height: 100%;
+      position: relative;
+      width: 100%;
+      background-color: #f2f2f2;
+      padding: 15px;
+      min-height: 115px;
+      top: 0;
+      left: 0;
+      z-index: 900;
+      -webkit-transform: rotateX(0deg) rotateY(0deg);
+      -moz-transform: rotateX(0deg) rotateY(0deg);
+      transform: rotateX(0deg) rotateY(0deg);
+      -webkit-transform-style: preserve-3d;
+      -moz-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+      -webkit-backface-visibility: hidden;
+      -moz-backface-visibility: hidden;
+      backface-visibility: hidden;
+      /* -- transition is the magic sauce for animation -- */
+      -webkit-transition: all .4s ease-in-out;
+      transition: all .4s ease-in-out; 
+}
+
+ .card-container .card .front h1 {
+        margin: 0;
+        padding: 0;
+        font-weight: 300;
+        font-size: 14px;
+
+ }
+
+ .card-container .card .front p {
+        font-size: 48px;
+        font-weight: 100;
+        margin: 0;
+
+      }
+
+.card-container .card .front .fa-stack {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 3em;
+        height: 3em;
+        line-height: 3em;
+
+}
+.card-container .card .front .fa-stack .fa-circle {
+          color: rgba(0, 0, 0, 0.15);
+
+        }
+.card-container .card .front .fa-stack .fa-stack-2x {
+          font-size: 3em; 
+
+        }
+
+.card-container .card .front .fa-stack .easypiechart {
+          position: absolute;
+          left: 2px;
+          top: 1px;
+
+        }
+
+.card-container .card.flip .front {
+      z-index: 900;
+      -webkit-transform: rotateY(180deg);
+      -moz-transform: rotateY(180deg);
+      transform: rotateY(180deg); 
+
+    }
+
+.card-container .card.flip .back {
+      z-index: 1000;
+      -webkit-transform: rotateX(0deg) rotateY(0deg);
+      -moz-transform: rotateX(0deg) rotateY(0deg);
+      transform: rotateX(0deg) rotateY(0deg);
+
+    }
+
+.card-container .card .back {
+      position: absolute;
+      top: 0;
+      background-color: white !important;
+      border: 1px solid #e2e2e2;
+      color: inherit !important;
+      padding: 15px 15px 5px 15px;
+      text-align: center;
+      height: auto;
+      width: 100%;
+      min-height: 115px;
+      left: 0;
+      z-index: 800;
+      border: 1px solid #ccc;
+      background: #333;
+      -webkit-transform: rotateY(-180deg);
+      -moz-transform: rotateY(-179deg);
+      /* setting to 180 causes an unnatural-looking half-flip */
+      transform: rotateY(-179deg);
+      -webkit-transform-style: preserve-3d;
+      -moz-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+      -webkit-backface-visibility: hidden;
+      -moz-backface-visibility: hidden;
+      backface-visibility: hidden;
+      /* -- transition is the magic sauce for animation -- */
+      -webkit-transition: all .4s ease-in-out;
+      transition: all .4s ease-in-out;
+
+    }
+
+.card-container .card .back h1 {
+        margin: 0;
+        padding: 0;
+        font-weight: 300;
+        font-size: 14px;
+
+      }
+
+.card-container .card .back h1, .card-container .card .back p {
+        text-align: center;
+      }
+
+.card-container .card .back p {
+        font-size: 32px;
+        font-weight: 700;
+
+      }
+
+.card-container .card .back ul {
+        padding: 0;
+        margin: 0;
+        text-align: center;
+
+      }
+
+.card-container .card .back .summary {
+        font-size: 11px;
+        padding: 5px 0 0 0;
+
+      }
+
+.card-container .card .back .summary i {
+          font-size: 10px; 
+
+        }
+
+.card-container .card .back .summary.negative i {
+          color: #ff4a43; 
+
+        }
+
+.card-container .card .back .summary.positive i {
+          color: #a2d200;
+
+        }
+
+.card-container .card .back table {
+        font-size: 11px;
+
+      }
+
+.card-container .card .back table thead {
+          background-color: #fafafa; 
+
+        }
+
+.card-container .card .back table tr td, .card-container .card .back table tr th {
+          padding: 3px;
+          border: 0; 
+
+        }
+
+.card-container .card .back table tr td:last-child, .card-container .card .back table tr th:last-child {
+            padding-right: 10px; 
+
+          }
+
+.card-container .card .back table tr td:first-child, .card-container .card .back table tr th:first-child {
+            padding-left: 10px; 
+
+          }
+
+.card-container .card.card-red .front {
+      color: white;
+      background-color: #ff4a43; 
+
+    }
+
+.card-container .card.card-dark-blue-theme .front {
+      color: white;
+      background-color: #34495e; 
+
+    }
+
+.card-container .card.card-red .back p {
+      color: #ff4a43; 
+
+    }
+
+.card-container .card.card-cyan .front {
+      color: white;
+      background-color: #22beef; 
+
+    }
+
+.card-container .card.card-cyan .back p {
+      color: #22beef; 
+
+    }
+
+.card-container .card.card-green .front {
+      color: white;
+      background-color: #a2d200; 
+
+    }
+
+.card-container .card.card-green .back p {
+      color: #a2d200; 
+
+    }
+
+.card-container .card.card-orange .front {
+      color: white;
+      background-color: #ffc100; 
+
+    }
+
+.card-container .card.card-orange .back p {
+      color: #ffc100; 
+
+    }
+
+.card-container .card.card-amethyst .front {
+      color: white;
+      background-color: #cd97eb;
+
+    }
+
+.card-container .card.card-amethyst .back p {
+      color: #cd97eb; 
+
+    }

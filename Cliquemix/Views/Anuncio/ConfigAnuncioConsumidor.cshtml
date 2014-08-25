@@ -1,0 +1,39 @@
+﻿@using System.Web.UI.WebControls
+@using Microsoft.AspNet.Identity
+
+@{ Layout = "~/Views/Shared/_LayoutCon.cshtml"; }
+
+
+<div class="page-content page-content-ease-in">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-title">
+                <h1>
+                    Configurações
+                    <small>Consumidor</small>
+                </h1>
+                @RenderPage("~/Views/Breadcrumbs/Breadcrumbs-Consumidor-ConfigAnuncio.cshtml")
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="portlet portlet-default">
+
+                @*
+                    Fazer logica, se nao tem nenhuma config cadastrada carregar "ConfigAnuncioConsumidorCadastro";
+                    Se ja tiver carregar ConfigAnuncioConsumidorEditar, trazendo as informações
+
+                    Mudar para partial view tambem;
+                *@
+
+
+                @RenderPage("~/Views/Anuncio/ConfigAnuncioConsumidorCadastro.cshtml")
+
+            </div>
+        </div>
+    </div>
+
+</div>
+

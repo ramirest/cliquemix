@@ -1,0 +1,50 @@
+﻿@{ Layout = "~/Views/Shared/_LayoutCon.cshtml"; }
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="page-title">
+            <h1>
+                Consumidor
+                <small>Relatórios</small>
+            </h1>
+            @RenderPage("~/Views/Breadcrumbs/Breadcrumbs-Consumidor-Relatorios.cshtml")
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="portlet portlet-default">
+            <div class="portlet-body">
+                <ul id="userTab" class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#profile-settings" data-toggle="tab"><i class="fa fa-file-text-o"></i> Relatórios do Consumidor</a>
+                    </li>
+                </ul>
+                <div id="userTabContent" class="tab-content">
+                    <div class="tab-pane fade in active" id="profile-settings">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <ul id="userSettings" class="nav nav-pills nav-stacked">
+                                    <li class="active">
+                                        <a href="#RelAnunc" data-toggle="tab" id="lnk1"><i class="fa fa-picture-o fa-fw"></i> Anúncios</a>
+                                    </li>                  
+                                    <li>
+                                        <a href="#RelPrem" data-toggle="tab" id="lnk5"><i class="fa fa-trophy fa-fw"></i> Premiações</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="col-sm-9">
+                                <div id="userSettingsContent" class="tab-content">
+                                    @RenderPage("~/Views/RelatorioConsumidor/RelConsAnun.cshtml") @*Trocar para partial na hora de programar*@
+                                    @RenderPage("~/Views/RelatorioConsumidor/RelConsPrem.cshtml") @*Trocar para partial na hora de programar*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

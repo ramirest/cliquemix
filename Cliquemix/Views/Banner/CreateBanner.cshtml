@@ -1,0 +1,192 @@
+﻿@{ Layout = "~/Views/Shared/_LayoutAdmin.cshtml"; }
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="page-title">
+            <h1>
+                Administrador
+                <small>Criar Banner - Nossa Publicidade</small>
+            </h1>
+            @RenderPage("~/Views/Breadcrumbs/Breadcrumbs-Banner-Criar.cshtml")
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="portlet portlet-default">
+            <div class="portlet-body">
+                <ul id="userTab" class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#profile-settings" data-toggle="tab">Criar Banner - Nossa Publicidade</a>
+                    </li>
+                </ul>
+                <div id="userTabContent" class="tab-content">
+                    <div class="tab-pane fade in active" id="profile-settings">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <ul id="userSettings" class="nav nav-pills nav-stacked">
+                                    <li class="active">
+                                        <a href="#infoBasico" data-toggle="tab" id="lnk1"><i class="fa fa-info-circle fa-fw"></i> Informações</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="#infoImg" data-toggle="tab" id="lnk2"><i class="fa fa-picture-o fa-fw"></i> Imagens</a>
+                                    </li>                                   
+                                </ul>
+                            </div>
+
+                            <div class="col-sm-9">
+                                <div id="userSettingsContent" class="tab-content">
+                                    <div class="tab-pane fade in active" id="infoBasico">
+                                     
+                                        <form role="form">
+                                            <h4 class="page-header">Informações do Banner:</h4>
+                                            <div class="form-group col-lg-6">
+                                                <label>Título</label>
+                                                <input type="text" class="form-control" value="">
+                                            </div>
+
+                                            <div class="clearfix"></div>
+                                            <div class="form-group col-lg-offset-6"></div>
+
+
+                                            <div class=" col-sm-6">
+                                                <div class="navbar-right">
+                                                    <button type="button" onclick="$('#lnk2').click();" class="btn btn-default">Próximo</button>
+                                                </div>                                               
+                                            </div>
+                                    </div>
+                                  
+                                    <div class="tab-pane fade in" id="infoImg">
+                                        <h4 class="page-header">Galeria de Imagens:</h4>
+                                        <div class="page-header upload-botao">
+                                            <input type="file" class="filestyle " data-input="false" data-iconname="glyphicon-inbox">
+                                        </div>
+
+                                        <div class="col-lg-offset-6"></div>
+
+                                        <div class="clearfix"></div>
+
+                                        <div class="col-lg-12"></div>
+
+                                        <div class="clearfix"></div>
+
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <div class="thumbnail">
+                                                    <img id="imgUrl" src="~/fonts/img/sem_foto.png" alt="...">
+                                                    <div class="caption">
+                                                        <h5><span style="color:#34495E; font-weight: bold;">Foto de Ipatinga</span></h5>
+                                                        <p>
+                                                            <div class="btn-group navbar-left">
+                                                                <div class="checkbox">
+                                                                    <label>
+                                                                        <input type="checkbox" value="" />
+                                                                        Ativar
+                                                                    </label>
+                                                                </div>
+                                                            </div>                                                           
+                                                        </p>
+                                                        
+                                                        <p>
+                                                            <div class="btn-group navbar-right" style="margin-top:8px;">
+                                                                
+                                                                <a class="btn btn-white btn-sm"><i class="fa fa-search-plus"></i></a>
+                                                                <a class="btn btn-default btn-sm"><i class="fa fa-times"></i></a>
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                            
+                                            <div class="col-lg-4">
+                                                <div class="thumbnail">
+                                                    <img id="imgUrl" src="~/fonts/img/sem_foto.png" alt="...">
+                                                    <div class="caption">
+                                                        <h5><span style="color:#34495E; font-weight: bold;">Foto de Ipatinga</span></h5>
+                                                        <p>
+                                                            <div class="btn-group navbar-left">
+                                                                <div class="checkbox">
+                                                                    <label>
+                                                                        <input type="checkbox" value="" />
+                                                                        Ativar
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </p>
+
+                                                        <p>
+                                                            <div class="btn-group navbar-right" style="margin-top:8px;">
+
+                                                                <a class="btn btn-white btn-sm"><i class="fa fa-search-plus"></i></a>
+                                                                <a class="btn btn-default btn-sm"><i class="fa fa-times"></i></a>
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-lg-4">
+                                                <div class="thumbnail">
+                                                    <img id="imgUrl" src="~/fonts/img/sem_foto.png" alt="...">
+                                                    <div class="caption">
+                                                        <h5><span style="color:#34495E; font-weight: bold;">Foto de Ipatinga</span></h5>
+                                                        <p>
+                                                            <div class="btn-group navbar-left">
+                                                                <div class="checkbox">
+                                                                    <label>
+                                                                        <input type="checkbox" value="" />
+                                                                        Ativar
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </p>
+
+                                                        <p>
+                                                            <div class="btn-group navbar-right" style="margin-top:8px;">
+
+                                                                <a class="btn btn-white btn-sm"><i class="fa fa-search-plus"></i></a>
+                                                                <a class="btn btn-default btn-sm"><i class="fa fa-times"></i></a>
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>                                                                                                                    
+                                        </div>
+
+                                        <div class="form-group col-lg-12">
+                                            <div class="col-lg-8"></div>
+
+                                            <div class="col-lg-4" style="margin-left:77%;">
+                                                <button type="button" onclick="$('#lnk1').click();" class="btn btn-default">Anterior</button>
+                                                <button type="submit" class="btn btn-default" id="save" value="save">
+                                                    <i class="fa fa-floppy-o"></i>
+                                                    Salvar
+                                                </button>
+                                            </div>
+                                            
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.portlet-body -->
+            </div>
+        <!-- /.portlet -->
+        </div>
+    <!-- /.col-lg-12 -->
+    </div>
+</div>
+
+
+
+
+
+

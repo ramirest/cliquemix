@@ -1,0 +1,138 @@
+﻿@{ Layout = "~/Views/Shared/_LayoutAdmin.cshtml"; }
+<style>
+    .btn-tcc {
+        background-color: #E0E7E8;
+        border-color: #98B0B3;
+        color: #696969;
+    }
+
+        .btn-tcc:hover {
+            background-color: #E0E7E8;
+            border-color: #98B0B3;
+            color: #696969;
+        }
+</style>
+
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="page-title">
+            <h1>
+                Administrador
+                <small>Editar Vínculo de Premiação</small>
+            </h1>
+            @RenderPage("~/Views/Breadcrumbs/Breadcrumbs-Premio-PremiacaoVincular-Editar-Admin.cshtml")
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="portlet portlet-default">
+
+
+            <div class="portlet-body">
+                <ul id="userTab" class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#overview" data-toggle="tab">Editar - Vínculo de Premiação</a>
+                    </li>
+                </ul>
+                <div id="userTabContent" class="tab-content">
+                    <div class="tab-pane fade in active" id="overview">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12">
+                                <div class="portlet-body">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="NmP">Prêmio</label>
+                                            <input type="text" class="form-control" id="NmP" />
+                                            <div class="pull-right" style="padding: 1% 0;">
+                                                <button type="button" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                                <button type="button" class="btn btn-default"><i class="fa fa-plus"></i></button>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group" style="padding-top:12%;">
+                                            <label for="NmG">Ganhador</label>
+                                            <input type="text" class="form-control" id="NmG" />
+                                            <div class="pull-right" style="padding: 1% 0;">
+                                                <button type="button" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                                <button type="button" class="btn btn-default"><i class="fa fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="portlet portlet-default" style="border-color:#fff;">
+
+                                            <label>Lista das categorias selecionadas:</label>
+
+                                            <div class="portlet-heading">
+                                                <div class="portlet-title">
+                                                    <h4>Lista das categorias selecionadas: </h4>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+
+                                            <div class="portlet-body">
+                                                <form role="form">
+                                                    <div class="form-control-static">
+                                                        <div class="btn btn-block btn-tcc btn-social">
+                                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                            <span>Camisa Polo Nex - G</span>
+                                                        </div>
+
+                                                        <div class="btn btn-block btn-tcc btn-social">
+                                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                            <span>Fulano de Tal</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="clearfix"></div>
+
+                                                    <hr />
+
+
+                                                    <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="portlet-body">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="chbox">Opções</label>
+                                            <div class="checkbox" id="chbox">
+                                                <label>
+                                                    <input type="checkbox">Enviar e-mail marketing ao ganhador.
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <button type="submit" class="btn btn-default pull-right"><i class="fa fa-floppy-o"></i> Salvar</button>
+                            </div>
+                        </div>
+
+                        </form>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

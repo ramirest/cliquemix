@@ -306,5 +306,40 @@ namespace Cliquemix.Controllers
             db.SaveChanges();
         }
 
+        public ActionResult ConfigAnuncioConsumidor() //Referente a configurações do consumidor - View que trás a página de container de confg de anuncio.
+        {
+            return View();
+        }
+
+        public ActionResult ConfigAnuncioConsumidorCadastro() //Pagina carregada para config do do anuncio do consumidor referente acima.
+        {
+            return View();
+        }
+
+        public ActionResult ConfigAnuncioConsumidorEditar() //Pagina carregada quando tem alguma config do consumidor.
+        {
+            return View();
+        }
+
+        public ActionResult CriarCategoriaAnuncioAdmin() //Pagina carregada pelo Administrador, Criar categoria de anuncio.
+        {
+            return View();
+        }
+
+        public ActionResult GerirCategoriaAnuncioAdmin() //Pagina carregada pelo Administrador, gerir as categorias de anuncio.
+        {
+            return View();
+        }
+
+        public ActionResult EditarCategoriaAnuncioAdmin() //Pagina carregada pelo Administrador, editar a categoria de anuncio selecionada.
+        {
+            return View();
+        }
+
+        public ActionResult DeletarCategoriaAnuncioAdmin() //Pagina carregada pelo Administrador, deletar a categoria de anuncio selecionada.
+        {
+            return View();
+        }
+
     }
 }

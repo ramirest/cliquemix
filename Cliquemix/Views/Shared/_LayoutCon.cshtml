@@ -1,0 +1,224 @@
+﻿@using System.Web.UI.WebControls
+@using Test_AspNet.Controllers
+@using Test_AspNet.Controllers.Consumidor
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> CliqueMix - Sicove.</title>
+    <link href="~/Content/plugins/pace/pace.css" rel="stylesheet">
+    <script src="~/Scripts/plugins/pace/pace.js"></script>
+    <link href="~/Content/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/plugins/bootstrap/css/docs.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel="stylesheet" type="text/css">
+    <link href="~/fonts/icons/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Content/plugins/messenger/messenger.css" rel="stylesheet">
+    <link href="~/Content/plugins/messenger/messenger-theme-flat.css" rel="stylesheet">
+    <link href="~/Content/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet">
+    <link href="~/Content/plugins/morris/morris.css" rel="stylesheet">
+    <link href="~/Content/plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet">
+    <link href="~/Content/plugins/datatables/datatables.css" rel="stylesheet">
+
+    <link href="~/Content/plugins/bootstrap-timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+    <link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" type="text/css" rel="stylesheet">
+    <link href="~/Content/plugins/bootstrap-tokenfield/tokenfield-typeahead.css" rel="stylesheet">
+    <link href="~/Content/plugins/bootstrap-tokenfield/bootstrap-tokenfield.css" rel="stylesheet">
+    <link href="~/Content/plugins/bootstrap-datepicker/datepicker3.css" rel="stylesheet">
+    <link href="~/Content/timeline.css" rel="stylesheet" />
+
+
+    <!-- Base MasterSlider style sheet -->
+    <link rel="stylesheet" href="~/Content/css-master-slider/masterslider.css" />
+
+    <!-- Master Slider Skin -->
+    <link href="~/Content/css-master-slider/default/style.css" rel="stylesheet" />
+
+    <!-- MasterSlider Template Style -->
+    <link href="~/Content/css-master-slider/ms-partialview.css" rel="stylesheet" />
+
+    <link href="~/Content/css-master-slider/ms-lightbox.css" rel='stylesheet' type='text/css'>
+
+    <link href="~/Content/css-master-slider/prettyPhoto.css" rel='stylesheet' type='text/css' />
+
+
+    <link href="~/Content/plugins/ladda/ladda-themeless.min.css" rel="stylesheet">
+    <link href="~/Content/plugins/bootstrap-social/bootstrap-social.css" rel="stylesheet">
+    <link href="~/Content/plugins/bootstrap-multiselect/bootstrap-multiselect.css" rel="stylesheet">
+
+
+
+    <link href="~/Content/plugins/summernote/summernote.css" rel="stylesheet" />
+    <link href="~/Content/plugins/summernote/summernote-bs3.css" rel="stylesheet" />
+
+
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/plugins.css" rel="stylesheet" />
+    <link href="~/Content/edicoes.css" rel="stylesheet" />
+
+
+    <!--[if lt IE 9]>
+      <script src="~/Scripts/html5shiv.js"></script>
+      <script src="~/Scripts/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+
+<body>
+    <div id="wrapper">
+        
+        @RenderPage("~/Views/MenuTopoConsumidor/MenuTopoConsumidor.cshtml")
+        @RenderPage("~/Views/MenuConsumidor/MenuConsumidor.cshtml")
+        @RenderPage("~/Views/Logout/Logout.cshtml")
+        <div id="page-wrapper">
+            <div class="page-content">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+
+    @Scripts.Render("~/bundles/js-default")
+
+
+    <script src="~/Scripts/plugins/bootstrap-tokenfield/bootstrap-tokenfield.min.js"></script>
+    <script src="~/Scripts/plugins/bootstrap-tokenfield/scrollspy.js"></script>
+    <script src="~/Scripts/plugins/bootstrap-tokenfield/affix.js"></script>
+    <script src="~/Scripts/plugins/bootstrap-tokenfield/typeahead.min.js"></script>
+    <script src="~/Scripts/plugins/bootstrap-maxlength/bootstrap-maxlength.js"></script>
+    <script src="~/Scripts/plugins/bootstrap-timepicker/bootstrap-timepicker.min.js"></script>
+    <script src="~/Scripts/plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+    <script src="~/Scripts/plugins/easypiechart/jquery.easypiechart.min.js"></script>
+
+
+
+    @Scripts.Render("~/bundles/js-masterslider")
+
+
+    @Scripts.Render("~/bundles/js-others")
+   
+
+
+    <script>
+        $(document).ready(function () {
+            $('#summernote').summernote(
+                {
+                    height: 300
+                }
+
+            );
+        });
+
+        //WYEING - Editor
+        $('.summernote').summernote();
+
+        // Botao de fazer upload de fotos em anuncios
+        $(":file").filestyle({ input: false });
+        $(":file").filestyle({ iconName: "glyphicon-inbox" });
+
+
+
+        $('.btn-toggle').click(function () {
+            $(this).find('.btn').toggleClass('active');
+
+            if ($(this).find('.btn-primary').size() > 0) {
+                $(this).find('.btn').toggleClass('btn-primary');
+            }
+            if ($(this).find('.btn-danger').size() > 0) {
+                $(this).find('.btn').toggleClass('btn-danger');
+            }
+            if ($(this).find('.btn-success').size() > 0) {
+                $(this).find('.btn').toggleClass('btn-success');
+            }
+            if ($(this).find('.btn-info').size() > 0) {
+                $(this).find('.btn').toggleClass('btn-info');
+            }
+
+            if ($(this).find('.btn-default').size() > 0) {
+                $(this).find('.btn').toggleClass('btn-default');
+            }
+
+
+            $(this).find('.btn').toggleClass('btn-white');
+
+        });
+
+        $('form').submit(function () {
+            alert($(this["options"]).val());
+            return false;
+        });
+
+    </script>
+
+
+    <script>
+        $(function () {
+            $(".datepicker").datepicker({
+                showOn: "button"
+            });
+
+            $('.timepicker').timepicker();
+        });
+    </script>
+
+
+
+    <script type="text/javascript">
+
+        var slider = new MasterSlider();
+        slider.setup('masterslider', {
+            width: 760,
+            height: 400,
+            space: 10,
+            loop: true,
+            view: 'prtialwave'
+        });
+
+        slider.control('arrows');
+        slider.control('bullets');
+        slider.control('lightbox');
+        slider.control('slideinfo', { insertTo: "#partial-view-1", autohide: false });
+        slider.control('circletimer', { color: "#FFFFFF", stroke: 9 });
+
+
+        $(document).ready(function () {
+            $("a[rel^='prettyPhoto']").prettyPhoto();
+        });
+    </script>
+
+
+    <script type="text/javascript">
+        //Easy Pie Charts
+        $(function () {
+            $('#easy-pie-1, #easy-pie-2, #easy-pie-3, #easy-pie-4').easyPieChart({
+                barColor: "rgba(255,255,255,.5)",
+                trackColor: "rgba(255,255,255,.5)",
+                scaleColor: "rgba(255,255,255,.5)",
+                lineWidth: 20,
+                animate: 1500,
+                size: 175,
+                onStep: function (from, to, percent) {
+                    $(this.el).find('.percent').text(Math.round(percent));
+                }
+            });
+
+        });
+    </script>
+
+
+
+
+
+
+
+
+</body>
+</html>

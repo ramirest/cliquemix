@@ -1,0 +1,165 @@
+﻿<!-- begin SIDE NAVIGATION -->
+<nav class="navbar-side" role="navigation">
+    <div class="navbar-collapse sidebar-collapse collapse">
+        <ul id="side" class="nav navbar-nav side-nav">
+
+            <!-- begin SIDE NAV USER PANEL -->
+            <li class="side-user hidden-xs">
+                <img class="img-circle" src="~/fonts/img/boss-image.png" alt="">
+                <p class="welcome">
+                    <i class="fa fa-key"></i> Logado como
+                </p>
+                <p class="name tooltip-sidebar-logout">
+                    Admin
+                    <span class="last-name">Administrador</span> <a style="color: inherit" class="logout_open" href="#logout" data-toggle="tooltip" data-placement="top" title="Logout"><i class="fa fa-sign-out"></i></a>
+                </p>
+                <div class="clearfix"></div>
+            </li>
+            <!-- end SIDE NAV USER PANEL -->
+            <!-- begin DASHBOARD LINK -->
+            <li>
+                <a href="/PrincipalAdmin/PrincipalAdmin">
+                    <i class="fa fa-dashboard"></i> Principal
+                </a>
+            </li>
+            <!-- end DASHBOARD LINK -->
+            <!-- begin CHARTS DROPDOWN -->
+            <li class="panel">
+                <a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#anuncios">
+                    <i class="fa fa-picture-o"></i> Anúncios <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="collapse nav" id="anuncios">
+                    <li>
+                        <a href="/Anuncio/CriarCategoriaAnuncioAdmin">
+                            <i class="fa fa-angle-double-right"></i> Criar Categoria Anúncios
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Anuncio/GerirCategoriaAnuncioAdmin">
+                            <i class="fa fa-angle-double-right"></i> Gerir Categoria Anúncios
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- end CHARTS DROPDOWN -->
+            <!-- begin FORMS DROPDOWN -->
+            <li class="panel">
+                <a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#banners">
+                    <i class="fa fa-tag"></i> Banners <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="collapse nav" id="banners">
+                    <li>
+                        <a href="/Banner/CreateBanner">
+                            <i class="fa fa-angle-double-right"></i> Criar Banners
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Banner/ListBanner">
+                            <i class="fa fa-angle-double-right"></i> Gerir Banners
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="panel">
+                <a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#bans">
+                    <i class="fa fa-ban"></i> Bans <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="collapse nav" id="bans">
+                    <li>
+                        <a href="/Ban/BanAnunciante">
+                            <i class="fa fa-angle-double-right"></i> Banir Anunciante
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/Ban/ListBanAnunciante">
+                            <i class="fa fa-angle-double-right"></i> Gerir Ban Anunciante
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="/Ban/BanConsumidor">
+                            <i class="fa fa-angle-double-right"></i> Banir Consumidor
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/Ban/ListBanConsumidor">
+                            <i class="fa fa-angle-double-right"></i> Gerir Ban Consumidor
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="panel">
+                <a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#destaques">
+                    <i class="fa fa-bookmark"></i> Destaques <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="collapse nav" id="destaques">
+                    <li>
+                        <a href="/Destaque/CriarDestaqueAdmin">
+                            <i class="fa fa-angle-double-right"></i> Criar Destaques
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/Destaque/GerirDestaqueAdmin">
+                            <i class="fa fa-angle-double-right"></i> Gerir Destaques
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="panel">
+                <a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#premios">
+                    <i class="fa fa-trophy"></i> Prêmios <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="collapse nav" id="premios">
+                    <li>
+                        <a href="/Premio/NivelPremioCriar">
+                            <i class="fa fa-angle-double-right"></i> Criar Níveis de Prêmios
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/Premio/NivelPremioGerir">
+                            <i class="fa fa-angle-double-right"></i> Gerir Níveis de Prêmios
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/Premio/PremiacaoCriar">
+                            <i class="fa fa-angle-double-right"></i> Criar Premiação
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/Premio/PremiacaoGerir">
+                            <i class="fa fa-angle-double-right"></i> Gerir Premiação
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/Premio/PremiacaoVincularCriar">
+                            <i class="fa fa-angle-double-right"></i> Vincular Premiação
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/Premio/PremiacaoVincularGerir">
+                            <i class="fa fa-angle-double-right"></i> Gerir Vinculo Premiação
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- end FORMS DROPDOWN -->
+        </ul>
+        <!-- /.side-nav -->
+    </div>
+    <!-- /.navbar-collapse -->
+</nav>
+<!-- /.navbar-side -->
+<!-- end SIDE NAVIGATION -->

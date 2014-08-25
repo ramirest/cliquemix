@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Cliquemix.Controllers.Anunciante
+namespace Test_AspNet.Controllers.Anunciante
 {
     public class PerfilAnuncianteController : Controller
     {

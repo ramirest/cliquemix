@@ -65,12 +65,16 @@ namespace Cliquemix
                        "~/Scripts/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js",
                        "~/Scripts/plugins/jvectormap/maps/jquery-jvectormap-world-mill-en.js",
                        "~/Scripts/demo/map-demo-data.js",
-                       "~/Scripts/plugins/easypiechart/jquery.easypiechart.min.js",
                        "~/Scripts/plugins/datatables/jquery.dataTables.js",
-                       "~/Scripts/plugins/datatables/datatables-bs3.js",
-                       "~/Scripts/plugins/summernote/summernote.min.js",
-                       //"~/Scripts/plugins/bootstrap-filestyle/bootstrap-filestyle.min.js",
-                       "~/Scripts/flex.js"
+                        "~/Scripts/plugins/datatables/datatables-bs3.js",
+                        "~/Scripts/plugins/summernote/summernote.min.js",
+                        "~/Scripts/plugins/ladda/spin.min.js",
+                        "~/Scripts/plugins/ladda/ladda.min.js",
+                        "~/Scripts/demo/buttons-demo.js",
+                        "~/Scripts/demo/advanced-form-demo.js", //Cria as tags coloridas em config de tipo categoria anuncio consumidor
+                        "~/Scripts/plugins/bootstrap-multiselect/bootstrap-multiselect.js",
+                        //"~/Scripts/plugins/bootstrap-filestyle/bootstrap-filestyle.min.js",
+                        "~/Scripts/flex.js"
                        ));
 
             bundles.Add(new ScriptBundle("~/bundles/js-flot").Include(

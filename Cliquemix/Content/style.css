@@ -63,6 +63,8 @@ a:focus {
 
 /* Use these to cuztomize the background color of a div. These are used along with tiles, or any other div you want to customize. */
 
+
+
  .dark-blue {
     background-color: #34495e;
 }
@@ -104,6 +106,9 @@ a:focus {
 }
 
 /* -- Text Color Helper Classes */
+
+
+
 
  .text-dark-blue {
     color: #34495e;
@@ -979,6 +984,7 @@ a:focus {
 .circle-tile-heading.dark-blue:hover {
     background-color: #2e4154;
 }
+
 
 .circle-tile-heading.green:hover {
     background-color: #138f77;

@@ -1,0 +1,126 @@
+﻿@{ Layout = "~/Views/Shared/_LayoutAdmin.cshtml"; }
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="page-title">
+            <h1>
+                Administrador
+                <small>Gerir Vínculo de Premiação</small>
+            </h1>
+            @RenderPage("~/Views/Breadcrumbs/Breadcrumbs-Premio-PremiacaoVincular-Gerir-Admin.cshtml")
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <!-- Basic Responsive Table -->
+    <div class="col-lg-12">
+        <div class="portlet portlet-default">
+            <div class="portlet-heading">
+                <div class="portlet-title">
+
+                    <h4 class="flutuar">Lista de Premiações</h4>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="portlet-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th class="text-center">Prêmio</th>
+                                <th class="text-center">Ganhador</th>
+                                <th class="text-center">Nivel do Prêmio</th>
+                                <th class="text-center">Imagens do Prêmio</th>
+                                <th class="text-center">Data de Vinculação</th>
+                                <th class="text-center">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center">1</td>
+                                <td class="text-center">Premiação 1</td>
+                                <td class="text-center">Beltrano Moreira</td>
+                                <td class="text-center">Nv. 1</td>
+                                <td class="text-center">
+                                    <a href="#" title="Visualizar" style="padding-right: 10px;">
+                                        <i class="fa fa-search"></i>
+                                    </a>
+                                </td>
+                                <td class="text-center">21/08/2014</td>
+                                <td class="text-center">
+
+                                    <a href="#" title="Editar" style="padding-right: 10px;">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a href="#" title="Excluir">
+                                        <i class="fa fa-trash-o"></i>
+                                    </a>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="text-center">2</td>
+                                <td class="text-center">Premiação 2</td>
+                                <td class="text-center">Fulano de Tal</td>
+                                <td class="text-center">Nv. 4</td>
+                                <td class="text-center">
+                                    <a href="#" title="Visualizar" style="padding-right: 10px;">
+                                        <i class="fa fa-search"></i>
+                                    </a>
+                                </td>
+                                <td class="text-center">11/11/2014</td>
+                                <td class="text-center">
+
+                                    <a href="#" title="Editar" style="padding-right: 10px;">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a href="#" title="Excluir">
+                                        <i class="fa fa-trash-o"></i>
+                                    </a>
+                                </td>
+                            </tr>
+
+                            <thead class="rodape-tabela">
+                                <th class="text-center">#</th>
+                                <th class="text-center">Prêmio</th>
+                                <th class="text-center">Ganhador</th>
+                                <th class="text-center">Nivel do Prêmio</th>
+                                <th class="text-center">Imagens do Prêmio</th>
+                                <th class="text-center">Data de Vinculação</th>
+                                <th class="text-center">Ações</th>
+                            </thead>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- /.portlet -->
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="text-center">
+        <ul class="pagination">
+            <li>
+                <a href="#">&laquo;</a>
+            </li>
+            <li class="active">
+                <a href="#">1</a>
+            </li>
+            <li>
+                <a href="#">2</a>
+            </li>
+            <li>
+                <a href="#">3</a>
+            </li>
+            <li>
+                <a href="#">&raquo;</a>
+            </li>
+        </ul>
+    </div>
+
+</div>

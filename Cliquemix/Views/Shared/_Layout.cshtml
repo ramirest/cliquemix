@@ -37,13 +37,33 @@
     <link href="~/Content/plugins/bootstrap-datepicker/datepicker3.css" rel="stylesheet">
     <link href="~/Content/timeline.css" rel="stylesheet" />
 
+
+    <!-- Base MasterSlider style sheet -->
+    <link rel="stylesheet" href="~/Content/css-master-slider/masterslider.css" />
+
+    <!-- Master Slider Skin -->
+    <link href="~/Content/css-master-slider/default/style.css" rel="stylesheet" />
+
+    <!-- MasterSlider Template Style -->
+    <link href="~/Content/css-master-slider/ms-partialview.css" rel="stylesheet" />
+
+    <link href="~/Content/css-master-slider/ms-lightbox.css" rel='stylesheet' type='text/css'>
+
+    <link href="~/Content/css-master-slider/prettyPhoto.css" rel='stylesheet' type='text/css' />
+
+
+
+
+
     
     <link href="~/Content/plugins/summernote/summernote.css" rel="stylesheet" />
     <link href="~/Content/plugins/summernote/summernote-bs3.css" rel="stylesheet" />
     
     <link href="~/Content/style.css" rel="stylesheet">
     <link href="~/Content/plugins.css" rel="stylesheet">
-    <link href="~/Content/edicoes.css" rel="stylesheet" />   
+    <link href="~/Content/edicoes.css" rel="stylesheet" />  
+    
+    <link href="~/Content/demo.css" rel="stylesheet"> 
 
     <!--[if lt IE 9]>
       <script src="~/Scripts/html5shiv.js"></script>
@@ -81,9 +101,12 @@
     <script src="~/Scripts/plugins/ladda/ladda.min.js"></script>
     <script src="~/Scripts/plugins/bootstrap-multiselect/bootstrap-multiselect.js"></script>
     <script src="~/Scripts/Outros/jquery.uploadify.js"></script>
+    <script src="~/Scripts/plugins/easypiechart/jquery.easypiechart.min.js"></script>
 
-    @Scripts.Render("~/bundles/js-others")
+    @Scripts.Render("~/bundles/js-masterslider")
     
+    @Scripts.Render("~/bundles/js-others")
+
     @Scripts.Render("~/bundles/js-flot")
 
     <script>
@@ -163,6 +186,27 @@
             $("a[rel^='prettyPhoto']").prettyPhoto();
         });
     </script>
+
+
+    <script type="text/javascript">
+        //Easy Pie Charts
+        $(function () {
+            $('#easy-pie-1, #easy-pie-2, #easy-pie-3, #easy-pie-4').easyPieChart({
+                barColor: "rgba(255,255,255,.5)",
+                trackColor: "rgba(255,255,255,.5)",
+                scaleColor: "rgba(255,255,255,.5)",
+                lineWidth: 20,
+                animate: 1500,
+                size: 175,
+                onStep: function (from, to, percent) {
+                    $(this.el).find('.percent').text(Math.round(percent));
+                }
+            });
+
+        });
+    </script>
+
+
 
     <div id="logout">
         <div class="logout-message">
