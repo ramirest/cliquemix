@@ -26,7 +26,28 @@ namespace Cliquemix.Controllers
                 Where(m => m.pid == codAnunciante && m.asid != cpea).ToList();
             return View(tbanuncio.ToPagedList(paginaNumero, paginaTamanho));
         }
-        
+
+
+        // GET: Anuncio/VisualizarAnuncio/5
+        public ActionResult VisualizarAnuncio(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            tbAnuncio tbAnuncio = db.tbAnuncio.Find(id);
+            if (tbAnuncio == null)
+            {
+                return HttpNotFound();
+            }
+
+            ViewBag.actid = tbAnuncio.actid;
+            ViewBag.acid = new SelectList(db.tbAnuncioCategoria, "acid", "dsCategoria", tbAnuncio.acid);
+            //ViewBag.pid = new SelectList(db.tbAnunciante, "pid", "cnpj", tbAnuncio.pid);
+            //ViewBag.asid = new SelectList(db.tbAnuncioStatus, "asid", "dsStatus", tbAnuncio.asid);
+            return View(tbAnuncio);
+        }
+
 
         // GET: Anuncio/UpdateAnuncio/5
         public ActionResult UpdateAnuncio(int? id)

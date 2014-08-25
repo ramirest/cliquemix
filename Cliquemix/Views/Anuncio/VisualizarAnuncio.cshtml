@@ -41,22 +41,18 @@
                     <li class="">
                         <a href="#Imagens" data-toggle="tab">Imagens</a>
                     </li>
-                    <li class="">
-                        <a href="#Estatisticas" data-toggle="tab">Estatísticas</a>
-                    </li>
                 </ul>
                 <div id="myTabContent" class="tab-content" style="min-height: 300px;">
                     <div class="tab-pane fade active in" id="Basicas">
                         <br/>
                         <div class="form-group col-lg-2">
                             @Html.Label("Código")@*1.1.1*@
-                            @String.Format("{0:000000}", Model.aid)
                             @Html.TextBoxFor(model => model.aid, new
                             {
                                 @class = "form-control",
                                 disabled = "",
                                 placeholder = "ID"
-                            }) 
+                            })
                         </div>
 
                         <div class="form-group col-lg-6">
@@ -109,22 +105,6 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="collapsed">
-                                            Vídeo do Anúncio
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseOne" class="panel-collapse collapse" style="height: 0px;">
-                                    <div class="panel-body">
-                                        <video controls autoplay loop muted preload="auto" poster="~/Images/Pictures/ImgDemoVideo.jpg">
-                                            HTML5 Video is required for this example
-                                        </video>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
                                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapsed">
                                             Descrição do Anúncio
                                         </a>
@@ -137,20 +117,6 @@
 
                                             @Html.DisplayTextFor(model => model.dsAnuncio)
                                         </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="collapsed">
-                                            Demonstração de Publicação
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseThree" class="panel-collapse collapse" style="height: 0px;">
-                                    <div class="panel-body">
-                                        <img src="~/Images/Pictures/modeloViewAnuncio.jpg" height="400" width="800"/>
                                     </div>
                                 </div>
                             </div>
@@ -217,129 +183,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="tab-pane fade" id="Estatisticas">
-                        <!-- Line Chart Example -->
-                        <div class="col-lg-12" style="display: none;">
-                            <div class="portlet portlet-default">
-                                <div class="portlet-heading">
-                                    <div class="portlet-title">
-                                        <h4>Line Chart</h4>
-                                    </div>
-                                    <div class="portlet-widgets">
-                                        <a href="javascript:;"><i class="fa fa-refresh"></i></a>
-                                        <span class="divider"></span>
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#areaChart"><i class="fa-chevron-down fa"></i></a>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div id="areaChart" class="panel-collapse collapse in">
-                                    <div class="portlet-body">
-                                        <div class="flot-chart">
-                                            <div class="flot-chart-content" id="flot-chart-line"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.col-lg-12 -->
-                        <!-- Multiple Axes Example -->
-                        <div class="col-lg-12" style="display: none;">
-                            <div class="portlet portlet-green">
-                                <div class="portlet-heading">
-                                    <div class="portlet-title">
-                                        <h4>Multiple Axes Line Chart</h4>
-                                    </div>
-                                    <div class="portlet-widgets">
-                                        <a href="javascript:;"><i class="fa fa-refresh"></i></a>
-                                        <span class="divider"></span>
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#lineChart"><i class="fa fa-chevron-down"></i></a>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div id="lineChart" class="panel-collapse collapse in">
-                                    <div class="portlet-body">
-                                        <div class="flot-chart">
-                                            <div class="flot-chart-content" id="flot-chart-multiple-axes"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.col-lg-12 -->
-                        <!-- Bar Chart Example -->
-                        <div class="col-lg-6">
-                            <div class="portlet portlet-blue">
-                                <div class="portlet-heading">
-                                    <div class="portlet-title">
-                                        <h4>Bar Chart</h4>
-                                    </div>
-                                    <div class="portlet-widgets">
-                                        <a href="javascript:;"><i class="fa fa-refresh"></i></a>
-                                        <span class="divider"></span>
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#barChart"><i class="fa fa-chevron-down"></i></a>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div id="barChart" class="panel-collapse collapse in">
-                                    <div class="portlet-body">
-                                        <div class="flot-chart">
-                                            <div class="flot-chart-content" id="flot-chart-bar"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.col-lg-6 -->
-                        <!-- Pie Chart Example -->
-                        <div class="col-lg-6">
-                            <div class="portlet portlet-orange">
-                                <div class="portlet-heading">
-                                    <div class="portlet-title">
-                                        <h4>Pie Chart</h4>
-                                    </div>
-                                    <div class="portlet-widgets">
-                                        <a href="javascript:;"><i class="fa fa-refresh"></i></a>
-                                        <span class="divider"></span>
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#donutChart"><i class="fa fa-chevron-down"></i></a>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div id="donutChart" class="panel-collapse collapse in">
-                                    <div class="portlet-body">
-                                        <div class="flot-chart">
-                                            <div class="flot-chart-content" id="flot-chart-pie"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.col-lg-6 -->
-                        <!-- Moving Line Chart Example -->
-                        <div class="col-lg-6" style="display: none;">
-                            <div class="portlet portlet-red">
-                                <div class="portlet-heading">
-                                    <div class="portlet-title">
-                                        <h4>Moving Line Chart</h4>
-                                    </div>
-                                    <div class="portlet-widgets">
-                                        <a href="javascript:;"><i class="fa fa-refresh"></i></a>
-                                        <span class="divider"></span>
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#movingLineChart"><i class="fa fa-chevron-down"></i></a>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div id="movingLineChart" class="panel-collapse collapse in">
-                                    <div class="portlet-body">
-                                        <div class="flot-chart">
-                                            <div class="flot-chart-content" id="flot-chart-moving-line"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.col-lg-6 -->
                     </div>
                     
                     <div class="tab-pane fade" id="Imagens">

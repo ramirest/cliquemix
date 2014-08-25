@@ -23,7 +23,7 @@ namespace Cliquemix.Models
         public Nullable<int> actid { get; set; }
         public Nullable<bool> ativo { get; set; }
     
-        public virtual tbAnuncioCodTemp tbAnuncioCodTemp { get; set; }
         public virtual tbAnuncio tbAnuncio { get; set; }
+        public virtual tbAnuncioCodTemp tbAnuncioCodTemp { get; set; }
     }
 }

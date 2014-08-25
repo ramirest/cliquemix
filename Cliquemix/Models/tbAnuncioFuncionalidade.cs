@@ -18,7 +18,7 @@ namespace Cliquemix.Models
         public int aid { get; set; }
         public int fid { get; set; }
     
-        public virtual tbFuncionalidade tbFuncionalidade { get; set; }
         public virtual tbAnuncio tbAnuncio { get; set; }
+        public virtual tbFuncionalidade tbFuncionalidade { get; set; }
     }
 }

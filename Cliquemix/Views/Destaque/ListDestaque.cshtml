@@ -1,14 +1,92 @@
-﻿<div class="row">
+﻿@using Cliquemix.Models
+@using iTextSharp.text.pdf.qrcode
+@using Microsoft.AspNet.Identity
+@model PagedList.IPagedList<Cliquemix.Models.tbDestaqueAnunciante>
+
+
+<script>
+    function Delete() {
+        var a = document.getElementById('pCodAnuncio').value;
+        $.ajax(
+        {
+            type: 'POST',
+            url: '/Anuncio/DeleteConfirmed/?id=' + a,
+            dataType: 'html',
+            cache: false,
+            async: true,
+            success: function () {
+                setTimeout(function () {
+                    success_message_demo();
+                },
+
+                setTimeout(function () {
+                    limparAviso();
+                    document.getElementById('btnListAnuncioCancelarExcluir').click();
+                    location.href = "/Anuncio/ListAnuncio";
+                }, 3000), 1000);
+            }
+        });
+    }
+
+    function limparAviso() {
+        Messenger().hideAll();
+    }
+
+    function retornaCodAnuncio(item) {
+        document.getElementById('pCodAnuncio').value = item;
+    }
+
+    function success_message_demo() {
+        Messenger.options = {
+            extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
+            theme: 'flat'
+        }
+        Messenger().post({
+            message: 'O Anúncio selecionado foi excluído com sucesso!',
+            type: 'success',
+            showCloseButton: true
+        });
+    }
+
+    function Visualizar(item) {
+        var a = item;
+        $.ajax(
+        {
+            type: 'GET',
+            url: '/Anuncio/VisualizarAnuncio/?id=' + a,
+            dataType: 'html',
+            cache: false,
+            async: true,
+            success: function () {
+                //location.href = "/Anuncio/VisualizarAnuncio";
+            }
+        });
+    }
+</script>
+
+<div class="row">
     <div class="col-lg-12">
         <div class="page-title">
             <h1>
-                Anunciante
-                <small>Gerir Destaques</small>
+                Destaque
+                <small>Lista de Destaques</small>
             </h1>
-            @RenderPage("~/Views/Breadcrumbs/Breadcrumbs-Destaque-List.cshtml")
+            @RenderPage("~/Views/Breadcrumbs/Breadcrumbs-Destaque-ListDestaque.cshtml")
         </div>
     </div>
 </div>
+
+<input type="hidden" id="pCodDestaque" name="pCodDestaque"/>
+
+<div class="row">
+    <div class="col-lg-12">
+        <button class="btn btn-green" data-toggle="modal" data-target="#ComprarDestaqueModal">
+            Comprar Destaque
+        </button>
+    </div>
+    <div class="col-lg-12" style="min-height: 10px;"></div>
+</div>
+
 
 <div class="row">
     <!-- Basic Responsive Table -->
@@ -16,7 +94,7 @@
         <div class="portlet portlet-default">
             <div class="portlet-heading">
                 <div class="portlet-title">
-                    <h4 class="flutuar">Lista de Destaques</h4>
+                    <h4 class="flutuar">Lista de Destaques do Anunciante</h4>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -25,93 +103,161 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th class="text-center">#</th>
-                                <th class="text-center">Nome</th>
+                                <th class="text-center">ID</th>
+                                <th class="text-center">Título</th>
                                 <th class="text-center">Data de Aquisição</th>
-                                <th class="text-center">Tempo Camp.</th>
-                                <th class="text-center">Tempo Esp.</th>
+                                @*<th class="text-center">Duração Máxima</th>*@
+                                <th class="text-center">Tempo de Espera</th>
                                 <th class="text-center">Custo</th>
+                                <th class="text-center">Qtde Cliques</th>
+                                <th class="text-center">Status</th>
                                 <th class="text-center">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="text-center">1</td>
-                                <td class="text-center">Destaque Sanfona</td>
-                                <td class="text-center">28/11/2013</td>
-                                <td class="text-center">1 mês</td>
-                                <td class="text-center">30 segundos</td>
-                                <td class="text-center">2000 ©</td>
-                                <td class="text-center">
-                                    <a href="~/fonts/img/img-exemples-destaques/photo-destaque-cortina.png" rel="prettyPhoto[gallery2]" style="padding-right: 10px;" class="ms-lightbox">
-                                        <i class="fa fa-search" title="Visualizar"></i>
-                                    </a>                                   
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">2</td>
-                                <td class="text-center">Destaque Banner P.</td>
-                                <td class="text-center">28/12/2013</td>
-                                <td class="text-center">2 semanas</td>
-                                <td class="text-center">30 segundos</td>
-                                <td class="text-center">5000 ©</td>
-                                <td class="text-center">
-                                    <a href="~/fonts/img/img-exemples-destaques/photo-destaque-letreiro.png" rel="prettyPhoto[gallery1]" style="padding-right: 10px;" class="ms-lightbox">
-                                        <i class="fa fa-search" title="Visualizar"></i>
-                                    </a> 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">3</td>
-                                <td class="text-center">Destaque Letreiro</td>
-                                <td class="text-center">01/01/2014</td>
-                                <td class="text-center">1 mês</td>
-                                <td class="text-center">45 segundos</td>
-                                <td class="text-center">1000 ©</td>
-                                <td class="text-center">
-                                    <a href="~/fonts/img/img-exemples-destaques/photo-destaque-sanfon.png" rel="prettyPhoto[gallery3]" style="padding-right: 10px;" class="ms-lightbox">
-                                        <i class="fa fa-search" title="Visualizar"></i>
-                                    </a> 
-                                </td>
-                            </tr>
-                        <thead class="rodape-tabela">
-                            <tr>
-                                <th class="text-center">#</th>
-                                <th class="text-center">Nome</th>
-                                <th class="text-center">Data de Aquisição</th>
-                                <th class="text-center">Tempo Camp.</th>
-                                <th class="text-center">Tempo Esp.</th>
-                                <th class="text-center">Custo</th>
-                                <th class="text-center">Ações</th>
-                            </tr>
-                        </thead>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="text-center">
+                                        @Html.DisplayFor(modelItem => item.did)
+                                    </td>
+                                    <td class="text-center">
+                                        @Html.DisplayFor(modelItem => item.tbDestaque.tituloDestaque)
+                                    </td>
+                                    <td class="text-center">
+                                        @Html.DisplayFor(modelItem => item.dtMovimento)
+                                    </td>
+                                    <td class="text-center">
+                                        @Html.DisplayFor(modelItem => item.tbDestaque.tmpEspera) Segundos
+                                    </td>
+                                    <td class="text-center">
+                                        @Html.DisplayFor(modelItem => item.tbDestaque.qtCredito) ©
+                                    </td>
+                                    <td class="text-center">
+                                        @Html.DisplayFor(modelItem => item.tbDestaque.tbPacoteClique.qtdeCliques)
+                                    </td>
+                                    <td class="text-center">
+                                        @Html.DisplayFor(modelItem => item.tbDestaque.tbDestaqueStatus.dsDestaqueStatus)
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="~/fonts/img/img-exemples-destaques/photo-destaque-sanfon.png" rel="prettyPhoto[gallery3]" style="padding-right: 10px;" class="ms-lightbox">
+                                            <i class="fa fa-search" title="Visualizar"></i>
+                                        </a>
+                                    </td>
+                                    @*
+                                    <td class="text-center">
+                                        <a href="/Anuncio/VisualizarAnuncio/@item.aid" title="Visualizar" style="padding-right: 10px;">
+                                            <i class="fa fa-search"></i>
+                                        </a>
+                                    </td>
+                                    *@
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
+        <!-- /.portlet -->
     </div>
 </div>
-
 
 <div class="row">
     <div class="text-center">
         <ul class="pagination">
-            <li>
-                <a href="#">&laquo;</a>
-            </li>
+            @if (Model.HasPreviousPage)
+            {
+                <li>
+                    @Html.ActionLink("<<", "ListDestaque", new { pagina = 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+                    @Html.ActionLink("<", "ListDestaque", new { pagina = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+                </li>
+            }
+            else
+            {
+                <li class="disabled">
+                    <a><<</a>
+                    <a><</a>
+                </li>
+            }
             <li class="active">
-                <a href="#">1</a>
+                <a>@Model.PageNumber</a>
             </li>
-            <li>
-                <a href="#">2</a>
+            <li class="disabled">
+                <a>...</a>
             </li>
-            <li>
-                <a href="#">3</a>
+            <li class="disabled">
+                <a>@Model.PageCount</a>
             </li>
-            <li>
-                <a href="#">&raquo;</a>
-            </li>
+            @if (Model.HasNextPage)
+            {
+                <li>
+                    @Html.ActionLink(">", "ListDestaque", new {title="Avançar", pagina = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter})
+                    @Html.ActionLink(">>", "ListDestaque", new {pagina = Model.PageCount, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter})
+                </li>
+            }
+            else
+            {
+                <li class="disabled">
+                    <a>></a>
+                    <a>>></a>
+                </li>
+            }
         </ul>
     </div>
+</div>
+
+
+<!-- Flex Modal -->
+<div class="modal modal-flex fade" id="ComprarDestaqueModal" tabindex="-1" role="dialog" aria-labelledby="flexModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 400px;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 class="modal-title text-center" id="flexModalLabel">Compra de Destaques</h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h4 class="text-center">Saldo Atual de Créditos</h4>
+                        <span class="text-center badge green" style="min-width: 100px;">1280 ©</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-green">Save changes</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+<div class="modal modal-flex fade center-block text-center" id="excluirModal" tabindex="-1" role="dialog" aria-labelledby="flexModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 400px;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="flexModalLabel">
+                    <i class="fa fa-trash-o"></i>  Deseja Excluir?
+                </h4>
+            </div>
+            <div class="modal-body">
+                <p>Selecione <strong>"Excluir Anúncio"</strong> para removê-lo.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnListAnuncioCancelarExcluir" name="btnListAnuncioCancelarExcluir"
+                        class="btn btn-default" data-dismiss="modal">
+                    Cancelar
+                </button>
+                <button type="button" id="btnListAnuncioExcluirAnuncio" name="btnListAnuncioExcluirAnuncio"
+                        class="btn btn-green" onclick="Delete();">
+                    <strong>Excluir Anúncio</strong>
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
 </div>

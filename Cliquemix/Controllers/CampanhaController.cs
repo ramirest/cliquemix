@@ -99,15 +99,17 @@ namespace Cliquemix.Controllers
             //Caso negativo o sistema seta para a configuração padrão de nova campanha
             else
                 tbCampanha.csid = ProcFunc.RetornarStatusPadraoCampanha();
-
+            tbCampanha.QtdeCreditosInicio = db.tbDestaque.First(m => m.did == tbCampanha.did).qtCredito;
+            tbCampanha.QtdeCreditosConsumidos = 0;
             tbCampanha.pid = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());
             tbCampanha.ctid = Convert.ToInt32(Request.Form.Get("ctid"));
+            tbCampanha.pcid = db.tbDestaque.First(m => m.did == tbCampanha.did).pcid;
             if (ModelState.IsValid)
             {
                 db.tbCampanha.Add(tbCampanha);
                 db.SaveChanges();
 
-                ProcFunc.AtualizarCodTempAnunciosCampanha(tbCampanha.ctid, tbCampanha.cid);
+                ProcFunc.AtualizarCodTempAnunciosCampanha(tbCampanha.ctid, tbCampanha.cid, tbCampanha.did);
                 
                 //Salvar Log do Sistema
                 ProcFunc.SalvarLog(ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName()),
@@ -190,8 +192,28 @@ namespace Cliquemix.Controllers
             }
             if (tbCampanha.pid == ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName()))
             {
-                //ViewBag.acid = new SelectList(db.tbAnuncioCategoria, "acid", "dsCategoria");
-                //ViewBag.asid = new SelectList(db.tbAnuncioStatus, "asid", "dsStatus");
+                ViewBag.pcid = new SelectList(db.tbPacoteClique.OrderBy(p => p.qtdeCliques), "pcid", "qtdeCliques");
+                ViewBag.did = new SelectList(db.tbDestaque.OrderBy(d => d.dsDestaque), "did", "tituloDestaque");
+                
+                //Consultar e retornar a quantidade de créditos restante
+                try
+                {   ViewBag.CreditosRestante = tbCampanha.QtdeCreditosInicio - tbCampanha.QtdeCreditosConsumidos;   }
+                catch (Exception)
+                {   ViewBag.CreditosRestante = 0;   }
+
+                //Consultar e retornar a quantidade de cliques já efetuados
+                try
+                {   ViewBag.CliquesEfetuados = db.tbCampanhaAnuncio.First(m => m.cid == tbCampanha.cid).contCliquesAtual;   }
+                catch (Exception)
+                {   ViewBag.CliquesEfetuados = db.tbCampanhaAnuncio.First(m => m.cid == tbCampanha.cid).contCliquesAtual;   }
+
+                //Consultar e retornar a quantidade de cliques total e subtrair com a quantidade de cliques atual
+                try
+                {   ViewBag.CliquesRestantes = db.tbCampanhaAnuncio.First(m => m.cid == tbCampanha.cid).contCliquesFinal -
+                        ViewBag.CliquesEfetuados;    }
+                catch (Exception)
+                {   ViewBag.CliquesRestantes = 0;   }
+                
                 return View(tbCampanha);
             }
             else
@@ -234,23 +256,22 @@ namespace Cliquemix.Controllers
         {
             try
             {
-                    tbCampanhaAnuncio tbCampanhaAnuncio = new tbCampanhaAnuncio();
-                    if (ProcFunc.VerificarAnuncioDisponivelParaCampanha(taid))
-                    {
-                        tbCampanhaAnuncio.aid = taid;
-                        //tbCampanhaAnuncio.cid = pCodTempCampanha;
-                        tbCampanhaAnuncio.ctid = ctid;
-                        tbCampanhaAnuncio.casid = ProcFunc.RetornarStatusPadraoAnuncioDisponivelParaCampanha();
-                        tbCampanhaAnuncio.dtMovimento = DateTime.Now;
+                tbCampanhaAnuncio tbCampanhaAnuncio = new tbCampanhaAnuncio();
+                if (ProcFunc.VerificarAnuncioDisponivelParaCampanha(taid))
+                {
+                    tbCampanhaAnuncio.aid = taid;
+                    tbCampanhaAnuncio.ctid = ctid;
+                    tbCampanhaAnuncio.casid = ProcFunc.RetornarStatusPadraoAnuncioDisponivelParaCampanha();
+                    tbCampanhaAnuncio.dtMovimento = DateTime.Now;
 
-                        if (ModelState.IsValid)
-                        {
-                            db.tbCampanhaAnuncio.Add(tbCampanhaAnuncio);
-                            db.SaveChanges();
-                            ViewBag.Tudo = 3;
-                        }
-                        return null;
+                    if (ModelState.IsValid)
+                    {
+                        db.tbCampanhaAnuncio.Add(tbCampanhaAnuncio);
+                        db.SaveChanges();
+                        ViewBag.Tudo = 3;
                     }
+                    return null;
+                }
                 else
                 {
                     int codAnunciante = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());
@@ -395,23 +416,6 @@ namespace Cliquemix.Controllers
 
     }
 }
-
-
-
-/*
-
-foreach (var item in Model)
-            {
-                IEnumerable<SelectListItem> items = ((IEnumerable<SelectListItem>)ViewData["CurrID"]).ToList().Select(c => new SelectListItem
-                {
-                    Value = c.Value.ToString(),
-                    Text = c.Text.ToString(),
-                    Selected = Convert.ToInt32(c.Value) == item.CurrID
-                });
-*/
-
-
-
 
 
 

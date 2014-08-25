@@ -135,27 +135,43 @@
                                             <h4 class="page-header">Informações do Anúncio:</h4>
                                             <div class="form-group col-sm-4">
                                                 @Html.Label("Código do Anúncio")
-                                                @Html.TextBoxFor(model => model.aid, new { @class = "form-control disabled" })
+                                                @Html.TextBoxFor(model => model.aid, 
+                                                    new
+                                                    {
+                                                        @class = "form-control", disabled=""
+                                                    })
                                                 @Html.ValidationMessageFor(model => model.aid)
                                             </div>
 
                                             <div class="form-group col-lg-8">
                                                 @Html.Label("Título do Anúncio")
-                                                @Html.TextBoxFor(model => model.tituloAnuncio, new { @class = "form-control" })
+                                                @Html.TextBoxFor(model => model.tituloAnuncio, 
+                                                    new
+                                                    {
+                                                        @class = "form-control"
+                                                    })
                                                 @Html.ValidationMessageFor(model => model.tituloAnuncio)
                                             </div>
                                             <div class="clearfix"></div>
                                             <div class="form-group col-lg-6">
                                                 @Html.Label("Categoria do Anúncio")
                                                 <div class="clearfix"></div>
-                                                @Html.DropDownList("acid", null, string.Empty, new { style = "width:353px; height:34px" })
+                                                @Html.DropDownList("acid", null, string.Empty, 
+                                                    new
+                                                    {
+                                                        style = "width:353px; height:34px"
+                                                    })
                                                 @Html.ValidationMessageFor(model => model.acid)
                                             </div>
                                             
                                             <div class="form-group col-lg-6">
                                                 @Html.Label("URL do Anúncio")
                                                 <div class="clearfix"></div>
-                                                @Html.TextBoxFor(model => model.url, new { @class = "form-control", placeholder = "Http://" })
+                                                @Html.TextBoxFor(model => model.url, 
+                                                    new
+                                                    {
+                                                        @class = "form-control", placeholder = "Http://", disabled=""
+                                                    })
                                                 @Html.ValidationMessageFor(model => model.url)
                                             </div>
 
@@ -296,7 +312,7 @@
                                                 <div class="form-group col-lg-12"></div>
                                                 <button type="button" onclick=" $('#lnk3').click(); " class="btn btn-default">Anterior</button>
                                                 <button type="submit" value="Salvar" class="btn btn-default" onclick="atualizaDescAnuncio();">
-                                                    <i class="fa fa-floppy-o"></i>Salvar
+                                                    <i class="fa fa-floppy-o"></i> Salvar
                                                 </button>
                                             </div>
                                         </div>

@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Cliquemix.Models.tbDestaque>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.tituloDestaque)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.qtCredito)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tmpEspera)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dsDestaque)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.imgDestaque)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.qtDuracao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbDestaqueDuracao.descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbPacoteClique.tituloPacote)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tituloDestaque)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.qtCredito)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tmpEspera)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dsDestaque)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.imgDestaque)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.qtDuracao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbDestaqueDuracao.descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbPacoteClique.tituloPacote)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.did }) |
+            @Html.ActionLink("Details", "Details", new { id=item.did }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.did })
+        </td>
+    </tr>
+}
+
+</table>

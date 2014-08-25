@@ -78,6 +78,13 @@
 <input type="hidden" id="pCodAnuncio" name="pCodAnuncio"/>
 
 <div class="row">
+    <div class="col-lg-12">
+        <button class="btn btn-green">Criar Anúncio</button>
+    </div>
+    <div class="col-lg-12" style="min-height: 10px;"></div>
+</div>
+
+<div class="row">
     <!-- Basic Responsive Table -->
     <div class="col-lg-12">
         <div class="portlet portlet-default">
@@ -93,6 +100,7 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
+                                <th class="text-center">ID</th>
                                 <th class="text-center">Título</th>
                                 <th class="text-center">Categoria</th>
                                 <th class="text-center">Video</th>
@@ -106,6 +114,9 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
+                                    <td class="text-center">
+                                        @Html.DisplayFor(modelItem => item.aid)
+                                    </td>
                                     <td class="text-center">
                                         @Html.DisplayFor(modelItem => item.tituloAnuncio)
                                     </td>

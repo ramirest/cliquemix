@@ -31,6 +31,7 @@ namespace Cliquemix.Models
         public Nullable<int> ddid { get; set; }
         public Nullable<double> qtDuracao { get; set; }
         public Nullable<int> pcid { get; set; }
+        public Nullable<int> dsid { get; set; }
     
         public virtual ICollection<tbAnuncianteDestaque> tbAnuncianteDestaque { get; set; }
         public virtual ICollection<tbCampanha> tbCampanha { get; set; }
@@ -38,5 +39,6 @@ namespace Cliquemix.Models
         public virtual ICollection<tbDestaqueAnunciante> tbDestaqueAnunciante { get; set; }
         public virtual ICollection<tbPremioDestaque> tbPremioDestaque { get; set; }
         public virtual tbPacoteClique tbPacoteClique { get; set; }
+        public virtual tbDestaqueStatus tbDestaqueStatus { get; set; }
     }
 }

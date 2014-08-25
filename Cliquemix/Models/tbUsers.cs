@@ -20,6 +20,7 @@ namespace Cliquemix.Models
             this.tbAnuncioCodTemp = new HashSet<tbAnuncioCodTemp>();
             this.tbAnuncioLog = new HashSet<tbAnuncioLog>();
             this.tbBan = new HashSet<tbBan>();
+            this.tbCampanhaAnuncioConsumidor = new HashSet<tbCampanhaAnuncioConsumidor>();
             this.tbCreditoPromocional = new HashSet<tbCreditoPromocional>();
             this.tbFuncionalidadeLog = new HashSet<tbFuncionalidadeLog>();
             this.tbLogSistema = new HashSet<tbLogSistema>();
@@ -37,6 +38,7 @@ namespace Cliquemix.Models
         public virtual ICollection<tbAnuncioCodTemp> tbAnuncioCodTemp { get; set; }
         public virtual ICollection<tbAnuncioLog> tbAnuncioLog { get; set; }
         public virtual ICollection<tbBan> tbBan { get; set; }
+        public virtual ICollection<tbCampanhaAnuncioConsumidor> tbCampanhaAnuncioConsumidor { get; set; }
         public virtual ICollection<tbCreditoPromocional> tbCreditoPromocional { get; set; }
         public virtual ICollection<tbFuncionalidadeLog> tbFuncionalidadeLog { get; set; }
         public virtual ICollection<tbLogSistema> tbLogSistema { get; set; }

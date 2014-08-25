@@ -4,6 +4,7 @@ using System.IO;
 using System.Data.Common;
 using System.Data.Entity.Core.EntityClient;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Data;
 using System.Data.Entity;
@@ -228,15 +229,25 @@ namespace Cliquemix.Models
         #endregion
 
         #region "Atualizar Códigos Temporários dos Anúncios da Campanha"
-        public static void AtualizarCodTempAnunciosCampanha(int? pCodTempCampanha, int pCodAtualCampanha)
+        public static void AtualizarCodTempAnunciosCampanha(int? pCodTempCampanha, int pCodAtualCampanha, int?pCodDestaque)
         {
             try
             {
+                //Verifica qual é o destaque vinculado à campanha
+                var destaque = db.tbDestaque.First(m => m.did == pCodDestaque);
+                //Consulta a quantidade de cliques vinculado ao destaque
+                var QtdeCliquesFinal = db.tbPacoteClique.First(m => m.pcid == destaque.pcid).qtdeCliques;
+                //Lista o anúncio vinculado à campanha
                 var AnuncioCampanha = db.tbCampanhaAnuncio.Where(m => m.ctid == pCodTempCampanha).ToList();
                 foreach (var item in AnuncioCampanha)
                 {
                     db.Entry(item).State = EntityState.Modified;
                     item.cid = pCodAtualCampanha;
+                    item.contCliquesFinal = QtdeCliquesFinal;
+                    item.contCliquesAtual = 0;
+                    item.contCurtidas = 0;
+                    item.contComentarios = 0;
+                    item.contCompartilhadas = 0;
                     db.SaveChanges();
                 }
             }
@@ -321,6 +332,22 @@ namespace Cliquemix.Models
         {
             var a = (from status in db.tbConfigPadrao select status).First();
             return (int)a.spea;
+        }
+        #endregion
+
+        #region "Retornar o Código do Status Padrão para um Destaque Excluído"
+        public static int RetornarStatusPadraoDestaqueExcluido()
+        {
+            var a = (from status in db.tbConfigPadrao select status).First();
+            return (int)a.spde;
+        }
+        #endregion
+
+        #region "Retornar o Código do Status Padrão para um Destaque Disponível"
+        public static int RetornarStatusPadraoDestaqueDisponivel()
+        {
+            var a = (from status in db.tbConfigPadrao select status).First();
+            return (int)a.spdd;
         }
         #endregion
 

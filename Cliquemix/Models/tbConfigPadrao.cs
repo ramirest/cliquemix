@@ -27,6 +27,8 @@ namespace Cliquemix.Models
         public Nullable<int> spdc { get; set; }
         public Nullable<int> spcp { get; set; }
         public Nullable<int> qdptcp { get; set; }
+        public Nullable<int> spde { get; set; }
+        public Nullable<int> spdd { get; set; }
     
         public virtual tbAnuncioStatus tbAnuncioStatus { get; set; }
         public virtual tbAnuncioStatus tbAnuncioStatus1 { get; set; }
@@ -34,8 +36,10 @@ namespace Cliquemix.Models
         public virtual tbCampanhaAnuncioStatus tbCampanhaAnuncioStatus { get; set; }
         public virtual tbCampanhaStatus tbCampanhaStatus { get; set; }
         public virtual tbCampanhaStatus tbCampanhaStatus1 { get; set; }
-        public virtual tbUsersTipo tbUsersTipo { get; set; }
         public virtual tbCampanhaStatus tbCampanhaStatus2 { get; set; }
         public virtual tbCampanhaStatus tbCampanhaStatus3 { get; set; }
+        public virtual tbUsersTipo tbUsersTipo { get; set; }
+        public virtual tbDestaqueStatus tbDestaqueStatus { get; set; }
+        public virtual tbDestaqueStatus tbDestaqueStatus1 { get; set; }
     }
 }

@@ -1,0 +1,92 @@
+﻿@model Cliquemix.Models.tbDestaque
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>tbDestaque</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            @Html.LabelFor(model => model.tituloDestaque, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.tituloDestaque)
+                @Html.ValidationMessageFor(model => model.tituloDestaque)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.qtCredito, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.qtCredito)
+                @Html.ValidationMessageFor(model => model.qtCredito)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.tmpEspera, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.tmpEspera)
+                @Html.ValidationMessageFor(model => model.tmpEspera)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.dsDestaque, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.dsDestaque)
+                @Html.ValidationMessageFor(model => model.dsDestaque)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.imgDestaque, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.imgDestaque)
+                @Html.ValidationMessageFor(model => model.imgDestaque)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ddid, "ddid", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ddid", String.Empty)
+                @Html.ValidationMessageFor(model => model.ddid)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.qtDuracao, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.qtDuracao)
+                @Html.ValidationMessageFor(model => model.qtDuracao)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.pcid, "pcid", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("pcid", String.Empty)
+                @Html.ValidationMessageFor(model => model.pcid)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

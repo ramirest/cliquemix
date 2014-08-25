@@ -238,6 +238,7 @@
     <Compile Include="Controllers\Administrador\PrincipalAdministradorController.cs" />
     <Compile Include="Controllers\Administrador\UsersController.cs" />
     <Compile Include="Controllers\Anunciante\AnuncianteController.cs" />
+    <Compile Include="Controllers\Anunciante\DestaqueController.cs" />
     <Compile Include="Controllers\Anunciante\MenuAnuncianteController.cs" />
     <Compile Include="Controllers\Anunciante\MenuTopoAnuncianteController.cs" />
     <Compile Include="Controllers\Anunciante\PrincipalAnuncianteController.cs" />
@@ -249,7 +250,6 @@
     <Compile Include="Controllers\CreditoController.cs" />
     <Compile Include="Controllers\EnderecoController.cs" />
     <Compile Include="Controllers\Inicial\InicialController.cs" />
-    <Compile Include="Controllers\tbAnunciosController.cs" />
     <Compile Include="Controllers\TesteController.cs" />
     <Compile Include="Controllers\TipoUsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -276,15 +276,6 @@
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\PermissaoAcesso.cs" />
     <Compile Include="Models\ProcFunc.cs" />
-    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>Cliquemix.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sp_helpdiagrams_Result.cs">
-      <DependentUpon>Cliquemix.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>Cliquemix.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\tbAnunciante.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
@@ -400,6 +391,9 @@
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbDestaqueDuracao.cs">
+      <DependentUpon>Cliquemix.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbDestaqueStatus.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbEstado.cs">
@@ -907,7 +901,7 @@
     <Content Include="Views\RelatorioAnunciante\RelCamp.cshtml" />
     <Content Include="Views\RelatorioAnunciante\RelMov.cshtml" />
     <Content Include="Views\RelatorioAnunciante\RelPrem.cshtml" />
-    <Content Include="Views\Destaque\EscolheDestaque.cshtml" />
+    <Content Include="Views\Destaque\ComprarDestaque.cshtml" />
     <Content Include="Views\Destaque\ListDestaque.cshtml" />
     <Content Include="Views\Dialog\Index.cshtml" />
     <Content Include="Views\PerfilAnunciante\EditarPerfilDadosContato.cshtml" />
@@ -938,6 +932,18 @@
     <Content Include="Views\tbAnuncios\Details.cshtml" />
     <Content Include="Views\tbAnuncios\Edit.cshtml" />
     <Content Include="Views\tbAnuncios\Index.cshtml" />
+    <Content Include="Views\tbCampanhas\Create.cshtml" />
+    <Content Include="Views\tbCampanhas\Delete.cshtml" />
+    <Content Include="Views\tbCampanhas\Details.cshtml" />
+    <Content Include="Views\tbCampanhas\Edit.cshtml" />
+    <Content Include="Views\tbCampanhas\Index.cshtml" />
+    <Content Include="Views\Breadcrumbs\Breadcrumbs-Destaque-ListDestaque.cshtml" />
+    <Content Include="Views\Destaque\Create.cshtml" />
+    <Content Include="Views\Destaque\Delete.cshtml" />
+    <Content Include="Views\Destaque\Details.cshtml" />
+    <Content Include="Views\Destaque\Edit.cshtml" />
+    <Content Include="Views\Destaque\Index.cshtml" />
+    <Content Include="Views\Breadcrumbs\Breadcrumbs-Destaque-ComprarDestaque.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

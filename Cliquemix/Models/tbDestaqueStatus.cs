@@ -12,24 +12,20 @@ namespace Cliquemix.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tbAnuncioStatus
+    public partial class tbDestaqueStatus
     {
-        public tbAnuncioStatus()
+        public tbDestaqueStatus()
         {
-            this.tbAnuncio = new HashSet<tbAnuncio>();
-            this.tbAnuncioLog = new HashSet<tbAnuncioLog>();
+            this.tbDestaque = new HashSet<tbDestaque>();
             this.tbConfigPadrao = new HashSet<tbConfigPadrao>();
             this.tbConfigPadrao1 = new HashSet<tbConfigPadrao>();
-            this.tbConfigPadrao2 = new HashSet<tbConfigPadrao>();
         }
     
-        public int asid { get; set; }
-        public string dsStatus { get; set; }
+        public int dsid { get; set; }
+        public string dsDestaqueStatus { get; set; }
     
-        public virtual ICollection<tbAnuncio> tbAnuncio { get; set; }
-        public virtual ICollection<tbAnuncioLog> tbAnuncioLog { get; set; }
+        public virtual ICollection<tbDestaque> tbDestaque { get; set; }
         public virtual ICollection<tbConfigPadrao> tbConfigPadrao { get; set; }
         public virtual ICollection<tbConfigPadrao> tbConfigPadrao1 { get; set; }
-        public virtual ICollection<tbConfigPadrao> tbConfigPadrao2 { get; set; }
     }
 }

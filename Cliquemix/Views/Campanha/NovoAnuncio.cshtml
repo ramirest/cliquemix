@@ -48,7 +48,7 @@
             async: true,
             success: function () {
                 setTimeout(function() {
-                        success_message_demo();
+                    success_message_novoAnuncio();
                     },
                     setTimeout(function() {
                         limparAviso();
@@ -70,7 +70,7 @@
         Messenger().hideAll();
     }
 
-    function success_message_demo() {
+    function success_message_novoAnuncio() {
         Messenger.options = {
             extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
             theme: 'flat'
@@ -167,17 +167,6 @@
                                         Não existem anúncios disponíveis para essa campanha
                                     </label>
                                 }
-                                @*
-                            <thead class="rodape-tabela">
-                                <tr>
-                                    <th class="text-center">Título</th>
-                                    <th class="text-center">Ramo</th>
-                                    <th class="text-center">Video</th>
-                                    <th class="text-center">Imagem</th>
-                                    @*<th class="text-center">Data</th>
-                                    <th class="text-center">Selecione</th>
-                                </tr>
-                            </thead>*@
                             </tbody>
                         </table>
                     </div>

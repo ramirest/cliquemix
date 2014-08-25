@@ -11,7 +11,7 @@
             async: true,
             success: function () {
                 setTimeout(function() {
-                    success_message_demo();
+                    success_message_excluirAnuncio();
                 }, 
 
                 setTimeout(function () {
@@ -29,7 +29,7 @@
         Messenger().hideAll();
     }
 
-    function success_message_demo() {
+    function success_message_excluirAnuncio() {
         Messenger.options = {
             extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
             theme: 'flat'
@@ -48,7 +48,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th class="text-center">Código</th>
+                    <th class="text-center">ID</th>
                     <th class="text-center">Título</th>
                     <th class="text-center">Categoria</th>
                     <th class="text-center">Video</th>
@@ -146,7 +146,6 @@
                 <div class="clearfix"></div>
                 <div class="clearfix"></div>
             }
-
         </table>
     </div>
 </div>

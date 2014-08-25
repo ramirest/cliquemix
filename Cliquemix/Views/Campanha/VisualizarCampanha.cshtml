@@ -1,171 +1,304 @@
-﻿<div class="row">
-    <!-- begin LEFT COLUMN -->
-    <div class="col-lg-3">
-        <div class="row">
-            <!-- Basic Form Example -->
-            <div class="col-lg-12">
-                <div class="portlet portlet-default" style="margin-top:2%;" >
-                    <div class=" portlet-heading">
-                    <div class="portlet-title">
-                        <h4><i class="fa fa-clock-o"></i> Temporada</h4>
-                    </div>
-                    <div class="portlet-widgets">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#daTemporada"><i class="fa fa-chevron-down"></i></a>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                    <div id="daTemporada" class="panel-collapse collapse in">
-                        <div class="portlet-body" style="min-height:252px;">
-                            <form role="form">
-                                <div class="form-group">
-                                    <i class="fa fa-thumbs-o-up color-theme"></i>
-                                    <label for="dtInicio" class="control-label">Início</label>
-                                    <input id="dtInicio" type="text" class="form-control" value="12/11/2013  15:30:00">
-                                </div>
-                                <div class="form-group">
-                                    <i class="fa fa-thumbs-o-down color-theme"></i>
-                                    <label for="dtTermino" class="control-label">Término</label>
-                                    <input id="dtTermino" type="text" class="form-control " value="12/12/2013  15:30:00">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+﻿@using Cliquemix.Models;
+@using Microsoft.Ajax.Utilities
+@using Microsoft.AspNet.Identity
+@model Cliquemix.Models.tbCampanha
 
+<link href="~/Content/demo.css" rel="stylesheet">
 
-    <div class="col-lg-3">
-        <div class="row">
-            <!-- Basic Form Example -->
-            <div class="col-lg-12">
-                <div class="portlet portlet-default" style="margin-top:2%;">
-                    <div class="portlet-heading">
-                        <div class="portlet-title">
-                            <h4><i class="fa fa-star"></i> Destaque</h4>
-                        </div>
-                        <div class="portlet-widgets">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#doPacote"><i class="fa fa-chevron-down"></i></a>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div id="doPacote" class="panel-collapse collapse in">
-                        <div class="portlet-body" >
-                            <form role="form">
-                            <div class="form-group">
-                                <i class="fa fa-dropbox color-theme"></i>
-                                <label for="">Pacote</label>
-                                <input type="text" class="form-control" value="Básico">
-                            </div>
-                            <div class="form-group">
-                                <i class="fa fa-clock-o color-theme"></i>
-                                <label for="">Tempo de Espera</label>
-                                <input type="text" class="form-control" value="30 s">
-                            </div>
-
-                            <div class="form-group">
-                                <i class="fa  fa-hand-o-down color-theme"></i>
-                                <label for="">Qt. Max Cliques</label>
-                                <input type="text" class="form-control" value="1000">
-                            </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="col-lg-3">
-        <div class="row">
-            <!-- Basic Form Example -->
-            <div class="col-lg-12">
-                <div class="portlet portlet-default" style="margin-top:2%;">
-                    <div class="portlet-heading">
-                        <div class="portlet-title">
-                            <h4><i class="glyphicon glyphicon-copyright-mark"></i> Créditos</h4>
-                        </div>
-                        <div class="portlet-widgets">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#doCredito"><i class="fa fa-chevron-down"></i></a>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div id="doCredito" class="panel-collapse collapse in">
-                        <div class="portlet-body">
-                            <form role="form">
-                                <div class="form-group">
-                                    <i class="glyphicon glyphicon-copyright-mark color-theme"></i>
-                                    <label for="">Créditos depositados</label>
-                                    <input type="text" class="form-control" value="200.0">
-                                </div>
-                                <div class="form-group">
-                                    <i class="glyphicon glyphicon-copyright-mark color-theme"></i>
-                                    <label for="">Créditos consumidos</label>
-                                    <input type="text" class="form-control" value="50.0">
-                                </div>
-
-                                <div class="form-group">
-                                    <i class="glyphicon glyphicon-copyright-mark color-theme"></i>
-                                    <label for="">Créditos Restantes</label>
-                                    <input type="text" class="form-control" value="150.0">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="col-lg-3">
-        <div class="row">
-            <!-- Basic Form Example -->
-            <div class="col-lg-12">
-                <div class="portlet portlet-default" style="margin-top:2%;">
-                    <div class="portlet-heading">
-                        <div class="portlet-title">
-                            <h4><i class="fa fa-hand-o-down"></i> Cliques</h4>
-                        </div>
-                        <div class="portlet-widgets">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#doClique"><i class="fa fa-chevron-down"></i></a>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div id="doClique" class="panel-collapse collapse in">
-                        <div class="portlet-body" style="min-height:253px;">
-                            <form role="form">
-                                <div class="form-group">
-                                    <i class="fa fa-hand-o-down color-theme"></i>
-                                    <label for="">Cliques efetuados</label>
-                                    <input type="text" class="form-control" value="953">
-                                </div>
-
-                                <div class="form-group">
-                                    <i class="fa fa-hand-o-down color-theme"></i>
-                                    <label for="">Cliques restantes</label>
-                                    <input type="text" class="form-control" value="47">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="page-title">
+            <h1>
+                Campanha
+                <small>Visualizar</small>
+            </h1>
+            @RenderPage("~/Views/Breadcrumbs/Breadcrumbs-Campanha-VisualizarCampanha.cshtml")
         </div>
     </div>
 </div>
-            
 
 <div class="row">
+    
+    <!-- Informações Básicas -->
+    <div class="col-lg-6">
+        <div class="portlet portlet-default">
+            <div class=" portlet-heading">
+                <div class="portlet-title">
+                    <h4><i class="fa fa-info-circle"></i> Informações Básicas</h4>
+                </div>
+                <div class="portlet-widgets">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#InfoBasicaCampanha"><i class="fa fa-chevron-down"></i></a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div id="InfoBasicaCampanha" class="panel-collapse collapse in">
+                <div class="portlet-body" style="min-height:240px;">
+                    <div class="form-group col-lg-4">
+                        @Html.Label("ID", new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.cid, new
+                        {
+                            @class = "form-control",
+                            disabled = "",
+                            placeholder = "ID"
+                        })
+                    </div>
+                    <div class="form-group col-lg-8">
+                        @Html.Label("Status Atual", new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.tbCampanhaStatus.dsCampStatus, new
+                        {
+                            @class = "form-control",
+                            disabled = "",
+                            placeholder = "Status Atual"
+                        })
+                    </div>
+                    <div class="form-group col-lg-12">
+                        @Html.Label("Título da Campanha", new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.tituloCampanha, new
+                        {
+                            @class = "form-control",
+                            disabled = "",
+                            placeholder = "Título da Campanha"
+                        })
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <!-- Advanced Modal Trigger -->
+                        <button class="btn btn-green" data-toggle="modal" data-target="#graficos" style="width: 100px;">
+                            Gráficos
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- Estatísticas da Campanha -->
+    <div class="col-lg-3">
+        <div class="portlet portlet-default">
+            <div class=" portlet-heading">
+                <div class="portlet-title">
+                    <h4><i class="fa fa-euro"></i> Estatísticas</h4>
+                </div>
+                <div class="portlet-widgets">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#estatisticas"><i class="fa fa-chevron-down"></i></a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div id="estatisticas" class="panel-collapse collapse in">
+                <div class="portlet-body" style="min-height:240px;">
+                    <div class="form-group col-lg-12">
+                        <i class="fa fa-thumbs-o-up color-theme"></i>
+                        @Html.Label("Curtidas", new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.tbCampanhaAnuncio.First().contCurtidas, new
+                        {
+                            @class = "form-control",
+                            disabled = "",
+                            placeholder = "Curtidas"
+                        })
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <i class="fa  fa-comments-o color-theme"></i>
+                        @Html.Label("Comentários", new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.tbCampanhaAnuncio.First().contComentarios, new
+                        {
+                            @class = "form-control",
+                            disabled = "",
+                            placeholder = "Comentários"
+                        })
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <i class="fa fa-share-square-o color-theme"></i>
+                        @Html.Label("Compartilhados", new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.tbCampanhaAnuncio.First().contCompartilhadas, new
+                        {
+                            @class = "form-control",
+                            disabled = "",
+                            placeholder = "Compartilhados"
+                        })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+    
+    
+    <!-- Informações dos Créditos -->
+    <div class="col-lg-3">
+        <div class="portlet portlet-default">
+            <div class=" portlet-heading">
+                <div class="portlet-title">
+                    <h4><i class="glyphicon glyphicon-copyright-mark"></i> Créditos</h4>
+                </div>
+                <div class="portlet-widgets">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#doCredito"><i class="fa fa-chevron-down"></i></a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div id="doCredito" class="panel-collapse collapse in">
+                <div class="portlet-body" style="min-height:240px;">
+                    <div class="form-group col-lg-12">
+                        <i class="glyphicon glyphicon-copyright-mark color-theme"></i>
+                        @Html.Label("Créditos Inicial", new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.QtdeCreditosInicio, new
+                        {
+                            @class = "form-control",
+                            disabled = "",
+                            placeholder = "Créditos Inicial"
+                        })
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <i class="glyphicon glyphicon-copyright-mark color-theme"></i>
+                        @Html.Label("Créditos Consumidos", new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.QtdeCreditosConsumidos, new
+                        {
+                            @class = "form-control",
+                            disabled = "",
+                            placeholder = "Créditos Consumidos"
+                        })
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <i class="fa fa-hand-o-down color-theme"></i>
+                        @Html.Label("Créditos Restantes", new { @class = "control-label" })
+                        <input type="text" class="form-control" disabled="" placeholder="Créditos Restantes"
+                               value="@ViewBag.CreditosRestante" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Informações da Temporada -->
+    <div class="col-lg-3">
+        <div class="portlet portlet-default">
+            <div class=" portlet-heading">
+                <div class="portlet-title">
+                    <h4><i class="fa fa-clock-o"></i> Temporada</h4>
+                </div>
+                <div class="portlet-widgets">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#daTemporada"><i class="fa fa-chevron-down"></i></a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div id="daTemporada" class="panel-collapse collapse in">
+                <div class="portlet-body" style="min-height:180px;">
+                    <div class="form-group col-lg-12">
+                        <i class="fa fa-thumbs-o-up color-theme"></i>
+                        @Html.Label("Início", new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.dtInicio, new
+                        {
+                            @class = "form-control",
+                            disabled = "",
+                            placeholder = "Início"
+                        })
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <i class="fa fa-thumbs-o-down color-theme"></i>
+                        @Html.Label("Término", new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.dtTermino, new
+                        {
+                            @class = "form-control",
+                            disabled = "",
+                            placeholder = "Término"
+                        })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+    
+    
+    <!-- Informações dos Cliques -->
+    <div class="col-lg-3">
+        <div class="portlet portlet-default">
+            <div class=" portlet-heading">
+                <div class="portlet-title">
+                    <h4><i class="fa fa-hand-o-down"></i> Cliques</h4>
+                </div>
+                <div class="portlet-widgets">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#doClique"><i class="fa fa-chevron-down"></i></a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div id="doClique" class="panel-collapse collapse in">
+                <div class="portlet-body" style="min-height:180px;">
+                    <div class="form-group col-lg-12">
+                        <i class="fa fa-hand-o-down color-theme"></i>
+                        @Html.Label("Cliques Efetuados", new { @class = "control-label" })
+                        <input type="text" class="form-control" disabled="" placeholder="Cliques Efetuados"
+                               id="cliquesEfetuados" name="cliquesEfetuados" value="@ViewBag.CliquesEfetuados" />
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <i class="fa fa-hand-o-down color-theme"></i>
+                        @Html.Label("Cliques Restantes", new { @class = "control-label" })
+                        <input type="text" class="form-control" disabled="" placeholder="Cliques Restantes"
+                               id="CliquesRestantes" name="CliquesRestantes" value="@ViewBag.CliquesRestantes" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+    
+
+    <!-- Informações do Destaque -->
+    <div class="col-lg-6">
+        <div class="portlet portlet-default">
+            <div class=" portlet-heading">
+                <div class="portlet-title">
+                    <h4><i class="fa fa-star"></i> Informações do Destaque</h4>
+                </div>
+                <div class="portlet-widgets">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#doPacote"><i class="fa fa-chevron-down"></i></a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div id="doPacote" class="panel-collapse collapse in">
+                <div class="portlet-body" style="min-height:180px;">
+                    <div class="form-group col-lg-12">
+                        <i class="fa fa-dropbox color-theme"></i>
+                        @Html.Label("Destaque", new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.tbDestaque.tituloDestaque, new
+                        {
+                            @class = "form-control",
+                            disabled = "",
+                            placeholder = "Destaque"
+                        })
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <i class="fa fa-clock-o color-theme"></i>
+                        @Html.Label("Tempo de Espera", new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.tbDestaque.tmpEspera, new
+                        {
+                            @class = "form-control",
+                            disabled = "",
+                            placeholder = "Tempo de Espera"
+                        })
+                    </div>
+                    
+                    <div class="form-group col-lg-6">
+                        <i class="fa fa-clock-o color-theme"></i>
+                        @Html.Label("Qtde" +
+                                    " Máx de Cliques", new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.tbPacoteClique.qtdeCliques, new
+                        {
+                            @class = "form-control",
+                            disabled = "",
+                            placeholder = "Qtde. Máx. de Cliques"
+                        })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
     <!-- Basic Responsive Table -->
     <div class="col-lg-12">
         <div class="portlet portlet-default">
             <div class="portlet-heading">
                 <div class="portlet-title">
-
-                    <h4 class="flutuar"><i class="fa fa-list-alt"></i> Lista de Anúncios</h4>
+                    <h4 class="flutuar"><i class="fa fa-picture-o"></i> Anúncios</h4>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -174,61 +307,53 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th class="text-center">#</th>
                                 <th class="text-center">Título</th>
-                                <th class="text-center">Ramo</th>
+                                <th class="text-center">Categoria</th>
                                 <th class="text-center">Video</th>
                                 <th class="text-center">Imagem</th>
-                                <th class="text-center">Ações</th>
+                                <th class="text-center">Data de Criação</th>
+                                @*<th class="text-center">Ações</th>*@
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="text-center">1</td>
-                                <td class="text-center">Tecidos Bahia</td>
-                                <td class="text-center">Roupa</td>
-                                <td class="text-center">Sim</td>
-                                <td class="text-center">Sim</td>
                                 <td class="text-center">
+                                    @Html.DisplayFor(modelItem => modelItem.tbCampanhaAnuncio.First().tbAnuncio.tituloAnuncio) @* Título do Anúncio *@
+                                </td>
+                                <td class="text-center">
+                                    @Html.DisplayFor(modelItem => modelItem.tbCampanhaAnuncio.First().tbAnuncio.tbAnuncioCategoria.dsCategoria) @* Ramo de Atividade *@
+                                </td>
+                                <td class="text-center">
+                                    @if (Model.tbCampanhaAnuncio.First().tbAnuncio.videoAnuncio == null) // Anúncio tem Vídeo ?
+                                    {
+                                        @Html.Label("Não")
+                                    }
+                                    else
+                                    {
+                                        @Html.Label("Sim")
+                                    }
+
+                                </td>
+                                <td class="text-center">
+                                    @if (Model.tbCampanhaAnuncio.First().tbAnuncio.tbAnuncioImg.Any()) //Anúncio tem Imagem?
+                                    {
+                                        @Html.Label("Sim")
+                                    }
+                                    else
+                                    {
+                                        @Html.Label("Não")
+                                    }
+
+                                </td>
+                                <td class="text-center">
+                                    @Html.DisplayFor(modelItem => modelItem.tbCampanhaAnuncio.First().dtMovimento) @* Data de Vínculo do Anúncio à Campanha *@
+                                </td>
+                                @*<td class="text-center">
                                     <a href="#" title="Visualizar" style="padding-right: 10px;">
                                         <i class="fa fa-search"></i>
                                     </a>
-                                </td>
+                                </td>*@
                             </tr>
-                            <tr>
-                                <td class="text-center">2</td>
-                                <td class="text-center">B & Gamma</td>
-                                <td class="text-center">TI</td>
-                                <td class="text-center">Não</td>
-                                <td class="text-center">Sim</td>
-                                <td class="text-center">
-                                    <a href="#" title="Visualizar" style="padding-right: 10px;">
-                                        <i class="fa fa-search"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">3</td>
-                                <td class="text-center">Pasta Dent..</td>
-                                <td class="text-center">Odontologia</td>
-                                <td class="text-center">Sim</td>
-                                <td class="text-center">Não</td>
-                                <td class="text-center">
-                                    <a href="#" title="Visualizar" style="padding-right: 10px;">
-                                        <i class="fa fa-search"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        <thead class="rodape-tabela">
-                            <tr>
-                                <th class="text-center">#</th>
-                                <th class="text-center">Título</th>
-                                <th class="text-center">Ramo</th>
-                                <th class="text-center">Video</th>
-                                <th class="text-center">Imagem</th>
-                                <th class="text-center">Ações</th>
-                            </tr>
-                        </thead>
                         </tbody>
                     </table>
                 </div>
@@ -238,11 +363,151 @@
     </div>
 </div>
 
-<div class="form-group col-lg-offset-11">
+<!-- Flex Modal -->
+<div class="modal modal-flex fade" id="graficos" tabindex="-1" role="dialog" aria-labelledby="flexModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 750px;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="flexModalLabel">Estatísticas Gráficas</h4>
+            </div>
+            <div class="modal-body" style="height: 300px;">
+                <!-- Line Chart Example -->
+                <div class="col-lg-12" style="display: none;">
+                    <div class="portlet portlet-default">
+                        <div class="portlet-heading">
+                            <div class="portlet-title">
+                                <h4>Line Chart</h4>
+                            </div>
+                            <div class="portlet-widgets">
+                                <a href="javascript:;"><i class="fa fa-refresh"></i></a>
+                                <span class="divider"></span>
+                                <a data-toggle="collapse" data-parent="#accordion" href="#areaChart"><i class="fa-chevron-down fa"></i></a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div id="areaChart" class="panel-collapse collapse in">
+                            <div class="portlet-body">
+                                <div class="flot-chart">
+                                    <div class="flot-chart-content" id="flot-chart-line"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col-lg-12 -->
+                <!-- Multiple Axes Example -->
+                <div class="col-lg-12" style="display: none;">
+                    <div class="portlet portlet-green">
+                        <div class="portlet-heading">
+                            <div class="portlet-title">
+                                <h4>Multiple Axes Line Chart</h4>
+                            </div>
+                            <div class="portlet-widgets">
+                                <a href="javascript:;"><i class="fa fa-refresh"></i></a>
+                                <span class="divider"></span>
+                                <a data-toggle="collapse" data-parent="#accordion" href="#lineChart"><i class="fa fa-chevron-down"></i></a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div id="lineChart" class="panel-collapse collapse in">
+                            <div class="portlet-body">
+                                <div class="flot-chart">
+                                    <div class="flot-chart-content" id="flot-chart-multiple-axes"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col-lg-12 -->
+                <!-- Bar Chart Example -->
+                <div class="col-lg-6">
+                    <div class="portlet portlet-blue">
+                        <div class="portlet-heading">
+                            <div class="portlet-title">
+                                <h4>Dias Mais Clicados</h4>
+                            </div>
+                            <div class="portlet-widgets">
+                                <a href="javascript:;"><i class="fa fa-refresh"></i></a>
+                                <span class="divider"></span>
+                                <a data-toggle="collapse" data-parent="#accordion" href="#barChart"><i class="fa fa-chevron-down"></i></a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div id="barChart" class="panel-collapse collapse in">
+                            <div class="portlet-body">
+                                <div class="flot-chart">
+                                    <div class="flot-chart-content" id="flot-chart-bar"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col-lg-6 -->
+                <!-- Pie Chart Example -->
+                <div class="col-lg-6">
+                    <div class="portlet portlet-orange">
+                        <div class="portlet-heading">
+                            <div class="portlet-title">
+                                <h4>Turnos Mais Clicados</h4>
+                            </div>
+                            <div class="portlet-widgets">
+                                <a href="javascript:;"><i class="fa fa-refresh"></i></a>
+                                <span class="divider"></span>
+                                <a data-toggle="collapse" data-parent="#accordion" href="#donutChart"><i class="fa fa-chevron-down"></i></a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div id="donutChart" class="panel-collapse collapse in">
+                            <div class="portlet-body">
+                                <div class="flot-chart">
+                                    <div class="flot-chart-content" id="flot-chart-pie"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col-lg-6 -->
+                <!-- Moving Line Chart Example -->
+                <div class="col-lg-6" style="display: none;">
+                    <div class="portlet portlet-red">
+                        <div class="portlet-heading">
+                            <div class="portlet-title">
+                                <h4>Moving Line Chart</h4>
+                            </div>
+                            <div class="portlet-widgets">
+                                <a href="javascript:;"><i class="fa fa-refresh"></i></a>
+                                <span class="divider"></span>
+                                <a data-toggle="collapse" data-parent="#accordion" href="#movingLineChart"><i class="fa fa-chevron-down"></i></a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div id="movingLineChart" class="panel-collapse collapse in">
+                            <div class="portlet-body">
+                                <div class="flot-chart">
+                                    <div class="flot-chart-content" id="flot-chart-moving-line"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col-lg-6 -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 
-    <button type="button" class="btn btn-default" id="save" value="save" style="margin-left:19%;">
-        Fechar
-    </button>
+
+<div class="form-group col-lg-offset-9">
+    <a href="~/Campanha/ListCampanha" class="btn btn-default" style="margin-left: 28%;">
+        <i class="fa fa-angle-double-left"></i> Listar Campanhas
+    </a>
 </div>
 
 

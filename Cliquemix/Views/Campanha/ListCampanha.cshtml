@@ -4,7 +4,7 @@
 @model PagedList.IPagedList<Cliquemix.Models.tbCampanha>
 
 <script>
-    function Delete() {
+    function DesativarCampanha() {
         var a = document.getElementById('pCodCampanha').value;
         $.ajax(
         {
@@ -31,7 +31,7 @@
         Messenger().hideAll();
     }
 
-    function retornaCodAnuncio(item) {
+    function retornaCodCampanha(item) {
         document.getElementById('pCodCampanha').value = item;
     }
 
@@ -41,7 +41,7 @@
             theme: 'flat'
         }
         Messenger().post({
-            message: 'A Campanha selecionada foi excluída com sucesso!',
+            message: 'A Campanha selecionada foi desativada com sucesso!',
             type: 'success',
             showCloseButton: true
         });
@@ -78,6 +78,14 @@
 <input type="hidden" id="pCodCampanha" name="pCodCampanha" />
 
 <div class="row">
+    <div class="col-lg-12">
+        <button class="btn btn-green">Criar Campanha</button>
+    </div>
+    <div class="col-lg-12" style="min-height: 10px;"></div>
+</div>
+
+
+<div class="row">
     <!-- Basic Responsive Table -->
     <div class="col-lg-12">
         <div class="portlet portlet-default">
@@ -93,9 +101,11 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
+                                <th class="text-center">ID</th>
                                 <th class="text-center">Título</th>
                                 <th class="text-center">Data de Início</th>
                                 <th class="text-center">Data de Término</th>
+                                <th class="text-center">Anúncios</th>
                                 <th class="text-center">Status</th>
                                 <th class="text-center">Ações</th>
                             </tr>
@@ -104,6 +114,9 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
+                                    <td class="text-center">
+                                        @Html.DisplayFor(modelItem => item.cid)
+                                    </td>
                                     <td class="text-center">
                                         @Html.DisplayFor(modelItem => item.tituloCampanha)
                                     </td>
@@ -114,14 +127,24 @@
                                         @Html.DisplayFor(modelItem => item.dtTermino)
                                     </td>
                                     <td class="text-center">
+                                        @if (item.tbCampanhaAnuncio.Count > 0) //Verifica se a campanha contém anúncios
+                                        {
+                                            @Html.Label("Sim", new { @style = "font-weight: normal" })
+                                        }
+                                        else
+                                        {
+                                            @Html.Label("Não", new { @style = "font-weight: normal" })
+                                        }
+                                    </td>
+                                    <td class="text-center">
                                         @Html.DisplayFor(modelItem => item.tbCampanhaStatus.dsCampStatus)
                                     </td>
                                     <td class="text-center">
                                         <a href="/Campanha/VisualizarCampanha/@item.cid" title="Visualizar" style="padding-right: 10px;">
                                             <i class="fa fa-search"></i>
                                         </a>
-                                        <a style="color: inherit" href="#excluirModal" data-toggle="modal" data-target="#excluirModal" onclick="retornaCodCampanha(@item.cid);"
-                                           data-placement="top" title="Desativar Campanha">
+                                        <a style="color: inherit" href="#excluirModal" data-toggle="modal" data-target="#excluirModal" 
+                                           onclick="retornaCodCampanha(@item.cid);" data-placement="top" title="Desativar Campanha">
                                             <i class="fa fa-pause"></i>
                                         </a>
                                     </td>
@@ -181,17 +204,18 @@
 </div>
 
 
-<div class="modal modal-flex fade center-block text-center" id="excluirModal" tabindex="-1" role="dialog" aria-labelledby="flexModalLabel" aria-hidden="true" style="display: none;">
+<div class="modal modal-flex fade center-block text-center" id="excluirModal" tabindex="-1" role="dialog" 
+     aria-labelledby="flexModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
         <div class="modal-content" style="width: 400px;">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h4 class="modal-title" id="flexModalLabel">
-                    <i class="fa fa-trash-o"></i>  Deseja Excluir?
+                    <i class="fa fa-trash-o"></i>  Deseja Desativar?
                 </h4>
             </div>
             <div class="modal-body">
-                <p>Selecione <strong>"Desativar Campanha"</strong> para interromper a publicação.</p>
+                <p>Selecione <strong>"Desativar"</strong> para interromper a publicação.</p>
             </div>
             <div class="modal-footer">
                 <button type="button" id="btnListCampanhaCancelarExcluir" name="btnListCampanhaCancelarExcluir"
@@ -199,8 +223,8 @@
                     Cancelar
                 </button>
                 <button type="button" id="btnListCampanhaDesativarCampanha" name="btnListCampanhaDesativarCampanha"
-                        class="btn btn-green" onclick="Delete();">
-                    <strong>Desativar Campanha</strong>
+                        class="btn btn-green" onclick="DesativarCampanha();">
+                    <strong>Desativar</strong>
                 </button>
             </div>
         </div>

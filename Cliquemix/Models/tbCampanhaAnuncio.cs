@@ -25,11 +25,16 @@ namespace Cliquemix.Models
         public int casid { get; set; }
         public Nullable<System.DateTime> dtMovimento { get; set; }
         public Nullable<int> ctid { get; set; }
+        public Nullable<int> contCliquesFinal { get; set; }
+        public Nullable<int> contCliquesAtual { get; set; }
+        public Nullable<int> contCurtidas { get; set; }
+        public Nullable<int> contComentarios { get; set; }
+        public Nullable<int> contCompartilhadas { get; set; }
     
+        public virtual tbAnuncio tbAnuncio { get; set; }
         public virtual tbCampanha tbCampanha { get; set; }
         public virtual ICollection<tbCampanhaAnuncioConsumidor> tbCampanhaAnuncioConsumidor { get; set; }
         public virtual tbCampanhaAnuncioStatus tbCampanhaAnuncioStatus { get; set; }
         public virtual tbCampanhaTmp tbCampanhaTmp { get; set; }
-        public virtual tbAnuncio tbAnuncio { get; set; }
     }
 }

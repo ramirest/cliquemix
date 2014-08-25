@@ -1,0 +1,89 @@
+﻿@model Cliquemix.Models.tbDestaque
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>tbDestaque</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tituloDestaque)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tituloDestaque)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qtCredito)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qtCredito)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tmpEspera)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tmpEspera)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dsDestaque)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dsDestaque)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.imgDestaque)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.imgDestaque)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qtDuracao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qtDuracao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbDestaqueDuracao.descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbDestaqueDuracao.descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbPacoteClique.tituloPacote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbPacoteClique.tituloPacote)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

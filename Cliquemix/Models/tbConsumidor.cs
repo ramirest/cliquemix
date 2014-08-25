@@ -14,17 +14,11 @@ namespace Cliquemix.Models
     
     public partial class tbConsumidor
     {
-        public tbConsumidor()
-        {
-            this.tbCampanhaAnuncioConsumidor = new HashSet<tbCampanhaAnuncioConsumidor>();
-        }
-    
         public int cid { get; set; }
         public int uid { get; set; }
         public Nullable<int> leuTermo { get; set; }
         public int tid { get; set; }
     
-        public virtual ICollection<tbCampanhaAnuncioConsumidor> tbCampanhaAnuncioConsumidor { get; set; }
         public virtual tbTos tbTos { get; set; }
     }
 }

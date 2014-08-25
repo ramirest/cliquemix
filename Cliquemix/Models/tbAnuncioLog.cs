@@ -23,8 +23,8 @@ namespace Cliquemix.Models
         public string dsMsgError { get; set; }
         public string dsControle { get; set; }
     
+        public virtual tbAnuncio tbAnuncio { get; set; }
         public virtual tbAnuncioStatus tbAnuncioStatus { get; set; }
         public virtual tbUsers tbUsers { get; set; }
-        public virtual tbAnuncio tbAnuncio { get; set; }
     }
 }

@@ -20,12 +20,12 @@ namespace Cliquemix.Models
         }
     
         public int cacid { get; set; }
-        public int cid { get; set; }
         public int caid { get; set; }
-        public int contCliqueConsu { get; set; }
+        public Nullable<int> uid { get; set; }
+        public Nullable<bool> waitTimeOut { get; set; }
     
         public virtual tbCampanhaAnuncio tbCampanhaAnuncio { get; set; }
         public virtual ICollection<tbPremioConsumidor> tbPremioConsumidor { get; set; }
-        public virtual tbConsumidor tbConsumidor { get; set; }
+        public virtual tbUsers tbUsers { get; set; }
     }
 }
