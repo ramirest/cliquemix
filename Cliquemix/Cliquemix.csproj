@@ -490,6 +490,7 @@
     <Content Include="Content\css-master-slider\loading-2-light.gif" />
     <Content Include="Content\css-master-slider\loading-2.gif" />
     <Content Include="Content\css-master-slider\masterslider.css" />
+    <Content Include="Content\css-master-slider\ms-lightbox.css" />
     <Content Include="Content\css-master-slider\ms-partialview.css" />
     <Content Include="Content\css-master-slider\prettyPhoto.css" />
     <Content Include="Content\css-master-slider\video-close-btn.png" />

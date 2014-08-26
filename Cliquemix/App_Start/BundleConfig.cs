@@ -39,11 +39,10 @@ namespace Cliquemix
 
 
             bundles.Add(new ScriptBundle("~/bundles/js-masterslider").Include(
-                       "~/Scripts/js-master-slider/jquery.easing.min.js",
-                       "~/Scripts/js-master-slider/masterslider.min.js",
+                        "~/Scripts/js-master-slider/jquery.easing.min.js",   
+                        "~/Scripts/js-master-slider/masterslider.min.js",                                           
                        "~/Scripts/js-master-slider/masterslider.partialview.dev.js",
-                       "~/Scripts/js-master-slider/jquery.prettyPhoto.js",
-                       "~/Scripts/js-master-slider/"
+                       "~/Scripts/js-master-slider/jquery.prettyPhoto.js"                       
                         ));
 
 
