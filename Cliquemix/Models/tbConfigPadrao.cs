@@ -38,8 +38,8 @@ namespace Cliquemix.Models
         public virtual tbCampanhaStatus tbCampanhaStatus1 { get; set; }
         public virtual tbCampanhaStatus tbCampanhaStatus2 { get; set; }
         public virtual tbCampanhaStatus tbCampanhaStatus3 { get; set; }
-        public virtual tbUsersTipo tbUsersTipo { get; set; }
         public virtual tbDestaqueStatus tbDestaqueStatus { get; set; }
         public virtual tbDestaqueStatus tbDestaqueStatus1 { get; set; }
+        public virtual tbUsersTipo tbUsersTipo { get; set; }
     }
 }

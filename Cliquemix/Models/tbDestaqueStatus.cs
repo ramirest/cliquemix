@@ -16,16 +16,16 @@ namespace Cliquemix.Models
     {
         public tbDestaqueStatus()
         {
-            this.tbDestaque = new HashSet<tbDestaque>();
             this.tbConfigPadrao = new HashSet<tbConfigPadrao>();
             this.tbConfigPadrao1 = new HashSet<tbConfigPadrao>();
+            this.tbDestaque = new HashSet<tbDestaque>();
         }
     
         public int dsid { get; set; }
         public string dsDestaqueStatus { get; set; }
     
-        public virtual ICollection<tbDestaque> tbDestaque { get; set; }
         public virtual ICollection<tbConfigPadrao> tbConfigPadrao { get; set; }
         public virtual ICollection<tbConfigPadrao> tbConfigPadrao1 { get; set; }
+        public virtual ICollection<tbDestaque> tbDestaque { get; set; }
     }
 }

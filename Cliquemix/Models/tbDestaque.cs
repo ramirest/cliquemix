@@ -38,7 +38,7 @@ namespace Cliquemix.Models
         public virtual tbDestaqueDuracao tbDestaqueDuracao { get; set; }
         public virtual ICollection<tbDestaqueAnunciante> tbDestaqueAnunciante { get; set; }
         public virtual ICollection<tbPremioDestaque> tbPremioDestaque { get; set; }
-        public virtual tbPacoteClique tbPacoteClique { get; set; }
         public virtual tbDestaqueStatus tbDestaqueStatus { get; set; }
+        public virtual tbPacoteClique tbPacoteClique { get; set; }
     }
 }

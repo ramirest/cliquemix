@@ -64,6 +64,7 @@ namespace Cliquemix.Models
         public virtual DbSet<tbDestaque> tbDestaque { get; set; }
         public virtual DbSet<tbDestaqueAnunciante> tbDestaqueAnunciante { get; set; }
         public virtual DbSet<tbDestaqueDuracao> tbDestaqueDuracao { get; set; }
+        public virtual DbSet<tbDestaqueStatus> tbDestaqueStatus { get; set; }
         public virtual DbSet<tbEstado> tbEstado { get; set; }
         public virtual DbSet<tbFuncionalidade> tbFuncionalidade { get; set; }
         public virtual DbSet<tbFuncionalidadeLog> tbFuncionalidadeLog { get; set; }
@@ -86,6 +87,10 @@ namespace Cliquemix.Models
         public virtual DbSet<tbUsersLogAcesso> tbUsersLogAcesso { get; set; }
         public virtual DbSet<tbUsersPermissao> tbUsersPermissao { get; set; }
         public virtual DbSet<tbUsersTipo> tbUsersTipo { get; set; }
-        public virtual DbSet<tbDestaqueStatus> tbDestaqueStatus { get; set; }
+        public virtual DbSet<VwAnunciosCriadosAnunciante> VwAnunciosCriadosAnunciante { get; set; }
+        public virtual DbSet<VwAnunciosDisponiveis> VwAnunciosDisponiveis { get; set; }
+        public virtual DbSet<VwAnunciosEmCampanha> VwAnunciosEmCampanha { get; set; }
+        public virtual DbSet<VwAnunciosExcluidos> VwAnunciosExcluidos { get; set; }
+        public virtual DbSet<VwCampanhasAtivasAnunciante> VwCampanhasAtivasAnunciante { get; set; }
     }
 }
