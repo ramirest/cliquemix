@@ -24,20 +24,20 @@ namespace Cliquemix.Models
         public string tituloCampanha { get; set; }
         public System.DateTime dtInicio { get; set; }
         public System.DateTime dtTermino { get; set; }
-        public int did { get; set; }
         public int csid { get; set; }
         public Nullable<int> pid { get; set; }
         public Nullable<int> pcid { get; set; }
         public Nullable<int> ctid { get; set; }
         public Nullable<double> QtdeCreditosConsumidos { get; set; }
         public Nullable<double> QtdeCreditosInicio { get; set; }
+        public Nullable<int> daid { get; set; }
     
         public virtual tbAnunciante tbAnunciante { get; set; }
         public virtual ICollection<tbCampanhaLocalizacao> tbCampanhaLocalizacao { get; set; }
         public virtual ICollection<tbCampanhaAnuncio> tbCampanhaAnuncio { get; set; }
         public virtual tbCampanhaStatus tbCampanhaStatus { get; set; }
         public virtual tbCampanhaTmp tbCampanhaTmp { get; set; }
-        public virtual tbDestaque tbDestaque { get; set; }
+        public virtual tbDestaqueAnunciante tbDestaqueAnunciante { get; set; }
         public virtual tbPacoteClique tbPacoteClique { get; set; }
     }
 }

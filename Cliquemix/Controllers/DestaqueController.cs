@@ -22,12 +22,11 @@ namespace Cliquemix.Controllers.Anunciante
             int paginaTamanho = 6; //Define o número de elementos por página
             int paginaNumero = (pagina ?? 1); //Define o número inicial da página como 1
             var codAnunciante = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());
-            var cpde = ProcFunc.RetornarStatusPadraoDestaqueExcluido();
+            var spde = ProcFunc.RetornarStatusPadraoDestaqueExcluido();
             var tbDestaqueAnunciante = db.tbDestaqueAnunciante.Include(t => t.tbDestaque).
-                Where(m => m.pid == codAnunciante).ToList();
+                Where(m => m.pid == codAnunciante && m.dasid != spde).ToList();
             return View(tbDestaqueAnunciante.ToPagedList(paginaNumero, paginaTamanho));
         }
-
 
 
         // GET: Destaque
@@ -37,6 +36,80 @@ namespace Cliquemix.Controllers.Anunciante
             return View(tbDestaque.ToList());
         }
 
+
+        [HttpGet]
+        public ActionResult ExibirDestaques()
+        {
+            //Retornar o código do status de destaque disponível
+            var spdd = ProcFunc.RetornarStatusPadraoDestaqueDisponivel();
+            //Cria um item para armazenamento de todos os destaques disponíveis
+            var tbDestaque = db.tbDestaque.Where(m => m.dsid == spdd).ToList();
+
+            if (tbDestaque.Any())
+            {
+                return PartialView(tbDestaque);
+            }
+            else
+            {
+                return PartialView();
+            }
+        }
+        
+        // GET: Destaque/Detalhes/5
+        [HttpGet]
+        public ActionResult DetalhesDestaque(int? id)
+        {
+            decimal sa = 0;
+            decimal vd = 0;
+            decimal sf = 0;
+            ViewBag.Info = 0;
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            tbDestaque tbDestaque = db.tbDestaque.Find(id);
+            if (tbDestaque == null)
+            {
+                return HttpNotFound();
+            }
+            try
+            {
+                var _nomeUsuario = User.Identity.GetUserName();
+                var u = (from usu in db.tbUsers where usu.username == _nomeUsuario select usu).First();
+                //return a.uid;
+                //Recebe o anunciante logado no sistema
+                var anunciante = db.tbAnunciante.First(m => m.uid == u.uid);
+                //Seta as variáveis que irão para a tela de confirmação de compra
+                ViewBag.idDestaque = tbDestaque.did.ToString();
+                ViewBag.tituloDestaque = tbDestaque.tituloDestaque;
+                ViewBag.creditosDestaque = tbDestaque.qtCredito.ToString();
+                ViewBag.duracaoDestaque = tbDestaque.qtDuracao.ToString() +" "+ tbDestaque.tbDestaqueDuracao.item;
+                ViewBag.cliquesDestaque = tbDestaque.tbPacoteClique.qtdeCliques;
+                try
+                {
+                    sa = anunciante.saldoCreditos ?? 0;
+                    vd = Convert.ToDecimal(tbDestaque.qtCredito ?? 0);
+                    sf = sa - vd;
+                }
+                catch (Exception)
+                {   throw;  }
+            }
+            catch (Exception)
+            {   throw;  }
+
+            ViewBag.saldoAtual = sa.ToString("N", new System.Globalization.CultureInfo("pt-BR"));
+            ViewBag.precoDestaque = vd.ToString("N", new System.Globalization.CultureInfo("pt-BR"));
+            ViewBag.saldoFinal = sf.ToString("N", new System.Globalization.CultureInfo("pt-BR")); 
+            if (sf < 0)
+                ViewBag.Info = 2;
+            else
+                ViewBag.Info = 1;
+
+            return PartialView(tbDestaque);
+        }
+        
+        
         // GET: Destaque/Details/5
         public ActionResult Details(int? id)
         {
@@ -52,65 +125,86 @@ namespace Cliquemix.Controllers.Anunciante
             return View(tbDestaque);
         }
 
-        // GET: Destaque/Create
-        public ActionResult ComprarDestaque2()
-        {
-            ViewBag.ddid = new SelectList(db.tbDestaqueDuracao, "ddid", "descricao");
-            ViewBag.pcid = new SelectList(db.tbPacoteClique, "pcid", "tituloPacote");
-            return View();
-        }
-
+        // CONFIRMAÇÃO DA COMPRA DE DESTAQUE PELO ANUNCIANTE
         // POST: Destaque/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ComprarDestaque2([Bind(Include = "did,tituloDestaque,qtCredito,tmpEspera,dsDestaque,imgDestaque,ddid,qtDuracao,pcid")] tbDestaque tbDestaque)
+        public ActionResult DetalhesDestaque(int idDestaque)
         {
-            if (ModelState.IsValid)
+            decimal sa = 0;
+            decimal vd = 0;
+            decimal sf = 0;
+            var cdAnun = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());
+            var anun = db.tbAnunciante.First(m => m.pid == cdAnun);
+            try
             {
-                db.tbDestaque.Add(tbDestaque);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                if (idDestaque == 0)
+                    return null;
 
-            ViewBag.ddid = new SelectList(db.tbDestaqueDuracao, "ddid", "descricao", tbDestaque.ddid);
-            ViewBag.pcid = new SelectList(db.tbPacoteClique, "pcid", "tituloPacote", tbDestaque.pcid);
-            return View(tbDestaque);
+                var destaque = db.tbDestaque.First(m => m.did == idDestaque);
+                var tbDestaqueAnunciante = new tbDestaqueAnunciante();
+
+                try
+                {
+                    sa = anun.saldoCreditos ?? 0;
+                    vd = Convert.ToDecimal(destaque.qtCredito ?? 0);
+                    sf = sa - vd;
+
+                    if (sf > 0)
+                    {
+                        tbDestaqueAnunciante.did = destaque.did;
+                        tbDestaqueAnunciante.dtMovimento = DateTime.Now;
+                        tbDestaqueAnunciante.pid = cdAnun;
+                        tbDestaqueAnunciante.dasid = ProcFunc.RetornarStatusPadraoDestaqueAnuncianteComprado();
+                        db.tbDestaqueAnunciante.Add(tbDestaqueAnunciante);
+                        db.SaveChanges();
+                        ProcFunc.AlterarSaldoAnunciante(cdAnun, sf, vd);
+
+                        return RedirectToAction("ListDestaque");
+                    }
+                    else
+                    {
+                        ProcFunc.SalvarLog(ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName()),
+                            "Tentativa de inserção de valores pelo browser", "DestaqueController", "Comprar Destaque");
+                    }
+                }
+                catch (Exception e)
+                {
+                    ProcFunc.SalvarLog(ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName()),
+                        e.Message, "DestaqueController", "Comprar Destaque");
+                    return RedirectToAction("ComprarDestaque");
+                }
+
+            }
+            catch (Exception e)
+            {
+                ProcFunc.SalvarLog(ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName()),
+                    e.Message, "DestaqueController", "Comprar Destaque");
+                return RedirectToAction("ComprarDestaque");
+            }
+            return RedirectToAction("ComprarDestaque");
         }
 
 
         public ActionResult ComprarDestaque()
         {
-            return View();
-        }
+            //Retornar o código do status de destaque disponível
+            var spdd = ProcFunc.RetornarStatusPadraoDestaqueDisponivel();
+            //Cria um item para armazenamento de todos os destaques disponíveis
+            var tbDestaque = db.tbDestaque.Where(m => m.dsid == spdd).ToList();
 
-
-        // GET: Destaque/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
+            if (tbDestaque.Any())
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View(tbDestaque);
             }
-            tbDestaque tbDestaque = db.tbDestaque.Find(id);
-            if (tbDestaque == null)
+            else
             {
-                return HttpNotFound();
+                return View();
             }
-            return View(tbDestaque);
         }
 
-        // POST: Destaque/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            tbDestaque tbDestaque = db.tbDestaque.Find(id);
-            db.tbDestaque.Remove(tbDestaque);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
 
         protected override void Dispose(bool disposing)
         {

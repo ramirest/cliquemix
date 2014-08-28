@@ -17,7 +17,6 @@ namespace Cliquemix.Models
         public tbDestaque()
         {
             this.tbAnuncianteDestaque = new HashSet<tbAnuncianteDestaque>();
-            this.tbCampanha = new HashSet<tbCampanha>();
             this.tbDestaqueAnunciante = new HashSet<tbDestaqueAnunciante>();
             this.tbPremioDestaque = new HashSet<tbPremioDestaque>();
         }
@@ -34,11 +33,10 @@ namespace Cliquemix.Models
         public Nullable<int> dsid { get; set; }
     
         public virtual ICollection<tbAnuncianteDestaque> tbAnuncianteDestaque { get; set; }
-        public virtual ICollection<tbCampanha> tbCampanha { get; set; }
         public virtual tbDestaqueDuracao tbDestaqueDuracao { get; set; }
         public virtual ICollection<tbDestaqueAnunciante> tbDestaqueAnunciante { get; set; }
         public virtual ICollection<tbPremioDestaque> tbPremioDestaque { get; set; }
-        public virtual tbPacoteClique tbPacoteClique { get; set; }
         public virtual tbDestaqueStatus tbDestaqueStatus { get; set; }
+        public virtual tbPacoteClique tbPacoteClique { get; set; }
     }
 }

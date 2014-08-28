@@ -12,6 +12,7 @@ namespace Cliquemix.Controllers
     public class TesteController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();
+        
         // GET: Teste
         public ActionResult Index()
         {

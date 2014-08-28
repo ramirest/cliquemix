@@ -1,0 +1,191 @@
+﻿<script>
+    function limparAviso() {
+        Messenger().hideAll();
+    }
+
+    function success_message_novoAnuncio() {
+        Messenger.options = {
+            extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
+            theme: 'flat'
+        }
+        Messenger().post({
+            message: 'Parabéns! Você adquiriu com sucesso mais um destaque para sua lista.',
+            type: 'success',
+            showCloseButton: true
+        });
+    }
+
+    function comprarAnuncio() {
+        setTimeout(function () {
+            success_message_novoAnuncio();
+        },
+        setTimeout(function () {
+            limparAviso();
+            document.getElementById('btnFechar').click();
+        }, 3000), 1000);
+    }
+</script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+@* Checkin para compra do destaque *@
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="flexModalLabel">Confira as informações</h4>
+    </div>
+
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <p>Por gentileza, verifique todas as informações abaixo antes de prosseguir.
+                <br/>Após a confirmação, você receberá um novo destaque para utilizá-lo em suas campanhas.
+            </div>
+
+            <div class="col-lg-12">
+                <h3>Detalhes do Destaque</h3>
+
+                <div class="col-lg-12" style="min-height: 10px;"></div>
+
+                <div class="col-lg-12">
+                    <label style="min-width: 20%;">ID</label>
+                    <label style ="font-weight: normal;">@ViewBag.idDestaque</label>
+                    <input type="hidden" id="idDestaque" name="idDestaque" value="@ViewBag.idDestaque" />
+                </div>
+                <div class="col-lg-12" style="min-height: 05px;"></div>
+
+                <div class="col-lg-12">
+                    <label style="min-width: 20%;">Título</label>
+                    <label style="font-weight: normal;">@ViewBag.tituloDestaque</label>
+                    <input type="hidden" id="tituloDestaque" name="tituloDestaque" value="@ViewBag.tituloDestaque" />
+                </div>
+                <div class="col-lg-12" style="min-height: 05px;"></div>
+
+                <div class="col-lg-12">
+                    <label style="min-width: 20%;">Créditos</label>
+                    <label style="font-weight: normal;">@ViewBag.creditosDestaque</label>
+                    <input type="hidden" id="creditosDestaque" name="creditosDestaque" value="@ViewBag.creditosDestaque" />
+                </div>
+                <div class="col-lg-12" style="min-height: 05px;"></div>
+
+                <div class="col-lg-12">
+                    <label style="min-width: 20%;">Duração</label>
+                    <label style="font-weight: normal;">@ViewBag.duracaoDestaque</label>
+                    <input type="hidden" id="duracaoDestaque" name="duracaoDestaque" value="@ViewBag.duracaoDestaque" />
+                </div>
+                <div class="col-lg-12" style="min-height: 05px;"></div>
+
+                <div class="col-lg-12">
+                    <label style="min-width: 20%;">Cliques</label>
+                    <label style="font-weight: normal;">@ViewBag.cliquesDestaque </label> <i class="fa fa-hand-o-up"></i>
+                    <input type="hidden" id="cliquesDestaque" name="cliquesDestaque" value="@ViewBag.cliquesDestaque" />
+                </div>
+            </div>
+            <div class="col-lg-12" style="min-height: 10px;"></div>
+        
+            <div class="col-lg-12" style="max-height: 200px;">
+                <h3>Fluxo de Movimentação</h3>
+                <div class="col-lg-12 text-center">
+                    <div class="col-lg-4" style="max-height: 60px;">
+                        <h4 style="min-height: 70px;">
+                            Saldo Atual
+                            <br />
+                            <span class="badge green" style="min-width: 120px; min-height: 25px;">
+                                <div class="text-center" style="padding-top: 3%; font-size: 14px;">
+                                    @ViewBag.saldoAtual ©
+                                    <input type="hidden" id="saldoAtual" name="saldoAtual" value="@ViewBag.saldoAtual" />
+                                </div>
+                            </span>
+                        </h4>
+                    </div>
+                    <div class="col-lg-4" style="max-height: 60px;">
+                        <h4 style="min-height: 70px;">
+                            Destaque
+                            <br />
+                            <span class="badge orange" style="min-width: 120px; min-height: 25px;">
+                                <div class="text-center" style="padding-top: 3%; font-size: 14px;">
+                                    @ViewBag.precoDestaque ©
+                                    <input type="hidden" id="precoDestaque" name="precoDestaque" value="@ViewBag.precoDestaque" />
+                                </div>
+                            </span>
+                        </h4>
+                    </div>
+                    <div class="col-lg-4" style="max-height: 60px;">
+                        <h4 style="min-height: 70px;">
+                            Saldo Final
+                            <br />
+                            <span class="badge purple" style="min-width: 120px; min-height: 25px;">
+                                <div class="text-center" style="padding-top: 3%; font-size: 14px;">
+                                    @ViewBag.saldoFinal ©
+                                    <input type="hidden" id="saldoFinal" name="saldoFinal" value="@ViewBag.saldoFinal" />
+                                </div>
+                            </span>
+                        </h4>
+                    </div>
+
+                    <div class="col-lg-12" style="min-height: 05px;"></div>
+
+                    <div class="col-md-12" id="informativo" style="max-height: 60px;">
+                        @if (ViewBag.info == 1)
+                        {
+                            // Info = 1 [Créditos suficientes para compra] AZUL
+                            <div class="alert alert-info alert-dismissable">
+                                <button type="button" class="close" data-disciss="alert" aria-hidden="true">×</button>
+                                <label style="font-weight: bold; font-size: 14px;">Aprovado!</label>
+                                <label style="font-weight: normal; font-size: 12px;">
+                                    Você possui créditos suficientes para essa compra.
+                                </label>
+                            </div>
+                        }
+                        else if (ViewBag.info == 2)
+                        {
+                            // Info = 2 [Créditos insuficientes para compra] VERMELHO
+                            <div class="alert alert-danger alert-dismissable">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <label style="font-weight: bold; font-size: 14px;">Desaprovado!</label>
+                                <label style="font-weight: normal; font-size: 12px;">
+                                    Você não possui créditos suficientes para essa compra.
+                                </label><br/>
+                                <label style="font-weight: normal; font-size: 12px;">
+                                    Clique<a href="~/Credito/BuyCredit" id="btnRedComprarCredito"> aqui </a>
+                                    para comprar novos créditos.
+                                </label>
+                            
+                            </div>
+                        }
+                        else
+                        {
+                            // Info = Outro [Exception] AMARELO
+                            <div class="alert alert-warning alert-dismissable">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <label style="font-weight: bold; font-size: 14px;">Alerta!</label>
+                                <label style="font-weight: normal; font-size: 12px;">
+                                    Compra não permitida no momento. Verifique com a equipe Cliquemix.
+                                </label>
+                            </div>
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    if (ViewBag.info == 1)
+    {
+        // Info = 1 [Créditos suficientes para compra] AZUL
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-green">Confirmar</button>
+        </div>
+    }
+    else if (ViewBag.info == 2)
+    {
+        // Info = 2 [Créditos insuficientes para compra] VERMELHO
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default disabled" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-green disabled" onclick="comprarAnuncio();">Confirmar</button>
+        </div>
+    }
+}

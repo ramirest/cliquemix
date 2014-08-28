@@ -4,68 +4,77 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="4ffafcf2d5424d2786556636022ec3f6" Name="Diagram1" ZoomLevel="72">
-        <EntityTypeShape EntityType="cliquemixModel.tbAnunciante" Width="1.5" PointX="5" PointY="17.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbAnuncianteDestaque" Width="1.5" PointX="10.25" PointY="20.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbAnuncianteDestaqueStatus" Width="1.5" PointX="8" PointY="9.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbAnuncianteEndereco" Width="1.5" PointX="7.25" PointY="27.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbAnuncianteTelefone" Width="1.5" PointX="7.25" PointY="31.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbAnuncio" Width="1.5" PointX="10.25" PointY="14.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbAnuncioCategoria" Width="1.5" PointX="8" PointY="12.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbAnuncioCodTemp" Width="1.5" PointX="12.5" PointY="17" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbAnuncioFuncionalidade" Width="1.5" PointX="12.5" PointY="14.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbAnuncioImg" Width="1.5" PointX="14.75" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbAnuncioLog" Width="1.5" PointX="15.5" PointY="17.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbAnuncioStatus" Width="1.5" PointX="0.5" PointY="12.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbBairro" Width="1.5" PointX="15.5" PointY="39" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbBan" Width="1.5" PointX="8" PointY="21.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbBanner" Width="1.5" PointX="11.375" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbBannerImg" Width="1.5" PointX="13.625" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbBanTipo" Width="1.5" PointX="5.75" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbCalculoCondicao" Width="1.5" PointX="5" PointY="27.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbCalculoCondicaoPagto" Width="1.5" PointX="2.75" PointY="34.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbCampanha" Width="1.5" PointX="10.25" PointY="25.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbCampanhaAnuncio" Width="1.5" PointX="15.5" PointY="22.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbCampanhaAnuncioConsumidor" Width="1.5" PointX="17.75" PointY="21.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbCampanhaAnuncioStatus" Width="1.5" PointX="0.5" PointY="18.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbCampanhaLocalizacao" Width="1.5" PointX="15.5" PointY="26.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbCampanhaStatus" Width="1.5" PointX="0.5" PointY="20.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbCampanhaTmp" Width="1.5" PointX="8" PointY="35.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbCep" Width="1.5" PointX="17.75" PointY="38.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbCidade" Width="1.5" PointX="13.25" PointY="38.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbCondicaoPagto" Width="1.5" PointX="2.75" PointY="25.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbConfigPadrao" Width="1.5" PointX="2.75" PointY="13.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbConsumidor" Width="1.5" PointX="5" PointY="30.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbCredito" Width="1.5" PointX="5.75" PointY="10.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbCreditoCompra" Width="1.5" PointX="13.25" PointY="20.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbCreditoDesconta" Width="1.5" PointX="12.5" PointY="25.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbCreditoPromocional" Width="1.5" PointX="8" PointY="18" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbCreditoStatus" Width="1.5" PointX="11" PointY="33.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbDestaque" Width="1.5" PointX="5" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbDestaqueAnunciante" Width="1.5" PointX="7.25" PointY="15.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbDestaqueDuracao" Width="1.5" PointX="2.75" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbEstado" Width="1.5" PointX="11" PointY="38.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbFuncionalidade" Width="1.5" PointX="10.25" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbFuncionalidadeLog" Width="1.5" PointX="8" PointY="24" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbLogSistema" Width="1.5" PointX="5" PointY="37.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbPacoteClique" Width="1.5" PointX="2.75" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbPais" Width="1.5" PointX="8.75" PointY="39.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbPermissao" Width="1.5" PointX="2.75" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbPermissaoGrupo" Width="1.5" PointX="0.5" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbPermissaoSubGrupo" Width="1.5" PointX="0.5" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbPontosRede" Width="1.5" PointX="12.5" PointY="30.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbPremio" Width="1.5" PointX="17.75" PointY="31.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbPremioConsumidor" Width="1.5" PointX="20" PointY="21.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbPremioDestaque" Width="1.5" PointX="20" PointY="16.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbPremioImg" Width="1.5" PointX="20" PointY="32" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbPremioNivel" Width="1.5" PointX="15.5" PointY="31.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbRamoAtividade" Width="1.5" PointX="2.75" PointY="28.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbTipoLogradouro" Width="1.5" PointX="15.5" PointY="36.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbTos" Width="1.5" PointX="2.75" PointY="30.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbUsers" Width="1.5" PointX="2.75" PointY="20.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbUsersLogAcesso" Width="1.5" PointX="5" PointY="40.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbUsersPermissao" Width="1.5" PointX="5" PointY="15.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbUsersTipo" Width="1.5" PointX="0.5" PointY="15.25" IsExpanded="true" />
+      <Diagram DiagramId="84e94c658cf344409cf379d543fa6f26" Name="Diagram1">
+        <EntityTypeShape EntityType="cliquemixModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbAnunciante" Width="1.5" PointX="5.25" PointY="40.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbAnuncianteDestaque" Width="1.5" PointX="10.5" PointY="43.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbAnuncianteDestaqueStatus" Width="1.5" PointX="8.25" PointY="58.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbAnuncianteEndereco" Width="1.5" PointX="7.5" PointY="50.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbAnuncianteTelefone" Width="1.5" PointX="7.5" PointY="54.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbAnuncio" Width="1.5" PointX="10.5" PointY="37.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbAnuncioCategoria" Width="1.5" PointX="8.25" PointY="38.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbAnuncioCodTemp" Width="1.5" PointX="15.75" PointY="41" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbAnuncioFuncionalidade" Width="1.5" PointX="12.75" PointY="36.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbAnuncioImg" Width="1.5" PointX="18" PointY="39" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbAnuncioLog" Width="1.5" PointX="15.75" PointY="44.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbAnuncioStatus" Width="1.5" PointX="0.75" PointY="33" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbBairro" Width="1.5" PointX="18.75" PointY="64" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbBan" Width="1.5" PointX="8.25" PointY="44" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbBanner" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbBannerImg" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbBanTipo" Width="1.5" PointX="6" PointY="31.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbCalculoCondicao" Width="1.5" PointX="5.25" PointY="50.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbCalculoCondicaoPagto" Width="1.5" PointX="3" PointY="32.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbCampanha" Width="1.5" PointX="10.5" PointY="47.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbCampanhaAnuncio" Width="1.5" PointX="15.75" PointY="48.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbCampanhaAnuncioConsumidor" Width="1.5" PointX="18" PointY="44.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbCampanhaAnuncioStatus" Width="1.5" PointX="0.75" PointY="40.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbCampanhaLocalizacao" Width="1.5" PointX="18.75" PointY="48.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbCampanhaStatus" Width="1.5" PointX="0.75" PointY="42.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbCampanhaTmp" Width="1.5" PointX="8.25" PointY="34.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbCep" Width="1.5" PointX="21" PointY="63.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbCidade" Width="1.5" PointX="16.5" PointY="63.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbCondicaoPagto" Width="1.5" PointX="3" PointY="48.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbConfigPadrao" Width="1.5" PointX="3" PointY="35.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbConsumidor" Width="1.5" PointX="5.25" PointY="53.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbCredito" Width="1.5" PointX="6" PointY="33.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbCreditoCompra" Width="1.5" PointX="13.5" PointY="43.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbCreditoDesconta" Width="1.5" PointX="12.75" PointY="48" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbCreditoPromocional" Width="1.5" PointX="8.25" PointY="41" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbCreditoStatus" Width="1.5" PointX="11.25" PointY="60.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbDestaque" Width="1.5" PointX="11.25" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbDestaqueAnunciante" Width="1.5" PointX="13.5" PointY="39.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbDestaqueAnuncianteStatus" Width="1.5" PointX="11.25" PointY="57.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbDestaqueDuracao" Width="1.5" PointX="9" PointY="27.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbDestaqueStatus" Width="1.5" PointX="0.75" PointY="45.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbEstado" Width="1.5" PointX="14.25" PointY="63.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbFuncionalidade" Width="1.5" PointX="10.5" PointY="34.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbFuncionalidadeLog" Width="1.5" PointX="8.25" PointY="47" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbLogMovFinanceiro" Width="1.5" PointX="5.25" PointY="58.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbLogSistema" Width="1.5" PointX="5.25" PointY="62.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbPacoteClique" Width="1.5" PointX="9" PointY="30.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbPais" Width="1.5" PointX="12" PointY="64.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbPermissao" Width="1.5" PointX="3" PointY="28" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbPermissaoGrupo" Width="1.5" PointX="0.75" PointY="26.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbPermissaoSubGrupo" Width="1.5" PointX="0.75" PointY="29.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbPontosRede" Width="1.5" PointX="12.75" PointY="54" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbPremio" Width="1.5" PointX="18" PointY="34.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbPremioConsumidor" Width="1.5" PointX="20.25" PointY="44.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbPremioDestaque" Width="1.5" PointX="20.25" PointY="31.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbPremioImg" Width="1.5" PointX="20.25" PointY="35.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbPremioNivel" Width="1.5" PointX="15.75" PointY="35" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbRamoAtividade" Width="1.5" PointX="3" PointY="51.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbTipoLogradouro" Width="1.5" PointX="18.75" PointY="61.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbTos" Width="1.5" PointX="3" PointY="53.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbUsers" Width="1.5" PointX="3" PointY="43" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbUsersLogAcesso" Width="1.5" PointX="5.25" PointY="65.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbUsersPermissao" Width="1.5" PointX="5.25" PointY="38.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.tbUsersTipo" Width="1.5" PointX="0.75" PointY="37.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.VwAnunciosCriadosAnunciante" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.VwAnunciosDisponiveis" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.VwAnunciosEmCampanha" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.VwAnunciosExcluidos" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cliquemixModel.VwCampanhasAtivasAnunciante" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
         <AssociationConnector Association="cliquemixModel.cpid_tbAnunciante_tbCondicaoPagto_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.peid_tbAnunciante_tbAnuncianteEndereco_peid_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.pid_tbAnuncianteDestaque_tbAnunciante_fk" ManuallyRouted="false" />
@@ -109,7 +118,7 @@
         <AssociationConnector Association="cliquemixModel.cid_tbCampanhaAnuncio_tbCampanha_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.csid_tbCampanha_tbCampanhaStatus_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.ctid_tbCampanha_tbCampanhaTmp_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="cliquemixModel.did_tbCampanha_tbDestaque_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="cliquemixModel.daid_tbCampanha_tbDestaqueAnunciante_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.pcid_tbCampanha_tbPacoteClique_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.caid_tbCampanhaAnuncioConsumidor_tbCampanhaAnuncio_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.casid_tbCampanhaAnuncio_tbCampanhaAnuncioStatus_fk" ManuallyRouted="false" />
@@ -129,6 +138,8 @@
         <AssociationConnector Association="cliquemixModel.eid_tbCep_tbEstado_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.tlid_tbCep_tbTipoLogradouro_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.eid_tbCidade_tbEstado_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="cliquemixModel.spdd_tbConfigPadrao_tbDestaqueStatus_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="cliquemixModel.spde_tbConfigPadrao_tbDestaqueStatus_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.tpua_tbConfigPadrao_tbUsersTipo_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.tid_tbConsumidor_tbTos_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.crid_tbCreditoCompra_tbCredito_fk" ManuallyRouted="false" />
@@ -138,10 +149,13 @@
         <AssociationConnector Association="cliquemixModel.ddid_tbDestaque_tbDestaqueDuracao_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.did_tbDestaqueAnunciante_tbDestaque_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.did_TbPremioDestaque_tbDestaque_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="cliquemixModel.dsid_tbDestaque_tbDestaqueStatus_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.pcid_tbDestaque_tbPacoteClique_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="cliquemixModel.dasid_tbDestaqueAnunciante_tbDestaqueAnuncianteStatus_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.paid_tbEstado_tbPais_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.fid_tbFuncionalidadeLog_tbFuncionalidade_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.uid_tbFuncionalidadeLog_tbUsers_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="cliquemixModel.uid_tbLogMovFinanceiro_tbUsers_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.uid_tbLogSistema_tbUsers_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.peid_tbUsersPermissao_tbPermissao_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.pgid_tbPermissao_tbPermissaoGrupo_fk" ManuallyRouted="false" />
@@ -154,10 +168,9 @@
         <AssociationConnector Association="cliquemixModel.uid_tbUsersLogAcesso_tbUsers_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.uid_tbUsersPermissao_tbUsers_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.utid_tbUsers_tbUsersTipo_fk" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="cliquemixModel.tbDestaqueStatus" Width="1.5" PointX="2.75" PointY="10.375" />
-        <AssociationConnector Association="cliquemixModel.dsid_tbDestaque_tbDestaqueStatus_fk" />
-        <AssociationConnector Association="cliquemixModel.spdd_tbConfigPadrao_tbDestaqueStatus_fk" />
-        <AssociationConnector Association="cliquemixModel.spde_tbConfigPadrao_tbDestaqueStatus_fk" />
+        <AssociationConnector Association="cliquemixModel.spdad_tbConfigPadrao_tbDestaqueAnuncianteStatus_fk" />
+        <AssociationConnector Association="cliquemixModel.spdac_tbConfigPadrao_tbDestaqueAnuncianteStatus_fk" />
+        <AssociationConnector Association="cliquemixModel.spdaec_tbConfigPadrao_tbDestaqueAnuncianteStatus_fk" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

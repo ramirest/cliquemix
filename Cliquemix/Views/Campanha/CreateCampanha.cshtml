@@ -15,11 +15,10 @@
 <script type="text/javascript" src="~/Scripts/Outros/jquery-2.1.1.min.js"></script>
 
 <script>
-
     function AtualizaCodDestaque() {
-        var obj = document.getElementById('did');
+        var obj = document.getElementById('daid');
         var cod = obj.options[obj.selectedIndex].value;
-        document.getElementById('tdid').value = FormatNumberLength(cod, 6);
+        document.getElementById('tdaid').value = FormatNumberLength(cod, 6);
         detalhesDestaque();
     };
 
@@ -27,7 +26,7 @@
         $.ajax(
         {
             type: 'POST',
-            url: '/Campanha/InfoDestaque/?pCodDestaque='+ document.getElementById('tdid').value,
+            url: '/Campanha/InfoDestaque/?pCodDestaqueAnunciante='+ document.getElementById('tdaid').value,
             dataType: 'html',
             cache: true,
             async: true,
@@ -118,33 +117,6 @@
 </script>
 
 <script type="text/javascript">
-    
-    $(document).ready(function () {
-        $('#btnRight').click(function (e) {
-            var selectedOpts = $('#lstBox1 option:selected');
-            if (selectedOpts.length == 0) {
-                alert("Nothing to move.");
-                e.preventDefault();
-            }
-
-            $('#lstBox2').append($(selectedOpts).clone());
-            $(selectedOpts).remove();
-            e.preventDefault();
-        });
-
-        $('#btnLeft').click(function (e) {
-            var selectedOpts = $('#lstBox2 option:selected');
-            if (selectedOpts.length == 0) {
-                alert("Nothing to move.");
-                e.preventDefault();
-            }
-
-            $('#lstBox1').append($(selectedOpts).clone());
-            $(selectedOpts).remove();
-            e.preventDefault();
-        });
-    });
-
 
     function VerificaData(digData, id)
     {
@@ -271,7 +243,7 @@
                                             <h4 class="page-header">Informações da Campanha:</h4>
                                             <div class="form-group col-lg-10">
                                                 <label>Título</label>
-                                                @Html.TextBoxFor(model => model.tituloCampanha, new { @class = "form-control"})
+                                                @Html.TextBoxFor(model => model.tituloCampanha, new { @class = "form-control", required = "Campo requerido" })
                                             </div>
                                             @Html.Hidden("ctid")
 
@@ -279,26 +251,25 @@
                                             {
                                                 <div class="form-group col-lg-3">
                                                     <label>Data de Início</label>
-                                                    <div id="sandbox-container">
-                                                        <div class="input-group">
-                                                            <span class="input-group-btn">
-                                                                <button class="btn btn-default add-on " type="button">
-                                                                    <i class="fa fa-calendar"></i>
-                                                                </button>
-                                                            </span>
-                                                            @Html.TextBoxFor(model => model.dtInicio,
-                                                                new
-                                                                {
-                                                                    @class = "form-control",
-                                                                    maxlength = "10",
-                                                                    style="max-width: 100px;",
-                                                                    alt = "dtInicio",
-                                                                    id = "dtInicio",
-                                                                    name = "dtInicio",
-                                                                    onblur = "ValidaData(this);",
-                                                                    onkeypress = "MascaraData(this);"
-                                                                })
-                                                        </div>
+                                                    <div class="input-group">
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-default add-on " type="button">
+                                                                <i class="fa fa-calendar"></i>
+                                                            </button>
+                                                        </span>
+                                                        @Html.TextBoxFor(model => model.dtInicio,
+                                                            new
+                                                            {
+                                                                @class = "form-control",
+                                                                maxlength = "10",
+                                                                style="max-width: 100px;",
+                                                                alt = "dtInicio",
+                                                                id = "dtInicio",
+                                                                name = "dtInicio",
+                                                                onblur = "ValidaData(this);",
+                                                                onkeypress = "MascaraData(this);",
+                                                                required=""
+                                                            })
                                                     </div>
                                                 </div>
 
@@ -321,18 +292,28 @@
 
                                                 <div class="form-group col-lg-3">
                                                     <label>Data de Término</label>
-                                                    <div id="sandbox-container">
-                                                        <div class="input-group">
-                                                            <span class="input-group-btn">
-                                                                <button class="btn btn-default add-on " type="button">
-                                                                    <i class="fa fa-calendar"></i>
-                                                                </button>
-                                                            </span>
-                                                            <input id="dtTermino" name="dtTermino" class="form-control datepicker" type="text" style="max-width: 100px;" onchange=" VerificaData(this.value, this.id); " />
-                                                        </div>
+                                                    <div class="input-group">
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-default add-on " type="button">
+                                                                <i class="fa fa-calendar"></i>
+                                                            </button>
+                                                        </span>
+                                                        @Html.TextBoxFor(model => model.dtTermino,
+                                                            new
+                                                            {
+                                                                @class = "form-control",
+                                                                maxlength = "10",
+                                                                style = "max-width: 100px;",
+                                                                alt = "dtTermino",
+                                                                id = "dtTermino",
+                                                                name = "dtTermino",
+                                                                onblur = "ValidaData(this);",
+                                                                onkeypress = "MascaraData(this);",
+                                                                required = ""
+                                                            })
                                                     </div>
                                                 </div>
-
+                                                
                                                 <div class="form-group col-lg-3">
                                                     <label>Hora de Término</label>
                                                     <div class="input-append bootstrap-timepicker input-group">
@@ -350,28 +331,27 @@
                                             {
                                                 <div class="form-group col-lg-3">
                                                     <label>Data de Início</label>
-                                                    <div id="sandbox-container">
-                                                        <div class="input-group">
-                                                            <span class="input-group-btn">
-                                                                <button class="btn btn-default add-on " type="button">
-                                                                    <i class="fa fa-calendar"></i>
-                                                                </button>
-                                                            </span>
-                                                            @Html.TextBoxFor(model => model.dtInicio,
-                                                                new
-                                                                {
-                                                                    @class = "form-control",
-                                                                    maxlength = "10",
-                                                                    style = "max-width: 100px;",
-                                                                    alt = "dtInicio",
-                                                                    id = "dtInicio",
-                                                                    name = "dtInicio",
-                                                                    onblur = "ValidaData(this);",
-                                                                    onkeypress = "MascaraData(this);",
-                                                                })
-                                                        </div>
+                                                    <div class="input-group">
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-default add-on " type="button">
+                                                                <i class="fa fa-calendar"></i>
+                                                            </button>
+                                                        </span>
+                                                        @Html.TextBoxFor(model => model.dtInicio,
+                                                            new
+                                                            {
+                                                                @class = "form-control",
+                                                                maxlength = "10",
+                                                                style = "max-width: 100px;",
+                                                                alt = "dtInicio",
+                                                                id = "dtInicio",
+                                                                name = "dtInicio",
+                                                                onblur = "ValidaData(this);",
+                                                                onkeypress = "MascaraData(this);",
+                                                                required = ""
+                                                            })
                                                     </div>
-                                                </div>                                                
+                                                </div>
 
                                                 <div class="form-group col-lg-3">
                                                     <label>Hora de Início</label>
@@ -387,7 +367,6 @@
 
                                                 <div class="clearfix"></div>
                                                 <div class="form-group col-lg-6"></div>
-
                                             }
                                             else
                                             {
@@ -412,13 +391,14 @@
                                                     <div class="portlet-heading">
                                                         <div class="portlet-title">
                                                             <h4>Selecione o Destaque </h4>
-                                                            @Html.DropDownList("did", null, string.Empty,
+                                                            @Html.DropDownList("daid", null, string.Empty,
                                                                 new
                                                                 {
                                                                     style = "width:334px; height:34px",
-                                                                    id = "did",
-                                                                    name = "did",
-                                                                    onchange = "AtualizaCodDestaque();"
+                                                                    id = "daid",
+                                                                    name = "daid",
+                                                                    onchange = "AtualizaCodDestaque();",
+                                                                    required = ""
                                                                 })
                                                             <br /><label> </label>
                                                         </div>
@@ -430,7 +410,7 @@
                                                     </div>
                                                     <div id="defaultPortlet" class="panel-collapse collapse in">
                                                         <div class="portlet-body">
-                                                            <div id="detalhesDestaque">
+                                                            <div class="row" id="detalhesDestaque">
                                                                 @{
                                                                     Html.RenderPartial("InfoDestaque");
                                                                 }
@@ -438,7 +418,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="portlet-footer">
-                                                        <label id="tdid"></label>
+                                                        <label id="tdaid"></label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -515,7 +495,7 @@
                                             <div class="form-group col-lg-offset-9">
                                                 <button type="button" onclick=" $('#lnk3').click(); " class="btn btn-default">Anterior</button>
                                                 <button type="submit" class="btn btn-default" id="save" value="save">
-                                                    <i class="fa fa-floppy-o"></i>Salvar
+                                                    <i class="fa fa-floppy-o"></i> Salvar
                                                 </button>
                                             </div>
                                         </div>

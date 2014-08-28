@@ -1,24 +1,43 @@
-﻿@model IEnumerable<Cliquemix.Models.tbDestaque>
+﻿@model IEnumerable<Cliquemix.Models.tbDestaqueAnunciante>
 
 @try
 {
     foreach (var item in Model)
     {
-        <label class="col-sm-7" style="font-weight: bold">Título</label>
-        <div class="clearfix"></div>
-        @Html.Label(item.tituloDestaque, new { @class = "col-sm-7", style = "font-weight: normal" })
-        <div class="clearfix"></div>
-        <br />
-        <label class="col-sm-3" style="font-size: 12px; font-weight: bold;">Pacote de Cliques</label>
-        <label class="col-sm-3" style="font-size: 12px; font-weight: bold;">Tempo de Espera</label>
-        <label class="col-sm-3" style="font-size: 12px; font-weight: bold;">Valor do Destaque</label>
-        <label class="col-sm-3" style="font-size: 12px; font-weight: bold;">Tempo de Duração</label>
-        <div class="clearfix"></div>
-        @Html.Label(item.tbPacoteClique.qtdeCliques + " Cliques", new { @class = "col-sm-3", style = "font-size: 12px; font-weight: normal" })
-        @Html.Label(item.tmpEspera.ToString()+" Segundos", new {@class = "col-sm-3", style = "font-size: 12px; font-weight: normal"})
-        <label id="qtCredito" for="qtCredito" class="col-sm-3" style="font-size: 12px; font-weight: normal"><i class="fa fa-money"></i> @item.qtCredito</label>
-        @Html.Label(item.qtDuracao.ToString()+" "+item.tbDestaqueDuracao.item+"(s)", new {@class = "col-sm-3", style = "font-size: 12px; font-weight: normal"})
-        <div class="clearfix"></div>
+        <div class="col-lg-9">
+            @Html.Label("Título", new {style = "font-weight: bold"})
+            <div class="clearfix"></div>
+            @Html.Label(item.tbDestaque.tituloDestaque, new {style = "font-weight: normal"})
+        </div>
+        <div class="col-lg-3">
+            @Html.Label("Data da Compra", new {style = "font-size: 12px; font-weight: bold;"})
+            <div class="clearfix"></div>
+            @Html.Label(item.dtMovimento.ToString(), new {style = "font-size: 12px; font-weight: normal"})
+        </div>
+        <div class="clearfix"></div><br/>
+    
+        <div class="col-lg-3">
+            @Html.Label("Pacote de Cliques", new {style = "font-size: 12px; font-weight: bold;"})
+            <div class="clearfix"></div>
+            @Html.Label(item.tbDestaque.tbPacoteClique.qtdeCliques.ToString() + " Cliques", new {style = "font-size: 12px; font-weight: normal"})
+        </div>
+        <div class="col-lg-3">
+            @Html.Label("Tempo de Espera", new {style = "font-size: 12px; font-weight: bold;"})
+            <div class="clearfix"></div>
+            @Html.Label(item.tbDestaque.tmpEspera.ToString() + " Segundos", new {style = "font-size: 12px; font-weight: normal"})
+        </div>
+        <div class="col-lg-3">
+            @Html.Label("Valor do Destaque", new {style = "font-size: 12px; font-weight: bold;"})
+            <div class="clearfix"></div>
+            <i class="fa fa-money"> </i>
+            @Html.Label(item.tbDestaque.qtCredito.ToString(), new {style = "font-size: 12px; font-weight: normal"})
+        </div>
+        <div class="col-lg-3">
+            @Html.Label("Tempo de Duração", new {style = "font-size: 12px; font-weight: bold;"})
+            <div class="clearfix"></div>
+            @Html.Label(item.tbDestaque.qtDuracao.ToString() + " " + item.tbDestaque.tbDestaqueDuracao.item + "(s)",
+                new {style = "font-size: 12px; font-weight: normal"})
+        </div>
     }
 }
 catch (Exception)

@@ -25,6 +25,7 @@ namespace Cliquemix.Models
         {
             throw new UnintentionalCodeFirstException();
         }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<tbAnunciante> tbAnunciante { get; set; }
         public virtual DbSet<tbAnuncianteDestaque> tbAnuncianteDestaque { get; set; }
         public virtual DbSet<tbAnuncianteDestaqueStatus> tbAnuncianteDestaqueStatus { get; set; }
@@ -64,6 +65,7 @@ namespace Cliquemix.Models
         public virtual DbSet<tbDestaque> tbDestaque { get; set; }
         public virtual DbSet<tbDestaqueAnunciante> tbDestaqueAnunciante { get; set; }
         public virtual DbSet<tbDestaqueDuracao> tbDestaqueDuracao { get; set; }
+        public virtual DbSet<tbDestaqueStatus> tbDestaqueStatus { get; set; }
         public virtual DbSet<tbEstado> tbEstado { get; set; }
         public virtual DbSet<tbFuncionalidade> tbFuncionalidade { get; set; }
         public virtual DbSet<tbFuncionalidadeLog> tbFuncionalidadeLog { get; set; }
@@ -86,6 +88,7 @@ namespace Cliquemix.Models
         public virtual DbSet<tbUsersLogAcesso> tbUsersLogAcesso { get; set; }
         public virtual DbSet<tbUsersPermissao> tbUsersPermissao { get; set; }
         public virtual DbSet<tbUsersTipo> tbUsersTipo { get; set; }
+        public virtual DbSet<tbLogMovFinanceiro> tbLogMovFinanceiro { get; set; }
     }
 
 }

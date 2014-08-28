@@ -1,19 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Data.Common;
-using System.Data.Entity.Core.EntityClient;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Data;
 using System.Data.Entity;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using Cliquemix.Models;
-using Microsoft.AspNet.Identity;
-using System.Security;
 
 namespace Cliquemix.Models
 {
@@ -229,12 +220,12 @@ namespace Cliquemix.Models
         #endregion
 
         #region "Atualizar Códigos Temporários dos Anúncios da Campanha"
-        public static void AtualizarCodTempAnunciosCampanha(int? pCodTempCampanha, int pCodAtualCampanha, int?pCodDestaque)
+        public static void AtualizarCodTempAnunciosCampanha(int? pCodTempCampanha, int pCodAtualCampanha, int?pCodDestaqueAnunciante)
         {
             try
             {
                 //Verifica qual é o destaque vinculado à campanha
-                var destaque = db.tbDestaque.First(m => m.did == pCodDestaque);
+                var destaque = db.tbDestaqueAnunciante.First(m => m.daid == pCodDestaqueAnunciante).tbDestaque;
                 //Consulta a quantidade de cliques vinculado ao destaque
                 var QtdeCliquesFinal = db.tbPacoteClique.First(m => m.pcid == destaque.pcid).qtdeCliques;
                 //Lista o anúncio vinculado à campanha
@@ -351,6 +342,30 @@ namespace Cliquemix.Models
         }
         #endregion
 
+        #region "Retornar o Código do Status Padrão para um Destaque Anunciante Disponível"
+        public static int RetornarStatusPadraoDestaqueAnuncianteDisponivel()
+        {
+            var a = (from status in db.tbConfigPadrao select status).First();
+            return (int)a.spdad;
+        }
+        #endregion
+
+        #region "Retornar o Código do Status Padrão para um Destaque Anunciante Em Campanha"
+        public static int RetornarStatusPadraoDestaqueAnuncianteEmCampanha()
+        {
+            var a = (from status in db.tbConfigPadrao select status).First();
+            return (int)a.spdaec;
+        }
+        #endregion
+
+        #region "Retornar o Código do Status Padrão para um Destaque Anunciante Comprado"
+        public static int RetornarStatusPadraoDestaqueAnuncianteComprado()
+        {
+            var a = (from status in db.tbConfigPadrao select status).First();
+            return (int)a.spdac;
+        }
+        #endregion
+
         #region "Retornar o Código do Status Padrão para uma Campanha Excluída"
         public static int RetornarStatusPadraoCampanhaExcluida()
         {
@@ -421,6 +436,65 @@ namespace Cliquemix.Models
         }
         #endregion
 
+        #region "Alterar saldo do anunciante na tabela tbAnunciante"
+        public static void AlterarSaldoAnunciante(int? pCodAnunciante, decimal pSaldoFinal, decimal pVlrMov)
+        {
+            int uid = 0;    decimal vlrAtual = 0;
+            try
+            {
+                var anun = db.tbAnunciante.First(m => m.pid == pCodAnunciante);
+                uid = (int) anun.uid;
+                vlrAtual = (decimal) anun.saldoCreditos;
+                anun.saldoCreditos = pSaldoFinal;
+
+                db.Entry(anun).State = EntityState.Modified;
+                db.SaveChanges();
+                SalvarLogMovFinanceira(uid, vlrAtual, pVlrMov, 0, anun.pid, "tbAnunciante");
+            }
+            catch(Exception e)
+            {
+                SalvarLog(uid, e.Message, "Alteração no saldo de anunciante | Compra de Crédito | Saldo Final: "+
+                    pSaldoFinal.ToString()+" | Valor Movimentado: "+pVlrMov.ToString(), "Ajuste no saldo do anunciante");
+            }
+        }
+        #endregion
+
+        #region "Utilizar Destaque do Anunciante na Campanha"
+        public static void UtilizarDestaqueAnuncianteCampanha(int? pCodAnunciante, int? pCodDestaqueAnunciante)
+        {
+            try
+            {
+                //Filtra o anunciante responsável pelo campanha
+                var anun = db.tbAnunciante.First(m => m.pid == pCodAnunciante);
+                //Seta uma variável para armazenamento do usuário
+                var uid = 0;
+                try
+                {
+                    //Seta o código do usuário do anunciante
+                    uid = (int) anun.uid;
+                    //Filtra o destaque do anunciante que será vinculado na campanha
+                    //Parâmetros: 
+                    //Cód. do Destaque == pCodDestaque | Status Disponível | Cód. do Anunciante == pCodAnunciante
+                    var da = db.tbDestaqueAnunciante.First(d => d.daid == pCodDestaqueAnunciante);
+                    da.dasid = RetornarStatusPadraoDestaqueAnuncianteEmCampanha();
+
+                    db.Entry(da).State = EntityState.Modified;
+                    db.SaveChanges();
+                    SalvarLog(uid, "DestaqueAnunciante "+da.daid+" Vinculado na Campanha", "CreateCampanha", "Nova Campanha");
+                }
+                catch (Exception e)
+                {
+                    SalvarLog(uid, e.Message, "Alteração no status do destaque do anunciante - Cód. do Anunciante: "+anun.pid,
+                        "DestaqueAnunciante na Campanha");
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        #endregion
+
         #region "Filtrar Cidades"
         public static IList<tbCidade> FiltrarCidades(string pCidade)
         {           
@@ -441,6 +515,31 @@ namespace Cliquemix.Models
                 return null;
             }
             return cidades;
+        }
+        #endregion
+
+        #region "Salvar Log Movimentação Financeira"
+        //int uid, datetime dataHoraLog, decimal vlrAtual, decimal vlrMovimento, int tipoMov (0 ou 1), int id, varchar tb
+        public static void SalvarLogMovFinanceira
+            (int pUID, decimal pVlrAtual, decimal pVlrMovimento, int pTipoMov, int pID, string pTB)
+        {
+            try
+            {
+                tbLogMovFinanceiro logMovFinanceiro = new tbLogMovFinanceiro();
+                logMovFinanceiro.uid = pUID;
+                logMovFinanceiro.dataHoraLog = DateTime.Now;
+                logMovFinanceiro.vlrAtual = pVlrAtual;
+                logMovFinanceiro.vlrMovimento = pVlrMovimento;
+                logMovFinanceiro.tipoMov = pTipoMov;
+                logMovFinanceiro.id = pID;
+                logMovFinanceiro.tb = pTB;
+                db.tbLogMovFinanceiro.Add(logMovFinanceiro);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
         #endregion
 

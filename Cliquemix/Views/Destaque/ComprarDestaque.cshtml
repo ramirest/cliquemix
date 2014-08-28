@@ -1,4 +1,25 @@
-﻿<div class="row">
+﻿@model IEnumerable<Cliquemix.Models.tbDestaque>
+
+<script>
+    function CompraDestaque(item) {
+        //var id = document.getElementById('pCodDestaqueCompra').value;
+        var btn = document.getElementById('BtnDetalhesDestaque');
+        $.ajax(
+        {
+            type: 'GET',
+            url: '/Destaque/DetalhesDestaque/?id='+item,
+            dataType: 'html',
+            cache: true,
+            async: true,
+            success: function (data) {
+                btn.click();
+                $('#conteudoDestaque').html(data);
+            }
+        });
+    }
+</script>
+
+<div class="row">
     <div class="col-lg-12">
         <div class="page-title">
             <h1>
@@ -10,132 +31,99 @@
     </div>
 </div>
 
+<a id="BtnDetalhesDestaque" name="BtnDetalhesDestaque"
+   data-toggle="modal" data-target="#ComprarDestaqueModal" data-placement="top">
+</a>
+
+<input type="hidden" id="pCodDestaqueCompra" name="pCodDestaqueCompra" />
+
 <div class="row">
     <div class="col-lg-12">
-        <form role="form">
-            <div class="ms-partialview-template" id="partial-view-1">
-                <!-- masterslider -->
-                <div class="master-slider ms-skin-default" id="masterslider">
-                    <div class="ms-slide">
-                        <img src="/fonts/img/img-master-slider/Destaque-Banner.png" alt="lorem ipsum dolor sit" />
-                        <div class="ms-info">
-                            <h3>CHILDHOOD MEMORIES</h3>
-                            <h4>JOHN WILIAM</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
-                        </div>
+        <div class="ms-partialview-template" id="partial-view-1">
+            <!-- masterslider -->
+            <div class="master-slider ms-skin-default" id="masterslider">
+                @try
+                {
+                    <br />
+                    foreach (var item in Model)
+                    {
+                        var aaa = item.did; //Variável usada para passar pelo TRY (Não utilizada em outros locais)
+                        String _src = "/Arquivos/Destaques/" +
+                                      String.Format("{0:00000000}", item.did) + "/Imagens/" +
+                                      String.Format("{0:00000000}", item.did) +
+                                      ".jpg";
 
-                        <div class="ms-layer buy-btn" style="left:330px; top:320px;"
-                             data-effect="bottom(40)"
-                             data-delay="10"
-                             data-ease="easeInOutQuad">
-                            <button class="btn btn-white  buy-btn"><i class="fa fa-bookmark"></i> Escolher</button>
-                        </div>
-                    </div>
-                    <div class="ms-slide">
-                        <img src="/fonts/img/img-master-slider/2.jpg" alt="lorem ipsum dolor sit" />
-                        <div class="ms-info">
-                            <h3>CONSECTETUR ADIPISCING ELIT</h3>
-                            <h4>JOHN WILIAM</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
-                        </div>
+                        <div class="ms-slide">
+                            <img src="@_src" alt="lorem ipsum dolor sit" />
+                            <div class="ms-info">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        @*Título do Destaque*@
+                                        <h3>@item.tituloDestaque</h3>
+                                    </div>
+                                    <div class="col-lg-12" style="min-height: 10px;"></div>
+                                    <div class="col-lg-3">
+                                        @*Duração da Campanha*@
+                                        <h4>Duração</h4>
+                                        <h4>@item.qtDuracao @item.tbDestaqueDuracao.item</h4>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        @*Tempo de Espera*@
+                                        <h4>Tempo de Espera</h4>
+                                        <h4>@item.tmpEspera Segundos</h4>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        @*Valor do Destaque*@
+                                        <h4>Valor do Destaque</h4>
+                                        <h4>@item.qtCredito ©</h4>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        @*Qtde de Cliques*@
+                                        <h4>Qtde de Cliques</h4>
+                                        <h4>@item.tbPacoteClique.qtdeCliques</h4>
+                                    </div>
+                                    <div class="col-lg-12" style="min-height: 10px;"></div>
+                                    <div class="col-lg-12">
+                                        @*Descrição do Destaque*@
+                                        <h5>@item.dsDestaque</h5>
+                                    </div>
+                                </div>
+                            </div>
 
-                        <div class="ms-layer buy-btn" style="left:330px; top:320px;"
-                             data-effect="bottom(40)"
-                             data-delay="10"
-                             data-ease="easeInOutQuad">
-                            <button class="btn btn-white  buy-btn"><i class="fa fa-bookmark"></i> Escolher</button>
+                            <div class="ms-layer buy-btn" style="left: 330px; top: 320px;"
+                                 data-effect="bottom(40)" data-delay="10" data-ease="easeInOutQuad">
+                                <button class="btn btn-white buy-btn" id="btnCompraDestaque" name="btnCompraDestaque"
+                                        onclick="CompraDestaque(@item.did);" title="Comprar Destaque">
+                                    <i class="fa fa-bookmark"></i> Escolher
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="ms-slide">
-                        <img src="/fonts/img/img-master-slider/3.jpg" alt="lorem ipsum dolor sit" />
-                        <div class="ms-info">
-                            <h3>SUSPENDISSE UT PULVINAR MAURIS</h3>
-                            <h4>JOHN WILIAM</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
-                        </div>
-
-                        <div class="ms-layer buy-btn" style="left:330px; top:320px;"
-                             data-effect="bottom(40)"
-                             data-delay="10"
-                             data-ease="easeInOutQuad">
-                            <button class="btn btn-white  buy-btn"><i class="fa fa-bookmark"></i> Escolher</button>
-                        </div>
-                    </div>
-                    <div class="ms-slide">
-                        <img src="/fonts/img/img-master-slider/4.jpg" alt="lorem ipsum dolor sit" />
-                        <div class="ms-info">
-                            <h3>SED DAPIBUS SIT AMET FELIS</h3>
-                            <h4>JOHN WILIAM</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
-                        </div>
-
-                        <div class="ms-layer buy-btn" style="left:330px; top:320px;"
-                             data-effect="bottom(40)"
-                             data-delay="10"
-                             data-ease="easeInOutQuad">
-                            <button class="btn btn-white  buy-btn"><i class="fa fa-bookmark"></i> Escolher</button>
-                        </div>
-                    </div>
-
-                    <div class="ms-slide">
-                        <img src="/fonts/img/img-master-slider/5.jpg" alt="lorem ipsum dolor sit" />
-                        <div class="ms-info">
-                            <h3>CONSECTETUR ADIPISCING ELIT</h3>
-                            <h4>JOHN WILIAM</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
-                        </div>
-
-                        <div class="ms-layer buy-btn" style="left:330px; top:320px;"
-                             data-effect="bottom(40)"
-                             data-delay="10"
-                             data-ease="easeInOutQuad">
-                            <button class="btn btn-white  buy-btn"><i class="fa fa-bookmark"></i> Escolher</button>
-                        </div>
-                    </div>
-                    <div class="ms-slide">
-                        <img src="/fonts/img/img-master-slider/6.jpg" alt="lorem ipsum dolor sit" />
-                        <div class="ms-info">
-                            <h3>SED A SEM AT LIBERO SODALES</h3>
-                            <h4>JOHN WILIAM</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
-                        </div>
-
-                        <div class="ms-layer buy-btn" style="left:330px; top:320px;"
-                             data-effect="bottom(40)"
-                             data-delay="10"
-                             data-ease="easeInOutQuad">
-                            <button class="btn btn-white  buy-btn"><i class="fa fa-bookmark"></i> Escolher</button>
-                        </div>
-                    </div>
-                    <div class="ms-slide">
-                        <img src="/fonts/img/img-master-slider/7.jpg" alt="lorem ipsum dolor sit" />
-                        <div class="ms-info">
-                            <h3>VITAE ULTRICIES ALIQUET</h3>
-                            <h4>JOHN WILIAM</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
-                        </div>
-
-                        <div class="ms-layer buy-btn" style="left:330px; top:320px;"
-                             data-effect="bottom(40)"
-                             data-delay="10"
-                             data-ease="easeInOutQuad">
-                            <button class="btn btn-white  buy-btn"><i class="fa fa-bookmark"></i> Escolher</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- end of masterslider -->
+                    }
+                }
+                catch (Exception)
+                {
+                    <br />
+                    <label style="color: #34495E; font-weight: normal; font-size: 20px">
+                        Destaques não disponíveis
+                    </label>
+                    <div class="clearfix"></div>
+                    <div class="clearfix"></div>
+                }
             </div>
-        </form>
+            <!-- end of masterslider -->
+        </div>
     </div>
 </div>
 
 
-
-
-
-
-
-
-
-
-
+<div class="modal modal-flex fade" id="ComprarDestaqueModal" tabindex="-1" role="dialog" aria-labelledby="flexModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="min-width: 40%;">
+        <div class="modal-content" id="conteudoDestaque">
+            @{
+                Html.RenderPartial("detalhesDestaque");
+            }
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

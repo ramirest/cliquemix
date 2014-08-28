@@ -1028,22 +1028,22 @@ a:focus {
 /* -- These image backgrounds are set to change automatically depending on the time of day. */
 
 .morning {
-    background: url(../img/widget-bg-morning.jpg) center bottom no-repeat;
+    background: url(../fonts/img/widget-bg-morning.jpg) center bottom no-repeat;
     background-size: cover;
 }
 
 .afternoon {
-    background: url(../img/widget-bg-afternoon.jpg) center bottom no-repeat;
+    background: url(../fonts/img/widget-bg-afternoon.jpg) center bottom no-repeat;
     background-size: cover;
 }
 
 .evening {
-    background: url(../img/widget-bg-evening.jpg) center bottom no-repeat;
+    background: url(../fonts/img/widget-bg-evening.jpg) center bottom no-repeat;
     background-size: cover;
 }
 
 .midnight {
-    background: url(../img/widget-bg-midnight.jpg) center bottom no-repeat;
+    background: url(../fonts/img/widget-bg-midnight.jpg) center bottom no-repeat;
     background-size: cover;
 }
 
@@ -1972,6 +1972,24 @@ input[type="checkbox"]:hover,
     box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
     box-shadow: none \9;
 }
+
+
+/* DIV com cantos arredondados */
+.arredondados {
+background:#e3e7e7;
+/*width:450px;*/
+margin: auto;
+padding:10px;
+/*text-align:center;*/
+
+-moz-border-radius:7px;
+-webkit-border-radius:7px;
+ border-radius:7px;
+}
+
+
+
+
 
 input[type="checkbox"]:checked::after,
 .checkbox input[type="checkbox"]:checked::after,
