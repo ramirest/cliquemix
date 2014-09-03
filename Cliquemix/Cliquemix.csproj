@@ -566,6 +566,7 @@
     <Content Include="Content\plugins\bootstrap-tokenfield\bootstrap-tokenfield.css" />
     <Content Include="Content\plugins\bootstrap-tokenfield\tokenfield-typeahead.css" />
     <Content Include="Content\plugins\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\plugins\bootstrap\css\docs.min.css" />
     <Content Include="Content\plugins\datatables\datatables.css" />
     <Content Include="Content\plugins\daterangepicker\daterangepicker-bs3.css" />
     <Content Include="Content\plugins\dropzone\css\dropzone.css" />
@@ -675,6 +676,11 @@
     <Content Include="fonts\img\widget-bg-morning.jpg" />
     <Content Include="fonts\Outros\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\Fotos\img-anun-painel.jpg" />
+    <Content Include="Images\Fotos\img-boss-admin.jpg" />
+    <Content Include="Images\Fotos\img-cons-painel.jpg" />
+    <Content Include="Images\Icons\MixClique-logo-login.png" />
+    <Content Include="Images\Icons\MixClique-logo-painel.png" />
     <Content Include="Images\Inicial\blog\blog_1.jpg" />
     <Content Include="Images\Inicial\blog\blog_2.jpg" />
     <Content Include="Images\Inicial\blog\blog_3.jpg" />
@@ -1137,8 +1143,6 @@
     <Folder Include="Aplicação\" />
     <Folder Include="App_Data\" />
     <Folder Include="Arquivos\Anunciantes\" />
-    <Folder Include="Images\Fotos\" />
-    <Folder Include="Images\Icons\" />
     <Folder Include="Relatórios\" />
   </ItemGroup>
   <ItemGroup>
