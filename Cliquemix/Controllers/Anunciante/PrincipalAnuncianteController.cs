@@ -10,7 +10,7 @@ using Microsoft.AspNet.Identity;
 
 namespace Cliquemix.Controllers.Anunciante
 {
-    [Authorize]
+    //[Authorize]
     public class PrincipalAnuncianteController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();
