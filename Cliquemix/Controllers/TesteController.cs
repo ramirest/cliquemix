@@ -5,10 +5,10 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Services;
 using Cliquemix.Models;
+using Microsoft.Reporting.WebForms;
 
 namespace Cliquemix.Controllers
 {
-    [Authorize]
     public class TesteController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();
@@ -16,9 +16,10 @@ namespace Cliquemix.Controllers
         // GET: Teste
         public ActionResult Index()
         {
-            ViewBag.Cidades = ProcFunc.FiltrarCidades("Ipatinga");
             return View();
         }
+
+
 
     }
 }

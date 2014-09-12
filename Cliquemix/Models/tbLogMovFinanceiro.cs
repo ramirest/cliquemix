@@ -22,6 +22,7 @@ namespace Cliquemix.Models
         public int tipoMov { get; set; }
         public Nullable<int> id { get; set; }
         public string tb { get; set; }
+        public string descMovimento { get; set; }
     
         public virtual tbUsers tbUsers { get; set; }
     }

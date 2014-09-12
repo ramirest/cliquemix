@@ -23,6 +23,7 @@ namespace Cliquemix.Models
     
         public int ctid { get; set; }
         public string sessionID { get; set; }
+        public System.DateTime dtMovimento { get; set; }
     
         public virtual ICollection<tbCampanha> tbCampanha { get; set; }
         public virtual ICollection<tbCampanhaAnuncio> tbCampanhaAnuncio { get; set; }

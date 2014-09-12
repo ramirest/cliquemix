@@ -41,6 +41,25 @@ namespace Cliquemix.Models
         }
         #endregion
 
+        #region "Usuário Ativo?"
+        public bool UsuarioAtivo(string user)
+        {
+            try
+            {
+                var u = (from usu in db.tbUsers where usu.username == user select usu).First();
+                var a = (from anun in db.tbAnunciante where anun.uid == u.uid select anun).First();
+                if (a.ansid == ProcFunc.RetornarStatusPadraoAnuncianteLiberadoAcesso())
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        #endregion
+
         public static void _salvarLog(int pCodUsuario, int pTimeOut, int pIdSessao, string pSessao)
         {
             ApplicationDbContext db = new ApplicationDbContext();

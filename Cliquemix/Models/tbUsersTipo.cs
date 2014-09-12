@@ -17,6 +17,7 @@ namespace Cliquemix.Models
         public tbUsersTipo()
         {
             this.tbConfigPadrao = new HashSet<tbConfigPadrao>();
+            this.tbConfigPadrao1 = new HashSet<tbConfigPadrao>();
             this.tbUsers = new HashSet<tbUsers>();
         }
     
@@ -24,6 +25,7 @@ namespace Cliquemix.Models
         public string dsUsersTipo { get; set; }
     
         public virtual ICollection<tbConfigPadrao> tbConfigPadrao { get; set; }
+        public virtual ICollection<tbConfigPadrao> tbConfigPadrao1 { get; set; }
         public virtual ICollection<tbUsers> tbUsers { get; set; }
     }
 }

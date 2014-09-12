@@ -109,18 +109,33 @@
                     <div class="table-responsive" id="conteudo">
                         <table class="table table-striped">
                             <thead>
-                                <tr>
-                                    <th class="text-center">ID</th>
-                                    <th class="text-center">Título</th>
-                                    <th class="text-center">Categoria</th>
-                                    <th class="text-center">Video</th>
-                                    <th class="text-center">Imagem</th>
-                                    <th class="text-center">Selecione</th>
+                                <tr>@*
+                                    @if (ViewBag.patrocinador == "0")
+                                    {*@
+                                        <th class="text-center">ID</th>
+                                        <th class="text-center">Título</th>
+                                        <th class="text-center">Categoria</th>
+                                        <th class="text-center">Video</th>
+                                        <th class="text-center">Imagem</th>
+                                        <th class="text-center">Selecione</th>@*
+                                    }
+                                    else
+                                    {
+                                        <th class="text-center">Título</th>
+                                        <th class="text-center">Categoria</th>
+                                        <th class="text-center">Video</th>
+                                        <th class="text-center">Imagem</th>
+                                        <th class="text-center">Patrocinador</th>
+                                        <th class="text-center">Selecione</th>
+                                    }*@
                                 </tr>
                             </thead>
                             <tbody>
                                 @try
                                 {
+@*
+                                    if (ViewBag.patrocinador == "0") //Anunciante Comum
+                                    {*@
                                     foreach (var item in Model)
                                     {
                                         <tr>
@@ -136,7 +151,7 @@
                                             <td align=center style="width: 60px;">
                                                 @if (item.videoAnuncio != string.Empty)
                                                 {
-                                                    @Html.Label("Sim", new { style = "align-content: center" })
+                                                    @Html.Label("Sim", new {style = "align-content: center"})
                                                 }
                                                 else
                                                 {
@@ -154,12 +169,58 @@
                                                 }
                                             </td>
                                             <td align=center style="width: 50px;">
-                                                <input type="radio" name="optAnuncio" value="@item.aid" onchange="anuncioSelecionado(this.value);" />
+                                                <input type="radio" name="optAnuncio" value="@item.aid" onchange=" anuncioSelecionado(this.value); " />
                                             </td>
                                         </tr>
                                     }
-                                }
-
+                                } @*
+                                    else //Anunciante Agência
+                                    {
+                                        foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td align=center style="width: 200px;">
+                                                    @Html.DisplayTextFor(modelItem => item.tituloAnuncio)
+                                                </td>
+                                                <td align=center style="width: 200px;">
+                                                    @Html.DisplayFor(modelItem => item.tbAnuncioCategoria.dsCategoria)
+                                                </td>
+                                                <td align=center style="width: 60px;">
+                                                    @if (item.videoAnuncio != string.Empty)
+                                                    {
+                                                        @Html.Label("Sim", new { style = "align-content: center" })
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.Label("Não")
+                                                    }
+                                                </td>
+                                                <td align=center style="width: 60px;">
+                                                    @if (item.tbAnuncioImg.ToList().Count > 0)
+                                                    {
+                                                        @Html.Label("Sim")
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.Label("Não")
+                                                    }
+                                                </td>
+                                                <td align=center style="width: 100px;">
+                                                    @if (item.tbAnuncioPatrocinador.First(m => m.aid == item.aid).tbConsumidor.usuSicove == null)
+                                                    {
+                                                        @Html.DisplayText("Sem Patrocinador")
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.DisplayTextFor(modelItem => item.tbAnuncioPatrocinador.First(m => m.aid == item.aid).tbConsumidor.usuSicove)
+                                                    }
+                                                </td>
+                                                <td align=center style="width: 50px;">
+                                                    <input type="radio" name="optAnuncio" value="@item.aid" onchange=" anuncioSelecionado(this.value); " />
+                                                </td>
+                                            </tr>
+                                        }
+                                    }*@
                                 catch (Exception)
                                 {
                                     <label style="color: #34495E; font-weight: normal; font-size: 16px">

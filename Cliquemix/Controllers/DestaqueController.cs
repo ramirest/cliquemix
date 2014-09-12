@@ -29,14 +29,6 @@ namespace Cliquemix.Controllers.Anunciante
         }
 
 
-        // GET: Destaque
-        public ActionResult Index()
-        {
-            var tbDestaque = db.tbDestaque.Include(t => t.tbDestaqueDuracao).Include(t => t.tbPacoteClique);
-            return View(tbDestaque.ToList());
-        }
-
-
         [HttpGet]
         public ActionResult ExibirDestaques()
         {
@@ -127,8 +119,6 @@ namespace Cliquemix.Controllers.Anunciante
 
         // CONFIRMAÇÃO DA COMPRA DE DESTAQUE PELO ANUNCIANTE
         // POST: Destaque/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult DetalhesDestaque(int idDestaque)
@@ -152,7 +142,7 @@ namespace Cliquemix.Controllers.Anunciante
                     vd = Convert.ToDecimal(destaque.qtCredito ?? 0);
                     sf = sa - vd;
 
-                    if (sf > 0)
+                    if (sf >= 0)
                     {
                         tbDestaqueAnunciante.did = destaque.did;
                         tbDestaqueAnunciante.dtMovimento = DateTime.Now;
@@ -160,7 +150,8 @@ namespace Cliquemix.Controllers.Anunciante
                         tbDestaqueAnunciante.dasid = ProcFunc.RetornarStatusPadraoDestaqueAnuncianteComprado();
                         db.tbDestaqueAnunciante.Add(tbDestaqueAnunciante);
                         db.SaveChanges();
-                        ProcFunc.AlterarSaldoAnunciante(cdAnun, sf, vd);
+                        ProcFunc.AlterarSaldoAnunciante(cdAnun, 0, vd, "Compra de Destaque para o Anunciante");
+                        ProcFunc.InserirMovCreditoAnunciante(cdAnun, sa, sf, tbDestaqueAnunciante.daid);
 
                         return RedirectToAction("ListDestaque");
                     }

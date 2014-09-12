@@ -2080,7 +2080,7 @@
 			
 			var nFilter = document.createElement( 'div' );
 			nFilter.className = oSettings.oClasses.sFilter;
-			nFilter.innerHTML = '<label>'+sSearchStr+'</label>';
+		    nFilter.innerHTML = '<label>'+sSearchStr+'</label>';
 			if ( !oSettings.aanFeatures.f )
 			{
 				nFilter.id = oSettings.sTableId+'_filter';
@@ -2711,14 +2711,14 @@
 			 * sZeroRecords - assuming that is given.
 			 */
 			if ( !oLanguage.sEmptyTable && oLanguage.sZeroRecords &&
-				oDefaults.sEmptyTable === "No data available in table" )
+				oDefaults.sEmptyTable === "Nenhum registro disponível na tabela." )
 			{
 				_fnMap( oLanguage, oLanguage, 'sZeroRecords', 'sEmptyTable' );
 			}
 		
 			/* Likewise with loading records */
 			if ( !oLanguage.sLoadingRecords && oLanguage.sZeroRecords &&
-				oDefaults.sLoadingRecords === "Loading..." )
+				oDefaults.sLoadingRecords === "Verificando..." )
 			{
 				_fnMap( oLanguage, oLanguage, 'sZeroRecords', 'sLoadingRecords' );
 			}

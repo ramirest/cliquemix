@@ -17,6 +17,76 @@
 <link href="~/Content/plugins/summernote/summernote.css" rel="stylesheet">
 <link href="~/Content/plugins/summernote/summernote-bs3.css" rel="stylesheet">
 
+<script>
+    
+    function ErroCriarAnunciante(tipo) {
+        var desc = "";
+
+        if (tipo == 1) {
+            desc = "O Patrocinador informado não existe no banco de dados do sistema [Cod: 004.00001]";
+        }
+
+        setTimeout(function () {
+            erro_message_demo(desc);
+        }, 1000);
+    }
+
+    function limparAviso() {
+        Messenger().hideAll();
+    }
+
+    function success_message_demo(erro) {
+        Messenger.options = {
+            extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
+            theme: 'flat'
+        }
+        Messenger().post({
+            message: erro,
+            type: 'success',
+            showCloseButton: true
+        });
+    }
+
+    function erro_message_demo(erro) {
+        Messenger.options = {
+            extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
+            theme: 'flat'
+        }
+        Messenger().post({
+            message: erro,
+            type: 'error',
+            showCloseButton: true
+        });
+    };
+
+    function validarPatrocinador() {
+        var n = document.getElementById('patrocinador').value;
+        $.ajax({
+            dataType: "json",
+            type: "GET",
+            url: "/Anuncio/ValidaPatrocinador/?nome="+n,
+            success: function (data) {
+                $(data).each(function () {
+                    if (data.tpError == "004.00001") {
+                        //Caso o valor for inválido, altera o estado de exibição das divs e Informa que o valor está inválido
+                        $("#msgValidar_Patrocinador").attr("class", "form-group has-error");
+                        document.getElementById("msgValidar_Patrocinador").innerHTML =
+                            '<span class="help-block"><i class="fa fa-warning"></i> '+
+                            '<strong>Inválido!</strong> ' + data.Error+'</span>';
+                    } 
+                    else {
+                        //Caso o valor for Válido, altera o estado de exibição das divs e Informa que o valor está válido
+                        $("#msgValidar_Patrocinador").attr("class", "form-group has-success");
+                        document.getElementById("msgValidar_Patrocinador").innerHTML =
+                            '<span class="help-block"><i class="fa fa-check"></i> ' +
+                            '<strong>OK!</strong> O Patrocinador informado é válido!"</span>';
+                    }
+                });
+            }
+        });
+    }
+</script>
+
 <script type="text/javascript">
     var idAlbum = @ViewBag.actid
     
@@ -108,6 +178,9 @@
                                                 <a href="#infoBasico" data-toggle="tab" id="lnk1"><i class="fa fa-info-circle fa-fw"></i> Informações</a>
                                             </li>
                                             <li>
+                                                <a href="#infoDescricao" data-toggle="tab" id="lnk5"><i class="fa fa-list-alt fa-fw"></i> Descrição</a>
+                                            </li>
+                                            <li>
                                                 <a href="#infoVideo" data-toggle="tab" id="lnk2"><i class="fa fa-film fa-fw"></i> Video</a>
                                             </li>
                                             <li>
@@ -118,8 +191,18 @@
                                             </li>
                                         </ul>
                                     </div>
-
+                                    
                                     @Html.ValidationSummary(true)
+                                    
+                                    @*
+                                        ViewBag.Error = "O Patrocinador informado não existe no banco de dados do sistema [Cod: 004.00001]";
+                                        ViewBag.tpError = "004.00001";
+                                    *@
+                                    @if (ViewBag.tpError == "004.00001")
+                                    {
+                                    <script type="text/javascript">ErroCriarAnunciante(1);</script>
+                                    }
+                                    
 
                                     <div class="col-sm-9">
                                         <div id="userSettingsContent" class="tab-content">
@@ -127,42 +210,57 @@
                                                 @*  Dados do Anúncio  *@
                                                 @Html.HiddenFor(model => model.pid)
                                                 <h4 class="page-header">Informações do Anúncio:</h4>
-                                                <div class="form-group col-lg-6">
+                                                <div class="form-group col-lg-7">
                                                     @Html.Label("Título do Anúncio")
                                                     @Html.TextBoxFor(model => model.tituloAnuncio, new { @class = "form-control" })
                                                     @Html.ValidationMessageFor(model => model.tituloAnuncio)
                                                 </div>
 
-                                                <div class="form-group col-lg-6">
+                                                <div class="form-group col-lg-5">
                                                     @Html.Label("Categoria do Anúncio")
                                                     <div class="clearfix"></div>
                                                     @Html.DropDownList("acid", null, string.Empty, new { style = "width:300px; height:34px" })
                                                     @Html.ValidationMessageFor(model => model.acid)
                                                 </div>
-
+                                                <div class="clearfix"></div>
                                                 @*
-                                                <div class="form-group col-lg-6">
-                                                    @Html.Label("URL do Anúncio")
-                                                    @Html.TextBoxFor(model => model.url, new { @class = "form-control", placeholder = "Http://" })
-                                                </div>
+                                                @if (ViewBag.infoPatrocinador == 1)
+                                                {
+                                                    <div class="form-group col-lg-4" id="dadosPatrocinador">
+                                                        @Html.Label("Patrocinador")
+                                                        <div class="clearfix"></div>
+                                                        <input type="text" class="form-control" maxlength="30"
+                                                               alt="patrocinador" id="patrocinador" name="patrocinador" onchange="validarPatrocinador();" />
+                                                        <div id="msgValidar_Patrocinador"></div>
+                                                    </div>
+                                                }
                                                 *@
                                                 <div class="clearfix"></div>
-                                                <div class="form-group col-lg-offset-6"></div>
-
-                                                <div class="form-group col-lg-offset-6"></div>
-
-                                                <div class="form-group col-lg-12">
-                                                    <!-- Summernote CMS Example -->
-                                                    @Html.Label("Descrição do Anúncio")
-                                                    <div class="clearfix"></div>
-                                                    <div id="summernote"></div>
-                                                    <input type="text" id="dsAnuncio" name="dsAnuncio" style="width: 400px; height: 100px; display: none;"/>
-                                                </div>
 
                                                 <div class="col-sm-offset-10 col-sm-1">
-                                                    <button type="button" onclick=" $('#lnk2').click(); " class="btn btn-default">Próximo</button>
+                                                    <button type="button" onclick=" $('#lnk5').click(); " class="btn btn-default">Próximo</button>
                                                 </div>                                                
                                             </div>                                            
+
+                                            <div class="tab-pane fade" id="infoDescricao">
+                                                <h4 class="page-header">Descrição do Anúncio</h4>
+                                                <div class="form-group col-lg-12">
+                                                    <!-- Summernote CMS Example -->
+                                                    <div class="clearfix"></div>
+                                                    <div id="summernote"></div>
+                                                    <input type="text" id="dsAnuncio" name="dsAnuncio" style="width: 400px; height: 100px; display: none;" />
+                                                </div>
+
+                                                <div class="form-group col-lg-offset-6"></div>
+
+                                                <div class="clearfix"></div>
+                                                
+                                                <div class="form-group col-lg-offset-9">
+                                                    <button type="button" onclick=" $('#lnk1').click(); " class="btn btn-default">Anterior</button>
+                                                    <button type="button" onclick=" $('#lnk2').click(); " class="btn btn-default">Próximo</button>
+                                                </div>
+                                            </div>
+                                            
 
                                             <div class="tab-pane fade" id="infoVideo">
                                                 
@@ -186,7 +284,7 @@
                                                 <div class="clearfix"></div>
                                                 
                                                 <div class="form-group col-lg-offset-9">
-                                                    <button type="button" onclick=" $('#lnk1').click(); " class="btn btn-default">Anterior</button>
+                                                    <button type="button" onclick=" $('#lnk5').click(); " class="btn btn-default">Anterior</button>
                                                     <button type="button" onclick=" $('#lnk3').click(); " class="btn btn-default">Próximo</button>
                                                 </div>
                                             </div>

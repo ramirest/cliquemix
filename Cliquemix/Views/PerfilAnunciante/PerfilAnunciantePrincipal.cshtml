@@ -14,25 +14,25 @@
 
                     <p title="Nome Fantasia">
                         <i class="fa fa-magic fa-muted fa-fw"></i>
-                        Artes & Cia
+                        @ViewBag.nomeFantasia
                     </p>
 
                     <p title="CNPJ">
                         <i class="fa fa-suitcase fa-muted fa-fw"></i>
-                        78.425.986/0001-15
+                        @ViewBag.cnpj
                     </p>
 
                     <p title="E-mail">
                         <i class="fa fa-envelope-o fa-muted fa-fw"></i>
-                        contato@artesecia.com.br
+                        @ViewBag.email
                     </p>
                 </div>
 
                 <div class="col-lg-6 col-md-9">
-                    <h1>Moreira e Santos S/A</h1>
+                    <h1>@ViewBag.razaoSocial</h1>
                     <div class="form-horizontal">
                         <label>Seus Créditos: </label>
-                        <label class="btn btn-white">200 ©</label>
+                        <label class="btn btn-white">@ViewBag.saldoAtual ©</label>
                     </div>
                 </div>
 

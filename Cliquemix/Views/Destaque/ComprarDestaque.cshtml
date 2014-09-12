@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Cliquemix.Models.tbDestaque>
 
 <script>
-    function CompraDestaque(item) {
+    function DetalhesDestaque(item) {
         //var id = document.getElementById('pCodDestaqueCompra').value;
         var btn = document.getElementById('BtnDetalhesDestaque');
         $.ajax(
@@ -93,7 +93,7 @@
                             <div class="ms-layer buy-btn" style="left: 330px; top: 320px;"
                                  data-effect="bottom(40)" data-delay="10" data-ease="easeInOutQuad">
                                 <button class="btn btn-white buy-btn" id="btnCompraDestaque" name="btnCompraDestaque"
-                                        onclick="CompraDestaque(@item.did);" title="Comprar Destaque">
+                                        onclick="DetalhesDestaque(@item.did);" title="Comprar Destaque">
                                     <i class="fa fa-bookmark"></i> Escolher
                                 </button>
                             </div>

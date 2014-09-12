@@ -15,11 +15,13 @@ namespace Cliquemix.Models
     public partial class tbCreditoDesconta
     {
         public int dcid { get; set; }
-        public int adid { get; set; }
         public Nullable<double> saldoCreditoIni { get; set; }
         public Nullable<double> saldoCreditoFin { get; set; }
         public Nullable<System.DateTime> dtOcorrido { get; set; }
+        public Nullable<int> daid { get; set; }
+        public Nullable<int> pid { get; set; }
     
-        public virtual tbAnuncianteDestaque tbAnuncianteDestaque { get; set; }
+        public virtual tbAnunciante tbAnunciante { get; set; }
+        public virtual tbDestaqueAnunciante tbDestaqueAnunciante { get; set; }
     }
 }

@@ -43,8 +43,8 @@ namespace Cliquemix.Controllers
 
             ViewBag.actid = tbAnuncio.actid;
             ViewBag.acid = new SelectList(db.tbAnuncioCategoria, "acid", "dsCategoria", tbAnuncio.acid);
-            //ViewBag.pid = new SelectList(db.tbAnunciante, "pid", "cnpj", tbAnuncio.pid);
-            //ViewBag.asid = new SelectList(db.tbAnuncioStatus, "asid", "dsStatus", tbAnuncio.asid);
+            var cdanun = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());
+            ViewBag.infoPatrocinador = ProcFunc.RetornarTipoAnunciante(cdanun);
             return View(tbAnuncio);
         }
 
@@ -64,8 +64,8 @@ namespace Cliquemix.Controllers
             
             ViewBag.actid = tbAnuncio.actid;
             ViewBag.acid = new SelectList(db.tbAnuncioCategoria, "acid", "dsCategoria", tbAnuncio.acid);
-            //ViewBag.pid = new SelectList(db.tbAnunciante, "pid", "cnpj", tbAnuncio.pid);
-            //ViewBag.asid = new SelectList(db.tbAnuncioStatus, "asid", "dsStatus", tbAnuncio.asid);
+            var cdanun = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());
+            ViewBag.infoPatrocinador = ProcFunc.RetornarTipoAnunciante(cdanun);
             return View(tbAnuncio);
         }
 
@@ -99,6 +99,8 @@ namespace Cliquemix.Controllers
                     ViewBag.acid = new SelectList(db.tbAnuncioCategoria, "acid", "dsCategoria", tbanuncio.acid);
                     ViewBag.pid = new SelectList(db.tbAnunciante, "pid", "cnpj", tbanuncio.pid);
                     ViewBag.asid = new SelectList(db.tbAnuncioStatus, "asid", "dsStatus", tbanuncio.asid);
+                    var cdanun = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());
+                    ViewBag.infoPatrocinador = ProcFunc.RetornarTipoAnunciante(cdanun);
                     return View(tbanuncio);
                 }
                 return RedirectToAction("ListAnuncio");
@@ -112,7 +114,9 @@ namespace Cliquemix.Controllers
         {
             ViewBag.acid = new SelectList(db.tbAnuncioCategoria, "acid", "dsCategoria");
             ViewBag.asid = new SelectList(db.tbAnuncioStatus, "asid", "dsStatus");
-            tbAnuncioCodTemp act = new tbAnuncioCodTemp();
+            var cdanun = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());
+            ViewBag.infoPatrocinador = ProcFunc.RetornarTipoAnunciante(cdanun);
+            var act = new tbAnuncioCodTemp();
             act.dtMovimento = DateTime.Now;
             act.uid = ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName());
             db.tbAnuncioCodTemp.Add(act);
@@ -130,6 +134,8 @@ namespace Cliquemix.Controllers
         public ActionResult CreateAnuncio([Bind(Include = "tituloAnuncio,url,dsAnuncio,acid,pid,videoAnuncio,comentar,curtir,idTempImg," +
                                                           "compartilhar,dtCriacao,imagem1,imagem2,imagem3,imagem4,imagem5,imagem6,imagem7,imagem8,idTemp")] tbAnuncio tbanuncio)
         {
+            string patrocinador = @Request.Form.Get("patrocinador");
+
             if (ModelState.IsValid)
             {
                 tbanuncio.pid = ProcFunc.RetornarCodigoAnuncianteCodUsuario(ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName()));
@@ -142,6 +148,22 @@ namespace Cliquemix.Controllers
                 {
                     ProcFunc.InserirCodAnuncioTbAnuncioCodTemp(tbanuncio.actid, tbanuncio.aid);
                     ProcFunc.InserirCodAnuncioTbAnuncioImg(tbanuncio.actid, tbanuncio.aid, ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName()));
+                    
+                    // Recebe o tipo do anunciante (Comum ou Agência)
+                    var t = ProcFunc.RetornarTipoAnunciante(tbanuncio.pid);
+                    
+                    // Recebe o código do patrocinador do anuncio
+                    var p = ProcFunc.RetornarCodigoPatrocinadorAnunciante(patrocinador);
+                    
+                    //*** Definir Patrocinador do Anuncio (Se Anunciante Agência) ***
+                    if ((t == 0) && ( p > 0))
+                    {
+                        var anuncioPatrocinador = new tbAnuncioPatrocinador();
+                        anuncioPatrocinador.aid = tbanuncio.aid;
+                        anuncioPatrocinador.cid = p;
+                        CriarPatrocinadorAnuncio(anuncioPatrocinador);
+                    }
+
                     SalvarLogAnuncio(tbanuncio.aid, (int)tbanuncio.asid, ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName()), "CreateAnuncio", "");
                 }
                 catch (Exception e)
@@ -158,19 +180,10 @@ namespace Cliquemix.Controllers
         }
 
 
-        // GET: /Anuncio/Delete/5
-        public ActionResult Delete(int? id)
+        public void CriarPatrocinadorAnuncio(tbAnuncioPatrocinador anuncioPatrocinador)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            tbAnuncio tbanuncio = db.tbAnuncio.Find(id);
-            if (tbanuncio == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tbanuncio);
+            db.tbAnuncioPatrocinador.Add(anuncioPatrocinador);
+            db.SaveChanges();
         }
 
 
@@ -268,6 +281,29 @@ namespace Cliquemix.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+
+        [HttpGet]
+        public JsonResult ValidaPatrocinador(string nome)
+        {
+            var resultado = new
+            {
+                Error = "",
+                tpError = ""
+            };
+
+            //Verifica se o patrocinador é válido
+            if (String.IsNullOrEmpty(nome) || (!ProcFunc.PatrocinadorExiste(nome)))
+            {
+                resultado = new
+                {
+                    Error = "O Patrocinador informado não existe no banco de dados do sistema [Cod: 004.00001]",
+                    tpError = "004.00001"
+                };
+            }
+
+            return Json(resultado, JsonRequestBehavior.AllowGet);
         }
 
 

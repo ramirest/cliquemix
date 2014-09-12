@@ -21,8 +21,9 @@ namespace Cliquemix.Controllers
     {
         //CÓDIGO EXCEPTION [CAMPANHA] 001
         private ApplicationDbContext db = new ApplicationDbContext();
-        private string ErroCriarCampanha = null;
 
+        internal static string TipoErro { get; set; }
+        
         // GET: /Campanha/ListCampanha
         public ActionResult ListCampanha(int? pagina) //CÓDIGO EXCEPTION [ListCampanha] 00001
         {
@@ -30,11 +31,12 @@ namespace Cliquemix.Controllers
             int paginaNumero = (pagina ?? 1); //Define o número inicial da página como 1
             var codAnunciante = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());
             var cpec = ProcFunc.RetornarStatusPadraoCampanhaExcluida();
-            ViewBag.ErroCriarCampanha = ErroCriarCampanha;
+            ViewBag.ErroCriarCampanha = TipoErro;
 
             var tbcampanha = db.tbCampanha.Include(a => a.tbAnunciante).Include(s => s.tbCampanhaStatus).
                 Include(c => c.tbCampanhaTmp).Include(d => d.tbDestaqueAnunciante).Include(p => p.tbPacoteClique).
                 Where(m => m.pid == codAnunciante && m.csid != cpec).ToList();
+            TipoErro = string.Empty;
             return View(tbcampanha.ToPagedList(paginaNumero, paginaTamanho));
         }
         
@@ -46,12 +48,20 @@ namespace Cliquemix.Controllers
             {
                 var cdAnun = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());
                 var spdad = ProcFunc.RetornarStatusPadraoDestaqueAnuncianteDisponivel();
+                var s = ProcFunc.RetornarStatusPadraoAnuncio();
+                var ad = db.tbAnuncio.Where(a => a.asid == s && a.pid == cdAnun);
+
+                if (!ad.Any())//CÓDIGO EXCEPTION [CreateCampanha] 00002
+                {   //Não tem anúncios disponíveis
+                    TipoErro = "001.00004";
+                    return RedirectToAction("ListCampanha");
+                }
+
                 var da = db.tbDestaqueAnunciante.Where(d => d.pid == cdAnun && d.dasid == spdad)
                          .OrderBy(d => d.tbDestaque.tituloDestaque);
-
                 if (!da.Any())//CÓDIGO EXCEPTION [CreateCampanha] 00002
-                {
-                    ErroCriarCampanha = "Não existem destaques disponíveis [Cod: 001.00002]";
+                {   //Não tem destaques disponíveis
+                    TipoErro = "001.00002";
                     return RedirectToAction("ListCampanha");
                 }
 
@@ -83,7 +93,7 @@ namespace Cliquemix.Controllers
             }
             catch (Exception)
             {//CÓDIGO EXCEPTION [CreateCampanha] 00003
-                ErroCriarCampanha = "Não foi possível cadastrar uma nova campanha. Verifique! [Cod: 001.00003]";
+                TipoErro = "001.00003";
                 return RedirectToAction("ListCampanha");
             }
         }
@@ -158,7 +168,8 @@ namespace Cliquemix.Controllers
                 db.SaveChanges();
                 ProcFunc.AtualizarCodTempAnunciosCampanha(tbCampanha.ctid, tbCampanha.cid, tbCampanha.tbDestaqueAnunciante.daid);
                 ProcFunc.UtilizarDestaqueAnuncianteCampanha(tbCampanha.pid, tbCampanha.daid);
-
+                var cda = tbCampanha.tbCampanhaAnuncio.First(c => c.cid == tbCampanha.cid).aid;
+                ProcFunc.AnuncioNaCampanha(cda);
                 //Salvar Log do Sistema
                 ProcFunc.SalvarLog(ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName()),
                     "Cadastro de uma nova Campanha ["+tbCampanha.cid.ToString(format: "000000")+"]", this.ToString(), "POST");
@@ -191,6 +202,17 @@ namespace Cliquemix.Controllers
                 var tbCampanhaAnuncio = db.tbCampanhaAnuncio.Where(m => m.ctid == pCodCampanha);
                 if (tbCampanhaAnuncio.Any())
                 {
+                    var cdAnun = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());
+                    try
+                    {
+                        var tipo = ProcFunc.RetornarTipoAnunciante(cdAnun);
+                        ViewBag.patrocinador = tipo.ToString();
+                    }
+                    catch (Exception)
+                    {
+                        ViewBag.patrocinador = 0;
+                    }
+
                     ViewBag.Tudo = 2;
                     ViewBag.CodCampanha = pCodCampanha;
                     return PartialView(tbCampanhaAnuncio.ToList());
@@ -372,17 +394,28 @@ namespace Cliquemix.Controllers
             {
                 if (ProcFunc.CampanhaContemAnuncio(pCodCampanha))
                 {
+                    //Já existe anúncio vinculado na campanha
                     ViewBag.Tudo = 2;
                     return PartialView(null);
                 }
                 else if (!ProcFunc.ExisteAnuncioParaVincular(cdAnun))
                 {
+                    //Não existe anúncio disponível para ser vinculado
                     ViewBag.Tudo = 4;
                     return PartialView(null);
                 }
                 else
                 {
                     var codStatus = ProcFunc.RetornarStatusPadraoAnuncioDisponivelParaCampanha();
+                    try
+                    {
+                        var tipo = ProcFunc.RetornarTipoAnunciante(cdAnun);
+                        ViewBag.patrocinador = tipo.ToString();
+                    }
+                    catch (Exception)
+                    {
+                        ViewBag.patrocinador = 0;
+                    }
 
                     if (txt == null)
                     {

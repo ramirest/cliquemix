@@ -17,6 +17,7 @@ namespace Cliquemix.Models
         public tbDestaqueAnunciante()
         {
             this.tbCampanha = new HashSet<tbCampanha>();
+            this.tbCreditoDesconta = new HashSet<tbCreditoDesconta>();
         }
     
         public int daid { get; set; }
@@ -27,6 +28,7 @@ namespace Cliquemix.Models
     
         public virtual tbAnunciante tbAnunciante { get; set; }
         public virtual ICollection<tbCampanha> tbCampanha { get; set; }
+        public virtual ICollection<tbCreditoDesconta> tbCreditoDesconta { get; set; }
         public virtual tbDestaque tbDestaque { get; set; }
         public virtual tbDestaqueAnuncianteStatus tbDestaqueAnuncianteStatus { get; set; }
     }

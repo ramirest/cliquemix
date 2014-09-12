@@ -11,7 +11,7 @@
     // Tudo = 4 [Não existe anúncio para vincular]
 }
 
-<script language="JavaScript" type="text/javascript" src="~/Scripts/plugins/validate/MascaraValidacao/MascaraValidacao.js"></script>
+<script language="JavaScript" type="text/javascript" src="~/Scripts/plugins/validate/MascaraValidacao.js"></script>
 <script type="text/javascript" src="~/Scripts/Outros/jquery-2.1.1.min.js"></script>
 
 <script>
@@ -185,6 +185,19 @@
             r = "0" + r;
         }
         return r;
+    }
+
+    
+    function validaCampo() {
+        var destaque = document.getElementById('daid');
+
+        if(destaque.value == "")
+        {
+            alert("A Campanha precisa de um destaque!");
+            return false;
+        }
+        else
+            return true;
     }
 </script>
 

@@ -1,0 +1,152 @@
+﻿<div class="row">
+    <div class="col-lg-12">
+        <div class="page-title">
+            <h1>
+                Relatório
+                <small>Destaques</small>
+            </h1>
+            @RenderPage("~/Views/Breadcrumbs/Breadcrumbs-Anunciante-Relatorio-Destaques.cshtml")
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="portlet portlet-default">
+            <div class="portlet-heading">
+                <div class="portlet-title">
+                    <h4 class="flutuar">
+                        <i class="fa fa-users fa-fw"></i> Relatório de Destaques
+                    </h4>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="portlet-body">
+                <div class="row">
+
+
+                    <div class="form-group col-lg-6">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="portlet portlet-default">
+                                            <div class="portlet-body" style="min-height:326px;">
+                                                <h4 class="color-theme">Opções:</h4>
+
+                                                <div class="radio">
+                                                    <label style="font-size: 14px; font-weight: normal">
+                                                        <input type="radio" name="optRelAnuncianteDestaques" id="optRelAnuncianteDestaquesParam1" value="" />
+                                                        Item 1
+                                                    </label>
+                                                </div>
+
+                                                <div class="radio">
+                                                    <label style="font-size: 14px; font-weight: normal">
+                                                        <input type="radio" name="optRelAnuncianteDestaques" id="optRelAnuncianteDestaquesParam2" value="" />
+                                                        Item 2
+                                                    </label>
+                                                </div>
+
+                                                <div class="radio">
+                                                    <label style="font-size: 14px; font-weight: normal">
+                                                        <input type="radio" name="optRelAnuncianteDestaques" id="optRelAnuncianteDestaquesParam3" value="" />
+                                                        Item 3
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <div class="row">
+
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="portlet portlet-default">
+                                            <div class="portlet-body" style="min-height:220px;">
+                                                <h4 class="color-theme">Data:</h4>
+                                                <div class="form-group col-lg-12">
+                                                    <label>Data Inicial</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-default add-on " type="button">
+                                                                <i class="fa fa-calendar"></i>
+                                                            </button>
+                                                        </span>
+                                                        <input type="text" class="form-control" maxlength="10"
+                                                               alt="dtInicialRelAnuncianteDestaque" required=""
+                                                               id="dtInicialRelAnuncianteDestaque" name="dtInicialRelAnuncianteDestaque"
+                                                               onblur="ValidaData(this);" onkeypress="MascaraData(this);" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-12">
+                                                    <label>Data Final</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-default add-on " type="button">
+                                                                <i class="fa fa-calendar"></i>
+                                                            </button>
+                                                        </span>
+                                                        <input type="text" class="form-control" maxlength="10"
+                                                               alt="dtFinalRelAnuncianteDestaque" required=""
+                                                               id="dtFinalRelAnuncianteDestaque" name="dtFinalRelAnuncianteDestaque"
+                                                               onblur="ValidaData(this);" onkeypress="MascaraData(this);" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="portlet portlet-default">
+                                            <div class="portlet-body" style="min-height:220px;">
+                                                <h4 class="color-theme">Tipo de Relatório:</h4>
+                                                <div class="radio col-lg-12">
+                                                    <label style="font-size: 16px; font-weight: normal">
+                                                        <input type="radio" name="optRelAnuncianteDestaquesTipo" id="optRelAnuncianteDestaquesTipo1" value="" />
+                                                        Tabela
+                                                    </label>
+                                                </div>
+                                                <div class="radio col-lg-12">
+                                                    <label style="font-size: 16px; font-weight: normal">
+                                                        <input type="radio" name="optRelAnuncianteDestaquesTipo" id="optRelAnuncianteDestaquesTipo2" value="" />
+                                                        Gráfico
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <hr>
+                                        <div class="btn-group btn-group-justified">
+                                            <a class="btn btn-default" role="button">Voltar</a>
+                                            <a class="btn btn-green" role="button">Visualizar</a>
+                                            <a class="btn btn-default" role="button">PDF</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

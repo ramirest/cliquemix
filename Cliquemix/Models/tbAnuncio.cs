@@ -20,6 +20,7 @@ namespace Cliquemix.Models
             this.tbAnuncioFuncionalidade = new HashSet<tbAnuncioFuncionalidade>();
             this.tbAnuncioImg = new HashSet<tbAnuncioImg>();
             this.tbAnuncioLog = new HashSet<tbAnuncioLog>();
+            this.tbAnuncioPatrocinador = new HashSet<tbAnuncioPatrocinador>();
             this.tbCampanhaAnuncio = new HashSet<tbCampanhaAnuncio>();
             this.tbPontosRede = new HashSet<tbPontosRede>();
         }
@@ -45,6 +46,7 @@ namespace Cliquemix.Models
         public virtual ICollection<tbAnuncioFuncionalidade> tbAnuncioFuncionalidade { get; set; }
         public virtual ICollection<tbAnuncioImg> tbAnuncioImg { get; set; }
         public virtual ICollection<tbAnuncioLog> tbAnuncioLog { get; set; }
+        public virtual ICollection<tbAnuncioPatrocinador> tbAnuncioPatrocinador { get; set; }
         public virtual ICollection<tbCampanhaAnuncio> tbCampanhaAnuncio { get; set; }
         public virtual ICollection<tbPontosRede> tbPontosRede { get; set; }
         public virtual tbAnuncioStatus tbAnuncioStatus { get; set; }

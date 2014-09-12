@@ -1,0 +1,230 @@
+﻿<div class="row">
+    <div class="col-lg-12">
+        <div class="page-title">
+            <h1>
+                Relatório
+                <small>Anúncios</small>
+            </h1>
+            @RenderPage("~/Views/Breadcrumbs/Breadcrumbs-Anunciante-Relatorio-Anuncios.cshtml")
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function VisualizarRelatorio() {
+        var opcao = document.getElementById('opcao').value;
+        var tipo = document.getElementById('tipo').value;
+        alert(tipo);
+        $.ajax(
+        {
+            type: 'POST',
+            url: '/RelatorioAnunciante/RelAnuncio/?opcao='+opcao+'&tipo='+tipo,
+            dataType: 'html',
+            cache: false,
+            async: true,
+            success: function(data) {
+                //$('#carregarImagens').html(data);
+            }
+        });
+    }
+
+    function OpcaoSelecionada(item) {
+        document.getElementById('opcao').value = item;
+    }
+
+    function TipoSelecionado(item) {
+        document.getElementById('tipo').value = item;
+    }
+</script>
+
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="portlet portlet-default">
+                <div class="portlet-heading">
+                    <div class="portlet-title">
+                        <h4 class="flutuar">
+                            <i class="fa fa-picture-o fa-fw"></i> Relatório de Anúncios
+                        </h4>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="portlet-body">
+                    <div class="row">
+                    
+                        <input type="hidden" id="opcao" name="opcao" />
+                        <input type="hidden" id="tipo" name="tipo" />
+                        <div class="form-group col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="portlet portlet-default">
+                                                <div class="portlet-body" style="min-height: 326px;">
+                                                    <h4 class="color-theme">Opções:</h4>
+
+                                                    <div class="radio">
+                                                        <label style="font-size: 14px; font-weight: normal">
+                                                            <input type="radio" name="optRelAnuncianteAnuncios" id="optRelAnuncianteAnunciosParam1"
+                                                                   value="1" onchange="OpcaoSelecionada(this.value);" />
+                                                            Todos os anúncios
+                                                        </label>
+                                                    </div>
+                                                    @*
+                                                    <div class="radio">
+                                                        <label style="font-size: 14px; font-weight: normal">
+                                                            <input type="radio" name="optRelAnuncianteAnuncios" id="optRelAnuncianteAnunciosParam2" 
+                                                            value="2" onchange="OpcaoSelecionada(this.value);" />
+                                                            Anúncios em campanha
+                                                        </label>
+                                                    </div>
+                                                
+                                                    <div class="radio">
+                                                        <label style="font-size: 14px; font-weight: normal">
+                                                            <input type="radio" name="optRelAnuncianteAnuncios" id="optRelAnuncianteAnunciosParam3" 
+                                                            value="3" onchange="OpcaoSelecionada(this.value);" />
+                                                            Anúncios disponíveis
+                                                        </label>
+                                                    </div>
+                                                
+                                                    <div class="radio">
+                                                        <label style="font-size: 14px; font-weight: normal">
+                                                            <input type="radio" name="optRelAnuncianteAnuncios" id="optRelAnuncianteAnunciosParam4" 
+                                                            value="4" onchange="OpcaoSelecionada(this.value);" />
+                                                            Anúncios excluídos
+                                                        </label>
+                                                    </div>
+                                                    *@
+                                                    <div class="radio">
+                                                        <label style="font-size: 14px; font-weight: normal">
+                                                            <input type="radio" name="optRelAnuncianteAnuncios" id="optRelAnuncianteAnunciosParam5"
+                                                                   value="5" onchange="OpcaoSelecionada(this.value);" />
+                                                            Cliques por anúncio
+                                                        </label>
+                                                    </div>
+                                                    @*
+                                                <div class="radio">
+                                                    <label style="font-size: 14px; font-weight: normal">
+                                                        <input type="radio" name="optRelAnuncianteAnuncios" id="optRelAnuncianteAnunciosParam6" 
+                                                        value="6" onchange="OpcaoSelecionada(this.value);" />
+                                                        Cliques por consumidor
+                                                    </label>
+                                                </div>
+                                                *@
+                                                    <div class="radio">
+                                                        <label style="font-size: 14px; font-weight: normal">
+                                                            <input type="radio" name="optRelAnuncianteAnuncios" id="optRelAnuncianteAnunciosParam7"
+                                                                   value="7" onchange="OpcaoSelecionada(this.value);" />
+                                                            Top 10 mais clicados
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="radio">
+                                                        <label style="font-size: 14px; font-weight: normal">
+                                                            <input type="radio" name="optRelAnuncianteAnuncios" id="optRelAnuncianteAnunciosParam8"
+                                                                   value="8" onchange="OpcaoSelecionada(this.value);" />
+                                                            Top 10 menos clicados
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-6">
+                            <div class="row">
+
+                                <div class="col-lg-6">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="portlet portlet-default">
+                                                <div class="portlet-body" style="min-height: 220px;">
+                                                    <h4 class="color-theme">Data:</h4>
+                                                    <div class="form-group col-lg-12">
+                                                        <label>Data Inicial</label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-btn">
+                                                                <button class="btn btn-default add-on " type="button">
+                                                                    <i class="fa fa-calendar"></i>
+                                                                </button>
+                                                            </span>
+                                                            <input type="text" class="form-control" maxlength="10"
+                                                                   alt="dtInicialRelAnuncianteAnuncio" required=""
+                                                                   id="dtInicialRelAnuncianteAnuncio" name="dtInicialRelAnuncianteAnuncio"
+                                                                   onblur=" ValidaData(this); " onkeypress=" MascaraData(this); " />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-lg-12">
+                                                        <label>Data Final</label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-btn">
+                                                                <button class="btn btn-default add-on " type="button">
+                                                                    <i class="fa fa-calendar"></i>
+                                                                </button>
+                                                            </span>
+                                                            <input type="text" class="form-control" maxlength="10"
+                                                                   alt="dtFinalRelAnuncianteAnuncio" required=""
+                                                                   id="dtFinalRelAnuncianteAnuncio" name="dtFinalRelAnuncianteAnuncio"
+                                                                   onblur=" ValidaData(this); " onkeypress=" MascaraData(this); " />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="portlet portlet-default">
+                                                <div class="portlet-body" style="min-height: 220px;">
+                                                    <h4 class="color-theme">Tipo de Relatório:</h4>
+                                                    <div class="radio col-lg-12">
+                                                        <label style="font-size: 16px; font-weight: normal">
+                                                            <input type="radio" name="optRelAnuncianteAnunciosTipo" id="optRelAnuncianteAnunciosTipo1"
+                                                                   onchange="TipoSelecionado(this.value)" value="1" />
+                                                            Tabela
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio col-lg-12">
+                                                        <label style="font-size: 16px; font-weight: normal">
+                                                            <input type="radio" name="optRelAnuncianteAnunciosTipo" id="optRelAnuncianteAnunciosTipo2"
+                                                                   onchange="TipoSelecionado(this.value)" value="2" />
+                                                            Gráfico
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <hr>
+                                            <div class="btn-group btn-group-justified">
+                                                <button type="button" class="btn btn-default" role="button" style="width: 167px;">Voltar</button>
+                                                <button type="submit" class="btn btn-green" role="button" style="width: 167px;">Visualizar</button>
+                                                <button type="button" class="btn btn-default" role="button" style="width: 167px;">PDF</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}

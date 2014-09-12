@@ -1,0 +1,160 @@
+﻿<div class="row">
+    <div class="col-lg-12">
+        <div class="page-title">
+            <h1>
+                Relatório
+                <small>Movimentação</small>
+            </h1>
+            @RenderPage("~/Views/Breadcrumbs/Breadcrumbs-Anunciante-Relatorio-Movimentos.cshtml")
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="portlet portlet-default">
+            <div class="portlet-heading">
+                <div class="portlet-title">
+                    <h4 class="flutuar">
+                        <i class="fa fa-users fa-fw"></i> Relatório de Movimentação
+                    </h4>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="portlet-body">
+                <div class="row">
+
+
+                    <div class="form-group col-lg-6">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="portlet portlet-default">
+                                            <div class="portlet-body" style="min-height:326px;">
+                                                <h4 class="color-theme">Opções:</h4>
+
+                                                <div class="radio">
+                                                    <label style="font-size: 14px; font-weight: normal">
+                                                        <input type="radio" name="optRelAnuncianteMovimentacao" id="optRelAnuncianteMovimentacaoParam1" value="" />
+                                                        Compras do Mês
+                                                    </label>
+                                                </div>
+
+                                                <div class="radio">
+                                                    <label style="font-size: 14px; font-weight: normal">
+                                                        <input type="radio" name="optRelAnuncianteMovimentacao" id="optRelAnuncianteMovimentacaoParam2" value="" />
+                                                        Fluxo de Movimentação
+                                                    </label>
+                                                </div>
+
+                                                <div class="radio">
+                                                    <label style="font-size: 14px; font-weight: normal">
+                                                        <input type="radio" name="optRelAnuncianteMovimentacao" id="optRelAnuncianteMovimentacaoParam3" value="" />
+                                                        Compras Canceladas
+                                                    </label>
+                                                </div>
+                                                @*
+                                                <div class="radio">
+                                                    <label style="font-size: 14px; font-weight: normal">
+                                                        <input type="radio" name="optRelAnuncianteMovimentacao" id="optRelAnuncianteMovimentacaoParam4" value="" />
+                                                        Créditos Extornados
+                                                    </label>
+                                                </div>
+                                                *@
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <div class="row">
+
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="portlet portlet-default">
+                                            <div class="portlet-body" style="min-height:220px;">
+                                                <h4 class="color-theme">Data:</h4>
+                                                <div class="form-group col-lg-12">
+                                                    <label>Data Inicial</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-default add-on " type="button">
+                                                                <i class="fa fa-calendar"></i>
+                                                            </button>
+                                                        </span>
+                                                        <input type="text" class="form-control" maxlength="10"
+                                                               alt="dtInicialRelAnuncianteMovimento" required=""
+                                                               id="dtInicialRelAnuncianteMovimento" name="dtInicialRelAnuncianteMovimento"
+                                                               onblur="ValidaData(this);" onkeypress="MascaraData(this);" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-12">
+                                                    <label>Data Final</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-default add-on " type="button">
+                                                                <i class="fa fa-calendar"></i>
+                                                            </button>
+                                                        </span>
+                                                        <input type="text" class="form-control" maxlength="10"
+                                                               alt="dtFinalRelAnuncianteMovimento" required=""
+                                                               id="dtFinalRelAnuncianteMovimento" name="dtFinalRelAnuncianteMovimento"
+                                                               onblur="ValidaData(this);" onkeypress="MascaraData(this);" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="portlet portlet-default">
+                                            <div class="portlet-body" style="min-height:220px;">
+                                                <h4 class="color-theme">Tipo de Relatório:</h4>
+                                                <div class="radio col-lg-12">
+                                                    <label style="font-size: 16px; font-weight: normal">
+                                                        <input type="radio" name="optRelAnuncianteMovimentoTipo" id="optRelAnuncianteMovimentoTipo1" value="" />
+                                                        Tabela
+                                                    </label>
+                                                </div>
+                                                <div class="radio col-lg-12">
+                                                    <label style="font-size: 16px; font-weight: normal">
+                                                        <input type="radio" name="optRelAnuncianteMovimentoTipo" id="optRelAnuncianteMovimentoTipo2" value="" />
+                                                        Gráfico
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <hr>
+                                        <div class="btn-group btn-group-justified">
+                                            <a class="btn btn-default" role="button">Voltar</a>
+                                            <a class="btn btn-green" role="button">Visualizar</a>
+                                            <a class="btn btn-default" role="button">PDF</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
