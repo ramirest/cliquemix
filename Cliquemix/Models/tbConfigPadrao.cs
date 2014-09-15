@@ -24,22 +24,61 @@ namespace Cliquemix.Models
         public Nullable<int> spea { get; set; }
         public Nullable<int> spec { get; set; }
         public string pua { get; set; }
-        public Nullable<int> spdc { get; set; }
         public Nullable<int> spcp { get; set; }
         public Nullable<int> qdptcp { get; set; }
         public Nullable<int> spde { get; set; }
         public Nullable<int> spdd { get; set; }
+        public Nullable<int> spdad { get; set; }
+        public Nullable<int> spdac { get; set; }
+        public Nullable<int> spdaec { get; set; }
+        public Nullable<int> spaec { get; set; }
+        public Nullable<int> spap { get; set; }
+        public Nullable<int> spaaa { get; set; }
+        public Nullable<int> spab { get; set; }
+        public Nullable<int> spcf { get; set; }
+        public Nullable<int> Spcec { get; set; }
+        public Nullable<int> Spcea { get; set; }
+        public Nullable<int> Spcep { get; set; }
+        public Nullable<int> Spcb { get; set; }
+        public Nullable<int> Spcd { get; set; }
+        public Nullable<int> spccap { get; set; }
+        public Nullable<int> spccc { get; set; }
+        public Nullable<int> spccpa { get; set; }
+        public decimal spcna { get; set; }
+        public Nullable<int> tpuc { get; set; }
+        public Nullable<int> spnan { get; set; }
+        public Nullable<int> spala { get; set; }
+        public Nullable<int> spnpc { get; set; }
     
+        public virtual tbAnuncianteStatus tbAnuncianteStatus { get; set; }
+        public virtual tbAnuncianteStatus tbAnuncianteStatus1 { get; set; }
         public virtual tbAnuncioStatus tbAnuncioStatus { get; set; }
         public virtual tbAnuncioStatus tbAnuncioStatus1 { get; set; }
         public virtual tbAnuncioStatus tbAnuncioStatus2 { get; set; }
+        public virtual tbAnuncioStatus tbAnuncioStatus3 { get; set; }
+        public virtual tbAnuncioStatus tbAnuncioStatus4 { get; set; }
+        public virtual tbAnuncioStatus tbAnuncioStatus5 { get; set; }
+        public virtual tbAnuncioStatus tbAnuncioStatus6 { get; set; }
         public virtual tbCampanhaAnuncioStatus tbCampanhaAnuncioStatus { get; set; }
         public virtual tbCampanhaStatus tbCampanhaStatus { get; set; }
         public virtual tbCampanhaStatus tbCampanhaStatus1 { get; set; }
         public virtual tbCampanhaStatus tbCampanhaStatus2 { get; set; }
         public virtual tbCampanhaStatus tbCampanhaStatus3 { get; set; }
+        public virtual tbCampanhaStatus tbCampanhaStatus4 { get; set; }
+        public virtual tbCampanhaStatus tbCampanhaStatus5 { get; set; }
+        public virtual tbCampanhaStatus tbCampanhaStatus6 { get; set; }
+        public virtual tbCampanhaStatus tbCampanhaStatus7 { get; set; }
+        public virtual tbCampanhaStatus tbCampanhaStatus8 { get; set; }
+        public virtual tbCreditoStatus tbCreditoStatus { get; set; }
+        public virtual tbCreditoStatus tbCreditoStatus1 { get; set; }
+        public virtual tbCreditoStatus tbCreditoStatus2 { get; set; }
+        public virtual tbDestaqueAnuncianteStatus tbDestaqueAnuncianteStatus { get; set; }
+        public virtual tbDestaqueAnuncianteStatus tbDestaqueAnuncianteStatus1 { get; set; }
+        public virtual tbDestaqueAnuncianteStatus tbDestaqueAnuncianteStatus2 { get; set; }
         public virtual tbDestaqueStatus tbDestaqueStatus { get; set; }
         public virtual tbDestaqueStatus tbDestaqueStatus1 { get; set; }
+        public virtual tbConsumidorPontosStatus tbConsumidorPontosStatus { get; set; }
         public virtual tbUsersTipo tbUsersTipo { get; set; }
+        public virtual tbUsersTipo tbUsersTipo1 { get; set; }
     }
 }

@@ -23,9 +23,9 @@ namespace Cliquemix.Models
         public int crid { get; set; }
         public Nullable<double> qtCredito { get; set; }
         public Nullable<decimal> vlCredito { get; set; }
-        public Nullable<bool> promocional { get; set; }
         public string tituloPacote { get; set; }
         public string dsCredito { get; set; }
+        public bool promocional { get; set; }
     
         public virtual ICollection<tbCreditoCompra> tbCreditoCompra { get; set; }
         public virtual ICollection<tbCreditoPromocional> tbCreditoPromocional { get; set; }

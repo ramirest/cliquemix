@@ -19,18 +19,24 @@ namespace Cliquemix.Controllers
     [Authorize]
     public class CampanhaController : Controller
     {
+        //CÓDIGO EXCEPTION [CAMPANHA] 001
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        internal static string TipoErro { get; set; }
+        
         // GET: /Campanha/ListCampanha
-        public ActionResult ListCampanha(int? pagina)
+        public ActionResult ListCampanha(int? pagina) //CÓDIGO EXCEPTION [ListCampanha] 00001
         {
             int paginaTamanho = 6; //Define o número de elementos por página
             int paginaNumero = (pagina ?? 1); //Define o número inicial da página como 1
             var codAnunciante = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());
             var cpec = ProcFunc.RetornarStatusPadraoCampanhaExcluida();
+            ViewBag.ErroCriarCampanha = TipoErro;
+
             var tbcampanha = db.tbCampanha.Include(a => a.tbAnunciante).Include(s => s.tbCampanhaStatus).
-                Include(c => c.tbCampanhaTmp).Include(d => d.tbDestaque).Include(p => p.tbPacoteClique).
+                Include(c => c.tbCampanhaTmp).Include(d => d.tbDestaqueAnunciante).Include(p => p.tbPacoteClique).
                 Where(m => m.pid == codAnunciante && m.csid != cpec).ToList();
+            TipoErro = string.Empty;
             return View(tbcampanha.ToPagedList(paginaNumero, paginaTamanho));
         }
         
@@ -38,21 +44,65 @@ namespace Cliquemix.Controllers
         // GET: Campanha
         public ActionResult CreateCampanha()
         {
-            ViewBag.pcid = new SelectList(db.tbPacoteClique.OrderBy(p => p.qtdeCliques), "pcid", "qtdeCliques");
-            ViewBag.did = new SelectList(db.tbDestaque.OrderBy(d => d.dsDestaque), "did", "tituloDestaque");
-            ViewBag.ctid = ProcFunc.CriarCodTempCampanha(Session.SessionID);
-            ViewBag.paid = new SelectList(db.tbPais.OrderBy(p => p.nomePais), "paid", "nomePais");
-            ViewBag.eid = new SelectList(db.tbEstado.OrderBy(e => e.nomeEstado), "eid", "sgEstado");
-            ViewBag.cid = new SelectList(db.tbCidade.OrderBy(c => c.nomeCidade), "cid", "nomeCidade");
-            ViewBag.Tudo = 1;
-            return View();
+            try
+            {
+                var cdAnun = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());
+                var spdad = ProcFunc.RetornarStatusPadraoDestaqueAnuncianteDisponivel();
+                var s = ProcFunc.RetornarStatusPadraoAnuncio();
+                var ad = db.tbAnuncio.Where(a => a.asid == s && a.pid == cdAnun);
+
+                if (!ad.Any())//CÓDIGO EXCEPTION [CreateCampanha] 00002
+                {   //Não tem anúncios disponíveis
+                    TipoErro = "001.00004";
+                    return RedirectToAction("ListCampanha");
+                }
+
+                var da = db.tbDestaqueAnunciante.Where(d => d.pid == cdAnun && d.dasid == spdad)
+                         .OrderBy(d => d.tbDestaque.tituloDestaque);
+                if (!da.Any())//CÓDIGO EXCEPTION [CreateCampanha] 00002
+                {   //Não tem destaques disponíveis
+                    TipoErro = "001.00002";
+                    return RedirectToAction("ListCampanha");
+                }
+
+                /*  CASO OS DESTAQUES SEJAM AGRUPADOS, UTILIZE ESTE
+                 * 
+                var destaques = from de in db.tbDestaque
+                    join dea in db.tbDestaqueAnunciante on de.did equals dea.did
+                    join an in db.tbAnunciante on dea.pid equals an.pid
+                    where an.pid == cdAnun && dea.dasid == spdad
+                    group de by new {de.did, de.tituloDestaque} into destaque
+                    select new
+                    {
+                        destaque.Key.did,
+                        destaque.Key.tituloDestaque
+                    };
+                ViewBag.daid = new SelectList(destaques.OrderBy(d => d.tituloDestaque), "daid", "tituloDestaque");
+                */
+
+                //CASO CONTRÁRIO ESTE:
+                ViewBag.daid = new SelectList(da, "daid", "tbDestaque.tituloDestaque");
+
+                ViewBag.pcid = new SelectList(db.tbPacoteClique.OrderBy(p => p.qtdeCliques), "pcid", "qtdeCliques");
+                ViewBag.ctid = ProcFunc.CriarCodTempCampanha(Session.SessionID);
+                ViewBag.paid = new SelectList(db.tbPais.OrderBy(p => p.nomePais), "paid", "nomePais");
+                ViewBag.eid = new SelectList(db.tbEstado.OrderBy(e => e.nomeEstado), "eid", "sgEstado");
+                ViewBag.cid = new SelectList(db.tbCidade.OrderBy(c => c.nomeCidade), "cid", "nomeCidade");
+                ViewBag.Tudo = 1;
+                return View();
+            }
+            catch (Exception)
+            {//CÓDIGO EXCEPTION [CreateCampanha] 00003
+                TipoErro = "001.00003";
+                return RedirectToAction("ListCampanha");
+            }
         }
 
 
         // POST: /Anuncio/CreateCampanha
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public ActionResult CreateCampanha([Bind(Include = "cid,tituloCampanha,did,pcid")] tbCampanha tbCampanha)
+        public ActionResult CreateCampanha([Bind(Include = "cid,tituloCampanha,daid,pcid")] tbCampanha tbCampanha)
         {
             
             // Cria uma instância com as informações da cultura americana
@@ -96,29 +146,49 @@ namespace Cliquemix.Controllers
             //Caso positivo o sistema seta para a configuração padrão de campanha programada
             if (Inicio > dtAtual)
                 tbCampanha.csid = ProcFunc.RetornarStatusPadraoCampanhaProgramada();
-            //Caso negativo o sistema seta para a configuração padrão de nova campanha
-            else
+            //Caso a data informada seja igual a data atual o sistema seta para a configuração padrão de nova campanha
+            else if (Inicio == dtAtual)
                 tbCampanha.csid = ProcFunc.RetornarStatusPadraoCampanha();
-            tbCampanha.QtdeCreditosInicio = db.tbDestaque.First(m => m.did == tbCampanha.did).qtCredito;
-            tbCampanha.QtdeCreditosConsumidos = 0;
+            //Caso negativo o sistema retorna para a tela principal solicitando uma alteração de data
+            else
+            {
+                tbCampanha.csid = ProcFunc.RetornarStatusPadraoCampanha();
+                tbCampanha.dtInicio = DateTime.Now;
+            }
+
             tbCampanha.pid = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());
             tbCampanha.ctid = Convert.ToInt32(Request.Form.Get("ctid"));
-            tbCampanha.pcid = db.tbDestaque.First(m => m.did == tbCampanha.did).pcid;
+            tbCampanha.pcid = db.tbDestaqueAnunciante.First(d => d.daid == tbCampanha.daid).tbDestaque.tbPacoteClique.pcid;
+            tbCampanha.QtdeCreditosInicio = db.tbDestaqueAnunciante.First(d => d.daid == tbCampanha.daid).tbDestaque.qtCredito;
+            tbCampanha.QtdeCreditosConsumidos = 0;
+
             if (ModelState.IsValid)
             {
                 db.tbCampanha.Add(tbCampanha);
                 db.SaveChanges();
-
-                ProcFunc.AtualizarCodTempAnunciosCampanha(tbCampanha.ctid, tbCampanha.cid, tbCampanha.did);
-                
+                ProcFunc.AtualizarCodTempAnunciosCampanha(tbCampanha.ctid, tbCampanha.cid, tbCampanha.tbDestaqueAnunciante.daid);
+                ProcFunc.UtilizarDestaqueAnuncianteCampanha(tbCampanha.pid, tbCampanha.daid);
+                var cda = tbCampanha.tbCampanhaAnuncio.First(c => c.cid == tbCampanha.cid).aid;
+                ProcFunc.AnuncioNaCampanha(cda);
                 //Salvar Log do Sistema
                 ProcFunc.SalvarLog(ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName()),
-                    "Cadastro de uma nova Campanha", this.ToString(), "POST");
+                    "Cadastro de uma nova Campanha ["+tbCampanha.cid.ToString(format: "000000")+"]", this.ToString(), "POST");
                 
                 return RedirectToAction("ListCampanha");
             }
+            var cdAnun = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());/*
+            var destaques = from de in db.tbDestaque
+                            join dea in db.tbDestaqueAnunciante on de.did equals dea.did
+                            join an in db.tbAnunciante on dea.pid equals an.pid
+                            where an.pid == cdAnun && dea.dasid == spdad
+                            group de by new { dea.daid, de.tituloDestaque } into destaque
+                            select new
+                            {
+                                destaque.Key.daid,
+                                destaque.Key.tituloDestaque
+                            };
+            ViewBag.daid = new SelectList(destaques.OrderBy(d => d.tituloDestaque), "daid", "tituloDestaque");*/
             ViewBag.pcid = new SelectList(db.tbPacoteClique, "pcid", "qtdeCliques");
-            ViewBag.did = new SelectList(db.tbDestaque, "did", "tituloDestaque");
             return View(tbCampanha);
         }
 
@@ -132,6 +202,17 @@ namespace Cliquemix.Controllers
                 var tbCampanhaAnuncio = db.tbCampanhaAnuncio.Where(m => m.ctid == pCodCampanha);
                 if (tbCampanhaAnuncio.Any())
                 {
+                    var cdAnun = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());
+                    try
+                    {
+                        var tipo = ProcFunc.RetornarTipoAnunciante(cdAnun);
+                        ViewBag.patrocinador = tipo.ToString();
+                    }
+                    catch (Exception)
+                    {
+                        ViewBag.patrocinador = 0;
+                    }
+
                     ViewBag.Tudo = 2;
                     ViewBag.CodCampanha = pCodCampanha;
                     return PartialView(tbCampanhaAnuncio.ToList());
@@ -181,6 +262,7 @@ namespace Cliquemix.Controllers
         // GET: /Anuncio/Details/5
         public ActionResult VisualizarCampanha(int? id)
         {
+            var cdAnun = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -190,10 +272,21 @@ namespace Cliquemix.Controllers
             {
                 return HttpNotFound();
             }
-            if (tbCampanha.pid == ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName()))
+            if (tbCampanha.pid == cdAnun)
             {
                 ViewBag.pcid = new SelectList(db.tbPacoteClique.OrderBy(p => p.qtdeCliques), "pcid", "qtdeCliques");
-                ViewBag.did = new SelectList(db.tbDestaque.OrderBy(d => d.dsDestaque), "did", "tituloDestaque");
+
+                var destaques = from de in db.tbDestaque
+                                join dea in db.tbDestaqueAnunciante on de.did equals dea.did
+                                join an in db.tbAnunciante on dea.pid equals an.pid
+                                where an.pid == cdAnun && dea.dasid == ProcFunc.RetornarStatusPadraoDestaqueAnuncianteDisponivel()
+                                group de by new { dea.daid, de.tituloDestaque } into destaque
+                                select new
+                                {
+                                    destaque.Key.daid,
+                                    destaque.Key.tituloDestaque
+                                };
+                ViewBag.daid = new SelectList(destaques.OrderBy(d => d.tituloDestaque), "daid", "tituloDestaque");
                 
                 //Consultar e retornar a quantidade de créditos restante
                 try
@@ -229,11 +322,11 @@ namespace Cliquemix.Controllers
 
 
         [HttpPost]
-        public ActionResult InfoDestaque(int pCodDestaque)
+        public ActionResult InfoDestaque(int pCodDestaqueAnunciante)
         {
             try
             {
-                var tbDestaque = db.tbDestaque.Where(c => c.did == pCodDestaque);
+                var tbDestaque = db.tbDestaqueAnunciante.Where(c => c.daid == pCodDestaqueAnunciante);
                 if (tbDestaque.Any())
                 {
                     return PartialView(tbDestaque.ToList());
@@ -254,6 +347,7 @@ namespace Cliquemix.Controllers
         [HttpPost]
         public ActionResult NovoAnuncio(int taid, int ctid)
         {
+            var cdAnun = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());
             try
             {
                 tbCampanhaAnuncio tbCampanhaAnuncio = new tbCampanhaAnuncio();
@@ -274,10 +368,9 @@ namespace Cliquemix.Controllers
                 }
                 else
                 {
-                    int codAnunciante = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());
                     int codStatus = ProcFunc.RetornarStatusPadraoAnuncioDisponivelParaCampanha();
                     var tbanuncio = db.tbAnuncio.Include(t => t.tbAnuncioCategoria).Include(r => r.tbAnuncioStatus).
-                        Where(a => a.pid == codAnunciante).Where(m => m.asid == codStatus).ToList();
+                        Where(a => a.pid == cdAnun).Where(m => m.asid == codStatus).ToList();
                     if (tbanuncio.Any())
                     {
                         ViewBag.ctid = ctid;
@@ -296,29 +389,38 @@ namespace Cliquemix.Controllers
         [HttpGet]
         public ActionResult NovoAnuncio(string txt, int pCodCampanha)
         {
+            var cdAnun = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());
             try
             {
                 if (ProcFunc.CampanhaContemAnuncio(pCodCampanha))
                 {
+                    //Já existe anúncio vinculado na campanha
                     ViewBag.Tudo = 2;
                     return PartialView(null);
                 }
-                else if (!ProcFunc.ExisteAnuncioParaVincular(
-                    ProcFunc.RetornarCodigoAnuncianteUsuario(
-                        User.Identity.GetUserName())))
+                else if (!ProcFunc.ExisteAnuncioParaVincular(cdAnun))
                 {
+                    //Não existe anúncio disponível para ser vinculado
                     ViewBag.Tudo = 4;
                     return PartialView(null);
                 }
                 else
                 {
-                    var codAnunciante = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());
                     var codStatus = ProcFunc.RetornarStatusPadraoAnuncioDisponivelParaCampanha();
+                    try
+                    {
+                        var tipo = ProcFunc.RetornarTipoAnunciante(cdAnun);
+                        ViewBag.patrocinador = tipo.ToString();
+                    }
+                    catch (Exception)
+                    {
+                        ViewBag.patrocinador = 0;
+                    }
 
                     if (txt == null)
                     {
                         var tbanuncio = db.tbAnuncio.Include(t => t.tbAnuncioCategoria).Include(r => r.tbAnuncioStatus).
-                            Where(a => a.pid == codAnunciante).Where(m => m.asid == codStatus).ToList();
+                            Where(a => a.pid == cdAnun).Where(m => m.asid == codStatus).ToList();
                         if (tbanuncio.Any())
                         {
                             ViewBag.Tudo = 1;
@@ -335,7 +437,7 @@ namespace Cliquemix.Controllers
                     else
                     {
                         var tbanuncio = db.tbAnuncio.Include(t => t.tbAnuncioCategoria).Include(r => r.tbAnuncioStatus).
-                            Where(a => a.pid == codAnunciante).Where(m => m.tituloAnuncio.Contains(txt)).ToList();
+                            Where(a => a.pid == cdAnun).Where(m => m.tituloAnuncio.Contains(txt)).ToList();
                         if (tbanuncio.Any())
                         {
                             ViewBag.Tudo = 1;
@@ -354,7 +456,7 @@ namespace Cliquemix.Controllers
             catch (Exception e)
             {
                 ViewBag.Tudo = 5;
-                ProcFunc.SalvarLog(ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName()), e.Message, this.Url.ToString(), "Exception");
+                ProcFunc.SalvarLog(cdAnun, e.Message, this.ToString(), "Exception");
                 return PartialView(null);
             }
         }

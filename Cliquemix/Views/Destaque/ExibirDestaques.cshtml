@@ -1,0 +1,45 @@
+﻿@using Cliquemix.Models;
+@using DocumentFormat.OpenXml.Wordprocessing
+@using Microsoft.AspNet.Identity
+@model IEnumerable<Cliquemix.Models.tbDestaque>
+
+@try
+{
+    <br />
+    foreach (var item in Model)
+    {
+        var aaa = item.did; //Variável usada para passar pelo TRY (Não utilizada em outros locais)
+        String _src = "/Arquivos/Destaques/" +
+                        String.Format("{0:00000000}", item.did) + "/Imagens/" +
+                        String.Format("{0:00000000}", item.did) +
+                        ".jpg";
+        
+        @*Slides*@
+        <div class="ms-slide">
+            <img src="@_src" alt="lorem ipsum dolor sit" />
+            @*<img src="@_src" height="150" width="200" style="height: 150px; width: 200px;" />
+            <img src="/fonts/img/img-master-slider/2.jpg" alt="lorem ipsum dolor sit" />*@
+            <div class="ms-info">
+                <h3>CHILDHOOD MEMORIES</h3>
+                <h4>JOHN WILIAM</h4>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</p>
+            </div>
+
+            <div class="ms-layer buy-btn" style="left:330px; top:320px;"
+                 data-effect="bottom(40)"
+                 data-delay="10"
+                 data-ease="easeInOutQuad">
+                <button class="btn btn-white  buy-btn"><i class="fa fa-bookmark"></i> Escolher</button>
+            </div>
+        </div>
+    }
+}
+catch (Exception)
+{
+    <br />
+    <label style="color: #34495E; font-weight: normal; font-size: 20px">
+        Imagens não disponíveis
+    </label>
+    <div class="clearfix"></div>
+    <div class="clearfix"></div>
+}

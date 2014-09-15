@@ -1,4 +1,55 @@
-﻿<div class="row">
+﻿<script>
+    function ErroCriarAnunciante(tipo) {
+        var desc = "";
+
+        if (tipo == 1) {
+            desc = "Os campos não podem estar vazios. [Cod: 006.00001]";
+        }
+        else if (tipo == 2) {
+            desc = "A senha informada não é segura. [Cod: 006.00002]";
+        }
+        else if (tipo == 3) {
+            desc = "A Nova Senha e a Confirmação devem ser idênticas. [Cod: 006.00003]";
+        }
+        else if (tipo == 4) {
+            desc = "A Senha Atual informada não está correta. [Cod: 006.00004]";
+        }
+
+        setTimeout(function () {
+            erro_message_demo(desc);
+        }, 1000);
+    }
+
+    function limparAviso() {
+        Messenger().hideAll();
+    }
+
+    function success_message_demo(erro) {
+        Messenger.options = {
+            extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
+            theme: 'flat'
+        }
+        Messenger().post({
+            message: erro,
+            type: 'success',
+            showCloseButton: true
+        });
+    }
+
+    function erro_message_demo(erro) {
+        Messenger.options = {
+            extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
+            theme: 'flat'
+        }
+        Messenger().post({
+            message: erro,
+            type: 'error',
+            showCloseButton: true
+        });
+    };
+</script>
+
+<div class="row">
     <div class="col-lg-12">
         <div class="page-title">
             <h1>
@@ -10,96 +61,127 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col-lg-12">
-        <div class="portlet portlet-default">
-            <div class="portlet-body">
-                <ul id="userTab" class="nav nav-tabs">
-                    <li class="active">
-                        <a href="#overview" data-toggle="tab">Perfil - Dados do Empresa</a>
-                    </li>
-                </ul>
-                <div id="userTabContent" class="tab-content">
-                    <div class="tab-pane fade in active" id="overview">
-                        <div class="row">
-                            <div class="col-lg-9 col-md-9">
-                                <form role="form">
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @*
+        ViewBag.Error = "Os campos não podem estar vazios. [Cod: 006.00001]";
+        ViewBag.tpError = "006.00001";
+    *@
+    if (ViewBag.tpError == "006.00001")
+    {
+        <script type="text/javascript">ErroCriarAnunciante(1);</script>
+    }
+    @*
+        ViewBag.Error = "A senha informada não é segura. [Cod: 006.00002]";
+        ViewBag.tpError = "006.00002";
+    *@
+    else if (ViewBag.tpError == "006.00002")
+    {
+        <script type="text/javascript">ErroCriarAnunciante(2);</script>
+    }
+    @*
+        ViewBag.Error = "A Nova Senha e a Confirmação devem ser idênticas. [Cod: 006.00003]";
+        ViewBag.tpError = "006.00003";
+    *@
+    else if (ViewBag.tpError == "006.00003")
+    {
+        <script type="text/javascript">ErroCriarAnunciante(3);</script>
+    }
+    @*
+        ViewBag.Error = "A Senha Atual informada não está correta. [Cod: 006.00004]";
+        ViewBag.tpError = "006.00004";
+    *@
+    else if (ViewBag.tpError == "006.00004")
+    {
+        <script type="text/javascript">ErroCriarAnunciante(4);</script>
+    }
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="portlet portlet-default">
+                <div class="portlet-body">
+                    <ul id="userTab" class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#overview" data-toggle="tab">Perfil - Dados do Empresa</a>
+                        </li>
+                    </ul>
+                    <div id="userTabContent" class="tab-content">
+                        <div class="tab-pane fade in active" id="overview">
+                            <div class="row">
+                                <div class="col-lg-9 col-md-9">
                                     <h4 class="page-header">Dados de Usuário:</h4>
                                     <div class="form-group col-lg-6">
                                         <div class="input-group">
                                             <label>Senha Atual </label>
                                             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                            <input type="text" class="form-control" value="" >
+                                            <input type="password" class="form-control" value="" id="txtSenhaAtual" name="txtSenhaAtual">
                                         </div>
                                     </div>
-
                                     <div class="clearfix"></div>
+
                                     <div class="form-group col-lg-6">
                                         <div class="input-group">
                                             <label>Nova Senha </label>
-                                            <span class="input-group-addon"><i class="fa fa-unlock"></i></span>
-                                            <input type="password" class="form-control" value="">
+                                            <span class="input-group-addon"><i class="fa fa-unlock-alt"></i></span>
+                                            <input type="password" class="form-control" value="" id="txtNovaSenha" name="txtNovaSenha">
                                         </div>
                                     </div>
-
+                                    <div class="col-lg-3" id="lblValidaSenha"></div>
                                     <div class="clearfix"></div>
 
                                     <div class="form-group col-lg-6">
                                         <div class="input-group">
                                             <label>Conf. Senha </label>
                                             <span class="input-group-addon"><i class="fa fa-unlock-alt"></i></span>
-                                            <input type="password" class="form-control" value="">
+                                            <input type="password" class="form-control" value="" id="txtConfNovaSenha" name="txtConfNovaSenha">
                                         </div>
                                     </div>
-
-
+                                    <div class="clearfix"></div>
 
                                     <div class="form-group col-lg-12"></div>
                                     <div class="form-group col-lg-12"></div>
                                     <div class="form-group col-lg-12"></div>
-
-                                    
-
 
 
                                     <div class="form-group col-lg-9">
-                                       
                                         <button type="submit" class="btn btn-default" id="save" value="save">
                                             <i class="fa fa-floppy-o"></i>
                                             Salvar
                                         </button>
                                     </div>
+                                </div>
 
 
-                                </form>
-                            </div>
+                                <div class="col-lg-3 col-md-4">
+                                    <div class="portlet portlet-default">
+                                        <div id="defaultPortlet" class="panel-collapse collapse in">
+                                            <div class="portlet-body">
+                                                <h3>Atualizar perfil</h3>
+                                                <ul id="userSettings" class="nav nav-pills nav-stacked">
+                                                    <li>
+                                                        <a href="~/PerfilAnunciante/PerfilAnunciante" ><i class="fa fa-reply fa-fw"></i> Voltar</a>
+                                                    </li>
 
-                            <div class="col-lg-3 col-md-4">
-                                <div class="portlet portlet-default">
-                                    <div id="defaultPortlet" class="panel-collapse collapse in">
-                                        <div class="portlet-body">
-                                            <h3>Atualizar perfil</h3>
-                                            <ul id="userSettings" class="nav nav-pills nav-stacked">
-                                                <li>
-                                                    <a href="~/PerfilAnunciante/PerfilAnunciante" ><i class="fa fa-reply fa-fw"></i> Voltar</a>
-                                                </li>
+                                                    <li>
+                                                        <a href="~/PerfilAnunciante/EditarPerfilDadosEmpresa"><i class="fa fa-building-o fa-fw"></i> Dados da Empresa</a>
+                                                    </li>
 
-                                                <li>
-                                                    <a href="~/PerfilAnunciante/EditarPerfilDadosEmpresa"><i class="fa fa-building-o fa-fw"></i> Dados da Empresa</a>
-                                                </li>
+                                                    <li>
+                                                        <a href="~/PerfilAnunciante/EditarPerfilDadosContato"><i class="fa fa-phone fa-fw"></i> Dados de Contato</a>
+                                                    </li>
 
-                                                <li>
-                                                    <a href="~/PerfilAnunciante/EditarPerfilDadosContato"><i class="fa fa-phone fa-fw"></i> Dados de Contato</a>
-                                                </li>
+                                                    <li>
+                                                        <a href="~/PerfilAnunciante/EditarPerfilDadosEndereco"><i class="fa fa-globe fa-fw"></i>Dados de Endereço</a>
+                                                    </li>
 
-                                                <li>
-                                                    <a href="~/PerfilAnunciante/EditarPerfilDadosEndereco"><i class="fa fa-globe fa-fw"></i>Dados de Endereço</a>
-                                                </li>
-
-                                                <li class="active">
-                                                    <a href="~/PerfilAnunciante/EditarPerfilDadosUsuario"><i class="fa fa-user fa-fw"></i>Dados de Usuário</a>
-                                                </li>
-                                            </ul>
+                                                    <li class="active">
+                                                        <a href="~/PerfilAnunciante/EditarPerfilDadosUsuario"><i class="fa fa-user fa-fw"></i>Dados de Usuário</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -110,5 +192,4 @@
             </div>
         </div>
     </div>
-</div>
-
+}

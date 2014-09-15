@@ -5,32 +5,35 @@
 {
     foreach (var item in Model)
     {
-        <br />
-        <br />
-        
-        @Html.Label("Título", new { style = "width: 130px; color: #34495E; font-weight: 600; font-size: 14px" })
-        @Html.Label(item.tituloPacote)
-        <div class="clearfix"></div>
+        <div class="col-lg-9">
+            @Html.Label("Título do Pacote", new { style = "font-weight: bold" })
+            <div class="clearfix"></div>
+            @Html.Label(item.tituloPacote, new { style = "font-weight: normal" })
+        </div>@*
+        <div class="col-lg-3">
+            @Html.Label("Data da Compra", new { style = "font-size: 12px; font-weight: bold;" })
+            <div class="clearfix"></div>
+            @Html.Label(item.dtMovimento.ToString(), new { style = "font-size: 12px; font-weight: normal" })
+        </div>*@
+        <div class="clearfix"></div><br />
 
-        @Html.Label("Qtde de Créditos", new { style = "width: 130px; color: #34495E; font-weight: 600; font-size: 14px" })
-        @Html.Label(item.qtCredito.ToString())
-        <div class="clearfix"></div>
-
-        @Html.Label("Valor do Pacote", new { style = "width: 130px; color: #34495E; font-weight: 600; font-size: 14px" })
-        @Html.Label(String.Format(new CultureInfo("pt-BR"), "{0:C}", item.vlCredito.ToString()))
-        <div class="clearfix"></div>
-
-        @Html.Label("Promocional", new { style = "width: 130px; color: #34495E; font-weight: 600; font-size: 14px" })
-        if (item.promocional == true)
-        {
-            @Html.Label("Sim")
-        }
-        else
-        {
-            @Html.Label("Não")
-        }
+        <div class="col-lg-3">
+            @Html.Label("Qtde de Créditos", new { style = "font-size: 12px; font-weight: bold;" })
+            <div class="clearfix"></div>
+            @Html.Label(item.qtCredito.ToString()+" ©", new { style = "font-size: 12px; font-weight: normal" })
+        </div>
+        <div class="col-lg-3">
+            <i class="fa fa-money"> </i>
+            @Html.Label("Valor do Pacote", new { style = "font-size: 12px; font-weight: bold;" })
+            <div class="clearfix"></div>
+            @Html.Label("R$ "+item.vlCredito.ToString(), new { style = "font-size: 12px; font-weight: normal" })
+        </div>
+        <div class="col-lg-3">
+            @Html.Label("Promocional", new { style = "font-size: 12px; font-weight: bold;" })
+            <div class="clearfix"></div>
+            @Html.Label("Não", new { style = "font-size: 12px; font-weight: normal" })
+        </div>
     }
-    <br /><br />
 }
 catch (Exception)
 {

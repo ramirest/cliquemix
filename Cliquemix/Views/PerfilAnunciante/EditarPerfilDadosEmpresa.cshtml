@@ -16,59 +16,53 @@
             <div class="portlet-body">
                 <ul id="userTab" class="nav nav-tabs">
                     <li class="active">
-                        <a href="#overview" data-toggle="tab">Perfil - Dados da Empresa</a>
+                        <a href="#overview" data-toggle="tab">Dados da Empresa</a>
                     </li>
                 </ul>
                 <div id="userTabContent" class="tab-content">
                     <div class="tab-pane fade in active" id="overview">
                         <div class="row">
                             <div class="col-lg-9 col-md-9">
-                                <form role="form">
-                                    
-                                    <div class="form-group col-lg-6">
-                                        <label>CNPJ</label>
-                                        <input type="text" class="form-control" value="">
-                                    </div>
-                                    <div class="form-group col-lg-6">
-                                        <label>Razão Social</label>
-                                        <input type="text" class="form-control" value="">
-                                    </div>
-                                    <div class="form-group col-lg-6">
-                                        <label>Nome Fantasia</label>
-                                        <input type="tel" class="form-control" value="">
-                                    </div>
-                                    <div class="form-group col-lg-6">
-                                        <label>Administrador</label>
-                                        <input type="text" class="form-control" value="">
-                                    </div>
-
-                                    <div class="form-group col-lg-6">
-                                        <label>Inscrição Estadual</label>
-                                        <input type="text" class="form-control" value="">
-                                    </div>
-
-                                    <div class="form-group col-lg-6">
-                                        <label>Inscrição Municipal</label>
-                                        <input type="text" class="form-control" value="">
-                                    </div>
-
-                                    <div class="form-group col-lg-6">
-                                        <label>Ramo de Atividade</label>
-                                        <br />
-                                        <select class="form-control">
-                                            <option>Selecione</option>
-                                            <option>Bens de Consumo</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group col-lg-9">
-                                        <button type="submit" class="btn btn-default" id="save" value="save">
-                                            <i class="fa fa-floppy-o"></i>
-                                            Salvar
-                                        </button>
-                                    </div>
-
-                                </form>
+                                <div class="form-group col-lg-12">
+                                    <label>Razão Social</label>
+                                    <input type="text" class="form-control" disabled=""
+                                            id="razaoSocial" name="razaoSocial" value="@ViewBag.razaoSocial">
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <label>Nome Fantasia</label>
+                                    <input type="tel" class="form-control" disabled="" 
+                                            id="nomeFantasia" name="nomeFantasia" value="@ViewBag.nomeFantasia">
+                                </div>                                
+                                <div class="form-group col-lg-4">
+                                    <label>CNPJ</label>
+                                    <input type="text" class="form-control" disabled=""
+                                            id="cnpj" name="cnpj" value="@ViewBag.cnpj">
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>Inscrição Estadual</label>
+                                    <input type="text" class="form-control" disabled=""
+                                            id="ie" name="ie" value="@ViewBag.ie">
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>Inscrição Municipal</label>
+                                    <input type="text" class="form-control" disabled=""
+                                            id="im" name="im" value="@ViewBag.im">
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label>Administrador</label>
+                                    <input type="text" class="form-control" disabled=""
+                                            id="contato" name="contato" value="@ViewBag.contato">
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label>Ramo de Atividade</label>
+                                    <input type="text" class="form-control" disabled=""
+                                            id="ramoAtividade" name="ramoAtividade" value="@ViewBag.ramoAtividade">
+                                </div>
+                                <div class="form-group col-lg-9">
+                                    <button type="submit" class="btn btn-default" id="save" value="save">
+                                        <i class="fa fa-floppy-o"></i> Salvar
+                                    </button>
+                                </div>
                             </div>
 
                             <div class="col-lg-3 col-md-4">
@@ -109,4 +103,3 @@
         </div>
     </div>
 </div>
-

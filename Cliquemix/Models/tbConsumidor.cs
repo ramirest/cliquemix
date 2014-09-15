@@ -14,11 +14,31 @@ namespace Cliquemix.Models
     
     public partial class tbConsumidor
     {
+        public tbConsumidor()
+        {
+            this.tbAnunciantePatrocinador = new HashSet<tbAnunciantePatrocinador>();
+            this.tbAnuncioPatrocinador = new HashSet<tbAnuncioPatrocinador>();
+            this.tbConsumidorPontos = new HashSet<tbConsumidorPontos>();
+        }
+    
         public int cid { get; set; }
-        public int uid { get; set; }
+        public Nullable<int> uid { get; set; }
         public Nullable<int> leuTermo { get; set; }
         public int tid { get; set; }
+        public int conid { get; set; }
+        public string nomeCompleto { get; set; }
+        public string nomeAbreviado { get; set; }
+        public string usuSicove { get; set; }
+        public string email { get; set; }
+        public string cpf { get; set; }
+        public string rg { get; set; }
+        public string pis { get; set; }
+        public Nullable<System.DateTime> dtNascimento { get; set; }
+        public bool ativo { get; set; }
     
+        public virtual ICollection<tbAnunciantePatrocinador> tbAnunciantePatrocinador { get; set; }
+        public virtual ICollection<tbAnuncioPatrocinador> tbAnuncioPatrocinador { get; set; }
+        public virtual ICollection<tbConsumidorPontos> tbConsumidorPontos { get; set; }
         public virtual tbTos tbTos { get; set; }
     }
 }

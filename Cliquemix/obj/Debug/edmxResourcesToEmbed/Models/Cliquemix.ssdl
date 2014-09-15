@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="cliquemixModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="cliquemixModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="tbAnunciante">
     <Key>
       <PropertyRef Name="pid" />
@@ -8,7 +8,7 @@
     <Property Name="cnpj" Type="varchar" MaxLength="30" />
     <Property Name="razaoSocial" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="nmFantasia" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="contato" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="contato" Type="varchar" MaxLength="45" />
     <Property Name="telResidencial" Type="varchar" MaxLength="15" />
     <Property Name="telComercial" Type="varchar" MaxLength="15" />
     <Property Name="telCelular1" Type="varchar" MaxLength="15" />
@@ -31,24 +31,7 @@
     <Property Name="tipo" Type="int" />
     <Property Name="dtNascimento" Type="datetime" />
     <Property Name="ativo" Type="bit" />
-  </EntityType>
-  <EntityType Name="tbAnuncianteDestaque">
-    <Key>
-      <PropertyRef Name="adid" />
-    </Key>
-    <Property Name="adid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="pid" Type="int" Nullable="false" />
-    <Property Name="did" Type="int" Nullable="false" />
-    <Property Name="adsid" Type="int" Nullable="false" />
-    <Property Name="qtCreditoCompra" Type="float" Nullable="false" />
-    <Property Name="dtAssociacao" Type="datetime" Nullable="false" />
-  </EntityType>
-  <EntityType Name="tbAnuncianteDestaqueStatus">
-    <Key>
-      <PropertyRef Name="adsid" />
-    </Key>
-    <Property Name="adsid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="dsAnuncianteDestaqueStatus" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ansid" Type="int" />
   </EntityType>
   <EntityType Name="tbAnuncianteEndereco">
     <Key>
@@ -64,6 +47,22 @@
     <Property Name="nomePais" Type="varchar" MaxLength="50" />
     <Property Name="cep" Type="varchar" MaxLength="10" />
     <Property Name="endereco" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="tbAnunciantePatrocinador">
+    <Key>
+      <PropertyRef Name="apid" />
+    </Key>
+    <Property Name="apid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pid" Type="int" />
+    <Property Name="cid" Type="int" />
+    <Property Name="ativo" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbAnuncianteStatus">
+    <Key>
+      <PropertyRef Name="ansid" />
+    </Key>
+    <Property Name="ansid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descAnuncianteStatus" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="tbAnuncianteTelefone">
     <Key>
@@ -143,6 +142,14 @@
     <Property Name="dsMsgError" Type="varchar" MaxLength="200" />
     <Property Name="dsControle" Type="varchar" MaxLength="100" />
   </EntityType>
+  <EntityType Name="tbAnuncioPatrocinador">
+    <Key>
+      <PropertyRef Name="apaid" />
+    </Key>
+    <Property Name="apaid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cid" Type="int" />
+    <Property Name="aid" Type="int" />
+  </EntityType>
   <EntityType Name="tbAnuncioStatus">
     <Key>
       <PropertyRef Name="asid" />
@@ -219,13 +226,13 @@
     <Property Name="tituloCampanha" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="dtInicio" Type="datetime" Nullable="false" />
     <Property Name="dtTermino" Type="datetime" Nullable="false" />
-    <Property Name="did" Type="int" Nullable="false" />
     <Property Name="csid" Type="int" Nullable="false" />
     <Property Name="pid" Type="int" />
     <Property Name="pcid" Type="int" />
     <Property Name="ctid" Type="int" />
     <Property Name="QtdeCreditosConsumidos" Type="float" />
     <Property Name="QtdeCreditosInicio" Type="float" />
+    <Property Name="daid" Type="int" />
   </EntityType>
   <EntityType Name="tbCampanhaAnuncio">
     <Key>
@@ -285,6 +292,7 @@
     </Key>
     <Property Name="ctid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="sessionID" Type="varchar" MaxLength="50" />
+    <Property Name="dtMovimento" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="tbCep">
     <Key>
@@ -334,20 +342,70 @@
     <Property Name="spea" Type="int" />
     <Property Name="spec" Type="int" />
     <Property Name="pua" Type="varchar" MaxLength="200" />
-    <Property Name="spdc" Type="int" />
     <Property Name="spcp" Type="int" />
     <Property Name="qdptcp" Type="int" />
     <Property Name="spde" Type="int" />
     <Property Name="spdd" Type="int" />
+    <Property Name="spdad" Type="int" />
+    <Property Name="spdac" Type="int" />
+    <Property Name="spdaec" Type="int" />
+    <Property Name="spaec" Type="int" />
+    <Property Name="spap" Type="int" />
+    <Property Name="spaaa" Type="int" />
+    <Property Name="spab" Type="int" />
+    <Property Name="spcf" Type="int" />
+    <Property Name="Spcec" Type="int" />
+    <Property Name="Spcea" Type="int" />
+    <Property Name="Spcep" Type="int" />
+    <Property Name="Spcb" Type="int" />
+    <Property Name="Spcd" Type="int" />
+    <Property Name="spccap" Type="int" />
+    <Property Name="spccc" Type="int" />
+    <Property Name="spccpa" Type="int" />
+    <Property Name="spcna" Type="decimal" Precision="11" Scale="3" Nullable="false" />
+    <Property Name="tpuc" Type="int" />
+    <Property Name="spnan" Type="int" />
+    <Property Name="spala" Type="int" />
+    <Property Name="spnpc" Type="int" />
   </EntityType>
   <EntityType Name="tbConsumidor">
     <Key>
       <PropertyRef Name="cid" />
     </Key>
     <Property Name="cid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="uid" Type="int" Nullable="false" />
+    <Property Name="uid" Type="int" />
     <Property Name="leuTermo" Type="int" />
     <Property Name="tid" Type="int" Nullable="false" />
+    <Property Name="conid" Type="int" Nullable="false" />
+    <Property Name="nomeCompleto" Type="varchar" MaxLength="100" />
+    <Property Name="nomeAbreviado" Type="varchar" MaxLength="100" />
+    <Property Name="usuSicove" Type="varchar" MaxLength="20" />
+    <Property Name="email" Type="varchar" MaxLength="100" />
+    <Property Name="cpf" Type="varchar" MaxLength="30" />
+    <Property Name="rg" Type="varchar" MaxLength="20" />
+    <Property Name="pis" Type="varchar" MaxLength="30" />
+    <Property Name="dtNascimento" Type="datetime" />
+    <Property Name="ativo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbConsumidorPontos">
+    <Key>
+      <PropertyRef Name="cpoid" />
+    </Key>
+    <Property Name="cpoid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="qtdPontos" Type="float" />
+    <Property Name="dtMovimento" Type="datetime" />
+    <Property Name="cposid" Type="int" />
+    <Property Name="descOrigem" Type="varchar" MaxLength="50" />
+    <Property Name="uid" Type="int" />
+    <Property Name="pid" Type="int" />
+    <Property Name="cid" Type="int" />
+  </EntityType>
+  <EntityType Name="tbConsumidorPontosStatus">
+    <Key>
+      <PropertyRef Name="cposid" />
+    </Key>
+    <Property Name="cposid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descStatus" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="tbCredito">
     <Key>
@@ -356,9 +414,9 @@
     <Property Name="crid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="qtCredito" Type="float" />
     <Property Name="vlCredito" Type="numeric" Precision="11" Scale="2" />
-    <Property Name="promocional" Type="bit" />
     <Property Name="tituloPacote" Type="varchar" MaxLength="20" />
     <Property Name="dsCredito" Type="varchar" MaxLength="100" />
+    <Property Name="promocional" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="tbCreditoCompra">
     <Key>
@@ -369,16 +427,18 @@
     <Property Name="crid" Type="int" Nullable="false" />
     <Property Name="dtCompra" Type="datetime" />
     <Property Name="crsid" Type="int" />
+    <Property Name="promocional" Type="bit" />
   </EntityType>
   <EntityType Name="tbCreditoDesconta">
     <Key>
       <PropertyRef Name="dcid" />
     </Key>
     <Property Name="dcid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="adid" Type="int" Nullable="false" />
     <Property Name="saldoCreditoIni" Type="float" />
     <Property Name="saldoCreditoFin" Type="float" />
     <Property Name="dtOcorrido" Type="datetime" />
+    <Property Name="daid" Type="int" />
+    <Property Name="pid" Type="int" />
   </EntityType>
   <EntityType Name="tbCreditoPromocional">
     <Key>
@@ -420,6 +480,15 @@
     <Property Name="did" Type="int" />
     <Property Name="pid" Type="int" />
     <Property Name="dtMovimento" Type="datetime" />
+    <Property Name="dasid" Type="int" />
+  </EntityType>
+  <EntityType Name="tbDestaqueAnuncianteStatus">
+    <Key>
+      <PropertyRef Name="dasid" />
+    </Key>
+    <Property Name="dasid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dsDescricao" Type="varchar" MaxLength="50" />
+    <Property Name="ativo" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="tbDestaqueDuracao">
     <Key>
@@ -465,6 +534,20 @@
     <Property Name="uid" Type="int" />
     <Property Name="dtMovimento" Type="datetime" />
     <Property Name="dsMovimento" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="tbLogMovFinanceiro">
+    <Key>
+      <PropertyRef Name="lmfid" />
+    </Key>
+    <Property Name="lmfid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="uid" Type="int" />
+    <Property Name="dataHoraLog" Type="datetime" Nullable="false" />
+    <Property Name="vlrAtual" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="vlrMovimento" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="tipoMov" Type="int" Nullable="false" />
+    <Property Name="id" Type="int" />
+    <Property Name="tb" Type="varchar" MaxLength="50" />
+    <Property Name="descMovimento" Type="varchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="tbLogSistema">
     <Key>
@@ -595,6 +678,40 @@
     <Property Name="clausula" Type="text" />
     <Property Name="tipo" Type="char" MaxLength="1" />
   </EntityType>
+  <EntityType Name="tbTransacaoXml">
+    <Key>
+      <PropertyRef Name="txid" />
+    </Key>
+    <Property Name="txid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="transacao" Type="varchar" MaxLength="50" />
+    <Property Name="sid" Type="varchar" MaxLength="50" />
+    <Property Name="pid" Type="int" />
+    <Property Name="chave" Type="varchar" MaxLength="100" />
+    <Property Name="credor" Type="varchar" MaxLength="50" />
+    <Property Name="valor" Type="decimal" Precision="11" Scale="3" />
+    <Property Name="dataVencimento" Type="datetime" />
+    <Property Name="descricao" Type="varchar" MaxLength="50" />
+    <Property Name="cpf" Type="varchar" MaxLength="20" />
+    <Property Name="cep" Type="varchar" MaxLength="10" />
+    <Property Name="cidade" Type="varchar" MaxLength="50" />
+    <Property Name="estado" Type="varchar" MaxLength="2" />
+    <Property Name="bairro" Type="varchar" MaxLength="50" />
+    <Property Name="endereco" Type="varchar" MaxLength="100" />
+    <Property Name="numero" Type="varchar" MaxLength="10" />
+    <Property Name="complemento" Type="varchar" MaxLength="20" />
+    <Property Name="numMaximoParcelas" Type="int" />
+    <Property Name="campoLivre" Type="varchar" MaxLength="100" />
+    <Property Name="urlRetornoLoja" Type="varchar" MaxLength="200" />
+    <Property Name="txsid" Type="int" />
+    <Property Name="dtMovimento" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tbTransacaoXmlStatus">
+    <Key>
+      <PropertyRef Name="txsid" />
+    </Key>
+    <Property Name="txsid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dsStatus" Type="varchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="tbUsers">
     <Key>
       <PropertyRef Name="uid" />
@@ -665,10 +782,12 @@ warning 6002: The table/view 'cliquemix.dbo.VwAnunciosDisponiveis' does not have
 warning 6002: The table/view 'cliquemix.dbo.VwAnunciosEmCampanha' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="VwAnunciosEmCampanha">
     <Key>
+      <PropertyRef Name="CodAnuncioCampanha" />
       <PropertyRef Name="CodAnuncio" />
       <PropertyRef Name="TituloAnuncio" />
       <PropertyRef Name="CodCampanha" />
     </Key>
+    <Property Name="CodAnuncioCampanha" Type="int" Nullable="false" />
     <Property Name="CodAnuncio" Type="int" Nullable="false" />
     <Property Name="TituloAnuncio" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="StatusAnuncio" Type="varchar" MaxLength="50" />
@@ -708,6 +827,129 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
     <Property Name="DtInicio" Type="datetime" Nullable="false" />
     <Property Name="DtTermino" Type="datetime" Nullable="false" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'cliquemix.dbo.VwRelatorioAnuncianteAnuncios_Cliques' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VwRelatorioAnuncianteAnuncios_Cliques">
+    <Key>
+      <PropertyRef Name="aid" />
+      <PropertyRef Name="tituloAnuncio" />
+      <PropertyRef Name="dtInicio" />
+      <PropertyRef Name="dtTermino" />
+    </Key>
+    <Property Name="aid" Type="int" Nullable="false" />
+    <Property Name="tituloAnuncio" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="cid" Type="int" />
+    <Property Name="dtInicio" Type="datetime" Nullable="false" />
+    <Property Name="dtTermino" Type="datetime" Nullable="false" />
+    <Property Name="contCliquesAtual" Type="int" />
+    <Property Name="contCliquesFinal" Type="int" />
+    <Property Name="pid" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'cliquemix.dbo.VwRelatorioAnuncianteAnuncios_Disponiveis' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VwRelatorioAnuncianteAnuncios_Disponiveis">
+    <Key>
+      <PropertyRef Name="aid" />
+      <PropertyRef Name="tituloAnuncio" />
+      <PropertyRef Name="VIDEO" />
+      <PropertyRef Name="IMAGEM" />
+    </Key>
+    <Property Name="aid" Type="int" Nullable="false" />
+    <Property Name="tituloAnuncio" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="dsCategoria" Type="varchar" MaxLength="50" />
+    <Property Name="dsStatus" Type="varchar" MaxLength="50" />
+    <Property Name="VIDEO" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="IMAGEM" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="dtCriacao" Type="datetime" />
+    <Property Name="pid" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'cliquemix.dbo.VwRelatorioAnuncianteAnuncios_EmCampanha' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VwRelatorioAnuncianteAnuncios_EmCampanha">
+    <Key>
+      <PropertyRef Name="aid" />
+      <PropertyRef Name="tituloAnuncio" />
+      <PropertyRef Name="dtInicio" />
+      <PropertyRef Name="dtTermino" />
+    </Key>
+    <Property Name="aid" Type="int" Nullable="false" />
+    <Property Name="tituloAnuncio" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="dsCategoria" Type="varchar" MaxLength="50" />
+    <Property Name="cid" Type="int" />
+    <Property Name="dtInicio" Type="datetime" Nullable="false" />
+    <Property Name="dtTermino" Type="datetime" Nullable="false" />
+    <Property Name="pid" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'cliquemix.dbo.VwRelatorioAnuncianteAnuncios_Excluidos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VwRelatorioAnuncianteAnuncios_Excluidos">
+    <Key>
+      <PropertyRef Name="aid" />
+      <PropertyRef Name="tituloAnuncio" />
+      <PropertyRef Name="VIDEO" />
+      <PropertyRef Name="IMAGEM" />
+    </Key>
+    <Property Name="aid" Type="int" Nullable="false" />
+    <Property Name="tituloAnuncio" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="dsCategoria" Type="varchar" MaxLength="50" />
+    <Property Name="dsStatus" Type="varchar" MaxLength="50" />
+    <Property Name="VIDEO" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="IMAGEM" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="dtCriacao" Type="datetime" />
+    <Property Name="pid" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'cliquemix.dbo.VwRelatorioAnuncianteAnuncios_Todos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VwRelatorioAnuncianteAnuncios_Todos">
+    <Key>
+      <PropertyRef Name="aid" />
+      <PropertyRef Name="tituloAnuncio" />
+      <PropertyRef Name="VIDEO" />
+      <PropertyRef Name="IMAGEM" />
+    </Key>
+    <Property Name="aid" Type="int" Nullable="false" />
+    <Property Name="tituloAnuncio" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="dsCategoria" Type="varchar" MaxLength="50" />
+    <Property Name="dsStatus" Type="varchar" MaxLength="50" />
+    <Property Name="VIDEO" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="IMAGEM" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="dtCriacao" Type="datetime" />
+    <Property Name="pid" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'cliquemix.dbo.VwRelatorioAnuncianteAnuncios_Top10Mais' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VwRelatorioAnuncianteAnuncios_Top10Mais">
+    <Key>
+      <PropertyRef Name="aid" />
+      <PropertyRef Name="tituloAnuncio" />
+      <PropertyRef Name="dtInicio" />
+      <PropertyRef Name="dtTermino" />
+    </Key>
+    <Property Name="aid" Type="int" Nullable="false" />
+    <Property Name="tituloAnuncio" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="cid" Type="int" />
+    <Property Name="dtInicio" Type="datetime" Nullable="false" />
+    <Property Name="dtTermino" Type="datetime" Nullable="false" />
+    <Property Name="contCliquesAtual" Type="int" />
+    <Property Name="pid" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'cliquemix.dbo.VwRelatorioAnuncianteAnuncios_Top10Menos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VwRelatorioAnuncianteAnuncios_Top10Menos">
+    <Key>
+      <PropertyRef Name="aid" />
+      <PropertyRef Name="tituloAnuncio" />
+      <PropertyRef Name="dtInicio" />
+      <PropertyRef Name="dtTermino" />
+    </Key>
+    <Property Name="aid" Type="int" Nullable="false" />
+    <Property Name="tituloAnuncio" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="cid" Type="int" />
+    <Property Name="dtInicio" Type="datetime" Nullable="false" />
+    <Property Name="dtTermino" Type="datetime" Nullable="false" />
+    <Property Name="contCliquesAtual" Type="int" />
+    <Property Name="pid" Type="int" />
+  </EntityType>
   <Association Name="acid_tbAnuncio_tbAnuncioCategoria_fk">
     <End Role="tbAnuncioCategoria" Type="Self.tbAnuncioCategoria" Multiplicity="0..1" />
     <End Role="tbAnuncio" Type="Self.tbAnuncio" Multiplicity="*" />
@@ -741,30 +983,6 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
       </Principal>
       <Dependent Role="tbAnuncioImg">
         <PropertyRef Name="actid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="adid_tbCreditoDesconta_tbAnuncianteDestaque_fk">
-    <End Role="tbAnuncianteDestaque" Type="Self.tbAnuncianteDestaque" Multiplicity="1" />
-    <End Role="tbCreditoDesconta" Type="Self.tbCreditoDesconta" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbAnuncianteDestaque">
-        <PropertyRef Name="adid" />
-      </Principal>
-      <Dependent Role="tbCreditoDesconta">
-        <PropertyRef Name="adid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="adsid_tbAnuncianteDestaque_tbAnuncianteDestaqueStatus_fk">
-    <End Role="tbAnuncianteDestaqueStatus" Type="Self.tbAnuncianteDestaqueStatus" Multiplicity="1" />
-    <End Role="tbAnuncianteDestaque" Type="Self.tbAnuncianteDestaque" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbAnuncianteDestaqueStatus">
-        <PropertyRef Name="adsid" />
-      </Principal>
-      <Dependent Role="tbAnuncianteDestaque">
-        <PropertyRef Name="adsid" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -816,6 +1034,18 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="aid_tbAnuncioPatrocinador_tbAnuncio_fk">
+    <End Role="tbAnuncio" Type="Self.tbAnuncio" Multiplicity="0..1" />
+    <End Role="tbAnuncioPatrocinador" Type="Self.tbAnuncioPatrocinador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbAnuncio">
+        <PropertyRef Name="aid" />
+      </Principal>
+      <Dependent Role="tbAnuncioPatrocinador">
+        <PropertyRef Name="aid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="aid_tbCampanhaAnuncio_tbAnuncio_fk">
     <End Role="tbAnuncio" Type="Self.tbAnuncio" Multiplicity="1" />
     <End Role="tbCampanhaAnuncio" Type="Self.tbCampanhaAnuncio" Multiplicity="*" />
@@ -837,6 +1067,30 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
       </Principal>
       <Dependent Role="tbPontosRede">
         <PropertyRef Name="aid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ansid_tbAnunciante_tbAnuncianteStatus_fk">
+    <End Role="tbAnuncianteStatus" Type="Self.tbAnuncianteStatus" Multiplicity="0..1" />
+    <End Role="tbAnunciante" Type="Self.tbAnunciante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbAnuncianteStatus">
+        <PropertyRef Name="ansid" />
+      </Principal>
+      <Dependent Role="tbAnunciante">
+        <PropertyRef Name="ansid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="apala_tbConfigPadrao_tbAnuncianteStatus_fk">
+    <End Role="tbAnuncianteStatus" Type="Self.tbAnuncianteStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbAnuncianteStatus">
+        <PropertyRef Name="ansid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="spala" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -960,6 +1214,30 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="cid_tbAnunciantePatrocinador_tbConsumidor_fk">
+    <End Role="tbConsumidor" Type="Self.tbConsumidor" Multiplicity="0..1" />
+    <End Role="tbAnunciantePatrocinador" Type="Self.tbAnunciantePatrocinador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbConsumidor">
+        <PropertyRef Name="cid" />
+      </Principal>
+      <Dependent Role="tbAnunciantePatrocinador">
+        <PropertyRef Name="cid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="cid_tbAnuncioPatrocinador_tbConsumidor_fk">
+    <End Role="tbConsumidor" Type="Self.tbConsumidor" Multiplicity="0..1" />
+    <End Role="tbAnuncioPatrocinador" Type="Self.tbAnuncioPatrocinador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbConsumidor">
+        <PropertyRef Name="cid" />
+      </Principal>
+      <Dependent Role="tbAnuncioPatrocinador">
+        <PropertyRef Name="cid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="cid_tbBairro_tbCidade_fk">
     <End Role="tbCidade" Type="Self.tbCidade" Multiplicity="1" />
     <End Role="tbBairro" Type="Self.tbBairro" Multiplicity="*" />
@@ -1008,6 +1286,18 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="cid_tbConsumidorPontos_tbConsumidor_fk">
+    <End Role="tbConsumidor" Type="Self.tbConsumidor" Multiplicity="0..1" />
+    <End Role="tbConsumidorPontos" Type="Self.tbConsumidorPontos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbConsumidor">
+        <PropertyRef Name="cid" />
+      </Principal>
+      <Dependent Role="tbConsumidorPontos">
+        <PropertyRef Name="cid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="cpid_tbAnunciante_tbCondicaoPagto_fk">
     <End Role="tbCondicaoPagto" Type="Self.tbCondicaoPagto" Multiplicity="0..1" />
     <End Role="tbAnunciante" Type="Self.tbAnunciante" Multiplicity="*" />
@@ -1029,6 +1319,18 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
       </Principal>
       <Dependent Role="tbCalculoCondicao">
         <PropertyRef Name="cpid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="cposid_tbConsumidorPontos_tbConsumidorPontosStatus_fk">
+    <End Role="tbConsumidorPontosStatus" Type="Self.tbConsumidorPontosStatus" Multiplicity="0..1" />
+    <End Role="tbConsumidorPontos" Type="Self.tbConsumidorPontos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbConsumidorPontosStatus">
+        <PropertyRef Name="cposid" />
+      </Principal>
+      <Dependent Role="tbConsumidorPontos">
+        <PropertyRef Name="cposid" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1116,6 +1418,30 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="daid_tbCampanha_tbDestaqueAnunciante_fk">
+    <End Role="tbDestaqueAnunciante" Type="Self.tbDestaqueAnunciante" Multiplicity="0..1" />
+    <End Role="tbCampanha" Type="Self.tbCampanha" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbDestaqueAnunciante">
+        <PropertyRef Name="daid" />
+      </Principal>
+      <Dependent Role="tbCampanha">
+        <PropertyRef Name="daid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="dasid_tbDestaqueAnunciante_tbDestaqueAnuncianteStatus_fk">
+    <End Role="tbDestaqueAnuncianteStatus" Type="Self.tbDestaqueAnuncianteStatus" Multiplicity="0..1" />
+    <End Role="tbDestaqueAnunciante" Type="Self.tbDestaqueAnunciante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbDestaqueAnuncianteStatus">
+        <PropertyRef Name="dasid" />
+      </Principal>
+      <Dependent Role="tbDestaqueAnunciante">
+        <PropertyRef Name="dasid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="ddid_tbDestaque_tbDestaqueDuracao_fk">
     <End Role="tbDestaqueDuracao" Type="Self.tbDestaqueDuracao" Multiplicity="0..1" />
     <End Role="tbDestaque" Type="Self.tbDestaque" Multiplicity="*" />
@@ -1125,30 +1451,6 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
       </Principal>
       <Dependent Role="tbDestaque">
         <PropertyRef Name="ddid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="did_tbAnuncianteDestaque_tbDestaque_fk">
-    <End Role="tbDestaque" Type="Self.tbDestaque" Multiplicity="1" />
-    <End Role="tbAnuncianteDestaque" Type="Self.tbAnuncianteDestaque" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbDestaque">
-        <PropertyRef Name="did" />
-      </Principal>
-      <Dependent Role="tbAnuncianteDestaque">
-        <PropertyRef Name="did" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="did_tbCampanha_tbDestaque_fk">
-    <End Role="tbDestaque" Type="Self.tbDestaque" Multiplicity="1" />
-    <End Role="tbCampanha" Type="Self.tbCampanha" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbDestaque">
-        <PropertyRef Name="did" />
-      </Principal>
-      <Dependent Role="tbCampanha">
-        <PropertyRef Name="did" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1344,18 +1646,6 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="pid_tbAnuncianteDestaque_tbAnunciante_fk">
-    <End Role="tbAnunciante" Type="Self.tbAnunciante" Multiplicity="1" />
-    <End Role="tbAnuncianteDestaque" Type="Self.tbAnuncianteDestaque" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbAnunciante">
-        <PropertyRef Name="pid" />
-      </Principal>
-      <Dependent Role="tbAnuncianteDestaque">
-        <PropertyRef Name="pid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="pid_tbAnuncianteEndereco_tbAnunciante_fk">
     <End Role="tbAnunciante" Type="Self.tbAnunciante" Multiplicity="1" />
     <End Role="tbAnuncianteEndereco" Type="Self.tbAnuncianteEndereco" Multiplicity="*" />
@@ -1364,6 +1654,18 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
         <PropertyRef Name="pid" />
       </Principal>
       <Dependent Role="tbAnuncianteEndereco">
+        <PropertyRef Name="pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pid_tbAnunciantePatrocinador_tbAnunciante_fk">
+    <End Role="tbAnunciante" Type="Self.tbAnunciante" Multiplicity="0..1" />
+    <End Role="tbAnunciantePatrocinador" Type="Self.tbAnunciantePatrocinador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbAnunciante">
+        <PropertyRef Name="pid" />
+      </Principal>
+      <Dependent Role="tbAnunciantePatrocinador">
         <PropertyRef Name="pid" />
       </Dependent>
     </ReferentialConstraint>
@@ -1404,6 +1706,18 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="pid_tbConsumidorPontos_tbAnunciante_fk">
+    <End Role="tbAnunciante" Type="Self.tbAnunciante" Multiplicity="0..1" />
+    <End Role="tbConsumidorPontos" Type="Self.tbConsumidorPontos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbAnunciante">
+        <PropertyRef Name="pid" />
+      </Principal>
+      <Dependent Role="tbConsumidorPontos">
+        <PropertyRef Name="pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="pid_tbCreditoCompra_tbAnunciante_fk">
     <End Role="tbAnunciante" Type="Self.tbAnunciante" Multiplicity="1" />
     <End Role="tbCreditoCompra" Type="Self.tbCreditoCompra" Multiplicity="*" />
@@ -1416,6 +1730,18 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="pid_tbCreditoDesconta_tbAnunciante_fk">
+    <End Role="tbAnunciante" Type="Self.tbAnunciante" Multiplicity="0..1" />
+    <End Role="tbCreditoDesconta" Type="Self.tbCreditoDesconta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbAnunciante">
+        <PropertyRef Name="pid" />
+      </Principal>
+      <Dependent Role="tbCreditoDesconta">
+        <PropertyRef Name="pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="pid_tbDestaqueAnunciante_tbAnunciante_fk">
     <End Role="tbAnunciante" Type="Self.tbAnunciante" Multiplicity="0..1" />
     <End Role="tbDestaqueAnunciante" Type="Self.tbDestaqueAnunciante" Multiplicity="*" />
@@ -1424,6 +1750,18 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
         <PropertyRef Name="pid" />
       </Principal>
       <Dependent Role="tbDestaqueAnunciante">
+        <PropertyRef Name="pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pid_tbTransacaoXml_tbAnunciante_fk">
+    <End Role="tbAnunciante" Type="Self.tbAnunciante" Multiplicity="0..1" />
+    <End Role="tbTransacaoXml" Type="Self.tbTransacaoXml" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbAnunciante">
+        <PropertyRef Name="pid" />
+      </Principal>
+      <Dependent Role="tbTransacaoXml">
         <PropertyRef Name="pid" />
       </Dependent>
     </ReferentialConstraint>
@@ -1500,6 +1838,30 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="spaaa_tbConfigPadrao_tbAnuncioStatus_fk">
+    <End Role="tbAnuncioStatus" Type="Self.tbAnuncioStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbAnuncioStatus">
+        <PropertyRef Name="asid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="spaaa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="spab_tbConfigPadrao_tbAnuncioStatus_fk">
+    <End Role="tbAnuncioStatus" Type="Self.tbAnuncioStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbAnuncioStatus">
+        <PropertyRef Name="asid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="spab" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="spadc_tbConfigPadrao_tbAnuncioStatus_fk">
     <End Role="tbAnuncioStatus" Type="Self.tbAnuncioStatus" Multiplicity="0..1" />
     <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
@@ -1509,6 +1871,138 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
       </Principal>
       <Dependent Role="tbConfigPadrao">
         <PropertyRef Name="spadc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="spaec_tbConfigPadrao_tbAnuncioStatus_fk">
+    <End Role="tbAnuncioStatus" Type="Self.tbAnuncioStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbAnuncioStatus">
+        <PropertyRef Name="asid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="spaec" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="spap_tbConfigPadrao_tbAnuncioStatus_fk">
+    <End Role="tbAnuncioStatus" Type="Self.tbAnuncioStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbAnuncioStatus">
+        <PropertyRef Name="asid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="spap" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Spcb_tbConfigPadrao_tbCampanhaStatus_fk">
+    <End Role="tbCampanhaStatus" Type="Self.tbCampanhaStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbCampanhaStatus">
+        <PropertyRef Name="csid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="Spcb" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="spccap_tbConfigPadrao_tbCreditoStatus_fk">
+    <End Role="tbCreditoStatus" Type="Self.tbCreditoStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbCreditoStatus">
+        <PropertyRef Name="crsid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="spccap" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="spccc_tbConfigPadrao_tbCreditoStatus_fk">
+    <End Role="tbCreditoStatus" Type="Self.tbCreditoStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbCreditoStatus">
+        <PropertyRef Name="crsid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="spccc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="spccpa_tbConfigPadrao_tbCreditoStatus_fk">
+    <End Role="tbCreditoStatus" Type="Self.tbCreditoStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbCreditoStatus">
+        <PropertyRef Name="crsid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="spccpa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Spcd_tbConfigPadrao_tbCampanhaStatus_fk">
+    <End Role="tbCampanhaStatus" Type="Self.tbCampanhaStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbCampanhaStatus">
+        <PropertyRef Name="csid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="Spcd" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Spcea_tbConfigPadrao_tbCampanhaStatus_fk">
+    <End Role="tbCampanhaStatus" Type="Self.tbCampanhaStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbCampanhaStatus">
+        <PropertyRef Name="csid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="Spcea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Spcec_tbConfigPadrao_tbCampanhaStatus_fk">
+    <End Role="tbCampanhaStatus" Type="Self.tbCampanhaStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbCampanhaStatus">
+        <PropertyRef Name="csid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="Spcec" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Spcep_tbConfigPadrao_tbCampanhaStatus_fk">
+    <End Role="tbCampanhaStatus" Type="Self.tbCampanhaStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbCampanhaStatus">
+        <PropertyRef Name="csid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="Spcep" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="spcf_tbConfigPadrao_tbCampanhaStatus_fk">
+    <End Role="tbCampanhaStatus" Type="Self.tbCampanhaStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbCampanhaStatus">
+        <PropertyRef Name="csid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="spcf" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1524,15 +2018,39 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="spdc_tbConfigPadrao_tbCampanhaStatus_fk">
-    <End Role="tbCampanhaStatus" Type="Self.tbCampanhaStatus" Multiplicity="0..1" />
+  <Association Name="spdac_tbConfigPadrao_tbDestaqueAnuncianteStatus_fk">
+    <End Role="tbDestaqueAnuncianteStatus" Type="Self.tbDestaqueAnuncianteStatus" Multiplicity="0..1" />
     <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="tbCampanhaStatus">
-        <PropertyRef Name="csid" />
+      <Principal Role="tbDestaqueAnuncianteStatus">
+        <PropertyRef Name="dasid" />
       </Principal>
       <Dependent Role="tbConfigPadrao">
-        <PropertyRef Name="spdc" />
+        <PropertyRef Name="spdac" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="spdad_tbConfigPadrao_tbDestaqueAnuncianteStatus_fk">
+    <End Role="tbDestaqueAnuncianteStatus" Type="Self.tbDestaqueAnuncianteStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbDestaqueAnuncianteStatus">
+        <PropertyRef Name="dasid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="spdad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="spdaec_tbConfigPadrao_tbDestaqueAnuncianteStatus_fk">
+    <End Role="tbDestaqueAnuncianteStatus" Type="Self.tbDestaqueAnuncianteStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbDestaqueAnuncianteStatus">
+        <PropertyRef Name="dasid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="spdaec" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1608,6 +2126,18 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="spnan_tbConfigPadrao_tbAnuncianteStatus_fk">
+    <End Role="tbAnuncianteStatus" Type="Self.tbAnuncianteStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbAnuncianteStatus">
+        <PropertyRef Name="ansid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="spnan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="spnc_tbConfigPadrao_tbCampanhaStatus_fk">
     <End Role="tbCampanhaStatus" Type="Self.tbCampanhaStatus" Multiplicity="0..1" />
     <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
@@ -1617,6 +2147,30 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
       </Principal>
       <Dependent Role="tbConfigPadrao">
         <PropertyRef Name="spnc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="spnpc_tbConfigPadrao_tbConsumidorPontosStatus_fk">
+    <End Role="tbConsumidorPontosStatus" Type="Self.tbConsumidorPontosStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbConsumidorPontosStatus">
+        <PropertyRef Name="cposid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="spnpc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tbCreditoDesconta_tbDestaqueAnunciante_fk">
+    <End Role="tbDestaqueAnunciante" Type="Self.tbDestaqueAnunciante" Multiplicity="0..1" />
+    <End Role="tbCreditoDesconta" Type="Self.tbCreditoDesconta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbDestaqueAnunciante">
+        <PropertyRef Name="daid" />
+      </Principal>
+      <Dependent Role="tbCreditoDesconta">
+        <PropertyRef Name="daid" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1665,6 +2219,30 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
       </Principal>
       <Dependent Role="tbConfigPadrao">
         <PropertyRef Name="tpua" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tpuc_tbConfigPadrao_tbUsersTipo_fk">
+    <End Role="tbUsersTipo" Type="Self.tbUsersTipo" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsersTipo">
+        <PropertyRef Name="utid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="tpuc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="txsid_tbTransacaoXml_tbTransacaoXmlStatus_fk">
+    <End Role="tbTransacaoXmlStatus" Type="Self.tbTransacaoXmlStatus" Multiplicity="0..1" />
+    <End Role="tbTransacaoXml" Type="Self.tbTransacaoXml" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbTransacaoXmlStatus">
+        <PropertyRef Name="txsid" />
+      </Principal>
+      <Dependent Role="tbTransacaoXml">
+        <PropertyRef Name="txsid" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1728,6 +2306,18 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="uid_tbConsumidorPontos_tbUsers_fk">
+    <End Role="tbUsers" Type="Self.tbUsers" Multiplicity="0..1" />
+    <End Role="tbConsumidorPontos" Type="Self.tbConsumidorPontos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsers">
+        <PropertyRef Name="uid" />
+      </Principal>
+      <Dependent Role="tbConsumidorPontos">
+        <PropertyRef Name="uid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="uid_tbCreditoPromocional_tbUsers_fk">
     <End Role="tbUsers" Type="Self.tbUsers" Multiplicity="0..1" />
     <End Role="tbCreditoPromocional" Type="Self.tbCreditoPromocional" Multiplicity="*" />
@@ -1748,6 +2338,18 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
         <PropertyRef Name="uid" />
       </Principal>
       <Dependent Role="tbFuncionalidadeLog">
+        <PropertyRef Name="uid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="uid_tbLogMovFinanceiro_tbUsers_fk">
+    <End Role="tbUsers" Type="Self.tbUsers" Multiplicity="0..1" />
+    <End Role="tbLogMovFinanceiro" Type="Self.tbLogMovFinanceiro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsers">
+        <PropertyRef Name="uid" />
+      </Principal>
+      <Dependent Role="tbLogMovFinanceiro">
         <PropertyRef Name="uid" />
       </Dependent>
     </ReferentialConstraint>
@@ -1802,9 +2404,9 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
   </Association>
   <EntityContainer Name="cliquemixModelStoreContainer">
     <EntitySet Name="tbAnunciante" EntityType="Self.tbAnunciante" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="tbAnuncianteDestaque" EntityType="Self.tbAnuncianteDestaque" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="tbAnuncianteDestaqueStatus" EntityType="Self.tbAnuncianteDestaqueStatus" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbAnuncianteEndereco" EntityType="Self.tbAnuncianteEndereco" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbAnunciantePatrocinador" EntityType="Self.tbAnunciantePatrocinador" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbAnuncianteStatus" EntityType="Self.tbAnuncianteStatus" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbAnuncianteTelefone" EntityType="Self.tbAnuncianteTelefone" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbAnuncio" EntityType="Self.tbAnuncio" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbAnuncioCategoria" EntityType="Self.tbAnuncioCategoria" Schema="dbo" store:Type="Tables" />
@@ -1812,6 +2414,7 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
     <EntitySet Name="tbAnuncioFuncionalidade" EntityType="Self.tbAnuncioFuncionalidade" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbAnuncioImg" EntityType="Self.tbAnuncioImg" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbAnuncioLog" EntityType="Self.tbAnuncioLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbAnuncioPatrocinador" EntityType="Self.tbAnuncioPatrocinador" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbAnuncioStatus" EntityType="Self.tbAnuncioStatus" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbBairro" EntityType="Self.tbBairro" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbBan" EntityType="Self.tbBan" Schema="dbo" store:Type="Tables" />
@@ -1832,6 +2435,8 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
     <EntitySet Name="tbCondicaoPagto" EntityType="Self.tbCondicaoPagto" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbConfigPadrao" EntityType="Self.tbConfigPadrao" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbConsumidor" EntityType="Self.tbConsumidor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbConsumidorPontos" EntityType="Self.tbConsumidorPontos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbConsumidorPontosStatus" EntityType="Self.tbConsumidorPontosStatus" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbCredito" EntityType="Self.tbCredito" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbCreditoCompra" EntityType="Self.tbCreditoCompra" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbCreditoDesconta" EntityType="Self.tbCreditoDesconta" Schema="dbo" store:Type="Tables" />
@@ -1839,11 +2444,13 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
     <EntitySet Name="tbCreditoStatus" EntityType="Self.tbCreditoStatus" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbDestaque" EntityType="Self.tbDestaque" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbDestaqueAnunciante" EntityType="Self.tbDestaqueAnunciante" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbDestaqueAnuncianteStatus" EntityType="Self.tbDestaqueAnuncianteStatus" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbDestaqueDuracao" EntityType="Self.tbDestaqueDuracao" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbDestaqueStatus" EntityType="Self.tbDestaqueStatus" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbEstado" EntityType="Self.tbEstado" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbFuncionalidade" EntityType="Self.tbFuncionalidade" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbFuncionalidadeLog" EntityType="Self.tbFuncionalidadeLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbLogMovFinanceiro" EntityType="Self.tbLogMovFinanceiro" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbLogSistema" EntityType="Self.tbLogSistema" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbPacoteClique" EntityType="Self.tbPacoteClique" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbPais" EntityType="Self.tbPais" Schema="dbo" store:Type="Tables" />
@@ -1859,6 +2466,8 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
     <EntitySet Name="tbRamoAtividade" EntityType="Self.tbRamoAtividade" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbTipoLogradouro" EntityType="Self.tbTipoLogradouro" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbTos" EntityType="Self.tbTos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbTransacaoXml" EntityType="Self.tbTransacaoXml" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbTransacaoXmlStatus" EntityType="Self.tbTransacaoXmlStatus" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbUsers" EntityType="Self.tbUsers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbUsersLogAcesso" EntityType="Self.tbUsersLogAcesso" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbUsersPermissao" EntityType="Self.tbUsersPermissao" Schema="dbo" store:Type="Tables" />
@@ -1885,6 +2494,7 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
     </EntitySet>
     <EntitySet Name="VwAnunciosEmCampanha" EntityType="Self.VwAnunciosEmCampanha" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
+    [VwAnunciosEmCampanha].[CodAnuncioCampanha] AS [CodAnuncioCampanha], 
     [VwAnunciosEmCampanha].[CodAnuncio] AS [CodAnuncio], 
     [VwAnunciosEmCampanha].[TituloAnuncio] AS [TituloAnuncio], 
     [VwAnunciosEmCampanha].[StatusAnuncio] AS [StatusAnuncio], 
@@ -1915,6 +2525,87 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
     [VwCampanhasAtivasAnunciante].[DtTermino] AS [DtTermino]
     FROM [dbo].[VwCampanhasAtivasAnunciante] AS [VwCampanhasAtivasAnunciante]</DefiningQuery>
     </EntitySet>
+    <EntitySet Name="VwRelatorioAnuncianteAnuncios_Cliques" EntityType="Self.VwRelatorioAnuncianteAnuncios_Cliques" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VwRelatorioAnuncianteAnuncios_Cliques].[aid] AS [aid], 
+    [VwRelatorioAnuncianteAnuncios_Cliques].[tituloAnuncio] AS [tituloAnuncio], 
+    [VwRelatorioAnuncianteAnuncios_Cliques].[cid] AS [cid], 
+    [VwRelatorioAnuncianteAnuncios_Cliques].[dtInicio] AS [dtInicio], 
+    [VwRelatorioAnuncianteAnuncios_Cliques].[dtTermino] AS [dtTermino], 
+    [VwRelatorioAnuncianteAnuncios_Cliques].[contCliquesAtual] AS [contCliquesAtual], 
+    [VwRelatorioAnuncianteAnuncios_Cliques].[contCliquesFinal] AS [contCliquesFinal], 
+    [VwRelatorioAnuncianteAnuncios_Cliques].[pid] AS [pid]
+    FROM [dbo].[VwRelatorioAnuncianteAnuncios_Cliques] AS [VwRelatorioAnuncianteAnuncios_Cliques]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VwRelatorioAnuncianteAnuncios_Disponiveis" EntityType="Self.VwRelatorioAnuncianteAnuncios_Disponiveis" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VwRelatorioAnuncianteAnuncios_Disponiveis].[aid] AS [aid], 
+    [VwRelatorioAnuncianteAnuncios_Disponiveis].[tituloAnuncio] AS [tituloAnuncio], 
+    [VwRelatorioAnuncianteAnuncios_Disponiveis].[dsCategoria] AS [dsCategoria], 
+    [VwRelatorioAnuncianteAnuncios_Disponiveis].[dsStatus] AS [dsStatus], 
+    [VwRelatorioAnuncianteAnuncios_Disponiveis].[VIDEO] AS [VIDEO], 
+    [VwRelatorioAnuncianteAnuncios_Disponiveis].[IMAGEM] AS [IMAGEM], 
+    [VwRelatorioAnuncianteAnuncios_Disponiveis].[dtCriacao] AS [dtCriacao], 
+    [VwRelatorioAnuncianteAnuncios_Disponiveis].[pid] AS [pid]
+    FROM [dbo].[VwRelatorioAnuncianteAnuncios_Disponiveis] AS [VwRelatorioAnuncianteAnuncios_Disponiveis]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VwRelatorioAnuncianteAnuncios_EmCampanha" EntityType="Self.VwRelatorioAnuncianteAnuncios_EmCampanha" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VwRelatorioAnuncianteAnuncios_EmCampanha].[aid] AS [aid], 
+    [VwRelatorioAnuncianteAnuncios_EmCampanha].[tituloAnuncio] AS [tituloAnuncio], 
+    [VwRelatorioAnuncianteAnuncios_EmCampanha].[dsCategoria] AS [dsCategoria], 
+    [VwRelatorioAnuncianteAnuncios_EmCampanha].[cid] AS [cid], 
+    [VwRelatorioAnuncianteAnuncios_EmCampanha].[dtInicio] AS [dtInicio], 
+    [VwRelatorioAnuncianteAnuncios_EmCampanha].[dtTermino] AS [dtTermino], 
+    [VwRelatorioAnuncianteAnuncios_EmCampanha].[pid] AS [pid]
+    FROM [dbo].[VwRelatorioAnuncianteAnuncios_EmCampanha] AS [VwRelatorioAnuncianteAnuncios_EmCampanha]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VwRelatorioAnuncianteAnuncios_Excluidos" EntityType="Self.VwRelatorioAnuncianteAnuncios_Excluidos" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VwRelatorioAnuncianteAnuncios_Excluidos].[aid] AS [aid], 
+    [VwRelatorioAnuncianteAnuncios_Excluidos].[tituloAnuncio] AS [tituloAnuncio], 
+    [VwRelatorioAnuncianteAnuncios_Excluidos].[dsCategoria] AS [dsCategoria], 
+    [VwRelatorioAnuncianteAnuncios_Excluidos].[dsStatus] AS [dsStatus], 
+    [VwRelatorioAnuncianteAnuncios_Excluidos].[VIDEO] AS [VIDEO], 
+    [VwRelatorioAnuncianteAnuncios_Excluidos].[IMAGEM] AS [IMAGEM], 
+    [VwRelatorioAnuncianteAnuncios_Excluidos].[dtCriacao] AS [dtCriacao], 
+    [VwRelatorioAnuncianteAnuncios_Excluidos].[pid] AS [pid]
+    FROM [dbo].[VwRelatorioAnuncianteAnuncios_Excluidos] AS [VwRelatorioAnuncianteAnuncios_Excluidos]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VwRelatorioAnuncianteAnuncios_Todos" EntityType="Self.VwRelatorioAnuncianteAnuncios_Todos" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VwRelatorioAnuncianteAnuncios_Todos].[aid] AS [aid], 
+    [VwRelatorioAnuncianteAnuncios_Todos].[tituloAnuncio] AS [tituloAnuncio], 
+    [VwRelatorioAnuncianteAnuncios_Todos].[dsCategoria] AS [dsCategoria], 
+    [VwRelatorioAnuncianteAnuncios_Todos].[dsStatus] AS [dsStatus], 
+    [VwRelatorioAnuncianteAnuncios_Todos].[VIDEO] AS [VIDEO], 
+    [VwRelatorioAnuncianteAnuncios_Todos].[IMAGEM] AS [IMAGEM], 
+    [VwRelatorioAnuncianteAnuncios_Todos].[dtCriacao] AS [dtCriacao], 
+    [VwRelatorioAnuncianteAnuncios_Todos].[pid] AS [pid]
+    FROM [dbo].[VwRelatorioAnuncianteAnuncios_Todos] AS [VwRelatorioAnuncianteAnuncios_Todos]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VwRelatorioAnuncianteAnuncios_Top10Mais" EntityType="Self.VwRelatorioAnuncianteAnuncios_Top10Mais" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VwRelatorioAnuncianteAnuncios_Top10Mais].[aid] AS [aid], 
+    [VwRelatorioAnuncianteAnuncios_Top10Mais].[tituloAnuncio] AS [tituloAnuncio], 
+    [VwRelatorioAnuncianteAnuncios_Top10Mais].[cid] AS [cid], 
+    [VwRelatorioAnuncianteAnuncios_Top10Mais].[dtInicio] AS [dtInicio], 
+    [VwRelatorioAnuncianteAnuncios_Top10Mais].[dtTermino] AS [dtTermino], 
+    [VwRelatorioAnuncianteAnuncios_Top10Mais].[contCliquesAtual] AS [contCliquesAtual], 
+    [VwRelatorioAnuncianteAnuncios_Top10Mais].[pid] AS [pid]
+    FROM [dbo].[VwRelatorioAnuncianteAnuncios_Top10Mais] AS [VwRelatorioAnuncianteAnuncios_Top10Mais]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VwRelatorioAnuncianteAnuncios_Top10Menos" EntityType="Self.VwRelatorioAnuncianteAnuncios_Top10Menos" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VwRelatorioAnuncianteAnuncios_Top10Menos].[aid] AS [aid], 
+    [VwRelatorioAnuncianteAnuncios_Top10Menos].[tituloAnuncio] AS [tituloAnuncio], 
+    [VwRelatorioAnuncianteAnuncios_Top10Menos].[cid] AS [cid], 
+    [VwRelatorioAnuncianteAnuncios_Top10Menos].[dtInicio] AS [dtInicio], 
+    [VwRelatorioAnuncianteAnuncios_Top10Menos].[dtTermino] AS [dtTermino], 
+    [VwRelatorioAnuncianteAnuncios_Top10Menos].[contCliquesAtual] AS [contCliquesAtual], 
+    [VwRelatorioAnuncianteAnuncios_Top10Menos].[pid] AS [pid]
+    FROM [dbo].[VwRelatorioAnuncianteAnuncios_Top10Menos] AS [VwRelatorioAnuncianteAnuncios_Top10Menos]</DefiningQuery>
+    </EntitySet>
     <AssociationSet Name="acid_tbAnuncio_tbAnuncioCategoria_fk" Association="Self.acid_tbAnuncio_tbAnuncioCategoria_fk">
       <End Role="tbAnuncioCategoria" EntitySet="tbAnuncioCategoria" />
       <End Role="tbAnuncio" EntitySet="tbAnuncio" />
@@ -1926,14 +2617,6 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
     <AssociationSet Name="actid_tbAnuncioImg_tbAnuncioCodTemp_fk" Association="Self.actid_tbAnuncioImg_tbAnuncioCodTemp_fk">
       <End Role="tbAnuncioCodTemp" EntitySet="tbAnuncioCodTemp" />
       <End Role="tbAnuncioImg" EntitySet="tbAnuncioImg" />
-    </AssociationSet>
-    <AssociationSet Name="adid_tbCreditoDesconta_tbAnuncianteDestaque_fk" Association="Self.adid_tbCreditoDesconta_tbAnuncianteDestaque_fk">
-      <End Role="tbAnuncianteDestaque" EntitySet="tbAnuncianteDestaque" />
-      <End Role="tbCreditoDesconta" EntitySet="tbCreditoDesconta" />
-    </AssociationSet>
-    <AssociationSet Name="adsid_tbAnuncianteDestaque_tbAnuncianteDestaqueStatus_fk" Association="Self.adsid_tbAnuncianteDestaque_tbAnuncianteDestaqueStatus_fk">
-      <End Role="tbAnuncianteDestaqueStatus" EntitySet="tbAnuncianteDestaqueStatus" />
-      <End Role="tbAnuncianteDestaque" EntitySet="tbAnuncianteDestaque" />
     </AssociationSet>
     <AssociationSet Name="aid_tbAnuncioCodTemp_tbAnuncio_fk" Association="Self.aid_tbAnuncioCodTemp_tbAnuncio_fk">
       <End Role="tbAnuncio" EntitySet="tbAnuncio" />
@@ -1951,6 +2634,10 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
       <End Role="tbAnuncio" EntitySet="tbAnuncio" />
       <End Role="tbAnuncioLog" EntitySet="tbAnuncioLog" />
     </AssociationSet>
+    <AssociationSet Name="aid_tbAnuncioPatrocinador_tbAnuncio_fk" Association="Self.aid_tbAnuncioPatrocinador_tbAnuncio_fk">
+      <End Role="tbAnuncio" EntitySet="tbAnuncio" />
+      <End Role="tbAnuncioPatrocinador" EntitySet="tbAnuncioPatrocinador" />
+    </AssociationSet>
     <AssociationSet Name="aid_tbCampanhaAnuncio_tbAnuncio_fk" Association="Self.aid_tbCampanhaAnuncio_tbAnuncio_fk">
       <End Role="tbAnuncio" EntitySet="tbAnuncio" />
       <End Role="tbCampanhaAnuncio" EntitySet="tbCampanhaAnuncio" />
@@ -1958,6 +2645,14 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
     <AssociationSet Name="aid_tbPontosRede_tbAnuncio_fk" Association="Self.aid_tbPontosRede_tbAnuncio_fk">
       <End Role="tbAnuncio" EntitySet="tbAnuncio" />
       <End Role="tbPontosRede" EntitySet="tbPontosRede" />
+    </AssociationSet>
+    <AssociationSet Name="ansid_tbAnunciante_tbAnuncianteStatus_fk" Association="Self.ansid_tbAnunciante_tbAnuncianteStatus_fk">
+      <End Role="tbAnuncianteStatus" EntitySet="tbAnuncianteStatus" />
+      <End Role="tbAnunciante" EntitySet="tbAnunciante" />
+    </AssociationSet>
+    <AssociationSet Name="apala_tbConfigPadrao_tbAnuncianteStatus_fk" Association="Self.apala_tbConfigPadrao_tbAnuncianteStatus_fk">
+      <End Role="tbAnuncianteStatus" EntitySet="tbAnuncianteStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
     </AssociationSet>
     <AssociationSet Name="asid_tbAnuncio_tbAnuncioStatus_fk" Association="Self.asid_tbAnuncio_tbAnuncioStatus_fk">
       <End Role="tbAnuncioStatus" EntitySet="tbAnuncioStatus" />
@@ -1999,6 +2694,14 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
       <End Role="tbCalculoCondicaoPagto" EntitySet="tbCalculoCondicaoPagto" />
       <End Role="tbCalculoCondicao" EntitySet="tbCalculoCondicao" />
     </AssociationSet>
+    <AssociationSet Name="cid_tbAnunciantePatrocinador_tbConsumidor_fk" Association="Self.cid_tbAnunciantePatrocinador_tbConsumidor_fk">
+      <End Role="tbConsumidor" EntitySet="tbConsumidor" />
+      <End Role="tbAnunciantePatrocinador" EntitySet="tbAnunciantePatrocinador" />
+    </AssociationSet>
+    <AssociationSet Name="cid_tbAnuncioPatrocinador_tbConsumidor_fk" Association="Self.cid_tbAnuncioPatrocinador_tbConsumidor_fk">
+      <End Role="tbConsumidor" EntitySet="tbConsumidor" />
+      <End Role="tbAnuncioPatrocinador" EntitySet="tbAnuncioPatrocinador" />
+    </AssociationSet>
     <AssociationSet Name="cid_tbBairro_tbCidade_fk" Association="Self.cid_tbBairro_tbCidade_fk">
       <End Role="tbCidade" EntitySet="tbCidade" />
       <End Role="tbBairro" EntitySet="tbBairro" />
@@ -2015,6 +2718,10 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
       <End Role="tbCidade" EntitySet="tbCidade" />
       <End Role="tbCep" EntitySet="tbCep" />
     </AssociationSet>
+    <AssociationSet Name="cid_tbConsumidorPontos_tbConsumidor_fk" Association="Self.cid_tbConsumidorPontos_tbConsumidor_fk">
+      <End Role="tbConsumidor" EntitySet="tbConsumidor" />
+      <End Role="tbConsumidorPontos" EntitySet="tbConsumidorPontos" />
+    </AssociationSet>
     <AssociationSet Name="cpid_tbAnunciante_tbCondicaoPagto_fk" Association="Self.cpid_tbAnunciante_tbCondicaoPagto_fk">
       <End Role="tbCondicaoPagto" EntitySet="tbCondicaoPagto" />
       <End Role="tbAnunciante" EntitySet="tbAnunciante" />
@@ -2022,6 +2729,10 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
     <AssociationSet Name="cpid_tbCalculoCondicao_tbCondicaoPagto_fk" Association="Self.cpid_tbCalculoCondicao_tbCondicaoPagto_fk">
       <End Role="tbCondicaoPagto" EntitySet="tbCondicaoPagto" />
       <End Role="tbCalculoCondicao" EntitySet="tbCalculoCondicao" />
+    </AssociationSet>
+    <AssociationSet Name="cposid_tbConsumidorPontos_tbConsumidorPontosStatus_fk" Association="Self.cposid_tbConsumidorPontos_tbConsumidorPontosStatus_fk">
+      <End Role="tbConsumidorPontosStatus" EntitySet="tbConsumidorPontosStatus" />
+      <End Role="tbConsumidorPontos" EntitySet="tbConsumidorPontos" />
     </AssociationSet>
     <AssociationSet Name="crid_tbCreditoCompra_tbCredito_fk" Association="Self.crid_tbCreditoCompra_tbCredito_fk">
       <End Role="tbCredito" EntitySet="tbCredito" />
@@ -2051,17 +2762,17 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
       <End Role="tbCampanhaTmp" EntitySet="tbCampanhaTmp" />
       <End Role="tbCampanhaLocalizacao" EntitySet="tbCampanhaLocalizacao" />
     </AssociationSet>
+    <AssociationSet Name="daid_tbCampanha_tbDestaqueAnunciante_fk" Association="Self.daid_tbCampanha_tbDestaqueAnunciante_fk">
+      <End Role="tbDestaqueAnunciante" EntitySet="tbDestaqueAnunciante" />
+      <End Role="tbCampanha" EntitySet="tbCampanha" />
+    </AssociationSet>
+    <AssociationSet Name="dasid_tbDestaqueAnunciante_tbDestaqueAnuncianteStatus_fk" Association="Self.dasid_tbDestaqueAnunciante_tbDestaqueAnuncianteStatus_fk">
+      <End Role="tbDestaqueAnuncianteStatus" EntitySet="tbDestaqueAnuncianteStatus" />
+      <End Role="tbDestaqueAnunciante" EntitySet="tbDestaqueAnunciante" />
+    </AssociationSet>
     <AssociationSet Name="ddid_tbDestaque_tbDestaqueDuracao_fk" Association="Self.ddid_tbDestaque_tbDestaqueDuracao_fk">
       <End Role="tbDestaqueDuracao" EntitySet="tbDestaqueDuracao" />
       <End Role="tbDestaque" EntitySet="tbDestaque" />
-    </AssociationSet>
-    <AssociationSet Name="did_tbAnuncianteDestaque_tbDestaque_fk" Association="Self.did_tbAnuncianteDestaque_tbDestaque_fk">
-      <End Role="tbDestaque" EntitySet="tbDestaque" />
-      <End Role="tbAnuncianteDestaque" EntitySet="tbAnuncianteDestaque" />
-    </AssociationSet>
-    <AssociationSet Name="did_tbCampanha_tbDestaque_fk" Association="Self.did_tbCampanha_tbDestaque_fk">
-      <End Role="tbDestaque" EntitySet="tbDestaque" />
-      <End Role="tbCampanha" EntitySet="tbCampanha" />
     </AssociationSet>
     <AssociationSet Name="did_tbDestaqueAnunciante_tbDestaque_fk" Association="Self.did_tbDestaqueAnunciante_tbDestaque_fk">
       <End Role="tbDestaque" EntitySet="tbDestaque" />
@@ -2127,13 +2838,13 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
       <End Role="tbPermissaoGrupo" EntitySet="tbPermissaoGrupo" />
       <End Role="tbPermissaoSubGrupo" EntitySet="tbPermissaoSubGrupo" />
     </AssociationSet>
-    <AssociationSet Name="pid_tbAnuncianteDestaque_tbAnunciante_fk" Association="Self.pid_tbAnuncianteDestaque_tbAnunciante_fk">
-      <End Role="tbAnunciante" EntitySet="tbAnunciante" />
-      <End Role="tbAnuncianteDestaque" EntitySet="tbAnuncianteDestaque" />
-    </AssociationSet>
     <AssociationSet Name="pid_tbAnuncianteEndereco_tbAnunciante_fk" Association="Self.pid_tbAnuncianteEndereco_tbAnunciante_fk">
       <End Role="tbAnunciante" EntitySet="tbAnunciante" />
       <End Role="tbAnuncianteEndereco" EntitySet="tbAnuncianteEndereco" />
+    </AssociationSet>
+    <AssociationSet Name="pid_tbAnunciantePatrocinador_tbAnunciante_fk" Association="Self.pid_tbAnunciantePatrocinador_tbAnunciante_fk">
+      <End Role="tbAnunciante" EntitySet="tbAnunciante" />
+      <End Role="tbAnunciantePatrocinador" EntitySet="tbAnunciantePatrocinador" />
     </AssociationSet>
     <AssociationSet Name="pid_tbAnuncianteTelefone_tbAnunciante_fk" Association="Self.pid_tbAnuncianteTelefone_tbAnunciante_fk">
       <End Role="tbAnunciante" EntitySet="tbAnunciante" />
@@ -2147,13 +2858,25 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
       <End Role="tbAnunciante" EntitySet="tbAnunciante" />
       <End Role="tbCampanha" EntitySet="tbCampanha" />
     </AssociationSet>
+    <AssociationSet Name="pid_tbConsumidorPontos_tbAnunciante_fk" Association="Self.pid_tbConsumidorPontos_tbAnunciante_fk">
+      <End Role="tbAnunciante" EntitySet="tbAnunciante" />
+      <End Role="tbConsumidorPontos" EntitySet="tbConsumidorPontos" />
+    </AssociationSet>
     <AssociationSet Name="pid_tbCreditoCompra_tbAnunciante_fk" Association="Self.pid_tbCreditoCompra_tbAnunciante_fk">
       <End Role="tbAnunciante" EntitySet="tbAnunciante" />
       <End Role="tbCreditoCompra" EntitySet="tbCreditoCompra" />
     </AssociationSet>
+    <AssociationSet Name="pid_tbCreditoDesconta_tbAnunciante_fk" Association="Self.pid_tbCreditoDesconta_tbAnunciante_fk">
+      <End Role="tbAnunciante" EntitySet="tbAnunciante" />
+      <End Role="tbCreditoDesconta" EntitySet="tbCreditoDesconta" />
+    </AssociationSet>
     <AssociationSet Name="pid_tbDestaqueAnunciante_tbAnunciante_fk" Association="Self.pid_tbDestaqueAnunciante_tbAnunciante_fk">
       <End Role="tbAnunciante" EntitySet="tbAnunciante" />
       <End Role="tbDestaqueAnunciante" EntitySet="tbDestaqueAnunciante" />
+    </AssociationSet>
+    <AssociationSet Name="pid_tbTransacaoXml_tbAnunciante_fk" Association="Self.pid_tbTransacaoXml_tbAnunciante_fk">
+      <End Role="tbAnunciante" EntitySet="tbAnunciante" />
+      <End Role="tbTransacaoXml" EntitySet="tbTransacaoXml" />
     </AssociationSet>
     <AssociationSet Name="pnid_tbPremio_tbPremioNivel_fk" Association="Self.pnid_tbPremio_tbPremioNivel_fk">
       <End Role="tbPremioNivel" EntitySet="tbPremioNivel" />
@@ -2179,16 +2902,76 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
       <End Role="tbRamoAtividade" EntitySet="tbRamoAtividade" />
       <End Role="tbAnunciante" EntitySet="tbAnunciante" />
     </AssociationSet>
+    <AssociationSet Name="spaaa_tbConfigPadrao_tbAnuncioStatus_fk" Association="Self.spaaa_tbConfigPadrao_tbAnuncioStatus_fk">
+      <End Role="tbAnuncioStatus" EntitySet="tbAnuncioStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
+    <AssociationSet Name="spab_tbConfigPadrao_tbAnuncioStatus_fk" Association="Self.spab_tbConfigPadrao_tbAnuncioStatus_fk">
+      <End Role="tbAnuncioStatus" EntitySet="tbAnuncioStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
     <AssociationSet Name="spadc_tbConfigPadrao_tbAnuncioStatus_fk" Association="Self.spadc_tbConfigPadrao_tbAnuncioStatus_fk">
       <End Role="tbAnuncioStatus" EntitySet="tbAnuncioStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
+    <AssociationSet Name="spaec_tbConfigPadrao_tbAnuncioStatus_fk" Association="Self.spaec_tbConfigPadrao_tbAnuncioStatus_fk">
+      <End Role="tbAnuncioStatus" EntitySet="tbAnuncioStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
+    <AssociationSet Name="spap_tbConfigPadrao_tbAnuncioStatus_fk" Association="Self.spap_tbConfigPadrao_tbAnuncioStatus_fk">
+      <End Role="tbAnuncioStatus" EntitySet="tbAnuncioStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
+    <AssociationSet Name="Spcb_tbConfigPadrao_tbCampanhaStatus_fk" Association="Self.Spcb_tbConfigPadrao_tbCampanhaStatus_fk">
+      <End Role="tbCampanhaStatus" EntitySet="tbCampanhaStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
+    <AssociationSet Name="spccap_tbConfigPadrao_tbCreditoStatus_fk" Association="Self.spccap_tbConfigPadrao_tbCreditoStatus_fk">
+      <End Role="tbCreditoStatus" EntitySet="tbCreditoStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
+    <AssociationSet Name="spccc_tbConfigPadrao_tbCreditoStatus_fk" Association="Self.spccc_tbConfigPadrao_tbCreditoStatus_fk">
+      <End Role="tbCreditoStatus" EntitySet="tbCreditoStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
+    <AssociationSet Name="spccpa_tbConfigPadrao_tbCreditoStatus_fk" Association="Self.spccpa_tbConfigPadrao_tbCreditoStatus_fk">
+      <End Role="tbCreditoStatus" EntitySet="tbCreditoStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
+    <AssociationSet Name="Spcd_tbConfigPadrao_tbCampanhaStatus_fk" Association="Self.Spcd_tbConfigPadrao_tbCampanhaStatus_fk">
+      <End Role="tbCampanhaStatus" EntitySet="tbCampanhaStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
+    <AssociationSet Name="Spcea_tbConfigPadrao_tbCampanhaStatus_fk" Association="Self.Spcea_tbConfigPadrao_tbCampanhaStatus_fk">
+      <End Role="tbCampanhaStatus" EntitySet="tbCampanhaStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
+    <AssociationSet Name="Spcec_tbConfigPadrao_tbCampanhaStatus_fk" Association="Self.Spcec_tbConfigPadrao_tbCampanhaStatus_fk">
+      <End Role="tbCampanhaStatus" EntitySet="tbCampanhaStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
+    <AssociationSet Name="Spcep_tbConfigPadrao_tbCampanhaStatus_fk" Association="Self.Spcep_tbConfigPadrao_tbCampanhaStatus_fk">
+      <End Role="tbCampanhaStatus" EntitySet="tbCampanhaStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
+    <AssociationSet Name="spcf_tbConfigPadrao_tbCampanhaStatus_fk" Association="Self.spcf_tbConfigPadrao_tbCampanhaStatus_fk">
+      <End Role="tbCampanhaStatus" EntitySet="tbCampanhaStatus" />
       <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
     </AssociationSet>
     <AssociationSet Name="spcp_tbConfigPadrao_tbCampanhaStatus_fk" Association="Self.spcp_tbConfigPadrao_tbCampanhaStatus_fk">
       <End Role="tbCampanhaStatus" EntitySet="tbCampanhaStatus" />
       <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
     </AssociationSet>
-    <AssociationSet Name="spdc_tbConfigPadrao_tbCampanhaStatus_fk" Association="Self.spdc_tbConfigPadrao_tbCampanhaStatus_fk">
-      <End Role="tbCampanhaStatus" EntitySet="tbCampanhaStatus" />
+    <AssociationSet Name="spdac_tbConfigPadrao_tbDestaqueAnuncianteStatus_fk" Association="Self.spdac_tbConfigPadrao_tbDestaqueAnuncianteStatus_fk">
+      <End Role="tbDestaqueAnuncianteStatus" EntitySet="tbDestaqueAnuncianteStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
+    <AssociationSet Name="spdad_tbConfigPadrao_tbDestaqueAnuncianteStatus_fk" Association="Self.spdad_tbConfigPadrao_tbDestaqueAnuncianteStatus_fk">
+      <End Role="tbDestaqueAnuncianteStatus" EntitySet="tbDestaqueAnuncianteStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
+    <AssociationSet Name="spdaec_tbConfigPadrao_tbDestaqueAnuncianteStatus_fk" Association="Self.spdaec_tbConfigPadrao_tbDestaqueAnuncianteStatus_fk">
+      <End Role="tbDestaqueAnuncianteStatus" EntitySet="tbDestaqueAnuncianteStatus" />
       <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
     </AssociationSet>
     <AssociationSet Name="spdd_tbConfigPadrao_tbDestaqueStatus_fk" Association="Self.spdd_tbConfigPadrao_tbDestaqueStatus_fk">
@@ -2215,9 +2998,21 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
       <End Role="tbCampanhaAnuncioStatus" EntitySet="tbCampanhaAnuncioStatus" />
       <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
     </AssociationSet>
+    <AssociationSet Name="spnan_tbConfigPadrao_tbAnuncianteStatus_fk" Association="Self.spnan_tbConfigPadrao_tbAnuncianteStatus_fk">
+      <End Role="tbAnuncianteStatus" EntitySet="tbAnuncianteStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
     <AssociationSet Name="spnc_tbConfigPadrao_tbCampanhaStatus_fk" Association="Self.spnc_tbConfigPadrao_tbCampanhaStatus_fk">
       <End Role="tbCampanhaStatus" EntitySet="tbCampanhaStatus" />
       <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
+    <AssociationSet Name="spnpc_tbConfigPadrao_tbConsumidorPontosStatus_fk" Association="Self.spnpc_tbConfigPadrao_tbConsumidorPontosStatus_fk">
+      <End Role="tbConsumidorPontosStatus" EntitySet="tbConsumidorPontosStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
+    <AssociationSet Name="tbCreditoDesconta_tbDestaqueAnunciante_fk" Association="Self.tbCreditoDesconta_tbDestaqueAnunciante_fk">
+      <End Role="tbDestaqueAnunciante" EntitySet="tbDestaqueAnunciante" />
+      <End Role="tbCreditoDesconta" EntitySet="tbCreditoDesconta" />
     </AssociationSet>
     <AssociationSet Name="tid_tbAnunciante_tbTos_fk" Association="Self.tid_tbAnunciante_tbTos_fk">
       <End Role="tbTos" EntitySet="tbTos" />
@@ -2234,6 +3029,14 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
     <AssociationSet Name="tpua_tbConfigPadrao_tbUsersTipo_fk" Association="Self.tpua_tbConfigPadrao_tbUsersTipo_fk">
       <End Role="tbUsersTipo" EntitySet="tbUsersTipo" />
       <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
+    <AssociationSet Name="tpuc_tbConfigPadrao_tbUsersTipo_fk" Association="Self.tpuc_tbConfigPadrao_tbUsersTipo_fk">
+      <End Role="tbUsersTipo" EntitySet="tbUsersTipo" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
+    <AssociationSet Name="txsid_tbTransacaoXml_tbTransacaoXmlStatus_fk" Association="Self.txsid_tbTransacaoXml_tbTransacaoXmlStatus_fk">
+      <End Role="tbTransacaoXmlStatus" EntitySet="tbTransacaoXmlStatus" />
+      <End Role="tbTransacaoXml" EntitySet="tbTransacaoXml" />
     </AssociationSet>
     <AssociationSet Name="uid_tbAnunciante_tbUsers_fk" Association="Self.uid_tbAnunciante_tbUsers_fk">
       <End Role="tbUsers" EntitySet="tbUsers" />
@@ -2255,6 +3058,10 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
       <End Role="tbUsers" EntitySet="tbUsers" />
       <End Role="tbCampanhaAnuncioConsumidor" EntitySet="tbCampanhaAnuncioConsumidor" />
     </AssociationSet>
+    <AssociationSet Name="uid_tbConsumidorPontos_tbUsers_fk" Association="Self.uid_tbConsumidorPontos_tbUsers_fk">
+      <End Role="tbUsers" EntitySet="tbUsers" />
+      <End Role="tbConsumidorPontos" EntitySet="tbConsumidorPontos" />
+    </AssociationSet>
     <AssociationSet Name="uid_tbCreditoPromocional_tbUsers_fk" Association="Self.uid_tbCreditoPromocional_tbUsers_fk">
       <End Role="tbUsers" EntitySet="tbUsers" />
       <End Role="tbCreditoPromocional" EntitySet="tbCreditoPromocional" />
@@ -2262,6 +3069,10 @@ warning 6002: The table/view 'cliquemix.dbo.VwCampanhasAtivasAnunciante' does no
     <AssociationSet Name="uid_tbFuncionalidadeLog_tbUsers_fk" Association="Self.uid_tbFuncionalidadeLog_tbUsers_fk">
       <End Role="tbUsers" EntitySet="tbUsers" />
       <End Role="tbFuncionalidadeLog" EntitySet="tbFuncionalidadeLog" />
+    </AssociationSet>
+    <AssociationSet Name="uid_tbLogMovFinanceiro_tbUsers_fk" Association="Self.uid_tbLogMovFinanceiro_tbUsers_fk">
+      <End Role="tbUsers" EntitySet="tbUsers" />
+      <End Role="tbLogMovFinanceiro" EntitySet="tbLogMovFinanceiro" />
     </AssociationSet>
     <AssociationSet Name="uid_tbLogSistema_tbUsers_fk" Association="Self.uid_tbLogSistema_tbUsers_fk">
       <End Role="tbUsers" EntitySet="tbUsers" />

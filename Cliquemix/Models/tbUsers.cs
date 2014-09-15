@@ -21,8 +21,10 @@ namespace Cliquemix.Models
             this.tbAnuncioLog = new HashSet<tbAnuncioLog>();
             this.tbBan = new HashSet<tbBan>();
             this.tbCampanhaAnuncioConsumidor = new HashSet<tbCampanhaAnuncioConsumidor>();
+            this.tbConsumidorPontos = new HashSet<tbConsumidorPontos>();
             this.tbCreditoPromocional = new HashSet<tbCreditoPromocional>();
             this.tbFuncionalidadeLog = new HashSet<tbFuncionalidadeLog>();
+            this.tbLogMovFinanceiro = new HashSet<tbLogMovFinanceiro>();
             this.tbLogSistema = new HashSet<tbLogSistema>();
             this.tbUsersLogAcesso = new HashSet<tbUsersLogAcesso>();
             this.tbUsersPermissao = new HashSet<tbUsersPermissao>();
@@ -39,8 +41,10 @@ namespace Cliquemix.Models
         public virtual ICollection<tbAnuncioLog> tbAnuncioLog { get; set; }
         public virtual ICollection<tbBan> tbBan { get; set; }
         public virtual ICollection<tbCampanhaAnuncioConsumidor> tbCampanhaAnuncioConsumidor { get; set; }
+        public virtual ICollection<tbConsumidorPontos> tbConsumidorPontos { get; set; }
         public virtual ICollection<tbCreditoPromocional> tbCreditoPromocional { get; set; }
         public virtual ICollection<tbFuncionalidadeLog> tbFuncionalidadeLog { get; set; }
+        public virtual ICollection<tbLogMovFinanceiro> tbLogMovFinanceiro { get; set; }
         public virtual ICollection<tbLogSistema> tbLogSistema { get; set; }
         public virtual ICollection<tbUsersLogAcesso> tbUsersLogAcesso { get; set; }
         public virtual ICollection<tbUsersPermissao> tbUsersPermissao { get; set; }

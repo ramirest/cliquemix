@@ -19,6 +19,7 @@ namespace Cliquemix.Models
         public int crid { get; set; }
         public Nullable<System.DateTime> dtCompra { get; set; }
         public Nullable<int> crsid { get; set; }
+        public Nullable<bool> promocional { get; set; }
     
         public virtual tbAnunciante tbAnunciante { get; set; }
         public virtual tbCredito tbCredito { get; set; }

@@ -14,6 +14,7 @@ namespace Cliquemix.Models
     
     public partial class VwAnunciosEmCampanha
     {
+        public int CodAnuncioCampanha { get; set; }
         public int CodAnuncio { get; set; }
         public string TituloAnuncio { get; set; }
         public string StatusAnuncio { get; set; }

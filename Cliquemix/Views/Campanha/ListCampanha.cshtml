@@ -3,6 +3,10 @@
 @using Microsoft.AspNet.Identity
 @model PagedList.IPagedList<Cliquemix.Models.tbCampanha>
 
+@{
+    var a = ViewBag.ErroCriarCampanha;
+}
+
 <script>
     function DesativarCampanha() {
         var a = document.getElementById('pCodCampanha').value;
@@ -15,16 +19,34 @@
             async: true,
             success: function () {
                 setTimeout(function () {
-                    success_message_demo();
-                },
+                        success_message_demo();
+                    },
 
-                setTimeout(function () {
-                    limparAviso();
-                    document.getElementById('btnListCampanhaCancelarExcluir').click();
-                    location.href = "/Campanha/ListCampanha";
-                }, 3000), 1000);
+                    setTimeout(function () {
+                        limparAviso();
+                        document.getElementById('btnListCampanhaCancelarExcluir').click();
+                        location.href = "/Campanha/ListCampanha";
+                    }, 3000), 1000);
             }
         });
+    }
+
+    function ErroCriarCampanha(tipo) {
+        var desc = null;
+        if (tipo == 4) {
+            desc = "Não existem anúncios disponíveis para a campanha [Cod: 001.00004]";
+        }
+        else if (tipo == 2) {
+            desc = "Não existem destaques disponíveis para a campanha [Cod: 001.00002]";
+        }
+        else if (tipo == 3) {
+            desc = "Não foi possível cadastrar uma nova campanha. Verifique! [Cod: 001.00003]";
+        }
+        
+        setTimeout(function ()
+        {
+            erro_message_demo(desc);
+        }, 1000);
     }
 
     function limparAviso() {
@@ -34,6 +56,18 @@
     function retornaCodCampanha(item) {
         document.getElementById('pCodCampanha').value = item;
     }
+
+    function erro_message_demo(erro) {
+        Messenger.options = {
+            extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
+            theme: 'flat'
+        }
+        Messenger().post({
+            message: erro,
+            type: 'error',
+            showCloseButton: true
+        });
+    };
 
     function success_message_demo() {
         Messenger.options = {
@@ -79,11 +113,25 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <button class="btn btn-green">Criar Campanha</button>
+        <a class="btn btn-green" href="~/Campanha/CreateCampanha">
+            Criar Campanha
+        </a>
     </div>
     <div class="col-lg-12" style="min-height: 10px;"></div>
 </div>
 
+@if (ViewBag.ErroCriarCampanha == "001.00002")
+{
+    <script type="text/javascript">ErroCriarCampanha(2);</script>
+}
+else if (ViewBag.ErroCriarCampanha == "001.00004")
+{
+    <script type="text/javascript">ErroCriarCampanha(4);</script>
+}
+else if (ViewBag.ErroCriarCampanha == "001.00003")
+{
+    <script type="text/javascript">ErroCriarCampanha(3);</script>
+}
 
 <div class="row">
     <!-- Basic Responsive Table -->

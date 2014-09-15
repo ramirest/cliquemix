@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="cliquemixModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="cliquemixModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="tbAnunciante">
     <Key>
       <PropertyRef Name="pid" />
@@ -8,7 +8,7 @@
     <Property Name="cnpj" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="razaoSocial" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="nmFantasia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="contato" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="contato" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
     <Property Name="telResidencial" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
     <Property Name="telComercial" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
     <Property Name="telCelular1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
@@ -31,41 +31,23 @@
     <Property Name="tipo" Type="Int32" />
     <Property Name="dtNascimento" Type="DateTime" Precision="3" />
     <Property Name="ativo" Type="Boolean" />
+    <Property Name="ansid" Type="Int32" />
+    <NavigationProperty Name="tbAnuncianteStatus" Relationship="Self.ansid_tbAnunciante_tbAnuncianteStatus_fk" FromRole="tbAnunciante" ToRole="tbAnuncianteStatus" />
     <NavigationProperty Name="tbCondicaoPagto" Relationship="Self.cpid_tbAnunciante_tbCondicaoPagto_fk" FromRole="tbAnunciante" ToRole="tbCondicaoPagto" />
     <NavigationProperty Name="tbAnuncianteEndereco" Relationship="Self.peid_tbAnunciante_tbAnuncianteEndereco_peid_fk" FromRole="tbAnunciante" ToRole="tbAnuncianteEndereco" />
-    <NavigationProperty Name="tbAnuncianteDestaque" Relationship="Self.pid_tbAnuncianteDestaque_tbAnunciante_fk" FromRole="tbAnunciante" ToRole="tbAnuncianteDestaque" />
     <NavigationProperty Name="tbAnuncianteEndereco1" Relationship="Self.pid_tbAnuncianteEndereco_tbAnunciante_fk" FromRole="tbAnunciante" ToRole="tbAnuncianteEndereco" />
+    <NavigationProperty Name="tbAnunciantePatrocinador" Relationship="Self.pid_tbAnunciantePatrocinador_tbAnunciante_fk" FromRole="tbAnunciante" ToRole="tbAnunciantePatrocinador" />
     <NavigationProperty Name="tbAnuncianteTelefone" Relationship="Self.pid_tbAnuncianteTelefone_tbAnunciante_fk" FromRole="tbAnunciante" ToRole="tbAnuncianteTelefone" />
     <NavigationProperty Name="tbAnuncio" Relationship="Self.pid_tbAnuncio_tbAnunciante_fk" FromRole="tbAnunciante" ToRole="tbAnuncio" />
     <NavigationProperty Name="tbCampanha" Relationship="Self.pid_tbCampanha_tbAnunciante_fk" FromRole="tbAnunciante" ToRole="tbCampanha" />
+    <NavigationProperty Name="tbConsumidorPontos" Relationship="Self.pid_tbConsumidorPontos_tbAnunciante_fk" FromRole="tbAnunciante" ToRole="tbConsumidorPontos" />
     <NavigationProperty Name="tbCreditoCompra" Relationship="Self.pid_tbCreditoCompra_tbAnunciante_fk" FromRole="tbAnunciante" ToRole="tbCreditoCompra" />
+    <NavigationProperty Name="tbCreditoDesconta" Relationship="Self.pid_tbCreditoDesconta_tbAnunciante_fk" FromRole="tbAnunciante" ToRole="tbCreditoDesconta" />
     <NavigationProperty Name="tbDestaqueAnunciante" Relationship="Self.pid_tbDestaqueAnunciante_tbAnunciante_fk" FromRole="tbAnunciante" ToRole="tbDestaqueAnunciante" />
+    <NavigationProperty Name="tbTransacaoXml" Relationship="Self.pid_tbTransacaoXml_tbAnunciante_fk" FromRole="tbAnunciante" ToRole="tbTransacaoXml" />
     <NavigationProperty Name="tbRamoAtividade" Relationship="Self.raid_tbAnunciante_tbRamoAtividade_fk" FromRole="tbAnunciante" ToRole="tbRamoAtividade" />
     <NavigationProperty Name="tbTos" Relationship="Self.tid_tbAnunciante_tbTos_fk" FromRole="tbAnunciante" ToRole="tbTos" />
     <NavigationProperty Name="tbUsers" Relationship="Self.uid_tbAnunciante_tbUsers_fk" FromRole="tbAnunciante" ToRole="tbUsers" />
-  </EntityType>
-  <EntityType Name="tbAnuncianteDestaque">
-    <Key>
-      <PropertyRef Name="adid" />
-    </Key>
-    <Property Name="adid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="pid" Type="Int32" Nullable="false" />
-    <Property Name="did" Type="Int32" Nullable="false" />
-    <Property Name="adsid" Type="Int32" Nullable="false" />
-    <Property Name="qtCreditoCompra" Type="Double" Nullable="false" />
-    <Property Name="dtAssociacao" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="tbAnunciante" Relationship="Self.pid_tbAnuncianteDestaque_tbAnunciante_fk" FromRole="tbAnuncianteDestaque" ToRole="tbAnunciante" />
-    <NavigationProperty Name="tbCreditoDesconta" Relationship="Self.adid_tbCreditoDesconta_tbAnuncianteDestaque_fk" FromRole="tbAnuncianteDestaque" ToRole="tbCreditoDesconta" />
-    <NavigationProperty Name="tbAnuncianteDestaqueStatus" Relationship="Self.adsid_tbAnuncianteDestaque_tbAnuncianteDestaqueStatus_fk" FromRole="tbAnuncianteDestaque" ToRole="tbAnuncianteDestaqueStatus" />
-    <NavigationProperty Name="tbDestaque" Relationship="Self.did_tbAnuncianteDestaque_tbDestaque_fk" FromRole="tbAnuncianteDestaque" ToRole="tbDestaque" />
-  </EntityType>
-  <EntityType Name="tbAnuncianteDestaqueStatus">
-    <Key>
-      <PropertyRef Name="adsid" />
-    </Key>
-    <Property Name="adsid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="dsAnuncianteDestaqueStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="tbAnuncianteDestaque" Relationship="Self.adsid_tbAnuncianteDestaque_tbAnuncianteDestaqueStatus_fk" FromRole="tbAnuncianteDestaqueStatus" ToRole="tbAnuncianteDestaque" />
   </EntityType>
   <EntityType Name="tbAnuncianteEndereco">
     <Key>
@@ -83,6 +65,27 @@
     <Property Name="endereco" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="tbAnunciante" Relationship="Self.peid_tbAnunciante_tbAnuncianteEndereco_peid_fk" FromRole="tbAnuncianteEndereco" ToRole="tbAnunciante" />
     <NavigationProperty Name="tbAnunciante1" Relationship="Self.pid_tbAnuncianteEndereco_tbAnunciante_fk" FromRole="tbAnuncianteEndereco" ToRole="tbAnunciante" />
+  </EntityType>
+  <EntityType Name="tbAnunciantePatrocinador">
+    <Key>
+      <PropertyRef Name="apid" />
+    </Key>
+    <Property Name="apid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pid" Type="Int32" />
+    <Property Name="cid" Type="Int32" />
+    <Property Name="ativo" Type="Boolean" />
+    <NavigationProperty Name="tbAnunciante" Relationship="Self.pid_tbAnunciantePatrocinador_tbAnunciante_fk" FromRole="tbAnunciantePatrocinador" ToRole="tbAnunciante" />
+    <NavigationProperty Name="tbConsumidor" Relationship="Self.cid_tbAnunciantePatrocinador_tbConsumidor_fk" FromRole="tbAnunciantePatrocinador" ToRole="tbConsumidor" />
+  </EntityType>
+  <EntityType Name="tbAnuncianteStatus">
+    <Key>
+      <PropertyRef Name="ansid" />
+    </Key>
+    <Property Name="ansid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descAnuncianteStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tbAnunciante" Relationship="Self.ansid_tbAnunciante_tbAnuncianteStatus_fk" FromRole="tbAnuncianteStatus" ToRole="tbAnunciante" />
+    <NavigationProperty Name="tbConfigPadrao" Relationship="Self.apala_tbConfigPadrao_tbAnuncianteStatus_fk" FromRole="tbAnuncianteStatus" ToRole="tbConfigPadrao" />
+    <NavigationProperty Name="tbConfigPadrao1" Relationship="Self.spnan_tbConfigPadrao_tbAnuncianteStatus_fk" FromRole="tbAnuncianteStatus" ToRole="tbConfigPadrao" />
   </EntityType>
   <EntityType Name="tbAnuncianteTelefone">
     <Key>
@@ -118,6 +121,7 @@
     <NavigationProperty Name="tbAnuncioFuncionalidade" Relationship="Self.aid_tbAnuncioFuncionalidade_tbAnuncio_fk" FromRole="tbAnuncio" ToRole="tbAnuncioFuncionalidade" />
     <NavigationProperty Name="tbAnuncioImg" Relationship="Self.aid_tbAnuncioImg_tbAnuncio_fk" FromRole="tbAnuncio" ToRole="tbAnuncioImg" />
     <NavigationProperty Name="tbAnuncioLog" Relationship="Self.aid_tbAnuncioLog_tbAnuncio_fk" FromRole="tbAnuncio" ToRole="tbAnuncioLog" />
+    <NavigationProperty Name="tbAnuncioPatrocinador" Relationship="Self.aid_tbAnuncioPatrocinador_tbAnuncio_fk" FromRole="tbAnuncio" ToRole="tbAnuncioPatrocinador" />
     <NavigationProperty Name="tbCampanhaAnuncio" Relationship="Self.aid_tbCampanhaAnuncio_tbAnuncio_fk" FromRole="tbAnuncio" ToRole="tbCampanhaAnuncio" />
     <NavigationProperty Name="tbPontosRede" Relationship="Self.aid_tbPontosRede_tbAnuncio_fk" FromRole="tbAnuncio" ToRole="tbPontosRede" />
     <NavigationProperty Name="tbAnuncioStatus" Relationship="Self.asid_tbAnuncio_tbAnuncioStatus_fk" FromRole="tbAnuncio" ToRole="tbAnuncioStatus" />
@@ -185,6 +189,16 @@
     <NavigationProperty Name="tbAnuncioStatus" Relationship="Self.asid_tbAnuncioLog_tbAnuncioStatus_fk" FromRole="tbAnuncioLog" ToRole="tbAnuncioStatus" />
     <NavigationProperty Name="tbUsers" Relationship="Self.uid_tbAnuncioLog_tbUsers_fk" FromRole="tbAnuncioLog" ToRole="tbUsers" />
   </EntityType>
+  <EntityType Name="tbAnuncioPatrocinador">
+    <Key>
+      <PropertyRef Name="apaid" />
+    </Key>
+    <Property Name="apaid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cid" Type="Int32" />
+    <Property Name="aid" Type="Int32" />
+    <NavigationProperty Name="tbAnuncio" Relationship="Self.aid_tbAnuncioPatrocinador_tbAnuncio_fk" FromRole="tbAnuncioPatrocinador" ToRole="tbAnuncio" />
+    <NavigationProperty Name="tbConsumidor" Relationship="Self.cid_tbAnuncioPatrocinador_tbConsumidor_fk" FromRole="tbAnuncioPatrocinador" ToRole="tbConsumidor" />
+  </EntityType>
   <EntityType Name="tbAnuncioStatus">
     <Key>
       <PropertyRef Name="asid" />
@@ -193,9 +207,13 @@
     <Property Name="dsStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="tbAnuncio" Relationship="Self.asid_tbAnuncio_tbAnuncioStatus_fk" FromRole="tbAnuncioStatus" ToRole="tbAnuncio" />
     <NavigationProperty Name="tbAnuncioLog" Relationship="Self.asid_tbAnuncioLog_tbAnuncioStatus_fk" FromRole="tbAnuncioStatus" ToRole="tbAnuncioLog" />
-    <NavigationProperty Name="tbConfigPadrao" Relationship="Self.spadc_tbConfigPadrao_tbAnuncioStatus_fk" FromRole="tbAnuncioStatus" ToRole="tbConfigPadrao" />
-    <NavigationProperty Name="tbConfigPadrao1" Relationship="Self.spea_tbConfigPadrao_tbAnuncioStatus_fk" FromRole="tbAnuncioStatus" ToRole="tbConfigPadrao" />
-    <NavigationProperty Name="tbConfigPadrao2" Relationship="Self.spna_tbConfigPadrao_tbAnuncioStatus_fk" FromRole="tbAnuncioStatus" ToRole="tbConfigPadrao" />
+    <NavigationProperty Name="tbConfigPadrao" Relationship="Self.spaaa_tbConfigPadrao_tbAnuncioStatus_fk" FromRole="tbAnuncioStatus" ToRole="tbConfigPadrao" />
+    <NavigationProperty Name="tbConfigPadrao1" Relationship="Self.spab_tbConfigPadrao_tbAnuncioStatus_fk" FromRole="tbAnuncioStatus" ToRole="tbConfigPadrao" />
+    <NavigationProperty Name="tbConfigPadrao2" Relationship="Self.spadc_tbConfigPadrao_tbAnuncioStatus_fk" FromRole="tbAnuncioStatus" ToRole="tbConfigPadrao" />
+    <NavigationProperty Name="tbConfigPadrao3" Relationship="Self.spaec_tbConfigPadrao_tbAnuncioStatus_fk" FromRole="tbAnuncioStatus" ToRole="tbConfigPadrao" />
+    <NavigationProperty Name="tbConfigPadrao4" Relationship="Self.spap_tbConfigPadrao_tbAnuncioStatus_fk" FromRole="tbAnuncioStatus" ToRole="tbConfigPadrao" />
+    <NavigationProperty Name="tbConfigPadrao5" Relationship="Self.spea_tbConfigPadrao_tbAnuncioStatus_fk" FromRole="tbAnuncioStatus" ToRole="tbConfigPadrao" />
+    <NavigationProperty Name="tbConfigPadrao6" Relationship="Self.spna_tbConfigPadrao_tbAnuncioStatus_fk" FromRole="tbAnuncioStatus" ToRole="tbConfigPadrao" />
   </EntityType>
   <EntityType Name="tbBairro">
     <Key>
@@ -276,19 +294,19 @@
     <Property Name="tituloCampanha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="dtInicio" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="dtTermino" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="did" Type="Int32" Nullable="false" />
     <Property Name="csid" Type="Int32" Nullable="false" />
     <Property Name="pid" Type="Int32" />
     <Property Name="pcid" Type="Int32" />
     <Property Name="ctid" Type="Int32" />
     <Property Name="QtdeCreditosConsumidos" Type="Double" />
     <Property Name="QtdeCreditosInicio" Type="Double" />
+    <Property Name="daid" Type="Int32" />
     <NavigationProperty Name="tbAnunciante" Relationship="Self.pid_tbCampanha_tbAnunciante_fk" FromRole="tbCampanha" ToRole="tbAnunciante" />
     <NavigationProperty Name="tbCampanhaLocalizacao" Relationship="Self.caid_tbCampanhaLocalizacao_tbCampanha_fk" FromRole="tbCampanha" ToRole="tbCampanhaLocalizacao" />
     <NavigationProperty Name="tbCampanhaAnuncio" Relationship="Self.cid_tbCampanhaAnuncio_tbCampanha_fk" FromRole="tbCampanha" ToRole="tbCampanhaAnuncio" />
     <NavigationProperty Name="tbCampanhaStatus" Relationship="Self.csid_tbCampanha_tbCampanhaStatus_fk" FromRole="tbCampanha" ToRole="tbCampanhaStatus" />
     <NavigationProperty Name="tbCampanhaTmp" Relationship="Self.ctid_tbCampanha_tbCampanhaTmp_fk" FromRole="tbCampanha" ToRole="tbCampanhaTmp" />
-    <NavigationProperty Name="tbDestaque" Relationship="Self.did_tbCampanha_tbDestaque_fk" FromRole="tbCampanha" ToRole="tbDestaque" />
+    <NavigationProperty Name="tbDestaqueAnunciante" Relationship="Self.daid_tbCampanha_tbDestaqueAnunciante_fk" FromRole="tbCampanha" ToRole="tbDestaqueAnunciante" />
     <NavigationProperty Name="tbPacoteClique" Relationship="Self.pcid_tbCampanha_tbPacoteClique_fk" FromRole="tbCampanha" ToRole="tbPacoteClique" />
   </EntityType>
   <EntityType Name="tbCampanhaAnuncio">
@@ -358,10 +376,15 @@
     <Property Name="csid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="dsCampStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="tbCampanha" Relationship="Self.csid_tbCampanha_tbCampanhaStatus_fk" FromRole="tbCampanhaStatus" ToRole="tbCampanha" />
-    <NavigationProperty Name="tbConfigPadrao" Relationship="Self.spcp_tbConfigPadrao_tbCampanhaStatus_fk" FromRole="tbCampanhaStatus" ToRole="tbConfigPadrao" />
-    <NavigationProperty Name="tbConfigPadrao1" Relationship="Self.spdc_tbConfigPadrao_tbCampanhaStatus_fk" FromRole="tbCampanhaStatus" ToRole="tbConfigPadrao" />
-    <NavigationProperty Name="tbConfigPadrao2" Relationship="Self.spec_tbConfigPadrao_tbCampanhaStatus_fk" FromRole="tbCampanhaStatus" ToRole="tbConfigPadrao" />
-    <NavigationProperty Name="tbConfigPadrao3" Relationship="Self.spnc_tbConfigPadrao_tbCampanhaStatus_fk" FromRole="tbCampanhaStatus" ToRole="tbConfigPadrao" />
+    <NavigationProperty Name="tbConfigPadrao" Relationship="Self.Spcb_tbConfigPadrao_tbCampanhaStatus_fk" FromRole="tbCampanhaStatus" ToRole="tbConfigPadrao" />
+    <NavigationProperty Name="tbConfigPadrao1" Relationship="Self.Spcd_tbConfigPadrao_tbCampanhaStatus_fk" FromRole="tbCampanhaStatus" ToRole="tbConfigPadrao" />
+    <NavigationProperty Name="tbConfigPadrao2" Relationship="Self.Spcea_tbConfigPadrao_tbCampanhaStatus_fk" FromRole="tbCampanhaStatus" ToRole="tbConfigPadrao" />
+    <NavigationProperty Name="tbConfigPadrao3" Relationship="Self.Spcec_tbConfigPadrao_tbCampanhaStatus_fk" FromRole="tbCampanhaStatus" ToRole="tbConfigPadrao" />
+    <NavigationProperty Name="tbConfigPadrao4" Relationship="Self.Spcep_tbConfigPadrao_tbCampanhaStatus_fk" FromRole="tbCampanhaStatus" ToRole="tbConfigPadrao" />
+    <NavigationProperty Name="tbConfigPadrao5" Relationship="Self.spcf_tbConfigPadrao_tbCampanhaStatus_fk" FromRole="tbCampanhaStatus" ToRole="tbConfigPadrao" />
+    <NavigationProperty Name="tbConfigPadrao6" Relationship="Self.spcp_tbConfigPadrao_tbCampanhaStatus_fk" FromRole="tbCampanhaStatus" ToRole="tbConfigPadrao" />
+    <NavigationProperty Name="tbConfigPadrao7" Relationship="Self.spec_tbConfigPadrao_tbCampanhaStatus_fk" FromRole="tbCampanhaStatus" ToRole="tbConfigPadrao" />
+    <NavigationProperty Name="tbConfigPadrao8" Relationship="Self.spnc_tbConfigPadrao_tbCampanhaStatus_fk" FromRole="tbCampanhaStatus" ToRole="tbConfigPadrao" />
   </EntityType>
   <EntityType Name="tbCampanhaTmp">
     <Key>
@@ -369,6 +392,7 @@
     </Key>
     <Property Name="ctid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="sessionID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dtMovimento" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="tbCampanha" Relationship="Self.ctid_tbCampanha_tbCampanhaTmp_fk" FromRole="tbCampanhaTmp" ToRole="tbCampanha" />
     <NavigationProperty Name="tbCampanhaAnuncio" Relationship="Self.ctid_tbCampanhaAnuncio_tbCampanhaTmp_fk" FromRole="tbCampanhaTmp" ToRole="tbCampanhaAnuncio" />
     <NavigationProperty Name="tbCampanhaLocalizacao" Relationship="Self.ctid_tbCampanhaLocalizacao_tbCampanhaTmp_fk" FromRole="tbCampanhaTmp" ToRole="tbCampanhaLocalizacao" />
@@ -431,32 +455,110 @@
     <Property Name="spea" Type="Int32" />
     <Property Name="spec" Type="Int32" />
     <Property Name="pua" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="spdc" Type="Int32" />
     <Property Name="spcp" Type="Int32" />
     <Property Name="qdptcp" Type="Int32" />
     <Property Name="spde" Type="Int32" />
     <Property Name="spdd" Type="Int32" />
-    <NavigationProperty Name="tbAnuncioStatus" Relationship="Self.spadc_tbConfigPadrao_tbAnuncioStatus_fk" FromRole="tbConfigPadrao" ToRole="tbAnuncioStatus" />
-    <NavigationProperty Name="tbAnuncioStatus1" Relationship="Self.spea_tbConfigPadrao_tbAnuncioStatus_fk" FromRole="tbConfigPadrao" ToRole="tbAnuncioStatus" />
-    <NavigationProperty Name="tbAnuncioStatus2" Relationship="Self.spna_tbConfigPadrao_tbAnuncioStatus_fk" FromRole="tbConfigPadrao" ToRole="tbAnuncioStatus" />
+    <Property Name="spdad" Type="Int32" />
+    <Property Name="spdac" Type="Int32" />
+    <Property Name="spdaec" Type="Int32" />
+    <Property Name="spaec" Type="Int32" />
+    <Property Name="spap" Type="Int32" />
+    <Property Name="spaaa" Type="Int32" />
+    <Property Name="spab" Type="Int32" />
+    <Property Name="spcf" Type="Int32" />
+    <Property Name="Spcec" Type="Int32" />
+    <Property Name="Spcea" Type="Int32" />
+    <Property Name="Spcep" Type="Int32" />
+    <Property Name="Spcb" Type="Int32" />
+    <Property Name="Spcd" Type="Int32" />
+    <Property Name="spccap" Type="Int32" />
+    <Property Name="spccc" Type="Int32" />
+    <Property Name="spccpa" Type="Int32" />
+    <Property Name="spcna" Type="Decimal" Precision="11" Scale="3" Nullable="false" />
+    <Property Name="tpuc" Type="Int32" />
+    <Property Name="spnan" Type="Int32" />
+    <Property Name="spala" Type="Int32" />
+    <Property Name="spnpc" Type="Int32" />
+    <NavigationProperty Name="tbAnuncianteStatus" Relationship="Self.apala_tbConfigPadrao_tbAnuncianteStatus_fk" FromRole="tbConfigPadrao" ToRole="tbAnuncianteStatus" />
+    <NavigationProperty Name="tbAnuncianteStatus1" Relationship="Self.spnan_tbConfigPadrao_tbAnuncianteStatus_fk" FromRole="tbConfigPadrao" ToRole="tbAnuncianteStatus" />
+    <NavigationProperty Name="tbAnuncioStatus" Relationship="Self.spaaa_tbConfigPadrao_tbAnuncioStatus_fk" FromRole="tbConfigPadrao" ToRole="tbAnuncioStatus" />
+    <NavigationProperty Name="tbAnuncioStatus1" Relationship="Self.spab_tbConfigPadrao_tbAnuncioStatus_fk" FromRole="tbConfigPadrao" ToRole="tbAnuncioStatus" />
+    <NavigationProperty Name="tbAnuncioStatus2" Relationship="Self.spadc_tbConfigPadrao_tbAnuncioStatus_fk" FromRole="tbConfigPadrao" ToRole="tbAnuncioStatus" />
+    <NavigationProperty Name="tbAnuncioStatus3" Relationship="Self.spaec_tbConfigPadrao_tbAnuncioStatus_fk" FromRole="tbConfigPadrao" ToRole="tbAnuncioStatus" />
+    <NavigationProperty Name="tbAnuncioStatus4" Relationship="Self.spap_tbConfigPadrao_tbAnuncioStatus_fk" FromRole="tbConfigPadrao" ToRole="tbAnuncioStatus" />
+    <NavigationProperty Name="tbAnuncioStatus5" Relationship="Self.spea_tbConfigPadrao_tbAnuncioStatus_fk" FromRole="tbConfigPadrao" ToRole="tbAnuncioStatus" />
+    <NavigationProperty Name="tbAnuncioStatus6" Relationship="Self.spna_tbConfigPadrao_tbAnuncioStatus_fk" FromRole="tbConfigPadrao" ToRole="tbAnuncioStatus" />
     <NavigationProperty Name="tbCampanhaAnuncioStatus" Relationship="Self.spnac_tbConfigPadrao_tbCampanhaAnuncioStatus_fk" FromRole="tbConfigPadrao" ToRole="tbCampanhaAnuncioStatus" />
-    <NavigationProperty Name="tbCampanhaStatus" Relationship="Self.spcp_tbConfigPadrao_tbCampanhaStatus_fk" FromRole="tbConfigPadrao" ToRole="tbCampanhaStatus" />
-    <NavigationProperty Name="tbCampanhaStatus1" Relationship="Self.spdc_tbConfigPadrao_tbCampanhaStatus_fk" FromRole="tbConfigPadrao" ToRole="tbCampanhaStatus" />
-    <NavigationProperty Name="tbCampanhaStatus2" Relationship="Self.spec_tbConfigPadrao_tbCampanhaStatus_fk" FromRole="tbConfigPadrao" ToRole="tbCampanhaStatus" />
-    <NavigationProperty Name="tbCampanhaStatus3" Relationship="Self.spnc_tbConfigPadrao_tbCampanhaStatus_fk" FromRole="tbConfigPadrao" ToRole="tbCampanhaStatus" />
+    <NavigationProperty Name="tbCampanhaStatus" Relationship="Self.Spcb_tbConfigPadrao_tbCampanhaStatus_fk" FromRole="tbConfigPadrao" ToRole="tbCampanhaStatus" />
+    <NavigationProperty Name="tbCampanhaStatus1" Relationship="Self.Spcd_tbConfigPadrao_tbCampanhaStatus_fk" FromRole="tbConfigPadrao" ToRole="tbCampanhaStatus" />
+    <NavigationProperty Name="tbCampanhaStatus2" Relationship="Self.Spcea_tbConfigPadrao_tbCampanhaStatus_fk" FromRole="tbConfigPadrao" ToRole="tbCampanhaStatus" />
+    <NavigationProperty Name="tbCampanhaStatus3" Relationship="Self.Spcec_tbConfigPadrao_tbCampanhaStatus_fk" FromRole="tbConfigPadrao" ToRole="tbCampanhaStatus" />
+    <NavigationProperty Name="tbCampanhaStatus4" Relationship="Self.Spcep_tbConfigPadrao_tbCampanhaStatus_fk" FromRole="tbConfigPadrao" ToRole="tbCampanhaStatus" />
+    <NavigationProperty Name="tbCampanhaStatus5" Relationship="Self.spcf_tbConfigPadrao_tbCampanhaStatus_fk" FromRole="tbConfigPadrao" ToRole="tbCampanhaStatus" />
+    <NavigationProperty Name="tbCampanhaStatus6" Relationship="Self.spcp_tbConfigPadrao_tbCampanhaStatus_fk" FromRole="tbConfigPadrao" ToRole="tbCampanhaStatus" />
+    <NavigationProperty Name="tbCampanhaStatus7" Relationship="Self.spec_tbConfigPadrao_tbCampanhaStatus_fk" FromRole="tbConfigPadrao" ToRole="tbCampanhaStatus" />
+    <NavigationProperty Name="tbCampanhaStatus8" Relationship="Self.spnc_tbConfigPadrao_tbCampanhaStatus_fk" FromRole="tbConfigPadrao" ToRole="tbCampanhaStatus" />
+    <NavigationProperty Name="tbCreditoStatus" Relationship="Self.spccap_tbConfigPadrao_tbCreditoStatus_fk" FromRole="tbConfigPadrao" ToRole="tbCreditoStatus" />
+    <NavigationProperty Name="tbCreditoStatus1" Relationship="Self.spccc_tbConfigPadrao_tbCreditoStatus_fk" FromRole="tbConfigPadrao" ToRole="tbCreditoStatus" />
+    <NavigationProperty Name="tbCreditoStatus2" Relationship="Self.spccpa_tbConfigPadrao_tbCreditoStatus_fk" FromRole="tbConfigPadrao" ToRole="tbCreditoStatus" />
+    <NavigationProperty Name="tbDestaqueAnuncianteStatus" Relationship="Self.spdac_tbConfigPadrao_tbDestaqueAnuncianteStatus_fk" FromRole="tbConfigPadrao" ToRole="tbDestaqueAnuncianteStatus" />
+    <NavigationProperty Name="tbDestaqueAnuncianteStatus1" Relationship="Self.spdad_tbConfigPadrao_tbDestaqueAnuncianteStatus_fk" FromRole="tbConfigPadrao" ToRole="tbDestaqueAnuncianteStatus" />
+    <NavigationProperty Name="tbDestaqueAnuncianteStatus2" Relationship="Self.spdaec_tbConfigPadrao_tbDestaqueAnuncianteStatus_fk" FromRole="tbConfigPadrao" ToRole="tbDestaqueAnuncianteStatus" />
     <NavigationProperty Name="tbDestaqueStatus" Relationship="Self.spdd_tbConfigPadrao_tbDestaqueStatus_fk" FromRole="tbConfigPadrao" ToRole="tbDestaqueStatus" />
     <NavigationProperty Name="tbDestaqueStatus1" Relationship="Self.spde_tbConfigPadrao_tbDestaqueStatus_fk" FromRole="tbConfigPadrao" ToRole="tbDestaqueStatus" />
+    <NavigationProperty Name="tbConsumidorPontosStatus" Relationship="Self.spnpc_tbConfigPadrao_tbConsumidorPontosStatus_fk" FromRole="tbConfigPadrao" ToRole="tbConsumidorPontosStatus" />
     <NavigationProperty Name="tbUsersTipo" Relationship="Self.tpua_tbConfigPadrao_tbUsersTipo_fk" FromRole="tbConfigPadrao" ToRole="tbUsersTipo" />
+    <NavigationProperty Name="tbUsersTipo1" Relationship="Self.tpuc_tbConfigPadrao_tbUsersTipo_fk" FromRole="tbConfigPadrao" ToRole="tbUsersTipo" />
   </EntityType>
   <EntityType Name="tbConsumidor">
     <Key>
       <PropertyRef Name="cid" />
     </Key>
     <Property Name="cid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="uid" Type="Int32" Nullable="false" />
+    <Property Name="uid" Type="Int32" />
     <Property Name="leuTermo" Type="Int32" />
     <Property Name="tid" Type="Int32" Nullable="false" />
+    <Property Name="conid" Type="Int32" Nullable="false" />
+    <Property Name="nomeCompleto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="nomeAbreviado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="usuSicove" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="cpf" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="rg" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="pis" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="dtNascimento" Type="DateTime" Precision="3" />
+    <Property Name="ativo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tbAnunciantePatrocinador" Relationship="Self.cid_tbAnunciantePatrocinador_tbConsumidor_fk" FromRole="tbConsumidor" ToRole="tbAnunciantePatrocinador" />
+    <NavigationProperty Name="tbAnuncioPatrocinador" Relationship="Self.cid_tbAnuncioPatrocinador_tbConsumidor_fk" FromRole="tbConsumidor" ToRole="tbAnuncioPatrocinador" />
+    <NavigationProperty Name="tbConsumidorPontos" Relationship="Self.cid_tbConsumidorPontos_tbConsumidor_fk" FromRole="tbConsumidor" ToRole="tbConsumidorPontos" />
     <NavigationProperty Name="tbTos" Relationship="Self.tid_tbConsumidor_tbTos_fk" FromRole="tbConsumidor" ToRole="tbTos" />
+  </EntityType>
+  <EntityType Name="tbConsumidorPontos">
+    <Key>
+      <PropertyRef Name="cpoid" />
+    </Key>
+    <Property Name="cpoid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="qtdPontos" Type="Double" />
+    <Property Name="dtMovimento" Type="DateTime" Precision="3" />
+    <Property Name="cposid" Type="Int32" />
+    <Property Name="descOrigem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="uid" Type="Int32" />
+    <Property Name="pid" Type="Int32" />
+    <Property Name="cid" Type="Int32" />
+    <NavigationProperty Name="tbAnunciante" Relationship="Self.pid_tbConsumidorPontos_tbAnunciante_fk" FromRole="tbConsumidorPontos" ToRole="tbAnunciante" />
+    <NavigationProperty Name="tbConsumidor" Relationship="Self.cid_tbConsumidorPontos_tbConsumidor_fk" FromRole="tbConsumidorPontos" ToRole="tbConsumidor" />
+    <NavigationProperty Name="tbConsumidorPontosStatus" Relationship="Self.cposid_tbConsumidorPontos_tbConsumidorPontosStatus_fk" FromRole="tbConsumidorPontos" ToRole="tbConsumidorPontosStatus" />
+    <NavigationProperty Name="tbUsers" Relationship="Self.uid_tbConsumidorPontos_tbUsers_fk" FromRole="tbConsumidorPontos" ToRole="tbUsers" />
+  </EntityType>
+  <EntityType Name="tbConsumidorPontosStatus">
+    <Key>
+      <PropertyRef Name="cposid" />
+    </Key>
+    <Property Name="cposid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tbConfigPadrao" Relationship="Self.spnpc_tbConfigPadrao_tbConsumidorPontosStatus_fk" FromRole="tbConsumidorPontosStatus" ToRole="tbConfigPadrao" />
+    <NavigationProperty Name="tbConsumidorPontos" Relationship="Self.cposid_tbConsumidorPontos_tbConsumidorPontosStatus_fk" FromRole="tbConsumidorPontosStatus" ToRole="tbConsumidorPontos" />
   </EntityType>
   <EntityType Name="tbCredito">
     <Key>
@@ -465,9 +567,9 @@
     <Property Name="crid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="qtCredito" Type="Double" />
     <Property Name="vlCredito" Type="Decimal" Precision="11" Scale="2" />
-    <Property Name="promocional" Type="Boolean" />
     <Property Name="tituloPacote" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="dsCredito" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="promocional" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="tbCreditoCompra" Relationship="Self.crid_tbCreditoCompra_tbCredito_fk" FromRole="tbCredito" ToRole="tbCreditoCompra" />
     <NavigationProperty Name="tbCreditoPromocional" Relationship="Self.crid_tbCreditoPromocional_tbCredito_fk" FromRole="tbCredito" ToRole="tbCreditoPromocional" />
   </EntityType>
@@ -480,6 +582,7 @@
     <Property Name="crid" Type="Int32" Nullable="false" />
     <Property Name="dtCompra" Type="DateTime" Precision="3" />
     <Property Name="crsid" Type="Int32" />
+    <Property Name="promocional" Type="Boolean" />
     <NavigationProperty Name="tbAnunciante" Relationship="Self.pid_tbCreditoCompra_tbAnunciante_fk" FromRole="tbCreditoCompra" ToRole="tbAnunciante" />
     <NavigationProperty Name="tbCredito" Relationship="Self.crid_tbCreditoCompra_tbCredito_fk" FromRole="tbCreditoCompra" ToRole="tbCredito" />
     <NavigationProperty Name="tbCreditoStatus" Relationship="Self.crsid_tbCreditoCompra_tbCreditoStatus_fk" FromRole="tbCreditoCompra" ToRole="tbCreditoStatus" />
@@ -489,11 +592,13 @@
       <PropertyRef Name="dcid" />
     </Key>
     <Property Name="dcid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="adid" Type="Int32" Nullable="false" />
     <Property Name="saldoCreditoIni" Type="Double" />
     <Property Name="saldoCreditoFin" Type="Double" />
     <Property Name="dtOcorrido" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="tbAnuncianteDestaque" Relationship="Self.adid_tbCreditoDesconta_tbAnuncianteDestaque_fk" FromRole="tbCreditoDesconta" ToRole="tbAnuncianteDestaque" />
+    <Property Name="daid" Type="Int32" />
+    <Property Name="pid" Type="Int32" />
+    <NavigationProperty Name="tbAnunciante" Relationship="Self.pid_tbCreditoDesconta_tbAnunciante_fk" FromRole="tbCreditoDesconta" ToRole="tbAnunciante" />
+    <NavigationProperty Name="tbDestaqueAnunciante" Relationship="Self.tbCreditoDesconta_tbDestaqueAnunciante_fk" FromRole="tbCreditoDesconta" ToRole="tbDestaqueAnunciante" />
   </EntityType>
   <EntityType Name="tbCreditoPromocional">
     <Key>
@@ -513,6 +618,9 @@
     </Key>
     <Property Name="crsid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="dsCreditoStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tbConfigPadrao" Relationship="Self.spccap_tbConfigPadrao_tbCreditoStatus_fk" FromRole="tbCreditoStatus" ToRole="tbConfigPadrao" />
+    <NavigationProperty Name="tbConfigPadrao1" Relationship="Self.spccc_tbConfigPadrao_tbCreditoStatus_fk" FromRole="tbCreditoStatus" ToRole="tbConfigPadrao" />
+    <NavigationProperty Name="tbConfigPadrao2" Relationship="Self.spccpa_tbConfigPadrao_tbCreditoStatus_fk" FromRole="tbCreditoStatus" ToRole="tbConfigPadrao" />
     <NavigationProperty Name="tbCreditoCompra" Relationship="Self.crsid_tbCreditoCompra_tbCreditoStatus_fk" FromRole="tbCreditoStatus" ToRole="tbCreditoCompra" />
   </EntityType>
   <EntityType Name="tbDestaque">
@@ -529,8 +637,6 @@
     <Property Name="qtDuracao" Type="Double" />
     <Property Name="pcid" Type="Int32" />
     <Property Name="dsid" Type="Int32" />
-    <NavigationProperty Name="tbAnuncianteDestaque" Relationship="Self.did_tbAnuncianteDestaque_tbDestaque_fk" FromRole="tbDestaque" ToRole="tbAnuncianteDestaque" />
-    <NavigationProperty Name="tbCampanha" Relationship="Self.did_tbCampanha_tbDestaque_fk" FromRole="tbDestaque" ToRole="tbCampanha" />
     <NavigationProperty Name="tbDestaqueDuracao" Relationship="Self.ddid_tbDestaque_tbDestaqueDuracao_fk" FromRole="tbDestaque" ToRole="tbDestaqueDuracao" />
     <NavigationProperty Name="tbDestaqueAnunciante" Relationship="Self.did_tbDestaqueAnunciante_tbDestaque_fk" FromRole="tbDestaque" ToRole="tbDestaqueAnunciante" />
     <NavigationProperty Name="tbPremioDestaque" Relationship="Self.did_TbPremioDestaque_tbDestaque_fk" FromRole="tbDestaque" ToRole="tbPremioDestaque" />
@@ -545,8 +651,24 @@
     <Property Name="did" Type="Int32" />
     <Property Name="pid" Type="Int32" />
     <Property Name="dtMovimento" Type="DateTime" Precision="3" />
+    <Property Name="dasid" Type="Int32" />
     <NavigationProperty Name="tbAnunciante" Relationship="Self.pid_tbDestaqueAnunciante_tbAnunciante_fk" FromRole="tbDestaqueAnunciante" ToRole="tbAnunciante" />
+    <NavigationProperty Name="tbCampanha" Relationship="Self.daid_tbCampanha_tbDestaqueAnunciante_fk" FromRole="tbDestaqueAnunciante" ToRole="tbCampanha" />
+    <NavigationProperty Name="tbCreditoDesconta" Relationship="Self.tbCreditoDesconta_tbDestaqueAnunciante_fk" FromRole="tbDestaqueAnunciante" ToRole="tbCreditoDesconta" />
     <NavigationProperty Name="tbDestaque" Relationship="Self.did_tbDestaqueAnunciante_tbDestaque_fk" FromRole="tbDestaqueAnunciante" ToRole="tbDestaque" />
+    <NavigationProperty Name="tbDestaqueAnuncianteStatus" Relationship="Self.dasid_tbDestaqueAnunciante_tbDestaqueAnuncianteStatus_fk" FromRole="tbDestaqueAnunciante" ToRole="tbDestaqueAnuncianteStatus" />
+  </EntityType>
+  <EntityType Name="tbDestaqueAnuncianteStatus">
+    <Key>
+      <PropertyRef Name="dasid" />
+    </Key>
+    <Property Name="dasid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dsDescricao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ativo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tbConfigPadrao" Relationship="Self.spdac_tbConfigPadrao_tbDestaqueAnuncianteStatus_fk" FromRole="tbDestaqueAnuncianteStatus" ToRole="tbConfigPadrao" />
+    <NavigationProperty Name="tbConfigPadrao1" Relationship="Self.spdad_tbConfigPadrao_tbDestaqueAnuncianteStatus_fk" FromRole="tbDestaqueAnuncianteStatus" ToRole="tbConfigPadrao" />
+    <NavigationProperty Name="tbConfigPadrao2" Relationship="Self.spdaec_tbConfigPadrao_tbDestaqueAnuncianteStatus_fk" FromRole="tbDestaqueAnuncianteStatus" ToRole="tbConfigPadrao" />
+    <NavigationProperty Name="tbDestaqueAnunciante" Relationship="Self.dasid_tbDestaqueAnunciante_tbDestaqueAnuncianteStatus_fk" FromRole="tbDestaqueAnuncianteStatus" ToRole="tbDestaqueAnunciante" />
   </EntityType>
   <EntityType Name="tbDestaqueDuracao">
     <Key>
@@ -604,6 +726,21 @@
     <Property Name="dsMovimento" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="tbFuncionalidade" Relationship="Self.fid_tbFuncionalidadeLog_tbFuncionalidade_fk" FromRole="tbFuncionalidadeLog" ToRole="tbFuncionalidade" />
     <NavigationProperty Name="tbUsers" Relationship="Self.uid_tbFuncionalidadeLog_tbUsers_fk" FromRole="tbFuncionalidadeLog" ToRole="tbUsers" />
+  </EntityType>
+  <EntityType Name="tbLogMovFinanceiro">
+    <Key>
+      <PropertyRef Name="lmfid" />
+    </Key>
+    <Property Name="lmfid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="uid" Type="Int32" />
+    <Property Name="dataHoraLog" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="vlrAtual" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="vlrMovimento" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="tipoMov" Type="Int32" Nullable="false" />
+    <Property Name="id" Type="Int32" />
+    <Property Name="tb" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="descMovimento" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tbUsers" Relationship="Self.uid_tbLogMovFinanceiro_tbUsers_fk" FromRole="tbLogMovFinanceiro" ToRole="tbUsers" />
   </EntityType>
   <EntityType Name="tbLogSistema">
     <Key>
@@ -761,6 +898,43 @@
     <NavigationProperty Name="tbAnunciante" Relationship="Self.tid_tbAnunciante_tbTos_fk" FromRole="tbTos" ToRole="tbAnunciante" />
     <NavigationProperty Name="tbConsumidor" Relationship="Self.tid_tbConsumidor_tbTos_fk" FromRole="tbTos" ToRole="tbConsumidor" />
   </EntityType>
+  <EntityType Name="tbTransacaoXml">
+    <Key>
+      <PropertyRef Name="txid" />
+    </Key>
+    <Property Name="txid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="transacao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="sid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="pid" Type="Int32" />
+    <Property Name="chave" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="credor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="valor" Type="Decimal" Precision="11" Scale="3" />
+    <Property Name="dataVencimento" Type="DateTime" Precision="3" />
+    <Property Name="descricao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cpf" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="cep" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="cidade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="bairro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="endereco" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="numero" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="complemento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="numMaximoParcelas" Type="Int32" />
+    <Property Name="campoLivre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="urlRetornoLoja" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="txsid" Type="Int32" />
+    <Property Name="dtMovimento" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tbAnunciante" Relationship="Self.pid_tbTransacaoXml_tbAnunciante_fk" FromRole="tbTransacaoXml" ToRole="tbAnunciante" />
+    <NavigationProperty Name="tbTransacaoXmlStatus" Relationship="Self.txsid_tbTransacaoXml_tbTransacaoXmlStatus_fk" FromRole="tbTransacaoXml" ToRole="tbTransacaoXmlStatus" />
+  </EntityType>
+  <EntityType Name="tbTransacaoXmlStatus">
+    <Key>
+      <PropertyRef Name="txsid" />
+    </Key>
+    <Property Name="txsid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dsStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tbTransacaoXml" Relationship="Self.txsid_tbTransacaoXml_tbTransacaoXmlStatus_fk" FromRole="tbTransacaoXmlStatus" ToRole="tbTransacaoXml" />
+  </EntityType>
   <EntityType Name="tbUsers">
     <Key>
       <PropertyRef Name="uid" />
@@ -775,8 +949,10 @@
     <NavigationProperty Name="tbAnuncioLog" Relationship="Self.uid_tbAnuncioLog_tbUsers_fk" FromRole="tbUsers" ToRole="tbAnuncioLog" />
     <NavigationProperty Name="tbBan" Relationship="Self.uid_tbBan_tbUsers_fk" FromRole="tbUsers" ToRole="tbBan" />
     <NavigationProperty Name="tbCampanhaAnuncioConsumidor" Relationship="Self.uid_tbCampanhaAnuncioConsumidor_tbUsers_fk" FromRole="tbUsers" ToRole="tbCampanhaAnuncioConsumidor" />
+    <NavigationProperty Name="tbConsumidorPontos" Relationship="Self.uid_tbConsumidorPontos_tbUsers_fk" FromRole="tbUsers" ToRole="tbConsumidorPontos" />
     <NavigationProperty Name="tbCreditoPromocional" Relationship="Self.uid_tbCreditoPromocional_tbUsers_fk" FromRole="tbUsers" ToRole="tbCreditoPromocional" />
     <NavigationProperty Name="tbFuncionalidadeLog" Relationship="Self.uid_tbFuncionalidadeLog_tbUsers_fk" FromRole="tbUsers" ToRole="tbFuncionalidadeLog" />
+    <NavigationProperty Name="tbLogMovFinanceiro" Relationship="Self.uid_tbLogMovFinanceiro_tbUsers_fk" FromRole="tbUsers" ToRole="tbLogMovFinanceiro" />
     <NavigationProperty Name="tbLogSistema" Relationship="Self.uid_tbLogSistema_tbUsers_fk" FromRole="tbUsers" ToRole="tbLogSistema" />
     <NavigationProperty Name="tbUsersLogAcesso" Relationship="Self.uid_tbUsersLogAcesso_tbUsers_fk" FromRole="tbUsers" ToRole="tbUsersLogAcesso" />
     <NavigationProperty Name="tbUsersPermissao" Relationship="Self.uid_tbUsersPermissao_tbUsers_fk" FromRole="tbUsers" ToRole="tbUsersPermissao" />
@@ -813,73 +989,21 @@
     <Property Name="utid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="dsUsersTipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="tbConfigPadrao" Relationship="Self.tpua_tbConfigPadrao_tbUsersTipo_fk" FromRole="tbUsersTipo" ToRole="tbConfigPadrao" />
+    <NavigationProperty Name="tbConfigPadrao1" Relationship="Self.tpuc_tbConfigPadrao_tbUsersTipo_fk" FromRole="tbUsersTipo" ToRole="tbConfigPadrao" />
     <NavigationProperty Name="tbUsers" Relationship="Self.utid_tbUsers_tbUsersTipo_fk" FromRole="tbUsersTipo" ToRole="tbUsers" />
   </EntityType>
-  <EntityType Name="VwAnunciosCriadosAnunciante">
-    <Key>
-      <PropertyRef Name="CodAnuncio" />
-      <PropertyRef Name="TituloAnuncio" />
-    </Key>
-    <Property Name="CodAnuncio" Type="Int32" Nullable="false" />
-    <Property Name="TituloAnuncio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="StatusAnuncio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="CodAnunciante" Type="Int32" />
-    <Property Name="DescCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="DtCriacao" Type="DateTime" Precision="3" />
-  </EntityType>
-  <EntityType Name="VwAnunciosDisponiveis">
-    <Key>
-      <PropertyRef Name="CodAnuncio" />
-      <PropertyRef Name="TituloAnuncio" />
-    </Key>
-    <Property Name="CodAnuncio" Type="Int32" Nullable="false" />
-    <Property Name="TituloAnuncio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="StatusAnuncio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="CodAnunciante" Type="Int32" />
-    <Property Name="DescCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="DtCriacao" Type="DateTime" Precision="3" />
-  </EntityType>
-  <EntityType Name="VwAnunciosEmCampanha">
-    <Key>
-      <PropertyRef Name="CodAnuncio" />
-      <PropertyRef Name="TituloAnuncio" />
-      <PropertyRef Name="CodCampanha" />
-    </Key>
-    <Property Name="CodAnuncio" Type="Int32" Nullable="false" />
-    <Property Name="TituloAnuncio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="StatusAnuncio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="CodAnunciante" Type="Int32" />
-    <Property Name="DescCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="DtCriacao" Type="DateTime" Precision="3" />
-    <Property Name="CodCampanha" Type="Int32" Nullable="false" />
-    <Property Name="DescCampanha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="VwAnunciosExcluidos">
-    <Key>
-      <PropertyRef Name="CodAnuncio" />
-      <PropertyRef Name="TituloAnuncio" />
-    </Key>
-    <Property Name="CodAnuncio" Type="Int32" Nullable="false" />
-    <Property Name="TituloAnuncio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="StatusAnuncio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="CodAnunciante" Type="Int32" />
-    <Property Name="DescCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="DtCriacao" Type="DateTime" Precision="3" />
-  </EntityType>
-  <EntityType Name="VwCampanhasAtivasAnunciante">
-    <Key>
-      <PropertyRef Name="CodCampanha" />
-      <PropertyRef Name="TituloCampanha" />
-      <PropertyRef Name="DtInicio" />
-      <PropertyRef Name="DtTermino" />
-    </Key>
-    <Property Name="CodCampanha" Type="Int32" Nullable="false" />
-    <Property Name="TituloCampanha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="StatusCampanha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="CodAnunciante" Type="Int32" />
-    <Property Name="DtInicio" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="DtTermino" Type="DateTime" Nullable="false" Precision="3" />
-  </EntityType>
+  <Association Name="ansid_tbAnunciante_tbAnuncianteStatus_fk">
+    <End Role="tbAnuncianteStatus" Type="Self.tbAnuncianteStatus" Multiplicity="0..1" />
+    <End Role="tbAnunciante" Type="Self.tbAnunciante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbAnuncianteStatus">
+        <PropertyRef Name="ansid" />
+      </Principal>
+      <Dependent Role="tbAnunciante">
+        <PropertyRef Name="ansid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="cpid_tbAnunciante_tbCondicaoPagto_fk">
     <End Role="tbCondicaoPagto" Type="Self.tbCondicaoPagto" Multiplicity="0..1" />
     <End Role="tbAnunciante" Type="Self.tbAnunciante" Multiplicity="*" />
@@ -904,18 +1028,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="pid_tbAnuncianteDestaque_tbAnunciante_fk">
-    <End Role="tbAnunciante" Type="Self.tbAnunciante" Multiplicity="1" />
-    <End Role="tbAnuncianteDestaque" Type="Self.tbAnuncianteDestaque" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbAnunciante">
-        <PropertyRef Name="pid" />
-      </Principal>
-      <Dependent Role="tbAnuncianteDestaque">
-        <PropertyRef Name="pid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="pid_tbAnuncianteEndereco_tbAnunciante_fk">
     <End Role="tbAnunciante" Type="Self.tbAnunciante" Multiplicity="1" />
     <End Role="tbAnuncianteEndereco" Type="Self.tbAnuncianteEndereco" Multiplicity="*" />
@@ -924,6 +1036,18 @@
         <PropertyRef Name="pid" />
       </Principal>
       <Dependent Role="tbAnuncianteEndereco">
+        <PropertyRef Name="pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pid_tbAnunciantePatrocinador_tbAnunciante_fk">
+    <End Role="tbAnunciante" Type="Self.tbAnunciante" Multiplicity="0..1" />
+    <End Role="tbAnunciantePatrocinador" Type="Self.tbAnunciantePatrocinador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbAnunciante">
+        <PropertyRef Name="pid" />
+      </Principal>
+      <Dependent Role="tbAnunciantePatrocinador">
         <PropertyRef Name="pid" />
       </Dependent>
     </ReferentialConstraint>
@@ -964,6 +1088,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="pid_tbConsumidorPontos_tbAnunciante_fk">
+    <End Role="tbAnunciante" Type="Self.tbAnunciante" Multiplicity="0..1" />
+    <End Role="tbConsumidorPontos" Type="Self.tbConsumidorPontos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbAnunciante">
+        <PropertyRef Name="pid" />
+      </Principal>
+      <Dependent Role="tbConsumidorPontos">
+        <PropertyRef Name="pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="pid_tbCreditoCompra_tbAnunciante_fk">
     <End Role="tbAnunciante" Type="Self.tbAnunciante" Multiplicity="1" />
     <End Role="tbCreditoCompra" Type="Self.tbCreditoCompra" Multiplicity="*" />
@@ -976,6 +1112,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="pid_tbCreditoDesconta_tbAnunciante_fk">
+    <End Role="tbAnunciante" Type="Self.tbAnunciante" Multiplicity="0..1" />
+    <End Role="tbCreditoDesconta" Type="Self.tbCreditoDesconta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbAnunciante">
+        <PropertyRef Name="pid" />
+      </Principal>
+      <Dependent Role="tbCreditoDesconta">
+        <PropertyRef Name="pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="pid_tbDestaqueAnunciante_tbAnunciante_fk">
     <End Role="tbAnunciante" Type="Self.tbAnunciante" Multiplicity="0..1" />
     <End Role="tbDestaqueAnunciante" Type="Self.tbDestaqueAnunciante" Multiplicity="*" />
@@ -984,6 +1132,18 @@
         <PropertyRef Name="pid" />
       </Principal>
       <Dependent Role="tbDestaqueAnunciante">
+        <PropertyRef Name="pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pid_tbTransacaoXml_tbAnunciante_fk">
+    <End Role="tbAnunciante" Type="Self.tbAnunciante" Multiplicity="0..1" />
+    <End Role="tbTransacaoXml" Type="Self.tbTransacaoXml" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbAnunciante">
+        <PropertyRef Name="pid" />
+      </Principal>
+      <Dependent Role="tbTransacaoXml">
         <PropertyRef Name="pid" />
       </Dependent>
     </ReferentialConstraint>
@@ -1024,39 +1184,39 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="adid_tbCreditoDesconta_tbAnuncianteDestaque_fk">
-    <End Role="tbAnuncianteDestaque" Type="Self.tbAnuncianteDestaque" Multiplicity="1" />
-    <End Role="tbCreditoDesconta" Type="Self.tbCreditoDesconta" Multiplicity="*" />
+  <Association Name="cid_tbAnunciantePatrocinador_tbConsumidor_fk">
+    <End Role="tbConsumidor" Type="Self.tbConsumidor" Multiplicity="0..1" />
+    <End Role="tbAnunciantePatrocinador" Type="Self.tbAnunciantePatrocinador" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="tbAnuncianteDestaque">
-        <PropertyRef Name="adid" />
+      <Principal Role="tbConsumidor">
+        <PropertyRef Name="cid" />
       </Principal>
-      <Dependent Role="tbCreditoDesconta">
-        <PropertyRef Name="adid" />
+      <Dependent Role="tbAnunciantePatrocinador">
+        <PropertyRef Name="cid" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="adsid_tbAnuncianteDestaque_tbAnuncianteDestaqueStatus_fk">
-    <End Role="tbAnuncianteDestaqueStatus" Type="Self.tbAnuncianteDestaqueStatus" Multiplicity="1" />
-    <End Role="tbAnuncianteDestaque" Type="Self.tbAnuncianteDestaque" Multiplicity="*" />
+  <Association Name="apala_tbConfigPadrao_tbAnuncianteStatus_fk">
+    <End Role="tbAnuncianteStatus" Type="Self.tbAnuncianteStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="tbAnuncianteDestaqueStatus">
-        <PropertyRef Name="adsid" />
+      <Principal Role="tbAnuncianteStatus">
+        <PropertyRef Name="ansid" />
       </Principal>
-      <Dependent Role="tbAnuncianteDestaque">
-        <PropertyRef Name="adsid" />
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="spala" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="did_tbAnuncianteDestaque_tbDestaque_fk">
-    <End Role="tbDestaque" Type="Self.tbDestaque" Multiplicity="1" />
-    <End Role="tbAnuncianteDestaque" Type="Self.tbAnuncianteDestaque" Multiplicity="*" />
+  <Association Name="spnan_tbConfigPadrao_tbAnuncianteStatus_fk">
+    <End Role="tbAnuncianteStatus" Type="Self.tbAnuncianteStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="tbDestaque">
-        <PropertyRef Name="did" />
+      <Principal Role="tbAnuncianteStatus">
+        <PropertyRef Name="ansid" />
       </Principal>
-      <Dependent Role="tbAnuncianteDestaque">
-        <PropertyRef Name="did" />
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="spnan" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1128,6 +1288,18 @@
         <PropertyRef Name="aid" />
       </Principal>
       <Dependent Role="tbAnuncioLog">
+        <PropertyRef Name="aid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="aid_tbAnuncioPatrocinador_tbAnuncio_fk">
+    <End Role="tbAnuncio" Type="Self.tbAnuncio" Multiplicity="0..1" />
+    <End Role="tbAnuncioPatrocinador" Type="Self.tbAnuncioPatrocinador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbAnuncio">
+        <PropertyRef Name="aid" />
+      </Principal>
+      <Dependent Role="tbAnuncioPatrocinador">
         <PropertyRef Name="aid" />
       </Dependent>
     </ReferentialConstraint>
@@ -1228,6 +1400,42 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="cid_tbAnuncioPatrocinador_tbConsumidor_fk">
+    <End Role="tbConsumidor" Type="Self.tbConsumidor" Multiplicity="0..1" />
+    <End Role="tbAnuncioPatrocinador" Type="Self.tbAnuncioPatrocinador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbConsumidor">
+        <PropertyRef Name="cid" />
+      </Principal>
+      <Dependent Role="tbAnuncioPatrocinador">
+        <PropertyRef Name="cid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="spaaa_tbConfigPadrao_tbAnuncioStatus_fk">
+    <End Role="tbAnuncioStatus" Type="Self.tbAnuncioStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbAnuncioStatus">
+        <PropertyRef Name="asid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="spaaa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="spab_tbConfigPadrao_tbAnuncioStatus_fk">
+    <End Role="tbAnuncioStatus" Type="Self.tbAnuncioStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbAnuncioStatus">
+        <PropertyRef Name="asid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="spab" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="spadc_tbConfigPadrao_tbAnuncioStatus_fk">
     <End Role="tbAnuncioStatus" Type="Self.tbAnuncioStatus" Multiplicity="0..1" />
     <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
@@ -1237,6 +1445,30 @@
       </Principal>
       <Dependent Role="tbConfigPadrao">
         <PropertyRef Name="spadc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="spaec_tbConfigPadrao_tbAnuncioStatus_fk">
+    <End Role="tbAnuncioStatus" Type="Self.tbAnuncioStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbAnuncioStatus">
+        <PropertyRef Name="asid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="spaec" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="spap_tbConfigPadrao_tbAnuncioStatus_fk">
+    <End Role="tbAnuncioStatus" Type="Self.tbAnuncioStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbAnuncioStatus">
+        <PropertyRef Name="asid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="spap" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1396,15 +1628,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="did_tbCampanha_tbDestaque_fk">
-    <End Role="tbDestaque" Type="Self.tbDestaque" Multiplicity="1" />
+  <Association Name="daid_tbCampanha_tbDestaqueAnunciante_fk">
+    <End Role="tbDestaqueAnunciante" Type="Self.tbDestaqueAnunciante" Multiplicity="0..1" />
     <End Role="tbCampanha" Type="Self.tbCampanha" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="tbDestaque">
-        <PropertyRef Name="did" />
+      <Principal Role="tbDestaqueAnunciante">
+        <PropertyRef Name="daid" />
       </Principal>
       <Dependent Role="tbCampanha">
-        <PropertyRef Name="did" />
+        <PropertyRef Name="daid" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1540,6 +1772,78 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="Spcb_tbConfigPadrao_tbCampanhaStatus_fk">
+    <End Role="tbCampanhaStatus" Type="Self.tbCampanhaStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbCampanhaStatus">
+        <PropertyRef Name="csid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="Spcb" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Spcd_tbConfigPadrao_tbCampanhaStatus_fk">
+    <End Role="tbCampanhaStatus" Type="Self.tbCampanhaStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbCampanhaStatus">
+        <PropertyRef Name="csid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="Spcd" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Spcea_tbConfigPadrao_tbCampanhaStatus_fk">
+    <End Role="tbCampanhaStatus" Type="Self.tbCampanhaStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbCampanhaStatus">
+        <PropertyRef Name="csid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="Spcea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Spcec_tbConfigPadrao_tbCampanhaStatus_fk">
+    <End Role="tbCampanhaStatus" Type="Self.tbCampanhaStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbCampanhaStatus">
+        <PropertyRef Name="csid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="Spcec" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Spcep_tbConfigPadrao_tbCampanhaStatus_fk">
+    <End Role="tbCampanhaStatus" Type="Self.tbCampanhaStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbCampanhaStatus">
+        <PropertyRef Name="csid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="Spcep" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="spcf_tbConfigPadrao_tbCampanhaStatus_fk">
+    <End Role="tbCampanhaStatus" Type="Self.tbCampanhaStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbCampanhaStatus">
+        <PropertyRef Name="csid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="spcf" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="spcp_tbConfigPadrao_tbCampanhaStatus_fk">
     <End Role="tbCampanhaStatus" Type="Self.tbCampanhaStatus" Multiplicity="0..1" />
     <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
@@ -1549,18 +1853,6 @@
       </Principal>
       <Dependent Role="tbConfigPadrao">
         <PropertyRef Name="spcp" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="spdc_tbConfigPadrao_tbCampanhaStatus_fk">
-    <End Role="tbCampanhaStatus" Type="Self.tbCampanhaStatus" Multiplicity="0..1" />
-    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbCampanhaStatus">
-        <PropertyRef Name="csid" />
-      </Principal>
-      <Dependent Role="tbConfigPadrao">
-        <PropertyRef Name="spdc" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1636,6 +1928,78 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="spccap_tbConfigPadrao_tbCreditoStatus_fk">
+    <End Role="tbCreditoStatus" Type="Self.tbCreditoStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbCreditoStatus">
+        <PropertyRef Name="crsid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="spccap" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="spccc_tbConfigPadrao_tbCreditoStatus_fk">
+    <End Role="tbCreditoStatus" Type="Self.tbCreditoStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbCreditoStatus">
+        <PropertyRef Name="crsid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="spccc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="spccpa_tbConfigPadrao_tbCreditoStatus_fk">
+    <End Role="tbCreditoStatus" Type="Self.tbCreditoStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbCreditoStatus">
+        <PropertyRef Name="crsid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="spccpa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="spdac_tbConfigPadrao_tbDestaqueAnuncianteStatus_fk">
+    <End Role="tbDestaqueAnuncianteStatus" Type="Self.tbDestaqueAnuncianteStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbDestaqueAnuncianteStatus">
+        <PropertyRef Name="dasid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="spdac" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="spdad_tbConfigPadrao_tbDestaqueAnuncianteStatus_fk">
+    <End Role="tbDestaqueAnuncianteStatus" Type="Self.tbDestaqueAnuncianteStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbDestaqueAnuncianteStatus">
+        <PropertyRef Name="dasid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="spdad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="spdaec_tbConfigPadrao_tbDestaqueAnuncianteStatus_fk">
+    <End Role="tbDestaqueAnuncianteStatus" Type="Self.tbDestaqueAnuncianteStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbDestaqueAnuncianteStatus">
+        <PropertyRef Name="dasid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="spdaec" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="spdd_tbConfigPadrao_tbDestaqueStatus_fk">
     <End Role="tbDestaqueStatus" Type="Self.tbDestaqueStatus" Multiplicity="0..1" />
     <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
@@ -1660,6 +2024,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="spnpc_tbConfigPadrao_tbConsumidorPontosStatus_fk">
+    <End Role="tbConsumidorPontosStatus" Type="Self.tbConsumidorPontosStatus" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbConsumidorPontosStatus">
+        <PropertyRef Name="cposid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="spnpc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="tpua_tbConfigPadrao_tbUsersTipo_fk">
     <End Role="tbUsersTipo" Type="Self.tbUsersTipo" Multiplicity="0..1" />
     <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
@@ -1672,6 +2048,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="tpuc_tbConfigPadrao_tbUsersTipo_fk">
+    <End Role="tbUsersTipo" Type="Self.tbUsersTipo" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsersTipo">
+        <PropertyRef Name="utid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="tpuc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="cid_tbConsumidorPontos_tbConsumidor_fk">
+    <End Role="tbConsumidor" Type="Self.tbConsumidor" Multiplicity="0..1" />
+    <End Role="tbConsumidorPontos" Type="Self.tbConsumidorPontos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbConsumidor">
+        <PropertyRef Name="cid" />
+      </Principal>
+      <Dependent Role="tbConsumidorPontos">
+        <PropertyRef Name="cid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="tid_tbConsumidor_tbTos_fk">
     <End Role="tbTos" Type="Self.tbTos" Multiplicity="1" />
     <End Role="tbConsumidor" Type="Self.tbConsumidor" Multiplicity="*" />
@@ -1681,6 +2081,30 @@
       </Principal>
       <Dependent Role="tbConsumidor">
         <PropertyRef Name="tid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="cposid_tbConsumidorPontos_tbConsumidorPontosStatus_fk">
+    <End Role="tbConsumidorPontosStatus" Type="Self.tbConsumidorPontosStatus" Multiplicity="0..1" />
+    <End Role="tbConsumidorPontos" Type="Self.tbConsumidorPontos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbConsumidorPontosStatus">
+        <PropertyRef Name="cposid" />
+      </Principal>
+      <Dependent Role="tbConsumidorPontos">
+        <PropertyRef Name="cposid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="uid_tbConsumidorPontos_tbUsers_fk">
+    <End Role="tbUsers" Type="Self.tbUsers" Multiplicity="0..1" />
+    <End Role="tbConsumidorPontos" Type="Self.tbConsumidorPontos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsers">
+        <PropertyRef Name="uid" />
+      </Principal>
+      <Dependent Role="tbConsumidorPontos">
+        <PropertyRef Name="uid" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1717,6 +2141,18 @@
       </Principal>
       <Dependent Role="tbCreditoCompra">
         <PropertyRef Name="crsid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tbCreditoDesconta_tbDestaqueAnunciante_fk">
+    <End Role="tbDestaqueAnunciante" Type="Self.tbDestaqueAnunciante" Multiplicity="0..1" />
+    <End Role="tbCreditoDesconta" Type="Self.tbCreditoDesconta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbDestaqueAnunciante">
+        <PropertyRef Name="daid" />
+      </Principal>
+      <Dependent Role="tbCreditoDesconta">
+        <PropertyRef Name="daid" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1792,6 +2228,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="dasid_tbDestaqueAnunciante_tbDestaqueAnuncianteStatus_fk">
+    <End Role="tbDestaqueAnuncianteStatus" Type="Self.tbDestaqueAnuncianteStatus" Multiplicity="0..1" />
+    <End Role="tbDestaqueAnunciante" Type="Self.tbDestaqueAnunciante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbDestaqueAnuncianteStatus">
+        <PropertyRef Name="dasid" />
+      </Principal>
+      <Dependent Role="tbDestaqueAnunciante">
+        <PropertyRef Name="dasid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="paid_tbEstado_tbPais_fk">
     <End Role="tbPais" Type="Self.tbPais" Multiplicity="0..1" />
     <End Role="tbEstado" Type="Self.tbEstado" Multiplicity="*" />
@@ -1824,6 +2272,18 @@
         <PropertyRef Name="uid" />
       </Principal>
       <Dependent Role="tbFuncionalidadeLog">
+        <PropertyRef Name="uid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="uid_tbLogMovFinanceiro_tbUsers_fk">
+    <End Role="tbUsers" Type="Self.tbUsers" Multiplicity="0..1" />
+    <End Role="tbLogMovFinanceiro" Type="Self.tbLogMovFinanceiro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsers">
+        <PropertyRef Name="uid" />
+      </Principal>
+      <Dependent Role="tbLogMovFinanceiro">
         <PropertyRef Name="uid" />
       </Dependent>
     </ReferentialConstraint>
@@ -1936,6 +2396,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="txsid_tbTransacaoXml_tbTransacaoXmlStatus_fk">
+    <End Role="tbTransacaoXmlStatus" Type="Self.tbTransacaoXmlStatus" Multiplicity="0..1" />
+    <End Role="tbTransacaoXml" Type="Self.tbTransacaoXml" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbTransacaoXmlStatus">
+        <PropertyRef Name="txsid" />
+      </Principal>
+      <Dependent Role="tbTransacaoXml">
+        <PropertyRef Name="txsid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="uid_tbUsersLogAcesso_tbUsers_fk">
     <End Role="tbUsers" Type="Self.tbUsers" Multiplicity="1" />
     <End Role="tbUsersLogAcesso" Type="Self.tbUsersLogAcesso" Multiplicity="*" />
@@ -1972,11 +2444,11 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="cliquemixEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="tbAnunciante" EntityType="Self.tbAnunciante" />
-    <EntitySet Name="tbAnuncianteDestaque" EntityType="Self.tbAnuncianteDestaque" />
-    <EntitySet Name="tbAnuncianteDestaqueStatus" EntityType="Self.tbAnuncianteDestaqueStatus" />
     <EntitySet Name="tbAnuncianteEndereco" EntityType="Self.tbAnuncianteEndereco" />
+    <EntitySet Name="tbAnunciantePatrocinador" EntityType="Self.tbAnunciantePatrocinador" />
+    <EntitySet Name="tbAnuncianteStatus" EntityType="Self.tbAnuncianteStatus" />
     <EntitySet Name="tbAnuncianteTelefone" EntityType="Self.tbAnuncianteTelefone" />
     <EntitySet Name="tbAnuncio" EntityType="Self.tbAnuncio" />
     <EntitySet Name="tbAnuncioCategoria" EntityType="Self.tbAnuncioCategoria" />
@@ -1984,6 +2456,7 @@
     <EntitySet Name="tbAnuncioFuncionalidade" EntityType="Self.tbAnuncioFuncionalidade" />
     <EntitySet Name="tbAnuncioImg" EntityType="Self.tbAnuncioImg" />
     <EntitySet Name="tbAnuncioLog" EntityType="Self.tbAnuncioLog" />
+    <EntitySet Name="tbAnuncioPatrocinador" EntityType="Self.tbAnuncioPatrocinador" />
     <EntitySet Name="tbAnuncioStatus" EntityType="Self.tbAnuncioStatus" />
     <EntitySet Name="tbBairro" EntityType="Self.tbBairro" />
     <EntitySet Name="tbBan" EntityType="Self.tbBan" />
@@ -2004,6 +2477,8 @@
     <EntitySet Name="tbCondicaoPagto" EntityType="Self.tbCondicaoPagto" />
     <EntitySet Name="tbConfigPadrao" EntityType="Self.tbConfigPadrao" />
     <EntitySet Name="tbConsumidor" EntityType="Self.tbConsumidor" />
+    <EntitySet Name="tbConsumidorPontos" EntityType="Self.tbConsumidorPontos" />
+    <EntitySet Name="tbConsumidorPontosStatus" EntityType="Self.tbConsumidorPontosStatus" />
     <EntitySet Name="tbCredito" EntityType="Self.tbCredito" />
     <EntitySet Name="tbCreditoCompra" EntityType="Self.tbCreditoCompra" />
     <EntitySet Name="tbCreditoDesconta" EntityType="Self.tbCreditoDesconta" />
@@ -2011,11 +2486,13 @@
     <EntitySet Name="tbCreditoStatus" EntityType="Self.tbCreditoStatus" />
     <EntitySet Name="tbDestaque" EntityType="Self.tbDestaque" />
     <EntitySet Name="tbDestaqueAnunciante" EntityType="Self.tbDestaqueAnunciante" />
+    <EntitySet Name="tbDestaqueAnuncianteStatus" EntityType="Self.tbDestaqueAnuncianteStatus" />
     <EntitySet Name="tbDestaqueDuracao" EntityType="Self.tbDestaqueDuracao" />
     <EntitySet Name="tbDestaqueStatus" EntityType="Self.tbDestaqueStatus" />
     <EntitySet Name="tbEstado" EntityType="Self.tbEstado" />
     <EntitySet Name="tbFuncionalidade" EntityType="Self.tbFuncionalidade" />
     <EntitySet Name="tbFuncionalidadeLog" EntityType="Self.tbFuncionalidadeLog" />
+    <EntitySet Name="tbLogMovFinanceiro" EntityType="Self.tbLogMovFinanceiro" />
     <EntitySet Name="tbLogSistema" EntityType="Self.tbLogSistema" />
     <EntitySet Name="tbPacoteClique" EntityType="Self.tbPacoteClique" />
     <EntitySet Name="tbPais" EntityType="Self.tbPais" />
@@ -2031,15 +2508,16 @@
     <EntitySet Name="tbRamoAtividade" EntityType="Self.tbRamoAtividade" />
     <EntitySet Name="tbTipoLogradouro" EntityType="Self.tbTipoLogradouro" />
     <EntitySet Name="tbTos" EntityType="Self.tbTos" />
+    <EntitySet Name="tbTransacaoXml" EntityType="Self.tbTransacaoXml" />
+    <EntitySet Name="tbTransacaoXmlStatus" EntityType="Self.tbTransacaoXmlStatus" />
     <EntitySet Name="tbUsers" EntityType="Self.tbUsers" />
     <EntitySet Name="tbUsersLogAcesso" EntityType="Self.tbUsersLogAcesso" />
     <EntitySet Name="tbUsersPermissao" EntityType="Self.tbUsersPermissao" />
     <EntitySet Name="tbUsersTipo" EntityType="Self.tbUsersTipo" />
-    <EntitySet Name="VwAnunciosCriadosAnunciante" EntityType="Self.VwAnunciosCriadosAnunciante" />
-    <EntitySet Name="VwAnunciosDisponiveis" EntityType="Self.VwAnunciosDisponiveis" />
-    <EntitySet Name="VwAnunciosEmCampanha" EntityType="Self.VwAnunciosEmCampanha" />
-    <EntitySet Name="VwAnunciosExcluidos" EntityType="Self.VwAnunciosExcluidos" />
-    <EntitySet Name="VwCampanhasAtivasAnunciante" EntityType="Self.VwCampanhasAtivasAnunciante" />
+    <AssociationSet Name="ansid_tbAnunciante_tbAnuncianteStatus_fk" Association="Self.ansid_tbAnunciante_tbAnuncianteStatus_fk">
+      <End Role="tbAnuncianteStatus" EntitySet="tbAnuncianteStatus" />
+      <End Role="tbAnunciante" EntitySet="tbAnunciante" />
+    </AssociationSet>
     <AssociationSet Name="cpid_tbAnunciante_tbCondicaoPagto_fk" Association="Self.cpid_tbAnunciante_tbCondicaoPagto_fk">
       <End Role="tbCondicaoPagto" EntitySet="tbCondicaoPagto" />
       <End Role="tbAnunciante" EntitySet="tbAnunciante" />
@@ -2048,13 +2526,13 @@
       <End Role="tbAnuncianteEndereco" EntitySet="tbAnuncianteEndereco" />
       <End Role="tbAnunciante" EntitySet="tbAnunciante" />
     </AssociationSet>
-    <AssociationSet Name="pid_tbAnuncianteDestaque_tbAnunciante_fk" Association="Self.pid_tbAnuncianteDestaque_tbAnunciante_fk">
-      <End Role="tbAnunciante" EntitySet="tbAnunciante" />
-      <End Role="tbAnuncianteDestaque" EntitySet="tbAnuncianteDestaque" />
-    </AssociationSet>
     <AssociationSet Name="pid_tbAnuncianteEndereco_tbAnunciante_fk" Association="Self.pid_tbAnuncianteEndereco_tbAnunciante_fk">
       <End Role="tbAnunciante" EntitySet="tbAnunciante" />
       <End Role="tbAnuncianteEndereco" EntitySet="tbAnuncianteEndereco" />
+    </AssociationSet>
+    <AssociationSet Name="pid_tbAnunciantePatrocinador_tbAnunciante_fk" Association="Self.pid_tbAnunciantePatrocinador_tbAnunciante_fk">
+      <End Role="tbAnunciante" EntitySet="tbAnunciante" />
+      <End Role="tbAnunciantePatrocinador" EntitySet="tbAnunciantePatrocinador" />
     </AssociationSet>
     <AssociationSet Name="pid_tbAnuncianteTelefone_tbAnunciante_fk" Association="Self.pid_tbAnuncianteTelefone_tbAnunciante_fk">
       <End Role="tbAnunciante" EntitySet="tbAnunciante" />
@@ -2068,13 +2546,25 @@
       <End Role="tbAnunciante" EntitySet="tbAnunciante" />
       <End Role="tbCampanha" EntitySet="tbCampanha" />
     </AssociationSet>
+    <AssociationSet Name="pid_tbConsumidorPontos_tbAnunciante_fk" Association="Self.pid_tbConsumidorPontos_tbAnunciante_fk">
+      <End Role="tbAnunciante" EntitySet="tbAnunciante" />
+      <End Role="tbConsumidorPontos" EntitySet="tbConsumidorPontos" />
+    </AssociationSet>
     <AssociationSet Name="pid_tbCreditoCompra_tbAnunciante_fk" Association="Self.pid_tbCreditoCompra_tbAnunciante_fk">
       <End Role="tbAnunciante" EntitySet="tbAnunciante" />
       <End Role="tbCreditoCompra" EntitySet="tbCreditoCompra" />
     </AssociationSet>
+    <AssociationSet Name="pid_tbCreditoDesconta_tbAnunciante_fk" Association="Self.pid_tbCreditoDesconta_tbAnunciante_fk">
+      <End Role="tbAnunciante" EntitySet="tbAnunciante" />
+      <End Role="tbCreditoDesconta" EntitySet="tbCreditoDesconta" />
+    </AssociationSet>
     <AssociationSet Name="pid_tbDestaqueAnunciante_tbAnunciante_fk" Association="Self.pid_tbDestaqueAnunciante_tbAnunciante_fk">
       <End Role="tbAnunciante" EntitySet="tbAnunciante" />
       <End Role="tbDestaqueAnunciante" EntitySet="tbDestaqueAnunciante" />
+    </AssociationSet>
+    <AssociationSet Name="pid_tbTransacaoXml_tbAnunciante_fk" Association="Self.pid_tbTransacaoXml_tbAnunciante_fk">
+      <End Role="tbAnunciante" EntitySet="tbAnunciante" />
+      <End Role="tbTransacaoXml" EntitySet="tbTransacaoXml" />
     </AssociationSet>
     <AssociationSet Name="raid_tbAnunciante_tbRamoAtividade_fk" Association="Self.raid_tbAnunciante_tbRamoAtividade_fk">
       <End Role="tbRamoAtividade" EntitySet="tbRamoAtividade" />
@@ -2088,17 +2578,17 @@
       <End Role="tbUsers" EntitySet="tbUsers" />
       <End Role="tbAnunciante" EntitySet="tbAnunciante" />
     </AssociationSet>
-    <AssociationSet Name="adid_tbCreditoDesconta_tbAnuncianteDestaque_fk" Association="Self.adid_tbCreditoDesconta_tbAnuncianteDestaque_fk">
-      <End Role="tbAnuncianteDestaque" EntitySet="tbAnuncianteDestaque" />
-      <End Role="tbCreditoDesconta" EntitySet="tbCreditoDesconta" />
+    <AssociationSet Name="cid_tbAnunciantePatrocinador_tbConsumidor_fk" Association="Self.cid_tbAnunciantePatrocinador_tbConsumidor_fk">
+      <End Role="tbConsumidor" EntitySet="tbConsumidor" />
+      <End Role="tbAnunciantePatrocinador" EntitySet="tbAnunciantePatrocinador" />
     </AssociationSet>
-    <AssociationSet Name="adsid_tbAnuncianteDestaque_tbAnuncianteDestaqueStatus_fk" Association="Self.adsid_tbAnuncianteDestaque_tbAnuncianteDestaqueStatus_fk">
-      <End Role="tbAnuncianteDestaqueStatus" EntitySet="tbAnuncianteDestaqueStatus" />
-      <End Role="tbAnuncianteDestaque" EntitySet="tbAnuncianteDestaque" />
+    <AssociationSet Name="apala_tbConfigPadrao_tbAnuncianteStatus_fk" Association="Self.apala_tbConfigPadrao_tbAnuncianteStatus_fk">
+      <End Role="tbAnuncianteStatus" EntitySet="tbAnuncianteStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
     </AssociationSet>
-    <AssociationSet Name="did_tbAnuncianteDestaque_tbDestaque_fk" Association="Self.did_tbAnuncianteDestaque_tbDestaque_fk">
-      <End Role="tbDestaque" EntitySet="tbDestaque" />
-      <End Role="tbAnuncianteDestaque" EntitySet="tbAnuncianteDestaque" />
+    <AssociationSet Name="spnan_tbConfigPadrao_tbAnuncianteStatus_fk" Association="Self.spnan_tbConfigPadrao_tbAnuncianteStatus_fk">
+      <End Role="tbAnuncianteStatus" EntitySet="tbAnuncianteStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
     </AssociationSet>
     <AssociationSet Name="acid_tbAnuncio_tbAnuncioCategoria_fk" Association="Self.acid_tbAnuncio_tbAnuncioCategoria_fk">
       <End Role="tbAnuncioCategoria" EntitySet="tbAnuncioCategoria" />
@@ -2123,6 +2613,10 @@
     <AssociationSet Name="aid_tbAnuncioLog_tbAnuncio_fk" Association="Self.aid_tbAnuncioLog_tbAnuncio_fk">
       <End Role="tbAnuncio" EntitySet="tbAnuncio" />
       <End Role="tbAnuncioLog" EntitySet="tbAnuncioLog" />
+    </AssociationSet>
+    <AssociationSet Name="aid_tbAnuncioPatrocinador_tbAnuncio_fk" Association="Self.aid_tbAnuncioPatrocinador_tbAnuncio_fk">
+      <End Role="tbAnuncio" EntitySet="tbAnuncio" />
+      <End Role="tbAnuncioPatrocinador" EntitySet="tbAnuncioPatrocinador" />
     </AssociationSet>
     <AssociationSet Name="aid_tbCampanhaAnuncio_tbAnuncio_fk" Association="Self.aid_tbCampanhaAnuncio_tbAnuncio_fk">
       <End Role="tbAnuncio" EntitySet="tbAnuncio" />
@@ -2156,7 +2650,27 @@
       <End Role="tbUsers" EntitySet="tbUsers" />
       <End Role="tbAnuncioLog" EntitySet="tbAnuncioLog" />
     </AssociationSet>
+    <AssociationSet Name="cid_tbAnuncioPatrocinador_tbConsumidor_fk" Association="Self.cid_tbAnuncioPatrocinador_tbConsumidor_fk">
+      <End Role="tbConsumidor" EntitySet="tbConsumidor" />
+      <End Role="tbAnuncioPatrocinador" EntitySet="tbAnuncioPatrocinador" />
+    </AssociationSet>
+    <AssociationSet Name="spaaa_tbConfigPadrao_tbAnuncioStatus_fk" Association="Self.spaaa_tbConfigPadrao_tbAnuncioStatus_fk">
+      <End Role="tbAnuncioStatus" EntitySet="tbAnuncioStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
+    <AssociationSet Name="spab_tbConfigPadrao_tbAnuncioStatus_fk" Association="Self.spab_tbConfigPadrao_tbAnuncioStatus_fk">
+      <End Role="tbAnuncioStatus" EntitySet="tbAnuncioStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
     <AssociationSet Name="spadc_tbConfigPadrao_tbAnuncioStatus_fk" Association="Self.spadc_tbConfigPadrao_tbAnuncioStatus_fk">
+      <End Role="tbAnuncioStatus" EntitySet="tbAnuncioStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
+    <AssociationSet Name="spaec_tbConfigPadrao_tbAnuncioStatus_fk" Association="Self.spaec_tbConfigPadrao_tbAnuncioStatus_fk">
+      <End Role="tbAnuncioStatus" EntitySet="tbAnuncioStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
+    <AssociationSet Name="spap_tbConfigPadrao_tbAnuncioStatus_fk" Association="Self.spap_tbConfigPadrao_tbAnuncioStatus_fk">
       <End Role="tbAnuncioStatus" EntitySet="tbAnuncioStatus" />
       <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
     </AssociationSet>
@@ -2212,8 +2726,8 @@
       <End Role="tbCampanhaTmp" EntitySet="tbCampanhaTmp" />
       <End Role="tbCampanha" EntitySet="tbCampanha" />
     </AssociationSet>
-    <AssociationSet Name="did_tbCampanha_tbDestaque_fk" Association="Self.did_tbCampanha_tbDestaque_fk">
-      <End Role="tbDestaque" EntitySet="tbDestaque" />
+    <AssociationSet Name="daid_tbCampanha_tbDestaqueAnunciante_fk" Association="Self.daid_tbCampanha_tbDestaqueAnunciante_fk">
+      <End Role="tbDestaqueAnunciante" EntitySet="tbDestaqueAnunciante" />
       <End Role="tbCampanha" EntitySet="tbCampanha" />
     </AssociationSet>
     <AssociationSet Name="pcid_tbCampanha_tbPacoteClique_fk" Association="Self.pcid_tbCampanha_tbPacoteClique_fk">
@@ -2260,11 +2774,31 @@
       <End Role="tbPais" EntitySet="tbPais" />
       <End Role="tbCampanhaLocalizacao" EntitySet="tbCampanhaLocalizacao" />
     </AssociationSet>
-    <AssociationSet Name="spcp_tbConfigPadrao_tbCampanhaStatus_fk" Association="Self.spcp_tbConfigPadrao_tbCampanhaStatus_fk">
+    <AssociationSet Name="Spcb_tbConfigPadrao_tbCampanhaStatus_fk" Association="Self.Spcb_tbConfigPadrao_tbCampanhaStatus_fk">
       <End Role="tbCampanhaStatus" EntitySet="tbCampanhaStatus" />
       <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
     </AssociationSet>
-    <AssociationSet Name="spdc_tbConfigPadrao_tbCampanhaStatus_fk" Association="Self.spdc_tbConfigPadrao_tbCampanhaStatus_fk">
+    <AssociationSet Name="Spcd_tbConfigPadrao_tbCampanhaStatus_fk" Association="Self.Spcd_tbConfigPadrao_tbCampanhaStatus_fk">
+      <End Role="tbCampanhaStatus" EntitySet="tbCampanhaStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
+    <AssociationSet Name="Spcea_tbConfigPadrao_tbCampanhaStatus_fk" Association="Self.Spcea_tbConfigPadrao_tbCampanhaStatus_fk">
+      <End Role="tbCampanhaStatus" EntitySet="tbCampanhaStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
+    <AssociationSet Name="Spcec_tbConfigPadrao_tbCampanhaStatus_fk" Association="Self.Spcec_tbConfigPadrao_tbCampanhaStatus_fk">
+      <End Role="tbCampanhaStatus" EntitySet="tbCampanhaStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
+    <AssociationSet Name="Spcep_tbConfigPadrao_tbCampanhaStatus_fk" Association="Self.Spcep_tbConfigPadrao_tbCampanhaStatus_fk">
+      <End Role="tbCampanhaStatus" EntitySet="tbCampanhaStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
+    <AssociationSet Name="spcf_tbConfigPadrao_tbCampanhaStatus_fk" Association="Self.spcf_tbConfigPadrao_tbCampanhaStatus_fk">
+      <End Role="tbCampanhaStatus" EntitySet="tbCampanhaStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
+    <AssociationSet Name="spcp_tbConfigPadrao_tbCampanhaStatus_fk" Association="Self.spcp_tbConfigPadrao_tbCampanhaStatus_fk">
       <End Role="tbCampanhaStatus" EntitySet="tbCampanhaStatus" />
       <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
     </AssociationSet>
@@ -2292,6 +2826,30 @@
       <End Role="tbEstado" EntitySet="tbEstado" />
       <End Role="tbCidade" EntitySet="tbCidade" />
     </AssociationSet>
+    <AssociationSet Name="spccap_tbConfigPadrao_tbCreditoStatus_fk" Association="Self.spccap_tbConfigPadrao_tbCreditoStatus_fk">
+      <End Role="tbCreditoStatus" EntitySet="tbCreditoStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
+    <AssociationSet Name="spccc_tbConfigPadrao_tbCreditoStatus_fk" Association="Self.spccc_tbConfigPadrao_tbCreditoStatus_fk">
+      <End Role="tbCreditoStatus" EntitySet="tbCreditoStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
+    <AssociationSet Name="spccpa_tbConfigPadrao_tbCreditoStatus_fk" Association="Self.spccpa_tbConfigPadrao_tbCreditoStatus_fk">
+      <End Role="tbCreditoStatus" EntitySet="tbCreditoStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
+    <AssociationSet Name="spdac_tbConfigPadrao_tbDestaqueAnuncianteStatus_fk" Association="Self.spdac_tbConfigPadrao_tbDestaqueAnuncianteStatus_fk">
+      <End Role="tbDestaqueAnuncianteStatus" EntitySet="tbDestaqueAnuncianteStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
+    <AssociationSet Name="spdad_tbConfigPadrao_tbDestaqueAnuncianteStatus_fk" Association="Self.spdad_tbConfigPadrao_tbDestaqueAnuncianteStatus_fk">
+      <End Role="tbDestaqueAnuncianteStatus" EntitySet="tbDestaqueAnuncianteStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
+    <AssociationSet Name="spdaec_tbConfigPadrao_tbDestaqueAnuncianteStatus_fk" Association="Self.spdaec_tbConfigPadrao_tbDestaqueAnuncianteStatus_fk">
+      <End Role="tbDestaqueAnuncianteStatus" EntitySet="tbDestaqueAnuncianteStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
     <AssociationSet Name="spdd_tbConfigPadrao_tbDestaqueStatus_fk" Association="Self.spdd_tbConfigPadrao_tbDestaqueStatus_fk">
       <End Role="tbDestaqueStatus" EntitySet="tbDestaqueStatus" />
       <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
@@ -2300,13 +2858,33 @@
       <End Role="tbDestaqueStatus" EntitySet="tbDestaqueStatus" />
       <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
     </AssociationSet>
+    <AssociationSet Name="spnpc_tbConfigPadrao_tbConsumidorPontosStatus_fk" Association="Self.spnpc_tbConfigPadrao_tbConsumidorPontosStatus_fk">
+      <End Role="tbConsumidorPontosStatus" EntitySet="tbConsumidorPontosStatus" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
     <AssociationSet Name="tpua_tbConfigPadrao_tbUsersTipo_fk" Association="Self.tpua_tbConfigPadrao_tbUsersTipo_fk">
       <End Role="tbUsersTipo" EntitySet="tbUsersTipo" />
       <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
     </AssociationSet>
+    <AssociationSet Name="tpuc_tbConfigPadrao_tbUsersTipo_fk" Association="Self.tpuc_tbConfigPadrao_tbUsersTipo_fk">
+      <End Role="tbUsersTipo" EntitySet="tbUsersTipo" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
+    <AssociationSet Name="cid_tbConsumidorPontos_tbConsumidor_fk" Association="Self.cid_tbConsumidorPontos_tbConsumidor_fk">
+      <End Role="tbConsumidor" EntitySet="tbConsumidor" />
+      <End Role="tbConsumidorPontos" EntitySet="tbConsumidorPontos" />
+    </AssociationSet>
     <AssociationSet Name="tid_tbConsumidor_tbTos_fk" Association="Self.tid_tbConsumidor_tbTos_fk">
       <End Role="tbTos" EntitySet="tbTos" />
       <End Role="tbConsumidor" EntitySet="tbConsumidor" />
+    </AssociationSet>
+    <AssociationSet Name="cposid_tbConsumidorPontos_tbConsumidorPontosStatus_fk" Association="Self.cposid_tbConsumidorPontos_tbConsumidorPontosStatus_fk">
+      <End Role="tbConsumidorPontosStatus" EntitySet="tbConsumidorPontosStatus" />
+      <End Role="tbConsumidorPontos" EntitySet="tbConsumidorPontos" />
+    </AssociationSet>
+    <AssociationSet Name="uid_tbConsumidorPontos_tbUsers_fk" Association="Self.uid_tbConsumidorPontos_tbUsers_fk">
+      <End Role="tbUsers" EntitySet="tbUsers" />
+      <End Role="tbConsumidorPontos" EntitySet="tbConsumidorPontos" />
     </AssociationSet>
     <AssociationSet Name="crid_tbCreditoCompra_tbCredito_fk" Association="Self.crid_tbCreditoCompra_tbCredito_fk">
       <End Role="tbCredito" EntitySet="tbCredito" />
@@ -2319,6 +2897,10 @@
     <AssociationSet Name="crsid_tbCreditoCompra_tbCreditoStatus_fk" Association="Self.crsid_tbCreditoCompra_tbCreditoStatus_fk">
       <End Role="tbCreditoStatus" EntitySet="tbCreditoStatus" />
       <End Role="tbCreditoCompra" EntitySet="tbCreditoCompra" />
+    </AssociationSet>
+    <AssociationSet Name="tbCreditoDesconta_tbDestaqueAnunciante_fk" Association="Self.tbCreditoDesconta_tbDestaqueAnunciante_fk">
+      <End Role="tbDestaqueAnunciante" EntitySet="tbDestaqueAnunciante" />
+      <End Role="tbCreditoDesconta" EntitySet="tbCreditoDesconta" />
     </AssociationSet>
     <AssociationSet Name="uid_tbCreditoPromocional_tbUsers_fk" Association="Self.uid_tbCreditoPromocional_tbUsers_fk">
       <End Role="tbUsers" EntitySet="tbUsers" />
@@ -2344,6 +2926,10 @@
       <End Role="tbPacoteClique" EntitySet="tbPacoteClique" />
       <End Role="tbDestaque" EntitySet="tbDestaque" />
     </AssociationSet>
+    <AssociationSet Name="dasid_tbDestaqueAnunciante_tbDestaqueAnuncianteStatus_fk" Association="Self.dasid_tbDestaqueAnunciante_tbDestaqueAnuncianteStatus_fk">
+      <End Role="tbDestaqueAnuncianteStatus" EntitySet="tbDestaqueAnuncianteStatus" />
+      <End Role="tbDestaqueAnunciante" EntitySet="tbDestaqueAnunciante" />
+    </AssociationSet>
     <AssociationSet Name="paid_tbEstado_tbPais_fk" Association="Self.paid_tbEstado_tbPais_fk">
       <End Role="tbPais" EntitySet="tbPais" />
       <End Role="tbEstado" EntitySet="tbEstado" />
@@ -2355,6 +2941,10 @@
     <AssociationSet Name="uid_tbFuncionalidadeLog_tbUsers_fk" Association="Self.uid_tbFuncionalidadeLog_tbUsers_fk">
       <End Role="tbUsers" EntitySet="tbUsers" />
       <End Role="tbFuncionalidadeLog" EntitySet="tbFuncionalidadeLog" />
+    </AssociationSet>
+    <AssociationSet Name="uid_tbLogMovFinanceiro_tbUsers_fk" Association="Self.uid_tbLogMovFinanceiro_tbUsers_fk">
+      <End Role="tbUsers" EntitySet="tbUsers" />
+      <End Role="tbLogMovFinanceiro" EntitySet="tbLogMovFinanceiro" />
     </AssociationSet>
     <AssociationSet Name="uid_tbLogSistema_tbUsers_fk" Association="Self.uid_tbLogSistema_tbUsers_fk">
       <End Role="tbUsers" EntitySet="tbUsers" />
@@ -2392,6 +2982,10 @@
       <End Role="tbPremio" EntitySet="tbPremio" />
       <End Role="tbPremioImg" EntitySet="tbPremioImg" />
     </AssociationSet>
+    <AssociationSet Name="txsid_tbTransacaoXml_tbTransacaoXmlStatus_fk" Association="Self.txsid_tbTransacaoXml_tbTransacaoXmlStatus_fk">
+      <End Role="tbTransacaoXmlStatus" EntitySet="tbTransacaoXmlStatus" />
+      <End Role="tbTransacaoXml" EntitySet="tbTransacaoXml" />
+    </AssociationSet>
     <AssociationSet Name="uid_tbUsersLogAcesso_tbUsers_fk" Association="Self.uid_tbUsersLogAcesso_tbUsers_fk">
       <End Role="tbUsers" EntitySet="tbUsers" />
       <End Role="tbUsersLogAcesso" EntitySet="tbUsersLogAcesso" />
@@ -2404,5 +2998,193 @@
       <End Role="tbUsersTipo" EntitySet="tbUsersTipo" />
       <End Role="tbUsers" EntitySet="tbUsers" />
     </AssociationSet>
+    <EntitySet Name="VwAnunciosCriadosAnunciante" EntityType="cliquemixModel.VwAnunciosCriadosAnunciante" />
+    <EntitySet Name="VwAnunciosDisponiveis" EntityType="cliquemixModel.VwAnunciosDisponiveis" />
+    <EntitySet Name="VwAnunciosEmCampanha" EntityType="cliquemixModel.VwAnunciosEmCampanha" />
+    <EntitySet Name="VwAnunciosExcluidos" EntityType="cliquemixModel.VwAnunciosExcluidos" />
+    <EntitySet Name="VwCampanhasAtivasAnunciante" EntityType="cliquemixModel.VwCampanhasAtivasAnunciante" />
+    <EntitySet Name="VwRelatorioAnuncianteAnuncios_Cliques" EntityType="cliquemixModel.VwRelatorioAnuncianteAnuncios_Cliques" />
+    <EntitySet Name="VwRelatorioAnuncianteAnuncios_Disponiveis" EntityType="cliquemixModel.VwRelatorioAnuncianteAnuncios_Disponiveis" />
+    <EntitySet Name="VwRelatorioAnuncianteAnuncios_EmCampanha" EntityType="cliquemixModel.VwRelatorioAnuncianteAnuncios_EmCampanha" />
+    <EntitySet Name="VwRelatorioAnuncianteAnuncios_Excluidos" EntityType="cliquemixModel.VwRelatorioAnuncianteAnuncios_Excluidos" />
+    <EntitySet Name="VwRelatorioAnuncianteAnuncios_Todos" EntityType="cliquemixModel.VwRelatorioAnuncianteAnuncios_Todos" />
+    <EntitySet Name="VwRelatorioAnuncianteAnuncios_Top10Mais" EntityType="cliquemixModel.VwRelatorioAnuncianteAnuncios_Top10Mais" />
+    <EntitySet Name="VwRelatorioAnuncianteAnuncios_Top10Menos" EntityType="cliquemixModel.VwRelatorioAnuncianteAnuncios_Top10Menos" />
   </EntityContainer>
+  <EntityType Name="VwAnunciosCriadosAnunciante">
+    <Key>
+      <PropertyRef Name="CodAnuncio" />
+      <PropertyRef Name="TituloAnuncio" />
+    </Key>
+    <Property Name="CodAnuncio" Type="Int32" Nullable="false" />
+    <Property Name="TituloAnuncio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatusAnuncio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CodAnunciante" Type="Int32" />
+    <Property Name="DescCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DtCriacao" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="VwAnunciosDisponiveis">
+    <Key>
+      <PropertyRef Name="CodAnuncio" />
+      <PropertyRef Name="TituloAnuncio" />
+    </Key>
+    <Property Name="CodAnuncio" Type="Int32" Nullable="false" />
+    <Property Name="TituloAnuncio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatusAnuncio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CodAnunciante" Type="Int32" />
+    <Property Name="DescCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DtCriacao" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="VwAnunciosEmCampanha">
+    <Key>
+      <PropertyRef Name="CodAnuncioCampanha" />
+      <PropertyRef Name="CodAnuncio" />
+      <PropertyRef Name="TituloAnuncio" />
+      <PropertyRef Name="CodCampanha" />
+    </Key>
+    <Property Name="CodAnuncioCampanha" Type="Int32" Nullable="false" />
+    <Property Name="CodAnuncio" Type="Int32" Nullable="false" />
+    <Property Name="TituloAnuncio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatusAnuncio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CodAnunciante" Type="Int32" />
+    <Property Name="DescCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DtCriacao" Type="DateTime" Precision="3" />
+    <Property Name="CodCampanha" Type="Int32" Nullable="false" />
+    <Property Name="DescCampanha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="VwAnunciosExcluidos">
+    <Key>
+      <PropertyRef Name="CodAnuncio" />
+      <PropertyRef Name="TituloAnuncio" />
+    </Key>
+    <Property Name="CodAnuncio" Type="Int32" Nullable="false" />
+    <Property Name="TituloAnuncio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatusAnuncio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CodAnunciante" Type="Int32" />
+    <Property Name="DescCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DtCriacao" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="VwCampanhasAtivasAnunciante">
+    <Key>
+      <PropertyRef Name="CodCampanha" />
+      <PropertyRef Name="TituloCampanha" />
+      <PropertyRef Name="DtInicio" />
+      <PropertyRef Name="DtTermino" />
+    </Key>
+    <Property Name="CodCampanha" Type="Int32" Nullable="false" />
+    <Property Name="TituloCampanha" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatusCampanha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CodAnunciante" Type="Int32" />
+    <Property Name="DtInicio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DtTermino" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="VwRelatorioAnuncianteAnuncios_Cliques">
+    <Key>
+      <PropertyRef Name="aid" />
+      <PropertyRef Name="tituloAnuncio" />
+      <PropertyRef Name="dtInicio" />
+      <PropertyRef Name="dtTermino" />
+    </Key>
+    <Property Name="aid" Type="Int32" Nullable="false" />
+    <Property Name="tituloAnuncio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cid" Type="Int32" />
+    <Property Name="dtInicio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="dtTermino" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="contCliquesAtual" Type="Int32" />
+    <Property Name="contCliquesFinal" Type="Int32" />
+    <Property Name="pid" Type="Int32" />
+  </EntityType>
+  <EntityType Name="VwRelatorioAnuncianteAnuncios_Disponiveis">
+    <Key>
+      <PropertyRef Name="aid" />
+      <PropertyRef Name="tituloAnuncio" />
+      <PropertyRef Name="VIDEO" />
+      <PropertyRef Name="IMAGEM" />
+    </Key>
+    <Property Name="aid" Type="Int32" Nullable="false" />
+    <Property Name="tituloAnuncio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dsCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dsStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="VIDEO" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="IMAGEM" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="dtCriacao" Type="DateTime" Precision="3" />
+    <Property Name="pid" Type="Int32" />
+  </EntityType>
+  <EntityType Name="VwRelatorioAnuncianteAnuncios_EmCampanha">
+    <Key>
+      <PropertyRef Name="aid" />
+      <PropertyRef Name="tituloAnuncio" />
+      <PropertyRef Name="dtInicio" />
+      <PropertyRef Name="dtTermino" />
+    </Key>
+    <Property Name="aid" Type="Int32" Nullable="false" />
+    <Property Name="tituloAnuncio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dsCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cid" Type="Int32" />
+    <Property Name="dtInicio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="dtTermino" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="pid" Type="Int32" />
+  </EntityType>
+  <EntityType Name="VwRelatorioAnuncianteAnuncios_Excluidos">
+    <Key>
+      <PropertyRef Name="aid" />
+      <PropertyRef Name="tituloAnuncio" />
+      <PropertyRef Name="VIDEO" />
+      <PropertyRef Name="IMAGEM" />
+    </Key>
+    <Property Name="aid" Type="Int32" Nullable="false" />
+    <Property Name="tituloAnuncio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dsCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dsStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="VIDEO" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="IMAGEM" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="dtCriacao" Type="DateTime" Precision="3" />
+    <Property Name="pid" Type="Int32" />
+  </EntityType>
+  <EntityType Name="VwRelatorioAnuncianteAnuncios_Todos">
+    <Key>
+      <PropertyRef Name="aid" />
+      <PropertyRef Name="tituloAnuncio" />
+      <PropertyRef Name="VIDEO" />
+      <PropertyRef Name="IMAGEM" />
+    </Key>
+    <Property Name="aid" Type="Int32" Nullable="false" />
+    <Property Name="tituloAnuncio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dsCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dsStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="VIDEO" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="IMAGEM" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="dtCriacao" Type="DateTime" Precision="3" />
+    <Property Name="pid" Type="Int32" />
+  </EntityType>
+  <EntityType Name="VwRelatorioAnuncianteAnuncios_Top10Mais">
+    <Key>
+      <PropertyRef Name="aid" />
+      <PropertyRef Name="tituloAnuncio" />
+      <PropertyRef Name="dtInicio" />
+      <PropertyRef Name="dtTermino" />
+    </Key>
+    <Property Name="aid" Type="Int32" Nullable="false" />
+    <Property Name="tituloAnuncio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cid" Type="Int32" />
+    <Property Name="dtInicio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="dtTermino" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="contCliquesAtual" Type="Int32" />
+    <Property Name="pid" Type="Int32" />
+  </EntityType>
+  <EntityType Name="VwRelatorioAnuncianteAnuncios_Top10Menos">
+    <Key>
+      <PropertyRef Name="aid" />
+      <PropertyRef Name="tituloAnuncio" />
+      <PropertyRef Name="dtInicio" />
+      <PropertyRef Name="dtTermino" />
+    </Key>
+    <Property Name="aid" Type="Int32" Nullable="false" />
+    <Property Name="tituloAnuncio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cid" Type="Int32" />
+    <Property Name="dtInicio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="dtTermino" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="contCliquesAtual" Type="Int32" />
+    <Property Name="pid" Type="Int32" />
+  </EntityType>
 </Schema>

@@ -267,3 +267,18 @@ E:\Sicove\Sistema de Click\Repos\cliquemix\Cliquemix\bin\en\HtmlReportControl.re
 E:\Sicove\Sistema de Click\Repos\cliquemix\Cliquemix\obj\Debug\Cliquemix.csprojResolveAssemblyReference.cache
 E:\Sicove\Sistema de Click\Repos\cliquemix\Cliquemix\obj\Debug\Cliquemix.dll
 E:\Sicove\Sistema de Click\Repos\cliquemix\Cliquemix\obj\Debug\Cliquemix.pdb
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Recaptcha.Web.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\MySql.Data.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\MySql.Web.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\obj\Debug\RdlCompile.cache
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\obj\Debug\RdlCompile.compiled
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Common.Logging.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\CSharp.GitHub.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\GithubNugetDistributor.exe
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Octokit.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Spring.Rest.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Spring.Social.Core.dll
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Spring.Rest.pdb
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Spring.Rest.xml
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Spring.Social.Core.pdb
+E:\Desenvolvimento\SICOVE\Cliquemix\Cliquemix\bin\Spring.Social.Core.xml

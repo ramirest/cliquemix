@@ -15,18 +15,34 @@
             }
         });
     }
-    /*
-    function loadPartialViewTeste() {
-            $('#detalhesCredito').load('/Credito/DetalhesCredito');
-    }
-    */
+
     function AtualizaCod() {
         var obj = document.getElementById("crid");
         $("input[id='tcod']").val(obj.options[obj.selectedIndex].value);
         detalhesCredito();
     };
-
 </script>
+
+
+<script>
+    function CompraCredito() {
+        var item = $("input[id='tcod']").val();
+        var btn = document.getElementById('BtnDetalhesCredito');
+        $.ajax(
+        {
+            type: 'GET',
+            url: '/Credito/ComprarCredito/?id=' + item,
+            dataType: 'html',
+            cache: true,
+            async: true,
+            success: function (data) {
+                btn.click();
+                $('#conteudoCredito').html(data);
+            }
+        });
+    }
+</script>
+
 
 <div class="row">
     <div class="col-lg-12">
@@ -40,43 +56,76 @@
     </div>
 </div>
 
+<a id="BtnDetalhesCredito" name="BtnDetalhesCredito"
+   data-toggle="modal" data-target="#ComprarCreditoModal" data-placement="top">
+</a>
 
-<div class="row">
-    <div class="col-lg-12">
-        <div class="portlet-title">
-            <h4 class="flutuar">Comprar Créditos</h4>
+<input type="hidden" id="pCodCreditoCompra" name="pCodCreditoCompra" />
+
+<div class="col-lg-8">
+    <div class="portlet portlet-default">
+        <div class="portlet-heading">
+            <div class="portlet-title">
+                <h4 class="flutuar">Comprar Créditos</h4>
+                @Html.DropDownListFor(model => model.crid, null, string.Empty, new { style = "width:300px; height:34px", onchange = "AtualizaCod();" })
+                @Html.Hidden("tcod")
+                <button class="btn btn-white" style="height:34px;"
+                        id="btnCompraCredito" name="btnCompraCredito"
+                        onclick="CompraCredito();" title="Comprar Crédito">
+                    <i class="fa fa-usd"></i> Comprar
+                </button>
+                <br /><label> </label>
+            </div>
+            <div class="portlet-widgets">
+                <span class="divider"></span>
+                <a data-toggle="collapse" data-parent="#accordion" href="#defaultPortlet"><i class="fa fa-chevron-down"></i></a>
+            </div>
+            <div class="clearfix"></div>
         </div>
-        <div class="clearfix"></div>
-        <br />
-    </div>
-
-    
-    <div class="form-group col-lg-12">
-        @Html.Label("Selecione o Pacote")
-        <div class="clearfix"></div>
-        @Html.DropDownListFor(model => model.crid, null, string.Empty, new { style = "width:300px; height:34px", onchange = "AtualizaCod();" })
-        @Html.Hidden("tcod")
-        <br />
-        <div class="form-group" id="detalhesCredito">
-            <div class="row pricing-circle">
-                <div class="col-md-3">
-                @{
-                    Html.RenderPartial("DetalhesCredito");
-                }
-                @* Informa os detalhes do pacote de créditos *@
+        <div id="defaultPortlet" class="panel-collapse collapse in">
+            <div class="portlet-body">
+                <div class="row" id="detalhesCredito">
+                    @{
+                        Html.RenderPartial("DetalhesCredito");
+                    }
                 </div>
             </div>
         </div>
-        <div class="form-group" style="margin-left:0%;">
-            <button type="submit" class="btn btn-default">
-                <i class="fa fa-usd"></i>
-                Comprar
-            </button>
-        </div>
-
-        <div class="col-lg-12">
+        <div class="portlet-footer">
+            <label id="tdaid"></label>
         </div>
     </div>
+</div>
 
+<div class="col-lg-1"></div>
 
+<div class="col-lg-4" style="height: 206px;">
+    <div class="tile dark-blue" style="height: 206px;">
+        <h4 class="flutuar">Saldo Atual de Créditos:</h4>
+        <br>
+        <span class="badge green">
+            <h3 class="flutuar">@ViewBag.saldoAtualAnunciante ©</h3>
+        </span>
+        <br>
+        <br>
+        <h4 class="flutuar">Data da Última Compra</h4>
+        <br>
+        <span class="badge green">
+            <p style="padding-top: 7%;">
+                @ViewBag.dtUltimaCompra
+            </p>
+        </span>
+    </div>
+</div>
+
+<div class="modal modal-flex fade" id="ComprarCreditoModal" tabindex="-1" role="dialog" aria-labelledby="flexModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="min-width: 40%;">
+        <div class="modal-content" id="conteudoCredito">
+            @{
+                Html.RenderPartial("ComprarCredito");
+            }
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
 </div>

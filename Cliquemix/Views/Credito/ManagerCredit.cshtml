@@ -1,4 +1,55 @@
-﻿<div class="row">
+﻿@using Cliquemix.Models
+@model PagedList.IPagedList<Cliquemix.Models.tbCreditoCompra>
+
+<script>
+    function ErroCriarCampanha(tipo) {
+        var desc = null;
+        if (tipo == 1) {
+            desc = "O Anunciante possui créditos pendentes para pagamento [Cod: 007.00001]";
+        }
+        else if (tipo == 2) {
+            //desc = "Não existem destaques disponíveis para a campanha [Cod: 001.00002]";
+        }
+        else if (tipo == 3) {
+            //desc = "Não foi possível cadastrar uma nova campanha. Verifique! [Cod: 001.00003]";
+        }
+
+        setTimeout(function () {
+            erro_message_demo(desc);
+        }, 1000);
+    }
+
+    function limparAviso() {
+        Messenger().hideAll();
+    }
+
+    function erro_message_demo(erro) {
+        Messenger.options = {
+            extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
+            theme: 'flat'
+        }
+        Messenger().post({
+            message: erro,
+            type: 'error',
+            showCloseButton: true
+        });
+    };
+
+    function success_message_demo() {
+        Messenger.options = {
+            extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
+            theme: 'flat'
+        }
+        Messenger().post({
+            message: 'A Campanha selecionada foi desativada com sucesso!',
+            type: 'success',
+            showCloseButton: true
+        });
+    }
+</script>
+
+
+<div class="row">
     <div class="col-lg-12">
         <div class="page-title">
             <h1>
@@ -10,336 +61,172 @@
     </div>
 </div>
 
+@if (ViewBag.ErroCompraCredito == "007.00001")
+{
+    <script type="text/javascript">ErroCriarCampanha(1);</script>
+}
+@*
+else if (ViewBag.ErroCompraCredito == "001.00004")
+{
+    <script type="text/javascript">ErroCriarCampanha(4);</script>
+}
+else if (ViewBag.ErroCompraCredito == "001.00003")
+{
+    <script type="text/javascript">ErroCriarCampanha(3);</script>
+}
+*@
+
+<div class="col-lg-12">
+    <div class="portlet portlet-dark-blue">
+        <div class="portlet-heading">
+            <div class="portlet-title">
+                <h4>
+                    <i class="fa fa-exchange fa-fw"></i> Extrato de Compras 
+                    <small>| Saldo Atual: @ViewBag.SaldoAtual ©</small>
+                </h4>
+            </div>
+            <div class="portlet-widgets">
+                <a data-toggle="collapse" data-parent="#accordion" href="#transactionsPortlet"><i class="fa fa-chevron-down"></i></a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div id="transactionsPortlet" class="panel-collapse collapse in">
+            <div class="portlet-body">
+                <div class="table-responsive dashboard-demo-table">
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Data do Movimento</th>
+                                <th class="text-center">Quantidade</th>
+                                <th class="text-center">Valor</th>
+                                <th class="text-center">Pacote</th>
+                                <th class="text-center">Promocional</th>
+                                <th class="text-center">Status</th>
+                                <th class="text-center">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="text-center">
+                                        @Html.DisplayFor(modelItem => item.dtCompra)
+                                    </td>
+                                    <td class="text-center">
+                                        @Html.DisplayFor(modelItem => item.tbCredito.qtCredito)
+                                    </td>
+                                    <td class="text-center">
+                                        @Html.DisplayFor(modelItem => item.tbCredito.vlCredito)
+                                    </td>
+                                    <td class="text-center">
+                                        @Html.DisplayFor(modelItem => item.tbCredito.tituloPacote)
+                                    </td>
+                                    <td class="text-center">
+                                        @* Verifica se o pacote de crédito estava em promoção *@
+                                        @if (item.promocional == true)
+                                        {
+                                            @Html.Label("Sim", new { @style = "font-weight: normal" })
+                                        }
+                                        else
+                                        {
+                                            @Html.Label("Não", new { @style = "font-weight: normal" })
+                                        }
+                                    </td>
+                                    <td class="text-center">
+                                        @* Verifica se o pacote de crédito estava em promoção 
+                                        //  status = 1    =>  Compra de Crédito Aguardando Pagamento
+                                        //  status = 2    =>  Compra de Crédito Cancelada
+                                        //  status = 3    =>  Compra de Crédito Pagamento Aprovado 
+                                        //  status = outro=>  Compra já Finalizada *@
+                                        @{
+                                            var s = ProcFunc.RetornarStatusAtualCompraCreditoAnunciante(item.crsid);
+                                            if (s == 1)
+                                            {
+                                                <a class="btn btn-xs btn-orange disabled"><i class="fa fa-clock-o"></i> Aguardando Pagamento</a>
+                                            }
+                                            else if (s == 2)
+                                            {
+                                                <a class="btn btn-xs btn-red disabled"><i class="fa fa-warning"></i> Compra Cancelada</a>
+                                            }
+                                            else if (s == 3)
+                                            {
+                                                <a class="btn btn-xs btn-green disabled"><i class="fa fa-arrow-circle-right"></i> Pagamento Aprovado</a>
+                                            }
+                                            else
+                                            {
+                                                <a class="btn btn-xs btn-default disabled"><i class="fa fa-exclamation-circle"></i> Compra Finalizada</a>
+                                            }
+                                        }
+                                    </td>
+                                    <td class="text-center">
+                                        @* Verifica se o pacote de crédito estava em promoção 
+                                        //  status = 1    =>  Compra de Crédito Aguardando Pagamento
+                                        //  status = 2    =>  Compra de Crédito Cancelada
+                                        //  status = 3    =>  Compra de Crédito Pagamento Aprovado 
+                                        //  status = outro=>  Compra já Finalizada *@
+                                        @{
+                                            if (s == 1)
+                                            {
+                                                <a href="#" title="Pagar" style="padding-right: 10px;"><i class="fa fa-money"></i></a>
+                                                <a href="#" title="Cancelar" style="padding-right: 10px;"><i class="fa fa-times"></i></a>
+                                            }
+                                            else
+                                            {
+                                                <a href="#" title="Visualizar" style="padding-right: 10px;"><i class="fa fa-search"></i></a>
+                                            }
+                                         }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.col-lg-12 -->
 
 <div class="row">
-    <div class="col-lg-12">
-        <div class="portlet portlet-default">
-            <div class="portlet-body">
-                <div class="page-header">
-                   
-                    <h4 class="color-theme"> <i class="fa fa-shopping-cart"></i> Compras Feitas</h4>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="portlet portlet-default">
-                            <div class="portlet-heading">
-                                @*
-                                <div class="portlet-title">
-                                    <h4>Basic Accordion Example</h4>
-                                </div>*@
-
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="portlet-body">
-                                <div class="panel-group" id="accordion">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title">
-                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" style="padding-right:83%; padding-top:1%; padding-bottom:1%;">
-                                                    <label class="color-theme" style="font-size:small;">
-                                                        <i class="fa fa-calendar"></i>&nbsp Julho - Segunda, 14/06/2014 
-                                                    </label>
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapseOne" class="panel-collapse collapse">
-                                            <div class="panel-body">
-
-                                                <ul class="timeline">
-                                                    <li>
-                                                        <div class="timeline-badge"><i class="fa fa-circle-o"></i></div>
-                                                        <div class="timeline-panel">
-                                                            <div class="timeline-heading">
-                                                                <h4 class="timeline-title">Pedido ID - #PC0000120140614</h4>
-                                                                <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 22:00</small></p>
-                                                            </div>
-                                                            <div class="timeline-body">
-                                                                <p>Valor: R$ 2000.00</p>
-                                                                <p>Creditos: 1000</p>
-                                                                <p>Forma de pagamento: Boleto</p>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-
-                                                    <li class="timeline-inverted">
-                                                        <div class="timeline-badge warning"><i class="glyphicon glyphicon-refresh"></i></div>
-                                                        <div class="timeline-panel">
-                                                            <div class="timeline-heading">
-                                                                <h4 class="timeline-title">Processando - Pedido ID - #PC0000120140614</h4>
-                                                                <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 22:02</small></p>
-                                                            </div>
-                                                            <div class="timeline-body">
-                                                                <p>Valor: R$ 2000.00</p>
-                                                                <p>Creditos: 1000</p>
-                                                                <p>Forma de pagamento: Boleto</p>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="timeline-badge success"><i class="glyphicon glyphicon-ok"></i></div>
-                                                        <div class="timeline-panel">
-                                                            <div class="timeline-heading">
-                                                                <h4 class="timeline-title">Confirmação - Pedido ID - #PC0000120140614</h4>
-                                                                <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 23:10</small></p>
-                                                            </div>
-                                                            <div class="timeline-body">
-                                                                <p>Valor: R$ 2000.00</p>
-                                                                <p>Creditos: 1000</p>
-                                                                <p>Forma de pagamento: Boleto</p>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title">
-                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" style="padding-right:83%; padding-top:1%; padding-bottom:1%;">
-                                                    <label class="color-theme" style="font-size:small;">
-                                                    <i class="fa fa-calendar"></i>&nbsp Julho - Terça, 15/06/2014 
-                                                    </label>
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapseTwo" class="panel-collapse collapse">
-                                            <div class="panel-body">
-                                                <ul class="timeline">
-                                                    <li>
-                                                        <div class="timeline-badge"><i class="fa fa-circle-o"></i></div>
-                                                        <div class="timeline-panel">
-                                                            <div class="timeline-heading">
-                                                                <h4 class="timeline-title">Pedido ID - #PC0000120140615</h4>
-                                                                <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 07:30</small></p>
-                                                            </div>
-                                                            <div class="timeline-body">
-                                                                <p>Valor: R$ 2000.00</p>
-                                                                <p>Creditos: 1000</p>
-                                                                <p>Forma de pagamento: Boleto</p>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-
-                                                    <li class="timeline-inverted">
-                                                        <div class="timeline-badge warning"><i class="glyphicon glyphicon-refresh"></i></div>
-                                                        <div class="timeline-panel">
-                                                            <div class="timeline-heading">
-                                                                <h4 class="timeline-title">Processando - Pedido ID - #PC0000120140615</h4>
-                                                                <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 08:05</small></p>
-                                                            </div>
-                                                            <div class="timeline-body">
-                                                                <p>Valor: R$ 2000.00</p>
-                                                                <p>Creditos: 1000</p>
-                                                                <p>Forma de pagamento: Boleto</p>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-
-                                                    <li>
-                                                        <div class="timeline-badge danger"><i class="fa fa-times"></i></div>
-                                                        <div class="timeline-panel">
-                                                            <div class="timeline-heading">
-                                                                <h4 class="timeline-title">Cancelamento - Pedido ID - #PC0000120140615</h4>
-                                                                <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 08:10</small></p>
-                                                            </div>
-                                                            <div class="timeline-body">
-                                                                <p>Valor: R$ 2000.00</p>
-                                                                <p>Creditos: 1000</p>
-                                                                <p>Forma de pagamento: Boleto</p>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                </ul>   
-                                            </div>
-                                        </div>
-                                    </div>                                
-                                </div>
-                            </div>
-                            <!-- /.portlet-body -->
-                        </div>
-                        <!-- /.portlet -->
-                    </div>
-                    <!-- /.col-lg-12 -->
-                </div>
-            </div>
-        </div>
+    <div class="text-center">
+        <ul class="pagination">
+            @if (Model.HasPreviousPage)
+            {
+                <li>
+                    @Html.ActionLink("<<", "ManagerCredit", new { pagina = 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+                    @Html.ActionLink("<", "ManagerCredit", new { pagina = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+                </li>
+            }
+            else
+            {
+                <li class="disabled">
+                    <a><<</a>
+                    <a><</a>
+                </li>
+            }
+            <li class="active">
+                <a>@Model.PageNumber</a>
+            </li>
+            <li class="disabled">
+                <a>...</a>
+            </li>
+            <li class="disabled">
+                <a>@Model.PageCount</a>
+            </li>
+            @if (Model.HasNextPage)
+            {
+                <li>
+                    @Html.ActionLink(">", "ManagerCredit", new { title = "Avançar", pagina = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+                    @Html.ActionLink(">>", "ManagerCredit", new { pagina = Model.PageCount, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+                </li>
+            }
+            else
+            {
+                <li class="disabled">
+                    <a>></a>
+                    <a>>></a>
+                </li>
+            }
+        </ul>
     </div>
 </div>
-
-
-
-
-
-
-
-@* SEM O ARCODION*@
-
-@*
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="portlet portlet-default">
-                <div class="portlet-body">
-                    <div class="page-header">
-                        <h2 id="timeline">Timeline</h2>
-                    </div>
-
-                    <label class="color-theme"><i class="fa fa-calendar"></i> Segunda, 14/06/2014 </label>
-
-                    <ul class="timeline">
-                        <li>
-                            <div class="timeline-badge"><i class="fa fa-circle-o"></i></div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4 class="timeline-title">Pedido ID - #PC0000120140614</h4>
-                                    <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 22:00</small></p>
-                                </div>
-                                <div class="timeline-body">
-                                    <p>Valor: R$ 2000.00</p>
-                                    <p>Creditos: 1000</p>
-                                    <p>Forma de pagamento: Boleto</p>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="timeline-inverted">
-                            <div class="timeline-badge warning"><i class="glyphicon glyphicon-refresh"></i></div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4 class="timeline-title">Processando - Pedido ID - #PC0000120140614</h4>
-                                    <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 22:02</small></p>
-                                </div>
-                                <div class="timeline-body">
-                                    <p>Valor: R$ 2000.00</p>
-                                    <p>Creditos: 1000</p>
-                                    <p>Forma de pagamento: Boleto</p>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="timeline-badge success"><i class="glyphicon glyphicon-ok"></i></div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4 class="timeline-title">Confirmação - Pedido ID - #PC0000120140614</h4>
-                                    <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 23:10</small></p>
-                                </div>
-                                <div class="timeline-body">
-                                    <p>Valor: R$ 2000.00</p>
-                                    <p>Creditos: 1000</p>
-                                    <p>Forma de pagamento: Boleto</p>
-                                </div>
-                            </div>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-*@
-
-
-
-
-
-@*  IDEIA DO TIMELINE
-
-<div class="container">
-    
-    <ul class="timeline">
-        <li>
-            <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
-            <div class="timeline-panel">
-                <div class="timeline-heading">
-                    <h4 class="timeline-title">Mussum ipsum cacilds</h4>
-                    <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago via Twitter</small></p>
-                </div>
-                <div class="timeline-body">
-                    <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
-                </div>
-            </div>
-        </li>
-        <li class="timeline-inverted">
-            <div class="timeline-badge warning"><i class="glyphicon glyphicon-credit-card"></i></div>
-            <div class="timeline-panel">
-                <div class="timeline-heading">
-                    <h4 class="timeline-title">Mussum ipsum cacilds</h4>
-                </div>
-                <div class="timeline-body">
-                    <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
-                    <p>Suco de cevadiss, é um leite divinis, qui tem lupuliz, matis, aguis e fermentis. Interagi no mé, cursus quis, vehicula ac nisi. Aenean vel dui dui. Nullam leo erat, aliquet quis tempus a, posuere ut mi. Ut scelerisque neque et turpis posuere pulvinar pellentesque nibh ullamcorper. Pharetra in mattis molestie, volutpat elementum justo. Aenean ut ante turpis. Pellentesque laoreet mé vel lectus scelerisque interdum cursus velit auctor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ac mauris lectus, non scelerisque augue. Aenean justo massa.</p>
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="timeline-badge danger"><i class="glyphicon glyphicon-credit-card"></i></div>
-            <div class="timeline-panel">
-                <div class="timeline-heading">
-                    <h4 class="timeline-title">Mussum ipsum cacilds</h4>
-                </div>
-                <div class="timeline-body">
-                    <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
-                </div>
-            </div>
-        </li>
-        <li class="timeline-inverted">
-            <div class="timeline-panel">
-                <div class="timeline-heading">
-                    <h4 class="timeline-title">Mussum ipsum cacilds</h4>
-                </div>
-                <div class="timeline-body">
-                    <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="timeline-badge info"><i class="glyphicon glyphicon-floppy-disk"></i></div>
-            <div class="timeline-panel">
-                <div class="timeline-heading">
-                    <h4 class="timeline-title">Mussum ipsum cacilds</h4>
-                </div>
-                <div class="timeline-body">
-                    <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
-                    <hr>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
-                            <i class="glyphicon glyphicon-cog"></i> <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="timeline-panel">
-                <div class="timeline-heading">
-                    <h4 class="timeline-title">Mussum ipsum cacilds</h4>
-                </div>
-                <div class="timeline-body">
-                    <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
-                </div>
-            </div>
-        </li>
-        <li class="timeline-inverted">
-            <div class="timeline-badge success"><i class="glyphicon glyphicon-thumbs-up"></i></div>
-            <div class="timeline-panel">
-                <div class="timeline-heading">
-                    <h4 class="timeline-title">Mussum ipsum cacilds</h4>
-                </div>
-                <div class="timeline-body">
-                    <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
-                </div>
-            </div>
-        </li>
-    </ul>
-</div>
-*@

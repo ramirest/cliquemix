@@ -1,0 +1,201 @@
+﻿<div class="row">
+    <div class="col-lg-12">
+        <div class="page-title">
+            <h1>
+                Relatório
+                <small>Campanhas</small>
+            </h1>
+            @RenderPage("~/Views/Breadcrumbs/Breadcrumbs-Anunciante-Relatorio-Campanhas.cshtml")
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="portlet portlet-default">
+            <div class="portlet-heading">
+                <div class="portlet-title">
+                    <h4 class="flutuar">
+                        <i class="fa fa-users fa-fw"></i> Relatório de Campanhas
+                    </h4>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="portlet-body">
+                <div class="row">
+
+
+                    <div class="form-group col-lg-6">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="portlet portlet-default">
+                                            <div class="portlet-body" style="min-height:326px;">
+                                                <h4 class="color-theme">Opções:</h4>
+
+                                                <div class="radio">
+                                                    <label style="font-size: 14px; font-weight: normal">
+                                                        <input type="radio" name="optRelAnuncianteCampanhas" id="optRelAnuncianteCampanhasParam1" value="" />
+                                                        Todas as Campanhas
+                                                    </label>
+                                                </div>
+
+                                                <div class="radio">
+                                                    <label style="font-size: 14px; font-weight: normal">
+                                                        <input type="radio" name="optRelAnuncianteCampanhas" id="optRelAnuncianteCampanhasParam2" value="" />
+                                                        Campanhas Ativas
+                                                    </label>
+                                                </div>
+
+                                                <div class="radio">
+                                                    <label style="font-size: 14px; font-weight: normal">
+                                                        <input type="radio" name="optRelAnuncianteCampanhas" id="optRelAnuncianteCampanhasParam3" value="" />
+                                                        Campanhas Finalizadas
+                                                    </label>
+                                                </div>
+
+                                                <div class="radio">
+                                                    <label style="font-size: 14px; font-weight: normal">
+                                                        <input type="radio" name="optRelAnuncianteCampanhas" id="optRelAnuncianteCampanhasParam4" value="" />
+                                                        Campanhas Programadas
+                                                    </label>
+                                                </div>
+
+                                                <div class="radio">
+                                                    <label style="font-size: 14px; font-weight: normal">
+                                                        <input type="radio" name="optRelAnuncianteCampanhas" id="optRelAnuncianteCampanhasParam5" value="" />
+                                                        Campanhas Canceladas
+                                                    </label>
+                                                </div>
+
+                                                <div class="radio">
+                                                    <label style="font-size: 14px; font-weight: normal">
+                                                        <input type="radio" name="optRelAnuncianteCampanhas" id="optRelAnuncianteCampanhasParam6" value="" />
+                                                        Campanhas por Região
+                                                    </label>
+                                                </div>
+
+                                                <div class="radio">
+                                                    <label style="font-size: 14px; font-weight: normal">
+                                                        <input type="radio" name="optRelAnuncianteCampanhas" id="optRelAnuncianteCampanhasParam7" value="" />
+                                                        Campanhas por Destaque
+                                                    </label>
+                                                </div>
+
+                                                <div class="radio">
+                                                    <label style="font-size: 14px; font-weight: normal">
+                                                        <input type="radio" name="optRelAnuncianteCampanhas" id="optRelAnuncianteCampanhasParam8" value="" />
+                                                        Campanhas mais clicadas
+                                                    </label>
+                                                </div>
+
+                                                <div class="radio">
+                                                    <label style="font-size: 14px; font-weight: normal">
+                                                        <input type="radio" name="optRelAnuncianteCampanhas" id="optRelAnuncianteCampanhasParam9" value="" />
+                                                        Campanhas menos clicadas
+                                                    </label>
+                                                </div>
+
+                                                <div class="radio">
+                                                    <label style="font-size: 14px; font-weight: normal">
+                                                        <input type="radio" name="optRelAnuncianteCampanhas" id="optRelAnuncianteCampanhasParam10" value="" />
+                                                        Campanhas por ramo de atividade
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <div class="row">
+
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="portlet portlet-default">
+                                            <div class="portlet-body" style="min-height:220px;">
+                                                <h4 class="color-theme">Data:</h4>
+                                                <div class="form-group col-lg-12">
+                                                    <label>Data Inicial</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-default add-on " type="button">
+                                                                <i class="fa fa-calendar"></i>
+                                                            </button>
+                                                        </span>
+                                                        <input type="text" class="form-control" maxlength="10"
+                                                               alt="dtInicialRelAnuncianteCampanha" required=""
+                                                               id="dtInicialRelAnuncianteCampanha" name="dtInicialRelAnuncianteCampanha"
+                                                               onblur="ValidaData(this);" onkeypress="MascaraData(this);" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-12">
+                                                    <label>Data Final</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-default add-on " type="button">
+                                                                <i class="fa fa-calendar"></i>
+                                                            </button>
+                                                        </span>
+                                                        <input type="text" class="form-control" maxlength="10"
+                                                               alt="dtFinalRelAnuncianteCampanha" required=""
+                                                               id="dtFinalRelAnuncianteCampanha" name="dtFinalRelAnuncianteCampanha"
+                                                               onblur="ValidaData(this);" onkeypress="MascaraData(this);" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="portlet portlet-default">
+                                            <div class="portlet-body" style="min-height:220px;">
+                                                <h4 class="color-theme">Tipo de Relatório:</h4>
+                                                <div class="radio col-lg-12">
+                                                    <label style="font-size: 16px; font-weight: normal">
+                                                        <input type="radio" name="optRelAnuncianteCampanhaTipo" id="optRelAnuncianteCampanhaTipo1" value="" />
+                                                        Tabela
+                                                    </label>
+                                                </div>
+                                                <div class="radio col-lg-12">
+                                                    <label style="font-size: 16px; font-weight: normal">
+                                                        <input type="radio" name="optRelAnuncianteCampanhaTipo" id="optRelAnuncianteCampanhaTipo2" value="" />
+                                                        Gráfico
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <hr>
+                                        <div class="btn-group btn-group-justified">
+                                            <a class="btn btn-default" role="button">Voltar</a>
+                                            <a class="btn btn-green" role="button">Visualizar</a>
+                                            <a class="btn btn-default" role="button">PDF</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

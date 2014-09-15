@@ -32,24 +32,34 @@ namespace Cliquemix.Controllers
             {
                 if (model.UserIsValid(model.Username, model.Password))
                 {
-                    iResult = 1;
-                    var expira = 30; //Expiração da Sessão
-
-                    var _authTicket = new FormsAuthenticationTicket(iResult, model.Username + "-" + Convert.ToString(1),
-                        DateTime.Now, DateTime.Now.AddMinutes(expira), model.Remember, model.Username);
-                    var _encryptTicket = FormsAuthentication.Encrypt(_authTicket);
-                    var _authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, _encryptTicket);                    
-                    Response.Cookies.Add(_authCookie);
-                    Session.Add(model.Username, iResult.ToString());
-                    FormsAuthentication.RedirectFromLoginPage(_authTicket.UserData, model.Remember, _authCookie.Path);
-                    if (Url.IsLocalUrl(returnUrl))
+                    if (model.UsuarioAtivo(model.Username))
                     {
-                        return Redirect(returnUrl);
+                        iResult = 1;
+                        var expira = 30; //Expiração da Sessão
+
+                        var _authTicket = new FormsAuthenticationTicket(iResult,
+                            model.Username + "-" + Convert.ToString(1),
+                            DateTime.Now, DateTime.Now.AddMinutes(expira), model.Remember, model.Username);
+                        var _encryptTicket = FormsAuthentication.Encrypt(_authTicket);
+                        var _authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, _encryptTicket);
+                        Response.Cookies.Add(_authCookie);
+                        Session.Add(model.Username, iResult.ToString());
+                        FormsAuthentication.RedirectFromLoginPage(_authTicket.UserData, model.Remember, _authCookie.Path);
+                        if (Url.IsLocalUrl(returnUrl))
+                        {
+                            return Redirect(returnUrl);
+                        }
+                        else
+                        {
+                            LoginModel._salvarLog(model.CodUsuario, expira, iResult, Session.SessionID);
+                            return RedirectToAction("PrincipalAnunciante", "PrincipalAnunciante");
+                        }
                     }
                     else
                     {
-                        LoginModel._salvarLog(model.CodUsuario, expira, iResult, Session.SessionID);
-                        return RedirectToAction("PrincipalAnunciante", "PrincipalAnunciante");
+                        model.Username = string.Empty;
+                        model.Password = string.Empty;
+                        ModelState.AddModelError("", "Usuário está inativo no sistema. Entre em contato com os administradores [Cod 003.00001].");
                     }
                 }
                 else

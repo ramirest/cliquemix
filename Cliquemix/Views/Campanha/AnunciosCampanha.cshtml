@@ -48,66 +48,79 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th class="text-center">ID</th>
-                    <th class="text-center">Título</th>
-                    <th class="text-center">Categoria</th>
-                    <th class="text-center">Video</th>
-                    <th class="text-center">Imagem</th>
-                    <th class="text-center">Data</th>
-                    <th class="text-center">Ações</th>
+                    @*@if (ViewBag.patrocinador == "0")
+                    {*@
+                        <th class="text-center">ID</th>
+                        <th class="text-center">Título</th>
+                        <th class="text-center">Categoria</th>
+                        <th class="text-center">Video</th>
+                        <th class="text-center">Imagem</th>
+                        <th class="text-center">Ações</th>
+                        @*
+                    }
+                    else
+                    {
+                        <th class="text-center">ID</th>
+                        <th class="text-center">Título</th>
+                        <th class="text-center">Categoria</th>
+                        <th class="text-center">Video</th>
+                        <th class="text-center">Imagem</th>
+                        <th class="text-center">Consumidor</th>
+                        <th class="text-center">Ações</th>
+                    }*@
                 </tr>
             </thead>
+
+            <tbody>
             @try
             {
+@*
+                if (ViewBag.patrocinador == "0") //Anunciante Comum
+                {*@
                 foreach (var item in Model)
                 {
-                    <tbody>
-                        <tr>
-                            <td class="text-center">
-                                @Html.DisplayFor(modelItem => item.aid) @* Código do Anúncio *@
-                            </td>
-                            <td class="text-center">
-                                @Html.DisplayFor(modelItem => item.tbAnuncio.tituloAnuncio) @* Título do Anúncio *@
-                            </td>
-                            <td class="text-center">
-                                @Html.DisplayFor(modelItem => item.tbAnuncio.tbAnuncioCategoria.dsCategoria) @* Ramo de Atividade *@
-                            </td>
-                            <td class="text-center">
-                                @if (item.tbAnuncio.videoAnuncio == null) // Anúncio tem Vídeo ?
-                                {
-                                    @Html.Label("Não")
-                                }
-                                else
-                                {
-                                    @Html.Label("Sim")
-                                }
+                    <tr>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.aid) @* Código do Anúncio *@
+                        </td>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.tbAnuncio.tituloAnuncio) @* Título do Anúncio *@
+                        </td>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.tbAnuncio.tbAnuncioCategoria.dsCategoria) @* Ramo de Atividade *@
+                        </td>
+                        <td class="text-center">
+                            @if (item.tbAnuncio.videoAnuncio == null) // Anúncio tem Vídeo ?
+                            {
+                                @Html.Label("Não")
+                            }
+                            else
+                            {
+                                @Html.Label("Sim")
+                            }
 
-                            </td>
-                            <td class="text-center">
-                                @if (item.tbAnuncio.tbAnuncioImg.Any()) //Anúncio tem Imagem?
-                                {
-                                    @Html.Label("Sim")
-                                }
-                                else
-                                {
-                                    @Html.Label("Não")
-                                }
+                        </td>
+                        <td class="text-center">
+                            @if (item.tbAnuncio.tbAnuncioImg.Any()) //Anúncio tem Imagem?
+                            {
+                                @Html.Label("Sim")
+                            }
+                            else
+                            {
+                                @Html.Label("Não")
+                            }
 
-                            </td>
-                            <td class="text-center">
-                                @Html.DisplayFor(modelItem => item.dtMovimento) @* Data de Vínculo do Anúncio à Campanha *@
-                            </td>
+                        </td>
 
-                            <td class="text-center">
-                                <a style="color: inherit" href="#excluirModal" data-toggle="modal" data-target="#excluirModal" data-placement="top" title="Excluir">
-                                    <i class="fa fa-trash-o"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
+                        <td class="text-center">
+                            <a style="color: inherit" href="#excluirModal" data-toggle="modal" data-target="#excluirModal" data-placement="top" title="Excluir">
+                                <i class="fa fa-trash-o"></i>
+                            </a>
+                        </td>
+                    </tr>
                 }
 
-                <div class="modal modal-flex fade center-block text-center" id="excluirModal" tabindex="-1" role="dialog" 
+                <div class="modal modal-flex fade center-block text-center" id="excluirModal" tabindex="-1" role="dialog"
                      aria-labelledby="flexModalLabel" aria-hidden="true" style="display: none;">
                     <div class="modal-dialog">
                         <div class="modal-content" style="width: 400px;">
@@ -126,7 +139,7 @@
                                     Cancelar
                                 </button>
                                 <button type="button" id="btnAnunciosCampanhaExcluirAnuncio" name="btnAnunciosCampanhaExcluirAnuncio"
-                                        class="btn btn-green" onclick="excluirAnuncio();">
+                                        class="btn btn-green" onclick=" excluirAnuncio(); ">
                                     <strong>Excluir Anúncio</strong>
                                 </button>
                             </div>
@@ -134,8 +147,9 @@
                         <!-- /.modal-content -->
                     </div>
                     <!-- /.modal-dialog -->
-                </div>               
+                </div>
             }
+
             catch (Exception)
             {
                 <br />
@@ -146,6 +160,7 @@
                 <div class="clearfix"></div>
                 <div class="clearfix"></div>
             }
+            </tbody>
         </table>
     </div>
 </div>

@@ -14,12 +14,22 @@ namespace Cliquemix.Models
     
     public partial class tbDestaqueAnunciante
     {
+        public tbDestaqueAnunciante()
+        {
+            this.tbCampanha = new HashSet<tbCampanha>();
+            this.tbCreditoDesconta = new HashSet<tbCreditoDesconta>();
+        }
+    
         public int daid { get; set; }
         public Nullable<int> did { get; set; }
         public Nullable<int> pid { get; set; }
         public Nullable<System.DateTime> dtMovimento { get; set; }
+        public Nullable<int> dasid { get; set; }
     
         public virtual tbAnunciante tbAnunciante { get; set; }
+        public virtual ICollection<tbCampanha> tbCampanha { get; set; }
+        public virtual ICollection<tbCreditoDesconta> tbCreditoDesconta { get; set; }
         public virtual tbDestaque tbDestaque { get; set; }
+        public virtual tbDestaqueAnuncianteStatus tbDestaqueAnuncianteStatus { get; set; }
     }
 }
