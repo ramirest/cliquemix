@@ -1209,6 +1209,12 @@
     <Content Include="Views\RelatorioAnunciante\RelAnuncioVisualizarCliques.cshtml" />
     <Content Include="Views\RelatorioAnunciante\RelAnuncioVisualizarTop10Mais.cshtml" />
     <Content Include="Views\RelatorioAnunciante\RelAnuncioVisualizarTop10Menos.cshtml" />
+    <Content Include="Views\Consumidor\Create.cshtml" />
+    <Content Include="Views\Consumidor\Delete.cshtml" />
+    <Content Include="Views\Consumidor\Details.cshtml" />
+    <Content Include="Views\Consumidor\Edit.cshtml" />
+    <Content Include="Views\Consumidor\Index.cshtml" />
+    <Content Include="Views\Credito\AcceptBuyCredit.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
