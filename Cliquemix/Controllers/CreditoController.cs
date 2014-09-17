@@ -257,5 +257,10 @@ namespace Cliquemix.Controllers
             return RedirectToAction("BuyCredit");
         }
 
+        public ActionResult AcceptBuyCredit()
+        {
+            return View();
+        }
+
 	}
 }
