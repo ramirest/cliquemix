@@ -518,7 +518,7 @@
     <Property Name="cid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="uid" Type="Int32" />
     <Property Name="leuTermo" Type="Int32" />
-    <Property Name="tid" Type="Int32" Nullable="false" />
+    <Property Name="tid" Type="Int32" />
     <Property Name="conid" Type="Int32" Nullable="false" />
     <Property Name="nomeCompleto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="nomeAbreviado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -991,6 +991,182 @@
     <NavigationProperty Name="tbConfigPadrao" Relationship="Self.tpua_tbConfigPadrao_tbUsersTipo_fk" FromRole="tbUsersTipo" ToRole="tbConfigPadrao" />
     <NavigationProperty Name="tbConfigPadrao1" Relationship="Self.tpuc_tbConfigPadrao_tbUsersTipo_fk" FromRole="tbUsersTipo" ToRole="tbConfigPadrao" />
     <NavigationProperty Name="tbUsers" Relationship="Self.utid_tbUsers_tbUsersTipo_fk" FromRole="tbUsersTipo" ToRole="tbUsers" />
+  </EntityType>
+  <EntityType Name="VwAnunciosCriadosAnunciante">
+    <Key>
+      <PropertyRef Name="CodAnuncio" />
+      <PropertyRef Name="TituloAnuncio" />
+    </Key>
+    <Property Name="CodAnuncio" Type="Int32" Nullable="false" />
+    <Property Name="TituloAnuncio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StatusAnuncio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CodAnunciante" Type="Int32" />
+    <Property Name="DescCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DtCriacao" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="VwAnunciosDisponiveis">
+    <Key>
+      <PropertyRef Name="CodAnuncio" />
+      <PropertyRef Name="TituloAnuncio" />
+    </Key>
+    <Property Name="CodAnuncio" Type="Int32" Nullable="false" />
+    <Property Name="TituloAnuncio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StatusAnuncio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CodAnunciante" Type="Int32" />
+    <Property Name="DescCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DtCriacao" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="VwAnunciosEmCampanha">
+    <Key>
+      <PropertyRef Name="CodAnuncioCampanha" />
+      <PropertyRef Name="CodAnuncio" />
+      <PropertyRef Name="TituloAnuncio" />
+      <PropertyRef Name="CodCampanha" />
+    </Key>
+    <Property Name="CodAnuncioCampanha" Type="Int32" Nullable="false" />
+    <Property Name="CodAnuncio" Type="Int32" Nullable="false" />
+    <Property Name="TituloAnuncio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StatusAnuncio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CodAnunciante" Type="Int32" />
+    <Property Name="DescCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DtCriacao" Type="DateTime" Precision="3" />
+    <Property Name="CodCampanha" Type="Int32" Nullable="false" />
+    <Property Name="DescCampanha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="VwAnunciosExcluidos">
+    <Key>
+      <PropertyRef Name="CodAnuncio" />
+      <PropertyRef Name="TituloAnuncio" />
+    </Key>
+    <Property Name="CodAnuncio" Type="Int32" Nullable="false" />
+    <Property Name="TituloAnuncio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StatusAnuncio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CodAnunciante" Type="Int32" />
+    <Property Name="DescCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DtCriacao" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="VwCampanhasAtivasAnunciante">
+    <Key>
+      <PropertyRef Name="CodCampanha" />
+      <PropertyRef Name="TituloCampanha" />
+      <PropertyRef Name="DtInicio" />
+      <PropertyRef Name="DtTermino" />
+    </Key>
+    <Property Name="CodCampanha" Type="Int32" Nullable="false" />
+    <Property Name="TituloCampanha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StatusCampanha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CodAnunciante" Type="Int32" />
+    <Property Name="DtInicio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DtTermino" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="VwRelatorioAnuncianteAnuncios_Cliques">
+    <Key>
+      <PropertyRef Name="aid" />
+      <PropertyRef Name="tituloAnuncio" />
+      <PropertyRef Name="dtInicio" />
+      <PropertyRef Name="dtTermino" />
+    </Key>
+    <Property Name="aid" Type="Int32" Nullable="false" />
+    <Property Name="tituloAnuncio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cid" Type="Int32" />
+    <Property Name="dtInicio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="dtTermino" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="contCliquesAtual" Type="Int32" />
+    <Property Name="contCliquesFinal" Type="Int32" />
+    <Property Name="pid" Type="Int32" />
+  </EntityType>
+  <EntityType Name="VwRelatorioAnuncianteAnuncios_Disponiveis">
+    <Key>
+      <PropertyRef Name="aid" />
+      <PropertyRef Name="tituloAnuncio" />
+      <PropertyRef Name="VIDEO" />
+      <PropertyRef Name="IMAGEM" />
+    </Key>
+    <Property Name="aid" Type="Int32" Nullable="false" />
+    <Property Name="tituloAnuncio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dsCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dsStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="VIDEO" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IMAGEM" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dtCriacao" Type="DateTime" Precision="3" />
+    <Property Name="pid" Type="Int32" />
+  </EntityType>
+  <EntityType Name="VwRelatorioAnuncianteAnuncios_EmCampanha">
+    <Key>
+      <PropertyRef Name="aid" />
+      <PropertyRef Name="tituloAnuncio" />
+      <PropertyRef Name="dtInicio" />
+      <PropertyRef Name="dtTermino" />
+    </Key>
+    <Property Name="aid" Type="Int32" Nullable="false" />
+    <Property Name="tituloAnuncio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dsCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cid" Type="Int32" />
+    <Property Name="dtInicio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="dtTermino" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="pid" Type="Int32" />
+  </EntityType>
+  <EntityType Name="VwRelatorioAnuncianteAnuncios_Excluidos">
+    <Key>
+      <PropertyRef Name="aid" />
+      <PropertyRef Name="tituloAnuncio" />
+      <PropertyRef Name="VIDEO" />
+      <PropertyRef Name="IMAGEM" />
+    </Key>
+    <Property Name="aid" Type="Int32" Nullable="false" />
+    <Property Name="tituloAnuncio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dsCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dsStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="VIDEO" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IMAGEM" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dtCriacao" Type="DateTime" Precision="3" />
+    <Property Name="pid" Type="Int32" />
+  </EntityType>
+  <EntityType Name="VwRelatorioAnuncianteAnuncios_Todos">
+    <Key>
+      <PropertyRef Name="aid" />
+      <PropertyRef Name="tituloAnuncio" />
+      <PropertyRef Name="VIDEO" />
+      <PropertyRef Name="IMAGEM" />
+    </Key>
+    <Property Name="aid" Type="Int32" Nullable="false" />
+    <Property Name="tituloAnuncio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dsCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dsStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="VIDEO" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IMAGEM" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dtCriacao" Type="DateTime" Precision="3" />
+    <Property Name="pid" Type="Int32" />
+  </EntityType>
+  <EntityType Name="VwRelatorioAnuncianteAnuncios_Top10Mais">
+    <Key>
+      <PropertyRef Name="aid" />
+      <PropertyRef Name="tituloAnuncio" />
+      <PropertyRef Name="dtInicio" />
+      <PropertyRef Name="dtTermino" />
+    </Key>
+    <Property Name="aid" Type="Int32" Nullable="false" />
+    <Property Name="tituloAnuncio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cid" Type="Int32" />
+    <Property Name="dtInicio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="dtTermino" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="contCliquesAtual" Type="Int32" />
+    <Property Name="pid" Type="Int32" />
+  </EntityType>
+  <EntityType Name="VwRelatorioAnuncianteAnuncios_Top10Menos">
+    <Key>
+      <PropertyRef Name="aid" />
+      <PropertyRef Name="tituloAnuncio" />
+      <PropertyRef Name="dtInicio" />
+      <PropertyRef Name="dtTermino" />
+    </Key>
+    <Property Name="aid" Type="Int32" Nullable="false" />
+    <Property Name="tituloAnuncio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cid" Type="Int32" />
+    <Property Name="dtInicio" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="dtTermino" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="contCliquesAtual" Type="Int32" />
+    <Property Name="pid" Type="Int32" />
   </EntityType>
   <Association Name="ansid_tbAnunciante_tbAnuncianteStatus_fk">
     <End Role="tbAnuncianteStatus" Type="Self.tbAnuncianteStatus" Multiplicity="0..1" />
@@ -2073,7 +2249,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="tid_tbConsumidor_tbTos_fk">
-    <End Role="tbTos" Type="Self.tbTos" Multiplicity="1" />
+    <End Role="tbTos" Type="Self.tbTos" Multiplicity="0..1" />
     <End Role="tbConsumidor" Type="Self.tbConsumidor" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tbTos">
@@ -2444,7 +2620,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="cliquemixEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="tbAnunciante" EntityType="Self.tbAnunciante" />
     <EntitySet Name="tbAnuncianteEndereco" EntityType="Self.tbAnuncianteEndereco" />
     <EntitySet Name="tbAnunciantePatrocinador" EntityType="Self.tbAnunciantePatrocinador" />
@@ -2514,6 +2690,18 @@
     <EntitySet Name="tbUsersLogAcesso" EntityType="Self.tbUsersLogAcesso" />
     <EntitySet Name="tbUsersPermissao" EntityType="Self.tbUsersPermissao" />
     <EntitySet Name="tbUsersTipo" EntityType="Self.tbUsersTipo" />
+    <EntitySet Name="VwAnunciosCriadosAnunciante" EntityType="Self.VwAnunciosCriadosAnunciante" />
+    <EntitySet Name="VwAnunciosDisponiveis" EntityType="Self.VwAnunciosDisponiveis" />
+    <EntitySet Name="VwAnunciosEmCampanha" EntityType="Self.VwAnunciosEmCampanha" />
+    <EntitySet Name="VwAnunciosExcluidos" EntityType="Self.VwAnunciosExcluidos" />
+    <EntitySet Name="VwCampanhasAtivasAnunciante" EntityType="Self.VwCampanhasAtivasAnunciante" />
+    <EntitySet Name="VwRelatorioAnuncianteAnuncios_Cliques" EntityType="Self.VwRelatorioAnuncianteAnuncios_Cliques" />
+    <EntitySet Name="VwRelatorioAnuncianteAnuncios_Disponiveis" EntityType="Self.VwRelatorioAnuncianteAnuncios_Disponiveis" />
+    <EntitySet Name="VwRelatorioAnuncianteAnuncios_EmCampanha" EntityType="Self.VwRelatorioAnuncianteAnuncios_EmCampanha" />
+    <EntitySet Name="VwRelatorioAnuncianteAnuncios_Excluidos" EntityType="Self.VwRelatorioAnuncianteAnuncios_Excluidos" />
+    <EntitySet Name="VwRelatorioAnuncianteAnuncios_Todos" EntityType="Self.VwRelatorioAnuncianteAnuncios_Todos" />
+    <EntitySet Name="VwRelatorioAnuncianteAnuncios_Top10Mais" EntityType="Self.VwRelatorioAnuncianteAnuncios_Top10Mais" />
+    <EntitySet Name="VwRelatorioAnuncianteAnuncios_Top10Menos" EntityType="Self.VwRelatorioAnuncianteAnuncios_Top10Menos" />
     <AssociationSet Name="ansid_tbAnunciante_tbAnuncianteStatus_fk" Association="Self.ansid_tbAnunciante_tbAnuncianteStatus_fk">
       <End Role="tbAnuncianteStatus" EntitySet="tbAnuncianteStatus" />
       <End Role="tbAnunciante" EntitySet="tbAnunciante" />
@@ -2998,193 +3186,5 @@
       <End Role="tbUsersTipo" EntitySet="tbUsersTipo" />
       <End Role="tbUsers" EntitySet="tbUsers" />
     </AssociationSet>
-    <EntitySet Name="VwAnunciosCriadosAnunciante" EntityType="cliquemixModel.VwAnunciosCriadosAnunciante" />
-    <EntitySet Name="VwAnunciosDisponiveis" EntityType="cliquemixModel.VwAnunciosDisponiveis" />
-    <EntitySet Name="VwAnunciosEmCampanha" EntityType="cliquemixModel.VwAnunciosEmCampanha" />
-    <EntitySet Name="VwAnunciosExcluidos" EntityType="cliquemixModel.VwAnunciosExcluidos" />
-    <EntitySet Name="VwCampanhasAtivasAnunciante" EntityType="cliquemixModel.VwCampanhasAtivasAnunciante" />
-    <EntitySet Name="VwRelatorioAnuncianteAnuncios_Cliques" EntityType="cliquemixModel.VwRelatorioAnuncianteAnuncios_Cliques" />
-    <EntitySet Name="VwRelatorioAnuncianteAnuncios_Disponiveis" EntityType="cliquemixModel.VwRelatorioAnuncianteAnuncios_Disponiveis" />
-    <EntitySet Name="VwRelatorioAnuncianteAnuncios_EmCampanha" EntityType="cliquemixModel.VwRelatorioAnuncianteAnuncios_EmCampanha" />
-    <EntitySet Name="VwRelatorioAnuncianteAnuncios_Excluidos" EntityType="cliquemixModel.VwRelatorioAnuncianteAnuncios_Excluidos" />
-    <EntitySet Name="VwRelatorioAnuncianteAnuncios_Todos" EntityType="cliquemixModel.VwRelatorioAnuncianteAnuncios_Todos" />
-    <EntitySet Name="VwRelatorioAnuncianteAnuncios_Top10Mais" EntityType="cliquemixModel.VwRelatorioAnuncianteAnuncios_Top10Mais" />
-    <EntitySet Name="VwRelatorioAnuncianteAnuncios_Top10Menos" EntityType="cliquemixModel.VwRelatorioAnuncianteAnuncios_Top10Menos" />
   </EntityContainer>
-  <EntityType Name="VwAnunciosCriadosAnunciante">
-    <Key>
-      <PropertyRef Name="CodAnuncio" />
-      <PropertyRef Name="TituloAnuncio" />
-    </Key>
-    <Property Name="CodAnuncio" Type="Int32" Nullable="false" />
-    <Property Name="TituloAnuncio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="StatusAnuncio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="CodAnunciante" Type="Int32" />
-    <Property Name="DescCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="DtCriacao" Type="DateTime" Precision="3" />
-  </EntityType>
-  <EntityType Name="VwAnunciosDisponiveis">
-    <Key>
-      <PropertyRef Name="CodAnuncio" />
-      <PropertyRef Name="TituloAnuncio" />
-    </Key>
-    <Property Name="CodAnuncio" Type="Int32" Nullable="false" />
-    <Property Name="TituloAnuncio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="StatusAnuncio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="CodAnunciante" Type="Int32" />
-    <Property Name="DescCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="DtCriacao" Type="DateTime" Precision="3" />
-  </EntityType>
-  <EntityType Name="VwAnunciosEmCampanha">
-    <Key>
-      <PropertyRef Name="CodAnuncioCampanha" />
-      <PropertyRef Name="CodAnuncio" />
-      <PropertyRef Name="TituloAnuncio" />
-      <PropertyRef Name="CodCampanha" />
-    </Key>
-    <Property Name="CodAnuncioCampanha" Type="Int32" Nullable="false" />
-    <Property Name="CodAnuncio" Type="Int32" Nullable="false" />
-    <Property Name="TituloAnuncio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="StatusAnuncio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="CodAnunciante" Type="Int32" />
-    <Property Name="DescCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="DtCriacao" Type="DateTime" Precision="3" />
-    <Property Name="CodCampanha" Type="Int32" Nullable="false" />
-    <Property Name="DescCampanha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="VwAnunciosExcluidos">
-    <Key>
-      <PropertyRef Name="CodAnuncio" />
-      <PropertyRef Name="TituloAnuncio" />
-    </Key>
-    <Property Name="CodAnuncio" Type="Int32" Nullable="false" />
-    <Property Name="TituloAnuncio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="StatusAnuncio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="CodAnunciante" Type="Int32" />
-    <Property Name="DescCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="DtCriacao" Type="DateTime" Precision="3" />
-  </EntityType>
-  <EntityType Name="VwCampanhasAtivasAnunciante">
-    <Key>
-      <PropertyRef Name="CodCampanha" />
-      <PropertyRef Name="TituloCampanha" />
-      <PropertyRef Name="DtInicio" />
-      <PropertyRef Name="DtTermino" />
-    </Key>
-    <Property Name="CodCampanha" Type="Int32" Nullable="false" />
-    <Property Name="TituloCampanha" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="StatusCampanha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="CodAnunciante" Type="Int32" />
-    <Property Name="DtInicio" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="DtTermino" Type="DateTime" Nullable="false" Precision="3" />
-  </EntityType>
-  <EntityType Name="VwRelatorioAnuncianteAnuncios_Cliques">
-    <Key>
-      <PropertyRef Name="aid" />
-      <PropertyRef Name="tituloAnuncio" />
-      <PropertyRef Name="dtInicio" />
-      <PropertyRef Name="dtTermino" />
-    </Key>
-    <Property Name="aid" Type="Int32" Nullable="false" />
-    <Property Name="tituloAnuncio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="cid" Type="Int32" />
-    <Property Name="dtInicio" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="dtTermino" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="contCliquesAtual" Type="Int32" />
-    <Property Name="contCliquesFinal" Type="Int32" />
-    <Property Name="pid" Type="Int32" />
-  </EntityType>
-  <EntityType Name="VwRelatorioAnuncianteAnuncios_Disponiveis">
-    <Key>
-      <PropertyRef Name="aid" />
-      <PropertyRef Name="tituloAnuncio" />
-      <PropertyRef Name="VIDEO" />
-      <PropertyRef Name="IMAGEM" />
-    </Key>
-    <Property Name="aid" Type="Int32" Nullable="false" />
-    <Property Name="tituloAnuncio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="dsCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="dsStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="VIDEO" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
-    <Property Name="IMAGEM" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
-    <Property Name="dtCriacao" Type="DateTime" Precision="3" />
-    <Property Name="pid" Type="Int32" />
-  </EntityType>
-  <EntityType Name="VwRelatorioAnuncianteAnuncios_EmCampanha">
-    <Key>
-      <PropertyRef Name="aid" />
-      <PropertyRef Name="tituloAnuncio" />
-      <PropertyRef Name="dtInicio" />
-      <PropertyRef Name="dtTermino" />
-    </Key>
-    <Property Name="aid" Type="Int32" Nullable="false" />
-    <Property Name="tituloAnuncio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="dsCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="cid" Type="Int32" />
-    <Property Name="dtInicio" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="dtTermino" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="pid" Type="Int32" />
-  </EntityType>
-  <EntityType Name="VwRelatorioAnuncianteAnuncios_Excluidos">
-    <Key>
-      <PropertyRef Name="aid" />
-      <PropertyRef Name="tituloAnuncio" />
-      <PropertyRef Name="VIDEO" />
-      <PropertyRef Name="IMAGEM" />
-    </Key>
-    <Property Name="aid" Type="Int32" Nullable="false" />
-    <Property Name="tituloAnuncio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="dsCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="dsStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="VIDEO" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
-    <Property Name="IMAGEM" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
-    <Property Name="dtCriacao" Type="DateTime" Precision="3" />
-    <Property Name="pid" Type="Int32" />
-  </EntityType>
-  <EntityType Name="VwRelatorioAnuncianteAnuncios_Todos">
-    <Key>
-      <PropertyRef Name="aid" />
-      <PropertyRef Name="tituloAnuncio" />
-      <PropertyRef Name="VIDEO" />
-      <PropertyRef Name="IMAGEM" />
-    </Key>
-    <Property Name="aid" Type="Int32" Nullable="false" />
-    <Property Name="tituloAnuncio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="dsCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="dsStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="VIDEO" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
-    <Property Name="IMAGEM" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
-    <Property Name="dtCriacao" Type="DateTime" Precision="3" />
-    <Property Name="pid" Type="Int32" />
-  </EntityType>
-  <EntityType Name="VwRelatorioAnuncianteAnuncios_Top10Mais">
-    <Key>
-      <PropertyRef Name="aid" />
-      <PropertyRef Name="tituloAnuncio" />
-      <PropertyRef Name="dtInicio" />
-      <PropertyRef Name="dtTermino" />
-    </Key>
-    <Property Name="aid" Type="Int32" Nullable="false" />
-    <Property Name="tituloAnuncio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="cid" Type="Int32" />
-    <Property Name="dtInicio" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="dtTermino" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="contCliquesAtual" Type="Int32" />
-    <Property Name="pid" Type="Int32" />
-  </EntityType>
-  <EntityType Name="VwRelatorioAnuncianteAnuncios_Top10Menos">
-    <Key>
-      <PropertyRef Name="aid" />
-      <PropertyRef Name="tituloAnuncio" />
-      <PropertyRef Name="dtInicio" />
-      <PropertyRef Name="dtTermino" />
-    </Key>
-    <Property Name="aid" Type="Int32" Nullable="false" />
-    <Property Name="tituloAnuncio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="cid" Type="Int32" />
-    <Property Name="dtInicio" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="dtTermino" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="contCliquesAtual" Type="Int32" />
-    <Property Name="pid" Type="Int32" />
-  </EntityType>
 </Schema>

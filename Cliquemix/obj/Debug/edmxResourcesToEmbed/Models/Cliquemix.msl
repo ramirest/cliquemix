@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="cliquemixModelStoreContainer" CdmEntityContainer="cliquemixEntities">
+  <EntityContainerMapping StorageEntityContainer="cliquemixModelStoreContainer" CdmEntityContainer="Entities">
     <EntitySetMapping Name="tbAnunciante">
       <EntityTypeMapping TypeName="cliquemixModel.tbAnunciante">
         <MappingFragment StoreEntitySet="tbAnunciante">
@@ -823,158 +823,158 @@
     <EntitySetMapping Name="VwAnunciosCriadosAnunciante">
       <EntityTypeMapping TypeName="cliquemixModel.VwAnunciosCriadosAnunciante">
         <MappingFragment StoreEntitySet="VwAnunciosCriadosAnunciante">
-          <ScalarProperty Name="DtCriacao" ColumnName="DtCriacao" />
-          <ScalarProperty Name="DescCategoria" ColumnName="DescCategoria" />
-          <ScalarProperty Name="CodAnunciante" ColumnName="CodAnunciante" />
-          <ScalarProperty Name="StatusAnuncio" ColumnName="StatusAnuncio" />
-          <ScalarProperty Name="TituloAnuncio" ColumnName="TituloAnuncio" />
           <ScalarProperty Name="CodAnuncio" ColumnName="CodAnuncio" />
+          <ScalarProperty Name="TituloAnuncio" ColumnName="TituloAnuncio" />
+          <ScalarProperty Name="StatusAnuncio" ColumnName="StatusAnuncio" />
+          <ScalarProperty Name="CodAnunciante" ColumnName="CodAnunciante" />
+          <ScalarProperty Name="DescCategoria" ColumnName="DescCategoria" />
+          <ScalarProperty Name="DtCriacao" ColumnName="DtCriacao" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="VwAnunciosDisponiveis">
       <EntityTypeMapping TypeName="cliquemixModel.VwAnunciosDisponiveis">
         <MappingFragment StoreEntitySet="VwAnunciosDisponiveis">
-          <ScalarProperty Name="DtCriacao" ColumnName="DtCriacao" />
-          <ScalarProperty Name="DescCategoria" ColumnName="DescCategoria" />
-          <ScalarProperty Name="CodAnunciante" ColumnName="CodAnunciante" />
-          <ScalarProperty Name="StatusAnuncio" ColumnName="StatusAnuncio" />
-          <ScalarProperty Name="TituloAnuncio" ColumnName="TituloAnuncio" />
           <ScalarProperty Name="CodAnuncio" ColumnName="CodAnuncio" />
+          <ScalarProperty Name="TituloAnuncio" ColumnName="TituloAnuncio" />
+          <ScalarProperty Name="StatusAnuncio" ColumnName="StatusAnuncio" />
+          <ScalarProperty Name="CodAnunciante" ColumnName="CodAnunciante" />
+          <ScalarProperty Name="DescCategoria" ColumnName="DescCategoria" />
+          <ScalarProperty Name="DtCriacao" ColumnName="DtCriacao" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="VwAnunciosEmCampanha">
       <EntityTypeMapping TypeName="cliquemixModel.VwAnunciosEmCampanha">
         <MappingFragment StoreEntitySet="VwAnunciosEmCampanha">
-          <ScalarProperty Name="DescCampanha" ColumnName="DescCampanha" />
-          <ScalarProperty Name="CodCampanha" ColumnName="CodCampanha" />
-          <ScalarProperty Name="DtCriacao" ColumnName="DtCriacao" />
-          <ScalarProperty Name="DescCategoria" ColumnName="DescCategoria" />
-          <ScalarProperty Name="CodAnunciante" ColumnName="CodAnunciante" />
-          <ScalarProperty Name="StatusAnuncio" ColumnName="StatusAnuncio" />
-          <ScalarProperty Name="TituloAnuncio" ColumnName="TituloAnuncio" />
-          <ScalarProperty Name="CodAnuncio" ColumnName="CodAnuncio" />
           <ScalarProperty Name="CodAnuncioCampanha" ColumnName="CodAnuncioCampanha" />
+          <ScalarProperty Name="CodAnuncio" ColumnName="CodAnuncio" />
+          <ScalarProperty Name="TituloAnuncio" ColumnName="TituloAnuncio" />
+          <ScalarProperty Name="StatusAnuncio" ColumnName="StatusAnuncio" />
+          <ScalarProperty Name="CodAnunciante" ColumnName="CodAnunciante" />
+          <ScalarProperty Name="DescCategoria" ColumnName="DescCategoria" />
+          <ScalarProperty Name="DtCriacao" ColumnName="DtCriacao" />
+          <ScalarProperty Name="CodCampanha" ColumnName="CodCampanha" />
+          <ScalarProperty Name="DescCampanha" ColumnName="DescCampanha" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="VwAnunciosExcluidos">
       <EntityTypeMapping TypeName="cliquemixModel.VwAnunciosExcluidos">
         <MappingFragment StoreEntitySet="VwAnunciosExcluidos">
-          <ScalarProperty Name="DtCriacao" ColumnName="DtCriacao" />
-          <ScalarProperty Name="DescCategoria" ColumnName="DescCategoria" />
-          <ScalarProperty Name="CodAnunciante" ColumnName="CodAnunciante" />
-          <ScalarProperty Name="StatusAnuncio" ColumnName="StatusAnuncio" />
-          <ScalarProperty Name="TituloAnuncio" ColumnName="TituloAnuncio" />
           <ScalarProperty Name="CodAnuncio" ColumnName="CodAnuncio" />
+          <ScalarProperty Name="TituloAnuncio" ColumnName="TituloAnuncio" />
+          <ScalarProperty Name="StatusAnuncio" ColumnName="StatusAnuncio" />
+          <ScalarProperty Name="CodAnunciante" ColumnName="CodAnunciante" />
+          <ScalarProperty Name="DescCategoria" ColumnName="DescCategoria" />
+          <ScalarProperty Name="DtCriacao" ColumnName="DtCriacao" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="VwCampanhasAtivasAnunciante">
       <EntityTypeMapping TypeName="cliquemixModel.VwCampanhasAtivasAnunciante">
         <MappingFragment StoreEntitySet="VwCampanhasAtivasAnunciante">
-          <ScalarProperty Name="DtTermino" ColumnName="DtTermino" />
-          <ScalarProperty Name="DtInicio" ColumnName="DtInicio" />
-          <ScalarProperty Name="CodAnunciante" ColumnName="CodAnunciante" />
-          <ScalarProperty Name="StatusCampanha" ColumnName="StatusCampanha" />
-          <ScalarProperty Name="TituloCampanha" ColumnName="TituloCampanha" />
           <ScalarProperty Name="CodCampanha" ColumnName="CodCampanha" />
+          <ScalarProperty Name="TituloCampanha" ColumnName="TituloCampanha" />
+          <ScalarProperty Name="StatusCampanha" ColumnName="StatusCampanha" />
+          <ScalarProperty Name="CodAnunciante" ColumnName="CodAnunciante" />
+          <ScalarProperty Name="DtInicio" ColumnName="DtInicio" />
+          <ScalarProperty Name="DtTermino" ColumnName="DtTermino" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="VwRelatorioAnuncianteAnuncios_Cliques">
       <EntityTypeMapping TypeName="cliquemixModel.VwRelatorioAnuncianteAnuncios_Cliques">
         <MappingFragment StoreEntitySet="VwRelatorioAnuncianteAnuncios_Cliques">
-          <ScalarProperty Name="pid" ColumnName="pid" />
-          <ScalarProperty Name="contCliquesFinal" ColumnName="contCliquesFinal" />
-          <ScalarProperty Name="contCliquesAtual" ColumnName="contCliquesAtual" />
-          <ScalarProperty Name="dtTermino" ColumnName="dtTermino" />
-          <ScalarProperty Name="dtInicio" ColumnName="dtInicio" />
-          <ScalarProperty Name="cid" ColumnName="cid" />
-          <ScalarProperty Name="tituloAnuncio" ColumnName="tituloAnuncio" />
           <ScalarProperty Name="aid" ColumnName="aid" />
+          <ScalarProperty Name="tituloAnuncio" ColumnName="tituloAnuncio" />
+          <ScalarProperty Name="cid" ColumnName="cid" />
+          <ScalarProperty Name="dtInicio" ColumnName="dtInicio" />
+          <ScalarProperty Name="dtTermino" ColumnName="dtTermino" />
+          <ScalarProperty Name="contCliquesAtual" ColumnName="contCliquesAtual" />
+          <ScalarProperty Name="contCliquesFinal" ColumnName="contCliquesFinal" />
+          <ScalarProperty Name="pid" ColumnName="pid" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="VwRelatorioAnuncianteAnuncios_Disponiveis">
       <EntityTypeMapping TypeName="cliquemixModel.VwRelatorioAnuncianteAnuncios_Disponiveis">
         <MappingFragment StoreEntitySet="VwRelatorioAnuncianteAnuncios_Disponiveis">
-          <ScalarProperty Name="pid" ColumnName="pid" />
-          <ScalarProperty Name="dtCriacao" ColumnName="dtCriacao" />
-          <ScalarProperty Name="IMAGEM" ColumnName="IMAGEM" />
-          <ScalarProperty Name="VIDEO" ColumnName="VIDEO" />
-          <ScalarProperty Name="dsStatus" ColumnName="dsStatus" />
-          <ScalarProperty Name="dsCategoria" ColumnName="dsCategoria" />
-          <ScalarProperty Name="tituloAnuncio" ColumnName="tituloAnuncio" />
           <ScalarProperty Name="aid" ColumnName="aid" />
+          <ScalarProperty Name="tituloAnuncio" ColumnName="tituloAnuncio" />
+          <ScalarProperty Name="dsCategoria" ColumnName="dsCategoria" />
+          <ScalarProperty Name="dsStatus" ColumnName="dsStatus" />
+          <ScalarProperty Name="VIDEO" ColumnName="VIDEO" />
+          <ScalarProperty Name="IMAGEM" ColumnName="IMAGEM" />
+          <ScalarProperty Name="dtCriacao" ColumnName="dtCriacao" />
+          <ScalarProperty Name="pid" ColumnName="pid" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="VwRelatorioAnuncianteAnuncios_EmCampanha">
       <EntityTypeMapping TypeName="cliquemixModel.VwRelatorioAnuncianteAnuncios_EmCampanha">
         <MappingFragment StoreEntitySet="VwRelatorioAnuncianteAnuncios_EmCampanha">
-          <ScalarProperty Name="pid" ColumnName="pid" />
-          <ScalarProperty Name="dtTermino" ColumnName="dtTermino" />
-          <ScalarProperty Name="dtInicio" ColumnName="dtInicio" />
-          <ScalarProperty Name="cid" ColumnName="cid" />
-          <ScalarProperty Name="dsCategoria" ColumnName="dsCategoria" />
-          <ScalarProperty Name="tituloAnuncio" ColumnName="tituloAnuncio" />
           <ScalarProperty Name="aid" ColumnName="aid" />
+          <ScalarProperty Name="tituloAnuncio" ColumnName="tituloAnuncio" />
+          <ScalarProperty Name="dsCategoria" ColumnName="dsCategoria" />
+          <ScalarProperty Name="cid" ColumnName="cid" />
+          <ScalarProperty Name="dtInicio" ColumnName="dtInicio" />
+          <ScalarProperty Name="dtTermino" ColumnName="dtTermino" />
+          <ScalarProperty Name="pid" ColumnName="pid" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="VwRelatorioAnuncianteAnuncios_Excluidos">
       <EntityTypeMapping TypeName="cliquemixModel.VwRelatorioAnuncianteAnuncios_Excluidos">
         <MappingFragment StoreEntitySet="VwRelatorioAnuncianteAnuncios_Excluidos">
-          <ScalarProperty Name="pid" ColumnName="pid" />
-          <ScalarProperty Name="dtCriacao" ColumnName="dtCriacao" />
-          <ScalarProperty Name="IMAGEM" ColumnName="IMAGEM" />
-          <ScalarProperty Name="VIDEO" ColumnName="VIDEO" />
-          <ScalarProperty Name="dsStatus" ColumnName="dsStatus" />
-          <ScalarProperty Name="dsCategoria" ColumnName="dsCategoria" />
-          <ScalarProperty Name="tituloAnuncio" ColumnName="tituloAnuncio" />
           <ScalarProperty Name="aid" ColumnName="aid" />
+          <ScalarProperty Name="tituloAnuncio" ColumnName="tituloAnuncio" />
+          <ScalarProperty Name="dsCategoria" ColumnName="dsCategoria" />
+          <ScalarProperty Name="dsStatus" ColumnName="dsStatus" />
+          <ScalarProperty Name="VIDEO" ColumnName="VIDEO" />
+          <ScalarProperty Name="IMAGEM" ColumnName="IMAGEM" />
+          <ScalarProperty Name="dtCriacao" ColumnName="dtCriacao" />
+          <ScalarProperty Name="pid" ColumnName="pid" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="VwRelatorioAnuncianteAnuncios_Todos">
       <EntityTypeMapping TypeName="cliquemixModel.VwRelatorioAnuncianteAnuncios_Todos">
         <MappingFragment StoreEntitySet="VwRelatorioAnuncianteAnuncios_Todos">
-          <ScalarProperty Name="pid" ColumnName="pid" />
-          <ScalarProperty Name="dtCriacao" ColumnName="dtCriacao" />
-          <ScalarProperty Name="IMAGEM" ColumnName="IMAGEM" />
-          <ScalarProperty Name="VIDEO" ColumnName="VIDEO" />
-          <ScalarProperty Name="dsStatus" ColumnName="dsStatus" />
-          <ScalarProperty Name="dsCategoria" ColumnName="dsCategoria" />
-          <ScalarProperty Name="tituloAnuncio" ColumnName="tituloAnuncio" />
           <ScalarProperty Name="aid" ColumnName="aid" />
+          <ScalarProperty Name="tituloAnuncio" ColumnName="tituloAnuncio" />
+          <ScalarProperty Name="dsCategoria" ColumnName="dsCategoria" />
+          <ScalarProperty Name="dsStatus" ColumnName="dsStatus" />
+          <ScalarProperty Name="VIDEO" ColumnName="VIDEO" />
+          <ScalarProperty Name="IMAGEM" ColumnName="IMAGEM" />
+          <ScalarProperty Name="dtCriacao" ColumnName="dtCriacao" />
+          <ScalarProperty Name="pid" ColumnName="pid" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="VwRelatorioAnuncianteAnuncios_Top10Mais">
       <EntityTypeMapping TypeName="cliquemixModel.VwRelatorioAnuncianteAnuncios_Top10Mais">
         <MappingFragment StoreEntitySet="VwRelatorioAnuncianteAnuncios_Top10Mais">
-          <ScalarProperty Name="pid" ColumnName="pid" />
-          <ScalarProperty Name="contCliquesAtual" ColumnName="contCliquesAtual" />
-          <ScalarProperty Name="dtTermino" ColumnName="dtTermino" />
-          <ScalarProperty Name="dtInicio" ColumnName="dtInicio" />
-          <ScalarProperty Name="cid" ColumnName="cid" />
-          <ScalarProperty Name="tituloAnuncio" ColumnName="tituloAnuncio" />
           <ScalarProperty Name="aid" ColumnName="aid" />
+          <ScalarProperty Name="tituloAnuncio" ColumnName="tituloAnuncio" />
+          <ScalarProperty Name="cid" ColumnName="cid" />
+          <ScalarProperty Name="dtInicio" ColumnName="dtInicio" />
+          <ScalarProperty Name="dtTermino" ColumnName="dtTermino" />
+          <ScalarProperty Name="contCliquesAtual" ColumnName="contCliquesAtual" />
+          <ScalarProperty Name="pid" ColumnName="pid" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="VwRelatorioAnuncianteAnuncios_Top10Menos">
       <EntityTypeMapping TypeName="cliquemixModel.VwRelatorioAnuncianteAnuncios_Top10Menos">
         <MappingFragment StoreEntitySet="VwRelatorioAnuncianteAnuncios_Top10Menos">
-          <ScalarProperty Name="pid" ColumnName="pid" />
-          <ScalarProperty Name="contCliquesAtual" ColumnName="contCliquesAtual" />
-          <ScalarProperty Name="dtTermino" ColumnName="dtTermino" />
-          <ScalarProperty Name="dtInicio" ColumnName="dtInicio" />
-          <ScalarProperty Name="cid" ColumnName="cid" />
-          <ScalarProperty Name="tituloAnuncio" ColumnName="tituloAnuncio" />
           <ScalarProperty Name="aid" ColumnName="aid" />
+          <ScalarProperty Name="tituloAnuncio" ColumnName="tituloAnuncio" />
+          <ScalarProperty Name="cid" ColumnName="cid" />
+          <ScalarProperty Name="dtInicio" ColumnName="dtInicio" />
+          <ScalarProperty Name="dtTermino" ColumnName="dtTermino" />
+          <ScalarProperty Name="contCliquesAtual" ColumnName="contCliquesAtual" />
+          <ScalarProperty Name="pid" ColumnName="pid" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

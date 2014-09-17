@@ -375,7 +375,7 @@
     <Property Name="cid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="uid" Type="int" />
     <Property Name="leuTermo" Type="int" />
-    <Property Name="tid" Type="int" Nullable="false" />
+    <Property Name="tid" Type="int" />
     <Property Name="conid" Type="int" Nullable="false" />
     <Property Name="nomeCompleto" Type="varchar" MaxLength="100" />
     <Property Name="nomeAbreviado" Type="varchar" MaxLength="100" />
@@ -2187,7 +2187,7 @@ warning 6002: The table/view 'cliquemix.dbo.VwRelatorioAnuncianteAnuncios_Top10M
     </ReferentialConstraint>
   </Association>
   <Association Name="tid_tbConsumidor_tbTos_fk">
-    <End Role="tbTos" Type="Self.tbTos" Multiplicity="1" />
+    <End Role="tbTos" Type="Self.tbTos" Multiplicity="0..1" />
     <End Role="tbConsumidor" Type="Self.tbConsumidor" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tbTos">
