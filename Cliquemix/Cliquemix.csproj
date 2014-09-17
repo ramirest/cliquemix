@@ -674,6 +674,7 @@
     <Content Include="fonts\icons\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\img\boss-image.png" />
     <Content Include="fonts\img\checkmark.png" />
+    <Content Include="fonts\img\cliquemix-logo-confirm-pedido.png" />
     <Content Include="fonts\img\datatables\sort_asc.png" />
     <Content Include="fonts\img\datatables\sort_both.png" />
     <Content Include="fonts\img\empresario-M.jpg" />
@@ -1208,11 +1209,6 @@
     <Content Include="Views\RelatorioAnunciante\RelAnuncioVisualizarCliques.cshtml" />
     <Content Include="Views\RelatorioAnunciante\RelAnuncioVisualizarTop10Mais.cshtml" />
     <Content Include="Views\RelatorioAnunciante\RelAnuncioVisualizarTop10Menos.cshtml" />
-    <Content Include="Views\Consumidor\Create.cshtml" />
-    <Content Include="Views\Consumidor\Delete.cshtml" />
-    <Content Include="Views\Consumidor\Details.cshtml" />
-    <Content Include="Views\Consumidor\Edit.cshtml" />
-    <Content Include="Views\Consumidor\Index.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

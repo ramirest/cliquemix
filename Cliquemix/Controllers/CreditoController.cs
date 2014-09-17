@@ -257,7 +257,7 @@ namespace Cliquemix.Controllers
             return RedirectToAction("BuyCredit");
         }
 
-        public ActionResult AcceptBuyCredit()
+        public ActionResult ConfirmarCompra(int ccid)
         {
             return View();
         }

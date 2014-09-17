@@ -379,18 +379,18 @@
           </Key>
           <Property Name="cid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="uid" Type="int" />
-          <Property Name="leuTermo" Type="int" />
           <Property Name="tid" Type="int" />
           <Property Name="conid" Type="int" Nullable="false" />
           <Property Name="nomeCompleto" Type="varchar" MaxLength="100" />
           <Property Name="nomeAbreviado" Type="varchar" MaxLength="100" />
-          <Property Name="usuSicove" Type="varchar" MaxLength="20" />
+          <Property Name="usuSicove" Type="varchar" MaxLength="50" />
           <Property Name="email" Type="varchar" MaxLength="100" />
           <Property Name="cpf" Type="varchar" MaxLength="30" />
           <Property Name="rg" Type="varchar" MaxLength="20" />
           <Property Name="pis" Type="varchar" MaxLength="30" />
           <Property Name="dtNascimento" Type="datetime" />
           <Property Name="ativo" Type="bit" Nullable="false" />
+          <Property Name="leuTermo" Type="bit" />
         </EntityType>
         <EntityType Name="tbConsumidorPontos">
           <Key>
@@ -3618,18 +3618,18 @@ warning 6002: The table/view 'cliquemix.dbo.VwRelatorioAnuncianteAnuncios_Top10M
           </Key>
           <Property Name="cid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="uid" Type="Int32" />
-          <Property Name="leuTermo" Type="Int32" />
           <Property Name="tid" Type="Int32" />
           <Property Name="conid" Type="Int32" Nullable="false" />
           <Property Name="nomeCompleto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="nomeAbreviado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="usuSicove" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="usuSicove" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="cpf" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="rg" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="pis" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="dtNascimento" Type="DateTime" Precision="3" />
           <Property Name="ativo" Type="Boolean" Nullable="false" />
+          <Property Name="leuTermo" Type="Boolean" />
           <NavigationProperty Name="tbAnunciantePatrocinador" Relationship="Self.cid_tbAnunciantePatrocinador_tbConsumidor_fk" FromRole="tbConsumidor" ToRole="tbAnunciantePatrocinador" />
           <NavigationProperty Name="tbAnuncioPatrocinador" Relationship="Self.cid_tbAnuncioPatrocinador_tbConsumidor_fk" FromRole="tbConsumidor" ToRole="tbAnuncioPatrocinador" />
           <NavigationProperty Name="tbConsumidorPontos" Relationship="Self.cid_tbConsumidorPontos_tbConsumidor_fk" FromRole="tbConsumidor" ToRole="tbConsumidorPontos" />
@@ -6698,7 +6698,6 @@ warning 6002: The table/view 'cliquemix.dbo.VwRelatorioAnuncianteAnuncios_Top10M
               <MappingFragment StoreEntitySet="tbConsumidor">
                 <ScalarProperty Name="cid" ColumnName="cid" />
                 <ScalarProperty Name="uid" ColumnName="uid" />
-                <ScalarProperty Name="leuTermo" ColumnName="leuTermo" />
                 <ScalarProperty Name="tid" ColumnName="tid" />
                 <ScalarProperty Name="conid" ColumnName="conid" />
                 <ScalarProperty Name="nomeCompleto" ColumnName="nomeCompleto" />
@@ -6710,6 +6709,7 @@ warning 6002: The table/view 'cliquemix.dbo.VwRelatorioAnuncianteAnuncios_Top10M
                 <ScalarProperty Name="pis" ColumnName="pis" />
                 <ScalarProperty Name="dtNascimento" ColumnName="dtNascimento" />
                 <ScalarProperty Name="ativo" ColumnName="ativo" />
+                <ScalarProperty Name="leuTermo" ColumnName="leuTermo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

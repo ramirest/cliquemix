@@ -23,7 +23,6 @@ namespace Cliquemix.Models
     
         public int cid { get; set; }
         public Nullable<int> uid { get; set; }
-        public Nullable<int> leuTermo { get; set; }
         public Nullable<int> tid { get; set; }
         public int conid { get; set; }
         public string nomeCompleto { get; set; }
@@ -35,6 +34,7 @@ namespace Cliquemix.Models
         public string pis { get; set; }
         public Nullable<System.DateTime> dtNascimento { get; set; }
         public bool ativo { get; set; }
+        public Nullable<bool> leuTermo { get; set; }
     
         public virtual ICollection<tbAnunciantePatrocinador> tbAnunciantePatrocinador { get; set; }
         public virtual ICollection<tbAnuncioPatrocinador> tbAnuncioPatrocinador { get; set; }
