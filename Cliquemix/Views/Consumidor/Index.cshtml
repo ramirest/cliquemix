@@ -1,0 +1,106 @@
+﻿@model IEnumerable<Cliquemix.Models.tbConsumidor>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.uid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.leuTermo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.conid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nomeCompleto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nomeAbreviado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.usuSicove)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cpf)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dtNascimento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ativo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbTos.titulo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.uid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.leuTermo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.conid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nomeCompleto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nomeAbreviado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.usuSicove)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cpf)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dtNascimento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ativo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbTos.titulo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.cid }) |
+            @Html.ActionLink("Details", "Details", new { id=item.cid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.cid })
+        </td>
+    </tr>
+}
+
+</table>

@@ -24,7 +24,7 @@ namespace Cliquemix.Models
         public int cid { get; set; }
         public Nullable<int> uid { get; set; }
         public Nullable<int> leuTermo { get; set; }
-        public int tid { get; set; }
+        public Nullable<int> tid { get; set; }
         public int conid { get; set; }
         public string nomeCompleto { get; set; }
         public string nomeAbreviado { get; set; }

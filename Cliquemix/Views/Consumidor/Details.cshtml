@@ -1,0 +1,123 @@
+﻿@model Cliquemix.Models.tbConsumidor
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbConsumidor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.uid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.leuTermo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.leuTermo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.conid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.conid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nomeCompleto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nomeCompleto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nomeAbreviado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nomeAbreviado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usuSicove)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usuSicove)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cpf)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cpf)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dtNascimento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dtNascimento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ativo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ativo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbTos.titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbTos.titulo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.cid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
