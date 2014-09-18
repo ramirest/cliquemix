@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="cliquemixModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="cliquemixModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tbAnunciante">
           <Key>
             <PropertyRef Name="pid" />
@@ -372,6 +372,8 @@
           <Property Name="spnan" Type="int" />
           <Property Name="spala" Type="int" />
           <Property Name="spnpc" Type="int" />
+          <Property Name="tpuad" Type="int" />
+          <Property Name="texpsu" Type="int" />
         </EntityType>
         <EntityType Name="tbConsumidor">
           <Key>
@@ -726,6 +728,7 @@
           <Property Name="pwd" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="utid" Type="int" Nullable="false" />
           <Property Name="cpwd" Type="varchar" MaxLength="50" />
+          <Property Name="ativo" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="tbUsersLogAcesso">
           <Key>
@@ -2227,6 +2230,18 @@ warning 6002: The table/view 'cliquemix.dbo.VwRelatorioAnuncianteAnuncios_Top10M
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="tpuad_tbConfigPadrao_tbUsersTipo_fk">
+          <End Role="tbUsersTipo" Type="Self.tbUsersTipo" Multiplicity="0..1" />
+          <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsersTipo">
+              <PropertyRef Name="utid" />
+            </Principal>
+            <Dependent Role="tbConfigPadrao">
+              <PropertyRef Name="tpuad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="tpuc_tbConfigPadrao_tbUsersTipo_fk">
           <End Role="tbUsersTipo" Type="Self.tbUsersTipo" Multiplicity="0..1" />
           <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
@@ -3035,6 +3050,10 @@ warning 6002: The table/view 'cliquemix.dbo.VwRelatorioAnuncianteAnuncios_Top10M
             <End Role="tbUsersTipo" EntitySet="tbUsersTipo" />
             <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
           </AssociationSet>
+          <AssociationSet Name="tpuad_tbConfigPadrao_tbUsersTipo_fk" Association="Self.tpuad_tbConfigPadrao_tbUsersTipo_fk">
+            <End Role="tbUsersTipo" EntitySet="tbUsersTipo" />
+            <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+          </AssociationSet>
           <AssociationSet Name="tpuc_tbConfigPadrao_tbUsersTipo_fk" Association="Self.tpuc_tbConfigPadrao_tbUsersTipo_fk">
             <End Role="tbUsersTipo" EntitySet="tbUsersTipo" />
             <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
@@ -3096,8 +3115,7 @@ warning 6002: The table/view 'cliquemix.dbo.VwRelatorioAnuncianteAnuncios_Top10M
             <End Role="tbUsers" EntitySet="tbUsers" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="cliquemixModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -3611,6 +3629,9 @@ warning 6002: The table/view 'cliquemix.dbo.VwRelatorioAnuncianteAnuncios_Top10M
           <NavigationProperty Name="tbConsumidorPontosStatus" Relationship="Self.spnpc_tbConfigPadrao_tbConsumidorPontosStatus_fk" FromRole="tbConfigPadrao" ToRole="tbConsumidorPontosStatus" />
           <NavigationProperty Name="tbUsersTipo" Relationship="Self.tpua_tbConfigPadrao_tbUsersTipo_fk" FromRole="tbConfigPadrao" ToRole="tbUsersTipo" />
           <NavigationProperty Name="tbUsersTipo1" Relationship="Self.tpuc_tbConfigPadrao_tbUsersTipo_fk" FromRole="tbConfigPadrao" ToRole="tbUsersTipo" />
+          <Property Name="tpuad" Type="Int32" />
+          <NavigationProperty Name="tbUsersTipo11" Relationship="cliquemixModel.tpuad_tbConfigPadrao_tbUsersTipo_fk" FromRole="tbConfigPadrao" ToRole="tbUsersTipo" />
+          <Property Name="texpsu" Type="Int32" />
         </EntityType>
         <EntityType Name="tbConsumidor">
           <Key>
@@ -4058,6 +4079,7 @@ warning 6002: The table/view 'cliquemix.dbo.VwRelatorioAnuncianteAnuncios_Top10M
           <NavigationProperty Name="tbUsersLogAcesso" Relationship="Self.uid_tbUsersLogAcesso_tbUsers_fk" FromRole="tbUsers" ToRole="tbUsersLogAcesso" />
           <NavigationProperty Name="tbUsersPermissao" Relationship="Self.uid_tbUsersPermissao_tbUsers_fk" FromRole="tbUsers" ToRole="tbUsersPermissao" />
           <NavigationProperty Name="tbUsersTipo" Relationship="Self.utid_tbUsers_tbUsersTipo_fk" FromRole="tbUsers" ToRole="tbUsersTipo" />
+          <Property Name="ativo" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="tbUsersLogAcesso">
           <Key>
@@ -4092,6 +4114,7 @@ warning 6002: The table/view 'cliquemix.dbo.VwRelatorioAnuncianteAnuncios_Top10M
           <NavigationProperty Name="tbConfigPadrao" Relationship="Self.tpua_tbConfigPadrao_tbUsersTipo_fk" FromRole="tbUsersTipo" ToRole="tbConfigPadrao" />
           <NavigationProperty Name="tbConfigPadrao1" Relationship="Self.tpuc_tbConfigPadrao_tbUsersTipo_fk" FromRole="tbUsersTipo" ToRole="tbConfigPadrao" />
           <NavigationProperty Name="tbUsers" Relationship="Self.utid_tbUsers_tbUsersTipo_fk" FromRole="tbUsersTipo" ToRole="tbUsers" />
+          <NavigationProperty Name="tbConfigPadrao11" Relationship="cliquemixModel.tpuad_tbConfigPadrao_tbUsersTipo_fk" FromRole="tbUsersTipo" ToRole="tbConfigPadrao" />
         </EntityType>
         <EntityType Name="VwAnunciosCriadosAnunciante">
           <Key>
@@ -5721,7 +5744,7 @@ warning 6002: The table/view 'cliquemix.dbo.VwRelatorioAnuncianteAnuncios_Top10M
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="cliquemixEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tbAnunciante" EntityType="Self.tbAnunciante" />
           <EntitySet Name="tbAnuncianteEndereco" EntityType="Self.tbAnuncianteEndereco" />
           <EntitySet Name="tbAnunciantePatrocinador" EntityType="Self.tbAnunciantePatrocinador" />
@@ -6287,13 +6310,29 @@ warning 6002: The table/view 'cliquemix.dbo.VwRelatorioAnuncianteAnuncios_Top10M
             <End Role="tbUsersTipo" EntitySet="tbUsersTipo" />
             <End Role="tbUsers" EntitySet="tbUsers" />
           </AssociationSet>
+          <AssociationSet Name="tpuad_tbConfigPadrao_tbUsersTipo_fk" Association="cliquemixModel.tpuad_tbConfigPadrao_tbUsersTipo_fk">
+            <End Role="tbUsersTipo" EntitySet="tbUsersTipo" />
+            <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="tpuad_tbConfigPadrao_tbUsersTipo_fk">
+          <End Type="cliquemixModel.tbUsersTipo" Role="tbUsersTipo" Multiplicity="0..1" />
+          <End Type="cliquemixModel.tbConfigPadrao" Role="tbConfigPadrao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUsersTipo">
+              <PropertyRef Name="utid" />
+            </Principal>
+            <Dependent Role="tbConfigPadrao">
+              <PropertyRef Name="tpuad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="cliquemixModelStoreContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="cliquemixModelStoreContainer" CdmEntityContainer="cliquemixEntities">
           <EntitySetMapping Name="tbAnunciante">
             <EntityTypeMapping TypeName="cliquemixModel.tbAnunciante">
               <MappingFragment StoreEntitySet="tbAnunciante">
@@ -6655,6 +6694,8 @@ warning 6002: The table/view 'cliquemix.dbo.VwRelatorioAnuncianteAnuncios_Top10M
           <EntitySetMapping Name="tbConfigPadrao">
             <EntityTypeMapping TypeName="cliquemixModel.tbConfigPadrao">
               <MappingFragment StoreEntitySet="tbConfigPadrao">
+                <ScalarProperty Name="texpsu" ColumnName="texpsu" />
+                <ScalarProperty Name="tpuad" ColumnName="tpuad" />
                 <ScalarProperty Name="cfgid" ColumnName="cfgid" />
                 <ScalarProperty Name="spna" ColumnName="spna" />
                 <ScalarProperty Name="spnc" ColumnName="spnc" />
@@ -7074,6 +7115,7 @@ warning 6002: The table/view 'cliquemix.dbo.VwRelatorioAnuncianteAnuncios_Top10M
           <EntitySetMapping Name="tbUsers">
             <EntityTypeMapping TypeName="cliquemixModel.tbUsers">
               <MappingFragment StoreEntitySet="tbUsers">
+                <ScalarProperty Name="ativo" ColumnName="ativo" />
                 <ScalarProperty Name="uid" ColumnName="uid" />
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="pwd" ColumnName="pwd" />

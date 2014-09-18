@@ -14,5 +14,14 @@ namespace Test_AspNet.Controllers.Consumidor
         {
             return View();
         }
+
+
+
+        // Página principal do site, onde serão exibidos os anúncios para pontuação
+        // GET: /PrincipalConsumidor/
+        public ActionResult PrincipalAnuncios()
+        {
+            return View();
+        }
 	}
 }

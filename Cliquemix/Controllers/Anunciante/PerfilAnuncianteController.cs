@@ -11,6 +11,8 @@ using Microsoft.AspNet.Identity;
 
 namespace Cliquemix.Controllers.Anunciante
 {
+    //Somente usuários com a permissão Anunciante podem acessar essa página
+    [PermissoesFiltro(Roles = "Anunciante")]
     public class PerfilAnuncianteController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

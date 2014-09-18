@@ -35,6 +35,7 @@ namespace Cliquemix.Models
         public string pwd { get; set; }
         public int utid { get; set; }
         public string cpwd { get; set; }
+        public bool ativo { get; set; }
     
         public virtual ICollection<tbAnunciante> tbAnunciante { get; set; }
         public virtual ICollection<tbAnuncioCodTemp> tbAnuncioCodTemp { get; set; }

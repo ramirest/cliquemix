@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="39ddc4c016f64f7dabadfc3186e99284" Name="Diagram1">
+      <Diagram DiagramId="99821ed736c94c579e924224707a76d8" Name="Diagram1">
         <EntityTypeShape EntityType="cliquemixModel.tbAnunciante" Width="1.5" PointX="0.75" PointY="30.125" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbAnuncianteEndereco" Width="1.5" PointX="1.5" PointY="25.125" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbAnunciantePatrocinador" Width="1.5" PointX="3" PointY="33.75" IsExpanded="true" />
@@ -207,6 +207,7 @@
         <AssociationConnector Association="cliquemixModel.uid_tbUsersLogAcesso_tbUsers_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.uid_tbUsersPermissao_tbUsers_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.utid_tbUsers_tbUsersTipo_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="cliquemixModel.tpuad_tbConfigPadrao_tbUsersTipo_fk" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

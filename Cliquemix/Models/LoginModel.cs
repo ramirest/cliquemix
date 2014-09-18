@@ -47,8 +47,8 @@ namespace Cliquemix.Models
             try
             {
                 var u = (from usu in db.tbUsers where usu.username == user select usu).First();
-                var a = (from anun in db.tbAnunciante where anun.uid == u.uid select anun).First();
-                if (a.ansid == ProcFunc.RetornarStatusPadraoAnuncianteLiberadoAcesso())
+
+                if (u.ativo)
                     return true;
                 else
                     return false;

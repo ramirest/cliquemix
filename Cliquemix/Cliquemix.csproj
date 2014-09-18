@@ -275,6 +275,7 @@
     <Compile Include="Controllers\Consumidor\MenuTopoConsumidorController.cs" />
     <Compile Include="Controllers\Consumidor\PrincipalConsumidorController.cs" />
     <Compile Include="Controllers\Consumidor\RelatorioConsumidorController.cs" />
+    <Compile Include="Controllers\Demo\PrincipalDemoController.cs" />
     <Compile Include="Controllers\DestaqueController.cs" />
     <Compile Include="Controllers\Anunciante\MenuAnuncianteController.cs" />
     <Compile Include="Controllers\Anunciante\MenuTopoAnuncianteController.cs" />
@@ -288,6 +289,7 @@
     <Compile Include="Controllers\CreditoController.cs" />
     <Compile Include="Controllers\EnderecoController.cs" />
     <Compile Include="Controllers\Inicial\InicialController.cs" />
+    <Compile Include="Controllers\PagamentoController.cs" />
     <Compile Include="Controllers\PremioController.cs" />
     <Compile Include="Controllers\TesteController.cs" />
     <Compile Include="Controllers\TipoUsersController.cs" />
@@ -313,8 +315,8 @@
     <Compile Include="Models\Endereco.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LoginModel.cs" />
-    <Compile Include="Models\PermissaoAcesso.cs" />
     <Compile Include="Models\ProcFunc.cs" />
+    <Compile Include="Models\Security.cs" />
     <Compile Include="Models\tbAnunciante.cs">
       <DependentUpon>Cliquemix.tt</DependentUpon>
     </Compile>
@@ -607,6 +609,10 @@
     <Content Include="Content\Outros\uploadify.swf" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\plugins.css" />
+    <Content Include="Content\plugins\anuncios\bootstrap-tour.html" />
+    <Content Include="Content\plugins\anuncios\bootstrap.min.css" />
+    <Content Include="Content\plugins\anuncios\full-slider.css" />
+    <Content Include="Content\plugins\anuncios\style.css" />
     <Content Include="Content\plugins\AutoSuggest_2.1.3\autosuggest_inquisitor.css" />
     <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\._as_pointer.gif" />
     <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\._hl_corner_bl.gif" />
@@ -646,6 +652,48 @@
     <Content Include="Content\plugins\dropzone\images\spritemap.png" />
     <Content Include="Content\plugins\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\plugins\fullcalendar\fullcalendar.css" />
+    <Content Include="Content\plugins\img\customer_1.png" />
+    <Content Include="Content\plugins\img\customer_2.png" />
+    <Content Include="Content\plugins\img\customer_3.png" />
+    <Content Include="Content\plugins\img\customer_4.png" />
+    <Content Include="Content\plugins\img\customer_5.png" />
+    <Content Include="Content\plugins\img\customer_6.png" />
+    <Content Include="Content\plugins\img\fundo2.png" />
+    <Content Include="Content\plugins\img\gallery\blog_1.jpg" />
+    <Content Include="Content\plugins\img\gallery\blog_2.jpg" />
+    <Content Include="Content\plugins\img\gallery\blog_3.jpg" />
+    <Content Include="Content\plugins\img\gallery\blog_4.jpg" />
+    <Content Include="Content\plugins\img\gallery\blog_5.jpg" />
+    <Content Include="Content\plugins\img\gallery\blog_6.jpg" />
+    <Content Include="Content\plugins\img\gallery\gallery_1.jpg" />
+    <Content Include="Content\plugins\img\gallery\gallery_10.jpg" />
+    <Content Include="Content\plugins\img\gallery\gallery_11.jpg" />
+    <Content Include="Content\plugins\img\gallery\gallery_12.jpg" />
+    <Content Include="Content\plugins\img\gallery\gallery_13.jpg" />
+    <Content Include="Content\plugins\img\gallery\gallery_14.jpg" />
+    <Content Include="Content\plugins\img\gallery\gallery_15.jpg" />
+    <Content Include="Content\plugins\img\gallery\gallery_2.jpg" />
+    <Content Include="Content\plugins\img\gallery\gallery_3.jpg" />
+    <Content Include="Content\plugins\img\gallery\gallery_4.jpg" />
+    <Content Include="Content\plugins\img\gallery\gallery_5.jpg" />
+    <Content Include="Content\plugins\img\gallery\gallery_6.jpg" />
+    <Content Include="Content\plugins\img\gallery\gallery_7.jpg" />
+    <Content Include="Content\plugins\img\gallery\gallery_9.jpg" />
+    <Content Include="Content\plugins\img\gallery\modal_1.jpg" />
+    <Content Include="Content\plugins\img\gallery\modal_2.jpg" />
+    <Content Include="Content\plugins\img\gallery\modal_3.jpg" />
+    <Content Include="Content\plugins\img\gallery\modal_4.jpg" />
+    <Content Include="Content\plugins\img\gallery\modal_5.jpg" />
+    <Content Include="Content\plugins\img\gallery\modal_6.jpg" />
+    <Content Include="Content\plugins\img\logo.png" />
+    <Content Include="Content\plugins\img\logocliquemix.png" />
+    <Content Include="Content\plugins\img\marker.png" />
+    <Content Include="Content\plugins\img\preload.gif" />
+    <Content Include="Content\plugins\img\slide_1.jpg" />
+    <Content Include="Content\plugins\img\slide_2.jpg" />
+    <Content Include="Content\plugins\img\slide_3.jpg" />
+    <Content Include="Content\plugins\img\works_1.jpg" />
+    <Content Include="Content\plugins\img\works_2.jpg" />
     <Content Include="Content\plugins\jvectormap\jquery-jvectormap-1.2.2.css" />
     <Content Include="Content\plugins\ladda\ladda-themeless.min.css" />
     <Content Include="Content\plugins\messenger\messenger-theme-flat.css" />
@@ -752,6 +800,48 @@
     <Content Include="fonts\img\widget-bg-morning.jpg" />
     <Content Include="fonts\Outros\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\anuncios\customer_1.png" />
+    <Content Include="Images\anuncios\customer_2.png" />
+    <Content Include="Images\anuncios\customer_3.png" />
+    <Content Include="Images\anuncios\customer_4.png" />
+    <Content Include="Images\anuncios\customer_5.png" />
+    <Content Include="Images\anuncios\customer_6.png" />
+    <Content Include="Images\anuncios\fundo2.png" />
+    <Content Include="Images\anuncios\gallery\blog_1.jpg" />
+    <Content Include="Images\anuncios\gallery\blog_2.jpg" />
+    <Content Include="Images\anuncios\gallery\blog_3.jpg" />
+    <Content Include="Images\anuncios\gallery\blog_4.jpg" />
+    <Content Include="Images\anuncios\gallery\blog_5.jpg" />
+    <Content Include="Images\anuncios\gallery\blog_6.jpg" />
+    <Content Include="Images\anuncios\gallery\gallery_1.jpg" />
+    <Content Include="Images\anuncios\gallery\gallery_10.jpg" />
+    <Content Include="Images\anuncios\gallery\gallery_11.jpg" />
+    <Content Include="Images\anuncios\gallery\gallery_12.jpg" />
+    <Content Include="Images\anuncios\gallery\gallery_13.jpg" />
+    <Content Include="Images\anuncios\gallery\gallery_14.jpg" />
+    <Content Include="Images\anuncios\gallery\gallery_15.jpg" />
+    <Content Include="Images\anuncios\gallery\gallery_2.jpg" />
+    <Content Include="Images\anuncios\gallery\gallery_3.jpg" />
+    <Content Include="Images\anuncios\gallery\gallery_4.jpg" />
+    <Content Include="Images\anuncios\gallery\gallery_5.jpg" />
+    <Content Include="Images\anuncios\gallery\gallery_6.jpg" />
+    <Content Include="Images\anuncios\gallery\gallery_7.jpg" />
+    <Content Include="Images\anuncios\gallery\gallery_9.jpg" />
+    <Content Include="Images\anuncios\gallery\modal_1.jpg" />
+    <Content Include="Images\anuncios\gallery\modal_2.jpg" />
+    <Content Include="Images\anuncios\gallery\modal_3.jpg" />
+    <Content Include="Images\anuncios\gallery\modal_4.jpg" />
+    <Content Include="Images\anuncios\gallery\modal_5.jpg" />
+    <Content Include="Images\anuncios\gallery\modal_6.jpg" />
+    <Content Include="Images\anuncios\logo.png" />
+    <Content Include="Images\anuncios\logocliquemix.png" />
+    <Content Include="Images\anuncios\marker.png" />
+    <Content Include="Images\anuncios\preload.gif" />
+    <Content Include="Images\anuncios\slide_1.jpg" />
+    <Content Include="Images\anuncios\slide_2.jpg" />
+    <Content Include="Images\anuncios\slide_3.jpg" />
+    <Content Include="Images\anuncios\works_1.jpg" />
+    <Content Include="Images\anuncios\works_2.jpg" />
     <Content Include="Images\Inicial\blog\blog_1.jpg" />
     <Content Include="Images\Inicial\blog\blog_2.jpg" />
     <Content Include="Images\Inicial\blog\blog_3.jpg" />
@@ -934,6 +1024,10 @@
       <DependentUpon>Cliquemix.edmx</DependentUpon>
       <LastGenOutput>Cliquemix.cs</LastGenOutput>
     </Content>
+    <Content Include="Content\plugins\img\Descr.WD3" />
+    <Content Include="Content\plugins\img\gallery\Descr.WD3" />
+    <Content Include="Images\anuncios\Descr.WD3" />
+    <Content Include="Images\anuncios\gallery\Descr.WD3" />
     <None Include="Scripts\Outros\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\Outros\jquery-2.1.1.js" />
     <Content Include="Scripts\Outros\jquery-2.1.1.min.js" />
@@ -951,6 +1045,28 @@
     <Content Include="Scripts\Outros\respond.js" />
     <Content Include="Scripts\Outros\respond.min.js" />
     <Content Include="Scripts\Outros\_references.js" />
+    <Content Include="Scripts\plugins\anuncios\bigmodals.html" />
+    <Content Include="Scripts\plugins\anuncios\bootstrap.min.js" />
+    <Content Include="Scripts\plugins\anuncios\bootstrap.tour.cookie.html" />
+    <Content Include="Scripts\plugins\anuncios\bootstrap.tour.min.html" />
+    <Content Include="Scripts\plugins\anuncios\custom.js" />
+    <Content Include="Scripts\plugins\anuncios\guideline.main.js" />
+    <Content Include="Scripts\plugins\anuncios\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\plugins\anuncios\jquery-1.11.0.js" />
+    <Content Include="Scripts\plugins\anuncios\jquery-1.11.0.min.js" />
+    <Content Include="Scripts\plugins\anuncios\jquery-migrate-1.2.1.js" />
+    <Content Include="Scripts\plugins\anuncios\jquery.easing.js" />
+    <Content Include="Scripts\plugins\anuncios\jquery.fitvids.min.js" />
+    <Content Include="Scripts\plugins\anuncios\jquery.form.js" />
+    <Content Include="Scripts\plugins\anuncios\jquery.gmap.min.js" />
+    <Content Include="Scripts\plugins\anuncios\jquery.nicescroll.min.js" />
+    <Content Include="Scripts\plugins\anuncios\jquery.promin.html" />
+    <Content Include="Scripts\plugins\anuncios\jquery.touchwipe.min.js" />
+    <Content Include="Scripts\plugins\anuncios\modals.js" />
+    <Content Include="Scripts\plugins\anuncios\modernizr.js" />
+    <Content Include="Scripts\plugins\anuncios\retina.js" />
+    <Content Include="Scripts\plugins\anuncios\skrollr.js" />
+    <Content Include="Scripts\plugins\anuncios\toucheffects.js" />
     <Content Include="Scripts\plugins\AutoSuggest_2.1.3\._bsn.AutoSuggest_2.1.3.js" />
     <Content Include="Scripts\plugins\AutoSuggest_2.1.3\bsn.AutoSuggest_2.1.3.js" />
     <Content Include="Scripts\plugins\AutoSuggest_2.1.3\bsn.AutoSuggest_2.1.3_comp.js" />
@@ -1007,6 +1123,8 @@
     <Content Include="Views\Inicial\components.html" />
     <Content Include="Views\Inicial\favicon.ico" />
     <Content Include="Views\Inicial\thumbnail.png" />
+    <Content Include="Views\PrincipalConsumidor\favicon.ico" />
+    <Content Include="Views\PrincipalConsumidor\index.html" />
     <Content Include="Views\Shared\favicon.ico" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -1214,7 +1332,12 @@
     <Content Include="Views\Consumidor\Details.cshtml" />
     <Content Include="Views\Consumidor\Edit.cshtml" />
     <Content Include="Views\Consumidor\Index.cshtml" />
-    <Content Include="Views\Credito\AcceptBuyCredit.cshtml" />
+    <Content Include="Views\Account\Negado.cshtml" />
+    <Content Include="Views\PrincipalAnunciante\PrincipalAnuncianteAvancado.cshtml" />
+    <Content Include="Views\PrincipalDemo\PrincipalDemo.cshtml" />
+    <Content Include="Views\Pagamento\Index.cshtml" />
+    <Content Include="Scripts\plugins\anuncios\min" />
+    <Content Include="Views\PrincipalConsumidor\PrincipalAnuncios.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1228,6 +1351,7 @@
     <Folder Include="Arquivos\Anunciantes\" />
     <Folder Include="Arquivos\Anúncios\" />
     <Folder Include="Arquivos\Destaques\" />
+    <Folder Include="Arquivos\XmlPagamento\" />
     <Folder Include="Images\Fotos\" />
     <Folder Include="Images\Icons\" />
   </ItemGroup>

@@ -166,6 +166,14 @@ namespace Cliquemix.Models
         }
         #endregion
 
+        #region "Retornar Tempo de Expiração da Sessão do Usuário"
+        public static int RetornarTempoExpiracaoSessaoUsuario()
+        {
+            var cnf = (from c in db.tbConfigPadrao select c).First();
+            return (int) cnf.texpsu;
+        }
+        #endregion
+
         #region "Retornar Usuário Logado"
         public static int RetornarUsuarioLogado()
         {

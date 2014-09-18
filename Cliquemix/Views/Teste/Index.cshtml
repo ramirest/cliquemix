@@ -1,15 +1,11 @@
 ﻿<html>
-<head>
-    <title>Carregador</title>
-    <link rel="stylesheet" type="text/css" href="~/Content/plugins/carregador/carregador.css">
-    <script language="JavaScript" src="~/Scripts/plugins/carregador/carregador.js"></script>
-</head>
-<body onload="__loadEsconde();">
-    <div id="carregador_pai">
-        <div id="carregador">
-            <div align="center">Aguarde carregando ...</div>
-            <div id="carregador_fundo"><div id="barra_progresso"> </div></div>
-        </div>
-    </div>
-</body>
+    <head>
+        <title>Carregador</title>
+    </head>
+
+    @using (Html.BeginForm())
+    {
+        <input type="text" id="s" name="s" value="1"/>
+        <button type="submit" id="salvar" name="salvar">Salvar</button>
+    }
 </html>

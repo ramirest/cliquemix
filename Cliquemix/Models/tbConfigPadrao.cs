@@ -49,6 +49,8 @@ namespace Cliquemix.Models
         public Nullable<int> spnan { get; set; }
         public Nullable<int> spala { get; set; }
         public Nullable<int> spnpc { get; set; }
+        public Nullable<int> tpuad { get; set; }
+        public Nullable<int> texpsu { get; set; }
     
         public virtual tbAnuncianteStatus tbAnuncianteStatus { get; set; }
         public virtual tbAnuncianteStatus tbAnuncianteStatus1 { get; set; }
@@ -80,5 +82,6 @@ namespace Cliquemix.Models
         public virtual tbConsumidorPontosStatus tbConsumidorPontosStatus { get; set; }
         public virtual tbUsersTipo tbUsersTipo { get; set; }
         public virtual tbUsersTipo tbUsersTipo1 { get; set; }
+        public virtual tbUsersTipo tbUsersTipo11 { get; set; }
     }
 }

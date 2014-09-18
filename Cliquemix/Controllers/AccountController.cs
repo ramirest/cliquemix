@@ -35,16 +35,17 @@ namespace Cliquemix.Controllers
                     if (model.UsuarioAtivo(model.Username))
                     {
                         iResult = 1;
-                        var expira = 30; //Expiração da Sessão
+                        int expira = ProcFunc.RetornarTempoExpiracaoSessaoUsuario(); //Expiração da Sessão
 
-                        var _authTicket = new FormsAuthenticationTicket(iResult,
+                        var authTicket = new FormsAuthenticationTicket(iResult,
                             model.Username + "-" + Convert.ToString(1),
                             DateTime.Now, DateTime.Now.AddMinutes(expira), model.Remember, model.Username);
-                        var _encryptTicket = FormsAuthentication.Encrypt(_authTicket);
-                        var _authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, _encryptTicket);
-                        Response.Cookies.Add(_authCookie);
+                        var encryptTicket = FormsAuthentication.Encrypt(authTicket);
+                        var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptTicket);
+                        Response.Cookies.Add(authCookie);
                         Session.Add(model.Username, iResult.ToString());
-                        FormsAuthentication.RedirectFromLoginPage(_authTicket.UserData, model.Remember, _authCookie.Path);
+                        FormsAuthentication.RedirectFromLoginPage(authTicket.UserData, model.Remember, authCookie.Path);
+
                         if (Url.IsLocalUrl(returnUrl))
                         {
                             return Redirect(returnUrl);
@@ -52,14 +53,26 @@ namespace Cliquemix.Controllers
                         else
                         {
                             LoginModel._salvarLog(model.CodUsuario, expira, iResult, Session.SessionID);
-                            return RedirectToAction("PrincipalAnunciante", "PrincipalAnunciante");
+
+                            if (ProcFunc.RetornarTipoUsuarioLogado(model.Username) == 1)
+                                return RedirectToAction("PrincipalAnunciante", "PrincipalAnunciante");
+
+                            if (ProcFunc.RetornarTipoUsuarioLogado(model.Username) == 2)
+                                return RedirectToAction("PrincipalAdmin", "PrincipalAdmin");
+
+                            if (ProcFunc.RetornarTipoUsuarioLogado(model.Username) == 4)
+                                return RedirectToAction("PrincipalAnuncios", "PrincipalConsumidor");
+
+                            return RedirectToAction("PrincipalDemo", "PrincipalDemo");
+
                         }
                     }
                     else
                     {
                         model.Username = string.Empty;
                         model.Password = string.Empty;
-                        ModelState.AddModelError("", "Usuário está inativo no sistema. Entre em contato com os administradores [Cod 003.00001].");
+                        ModelState.AddModelError("",
+                            "Usuário está inativo no sistema. Entre em contato com os administradores [Cod 003.00001].");
                     }
                 }
                 else
@@ -73,6 +86,7 @@ namespace Cliquemix.Controllers
         }
 
 
+        [Authorize]
         // GET: /Account/Logout
         public ActionResult Logout()
         {
@@ -83,6 +97,7 @@ namespace Cliquemix.Controllers
         }
 
 
+        [Authorize]
         //Método que realiza o Logout
         // POST: /Account/LogOff
         [HttpPost]
@@ -92,7 +107,6 @@ namespace Cliquemix.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Login", "Account");
         }
-
 
         public bool UsuarioExiste(string _nomeUsuario)
         {
@@ -106,5 +120,11 @@ namespace Cliquemix.Controllers
                 return false;
             }
         }
+
+        public ActionResult Negado()
+        {
+            return View();
+        }
+
     }
 }

@@ -10,7 +10,8 @@ using Microsoft.AspNet.Identity;
 
 namespace Cliquemix.Controllers.Anunciante
 {
-    //[Authorize]
+    //Somente usuários com a permissão Anunciante podem acessar essa página
+    [PermissoesFiltro(Roles = "Anunciante")]
     public class PrincipalAnuncianteController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();
@@ -50,6 +51,15 @@ namespace Cliquemix.Controllers.Anunciante
             ViewBag.DashCampanhaFinalizadas = ProcFunc.RetornarQtdeCampanhasDashboardAnunciante(6, a);
 
             ViewBag.Title = "CliqueMix";
+            return View();
+        }
+
+
+        // GET: PrincipalAnunciante
+        //Somente usuários com a permissão Anunciante Avançado podem acessar essa página
+        [PermissoesFiltro(Roles = "Anunciante")]
+        public ActionResult PrincipalAnuncianteAvancado()
+        {
             return View();
         }
     }

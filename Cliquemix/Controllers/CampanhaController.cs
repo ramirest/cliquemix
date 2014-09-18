@@ -16,7 +16,8 @@ using PagedList;
 
 namespace Cliquemix.Controllers
 {
-    [Authorize]
+    //Somente usuários com a permissão Anunciante podem acessar essa página
+    [PermissoesFiltro(Roles = "Anunciante")]
     public class CampanhaController : Controller
     {
         //CÓDIGO EXCEPTION [CAMPANHA] 001
