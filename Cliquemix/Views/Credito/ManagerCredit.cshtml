@@ -46,8 +46,23 @@
             showCloseButton: true
         });
     }
-</script>
 
+    function PagarCompra(cd) {
+        $.ajax(
+        {
+            type: 'GET',
+            url: '/Credito/ConfirmarCompra/?ccid=' + cd,
+            dataType: 'html',
+            cache: true,
+            async: true,
+            success: function () {
+                //alert('Passou');
+                //$('#detalhesDestaque').html(data);
+                //$('#detalhesDestaque2').html(data);
+            }
+        });
+    }
+</script>
 
 <div class="row">
     <div class="col-lg-12">
@@ -75,7 +90,7 @@ else if (ViewBag.ErroCompraCredito == "001.00003")
     <script type="text/javascript">ErroCriarCampanha(3);</script>
 }
 *@
-
+<input type="hidden" id="ccid" name="ccid"/>
 <div class="col-lg-12">
     <div class="portlet portlet-dark-blue">
         <div class="portlet-heading">
@@ -159,22 +174,22 @@ else if (ViewBag.ErroCompraCredito == "001.00003")
                                         }
                                     </td>
                                     <td class="text-center">
-                                        @* Verifica se o pacote de crédito estava em promoção 
+                                        @* Verifica se o pacote de crédito estava em promoção
                                         //  status = 1    =>  Compra de Crédito Aguardando Pagamento
                                         //  status = 2    =>  Compra de Crédito Cancelada
-                                        //  status = 3    =>  Compra de Crédito Pagamento Aprovado 
+                                        //  status = 3    =>  Compra de Crédito Pagamento Aprovado
                                         //  status = outro=>  Compra já Finalizada *@
                                         @{
                                             if (s == 1)
                                             {
-                                                <a href="#" title="Pagar" style="padding-right: 10px;"><i class="fa fa-money"></i></a>
+                                                <a href="ConfirmarCompra?ccid=@item.ccid" title="Pagar" style="padding-right: 10px;"><i class="fa fa-money"></i></a>
                                                 <a href="#" title="Cancelar" style="padding-right: 10px;"><i class="fa fa-times"></i></a>
                                             }
                                             else
                                             {
                                                 <a href="#" title="Visualizar" style="padding-right: 10px;"><i class="fa fa-search"></i></a>
                                             }
-                                         }
+                                        }
                                     </td>
                                 </tr>
                             }

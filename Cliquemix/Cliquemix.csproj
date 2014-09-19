@@ -1338,6 +1338,8 @@
     <Content Include="Views\Pagamento\Index.cshtml" />
     <Content Include="Scripts\plugins\anuncios\min" />
     <Content Include="Views\PrincipalConsumidor\PrincipalAnuncios.cshtml" />
+    <Content Include="Views\Credito\ConfirmarCompra.cshtml" />
+    <Content Include="Views\Breadcrumbs\Breadcrumbs-Credito-Descricao-Compra.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

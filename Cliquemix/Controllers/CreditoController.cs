@@ -258,9 +258,31 @@ namespace Cliquemix.Controllers
             return RedirectToAction("BuyCredit");
         }
 
+        [HttpGet]
         public ActionResult ConfirmarCompra(int ccid)
         {
-            return View();
+            if (ccid == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            tbCreditoCompra tbCreditoCompra = db.tbCreditoCompra.Find(ccid);
+            if (tbCreditoCompra == null)
+            {
+                return HttpNotFound();
+            }
+            DateTime dtVencimento = tbCreditoCompra.dtCompra ?? DateTime.Now;
+            var codPedido = tbCreditoCompra.ccid.ToString(format: "000000");
+            
+            // Cria uma instância com as informações da cultura americana
+            var culturaAmericana = new CultureInfo("en-US");
+            /*
+            // Converte a string para um valor DateTime
+            DateTime dtInicio = DateTime.Parse(Request.Form.Get("dtInicio"), culturaAmericana);
+            DateTime dtTermino = DateTime.Parse(Request.Form.Get("dtTermino"), culturaAmericana);
+            */
+            ViewBag.CodPedido = codPedido;
+            ViewBag.dtVencimento = DateTime.Parse(dtVencimento.AddDays(10).ToString("d")).ToShortDateString();
+            return View(tbCreditoCompra);
         }
 
 	}

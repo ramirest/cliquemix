@@ -1,4 +1,6 @@
-﻿<div class="row">
+﻿@model Cliquemix.Models.tbCreditoCompra
+
+<div class="row">
     <div class="col-lg-12">
         <div class="page-title">
             <h1>
@@ -22,43 +24,98 @@
                             <strong>Mix Click</strong>
                             <br>Rua Diamantina, nº 75, sala 312
                             <br>Ipatinga, MG
-                            <br>
                             <br>(31) 9999-9999
                         </address>
                     </div>
                     <div class="col-md-6 invoice-terms">
-                        <h3>Pedido #3024</h3>
-                        <p>
-                            Data do pedido: 01/03/2014
-                            <br>
-                            <strong><span class="text-red">Data de vencimento: 06/03/14</span></strong>
-                        </p>
+                        <h3>Pedido @ViewBag.CodPedido</h3>
+                        <div class="col-md-12">
+                            Data do pedido: @Html.DisplayTextFor(model => model.dtCompra)
+                        </div>
+                        <div class="col-md-12">
+                            <strong>
+                                <span class="text-red">
+                                    Data de vencimento: @ViewBag.dtVencimento
+                                </span>
+                            </strong>
+                        </div>
                     </div>
                 </div>
                 <!-- /.row -->
                 <hr>
                 <div class="row">
-                    <div class="col-md-6">
-                        <h3>Anunciante</h3>
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Endereço</th>
+                                        <th>Número</th>
+                                        <th>Complemento</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>@Html.DisplayTextFor(model => model.tbAnunciante.tbAnuncianteEndereco.endereco)</td>
+                                        <td>@Html.DisplayTextFor(model => model.tbAnunciante.tbAnuncianteEndereco.numero_endereco)</td>
+                                        <td>@Html.DisplayTextFor(model => model.tbAnunciante.tbAnuncianteEndereco.complemento_endereco)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Bairro</th>
+                                        <th>Cidade</th>
+                                        <th>UF</th>
+                                        <th>CEP</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>@Html.DisplayTextFor(model => model.tbAnunciante.tbAnuncianteEndereco.nomeBairro)</td>
+                                        <td>@Html.DisplayTextFor(model => model.tbAnunciante.tbAnuncianteEndereco.nomeCidade)</td>
+                                        <td>@Html.DisplayTextFor(model => model.tbAnunciante.tbAnuncianteEndereco.ufEstado)</td>
+                                        <td>@Html.DisplayTextFor(model => model.tbAnunciante.tbAnuncianteEndereco.cep)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>   
+                        @*                   
+                        <h2>
+                            Anunciante<br/>
+                            <small>@Html.DisplayTextFor(model => model.tbAnunciante.razaoSocial)</small>
+                        </h2>
+                        
                         <address>
-                            <strong>Casas Bahia</strong>
-                            <br>Rua Souza, nº 345.
+                            @Html.DisplayTextFor(model => model.tbAnunciante.tbAnuncianteEndereco.endereco), nº 
+                            @Html.DisplayTextFor(model => model.tbAnunciante.tbAnuncianteEndereco.numero_endereco) - 
+                            @Html.DisplayTextFor(model => model.tbAnunciante.tbAnuncianteEndereco.complemento_endereco)
+
+                            <br><strong>@Html.Label("Bairro")</strong><br>
+                            @Html.DisplayTextFor(model => model.tbAnunciante.tbAnuncianteEndereco.nomeBairro)
+
+                            <br><strong>@Html.Label("Cidade")</strong><br>
+                            @Html.DisplayTextFor(model => model.tbAnunciante.tbAnuncianteEndereco.nomeBairro)
+
                             <br>São Paula, SP
                             <br>
                             <br>(11) 9535-5555
-                        </address>
+                        </address>*@
                     </div>
-                    <div class="col-md-6 invoice-terms">
+                    <div class="col-md-12 invoice-terms">
                         <h3>Formas do Pagamento</h3>
+
                         <p>
                             <i class="fa fa-barcode"></i> &nbsp;  &nbsp; Boleto Bancário
                         </p>
                         <p>
                             <i class="fa fa-credit-card"></i>   Cartão de Crédito
                         </p>
-
                         <br>
-
                         <p>
                             Na forma de pagamento em boleto, o mesmo tem 5 dias úteis para ser pago.
                         </p>
