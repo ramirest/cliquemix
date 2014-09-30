@@ -1,15 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using System.IO;
 using System.Xml;
+using System.Xml.Serialization;
 using Cliquemix.Models;
-using Microsoft.Reporting.WebForms;
+using System.Xml;
+using iTextSharp.text.pdf.qrcode;
 
 namespace Cliquemix.Controllers
 {
@@ -23,13 +28,13 @@ namespace Cliquemix.Controllers
             return View();
         }
 
+
         [HttpPost]
-        public ActionResult Index(int s)
+        public ActionResult Index(int tipo, int s)
         {
             var dt = DateTime.Now;
 
-            //string DataFormato3 = dt.ToString("G");
-            var txt =
+            string txt =
                 dt.Year.ToString(format: "0000") +
                 dt.Month.ToString(format: "00") +
                 dt.Day.ToString(format: "00") +
@@ -38,27 +43,62 @@ namespace Cliquemix.Controllers
                 dt.Second.ToString(format: "00") +
                 dt.Millisecond.ToString(format: "000");
 
-            var sid = CriptografarSid(txt);
-            //ProcessarPagamento(s);
+            //$sid = md5(date("YmdHisu"));
+            // 2013091811394554321
+            // 2013-09-18-11:39:45:54321
+
+            string sid = string.Empty;
+
+            using (MD5 md5Hash = MD5.Create())
+            {
+                sid = CriptografarSid(md5Hash, txt);
+            }
 
             try
             {
-                CriarTransacao(sid);
-                post_data();
-                //Redirect("http://pagsicove.host-up.com/ws/forma/?sid=" + sid);
+                if (tipo == 1)  //Criar Transação
+                    CriarTransacao(sid);
+                else if (tipo == 0)  //Consultar Transação
+                    ConsultarTransacao(sid);
+
+                post_data(sid);
             }
             catch (Exception)
             {
                 throw;
             }
-            
 
-            //$sid = md5(date("YmdHisu"));
-            // 2013091811394554321
-            // 2013-09-18-11:39:45:54321
             
             return View();
         }
+
+
+        public void ConsultarTransacao(string sid)
+        {
+            //Tipo = 0 (consultar)  |  Tipo = 1 (criartransacao)
+            var doc = new XmlDocument();
+
+            //(1) the xml declaration is recommended, but not mandatory
+            XmlDeclaration xmlDeclaration = doc.CreateXmlDeclaration("1.0", "UTF-8", null);
+            XmlElement root = doc.DocumentElement;
+            doc.InsertBefore(xmlDeclaration, root);
+
+            XmlElement element1 = doc.CreateElement(string.Empty, "xml", string.Empty);
+            doc.AppendChild(element1);
+
+            XmlElement element2 = doc.CreateElement(string.Empty, "transacao", string.Empty);
+            XmlText text2 = doc.CreateTextNode("consultar");
+            element2.AppendChild(text2);
+            element1.AppendChild(element2);
+
+            XmlElement element3 = doc.CreateElement(string.Empty, "sid", string.Empty);
+            XmlText text3 = doc.CreateTextNode(sid);
+            element3.AppendChild(text3);
+            element1.AppendChild(element3);
+
+            doc.Save(Server.MapPath("~/Arquivos/XmlPagamento/" + sid + ".xml"));
+        }
+
 
         public void CriarTransacao(string sid)
         {
@@ -99,7 +139,7 @@ namespace Cliquemix.Controllers
             element1.AppendChild(element6);
 
             XmlElement element7 = doc.CreateElement(string.Empty, "valor", string.Empty);
-            XmlText text7 = doc.CreateTextNode("1200.00");
+            XmlText text7 = doc.CreateTextNode("1800.00");
             element7.AppendChild(text7);
             element1.AppendChild(element7);
 
@@ -168,117 +208,111 @@ namespace Cliquemix.Controllers
             element20.AppendChild(text20);
             element1.AppendChild(element20);
 
-            doc.Save(Server.MapPath("~/Arquivos/XmlPagamento/CriarTransacao.xml"));
+            doc.Save(Server.MapPath("~/Arquivos/XmlPagamento/" + sid + ".xml"));
         }
 
 
         #region "Criptografar Sid"
-        public static string CriptografarSid(string sid)
+        public static string CriptografarSid(MD5 md5Hash, string input)
         {
-            System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create();
-            byte[] inputBytes = Encoding.ASCII.GetBytes(sid);
-            byte[] hash = md5.ComputeHash(inputBytes);
-            StringBuilder sb = new StringBuilder();
 
-            for (int i = 0; i < hash.Length; i++)
+            // Convert the input string to a byte array and compute the hash. 
+            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+
+            // Create a new Stringbuilder to collect the bytes 
+            // and create a string.
+            StringBuilder sBuilder = new StringBuilder();
+
+            // Loop through each byte of the hashed data  
+            // and format each one as a hexadecimal string. 
+            for (int i = 0; i < data.Length; i++)
             {
-                sb.Append(hash[i].ToString("X2"));
+                sBuilder.Append(data[i].ToString("x2"));
             }
-            return sb.ToString();
+
+            // Return the hexadecimal string. 
+            return sBuilder.ToString();
+        }
+
+        #endregion
+
+
+        #region "Validar Sid"
+        static bool ValidarSid(MD5 md5Hash, string input, string hash)
+        {
+            // Hash the input. 
+            string hashOfInput = CriptografarSid(md5Hash, input);
+
+            // Create a StringComparer an compare the hashes.
+            StringComparer comparer = StringComparer.OrdinalIgnoreCase;
+
+            if (0 == comparer.Compare(hashOfInput, hash))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         #endregion
 
 
-        #region "Validar Sid
-        public static string ValidarSid(string sid)
+        public void post_data(string sid)
         {
-            System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create();
-            byte[] inputBytes = Encoding.ASCII.GetBytes(sid);
-            byte[] hash = md5.ComputeHash(inputBytes);
-            StringBuilder sb = new StringBuilder();
 
-            for (int i = 0; i < hash.Length; i++)
+            Stream requestStream = null;
+            WebResponse response = null;
+            StreamReader reader = null;
+
+            string url = "http://pagsicove.host-up.com/ws/";
+
+            WebRequest request = WebRequest.Create(url);
+            request.Method = WebRequestMethods.Http.Post;
+            request.ContentType = "application/x-www-form-urlencoded";
+            
+            byte[] byteBuffer = null;
+            var fileName = Server.MapPath(@"~/Arquivos/XmlPagamento/" + sid + ".xml");
+
+            var stringXml = this.GetTextFromXMLFile(fileName);
+            var postData = String.Format("mensagem={0}", stringXml);
+
+            byteBuffer = Encoding.UTF8.GetBytes(postData);
+            request.ContentLength = byteBuffer.Length;
+            requestStream = request.GetRequestStream();
+            requestStream.Write(byteBuffer, 0, byteBuffer.Length);
+            requestStream.Close();
+            
+
+            response = request.GetResponse();
+            Stream responseStream = response.GetResponseStream();
+            
+            System.Text.Encoding encoding = System.Text.Encoding.Default;
+            if (responseStream != null) 
+                reader = new StreamReader(responseStream, encoding);
+
+            Char[] charBuffer = new Char[256];
+
+            int count = reader.Read(charBuffer, 0, charBuffer.Length);
+            
+            var Dados = new StringBuilder();
+
+            while (count > 0)
             {
-                sb.Append(hash[i].ToString("X2"));
+                Dados.Append(new String(charBuffer, 0, count));
+                count = reader.Read(charBuffer, 0, charBuffer.Length);
             }
-            return sb.ToString();
-        }
-        #endregion
 
-
-        public void post_data()
-        {
-            WebRequest req = null;
-            WebResponse rsp = null;
-
-            try
-            {
-                string filename = Server.MapPath("~/Arquivos/XmlPagamento/CriarTransacao.xml");
-                string uri = "http://pagsicove.host-up.com/ws/";
-                req = WebRequest.Create(uri);
-
-                req.Method = "POST";
-                //req.ContentType = "Text/xml";
-                req.ContentType = "application/x-www-form-urlencoded";
-                
-                var writer = new StreamWriter(req.GetRequestStream());
-
-                writer.WriteLine(this.GetTextFromXMLFile(filename));
-                writer.Close();
-
-                rsp = req.GetResponse();
-            }
-            catch (WebException webEx)
-            {   }
-            catch (Exception ex)
-            {   }
-            finally
-            {
-                if (req != null)
-                    req.GetRequestStream().Close();
-
-                if (rsp != null)
-                    rsp.GetResponseStream().Close();
-            }
+            Response.Write(Dados.ToString());
         }
 
 
         private string GetTextFromXMLFile(string file)
         {
-            StreamReader reader = new StreamReader(file);
+            var reader = new StreamReader(file);
             string ret = reader.ReadToEnd();
             reader.Close();
             return ret;
-        }
-
-
-
-        public void ConsultarTransacao()
-        {
-            //Tipo = 0 (consultar)  |  Tipo = 1 (criartransacao)
-            var doc = new XmlDocument();
-
-            //(1) the xml declaration is recommended, but not mandatory
-            XmlDeclaration xmlDeclaration = doc.CreateXmlDeclaration("1.0", "UTF-8", null);
-            XmlElement root = doc.DocumentElement;
-            doc.InsertBefore(xmlDeclaration, root);
-
-            XmlElement element2 = doc.CreateElement(string.Empty, "xml", string.Empty);
-            doc.AppendChild(element2);
-
-            XmlElement element3 = doc.CreateElement(string.Empty, "transacao", string.Empty);
-            XmlText text1 = doc.CreateTextNode("consultar");
-            element3.AppendChild(text1);
-            element2.AppendChild(element3);
-
-            XmlElement element4 = doc.CreateElement(string.Empty, "sid", string.Empty);
-            XmlText text2 = doc.CreateTextNode("02b95fb5f996954aedb91f4dd0a90839x");
-            element4.AppendChild(text2);
-            element2.AppendChild(element4);
-
-            doc.Save(Server.MapPath("~/Views/Pagamento/document.xml")); // "E:\\document.xml");     
-
-            Response.Redirect("http://pagsicove.host-up.com/ws/" + doc);
         }
 
     }

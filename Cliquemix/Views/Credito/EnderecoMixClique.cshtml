@@ -1,0 +1,29 @@
+﻿@model Cliquemix.Models.EnderecoMixClique
+
+@{
+    Layout = null;
+}
+
+
+@Html.AntiForgeryToken()
+@try
+{
+    @Html.HiddenFor(m => m.RazaoSocial)
+    <br/>
+    <address>
+        <strong> @* Razão Social MixClique *@
+            @Html.DisplayTextFor(model => model.RazaoSocial)
+        </strong>
+        <br/>@Html.DisplayTextFor(model => model.Endereco) - 
+        @Html.DisplayTextFor(model => model.Bairro)
+        <br/>@Html.DisplayTextFor(model => model.Cidade), 
+        @Html.DisplayTextFor(model => model.Estado) - 
+        @Html.DisplayTextFor(model => model.Cep)
+        <br/>@Html.DisplayTextFor(model => model.Tel1)
+        <br/>@Html.DisplayTextFor(model => model.Tel2)
+    </address>
+}
+catch (Exception ex)
+{
+    <address></address>
+}

@@ -16,7 +16,7 @@ namespace Cliquemix.Models
     {
         public tbAnunciante()
         {
-            this.tbAnuncianteEndereco1 = new HashSet<tbAnuncianteEndereco>();
+            this.tbAnuncianteEndereco = new HashSet<tbAnuncianteEndereco>();
             this.tbAnunciantePatrocinador = new HashSet<tbAnunciantePatrocinador>();
             this.tbAnuncianteTelefone = new HashSet<tbAnuncianteTelefone>();
             this.tbAnuncio = new HashSet<tbAnuncio>();
@@ -48,7 +48,6 @@ namespace Cliquemix.Models
         public Nullable<decimal> saldoCreditos { get; set; }
         public Nullable<int> leuTermo { get; set; }
         public Nullable<int> uid { get; set; }
-        public Nullable<int> peid { get; set; }
         public string cpf { get; set; }
         public string rg { get; set; }
         public string pis { get; set; }
@@ -59,8 +58,7 @@ namespace Cliquemix.Models
     
         public virtual tbAnuncianteStatus tbAnuncianteStatus { get; set; }
         public virtual tbCondicaoPagto tbCondicaoPagto { get; set; }
-        public virtual tbAnuncianteEndereco tbAnuncianteEndereco { get; set; }
-        public virtual ICollection<tbAnuncianteEndereco> tbAnuncianteEndereco1 { get; set; }
+        public virtual ICollection<tbAnuncianteEndereco> tbAnuncianteEndereco { get; set; }
         public virtual ICollection<tbAnunciantePatrocinador> tbAnunciantePatrocinador { get; set; }
         public virtual ICollection<tbAnuncianteTelefone> tbAnuncianteTelefone { get; set; }
         public virtual ICollection<tbAnuncio> tbAnuncio { get; set; }

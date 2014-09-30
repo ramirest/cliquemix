@@ -3,24 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Cliquemix.Models;
 
 namespace Test_AspNet.Controllers.Consumidor
 {
     public class RelatorioConsumidorController : Controller
     {
-        //
+        //Somente usuários com a permissão Consumidor podem acessar essa página
+        [PermissoesFiltro(Roles = "Consumidor")]
         // GET: /RelatorioConsumidor/
-        public ActionResult RelConsPrincipal()
+        public ActionResult RelConsumidorPrincipal()
         {
             return View();
         }
 
-        public ActionResult RelConsAnun()
+        public ActionResult RelConsumidorAnuncio()
         {
             return View();
         }
 
-        public ActionResult RelConsPrem()
+        public ActionResult RelConsumidorPremio()
         {
             return View();
         }

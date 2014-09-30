@@ -51,6 +51,19 @@ namespace Cliquemix.Models
         public Nullable<int> spnpc { get; set; }
         public Nullable<int> tpuad { get; set; }
         public Nullable<int> texpsu { get; set; }
+        public string cdAfPadPagBol { get; set; }
+        public string chPadPagBol { get; set; }
+        public Nullable<int> NumMaxParPag { get; set; }
+        public string razaoSocial { get; set; }
+        public string endereco { get; set; }
+        public string bairro { get; set; }
+        public string cidade { get; set; }
+        public string uf { get; set; }
+        public string cep { get; set; }
+        public string tel1 { get; set; }
+        public string tel2 { get; set; }
+        public Nullable<int> dpvb { get; set; }
+        public string urlRetornoPagto { get; set; }
     
         public virtual tbAnuncianteStatus tbAnuncianteStatus { get; set; }
         public virtual tbAnuncianteStatus tbAnuncianteStatus1 { get; set; }
@@ -82,6 +95,6 @@ namespace Cliquemix.Models
         public virtual tbConsumidorPontosStatus tbConsumidorPontosStatus { get; set; }
         public virtual tbUsersTipo tbUsersTipo { get; set; }
         public virtual tbUsersTipo tbUsersTipo1 { get; set; }
-        public virtual tbUsersTipo tbUsersTipo11 { get; set; }
+        public virtual tbUsersTipo tbUsersTipo2 { get; set; }
     }
 }

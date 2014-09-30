@@ -5,15 +5,14 @@
     function ErroCriarCampanha(tipo) {
         var desc = null;
         if (tipo == 1) {
-            desc = "O Anunciante possui créditos pendentes para pagamento [Cod: 007.00001]";
+            desc = "O Anunciante possui créditos pendentes para pagamento.<br>[Cod: 007.00001]";
         }
         else if (tipo == 2) {
-            //desc = "Não existem destaques disponíveis para a campanha [Cod: 001.00002]";
+            desc = "A Compra de Crédito informada não está disponível para pagamento.<br>[Cod: 007.00002]";
         }
         else if (tipo == 3) {
             //desc = "Não foi possível cadastrar uma nova campanha. Verifique! [Cod: 001.00003]";
         }
-
         setTimeout(function () {
             erro_message_demo(desc);
         }, 1000);
@@ -41,7 +40,7 @@
             theme: 'flat'
         }
         Messenger().post({
-            message: 'A Campanha selecionada foi desativada com sucesso!',
+            message: 'A Compra de Créditos selecionada foi cancelada com sucesso!',
             type: 'success',
             showCloseButton: true
         });
@@ -59,6 +58,26 @@
                 //alert('Passou');
                 //$('#detalhesDestaque').html(data);
                 //$('#detalhesDestaque2').html(data);
+            }
+        });
+    }
+
+    function CancelarCompra(cd) {
+        $.ajax(
+        {
+            type: 'POST',
+            url: '/Credito/CancelarCompra/?ccid=' + cd,
+            dataType: 'html',
+            cache: false,
+            async: true,
+            success: function() {
+                setTimeout(function () {
+                    success_message_demo();
+                },
+                setTimeout(function () {
+                    limparAviso();
+                    location.href = "/Credito/ManagerCredit";
+                }, 3000), 1000);
             }
         });
     }
@@ -80,11 +99,11 @@
 {
     <script type="text/javascript">ErroCriarCampanha(1);</script>
 }
-@*
-else if (ViewBag.ErroCompraCredito == "001.00004")
+else if (ViewBag.ErroCompraCredito == "007.00002")
 {
-    <script type="text/javascript">ErroCriarCampanha(4);</script>
+    <script type="text/javascript">ErroCriarCampanha(2);</script>
 }
+@*
 else if (ViewBag.ErroCompraCredito == "001.00003")
 {
     <script type="text/javascript">ErroCriarCampanha(3);</script>
@@ -183,7 +202,7 @@ else if (ViewBag.ErroCompraCredito == "001.00003")
                                             if (s == 1)
                                             {
                                                 <a href="ConfirmarCompra?ccid=@item.ccid" title="Pagar" style="padding-right: 10px;"><i class="fa fa-money"></i></a>
-                                                <a href="#" title="Cancelar" style="padding-right: 10px;"><i class="fa fa-times"></i></a>
+                                                <a href="#" title="Cancelar" style="padding-right: 10px;" onclick="CancelarCompra(@item.ccid);"><i class="fa fa-times"></i></a>
                                             }
                                             else
                                             {

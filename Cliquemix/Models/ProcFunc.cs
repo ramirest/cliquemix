@@ -1142,6 +1142,80 @@ namespace Cliquemix.Models
         }
         #endregion
 
+        #region "Retornar o Códigos Padrões para Pagamento do MixClique"
+        public static string RetornarCodigoAfiliacaoMixClique()
+        {
+            try
+            {
+                var a = (from padrao in db.tbConfigPadrao select padrao).First();
+                return a.cdAfPadPagBol;
+            }
+            catch (Exception)
+            {
+                return string.Empty;
+            }
+        }
+        public static string RetornarChaveMixClique()
+        {
+            try
+            {
+                var a = (from padrao in db.tbConfigPadrao select padrao).First();
+                return a.chPadPagBol;
+            }
+            catch (Exception)
+            {
+                return string.Empty;
+            }
+        }
+        #endregion
+
+        #region "Retornar Dias Padrão para Vencimento de Boleto"
+        public static int RetornarDiaPadraoVencimentoBoleto()
+        {
+            try
+            {
+                var a = (from pad in db.tbConfigPadrao select pad).First();
+                if (a.dpvb != null) return (int)a.dpvb;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            return 0;
+        }
+        #endregion
+        
+        #region "Retornar Dias Padrão para Vencimento de Boleto"
+        public static int RetornarNumMaxParcelasPagto()
+        {
+            try
+            {
+                var a = (from pad in db.tbConfigPadrao select pad).First();
+                if (a.NumMaxParPag != null) return (int)a.NumMaxParPag;
+            }
+            catch (Exception)
+            {
+                return 1;
+            }
+            return 1;
+        }
+        #endregion
+
+        #region "Retornar URL de Retorno Padrão após pagamento"
+        public static string RetornarUrlRetornoAposPagto()
+        {
+            try
+            {
+                var a = (from pad in db.tbConfigPadrao select pad).First();
+                return a.urlRetornoPagto;
+            }
+            catch (Exception)
+            {
+                return "";
+            }
+        }
+        #endregion
+
         #endregion
 
     }

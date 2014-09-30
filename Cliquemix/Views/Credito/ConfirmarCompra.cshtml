@@ -1,4 +1,37 @@
-﻿@model Cliquemix.Models.tbCreditoCompra
+﻿@using Cliquemix.Models
+@using DocumentFormat.OpenXml.Wordprocessing
+@model Cliquemix.Models.tbCreditoCompra
+
+<script>
+    setTimeout(
+        function() {
+            $.ajax(
+            {
+                type: 'GET',
+                url: '/Credito/EnderecoMixClique',
+                dataType: 'html',
+                cache: true,
+                async: true,
+                success: function(data) {
+                    $('#EnderecoMix').html(data);
+                }
+            });
+        }, 20);
+    setTimeout(
+        function () {
+            $.ajax(
+            {
+                type: 'GET',
+                url: '/Credito/DadosAnunciante',
+                dataType: 'html',
+                cache: true,
+                async: true,
+                success: function (data) {
+                    $('#DadosAnunciante').html(data);
+                }
+            });
+        }, 20);
+</script>
 
 <div class="row">
     <div class="col-lg-12">
@@ -20,12 +53,16 @@
                     <div class="col-md-6">
                         <h1><img src="~/fonts/img/cliquemix-logo-confirm-pedido.png" style="max-width:200px; max-height:40px;" /></h1>
                         <br>
-                        <address>
-                            <strong>Mix Click</strong>
-                            <br>Rua Diamantina, nº 75, sala 312
-                            <br>Ipatinga, MG
-                            <br>(31) 9999-9999
-                        </address>
+                        <div id="EnderecoMix">
+                            @{
+                                try
+                                {
+                                    Html.RenderPartial("EnderecoMixClique");
+                                }
+                                catch (Exception)
+                                {}
+                            }
+                        </div>
                     </div>
                     <div class="col-md-6 invoice-terms">
                         <h3>Pedido @ViewBag.CodPedido</h3>
@@ -44,69 +81,21 @@
                 <!-- /.row -->
                 <hr>
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Endereço</th>
-                                        <th>Número</th>
-                                        <th>Complemento</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>@Html.DisplayTextFor(model => model.tbAnunciante.tbAnuncianteEndereco.endereco)</td>
-                                        <td>@Html.DisplayTextFor(model => model.tbAnunciante.tbAnuncianteEndereco.numero_endereco)</td>
-                                        <td>@Html.DisplayTextFor(model => model.tbAnunciante.tbAnuncianteEndereco.complemento_endereco)</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                    <div class="col-md-6">
+                        <h3>Dados do Anunciante</h3>
+                        <div id="DadosAnunciante">
+                            @{
+                                try
+                                {
+                                    Html.RenderPartial("DadosAnunciante");
+                                }
+                                catch (Exception)
+                                { }
+                            }
                         </div>
-                        
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Bairro</th>
-                                        <th>Cidade</th>
-                                        <th>UF</th>
-                                        <th>CEP</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>@Html.DisplayTextFor(model => model.tbAnunciante.tbAnuncianteEndereco.nomeBairro)</td>
-                                        <td>@Html.DisplayTextFor(model => model.tbAnunciante.tbAnuncianteEndereco.nomeCidade)</td>
-                                        <td>@Html.DisplayTextFor(model => model.tbAnunciante.tbAnuncianteEndereco.ufEstado)</td>
-                                        <td>@Html.DisplayTextFor(model => model.tbAnunciante.tbAnuncianteEndereco.cep)</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>   
-                        @*                   
-                        <h2>
-                            Anunciante<br/>
-                            <small>@Html.DisplayTextFor(model => model.tbAnunciante.razaoSocial)</small>
-                        </h2>
-                        
-                        <address>
-                            @Html.DisplayTextFor(model => model.tbAnunciante.tbAnuncianteEndereco.endereco), nº 
-                            @Html.DisplayTextFor(model => model.tbAnunciante.tbAnuncianteEndereco.numero_endereco) - 
-                            @Html.DisplayTextFor(model => model.tbAnunciante.tbAnuncianteEndereco.complemento_endereco)
-
-                            <br><strong>@Html.Label("Bairro")</strong><br>
-                            @Html.DisplayTextFor(model => model.tbAnunciante.tbAnuncianteEndereco.nomeBairro)
-
-                            <br><strong>@Html.Label("Cidade")</strong><br>
-                            @Html.DisplayTextFor(model => model.tbAnunciante.tbAnuncianteEndereco.nomeBairro)
-
-                            <br>São Paula, SP
-                            <br>
-                            <br>(11) 9535-5555
-                        </address>*@
                     </div>
-                    <div class="col-md-12 invoice-terms">
+
+                    <div class="col-md-6 invoice-terms">
                         <h3>Formas do Pagamento</h3>
 
                         <p>
@@ -116,9 +105,12 @@
                             <i class="fa fa-credit-card"></i>   Cartão de Crédito
                         </p>
                         <br>
-                        <p>
+                        <p class="text-green">Na forma de pagamento em boleto, o mesmo tem 5 dias úteis para ser pago.</p>
+                        @*
+                        <div class="tile dark-blue text-center">
                             Na forma de pagamento em boleto, o mesmo tem 5 dias úteis para ser pago.
-                        </p>
+                        </div>
+                        *@
                         <a class="btn btn-green" href="#"><i class="fa fa-usd"></i> Pague Online</a>
                     </div>
                 </div>

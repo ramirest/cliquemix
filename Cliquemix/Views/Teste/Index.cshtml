@@ -5,7 +5,16 @@
 
     @using (Html.BeginForm())
     {
+        <label>Parâmetro Qualquer</label>
         <input type="text" id="s" name="s" value="1"/>
-        <button type="submit" id="salvar" name="salvar">Salvar</button>
+        <br/>
+        <label>Tipo</label>
+        <input type="text" id="tipo" name="tipo" value="1" />
+        <div>
+            0 = Consulta Transação
+            1 = Criar Transação
+        </div>
+
+        <button type="submit" id="salvar" name="salvar">Criar</button>
     }
 </html>

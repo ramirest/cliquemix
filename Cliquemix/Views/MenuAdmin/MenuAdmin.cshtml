@@ -1,4 +1,5 @@
-﻿<!-- begin SIDE NAVIGATION -->
+﻿@using Microsoft.AspNet.Identity
+<!-- begin SIDE NAVIGATION -->
 <nav class="navbar-side" role="navigation">
     <div class="navbar-collapse sidebar-collapse collapse">
         <ul id="side" class="nav navbar-nav side-nav">
@@ -10,12 +11,20 @@
                     <i class="fa fa-key"></i> Logado como
                 </p>
                 <p class="name tooltip-sidebar-logout">
-                    Admin
-                    <span class="last-name">Administrador</span> <a style="color: inherit" class="logout_open" href="#logout" data-toggle="tooltip" data-placement="top" title="Logout"><i class="fa fa-sign-out"></i></a>
+                    <span class="last-name">
+                        @if (Request.IsAuthenticated)
+                        {
+                            @Html.Label(User.Identity.GetUserName());
+                        }
+                        <a class="logout_open" style="color: inherit" title="Logout" href="~/Account/Logout">
+                            <i class="fa fa-sign-out"></i>
+                        </a>
+                    </span>
                 </p>
                 <div class="clearfix"></div>
             </li>
             <!-- end SIDE NAV USER PANEL -->
+
             <!-- begin DASHBOARD LINK -->
             <li>
                 <a href="/PrincipalAdmin/PrincipalAdmin">
@@ -92,6 +101,34 @@
                     </li>
                 </ul>
             </li>
+            
+            <li class="panel">
+                <a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#config">
+                    <i class="fa fa-gears"></i> Configurações <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="collapse nav" id="config">
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-angle-double-right"></i> Acesso e Permissões
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-angle-double-right"></i> Ajustes Gerais
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-angle-double-right"></i> Gerenciar Campanhas
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-angle-double-right"></i> Status Padrão
+                        </a>
+                    </li>
+                </ul>
+            </li>            
 
             <li class="panel">
                 <a href="javascript:;" data-parent="#side" data-toggle="collapse" class="accordion-toggle" data-target="#destaques">

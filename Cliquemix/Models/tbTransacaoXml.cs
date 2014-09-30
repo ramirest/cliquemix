@@ -14,6 +14,11 @@ namespace Cliquemix.Models
     
     public partial class tbTransacaoXml
     {
+        public tbTransacaoXml()
+        {
+            this.tbCreditoCompra = new HashSet<tbCreditoCompra>();
+        }
+    
         public int txid { get; set; }
         public string transacao { get; set; }
         public string sid { get; set; }
@@ -23,7 +28,6 @@ namespace Cliquemix.Models
         public Nullable<decimal> valor { get; set; }
         public Nullable<System.DateTime> dataVencimento { get; set; }
         public string descricao { get; set; }
-        public string cpf { get; set; }
         public string cep { get; set; }
         public string cidade { get; set; }
         public string estado { get; set; }
@@ -36,8 +40,11 @@ namespace Cliquemix.Models
         public string urlRetornoLoja { get; set; }
         public Nullable<int> txsid { get; set; }
         public Nullable<System.DateTime> dtMovimento { get; set; }
+        public string codAfiliacao { get; set; }
+        public string cnpj { get; set; }
     
         public virtual tbAnunciante tbAnunciante { get; set; }
         public virtual tbTransacaoXmlStatus tbTransacaoXmlStatus { get; set; }
+        public virtual ICollection<tbCreditoCompra> tbCreditoCompra { get; set; }
     }
 }

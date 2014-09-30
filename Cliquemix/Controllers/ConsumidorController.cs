@@ -10,6 +10,8 @@ using Cliquemix.Models;
 
 namespace Cliquemix.Controllers
 {
+    //Somente usuários com a permissão Consumidor podem acessar essa página
+    [PermissoesFiltro(Roles = "Consumidor")]
     public class ConsumidorController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

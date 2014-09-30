@@ -313,6 +313,7 @@
       <DependentUpon>Cliquemix.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Endereco.cs" />
+    <Compile Include="Models\EnderecoMixClique.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\ProcFunc.cs" />
@@ -1007,6 +1008,10 @@
     <Content Include="Images\Inicial\headers\Descr.WD3" />
     <Content Include="Images\Inicial\team\Descr.WD3" />
     <Content Include="fonts\img\images\prettyPhoto\default\Thumbs.db" />
+    <Content Include="Content\plugins\img\Descr.WD3" />
+    <Content Include="Content\plugins\img\gallery\Descr.WD3" />
+    <Content Include="Images\anuncios\Descr.WD3" />
+    <Content Include="Images\anuncios\gallery\Descr.WD3" />
     <EntityDeploy Include="Models\Cliquemix.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Cliquemix.Designer.cs</LastGenOutput>
@@ -1024,10 +1029,6 @@
       <DependentUpon>Cliquemix.edmx</DependentUpon>
       <LastGenOutput>Cliquemix.cs</LastGenOutput>
     </Content>
-    <Content Include="Content\plugins\img\Descr.WD3" />
-    <Content Include="Content\plugins\img\gallery\Descr.WD3" />
-    <Content Include="Images\anuncios\Descr.WD3" />
-    <Content Include="Images\anuncios\gallery\Descr.WD3" />
     <None Include="Scripts\Outros\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\Outros\jquery-2.1.1.js" />
     <Content Include="Scripts\Outros\jquery-2.1.1.min.js" />
@@ -1126,6 +1127,7 @@
     <Content Include="Views\PrincipalConsumidor\favicon.ico" />
     <Content Include="Views\PrincipalConsumidor\index.html" />
     <Content Include="Views\Shared\favicon.ico" />
+    <Content Include="Views\Teste\Transacao.xml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1262,9 +1264,9 @@
     <Content Include="Views\Premio\PremiacaoVincularGerir.cshtml" />
     <Content Include="Views\PrincipalAdmin\PrincipalAdmin.cshtml" />
     <Content Include="Views\PrincipalConsumidor\PrincipalConsumidor.cshtml" />
-    <Content Include="Views\RelatorioConsumidor\RelConsAnun.cshtml" />
-    <Content Include="Views\RelatorioConsumidor\RelConsPrem.cshtml" />
-    <Content Include="Views\RelatorioConsumidor\RelConsPrincipal.cshtml" />
+    <Content Include="Views\RelatorioConsumidor\RelConsumidorAnuncio.cshtml" />
+    <Content Include="Views\RelatorioConsumidor\RelConsumidorPremio.cshtml" />
+    <Content Include="Views\RelatorioConsumidor\RelConsumidorPrincipal.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Shared\_LayoutCon.cshtml" />
     <Content Include="Views\Destaque\detalhesDestaque.cshtml" />
@@ -1340,6 +1342,9 @@
     <Content Include="Views\PrincipalConsumidor\PrincipalAnuncios.cshtml" />
     <Content Include="Views\Credito\ConfirmarCompra.cshtml" />
     <Content Include="Views\Breadcrumbs\Breadcrumbs-Credito-Descricao-Compra.cshtml" />
+    <Content Include="Views\Users\AjustarSenhas.cshtml" />
+    <Content Include="Views\Credito\EnderecoMixClique.cshtml" />
+    <Content Include="Views\Credito\DadosAnunciante.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

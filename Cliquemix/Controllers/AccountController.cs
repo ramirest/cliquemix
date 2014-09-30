@@ -59,10 +59,10 @@ namespace Cliquemix.Controllers
 
                             if (ProcFunc.RetornarTipoUsuarioLogado(model.Username) == 2)
                                 return RedirectToAction("PrincipalAdmin", "PrincipalAdmin");
-
+                            
                             if (ProcFunc.RetornarTipoUsuarioLogado(model.Username) == 4)
                                 return RedirectToAction("PrincipalAnuncios", "PrincipalConsumidor");
-
+                            
                             return RedirectToAction("PrincipalDemo", "PrincipalDemo");
 
                         }

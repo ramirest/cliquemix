@@ -21,7 +21,6 @@
                 setTimeout(function () {
                         success_message_demo();
                     },
-
                     setTimeout(function () {
                         limparAviso();
                         document.getElementById('btnListCampanhaCancelarExcluir').click();
@@ -34,13 +33,13 @@
     function ErroCriarCampanha(tipo) {
         var desc = null;
         if (tipo == 4) {
-            desc = "Não existem anúncios disponíveis para a campanha [Cod: 001.00004]";
+            desc = "Não existem anúncios disponíveis para a campanha<br>[Cod: 001.00004]";
         }
         else if (tipo == 2) {
-            desc = "Não existem destaques disponíveis para a campanha [Cod: 001.00002]";
+            desc = "Não existem destaques disponíveis para a campanha<br>[Cod: 001.00002]";
         }
         else if (tipo == 3) {
-            desc = "Não foi possível cadastrar uma nova campanha. Verifique! [Cod: 001.00003]";
+            desc = "Não foi possível cadastrar uma nova campanha. Verifique!<br>[Cod: 001.00003]";
         }
         
         setTimeout(function ()

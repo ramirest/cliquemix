@@ -1,4 +1,5 @@
-﻿<!-- begin TOP NAVIGATION -->
+﻿@using Microsoft.AspNet.Identity
+<!-- begin TOP NAVIGATION -->
 
 <nav class="navbar-top" role="navigation" style="margin-top:-50px;">
     <!-- begin BRAND HEADING -->
@@ -26,6 +27,9 @@
             <!-- You may add more widgets here using <li> -->
         </ul>
         <!-- end LEFT SIDE WIDGETS -->
+        
+        
+
         <!-- begin USER ACTIONS DROPDOWNS -->
         <ul class="nav navbar-right">
 
@@ -35,12 +39,21 @@
                     <i class="fa fa-user"></i>  <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-                    
-                   
                     <li>
-                        <a class="logout_open" href="#logout">
+                        <a href="~/PerfilAnunciante/PerfilAnunciante">
+                            <i class="fa fa-user"></i> Meu Perfil
+                        </a>
+                    </li>
+
+                    <li class="divider"></li>
+
+                    <li>
+                        <a class="logout_open" href="~/Account/Logout">
                             <i class="fa fa-sign-out"></i> Logout
-                            <strong>Consumidor</strong>
+                            @if (Request.IsAuthenticated)
+                            {
+                                @Html.Label(User.Identity.GetUserName());
+                            }
                         </a>
                     </li>
 

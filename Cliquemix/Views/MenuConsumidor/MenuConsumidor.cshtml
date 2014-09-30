@@ -1,4 +1,5 @@
-﻿<!-- begin SIDE NAVIGATION -->
+﻿@using Microsoft.AspNet.Identity
+<!-- begin SIDE NAVIGATION -->
 <nav class="navbar-side" role="navigation">
     <div class="navbar-collapse sidebar-collapse collapse">
         <ul id="side" class="nav navbar-nav side-nav" style="margin-top:-4%;">
@@ -9,13 +10,21 @@
                 <p class="welcome">
                     <i class="fa fa-key"></i> Logado como
                 </p>
-                <p class="name tooltip-sidebar-logout last-name">
-                    Consumidor
-                    @*<span class="last-name">1</span>*@ <a style="color: inherit" class="logout_open" href="#logout" data-toggle="tooltip" data-placement="top" title="Logout"><i class="fa fa-sign-out"></i></a>
+                <p class="name tooltip-sidebar-logout">
+                    <span class="last-name">
+                        @if (Request.IsAuthenticated)
+                        {
+                            @Html.Label(User.Identity.GetUserName());
+                        }
+                        <a class="logout_open" style="color: inherit" title="Logout" href="~/Account/Logout">
+                            <i class="fa fa-sign-out"></i>
+                        </a>
+                    </span>
                 </p>
                 <div class="clearfix"></div>
             </li>
             <!-- end SIDE NAV USER PANEL -->
+
             <!-- begin DASHBOARD LINK -->
             <li>
                 <a href="/PrincipalConsumidor/PrincipalConsumidor">
@@ -36,7 +45,7 @@
             </li>
 
             <li>
-                <a href="/RelatorioConsumidor/RelConsPrincipal">
+                <a href="/RelatorioConsumidor/RelConsumidorPrincipal">
                     <i class="fa fa-file-text"></i> Relatórios
                 </a>
             </li>                  

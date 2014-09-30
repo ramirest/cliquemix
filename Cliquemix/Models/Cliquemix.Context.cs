@@ -13,10 +13,10 @@ namespace Cliquemix.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class cliquemixEntities : DbContext
+    public partial class Entities : DbContext
     {
-        public cliquemixEntities()
-            : base("name=cliquemixEntities")
+        public Entities()
+            : base("name=Entities")
         {
         }
     

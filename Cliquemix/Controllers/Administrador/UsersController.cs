@@ -10,7 +10,8 @@ using Cliquemix.Models;
 
 namespace Cliquemix.Controllers.Administrador
 {
-    [Authorize]
+    //Somente usuários com a permissão Administrador podem acessar essa página
+    [PermissoesFiltro(Roles = "Administrador")]
     public class UsersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -134,5 +135,38 @@ namespace Cliquemix.Controllers.Administrador
             }
             base.Dispose(disposing);
         }
+
+
+        [HttpGet]
+        public ActionResult AjustarSenhas()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AjustarSenhas(FormCollection form)
+        {
+            var db = new ApplicationDbContext();
+            try
+            {
+                foreach (var item in db.tbUsers.ToList())
+                {
+                    if (item.uid > 22)
+                    {
+                        item.pwd = ProcFunc.CryptographyPass(item.pwd); //50
+                        item.cpwd = item.pwd; //50
+                        db.Entry(item).State = EntityState.Modified;
+                        db.SaveChanges();                        
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return View();
+        }
     }
 }
+

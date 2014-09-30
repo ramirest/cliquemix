@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Cliquemix.Models;
 
 namespace Test_AspNet.Controllers.Consumidor
 {
     public class PrincipalConsumidorController : Controller
     {
-        //
+        //Somente usuários com a permissão Consumidor podem acessar essa página
+        [PermissoesFiltro(Roles = "Consumidor")]
+
         // GET: /PrincipalConsumidor/
         public ActionResult PrincipalConsumidor()
         {

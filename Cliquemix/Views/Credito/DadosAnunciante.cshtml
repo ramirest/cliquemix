@@ -1,0 +1,36 @@
+﻿@model Cliquemix.Models.tbAnuncianteEndereco
+
+@{
+    Layout = null;
+}
+
+
+@Html.AntiForgeryToken()
+@try
+{
+    @Html.HiddenFor(m => m.tbAnunciante.razaoSocial)
+    <br />
+    <address>
+        <strong>
+            @* Razão Social MixClique *@
+            @Html.DisplayTextFor(model => model.tbAnunciante.razaoSocial)
+        </strong>
+        <br />@Html.DisplayTextFor(model => model.endereco), nº 
+        @Html.DisplayTextFor(model => model.numero_endereco), 
+        @Html.DisplayTextFor(model => model.complemento_endereco) - 
+        @Html.DisplayTextFor(model => model.nomeBairro)
+        <br />@Html.DisplayTextFor(model => model.nomeCidade),
+        @Html.DisplayTextFor(model => model.ufEstado) -
+        @Html.DisplayTextFor(model => model.cep)
+        <br />
+        @Html.DisplayTextFor(model => model.tbAnunciante.telResidencial) | 
+        @Html.DisplayTextFor(model => model.tbAnunciante.telComercial)
+        <br />
+        @Html.DisplayTextFor(model => model.tbAnunciante.telCelular1) | 
+        @Html.DisplayTextFor(model => model.tbAnunciante.telCelular2)
+    </address>
+}
+catch (Exception ex)
+{
+    <address></address>
+}
