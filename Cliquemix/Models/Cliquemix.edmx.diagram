@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0f5d34f4dfc84a0b979bcae6bde29b7e" Name="Diagram1">
+      <Diagram DiagramId="0f5d34f4dfc84a0b979bcae6bde29b7e" Name="Diagram1" ZoomLevel="69">
         <EntityTypeShape EntityType="cliquemixModel.tbAnunciante" Width="1.5" PointX="0.75" PointY="27.875" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbAnuncianteEndereco" Width="1.5" PointX="3" PointY="33.5" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbAnunciantePatrocinador" Width="1.5" PointX="6" PointY="35.375" IsExpanded="true" />
@@ -35,7 +35,6 @@
         <EntityTypeShape EntityType="cliquemixModel.tbCep" Width="1.5" PointX="11.5" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbCidade" Width="1.5" PointX="6" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbCondicaoPagto" Width="1.5" PointX="1.5" PointY="21.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="cliquemixModel.tbConfigPadrao" Width="1.5" PointX="6" PointY="7.875" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbConsumidor" Width="1.5" PointX="6" PointY="52.375" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbConsumidorPontos" Width="1.5" PointX="11" PointY="30.25" IsExpanded="true" />
         <EntityTypeShape EntityType="cliquemixModel.tbConsumidorPontosStatus" Width="1.5" PointX="3.75" PointY="9.625" IsExpanded="true" />
@@ -102,8 +101,6 @@
         <AssociationConnector Association="cliquemixModel.tid_tbAnunciante_tbTos_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.uid_tbAnunciante_tbUsers_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.cid_tbAnunciantePatrocinador_tbConsumidor_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="cliquemixModel.apala_tbConfigPadrao_tbAnuncianteStatus_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="cliquemixModel.spnan_tbConfigPadrao_tbAnuncianteStatus_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.acid_tbAnuncio_tbAnuncioCategoria_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.actid_tbAnuncio_tbAnuncioCodTemp_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.aid_tbAnuncioCodTemp_tbAnuncio_fk" ManuallyRouted="false" />
@@ -120,13 +117,6 @@
         <AssociationConnector Association="cliquemixModel.asid_tbAnuncioLog_tbAnuncioStatus_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.uid_tbAnuncioLog_tbUsers_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.cid_tbAnuncioPatrocinador_tbConsumidor_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="cliquemixModel.spaaa_tbConfigPadrao_tbAnuncioStatus_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="cliquemixModel.spab_tbConfigPadrao_tbAnuncioStatus_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="cliquemixModel.spadc_tbConfigPadrao_tbAnuncioStatus_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="cliquemixModel.spaec_tbConfigPadrao_tbAnuncioStatus_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="cliquemixModel.spap_tbConfigPadrao_tbAnuncioStatus_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="cliquemixModel.spea_tbConfigPadrao_tbAnuncioStatus_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="cliquemixModel.spna_tbConfigPadrao_tbAnuncioStatus_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.baiid_tbCep_tbBairro_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.cid_tbBairro_tbCidade_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.btid_tbBan_tbBanTipo_fk" ManuallyRouted="false" />
@@ -145,36 +135,14 @@
         <AssociationConnector Association="cliquemixModel.ctid_tbCampanhaAnuncio_tbCampanhaTmp_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.cacid_tbPremioConsumidor_tbCampanhaAnuncioConsumidor_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.uid_tbCampanhaAnuncioConsumidor_tbUsers_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="cliquemixModel.spnac_tbConfigPadrao_tbCampanhaAnuncioStatus_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.cid_tbCampanhaLocalizacao_tbCidade_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.ctid_tbCampanhaLocalizacao_tbCampanhaTmp_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.eid_tbCampanhaLocalizacao_tbEstado_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.paid_tbCampanhaLocalizacao_tbPais_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="cliquemixModel.Spcb_tbConfigPadrao_tbCampanhaStatus_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="cliquemixModel.Spcd_tbConfigPadrao_tbCampanhaStatus_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="cliquemixModel.Spcea_tbConfigPadrao_tbCampanhaStatus_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="cliquemixModel.Spcec_tbConfigPadrao_tbCampanhaStatus_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="cliquemixModel.Spcep_tbConfigPadrao_tbCampanhaStatus_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="cliquemixModel.spcf_tbConfigPadrao_tbCampanhaStatus_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="cliquemixModel.spcp_tbConfigPadrao_tbCampanhaStatus_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="cliquemixModel.spec_tbConfigPadrao_tbCampanhaStatus_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="cliquemixModel.spnc_tbConfigPadrao_tbCampanhaStatus_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.cid_tbCep_tbCidade_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.eid_tbCep_tbEstado_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.tlid_tbCep_tbTipoLogradouro_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.eid_tbCidade_tbEstado_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="cliquemixModel.spccap_tbConfigPadrao_tbCreditoStatus_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="cliquemixModel.spccc_tbConfigPadrao_tbCreditoStatus_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="cliquemixModel.spccpa_tbConfigPadrao_tbCreditoStatus_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="cliquemixModel.spdac_tbConfigPadrao_tbDestaqueAnuncianteStatus_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="cliquemixModel.spdad_tbConfigPadrao_tbDestaqueAnuncianteStatus_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="cliquemixModel.spdaec_tbConfigPadrao_tbDestaqueAnuncianteStatus_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="cliquemixModel.spdd_tbConfigPadrao_tbDestaqueStatus_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="cliquemixModel.spde_tbConfigPadrao_tbDestaqueStatus_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="cliquemixModel.spnpc_tbConfigPadrao_tbConsumidorPontosStatus_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="cliquemixModel.tpua_tbConfigPadrao_tbUsersTipo_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="cliquemixModel.tpuad_tbConfigPadrao_tbUsersTipo_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="cliquemixModel.tpuc_tbConfigPadrao_tbUsersTipo_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.cid_tbConsumidorPontos_tbConsumidor_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.tid_tbConsumidor_tbTos_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.cposid_tbConsumidorPontos_tbConsumidorPontosStatus_fk" ManuallyRouted="false" />
@@ -208,6 +176,38 @@
         <AssociationConnector Association="cliquemixModel.uid_tbUsersPermissao_tbUsers_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.utid_tbUsers_tbUsersTipo_fk" ManuallyRouted="false" />
         <AssociationConnector Association="cliquemixModel.txid_tbCreditoCompra_tbTransacaoXml_fk" />
+        <EntityTypeShape EntityType="cliquemixModel.tbConfigPadrao" Width="1.5" PointX="15.625" PointY="28.5" />
+        <AssociationConnector Association="cliquemixModel.apala_tbConfigPadrao_tbAnuncianteStatus_fk" />
+        <AssociationConnector Association="cliquemixModel.spnan_tbConfigPadrao_tbAnuncianteStatus_fk" />
+        <AssociationConnector Association="cliquemixModel.spaaa_tbConfigPadrao_tbAnuncioStatus_fk" />
+        <AssociationConnector Association="cliquemixModel.spab_tbConfigPadrao_tbAnuncioStatus_fk" />
+        <AssociationConnector Association="cliquemixModel.spadc_tbConfigPadrao_tbAnuncioStatus_fk" />
+        <AssociationConnector Association="cliquemixModel.spaec_tbConfigPadrao_tbAnuncioStatus_fk" />
+        <AssociationConnector Association="cliquemixModel.spap_tbConfigPadrao_tbAnuncioStatus_fk" />
+        <AssociationConnector Association="cliquemixModel.spea_tbConfigPadrao_tbAnuncioStatus_fk" />
+        <AssociationConnector Association="cliquemixModel.spna_tbConfigPadrao_tbAnuncioStatus_fk" />
+        <AssociationConnector Association="cliquemixModel.spnac_tbConfigPadrao_tbCampanhaAnuncioStatus_fk" />
+        <AssociationConnector Association="cliquemixModel.Spcb_tbConfigPadrao_tbCampanhaStatus_fk" />
+        <AssociationConnector Association="cliquemixModel.Spcd_tbConfigPadrao_tbCampanhaStatus_fk" />
+        <AssociationConnector Association="cliquemixModel.Spcea_tbConfigPadrao_tbCampanhaStatus_fk" />
+        <AssociationConnector Association="cliquemixModel.Spcec_tbConfigPadrao_tbCampanhaStatus_fk" />
+        <AssociationConnector Association="cliquemixModel.Spcep_tbConfigPadrao_tbCampanhaStatus_fk" />
+        <AssociationConnector Association="cliquemixModel.spcf_tbConfigPadrao_tbCampanhaStatus_fk" />
+        <AssociationConnector Association="cliquemixModel.spcp_tbConfigPadrao_tbCampanhaStatus_fk" />
+        <AssociationConnector Association="cliquemixModel.spec_tbConfigPadrao_tbCampanhaStatus_fk" />
+        <AssociationConnector Association="cliquemixModel.spnc_tbConfigPadrao_tbCampanhaStatus_fk" />
+        <AssociationConnector Association="cliquemixModel.spccap_tbConfigPadrao_tbCreditoStatus_fk" />
+        <AssociationConnector Association="cliquemixModel.spccc_tbConfigPadrao_tbCreditoStatus_fk" />
+        <AssociationConnector Association="cliquemixModel.spccpa_tbConfigPadrao_tbCreditoStatus_fk" />
+        <AssociationConnector Association="cliquemixModel.spdac_tbConfigPadrao_tbDestaqueAnuncianteStatus_fk" />
+        <AssociationConnector Association="cliquemixModel.spdad_tbConfigPadrao_tbDestaqueAnuncianteStatus_fk" />
+        <AssociationConnector Association="cliquemixModel.spdaec_tbConfigPadrao_tbDestaqueAnuncianteStatus_fk" />
+        <AssociationConnector Association="cliquemixModel.spdd_tbConfigPadrao_tbDestaqueStatus_fk" />
+        <AssociationConnector Association="cliquemixModel.spde_tbConfigPadrao_tbDestaqueStatus_fk" />
+        <AssociationConnector Association="cliquemixModel.spnpc_tbConfigPadrao_tbConsumidorPontosStatus_fk" />
+        <AssociationConnector Association="cliquemixModel.tpua_tbConfigPadrao_tbUsersTipo_fk" />
+        <AssociationConnector Association="cliquemixModel.tpuad_tbConfigPadrao_tbUsersTipo_fk" />
+        <AssociationConnector Association="cliquemixModel.tpuc_tbConfigPadrao_tbUsersTipo_fk" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

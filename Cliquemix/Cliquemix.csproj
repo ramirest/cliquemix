@@ -102,6 +102,9 @@
       <Private>True</Private>
       <HintPath>..\packages\MicosoftReportViewerWebForms_v11.1.0.1\lib\Microsoft.ReportViewer.WebForms.DLL</HintPath>
     </Reference>
+    <Reference Include="MVCVideo">
+      <HintPath>..\packages\MVC4.Video.2.0.0\lib\net40\MVCVideo.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\MySql.ConnectorNET.Data.6.8.3.2\lib\net45\MySql.Data.dll</HintPath>
@@ -151,7 +154,7 @@
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.Helpers.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.Helpers.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -159,20 +162,20 @@
     </Reference>
     <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.0\lib\net45\System.Web.Razor.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.2\lib\net45\System.Web.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.WebPages.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -263,6 +266,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Administrador\ConfigAdminController.cs" />
     <Compile Include="Controllers\Administrador\MenuAdminController.cs" />
     <Compile Include="Controllers\Administrador\MenuTopoAdminController.cs" />
     <Compile Include="Controllers\Administrador\PrincipalAdminController.cs" />
@@ -291,6 +295,7 @@
     <Compile Include="Controllers\Inicial\InicialController.cs" />
     <Compile Include="Controllers\PagamentoController.cs" />
     <Compile Include="Controllers\PremioController.cs" />
+    <Compile Include="Controllers\tbCreditoComprasController.cs" />
     <Compile Include="Controllers\TesteController.cs" />
     <Compile Include="Controllers\TipoUsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -855,6 +860,7 @@
     <Content Include="Images\Inicial\customer_4.png" />
     <Content Include="Images\Inicial\customer_5.png" />
     <Content Include="Images\Inicial\customer_6.png" />
+    <Content Include="Images\Inicial\fundo2.png" />
     <Content Include="Images\Inicial\gallery\gallery_1.jpg" />
     <Content Include="Images\Inicial\gallery\gallery_2.jpg" />
     <Content Include="Images\Inicial\gallery\gallery_3.jpg" />
@@ -873,6 +879,8 @@
     <Content Include="Images\Inicial\headers\first_macbook_3.png" />
     <Content Include="Images\Inicial\headers\third.jpg" />
     <Content Include="Images\Inicial\logo.png" />
+    <Content Include="Images\Inicial\logocliquemix.png" />
+    <Content Include="Images\Inicial\marker.png" />
     <Content Include="Images\Inicial\oneclick.png" />
     <Content Include="Images\Inicial\preload.gif" />
     <Content Include="Images\Inicial\slide_1.jpg" />
@@ -909,6 +917,7 @@
     <Content Include="Images\Pictures\pirobox\9_s.jpg" />
     <Content Include="Images\Vídeos\Sicove.mp4" />
     <Content Include="NuGet\NuGetPackage.txt" />
+    <Content Include="Properties\PublishProfiles\Mix-Clique.pubxml.user" />
     <Content Include="RecaptchaNet.ReadMe.txt" />
     <Content Include="ReportViewerWebForm.aspx" />
     <Content Include="Scripts\demo\advanced-form-demo.js" />
@@ -1029,6 +1038,7 @@
       <DependentUpon>Cliquemix.edmx</DependentUpon>
       <LastGenOutput>Cliquemix.cs</LastGenOutput>
     </Content>
+    <None Include="Properties\PublishProfiles\Mix-Clique.pubxml" />
     <None Include="Scripts\Outros\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\Outros\jquery-2.1.1.js" />
     <Content Include="Scripts\Outros\jquery-2.1.1.min.js" />
@@ -1345,6 +1355,15 @@
     <Content Include="Views\Users\AjustarSenhas.cshtml" />
     <Content Include="Views\Credito\EnderecoMixClique.cshtml" />
     <Content Include="Views\Credito\DadosAnunciante.cshtml" />
+    <Content Include="Views\TipoUsers\Create.cshtml" />
+    <Content Include="Views\tbCreditoCompras\Create.cshtml" />
+    <Content Include="Views\tbCreditoCompras\Delete.cshtml" />
+    <Content Include="Views\tbCreditoCompras\Details.cshtml" />
+    <Content Include="Views\tbCreditoCompras\Edit.cshtml" />
+    <Content Include="Views\tbCreditoCompras\Index.cshtml" />
+    <Content Include="Views\Credito\ItensCompra.cshtml" />
+    <Content Include="Views\ConfigAdmin\ConfigAdmin.cshtml" />
+    <Content Include="Views\ConfigAdmin\ControleAcesso.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

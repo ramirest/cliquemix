@@ -16,18 +16,18 @@ namespace Cliquemix.Models
     {
         public tbCreditoStatus()
         {
+            this.tbCreditoCompra = new HashSet<tbCreditoCompra>();
             this.tbConfigPadrao = new HashSet<tbConfigPadrao>();
             this.tbConfigPadrao1 = new HashSet<tbConfigPadrao>();
             this.tbConfigPadrao2 = new HashSet<tbConfigPadrao>();
-            this.tbCreditoCompra = new HashSet<tbCreditoCompra>();
         }
     
         public int crsid { get; set; }
         public string dsCreditoStatus { get; set; }
     
+        public virtual ICollection<tbCreditoCompra> tbCreditoCompra { get; set; }
         public virtual ICollection<tbConfigPadrao> tbConfigPadrao { get; set; }
         public virtual ICollection<tbConfigPadrao> tbConfigPadrao1 { get; set; }
         public virtual ICollection<tbConfigPadrao> tbConfigPadrao2 { get; set; }
-        public virtual ICollection<tbCreditoCompra> tbCreditoCompra { get; set; }
     }
 }

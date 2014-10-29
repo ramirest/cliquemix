@@ -16,19 +16,19 @@ namespace Cliquemix.Models
     {
         public tbDestaqueAnuncianteStatus()
         {
+            this.tbDestaqueAnunciante = new HashSet<tbDestaqueAnunciante>();
             this.tbConfigPadrao = new HashSet<tbConfigPadrao>();
             this.tbConfigPadrao1 = new HashSet<tbConfigPadrao>();
             this.tbConfigPadrao2 = new HashSet<tbConfigPadrao>();
-            this.tbDestaqueAnunciante = new HashSet<tbDestaqueAnunciante>();
         }
     
         public int dasid { get; set; }
         public string dsDescricao { get; set; }
         public bool ativo { get; set; }
     
+        public virtual ICollection<tbDestaqueAnunciante> tbDestaqueAnunciante { get; set; }
         public virtual ICollection<tbConfigPadrao> tbConfigPadrao { get; set; }
         public virtual ICollection<tbConfigPadrao> tbConfigPadrao1 { get; set; }
         public virtual ICollection<tbConfigPadrao> tbConfigPadrao2 { get; set; }
-        public virtual ICollection<tbDestaqueAnunciante> tbDestaqueAnunciante { get; set; }
     }
 }

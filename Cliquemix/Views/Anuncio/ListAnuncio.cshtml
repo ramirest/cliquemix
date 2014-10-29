@@ -79,7 +79,8 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <button class="btn btn-green">Criar Anúncio</button>
+        @Html.ActionLink("Criar Anúncio", "CreateAnuncio", "Anuncio", new { @class = "btn btn-green" })
+        @*<button class="btn btn-green">Criar Anúncio</button>*@
     </div>
     <div class="col-lg-12" style="min-height: 10px;"></div>
 </div>

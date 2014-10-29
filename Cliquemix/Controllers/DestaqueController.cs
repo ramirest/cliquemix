@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using Cliquemix.Models;
 using Microsoft.AspNet.Identity;
 using PagedList;
 
-namespace Cliquemix.Controllers.Anunciante
+namespace Cliquemix.Controllers
 {
     //Somente usuários com a permissão Anunciante podem acessar essa página
     [PermissoesFiltro(Roles = "Anunciante")]

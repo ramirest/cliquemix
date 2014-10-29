@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Cliquemix.Models.tbCreditoCompra>
+
+<div class="row">
+    <div class="col-lg-12">
+        <h3>Items</h3>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th class="text-center">Quantidade</th>
+                        <th class="text-center">Titulo</th>
+                        <th class="text-center">Promocional</th>
+                        <th class="text-center">Preço</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @try
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="text-center">
+                                    1,00 @* Qtde do item *@
+                                </td>                                
+                                <td class="text-center">
+                                    @Html.DisplayFor(modelItem => item.tbCredito.tituloPacote) @* Título do item *@
+                                </td>
+                                <td class="text-center">
+                                    @(item.promocional == true ? Html.Label("Sim") : Html.Label("Não"))
+                                </td>
+                                <td class="text-center">
+                                    R$ @Html.DisplayFor(modelItem => item.tbCredito.vlCredito) @* Valor do item *@
+                                </td>
+                            </tr>
+
+                            <tr></tr>
+                        
+                            <tr>
+                                <td colspan="3" class="text-right">
+                                    <strong>Subtotal:</strong>
+                                </td>
+                                <td class="text-center"> @* Valor SubTotal *@
+                                    <strong>R$ @Html.DisplayFor(modelItem => item.tbCredito.vlCredito)</strong>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="3" class="text-right">
+                                    <strong>TOTAL:</strong>
+                                </td>
+                                <td class="text-center">
+                                    @* Valor Total *@
+                                    <strong>R$ @Html.DisplayFor(modelItem => item.tbCredito.vlCredito)</strong>
+                                </td>
+                            </tr>
+
+                        }
+                    }
+
+                    catch (Exception)
+                    {
+                        <br />
+                        <label style="color: #34495E; font-weight: normal; font-size: 20px">
+                            Não existem itens nessa compra
+                        </label>
+
+                        <div class="clearfix"></div>
+                        <div class="clearfix"></div>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!-- /.table-responsive -->
+        <a class="btn btn-green" href="#"><i class="fa fa-download"></i> Baixar em PDF</a>
+    </div>
+</div>

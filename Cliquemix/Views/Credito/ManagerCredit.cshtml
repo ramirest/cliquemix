@@ -11,7 +11,10 @@
             desc = "A Compra de Crédito informada não está disponível para pagamento.<br>[Cod: 007.00002]";
         }
         else if (tipo == 3) {
-            //desc = "Não foi possível cadastrar uma nova campanha. Verifique! [Cod: 001.00003]";
+            desc = "A Compra de Crédito selecionada não pertence a esse usuário.<br>[Cod: 007.00003]";
+        }
+        else if (tipo == 4) {
+            desc = "A Compra de Crédito não tem um arquivo XML válido, verifique com os administradores.<br>[Cod: 007.00004]";
         }
         setTimeout(function () {
             erro_message_demo(desc);
@@ -103,12 +106,15 @@ else if (ViewBag.ErroCompraCredito == "007.00002")
 {
     <script type="text/javascript">ErroCriarCampanha(2);</script>
 }
-@*
-else if (ViewBag.ErroCompraCredito == "001.00003")
+else if (ViewBag.ErroCompraCredito == "007.00003")
 {
     <script type="text/javascript">ErroCriarCampanha(3);</script>
 }
-*@
+else if (ViewBag.ErroCompraCredito == "007.00004")
+{
+    <script type="text/javascript">ErroCriarCampanha(4);</script>
+}
+
 <input type="hidden" id="ccid" name="ccid"/>
 <div class="col-lg-12">
     <div class="portlet portlet-dark-blue">

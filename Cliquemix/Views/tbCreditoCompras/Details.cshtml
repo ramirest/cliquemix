@@ -1,0 +1,75 @@
+﻿@model Cliquemix.Models.tbCreditoCompra
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbCreditoCompra</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.dtCompra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dtCompra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.promocional)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.promocional)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dtVencimento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dtVencimento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbAnunciante.cnpj)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbAnunciante.cnpj)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbCredito.tituloPacote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbCredito.tituloPacote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbCreditoStatus.dsCreditoStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbCreditoStatus.dsCreditoStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbTransacaoXml.transacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbTransacaoXml.transacao)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ccid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 using Cliquemix.Models;
 using Microsoft.AspNet.Identity;
 
-namespace Test_AspNet.Controllers.Admin
+namespace Cliquemix.Controllers.Admin
 {
     //Somente usuários com a permissão Administrador podem acessar essa página
     [PermissoesFiltro(Roles = "Administrador")]

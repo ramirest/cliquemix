@@ -17,8 +17,9 @@
                 }
             });
         }, 20);
+
     setTimeout(
-        function () {
+        function() {
             $.ajax(
             {
                 type: 'GET',
@@ -26,11 +27,27 @@
                 dataType: 'html',
                 cache: true,
                 async: true,
-                success: function (data) {
+                success: function(data) {
                     $('#DadosAnunciante').html(data);
                 }
             });
         }, 20);
+
+    setTimeout(
+        function () {
+            $.ajax(
+            {
+                type: 'GET',
+                url: '/Credito/ItensCompra',
+                dataType: 'html',
+                cache: true,
+                async: true,
+                success: function (data) {
+                    $('#ItensCompra').html(data);
+                }
+            });
+        }, 20);
+
 </script>
 
 <div class="row">
@@ -44,136 +61,102 @@
         </div>
     </div>
 </div>
-
-<div class="row">
-    <div class="col-lg-8 col-lg-offset-2 col-md-12">
-        <div class="portlet portlet-default">
-            <div class="portlet-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h1><img src="~/fonts/img/cliquemix-logo-confirm-pedido.png" style="max-width:200px; max-height:40px;" /></h1>
-                        <br>
-                        <div id="EnderecoMix">
-                            @{
-                                try
-                                {
-                                    Html.RenderPartial("EnderecoMixClique");
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-12">
+            <div class="portlet portlet-default">
+                <div class="portlet-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h1><img src="~/fonts/img/cliquemix-logo-confirm-pedido.png" style="max-width: 200px; max-height: 40px;" /></h1>
+                            <br>
+                            <div id="EnderecoMix">
+                                @{
+                                    try
+                                    {
+                                        Html.RenderPartial("EnderecoMixClique");
+                                    }
+                                    catch (Exception)
+                                    {
+                                    }
                                 }
-                                catch (Exception)
-                                {}
-                            }
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6 invoice-terms">
-                        <h3>Pedido @ViewBag.CodPedido</h3>
-                        <div class="col-md-12">
+
+                        <div class="col-md-6 invoice-terms text-right">
+                            <h3 class="text-right">Pedido @ViewBag.CodPedido</h3>
                             Data do pedido: @Html.DisplayTextFor(model => model.dtCompra)
+                            <br />
+                            <strong class="text-red">Data de vencimento: @ViewBag.dtVencimento</strong>
                         </div>
-                        <div class="col-md-12">
-                            <strong>
-                                <span class="text-red">
-                                    Data de vencimento: @ViewBag.dtVencimento
-                                </span>
-                            </strong>
-                        </div>
+
                     </div>
-                </div>
-                <!-- /.row -->
-                <hr>
-                <div class="row">
-                    <div class="col-md-6">
-                        <h3>Dados do Anunciante</h3>
-                        <div id="DadosAnunciante">
-                            @{
-                                try
-                                {
-                                    Html.RenderPartial("DadosAnunciante");
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <!-- /.row -->
+                    <div class="form-horizontal">
+                        @Html.HiddenFor(model => model.pid, new {name="pid", id="pid"})
+                        @Html.HiddenFor(model => model.crid, new { name = "crid", id = "crid" })
+                        @Html.HiddenFor(model => model.dtCompra, new { name = "dtCompra", id = "dtCompra" })
+                        @Html.HiddenFor(model => model.crsid, new { name = "crsid", id = "crsid" })
+                        @Html.HiddenFor(model => model.promocional, new { name = "promocional", id = "promocional" })
+                        @Html.HiddenFor(model => model.txid, new { name = "txid", id = "txid" })
+                        @Html.HiddenFor(model => model.dtVencimento, new { name = "dtVencimento", id = "dtVencimento" })
+                    </div>                    
+
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3>Dados do Anunciante</h3>
+                            <div id="DadosAnunciante">
+                                @{
+                                    try
+                                    {
+                                        Html.RenderPartial("DadosAnunciante");
+                                    }
+                                    catch (Exception)
+                                    {}
                                 }
-                                catch (Exception)
-                                { }
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 invoice-terms">
+                            <h3>Formas do Pagamento</h3>
+
+                            <p>
+                                <i class="fa fa-barcode"></i> &nbsp;  &nbsp; Boleto Bancário
+                            </p>
+                            <p>
+                                <i class="fa fa-credit-card"></i>   Cartão de Crédito
+                            </p>
+                            <br>
+                            <p class="text-green">Vencimento padrão do boleto é de:</p>
+                            <p class="text-green"><strong>@ProcFunc.RetornarQtdDiasPadraoVencimentoBoleto() dias úteis</strong></p>
+                        
+                            <button type="submit" class="btn btn-green"><i class="fa fa-usd"></i> Pague Online</button>
+                        </div>
+                    </div>
+                    
+                    <!-- /.row -->
+                    <hr>
+                    <!-- /.row -->
+                    
+                    <div id="ItensCompra">
+                        @{
+                            try
+                            {
+                                Html.RenderPartial("ItensCompra");
                             }
-                        </div>
+                            catch (Exception)
+                            { }
+                        }
                     </div>
 
-                    <div class="col-md-6 invoice-terms">
-                        <h3>Formas do Pagamento</h3>
-
-                        <p>
-                            <i class="fa fa-barcode"></i> &nbsp;  &nbsp; Boleto Bancário
-                        </p>
-                        <p>
-                            <i class="fa fa-credit-card"></i>   Cartão de Crédito
-                        </p>
-                        <br>
-                        <p class="text-green">Na forma de pagamento em boleto, o mesmo tem 5 dias úteis para ser pago.</p>
-                        @*
-                        <div class="tile dark-blue text-center">
-                            Na forma de pagamento em boleto, o mesmo tem 5 dias úteis para ser pago.
-                        </div>
-                        *@
-                        <a class="btn btn-green" href="#"><i class="fa fa-usd"></i> Pague Online</a>
-                    </div>
                 </div>
-                <!-- /.row -->
-                <hr>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h3>Items</h3>
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-hover">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center">Quantidade</th>
-                                        <th class="text-center">Titulo</th>
-                                        <th class="text-center">Promocional</th>
-                                        <th class="text-center">Preço</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="text-center">1</td>
-                                        <td class="text-center">Pacote de Credito - 3000c</td>
-                                        <td class="text-center">Não</td>
-                                        <td class="text-center">R$ 2000.00</td>
-                                    </tr>
-
-                                    <tr>
-
-                                        <td colspan="3" class="text-right">
-                                            <strong>Subtotal:</strong>
-                                        </td>
-                                        <td class="text-center">
-                                            <strong>R$ 2000.00</strong>
-                                        </td>
-                                    </tr>
-                                    <tr>
-
-                                        <td colspan="3" class="text-right">
-                                            <strong>Tax (0%):</strong>
-                                        </td>
-                                        <td class="text-center">
-                                            <strong>R$ 0.00</strong>
-                                        </td>
-                                    </tr>
-                                    <tr class="text-red">
-
-                                        <td colspan="3" class="text-right">
-                                            <strong>TOTAL:</strong>
-                                        </td>
-                                        <td class="text-center">
-                                            <strong>R$ 2000.00</strong>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- /.table-responsive -->
-                        <a class="btn btn-green" href="#"><i class="fa fa-download"></i> Baixe este documento em PDF</a>
-                    </div>
-                </div>
-                <!-- /.row -->
             </div>
         </div>
+        <!-- /.col-lg-12 -->
     </div>
-    <!-- /.col-lg-12 -->
-</div>
+}

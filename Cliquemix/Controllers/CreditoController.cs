@@ -7,12 +7,9 @@ using System.Linq;
 using System.Net;
 using System.Security.Cryptography;
 using System.Text;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.UI.WebControls.WebParts;
 using System.Xml;
 using Cliquemix.Models;
-using DocumentFormat.OpenXml.Office2010.Excel;
 using Microsoft.AspNet.Identity;
 using PagedList;
 
@@ -174,8 +171,7 @@ namespace Cliquemix.Controllers
         [HttpPost]
         public ActionResult CancelarCompra(int? ccid)
         {
-            tbCreditoCompra creditoCompra = new tbCreditoCompra();
-            creditoCompra = db.tbCreditoCompra.First(c => c.ccid == ccid);
+            tbCreditoCompra creditoCompra = db.tbCreditoCompra.First(c => c.ccid == ccid);
             creditoCompra.crsid = ProcFunc.RetornarStatusPadraoCompraCreditoCancelada();
             if (ModelState.IsValid)
             {
@@ -276,6 +272,9 @@ namespace Cliquemix.Controllers
 
                         tbCreditoCompra.crid = credito.crid;
                         tbCreditoCompra.dtCompra = DateTime.Now;
+                        tbCreditoCompra.dtVencimento =
+                            tbCreditoCompra.dtCompra.Value.AddDays(ProcFunc.RetornarQtdDiasPadraoVencimentoBoleto());
+
                         tbCreditoCompra.pid = cdAnun;
                         tbCreditoCompra.crsid = ProcFunc.RetornarStatusPadraoCompraCreditoAguardandoPagamento();
                         tbCreditoCompra.promocional = credito.promocional;
@@ -341,10 +340,64 @@ namespace Cliquemix.Controllers
             */
 
             ViewBag.CodPedido = codPedido;
-            ViewBag.dtVencimento = DateTime.Parse(dtVencimento.AddDays(10).ToString("d")).ToShortDateString();
+            //ViewBag.dtVencimento = DateTime.Parse(dtVencimento.AddDays(10).ToString("d")).ToShortDateString();
+            ViewBag.dtVencimento =
+                tbCreditoCompra.dtVencimento.Day.ToString(format: "00") + "/" +
+                tbCreditoCompra.dtVencimento.Month.ToString(format: "00") + "/" +
+                tbCreditoCompra.dtVencimento.Year.ToString(format: "0000");
             return View(tbCreditoCompra);
         }
 
+
+        #region "Pagamento da Compra de Crédito"
+        // POST: tbCreditoCompras/Create
+        [HttpPost]
+        public ActionResult ConfirmarCompra([Bind(Include = "ccid,pid,crid,dtCompra,crsid,promocional,txid,dtVencimento")] tbCreditoCompra tbCreditoCompra)
+        {
+            if (ModelState.IsValid)
+            {              
+                try
+                {
+                    //creditoCompra = db.tbCreditoCompra.First(c => c.ccid == ccid);
+                    tbTransacaoXml transacao = db.tbTransacaoXml.First(x => x.txid == tbCreditoCompra.txid);
+                    post_data(transacao.sid, 1); //criartransacao
+                }
+                catch (Exception)
+                {
+                    //CÓDIGO EXCEPTION [PagamentoCompra] 00007
+                    //A Compra de Crédito não tem um arquivo XML válido, verifique com os administradores. 007.00004
+                    TipoErro = "007.00004";
+                    return View(tbCreditoCompra);
+                }
+                return null;
+            }
+            return View(tbCreditoCompra);
+        }
+        #endregion
+
+        /*
+        #region "Pagamento da Compra de Crédito"
+        [HttpPost]
+        public ActionResult ConfirmarCompra(tbCreditoCompra tbCreditoCompra)
+        {
+            var creditoCompra = new tbCreditoCompra();
+            try
+            {
+                creditoCompra = db.tbCreditoCompra.First(c => c.ccid == ccid);
+                tbTransacaoXml transacao = db.tbTransacaoXml.First(x => x.txid == creditoCompra.txid);
+                post_data(transacao.sid, 1); //criartransacao
+            }
+            catch (Exception)
+            {
+                //CÓDIGO EXCEPTION [PagamentoCompra] 00007
+                //A Compra de Crédito não tem um arquivo XML válido, verifique com os administradores. 007.00004
+                TipoErro = "007.00004";
+                return View(creditoCompra);
+            }
+            return null;
+        }
+        #endregion
+        */
 
         public Boolean ValidacaoCompraCredito(int ccid)
         {
@@ -365,8 +418,8 @@ namespace Cliquemix.Controllers
             if (credito.pid != t)
             {
                 //CÓDIGO EXCEPTION [ValidacaoCompraCredito] 00007
-                //A Compra de Crédito informada não está disponível para pagamento. [007.00002]
-                TipoErro = "007.00002";
+                //A Compra de Crédito selecionada não pertence a esse usuário.[007.00003]
+                TipoErro = "007.00003";
                 return false;
             }
 
@@ -389,6 +442,14 @@ namespace Cliquemix.Controllers
             int cd = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());
             tbAnuncianteEndereco tbAnuncianteEndereco = db.tbAnuncianteEndereco.First(a => a.pid == cd);
             return PartialView(tbAnuncianteEndereco);
+        }
+
+        [HttpGet]
+        public ActionResult ItensCompra()
+        {
+            int cd = ProcFunc.RetornarCodigoAnuncianteUsuario(User.Identity.GetUserName());
+            var tbCreditoCompra = db.tbCreditoCompra.Where(m => m.pid == cd);
+            return PartialView(tbCreditoCompra.ToList());
         }
 
         public void CriarTransacaoXml(int codCompra, DateTime dt)
@@ -439,8 +500,7 @@ namespace Cliquemix.Controllers
                 tbTransacaoXml.pid = crdCompra.pid;
                 tbTransacaoXml.credor = crdCompra.tbAnunciante.razaoSocial;
                 tbTransacaoXml.valor = crdCompra.tbCredito.vlCredito;
-                int dpvb = ProcFunc.RetornarDiaPadraoVencimentoBoleto();
-                tbTransacaoXml.dataVencimento = Convert.ToDateTime(crdCompra.dtCompra).AddDays(dpvb);
+                tbTransacaoXml.dataVencimento = Convert.ToDateTime(crdCompra.dtVencimento);
                 tbTransacaoXml.descricao = crdCompra.tbCredito.tituloPacote;
                 tbTransacaoXml.cnpj = crdCompra.tbAnunciante.cnpj;
                 tbTransacaoXml.cep = endereco.cep;
@@ -453,14 +513,18 @@ namespace Cliquemix.Controllers
                 tbTransacaoXml.numMaximoParcelas = ProcFunc.RetornarNumMaxParcelasPagto();
                 tbTransacaoXml.campoLivre = crdCompra.tbCredito.dsCredito;
                 tbTransacaoXml.urlRetornoLoja = ProcFunc.RetornarUrlRetornoAposPagto();
-                db.tbTransacaoXml.Add(tbTransacaoXml);
-                db.SaveChanges();
+
+                if (ModelState.IsValid)
+                {
+                    db.tbTransacaoXml.Add(tbTransacaoXml);
+                    db.SaveChanges();
+                }
                 return tbTransacaoXml.txid;
             }
             catch (Exception ex)
             {
                 ProcFunc.SalvarLog(ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName()), ex.Message,
-                    this.ControllerContext.ToString(), "Salvar Transacao Xml " + sid);
+                    "CreditoController", "Salvar Transacao Xml " + sid);
                 return 0;
             }
         }
@@ -516,10 +580,21 @@ namespace Cliquemix.Controllers
 
                 XmlElement element8 = doc.CreateElement(string.Empty, "datavencimento", string.Empty);
 
-                String dtVenc = tbTransacaoXml.dataVencimento.Value.Year.ToString(format: "0000") + "-" +
-                    tbTransacaoXml.dataVencimento.Value.Month.ToString(format: "00") + "-" +
-                    tbTransacaoXml.dataVencimento.Value.Day.ToString(format: "00");
-
+                String dtVenc = "";
+                if (tbTransacaoXml.dataVencimento != null)
+                {
+                    dtVenc =
+                        tbTransacaoXml.dataVencimento.Value.Year.ToString(format: "0000") + "-" +
+                        tbTransacaoXml.dataVencimento.Value.Month.ToString(format: "00") + "-" +
+                        tbTransacaoXml.dataVencimento.Value.Day.ToString(format: "00");
+                }
+                else
+                {
+                    dtVenc =
+                        DateTime.Now.Year.ToString(format: "0000") + "-" +
+                        DateTime.Now.Month.ToString(format: "00") + "-" +
+                        DateTime.Now.Day.ToString(format: "00");
+                }
                 XmlText text8 = doc.CreateTextNode(dtVenc);
                 element8.AppendChild(text8);
                 element1.AppendChild(element8);
@@ -589,8 +664,8 @@ namespace Cliquemix.Controllers
             }
             catch (Exception ex)
             {
-                ProcFunc.SalvarLog(ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName()), ex.Message, 
-                    this.ControllerContext.ToString(), "Gerar Arquivo XML " + tbTransacaoXml.sid);
+                ProcFunc.SalvarLog(ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName()), ex.Message,
+                    "CreditoController", "Gerar Arquivo XML " + tbTransacaoXml.sid);
                 throw;
             }
         }
@@ -627,8 +702,8 @@ namespace Cliquemix.Controllers
             }
             catch (Exception ex)
             {
-                ProcFunc.SalvarLog(ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName()), ex.Message, 
-                    this.ControllerContext.ToString(), "Consultar Transacao "+sid);
+                ProcFunc.SalvarLog(ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName()), ex.Message,
+                    "CreditoController", "Consultar Transacao " + sid);
                 return false;
             }          
         }
@@ -651,7 +726,7 @@ namespace Cliquemix.Controllers
             byte[] byteBuffer = null;
             var fileName = "";
 
-            if (tipo == 0) //Consultar
+            if (tipo == 0) //consultar
                 fileName = Server.MapPath("~/Arquivos/XmlPagamento/Consultar_" + sid + ".xml");
             else //criartransacao
             {

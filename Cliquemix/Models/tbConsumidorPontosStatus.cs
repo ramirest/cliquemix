@@ -16,14 +16,14 @@ namespace Cliquemix.Models
     {
         public tbConsumidorPontosStatus()
         {
-            this.tbConfigPadrao = new HashSet<tbConfigPadrao>();
             this.tbConsumidorPontos = new HashSet<tbConsumidorPontos>();
+            this.tbConfigPadrao = new HashSet<tbConfigPadrao>();
         }
     
         public int cposid { get; set; }
         public string descStatus { get; set; }
     
-        public virtual ICollection<tbConfigPadrao> tbConfigPadrao { get; set; }
         public virtual ICollection<tbConsumidorPontos> tbConsumidorPontos { get; set; }
+        public virtual ICollection<tbConfigPadrao> tbConfigPadrao { get; set; }
     }
 }

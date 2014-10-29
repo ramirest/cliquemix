@@ -1,0 +1,140 @@
+﻿@model Cliquemix.Models.tbCreditoCompra
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="page-title">
+            <h1>
+                Anunciante
+                <small>Créditos</small>
+            </h1>
+            @RenderPage("~/Views/Breadcrumbs/Breadcrumbs-Credito-Descricao-Compra.cshtml")
+        </div>
+    </div>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-12">
+            <div class="portlet portlet-default">
+                <div class="portlet-body">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h1><img src="~/fonts/img/cliquemix-logo-confirm-pedido.png" style="max-width: 200px; max-height: 40px;" /></h1>
+                            <br>
+                            <div id="EnderecoMix">
+                                @{
+                                    try
+                                    {
+                                        Html.RenderPartial("EnderecoMixClique");
+                                    }
+                                    catch (Exception)
+                                    {
+                                    }
+                                }
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 invoice-terms">
+                            <h3>Pedido @ViewBag.CodPedido</h3>
+
+                            @Html.HiddenFor(model => model.ccid, new { name = "ccid", id = "ccid" })
+
+                            <div class="col-md-12">
+                                Data do pedido: @Html.DisplayTextFor(model => model.dtCompra)
+                            </div>
+                            <div class="col-md-12">
+                                <strong>
+                                    <span class="text-red">
+                                        Data de vencimento: @ViewBag.dtVencimento
+                                    </span>
+                                </strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-horizontal">
+                        <h4>tbCreditoCompra</h4>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.pid, "pid", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("pid", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.pid, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.crid, "crid", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("crid", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.crid, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.dtCompra, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.dtCompra, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.dtCompra, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.crsid, "crsid", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("crsid", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.crsid, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.promocional, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model.promocional)
+                                    @Html.ValidationMessageFor(model => model.promocional, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.txid, "txid", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("txid", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.txid, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.dtVencimento, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.dtVencimento, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.dtVencimento, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Create" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.col-lg-12 
+    </div>-->
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

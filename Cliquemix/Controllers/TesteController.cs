@@ -1,20 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 using System.Net;
 using System.Security.Cryptography;
 using System.Text;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.UI.WebControls;
-using System.Windows.Forms;
 using System.IO;
 using System.Xml;
-using System.Xml.Serialization;
 using Cliquemix.Models;
-using System.Xml;
-using iTextSharp.text.pdf.qrcode;
 
 namespace Cliquemix.Controllers
 {

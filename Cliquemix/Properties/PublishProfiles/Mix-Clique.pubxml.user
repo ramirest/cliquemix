@@ -1,0 +1,2497 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>E:\Projetos\Mix-Clique</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="App_Readme/Spring.Rest.txt">
+      <publishTime>09/12/2014 16:32:14</publishTime>
+    </File>
+    <File Include="App_Readme/Spring.Social.Core.txt">
+      <publishTime>09/12/2014 16:32:33</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>08/26/2014 09:47:51</publishTime>
+    </File>
+    <File Include="bin/BLToolkit.4.dll">
+      <publishTime>08/26/2014 09:47:52</publishTime>
+    </File>
+    <File Include="bin/BLToolkit.Data.DataProvider.MySql.4.dll">
+      <publishTime>08/26/2014 09:47:52</publishTime>
+    </File>
+    <File Include="bin/Cliquemix.dll">
+      <publishTime>10/13/2014 20:37:44</publishTime>
+    </File>
+    <File Include="bin/Common.Logging.dll">
+      <publishTime>09/12/2014 16:32:03</publishTime>
+    </File>
+    <File Include="bin/CSharp.GitHub.dll">
+      <publishTime>09/12/2014 16:33:18</publishTime>
+    </File>
+    <File Include="bin/DocumentFormat.OpenXml.dll">
+      <publishTime>08/26/2014 09:47:53</publishTime>
+    </File>
+    <File Include="bin/en/HtmlReportControl.resources.dll">
+      <publishTime>08/26/2014 09:48:01</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>08/26/2014 09:48:01</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>08/26/2014 09:48:01</publishTime>
+    </File>
+    <File Include="bin/EntLibContrib.Data.MySql.dll">
+      <publishTime>08/26/2014 09:48:01</publishTime>
+    </File>
+    <File Include="bin/GithubNugetDistributor.exe">
+      <publishTime>09/12/2014 16:32:07</publishTime>
+    </File>
+    <File Include="bin/HtmlReportControl.dll">
+      <publishTime>08/26/2014 09:48:01</publishTime>
+    </File>
+    <File Include="bin/itextsharp.dll">
+      <publishTime>08/26/2014 09:48:02</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
+      <publishTime>08/26/2014 09:48:04</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.EntityFramework.dll">
+      <publishTime>08/26/2014 09:48:05</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Owin.dll">
+      <publishTime>08/26/2014 09:48:05</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.dll">
+      <publishTime>08/26/2014 09:48:06</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Host.SystemWeb.dll">
+      <publishTime>08/26/2014 09:48:06</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Cookies.dll">
+      <publishTime>08/26/2014 09:48:06</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.dll">
+      <publishTime>08/26/2014 09:48:06</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Facebook.dll">
+      <publishTime>08/26/2014 09:48:07</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Google.dll">
+      <publishTime>08/26/2014 09:48:07</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.MicrosoftAccount.dll">
+      <publishTime>08/26/2014 09:48:07</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.OAuth.dll">
+      <publishTime>08/26/2014 09:48:07</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Twitter.dll">
+      <publishTime>08/26/2014 09:48:07</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.EnterpriseLibrary.Common.dll">
+      <publishTime>08/26/2014 09:47:53</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.EnterpriseLibrary.Data.dll">
+      <publishTime>08/26/2014 09:47:53</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.ServiceLocation.dll">
+      <publishTime>08/26/2014 09:47:52</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.Unity.Configuration.dll">
+      <publishTime>08/26/2014 09:48:09</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.Unity.dll">
+      <publishTime>08/26/2014 09:48:09</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.Unity.Interception.Configuration.dll">
+      <publishTime>08/26/2014 09:48:09</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.Unity.Interception.dll">
+      <publishTime>08/26/2014 09:48:09</publishTime>
+    </File>
+    <File Include="bin/Microsoft.ReportViewer.WebForms.DLL">
+      <publishTime>08/26/2014 09:48:04</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>08/26/2014 09:48:07</publishTime>
+    </File>
+    <File Include="bin/MySql.Data.dll">
+      <publishTime>08/09/2014 12:01:57</publishTime>
+    </File>
+    <File Include="bin/MySql.Web.dll">
+      <publishTime>12/18/2013 01:13:56</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>08/26/2014 09:48:08</publishTime>
+    </File>
+    <File Include="bin/Octokit.dll">
+      <publishTime>09/12/2014 16:32:04</publishTime>
+    </File>
+    <File Include="bin/Owin.dll">
+      <publishTime>08/26/2014 09:48:08</publishTime>
+    </File>
+    <File Include="bin/PagedList.dll">
+      <publishTime>08/26/2014 09:48:08</publishTime>
+    </File>
+    <File Include="bin/PagedList.Mvc.dll">
+      <publishTime>08/26/2014 09:48:08</publishTime>
+    </File>
+    <File Include="bin/Recaptcha.Web.dll">
+      <publishTime>05/09/2014 11:17:17</publishTime>
+    </File>
+    <File Include="bin/Report.Base.dll">
+      <publishTime>08/26/2014 09:47:53</publishTime>
+    </File>
+    <File Include="bin/Report.dll">
+      <publishTime>08/26/2014 09:47:53</publishTime>
+    </File>
+    <File Include="bin/ReportViewerForMvc.dll">
+      <publishTime>08/26/2014 09:48:09</publishTime>
+    </File>
+    <File Include="bin/Spring.Rest.dll">
+      <publishTime>09/12/2014 16:32:06</publishTime>
+    </File>
+    <File Include="bin/Spring.Social.Core.dll">
+      <publishTime>09/12/2014 16:32:06</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>08/26/2014 09:48:05</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>05/09/2014 11:17:15</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>08/26/2014 09:48:06</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>08/26/2014 09:48:06</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>05/09/2014 11:17:16</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>08/26/2014 09:48:05</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>05/09/2014 11:17:15</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>05/09/2014 11:17:15</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>05/09/2014 11:17:15</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>05/09/2014 11:17:15</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>08/26/2014 09:48:09</publishTime>
+    </File>
+    <File Include="Content/css-master-slider/default/light-skin-1-retina.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/css-master-slider/default/light-skin-1.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/css-master-slider/default/style.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/css-master-slider/grab.cur">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/css-master-slider/grab.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/css-master-slider/grabbing.cur">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/css-master-slider/grabbing.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/css-master-slider/loading-1-dark.gif">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/css-master-slider/loading-1-light.gif">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/css-master-slider/loading-1.gif">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/css-master-slider/loading-2-dark.gif">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/css-master-slider/loading-2-light.gif">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/css-master-slider/loading-2.gif">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/css-master-slider/masterslider.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/css-master-slider/ms-lightbox.css">
+      <publishTime>08/26/2014 09:46:43</publishTime>
+    </File>
+    <File Include="Content/css-master-slider/ms-partialview.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/css-master-slider/prettyPhoto.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/css-master-slider/video-close-btn.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/demo.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/edicoes.css">
+      <publishTime>09/12/2014 17:04:43</publishTime>
+    </File>
+    <File Include="Content/Inicial/bootstrap-tour.html">
+      <publishTime>08/21/2013 13:37:17</publishTime>
+    </File>
+    <File Include="Content/Inicial/bootstrap.min.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Inicial/style.css">
+      <publishTime>03/13/2014 11:59:35</publishTime>
+    </File>
+    <File Include="Content/Outros/bootstrap-3.1.1/css/bootstrap-theme.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/bootstrap-3.1.1/css/bootstrap-theme.css.map">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/bootstrap-3.1.1/css/bootstrap-theme.min.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/bootstrap-3.1.1/css/bootstrap.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/bootstrap-3.1.1/css/bootstrap.css.map">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/bootstrap-3.1.1/css/bootstrap.min.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/bootstrap-3.1.1/fonts/glyphicons-halflings-regular.eot">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/bootstrap-3.1.1/fonts/glyphicons-halflings-regular.svg">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/bootstrap-3.1.1/fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/bootstrap-3.1.1/fonts/glyphicons-halflings-regular.woff">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/bootstrap-3.1.1/js/bootstrap.js">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/bootstrap-3.1.1/js/bootstrap.min.js">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/bootstrap-theme.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/bootstrap-theme.css.map">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/bootstrap-theme.min.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/bootstrap.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/bootstrap.css.map">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/bootstrap.min.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/font-awesome-4.1.0/css/font-awesome.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/font-awesome-4.1.0/css/font-awesome.min.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/font-awesome-4.1.0/fonts/fontawesome-webfont.eot">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/font-awesome-4.1.0/fonts/fontawesome-webfont.svg">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/font-awesome-4.1.0/fonts/fontawesome-webfont.ttf">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/font-awesome-4.1.0/fonts/fontawesome-webfont.woff">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/font-awesome-4.1.0/fonts/FontAwesome.otf">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/font-awesome-4.1.0/less/bordered-pulled.less">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/font-awesome-4.1.0/less/core.less">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/font-awesome-4.1.0/less/fixed-width.less">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/font-awesome-4.1.0/less/font-awesome.less">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/font-awesome-4.1.0/less/icons.less">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/font-awesome-4.1.0/less/larger.less">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/font-awesome-4.1.0/less/list.less">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/font-awesome-4.1.0/less/mixins.less">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/font-awesome-4.1.0/less/path.less">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/font-awesome-4.1.0/less/rotated-flipped.less">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/font-awesome-4.1.0/less/spinning.less">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/font-awesome-4.1.0/less/stacked.less">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/font-awesome-4.1.0/less/variables.less">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/font-awesome-4.1.0/scss/font-awesome.scss">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/font-awesome-4.1.0/scss/_bordered-pulled.scss">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/font-awesome-4.1.0/scss/_core.scss">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/font-awesome-4.1.0/scss/_fixed-width.scss">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/font-awesome-4.1.0/scss/_icons.scss">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/font-awesome-4.1.0/scss/_larger.scss">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/font-awesome-4.1.0/scss/_list.scss">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/font-awesome-4.1.0/scss/_mixins.scss">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/font-awesome-4.1.0/scss/_path.scss">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/font-awesome-4.1.0/scss/_rotated-flipped.scss">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/font-awesome-4.1.0/scss/_spinning.scss">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/font-awesome-4.1.0/scss/_stacked.scss">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/font-awesome-4.1.0/scss/_variables.scss">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/Site.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/uploadify-cancel.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/uploadify.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/Outros/uploadify.swf">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/PagedList.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins/anuncios/bootstrap-tour.html">
+      <publishTime>08/21/2013 13:37:17</publishTime>
+    </File>
+    <File Include="Content/plugins/anuncios/bootstrap.min.css">
+      <publishTime>05/08/2013 10:33:16</publishTime>
+    </File>
+    <File Include="Content/plugins/anuncios/full-slider.css">
+      <publishTime>10/06/2014 00:42:44</publishTime>
+    </File>
+    <File Include="Content/plugins/anuncios/style.css">
+      <publishTime>09/17/2014 11:38:32</publishTime>
+    </File>
+    <File Include="Content/plugins/AutoSuggest_2.1.3/.DS_Store">
+      <publishTime>05/02/2007 17:54:00</publishTime>
+    </File>
+    <File Include="Content/plugins/AutoSuggest_2.1.3/._.DS_Store">
+      <publishTime>05/02/2007 17:54:00</publishTime>
+    </File>
+    <File Include="Content/plugins/AutoSuggest_2.1.3/autosuggest_inquisitor.css">
+      <publishTime>07/02/2007 09:16:38</publishTime>
+    </File>
+    <File Include="Content/plugins/AutoSuggest_2.1.3/img_inquisitor/.DS_Store">
+      <publishTime>06/02/2007 19:29:32</publishTime>
+    </File>
+    <File Include="Content/plugins/AutoSuggest_2.1.3/img_inquisitor/._.DS_Store">
+      <publishTime>06/02/2007 19:29:32</publishTime>
+    </File>
+    <File Include="Content/plugins/AutoSuggest_2.1.3/img_inquisitor/._as_pointer.gif">
+      <publishTime>02/02/2007 11:18:38</publishTime>
+    </File>
+    <File Include="Content/plugins/AutoSuggest_2.1.3/img_inquisitor/._hl_corner_bl.gif">
+      <publishTime>02/02/2007 14:57:48</publishTime>
+    </File>
+    <File Include="Content/plugins/AutoSuggest_2.1.3/img_inquisitor/._hl_corner_br.gif">
+      <publishTime>02/02/2007 14:57:48</publishTime>
+    </File>
+    <File Include="Content/plugins/AutoSuggest_2.1.3/img_inquisitor/._hl_corner_tl.gif">
+      <publishTime>02/02/2007 14:57:48</publishTime>
+    </File>
+    <File Include="Content/plugins/AutoSuggest_2.1.3/img_inquisitor/._hl_corner_tr.gif">
+      <publishTime>02/02/2007 14:57:48</publishTime>
+    </File>
+    <File Include="Content/plugins/AutoSuggest_2.1.3/img_inquisitor/._ul_corner_bl.gif">
+      <publishTime>02/02/2007 13:36:20</publishTime>
+    </File>
+    <File Include="Content/plugins/AutoSuggest_2.1.3/img_inquisitor/._ul_corner_br.gif">
+      <publishTime>02/02/2007 13:36:20</publishTime>
+    </File>
+    <File Include="Content/plugins/AutoSuggest_2.1.3/img_inquisitor/._ul_corner_tl.gif">
+      <publishTime>02/02/2007 13:36:20</publishTime>
+    </File>
+    <File Include="Content/plugins/AutoSuggest_2.1.3/img_inquisitor/._ul_corner_tr.gif">
+      <publishTime>02/02/2007 13:36:20</publishTime>
+    </File>
+    <File Include="Content/plugins/AutoSuggest_2.1.3/img_inquisitor/as_pointer.gif">
+      <publishTime>02/02/2007 11:18:38</publishTime>
+    </File>
+    <File Include="Content/plugins/AutoSuggest_2.1.3/img_inquisitor/hl_corner_bl.gif">
+      <publishTime>02/02/2007 14:57:48</publishTime>
+    </File>
+    <File Include="Content/plugins/AutoSuggest_2.1.3/img_inquisitor/hl_corner_br.gif">
+      <publishTime>02/02/2007 14:57:48</publishTime>
+    </File>
+    <File Include="Content/plugins/AutoSuggest_2.1.3/img_inquisitor/hl_corner_tl.gif">
+      <publishTime>02/02/2007 14:57:48</publishTime>
+    </File>
+    <File Include="Content/plugins/AutoSuggest_2.1.3/img_inquisitor/hl_corner_tr.gif">
+      <publishTime>02/02/2007 14:57:48</publishTime>
+    </File>
+    <File Include="Content/plugins/AutoSuggest_2.1.3/img_inquisitor/ul_corner_bl.gif">
+      <publishTime>02/02/2007 13:36:20</publishTime>
+    </File>
+    <File Include="Content/plugins/AutoSuggest_2.1.3/img_inquisitor/ul_corner_br.gif">
+      <publishTime>02/02/2007 13:36:20</publishTime>
+    </File>
+    <File Include="Content/plugins/AutoSuggest_2.1.3/img_inquisitor/ul_corner_tl.gif">
+      <publishTime>02/02/2007 13:36:20</publishTime>
+    </File>
+    <File Include="Content/plugins/AutoSuggest_2.1.3/img_inquisitor/ul_corner_tr.gif">
+      <publishTime>02/02/2007 13:36:20</publishTime>
+    </File>
+    <File Include="Content/plugins/AutoSuggest_2.1.3/img_inquisitor/_source/.DS_Store">
+      <publishTime>07/02/2007 08:44:30</publishTime>
+    </File>
+    <File Include="Content/plugins/AutoSuggest_2.1.3/img_inquisitor/_source/._.DS_Store">
+      <publishTime>07/02/2007 08:44:30</publishTime>
+    </File>
+    <File Include="Content/plugins/AutoSuggest_2.1.3/img_inquisitor/_source/._as_pointer.png">
+      <publishTime>02/02/2007 20:10:10</publishTime>
+    </File>
+    <File Include="Content/plugins/AutoSuggest_2.1.3/img_inquisitor/_source/._li_corner.png">
+      <publishTime>02/02/2007 20:10:36</publishTime>
+    </File>
+    <File Include="Content/plugins/AutoSuggest_2.1.3/img_inquisitor/_source/._ul_corner.png">
+      <publishTime>02/02/2007 20:10:28</publishTime>
+    </File>
+    <File Include="Content/plugins/AutoSuggest_2.1.3/img_inquisitor/_source/as_pointer.png">
+      <publishTime>02/02/2007 20:10:10</publishTime>
+    </File>
+    <File Include="Content/plugins/AutoSuggest_2.1.3/img_inquisitor/_source/li_corner.png">
+      <publishTime>02/02/2007 20:10:36</publishTime>
+    </File>
+    <File Include="Content/plugins/AutoSuggest_2.1.3/img_inquisitor/_source/ul_corner.png">
+      <publishTime>02/02/2007 20:10:28</publishTime>
+    </File>
+    <File Include="Content/plugins/bootstrap-datepicker/datepicker3.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins/bootstrap-multiselect/bootstrap-multiselect.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins/bootstrap-social/bootstrap-social.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins/bootstrap-timepicker/bootstrap-timepicker.min.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins/bootstrap-tokenfield/bootstrap-tokenfield.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins/bootstrap-tokenfield/tokenfield-typeahead.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins/bootstrap/css/bootstrap.min.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins/carregador/carregador.css">
+      <publishTime>09/10/2014 13:43:02</publishTime>
+    </File>
+    <File Include="Content/plugins/datatables/datatables.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins/daterangepicker/daterangepicker-bs3.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins/dropzone/css/dropzone.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins/dropzone/images/spritemap.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins/fonts/glyphicons-halflings-regular.svg">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins/fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins/fonts/glyphicons-halflings-regular.woff">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins/fullcalendar/fullcalendar.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins/img/customer_1.png">
+      <publishTime>08/21/2013 13:33:26</publishTime>
+    </File>
+    <File Include="Content/plugins/img/customer_2.png">
+      <publishTime>08/21/2013 13:33:27</publishTime>
+    </File>
+    <File Include="Content/plugins/img/customer_3.png">
+      <publishTime>08/21/2013 13:33:26</publishTime>
+    </File>
+    <File Include="Content/plugins/img/customer_4.png">
+      <publishTime>08/21/2013 13:33:26</publishTime>
+    </File>
+    <File Include="Content/plugins/img/customer_5.png">
+      <publishTime>08/21/2013 13:33:27</publishTime>
+    </File>
+    <File Include="Content/plugins/img/customer_6.png">
+      <publishTime>08/21/2013 13:33:27</publishTime>
+    </File>
+    <File Include="Content/plugins/img/Descr.WD3">
+      <publishTime>08/21/2013 13:33:51</publishTime>
+    </File>
+    <File Include="Content/plugins/img/fundo2.png">
+      <publishTime>08/09/2014 19:43:13</publishTime>
+    </File>
+    <File Include="Content/plugins/img/gallery/blog_1.jpg">
+      <publishTime>03/12/2014 16:27:17</publishTime>
+    </File>
+    <File Include="Content/plugins/img/gallery/blog_2.jpg">
+      <publishTime>03/12/2014 16:34:44</publishTime>
+    </File>
+    <File Include="Content/plugins/img/gallery/blog_3.jpg">
+      <publishTime>03/12/2014 16:39:12</publishTime>
+    </File>
+    <File Include="Content/plugins/img/gallery/blog_4.jpg">
+      <publishTime>03/12/2014 16:55:40</publishTime>
+    </File>
+    <File Include="Content/plugins/img/gallery/blog_5.jpg">
+      <publishTime>03/12/2014 16:59:45</publishTime>
+    </File>
+    <File Include="Content/plugins/img/gallery/blog_6.jpg">
+      <publishTime>03/12/2014 17:03:33</publishTime>
+    </File>
+    <File Include="Content/plugins/img/gallery/Descr.WD3">
+      <publishTime>08/21/2013 13:33:59</publishTime>
+    </File>
+    <File Include="Content/plugins/img/gallery/gallery_1.jpg">
+      <publishTime>08/21/2013 13:33:55</publishTime>
+    </File>
+    <File Include="Content/plugins/img/gallery/gallery_10.jpg">
+      <publishTime>09/17/2014 09:32:53</publishTime>
+    </File>
+    <File Include="Content/plugins/img/gallery/gallery_11.jpg">
+      <publishTime>09/17/2014 10:10:36</publishTime>
+    </File>
+    <File Include="Content/plugins/img/gallery/gallery_12.jpg">
+      <publishTime>09/17/2014 10:16:08</publishTime>
+    </File>
+    <File Include="Content/plugins/img/gallery/gallery_13.jpg">
+      <publishTime>09/17/2014 11:19:33</publishTime>
+    </File>
+    <File Include="Content/plugins/img/gallery/gallery_14.jpg">
+      <publishTime>09/17/2014 11:29:36</publishTime>
+    </File>
+    <File Include="Content/plugins/img/gallery/gallery_15.jpg">
+      <publishTime>09/17/2014 11:33:21</publishTime>
+    </File>
+    <File Include="Content/plugins/img/gallery/gallery_2.jpg">
+      <publishTime>08/21/2013 13:33:56</publishTime>
+    </File>
+    <File Include="Content/plugins/img/gallery/gallery_3.jpg">
+      <publishTime>08/21/2013 13:33:55</publishTime>
+    </File>
+    <File Include="Content/plugins/img/gallery/gallery_4.jpg">
+      <publishTime>08/21/2013 13:33:56</publishTime>
+    </File>
+    <File Include="Content/plugins/img/gallery/gallery_5.jpg">
+      <publishTime>08/21/2013 13:33:56</publishTime>
+    </File>
+    <File Include="Content/plugins/img/gallery/gallery_6.jpg">
+      <publishTime>08/21/2013 13:33:56</publishTime>
+    </File>
+    <File Include="Content/plugins/img/gallery/gallery_7.jpg">
+      <publishTime>09/16/2014 12:52:16</publishTime>
+    </File>
+    <File Include="Content/plugins/img/gallery/gallery_9.jpg">
+      <publishTime>09/16/2014 15:50:51</publishTime>
+    </File>
+    <File Include="Content/plugins/img/gallery/modal_1.jpg">
+      <publishTime>08/21/2013 13:33:57</publishTime>
+    </File>
+    <File Include="Content/plugins/img/gallery/modal_2.jpg">
+      <publishTime>08/21/2013 13:33:57</publishTime>
+    </File>
+    <File Include="Content/plugins/img/gallery/modal_3.jpg">
+      <publishTime>08/21/2013 13:33:57</publishTime>
+    </File>
+    <File Include="Content/plugins/img/gallery/modal_4.jpg">
+      <publishTime>08/21/2013 13:33:58</publishTime>
+    </File>
+    <File Include="Content/plugins/img/gallery/modal_5.jpg">
+      <publishTime>08/21/2013 13:33:59</publishTime>
+    </File>
+    <File Include="Content/plugins/img/gallery/modal_6.jpg">
+      <publishTime>08/21/2013 13:33:58</publishTime>
+    </File>
+    <File Include="Content/plugins/img/logo.png">
+      <publishTime>08/21/2013 13:33:27</publishTime>
+    </File>
+    <File Include="Content/plugins/img/logocliquemix.png">
+      <publishTime>08/09/2014 17:55:58</publishTime>
+    </File>
+    <File Include="Content/plugins/img/marker.png">
+      <publishTime>08/21/2013 13:33:45</publishTime>
+    </File>
+    <File Include="Content/plugins/img/preload.gif">
+      <publishTime>08/21/2013 13:33:47</publishTime>
+    </File>
+    <File Include="Content/plugins/img/slide_1.jpg">
+      <publishTime>08/21/2013 13:33:50</publishTime>
+    </File>
+    <File Include="Content/plugins/img/slide_2.jpg">
+      <publishTime>08/21/2013 13:33:50</publishTime>
+    </File>
+    <File Include="Content/plugins/img/slide_3.jpg">
+      <publishTime>08/21/2013 13:33:51</publishTime>
+    </File>
+    <File Include="Content/plugins/img/works_1.jpg">
+      <publishTime>08/21/2013 13:33:49</publishTime>
+    </File>
+    <File Include="Content/plugins/img/works_2.jpg">
+      <publishTime>08/21/2013 13:33:49</publishTime>
+    </File>
+    <File Include="Content/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins/ladda/ladda-themeless.min.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins/messenger/messenger-theme-flat.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins/messenger/messenger.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins/morris/morris.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins/pace/pace.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins/pirobox/ajax-loader.gif">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins/pirobox/close_t.gif">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins/pirobox/ie6_btn.gif">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins/pirobox/logo.jpg">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins/pirobox/next_t.gif">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins/pirobox/next_tt.gif">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins/pirobox/next_t_h.gif">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins/pirobox/pirobox.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins/pirobox/prev_t.gif">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins/pirobox/prev_tt.gif">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins/pirobox/prev_t_h.gif">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins/pirobox/p_r.gif">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins/summernote/summernote-bs3.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/plugins/summernote/summernote.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="Content/style.css">
+      <publishTime>08/28/2014 15:45:12</publishTime>
+    </File>
+    <File Include="Content/timeline.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>09/12/2014 17:04:43</publishTime>
+    </File>
+    <File Include="fonts/icons/font-awesome/css/font-awesome.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/icons/font-awesome/css/font-awesome.min.css">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/icons/font-awesome/fonts/fontawesome-webfont.eot">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/icons/font-awesome/fonts/fontawesome-webfont.svg">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/icons/font-awesome/fonts/fontawesome-webfont.ttf">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/icons/font-awesome/fonts/fontawesome-webfont.woff">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/icons/font-awesome/fonts/fontawesome-webfont1.woff">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/icons/font-awesome/fonts/FontAwesome.otf">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/boss-image.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/checkmark.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/cliquemix-logo-confirm-pedido.png">
+      <publishTime>09/17/2014 10:07:08</publishTime>
+    </File>
+    <File Include="fonts/img/datatables/sort_asc.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/datatables/sort_both.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/empresario-M.jpg">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/flex-admin-logo%401x.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/flex-admin-logo.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/dark_rounded/btnNext.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/dark_rounded/btnPrevious.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/dark_rounded/contentPattern.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/dark_rounded/default_thumbnail.gif">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/dark_rounded/loader.gif">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/dark_rounded/sprite.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/dark_square/btnNext.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/dark_square/btnPrevious.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/dark_square/contentPattern.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/dark_square/default_thumbnail.gif">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/dark_square/loader.gif">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/dark_square/sprite.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/default/default_thumb.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/default/loader.gif">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/default/sprite.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/default/sprite_next.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/default/sprite_prev.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/default/sprite_x.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/default/sprite_y.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/default/Thumbs.db">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/facebook/btnNext.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/facebook/btnPrevious.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/facebook/contentPatternBottom.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/facebook/contentPatternLeft.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/facebook/contentPatternRight.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/facebook/contentPatternTop.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/facebook/default_thumbnail.gif">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/facebook/loader.gif">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/facebook/sprite.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/lightbox-btn.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/light_rounded/btnNext.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/light_rounded/btnPrevious.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/light_rounded/default_thumbnail.gif">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/light_rounded/loader.gif">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/light_rounded/sprite.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/light_square/btnNext.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/light_square/btnPrevious.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/light_square/default_thumbnail.gif">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/light_square/loader.gif">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/images/prettyPhoto/light_square/sprite.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/img-exemples-destaques/photo-destaque-cortina.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/img-exemples-destaques/photo-destaque-letreiro.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/img-exemples-destaques/photo-destaque-principal.png">
+      <publishTime>08/26/2014 09:13:35</publishTime>
+    </File>
+    <File Include="fonts/img/img-exemples-destaques/photo-destaque-sanfon.png">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="fonts/img/img-master-slider/1.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="fonts/img/img-master-slider/2.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="fonts/img/img-master-slider/3.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="fonts/img/img-master-slider/4.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="fonts/img/img-master-slider/5.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="fonts/img/img-master-slider/6.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="fonts/img/img-master-slider/7.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="fonts/img/img-master-slider/8.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="fonts/img/img-master-slider/cover.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="fonts/img/img-master-slider/Destaque-Banner.png">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="fonts/img/linha.png">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="fonts/img/logo.fw.png">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="fonts/img/logo.png">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="fonts/img/logo2.png">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="fonts/img/produto_sem_foto.gif">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="fonts/img/profile-full.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="fonts/img/profile-pic-small.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="fonts/img/profile-pic.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="fonts/img/sem_foto.png">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="fonts/img/user-profile-1.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="fonts/img/user-profile-2.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="fonts/img/user-profile-3.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="fonts/img/user-profile-4.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="fonts/img/widget-bg-afternoon.jpg">
+      <publishTime>02/21/2014 19:30:50</publishTime>
+    </File>
+    <File Include="fonts/img/widget-bg-evening.jpg">
+      <publishTime>08/28/2014 15:42:12</publishTime>
+    </File>
+    <File Include="fonts/img/widget-bg-midnight.jpg">
+      <publishTime>08/28/2014 15:41:41</publishTime>
+    </File>
+    <File Include="fonts/img/widget-bg-morning.jpg">
+      <publishTime>02/21/2014 19:30:50</publishTime>
+    </File>
+    <File Include="fonts/Outros/glyphicons-halflings-regular.eot">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="fonts/Outros/glyphicons-halflings-regular.svg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="fonts/Outros/glyphicons-halflings-regular.ttf">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="fonts/Outros/glyphicons-halflings-regular.woff">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/anuncios/customer_1.png">
+      <publishTime>08/21/2013 13:33:26</publishTime>
+    </File>
+    <File Include="Images/anuncios/customer_2.png">
+      <publishTime>08/21/2013 13:33:27</publishTime>
+    </File>
+    <File Include="Images/anuncios/customer_3.png">
+      <publishTime>08/21/2013 13:33:26</publishTime>
+    </File>
+    <File Include="Images/anuncios/customer_4.png">
+      <publishTime>08/21/2013 13:33:26</publishTime>
+    </File>
+    <File Include="Images/anuncios/customer_5.png">
+      <publishTime>08/21/2013 13:33:27</publishTime>
+    </File>
+    <File Include="Images/anuncios/customer_6.png">
+      <publishTime>08/21/2013 13:33:27</publishTime>
+    </File>
+    <File Include="Images/anuncios/Descr.WD3">
+      <publishTime>08/21/2013 13:33:51</publishTime>
+    </File>
+    <File Include="Images/anuncios/fundo2.png">
+      <publishTime>08/09/2014 19:43:13</publishTime>
+    </File>
+    <File Include="Images/anuncios/gallery/blog_1.jpg">
+      <publishTime>03/12/2014 16:27:17</publishTime>
+    </File>
+    <File Include="Images/anuncios/gallery/blog_2.jpg">
+      <publishTime>03/12/2014 16:34:44</publishTime>
+    </File>
+    <File Include="Images/anuncios/gallery/blog_3.jpg">
+      <publishTime>03/12/2014 16:39:12</publishTime>
+    </File>
+    <File Include="Images/anuncios/gallery/blog_4.jpg">
+      <publishTime>03/12/2014 16:55:40</publishTime>
+    </File>
+    <File Include="Images/anuncios/gallery/blog_5.jpg">
+      <publishTime>03/12/2014 16:59:45</publishTime>
+    </File>
+    <File Include="Images/anuncios/gallery/blog_6.jpg">
+      <publishTime>03/12/2014 17:03:33</publishTime>
+    </File>
+    <File Include="Images/anuncios/gallery/Descr.WD3">
+      <publishTime>08/21/2013 13:33:59</publishTime>
+    </File>
+    <File Include="Images/anuncios/gallery/gallery_1.jpg">
+      <publishTime>08/21/2013 13:33:55</publishTime>
+    </File>
+    <File Include="Images/anuncios/gallery/gallery_10.jpg">
+      <publishTime>09/17/2014 09:32:53</publishTime>
+    </File>
+    <File Include="Images/anuncios/gallery/gallery_11.jpg">
+      <publishTime>09/17/2014 10:10:36</publishTime>
+    </File>
+    <File Include="Images/anuncios/gallery/gallery_12.jpg">
+      <publishTime>09/17/2014 10:16:08</publishTime>
+    </File>
+    <File Include="Images/anuncios/gallery/gallery_13.jpg">
+      <publishTime>09/17/2014 11:19:33</publishTime>
+    </File>
+    <File Include="Images/anuncios/gallery/gallery_14.jpg">
+      <publishTime>09/17/2014 11:29:36</publishTime>
+    </File>
+    <File Include="Images/anuncios/gallery/gallery_15.jpg">
+      <publishTime>09/17/2014 11:33:21</publishTime>
+    </File>
+    <File Include="Images/anuncios/gallery/gallery_2.jpg">
+      <publishTime>08/21/2013 13:33:56</publishTime>
+    </File>
+    <File Include="Images/anuncios/gallery/gallery_3.jpg">
+      <publishTime>08/21/2013 13:33:55</publishTime>
+    </File>
+    <File Include="Images/anuncios/gallery/gallery_4.jpg">
+      <publishTime>08/21/2013 13:33:56</publishTime>
+    </File>
+    <File Include="Images/anuncios/gallery/gallery_5.jpg">
+      <publishTime>08/21/2013 13:33:56</publishTime>
+    </File>
+    <File Include="Images/anuncios/gallery/gallery_6.jpg">
+      <publishTime>08/21/2013 13:33:56</publishTime>
+    </File>
+    <File Include="Images/anuncios/gallery/gallery_7.jpg">
+      <publishTime>09/16/2014 12:52:16</publishTime>
+    </File>
+    <File Include="Images/anuncios/gallery/gallery_9.jpg">
+      <publishTime>09/16/2014 15:50:51</publishTime>
+    </File>
+    <File Include="Images/anuncios/gallery/modal_1.jpg">
+      <publishTime>08/21/2013 13:33:57</publishTime>
+    </File>
+    <File Include="Images/anuncios/gallery/modal_2.jpg">
+      <publishTime>08/21/2013 13:33:57</publishTime>
+    </File>
+    <File Include="Images/anuncios/gallery/modal_3.jpg">
+      <publishTime>08/21/2013 13:33:57</publishTime>
+    </File>
+    <File Include="Images/anuncios/gallery/modal_4.jpg">
+      <publishTime>08/21/2013 13:33:58</publishTime>
+    </File>
+    <File Include="Images/anuncios/gallery/modal_5.jpg">
+      <publishTime>08/21/2013 13:33:59</publishTime>
+    </File>
+    <File Include="Images/anuncios/gallery/modal_6.jpg">
+      <publishTime>08/21/2013 13:33:58</publishTime>
+    </File>
+    <File Include="Images/anuncios/logo.png">
+      <publishTime>08/21/2013 13:33:27</publishTime>
+    </File>
+    <File Include="Images/anuncios/logocliquemix.png">
+      <publishTime>08/09/2014 17:55:58</publishTime>
+    </File>
+    <File Include="Images/anuncios/marker.png">
+      <publishTime>08/21/2013 13:33:45</publishTime>
+    </File>
+    <File Include="Images/anuncios/preload.gif">
+      <publishTime>08/21/2013 13:33:47</publishTime>
+    </File>
+    <File Include="Images/anuncios/slide_1.jpg">
+      <publishTime>08/21/2013 13:33:50</publishTime>
+    </File>
+    <File Include="Images/anuncios/slide_2.jpg">
+      <publishTime>08/21/2013 13:33:50</publishTime>
+    </File>
+    <File Include="Images/anuncios/slide_3.jpg">
+      <publishTime>08/21/2013 13:33:51</publishTime>
+    </File>
+    <File Include="Images/anuncios/works_1.jpg">
+      <publishTime>08/21/2013 13:33:49</publishTime>
+    </File>
+    <File Include="Images/anuncios/works_2.jpg">
+      <publishTime>08/21/2013 13:33:49</publishTime>
+    </File>
+    <File Include="Images/Inicial/blog/blog_1.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Inicial/blog/blog_2.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Inicial/blog/blog_3.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Inicial/blog/blog_4.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Inicial/blog/blog_5.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Inicial/blog/blog_6.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Inicial/blog/Descr.WD3">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Inicial/customer_1.png">
+      <publishTime>08/21/2013 13:33:26</publishTime>
+    </File>
+    <File Include="Images/Inicial/customer_2.png">
+      <publishTime>08/21/2013 13:33:27</publishTime>
+    </File>
+    <File Include="Images/Inicial/customer_3.png">
+      <publishTime>08/21/2013 13:33:26</publishTime>
+    </File>
+    <File Include="Images/Inicial/customer_4.png">
+      <publishTime>08/21/2013 13:33:26</publishTime>
+    </File>
+    <File Include="Images/Inicial/customer_5.png">
+      <publishTime>08/21/2013 13:33:27</publishTime>
+    </File>
+    <File Include="Images/Inicial/customer_6.png">
+      <publishTime>08/21/2013 13:33:27</publishTime>
+    </File>
+    <File Include="Images/Inicial/Descr.WD3">
+      <publishTime>08/21/2013 13:33:51</publishTime>
+    </File>
+    <File Include="Images/Inicial/fundo2.png">
+      <publishTime>08/09/2014 19:43:13</publishTime>
+    </File>
+    <File Include="Images/Inicial/gallery/Descr.WD3">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Inicial/gallery/gallery_1.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Inicial/gallery/gallery_2.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Inicial/gallery/gallery_3.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Inicial/gallery/gallery_4.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Inicial/gallery/gallery_5.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Inicial/gallery/gallery_6.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Inicial/gallery/modal_1.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Inicial/gallery/modal_2.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Inicial/gallery/modal_3.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Inicial/gallery/modal_4.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Inicial/gallery/modal_5.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Inicial/gallery/modal_6.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Inicial/headers/Descr.WD3">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Inicial/headers/first.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Inicial/headers/first_macbook.png">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Inicial/headers/first_macbook_2.png">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Inicial/headers/first_macbook_3.png">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Inicial/headers/third.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Inicial/logo.png">
+      <publishTime>08/21/2013 13:33:27</publishTime>
+    </File>
+    <File Include="Images/Inicial/logocliquemix.png">
+      <publishTime>08/09/2014 17:55:58</publishTime>
+    </File>
+    <File Include="Images/Inicial/marker.png">
+      <publishTime>08/21/2013 13:33:45</publishTime>
+    </File>
+    <File Include="Images/Inicial/oneclick.png">
+      <publishTime>03/12/2014 17:51:32</publishTime>
+    </File>
+    <File Include="Images/Inicial/preload.gif">
+      <publishTime>08/21/2013 13:33:47</publishTime>
+    </File>
+    <File Include="Images/Inicial/slide_1.jpg">
+      <publishTime>08/21/2013 13:33:50</publishTime>
+    </File>
+    <File Include="Images/Inicial/slide_2.jpg">
+      <publishTime>08/21/2013 13:33:50</publishTime>
+    </File>
+    <File Include="Images/Inicial/slide_3.jpg">
+      <publishTime>08/21/2013 13:33:51</publishTime>
+    </File>
+    <File Include="Images/Inicial/team/Descr.WD3">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Inicial/team/team_1.jpg">
+      <publishTime>03/13/2014 17:55:57</publishTime>
+    </File>
+    <File Include="Images/Inicial/team/team_2.jpg">
+      <publishTime>03/13/2014 17:56:39</publishTime>
+    </File>
+    <File Include="Images/Inicial/team/team_3.jpg">
+      <publishTime>03/13/2014 17:53:13</publishTime>
+    </File>
+    <File Include="Images/Inicial/team/team_4.jpg">
+      <publishTime>03/13/2014 17:53:26</publishTime>
+    </File>
+    <File Include="Images/Inicial/works_1.jpg">
+      <publishTime>08/21/2013 13:33:49</publishTime>
+    </File>
+    <File Include="Images/Inicial/works_2.jpg">
+      <publishTime>08/21/2013 13:33:49</publishTime>
+    </File>
+    <File Include="Images/Pictures/imgDemoVideo.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Pictures/modeloViewAnuncio.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Pictures/pirobox/1.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Pictures/pirobox/10.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Pictures/pirobox/10_s.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Pictures/pirobox/1_s.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Pictures/pirobox/2.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Pictures/pirobox/2_bn.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Pictures/pirobox/2_s.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Pictures/pirobox/3.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Pictures/pirobox/3_s.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Pictures/pirobox/4.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Pictures/pirobox/4_s.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Pictures/pirobox/5.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Pictures/pirobox/5_s.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Pictures/pirobox/6.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Pictures/pirobox/6_s.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Pictures/pirobox/7.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Pictures/pirobox/7_s.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Pictures/pirobox/8.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Pictures/pirobox/8_s.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Pictures/pirobox/9.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Pictures/pirobox/9_s.jpg">
+      <publishTime>08/26/2014 09:13:36</publishTime>
+    </File>
+    <File Include="Images/Vídeos/Sicove.mp4">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Models/Cliquemix.edmx.diagram">
+      <publishTime>01/10/2014 10:13:08</publishTime>
+    </File>
+    <File Include="NuGet/NuGetPackage.txt">
+      <publishTime>09/12/2014 16:32:35</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>09/12/2014 16:33:20</publishTime>
+    </File>
+    <File Include="Properties/PublishProfiles/Mix-Clique.pubxml.user">
+      <publishTime>10/13/2014 20:37:49</publishTime>
+    </File>
+    <File Include="RecaptchaNet.ReadMe.txt">
+      <publishTime>05/09/2014 11:17:49</publishTime>
+    </File>
+    <File Include="ReportViewerWebForm.aspx">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/demo/advanced-form-demo.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/demo/advanced-tables-demo.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/demo/buttons-demo.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/demo/calendar-demo.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/demo/dashboard-demo.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/demo/mailbox-demo.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/demo/map-demo-data.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/demo/notifications-demo.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/demo/sliders-demo.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/demo/validation-demo.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/demo/wysiwyg-demo.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/flex.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/holder.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/html5shiv.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Inicial/bigmodals.html">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Inicial/bootstrap.min.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Inicial/bootstrap.tour.cookie.html">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Inicial/bootstrap.tour.min.html">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Inicial/custom.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Inicial/guideline.main.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Inicial/guideline.steps.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Inicial/jquery-1.10.2.min.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Inicial/jquery.easing.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Inicial/jquery.fitvids.min.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Inicial/jquery.form.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Inicial/jquery.nicescroll.min.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Inicial/jquery.promin.html">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Inicial/jquery.touchwipe.min.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Inicial/modals.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Inicial/modernizr.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Inicial/retina.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Inicial/skrollr.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Inicial/toucheffects.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/js-master-slider/jquery-1.10.2.min.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/js-master-slider/jquery.easing.min.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/js-master-slider/jquery.prettyPhoto.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/js-master-slider/masterslider.min.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/js-master-slider/masterslider.partialview.dev.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/js-master-slider/masterslider.partialview.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Outros/bootstrap.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Outros/bootstrap.min.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Outros/jquery-2.1.1.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Outros/jquery-2.1.1.min.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Outros/jquery-2.1.1.min.map">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Outros/jquery.uploadify.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Outros/jquery.uploadify.min.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Outros/jquery.validate.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Outros/jquery.validate.min.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Outros/jquery.validate.unobtrusive.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Outros/jquery.validate.unobtrusive.min.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Outros/modernizr-2.6.2.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Outros/respond.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Outros/respond.min.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Outros/Teste/busca.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Outros/Teste/noticias.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/Outros/_references.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/plugins/anuncios/bigmodals.html">
+      <publishTime>08/21/2013 13:37:17</publishTime>
+    </File>
+    <File Include="Scripts/plugins/anuncios/bootstrap.min.js">
+      <publishTime>08/17/2013 23:16:52</publishTime>
+    </File>
+    <File Include="Scripts/plugins/anuncios/bootstrap.tour.cookie.html">
+      <publishTime>08/21/2013 13:37:17</publishTime>
+    </File>
+    <File Include="Scripts/plugins/anuncios/bootstrap.tour.min.html">
+      <publishTime>08/21/2013 13:37:17</publishTime>
+    </File>
+    <File Include="Scripts/plugins/anuncios/custom.js">
+      <publishTime>08/20/2013 18:22:16</publishTime>
+    </File>
+    <File Include="Scripts/plugins/anuncios/guideline.main.js">
+      <publishTime>09/08/2013 22:49:10</publishTime>
+    </File>
+    <File Include="Scripts/plugins/anuncios/jquery-1.10.2.min.js">
+      <publishTime>08/20/2013 09:08:06</publishTime>
+    </File>
+    <File Include="Scripts/plugins/anuncios/jquery-1.11.0.js">
+      <publishTime>09/06/2014 18:47:18</publishTime>
+    </File>
+    <File Include="Scripts/plugins/anuncios/jquery-1.11.0.min.js">
+      <publishTime>09/17/2014 14:00:11</publishTime>
+    </File>
+    <File Include="Scripts/plugins/anuncios/jquery-migrate-1.2.1.js">
+      <publishTime>09/17/2014 14:00:19</publishTime>
+    </File>
+    <File Include="Scripts/plugins/anuncios/jquery.easing.js">
+      <publishTime>08/30/2012 19:46:48</publishTime>
+    </File>
+    <File Include="Scripts/plugins/anuncios/jquery.fitvids.min.js">
+      <publishTime>05/08/2013 19:03:06</publishTime>
+    </File>
+    <File Include="Scripts/plugins/anuncios/jquery.form.js">
+      <publishTime>08/30/2012 19:46:48</publishTime>
+    </File>
+    <File Include="Scripts/plugins/anuncios/jquery.gmap.min.js">
+      <publishTime>01/28/2013 10:57:52</publishTime>
+    </File>
+    <File Include="Scripts/plugins/anuncios/jquery.nicescroll.min.js">
+      <publishTime>05/08/2013 18:41:10</publishTime>
+    </File>
+    <File Include="Scripts/plugins/anuncios/jquery.promin.html">
+      <publishTime>08/21/2013 13:37:17</publishTime>
+    </File>
+    <File Include="Scripts/plugins/anuncios/jquery.touchwipe.min.js">
+      <publishTime>07/25/2013 11:43:42</publishTime>
+    </File>
+    <File Include="Scripts/plugins/anuncios/min">
+      <publishTime>09/17/2014 14:01:32</publishTime>
+    </File>
+    <File Include="Scripts/plugins/anuncios/modals.js">
+      <publishTime>04/07/2013 20:08:16</publishTime>
+    </File>
+    <File Include="Scripts/plugins/anuncios/modernizr.js">
+      <publishTime>08/03/2013 07:45:06</publishTime>
+    </File>
+    <File Include="Scripts/plugins/anuncios/retina.js">
+      <publishTime>11/29/2012 00:19:30</publishTime>
+    </File>
+    <File Include="Scripts/plugins/anuncios/skrollr.js">
+      <publishTime>05/08/2013 10:11:00</publishTime>
+    </File>
+    <File Include="Scripts/plugins/anuncios/toucheffects.js">
+      <publishTime>02/07/2013 02:19:38</publishTime>
+    </File>
+    <File Include="Scripts/plugins/AutoSuggest_2.1.3/.DS_Store">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/plugins/AutoSuggest_2.1.3/._.DS_Store">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/plugins/AutoSuggest_2.1.3/._bsn.AutoSuggest_2.1.3.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/plugins/AutoSuggest_2.1.3/bsn.AutoSuggest_2.1.3.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/plugins/AutoSuggest_2.1.3/bsn.AutoSuggest_2.1.3_comp.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/plugins/bootstrap-datepicker/bootstrap-datepicker.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/plugins/bootstrap-filestyle/bootstrap-filestyle.min.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/plugins/bootstrap-maxlength/bootstrap-maxlength.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/plugins/bootstrap-multiselect/bootstrap-multiselect.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/plugins/bootstrap-timepicker/bootstrap-timepicker.min.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/plugins/bootstrap-tokenfield/affix.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/plugins/bootstrap-tokenfield/bootstrap-tokenfield.min.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/plugins/bootstrap-tokenfield/scrollspy.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/plugins/bootstrap-tokenfield/typeahead.min.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/plugins/bootstrap/bootstrap.min.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/plugins/carregador/carregador.js">
+      <publishTime>09/10/2014 13:41:31</publishTime>
+    </File>
+    <File Include="Scripts/plugins/datatables/datatables-bs3.js">
+      <publishTime>09/10/2014 14:14:10</publishTime>
+    </File>
+    <File Include="Scripts/plugins/datatables/jquery.dataTables.js">
+      <publishTime>09/10/2014 14:18:47</publishTime>
+    </File>
+    <File Include="Scripts/plugins/daterangepicker/daterangepicker.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/plugins/daterangepicker/moment.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/plugins/dropzone/dropzone.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/plugins/easypiechart/jquery.easypiechart.min.js">
+      <publishTime>08/26/2014 09:13:37</publishTime>
+    </File>
+    <File Include="Scripts/plugins/flot/flot-demo-data.js">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Scripts/plugins/flot/jquery.flot.js">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Scripts/plugins/flot/jquery.flot.pie.js">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Scripts/plugins/flot/jquery.flot.resize.js">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Scripts/plugins/flot/jquery.flot.tooltip.min.js">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Scripts/plugins/fullcalendar/fullcalendar.min.js">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Scripts/plugins/fullcalendar/jquery-ui.custom.min.js">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Scripts/plugins/hisrc/hisrc.js">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Scripts/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Scripts/plugins/jvectormap/maps/jquery-jvectormap-world-mill-en.js">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Scripts/plugins/ladda/ladda.min.js">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Scripts/plugins/ladda/spin.min.js">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Scripts/plugins/messenger/messenger-theme-flat.js">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Scripts/plugins/messenger/messenger.min.js">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Scripts/plugins/moment/moment.min.js">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Scripts/plugins/morris/morris-demo-data.js">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Scripts/plugins/morris/morris.js">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Scripts/plugins/morris/raphael-2.1.0.min.js">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Scripts/plugins/pace/pace.js">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Scripts/plugins/pirobox/jquery1.2.6.js">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Scripts/plugins/pirobox/pirobox.js">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Scripts/plugins/pirobox/pirobox_min.js">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Scripts/plugins/pirobox/piroBox_packed.js">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Scripts/plugins/popupoverlay/defaults.js">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Scripts/plugins/popupoverlay/jquery.popupoverlay.js">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Scripts/plugins/popupoverlay/logout.js">
+      <publishTime>08/29/2014 13:58:37</publishTime>
+    </File>
+    <File Include="Scripts/plugins/slimscroll/jquery.slimscroll.min.js">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Scripts/plugins/sparkline/jquery.sparkline.min.js">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Scripts/plugins/summernote/summernote.min.js">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Scripts/plugins/validate/jquery.validate.min.js">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Scripts/plugins/validate/MascaraValidacao.js">
+      <publishTime>05/09/2014 15:31:15</publishTime>
+    </File>
+    <File Include="Scripts/respond.min.js">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Scripts/Views/Anuncio/Anuncio.js">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Account/Login.cshtml">
+      <publishTime>09/12/2014 17:04:43</publishTime>
+    </File>
+    <File Include="Views/Account/Logout.cshtml">
+      <publishTime>09/25/2014 09:27:57</publishTime>
+    </File>
+    <File Include="Views/Account/Negado.cshtml">
+      <publishTime>09/17/2014 14:16:05</publishTime>
+    </File>
+    <File Include="Views/Anunciante/Create.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Anunciante/CreateAnuncio.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Anunciante/Delete.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Anunciante/Details.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Anunciante/Edit.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Anunciante/Index.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Anuncio/AnuncioImagem.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Anuncio/ConfigAnuncioConsumidor.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Anuncio/ConfigAnuncioConsumidorCadastro.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Anuncio/ConfigAnuncioConsumidorEditar.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Anuncio/CreateAnuncio.cshtml">
+      <publishTime>09/30/2014 15:04:44</publishTime>
+    </File>
+    <File Include="Views/Anuncio/CriarCategoriaAnuncioAdmin.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Anuncio/DeletarCategoriaAnuncioAdmin.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Anuncio/EditarCategoriaAnuncioAdmin.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Anuncio/GerirCategoriaAnuncioAdmin.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Anuncio/ListAnuncio.cshtml">
+      <publishTime>01/09/2014 17:05:14</publishTime>
+    </File>
+    <File Include="Views/Anuncio/NovaImagem.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Anuncio/UpdateAnuncio.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Anuncio/UploadImagem.cshtml">
+      <publishTime>02/09/2014 22:12:21</publishTime>
+    </File>
+    <File Include="Views/Anuncio/VisualizarAnuncio.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Ban/BanAnunciante.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Ban/BanConsumidor.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Ban/DeletarBanAnunciante.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Ban/DeletarBanConsumidor.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Ban/EditarBanAnunciante.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Ban/EditarBanConsumidor.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Ban/ListBanAnunciante.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Ban/ListBanConsumidor.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Banner/CreateBanner.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Banner/DeleteBanner.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Banner/ListBanner.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Banner/UpdateBanner.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Admin-Principal.cshtml">
+      <publishTime>08/18/2014 09:31:29</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Anunciante-Perfil.cshtml">
+      <publishTime>08/18/2014 09:56:21</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Anunciante-Relatorio-Anuncios-Visualizar.cshtml">
+      <publishTime>09/09/2014 12:11:08</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Anunciante-Relatorio-Anuncios.cshtml">
+      <publishTime>09/09/2014 11:23:06</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Anunciante-Relatorio-Campanhas-Visualizar.cshtml">
+      <publishTime>09/09/2014 12:13:15</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Anunciante-Relatorio-Campanhas.cshtml">
+      <publishTime>09/09/2014 11:23:29</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Anunciante-Relatorio-Destaques-Visualizar.cshtml">
+      <publishTime>09/09/2014 12:13:26</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Anunciante-Relatorio-Destaques.cshtml">
+      <publishTime>09/09/2014 11:23:37</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Anunciante-Relatorio-Movimentos-Visualizar.cshtml">
+      <publishTime>09/09/2014 12:13:35</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Anunciante-Relatorio-Movimentos.cshtml">
+      <publishTime>09/09/2014 11:23:44</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Anunciante-Relatorio-Premios-Visualizar.cshtml">
+      <publishTime>09/09/2014 12:13:53</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Anunciante-Relatorio-Premios.cshtml">
+      <publishTime>09/09/2014 11:23:52</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Anunciante-Relatorios.cshtml">
+      <publishTime>08/18/2014 09:56:25</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Anuncio-CategoriaAnuncioAdminCriar.cshtml">
+      <publishTime>08/18/2014 10:30:15</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Anuncio-CategoriaAnuncioAdminEditar.cshtml">
+      <publishTime>08/18/2014 10:45:34</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Anuncio-CategoriaAnuncioAdminGerir.cshtml">
+      <publishTime>08/18/2014 10:30:39</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Anuncio-CreateAnuncio.cshtml">
+      <publishTime>08/22/2014 08:54:15</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Anuncio-ListAnuncio.cshtml">
+      <publishTime>06/08/2014 11:31:56</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Anuncio-UpdateAnuncio.cshtml">
+      <publishTime>08/22/2014 08:54:25</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Anuncio-VisualizarAnuncio.cshtml">
+      <publishTime>06/08/2014 11:31:54</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Ban-Anunciante-Criar.cshtml">
+      <publishTime>08/19/2014 13:48:26</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Ban-Anunciante-Editar.cshtml">
+      <publishTime>08/20/2014 09:58:48</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Ban-Anunciante-Gerir.cshtml">
+      <publishTime>08/20/2014 09:39:47</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Ban-Consumidor-Criar.cshtml">
+      <publishTime>08/20/2014 10:17:25</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Ban-Consumidor-Editar.cshtml">
+      <publishTime>08/20/2014 10:19:28</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Ban-Consumidor-Gerir.cshtml">
+      <publishTime>08/20/2014 10:21:38</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Banner-Criar.cshtml">
+      <publishTime>08/18/2014 13:59:30</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Banner-Editar.cshtml">
+      <publishTime>08/18/2014 14:17:18</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Banner-Gerir.cshtml">
+      <publishTime>08/18/2014 14:18:18</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Campanha-CreateCampanha.cshtml">
+      <publishTime>06/08/2014 11:32:37</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Campanha-ListCampanha.cshtml">
+      <publishTime>06/08/2014 11:32:51</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Campanha-VisualizarCampanha.cshtml">
+      <publishTime>06/08/2014 11:33:04</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Consumidor-ConfigAnuncio.cshtml">
+      <publishTime>06/08/2014 10:34:20</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Consumidor-Principal.cshtml">
+      <publishTime>04/08/2014 14:31:53</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Consumidor-Relatorios.cshtml">
+      <publishTime>08/18/2014 09:57:11</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Credito-Descricao-Compra.cshtml">
+      <publishTime>09/30/2014 15:11:27</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Credito-Gerenciar.cshtml">
+      <publishTime>07/15/2014 14:33:38</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Credito.cshtml">
+      <publishTime>07/15/2014 14:33:38</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Destaque-ComprarDestaque.cshtml">
+      <publishTime>08/25/2014 12:10:35</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Destaque-Criar-Admin.cshtml">
+      <publishTime>08/20/2014 15:19:21</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Destaque-Editar-Admin.cshtml">
+      <publishTime>08/20/2014 15:20:18</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Destaque-Gerir-Admin.cshtml">
+      <publishTime>08/20/2014 15:19:55</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Destaque-ListDestaque.cshtml">
+      <publishTime>08/25/2014 09:07:38</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Premio-NivelPremio-Criar-Admin.cshtml">
+      <publishTime>08/21/2014 15:27:40</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Premio-NivelPremio-Editar-Admin.cshtml">
+      <publishTime>08/21/2014 15:27:45</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Premio-NivelPremio-Gerir-Admin.cshtml">
+      <publishTime>08/21/2014 15:27:51</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Premio-Premiacao-Criar-Admin.cshtml">
+      <publishTime>08/21/2014 15:27:09</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Premio-Premiacao-Editar-Admin.cshtml">
+      <publishTime>08/25/2014 13:54:13</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Premio-Premiacao-Gerir-Admin.cshtml">
+      <publishTime>08/22/2014 13:29:28</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Premio-PremiacaoVincular-Criar-Admin.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Premio-PremiacaoVincular-Editar-Admin.cshtml">
+      <publishTime>08/25/2014 13:53:52</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs-Premio-PremiacaoVincular-Gerir-Admin.cshtml">
+      <publishTime>08/25/2014 13:53:43</publishTime>
+    </File>
+    <File Include="Views/Breadcrumbs/Breadcrumbs.cshtml">
+      <publishTime>09/22/2014 22:29:34</publishTime>
+    </File>
+    <File Include="Views/Campanha/AnunciosCampanha.cshtml">
+      <publishTime>08/10/2014 20:25:27</publishTime>
+    </File>
+    <File Include="Views/Campanha/CreateCampanha.cshtml">
+      <publishTime>03/09/2014 10:53:17</publishTime>
+    </File>
+    <File Include="Views/Campanha/CreateCampanha_modelo.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Campanha/DeleteCampanha.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Campanha/GeoLocalizacao.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Campanha/GeoLocalizacaoBackup.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Campanha/InfoDestaque.cshtml">
+      <publishTime>08/28/2014 14:10:24</publishTime>
+    </File>
+    <File Include="Views/Campanha/InfoPacoteClique.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Campanha/ListCampanha.cshtml">
+      <publishTime>09/30/2014 15:06:01</publishTime>
+    </File>
+    <File Include="Views/Campanha/ListCampanha_modelo.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Campanha/LocalidadesCampanha.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Campanha/NovoAnuncio.cshtml">
+      <publishTime>03/09/2014 11:27:16</publishTime>
+    </File>
+    <File Include="Views/Campanha/UpdateCampanha.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Campanha/VisualizarCampanha.cshtml">
+      <publishTime>08/28/2014 10:36:28</publishTime>
+    </File>
+    <File Include="Views/Consumidor/Create.cshtml">
+      <publishTime>09/16/2014 12:30:04</publishTime>
+    </File>
+    <File Include="Views/Consumidor/Delete.cshtml">
+      <publishTime>09/16/2014 12:20:37</publishTime>
+    </File>
+    <File Include="Views/Consumidor/Details.cshtml">
+      <publishTime>09/16/2014 12:20:41</publishTime>
+    </File>
+    <File Include="Views/Consumidor/Edit.cshtml">
+      <publishTime>09/16/2014 12:20:43</publishTime>
+    </File>
+    <File Include="Views/Consumidor/Index.cshtml">
+      <publishTime>09/16/2014 12:20:46</publishTime>
+    </File>
+    <File Include="Views/Credito/BuyCredit.cshtml">
+      <publishTime>03/09/2014 15:07:35</publishTime>
+    </File>
+    <File Include="Views/Credito/ComprarCredito.cshtml">
+      <publishTime>03/09/2014 14:00:58</publishTime>
+    </File>
+    <File Include="Views/Credito/ConfirmarCompra.cshtml">
+      <publishTime>08/10/2014 20:55:24</publishTime>
+    </File>
+    <File Include="Views/Credito/DadosAnunciante.cshtml">
+      <publishTime>09/30/2014 15:12:31</publishTime>
+    </File>
+    <File Include="Views/Credito/DetalhesCredito.cshtml">
+      <publishTime>08/29/2014 16:31:09</publishTime>
+    </File>
+    <File Include="Views/Credito/EnderecoMixClique.cshtml">
+      <publishTime>09/29/2014 09:18:24</publishTime>
+    </File>
+    <File Include="Views/Credito/ItensCompra.cshtml">
+      <publishTime>08/10/2014 20:41:30</publishTime>
+    </File>
+    <File Include="Views/Credito/ManagerCredit.cshtml">
+      <publishTime>01/10/2014 15:46:01</publishTime>
+    </File>
+    <File Include="Views/Destaque/ComprarDestaque.cshtml">
+      <publishTime>08/09/2014 10:02:51</publishTime>
+    </File>
+    <File Include="Views/Destaque/Create.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Destaque/CriarDestaqueAdmin.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Destaque/DeletarDestaqueAdmin.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Destaque/Delete.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Destaque/Details.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Destaque/detalhesDestaque.cshtml">
+      <publishTime>08/27/2014 15:45:38</publishTime>
+    </File>
+    <File Include="Views/Destaque/Edit.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Destaque/EditarDestaqueAdmin.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Destaque/ExibirDestaques.cshtml">
+      <publishTime>08/27/2014 10:02:49</publishTime>
+    </File>
+    <File Include="Views/Destaque/GerirDestaqueAdmin.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Destaque/Index.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Destaque/ListDestaque.cshtml">
+      <publishTime>08/28/2014 16:03:50</publishTime>
+    </File>
+    <File Include="Views/Dialog/Index.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Endereco/DefinicaoArquitetura.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Endereco/Index.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Inicial/components.html">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Inicial/favicon.ico">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Inicial/Index.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Inicial/Register.cshtml">
+      <publishTime>09/23/2014 15:17:33</publishTime>
+    </File>
+    <File Include="Views/Inicial/RegisterEndereco.cshtml">
+      <publishTime>05/09/2014 10:07:15</publishTime>
+    </File>
+    <File Include="Views/Inicial/thumbnail.png">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/MenuAdmin/MenuAdmin.cshtml">
+      <publishTime>09/25/2014 10:37:17</publishTime>
+    </File>
+    <File Include="Views/MenuAnunciante/MenuAnunciante.cshtml">
+      <publishTime>09/25/2014 09:26:16</publishTime>
+    </File>
+    <File Include="Views/MenuConsumidor/MenuConsumidor.cshtml">
+      <publishTime>09/22/2014 20:45:38</publishTime>
+    </File>
+    <File Include="Views/MenuTopoAdmin/MenuTopoAdmin.cshtml">
+      <publishTime>09/12/2014 17:04:43</publishTime>
+    </File>
+    <File Include="Views/MenuTopoAnunciante/MenuTopo.cshtml">
+      <publishTime>09/22/2014 21:26:54</publishTime>
+    </File>
+    <File Include="Views/MenuTopoConsumidor/MenuTopoConsumidor.cshtml">
+      <publishTime>09/22/2014 20:27:54</publishTime>
+    </File>
+    <File Include="Views/Pagamento/Index.cshtml">
+      <publishTime>09/17/2014 16:33:15</publishTime>
+    </File>
+    <File Include="Views/PerfilAnunciante/EditarPerfilDadosContato.cshtml">
+      <publishTime>05/09/2014 15:35:34</publishTime>
+    </File>
+    <File Include="Views/PerfilAnunciante/EditarPerfilDadosEmpresa.cshtml">
+      <publishTime>05/09/2014 10:21:24</publishTime>
+    </File>
+    <File Include="Views/PerfilAnunciante/EditarPerfilDadosEndereco.cshtml">
+      <publishTime>05/09/2014 10:52:28</publishTime>
+    </File>
+    <File Include="Views/PerfilAnunciante/EditarPerfilDadosUsuario.cshtml">
+      <publishTime>09/30/2014 15:08:06</publishTime>
+    </File>
+    <File Include="Views/PerfilAnunciante/PerfilAnunciante.cshtml">
+      <publishTime>05/09/2014 14:44:31</publishTime>
+    </File>
+    <File Include="Views/PerfilAnunciante/PerfilAnunciantePrincipal.cshtml">
+      <publishTime>03/09/2014 16:33:04</publishTime>
+    </File>
+    <File Include="Views/Premio/NivelPremioCriar.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Premio/NivelPremioDeletar.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Premio/NivelPremioEditar.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Premio/NivelPremioGerir.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Premio/PremiacaoCriar.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Premio/PremiacaoDeletar.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Premio/PremiacaoEditar.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Premio/PremiacaoGerir.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Premio/PremiacaoVincularCriar.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Premio/PremiacaoVincularDeletar.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Premio/PremiacaoVincularEditar.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Premio/PremiacaoVincularGerir.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/PrincipalAdmin/PrincipalAdmin.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/PrincipalAdministrador/PrincipalAdministrador.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/PrincipalAnunciante/PrincipalAnunciante.cshtml">
+      <publishTime>09/30/2014 15:08:44</publishTime>
+    </File>
+    <File Include="Views/PrincipalAnunciante/PrincipalAnuncianteAvancado.cshtml">
+      <publishTime>09/17/2014 14:21:15</publishTime>
+    </File>
+    <File Include="Views/PrincipalConsumidor/favicon.ico">
+      <publishTime>09/11/2014 17:51:16</publishTime>
+    </File>
+    <File Include="Views/PrincipalConsumidor/index.html">
+      <publishTime>09/17/2014 15:36:17</publishTime>
+    </File>
+    <File Include="Views/PrincipalConsumidor/PrincipalAnuncios.cshtml">
+      <publishTime>09/18/2014 17:08:36</publishTime>
+    </File>
+    <File Include="Views/PrincipalConsumidor/PrincipalConsumidor.cshtml">
+      <publishTime>09/22/2014 20:47:30</publishTime>
+    </File>
+    <File Include="Views/PrincipalDemo/PrincipalDemo.cshtml">
+      <publishTime>09/17/2014 15:35:56</publishTime>
+    </File>
+    <File Include="Views/RelatorioAnunciante/RelAnuncio.cshtml">
+      <publishTime>09/12/2014 10:44:42</publishTime>
+    </File>
+    <File Include="Views/RelatorioAnunciante/RelAnuncioVisualizarCliques.cshtml">
+      <publishTime>09/11/2014 20:13:54</publishTime>
+    </File>
+    <File Include="Views/RelatorioAnunciante/RelAnuncioVisualizarTodos.cshtml">
+      <publishTime>09/11/2014 20:03:05</publishTime>
+    </File>
+    <File Include="Views/RelatorioAnunciante/RelAnuncioVisualizarTop10Mais.cshtml">
+      <publishTime>09/11/2014 20:16:57</publishTime>
+    </File>
+    <File Include="Views/RelatorioAnunciante/RelAnuncioVisualizarTop10Menos.cshtml">
+      <publishTime>09/11/2014 20:17:37</publishTime>
+    </File>
+    <File Include="Views/RelatorioAnunciante/RelCampanha.cshtml">
+      <publishTime>09/09/2014 11:53:37</publishTime>
+    </File>
+    <File Include="Views/RelatorioAnunciante/RelDestaque.cshtml">
+      <publishTime>09/09/2014 12:02:52</publishTime>
+    </File>
+    <File Include="Views/RelatorioAnunciante/RelMovimento.cshtml">
+      <publishTime>09/09/2014 11:55:43</publishTime>
+    </File>
+    <File Include="Views/RelatorioAnunciante/RelPremio.cshtml">
+      <publishTime>09/09/2014 12:00:54</publishTime>
+    </File>
+    <File Include="Views/RelatorioAnunciante/_RelAnunPrincipal.cshtml">
+      <publishTime>09/09/2014 10:04:32</publishTime>
+    </File>
+    <File Include="Views/RelatorioConsumidor/RelConsumidorAnuncio.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/RelatorioConsumidor/RelConsumidorPremio.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/RelatorioConsumidor/RelConsumidorPrincipal.cshtml">
+      <publishTime>09/29/2014 21:14:37</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Shared/favicon.ico">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>08/26/2014 09:46:43</publishTime>
+    </File>
+    <File Include="Views/Shared/_LayoutAdmin.cshtml">
+      <publishTime>09/12/2014 17:04:43</publishTime>
+    </File>
+    <File Include="Views/Shared/_LayoutCon.cshtml">
+      <publishTime>09/12/2014 17:04:43</publishTime>
+    </File>
+    <File Include="Views/Shared/_LoginPartial.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/tbCreditoCompras/Create.cshtml">
+      <publishTime>03/10/2014 17:05:01</publishTime>
+    </File>
+    <File Include="Views/tbCreditoCompras/Delete.cshtml">
+      <publishTime>01/10/2014 17:00:20</publishTime>
+    </File>
+    <File Include="Views/tbCreditoCompras/Details.cshtml">
+      <publishTime>01/10/2014 17:00:23</publishTime>
+    </File>
+    <File Include="Views/tbCreditoCompras/Edit.cshtml">
+      <publishTime>01/10/2014 17:00:27</publishTime>
+    </File>
+    <File Include="Views/tbCreditoCompras/Index.cshtml">
+      <publishTime>01/10/2014 17:00:30</publishTime>
+    </File>
+    <File Include="Views/Teste/Index.cshtml">
+      <publishTime>09/25/2014 16:39:53</publishTime>
+    </File>
+    <File Include="Views/Teste/Transacao.xml">
+      <publishTime>09/25/2014 14:15:20</publishTime>
+    </File>
+    <File Include="Views/TipoUsers/Create.cshtml">
+      <publishTime>01/10/2014 10:19:36</publishTime>
+    </File>
+    <File Include="Views/Users/AjustarSenhas.cshtml">
+      <publishTime>09/22/2014 21:11:15</publishTime>
+    </File>
+    <File Include="Views/Users/Create.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Users/Details.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Users/Edit.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Users/Index.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>10/13/2014 20:35:55</publishTime>
+    </File>
+    <File Include="Views/_Account/ConfirmEmail.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/_Account/ExternalLoginConfirmation.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/_Account/ExternalLoginFailure.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/_Account/ForgotPassword.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/_Account/ForgotPasswordConfirmation.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/_Account/Login.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/_Account/Manage.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/_Account/Register.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/_Account/ResetPassword.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/_Account/ResetPasswordConfirmation.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/_Account/_ChangePasswordPartial.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/_Account/_ExternalLoginsListPartial.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/_Account/_RemoveAccountPartial.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/_Account/_SetPasswordPartial.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>08/26/2014 09:13:38</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>10/13/2014 20:41:29</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

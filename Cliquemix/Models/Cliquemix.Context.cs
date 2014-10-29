@@ -55,7 +55,6 @@ namespace Cliquemix.Models
         public virtual DbSet<tbCep> tbCep { get; set; }
         public virtual DbSet<tbCidade> tbCidade { get; set; }
         public virtual DbSet<tbCondicaoPagto> tbCondicaoPagto { get; set; }
-        public virtual DbSet<tbConfigPadrao> tbConfigPadrao { get; set; }
         public virtual DbSet<tbConsumidor> tbConsumidor { get; set; }
         public virtual DbSet<tbConsumidorPontos> tbConsumidorPontos { get; set; }
         public virtual DbSet<tbConsumidorPontosStatus> tbConsumidorPontosStatus { get; set; }
@@ -106,5 +105,6 @@ namespace Cliquemix.Models
         public virtual DbSet<VwRelatorioAnuncianteAnuncios_Todos> VwRelatorioAnuncianteAnuncios_Todos { get; set; }
         public virtual DbSet<VwRelatorioAnuncianteAnuncios_Top10Mais> VwRelatorioAnuncianteAnuncios_Top10Mais { get; set; }
         public virtual DbSet<VwRelatorioAnuncianteAnuncios_Top10Menos> VwRelatorioAnuncianteAnuncios_Top10Menos { get; set; }
+        public virtual DbSet<tbConfigPadrao> tbConfigPadrao { get; set; }
     }
 }

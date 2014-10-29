@@ -96,7 +96,7 @@ namespace Cliquemix.Models
                 {
                     System.IO.File.Delete(@pOrigem);
                 }
-                catch (System.IO.IOException e)
+                catch (System.IO.IOException)
                 {
                     return;
                 }
@@ -1169,8 +1169,8 @@ namespace Cliquemix.Models
         }
         #endregion
 
-        #region "Retornar Dias Padrão para Vencimento de Boleto"
-        public static int RetornarDiaPadraoVencimentoBoleto()
+        #region "Retornar Quantidade de Dias Padrão para Vencimento de Boleto"
+        public static int RetornarQtdDiasPadraoVencimentoBoleto()
         {
             try
             {
@@ -1185,7 +1185,7 @@ namespace Cliquemix.Models
         }
         #endregion
         
-        #region "Retornar Dias Padrão para Vencimento de Boleto"
+        #region "Retornar Nº Máx de Parcelas para Vencimento de Boleto"
         public static int RetornarNumMaxParcelasPagto()
         {
             try

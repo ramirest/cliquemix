@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Cliquemix.Models.tbCreditoCompra>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.dtCompra)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.promocional)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dtVencimento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbAnunciante.cnpj)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbCredito.tituloPacote)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbCreditoStatus.dsCreditoStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbTransacaoXml.transacao)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.dtCompra)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.promocional)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dtVencimento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbAnunciante.cnpj)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbCredito.tituloPacote)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbCreditoStatus.dsCreditoStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbTransacaoXml.transacao)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ccid }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ccid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ccid })
+        </td>
+    </tr>
+}
+
+</table>

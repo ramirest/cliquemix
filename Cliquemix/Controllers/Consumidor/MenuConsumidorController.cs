@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Test_AspNet.Controllers.Consumidor
+namespace Cliquemix.Controllers.Consumidor
 {
     public class MenuConsumidorController : Controller
     {

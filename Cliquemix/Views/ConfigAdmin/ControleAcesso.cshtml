@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Cliquemix.Models.tbUsers>
+
+@{
+    ViewBag.Title = "Controle de Acesso";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Controle de acesso</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pwd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cpwd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ativo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbUsersTipo.dsUsersTipo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pwd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cpwd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ativo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbUsersTipo.dsUsersTipo)
+        </td>
+        <td class="text-center">
+            <a href="/ConfigAdmin/LiberarAcesso/@item.uid" data-placement="top" title="Liberar Acesso"><i class="fa fa-thumbs-up"></i></a>
+            <a href="/ConfigAdmin/BloquearAcesso/@item.uid" data-placement="top" title="Bloquear Acesso"><i class="fa fa-thumbs-down"></i></a>
+        </td>
+    </tr>
+}
+
+</table>
