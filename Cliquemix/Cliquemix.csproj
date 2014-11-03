@@ -1548,6 +1548,7 @@
     <Content Include="Views\Credito\ItensCompra.cshtml" />
     <Content Include="Views\ConfigAdmin\ConfigAdmin.cshtml" />
     <Content Include="Views\ConfigAdmin\ControleAcesso.cshtml" />
+    <Content Include="Views\Inicial\Index.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
