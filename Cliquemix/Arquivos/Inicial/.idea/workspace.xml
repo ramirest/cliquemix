@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="85cc1671-b356-41db-8b34-99c46d096aff" name="Default" comment="" />
+    <ignored path="em produção.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="em produção" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="70" column="53" selection-start="4738" selection-end="4738" vertical-scroll-proportion="0.0" vertical-offset="816" max-vertical-offset="37978">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="quem_somos.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/quem_somos.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="209" column="75" selection-start="13324" selection-end="13324" vertical-scroll-proportion="-17.692308" vertical-offset="3093" max-vertical-offset="8211">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="faq.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/faq.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="231" column="24" selection-start="14590" selection-end="14590" vertical-scroll-proportion="0.42917252" vertical-offset="3621" max-vertical-offset="9061">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="false" />
+    </FindUsagesManager>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/como_funciona.html" />
+        <option value="$PROJECT_DIR$/tabela.html" />
+        <option value="$PROJECT_DIR$/escritorio.html" />
+        <option value="$PROJECT_DIR$/vendas.html" />
+        <option value="$PROJECT_DIR$/curriculo.html" />
+        <option value="$PROJECT_DIR$/suporte.html" />
+        <option value="$PROJECT_DIR$/contato.html" />
+        <option value="$PROJECT_DIR$/cadastro.html" />
+        <option value="$PROJECT_DIR$/veja_como.html" />
+        <option value="$PROJECT_DIR$/anuncie.html" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/quem_somos.html" />
+        <option value="$PROJECT_DIR$/faq.html" />
+      </list>
+    </option>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1616" />
+    <option name="height" value="886" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="em produção" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="em produção" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MixClique Institucional" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Judson\Desktop\MixClique Institucional" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
+    <list size="0" />
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="85cc1671-b356-41db-8b34-99c46d096aff" name="Default" comment="" />
+      <created>1413410690376</created>
+      <updated>1413410690376</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1616" height="886" extended-state="7" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.163125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="myTodoPanelSettings">
+      <TodoPanelSettings />
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="53" selection-start="4738" selection-end="4738" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="37978">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quem_somos.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="209" column="75" selection-start="13324" selection-end="13324" vertical-scroll-proportion="0.0" vertical-offset="3144" max-vertical-offset="8211">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/contato.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="30" selection-start="61" selection-end="61" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="7633">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="53" selection-start="4738" selection-end="4738" vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="37978">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quem_somos.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="166" column="0" selection-start="10304" selection-end="10304" vertical-scroll-proportion="0.0" vertical-offset="2652" max-vertical-offset="7752">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/contato.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="30" selection-start="61" selection-end="61" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="7633">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="282" column="8" selection-start="16023" selection-end="16023" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="37978">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="78" column="33" selection-start="5537" selection-end="5537" vertical-scroll-proportion="0.0" vertical-offset="1326" max-vertical-offset="36924">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="93" column="22" selection-start="6588" selection-end="6588" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="36890">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cadastro.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="166" column="0" selection-start="10317" selection-end="10317" vertical-scroll-proportion="0.0" vertical-offset="2822" max-vertical-offset="7633" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/veja_como.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="161" column="60" selection-start="10220" selection-end="10220" vertical-scroll-proportion="0.0" vertical-offset="2397" max-vertical-offset="7633" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/anuncie.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="166" column="24" selection-start="10336" selection-end="10336" vertical-scroll-proportion="0.0" vertical-offset="2805" max-vertical-offset="7633" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="161" column="67" selection-start="10021" selection-end="10021" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="36941">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/faq.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="69" column="101" selection-start="4363" selection-end="4363" vertical-scroll-proportion="0.0" vertical-offset="1173" max-vertical-offset="9044" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/como_funciona.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="21" selection-start="52" selection-end="52" vertical-scroll-proportion="0.09537167" vertical-offset="0" max-vertical-offset="7514" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tabela.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="29" selection-start="60" selection-end="60" vertical-scroll-proportion="0.09537167" vertical-offset="0" max-vertical-offset="7633" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendas.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="166" column="24" selection-start="10334" selection-end="10334" vertical-scroll-proportion="0.023842918" vertical-offset="2805" max-vertical-offset="7633" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/curriculo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="32" selection-start="63" selection-end="63" vertical-scroll-proportion="0.09537167" vertical-offset="0" max-vertical-offset="7633" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/suporte.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="166" column="24" selection-start="10330" selection-end="10330" vertical-scroll-proportion="0.023842918" vertical-offset="2805" max-vertical-offset="7633" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cadastro.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="166" column="0" selection-start="10317" selection-end="10317" vertical-scroll-proportion="0.0" vertical-offset="2822" max-vertical-offset="7633" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/veja_como.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="161" column="60" selection-start="10220" selection-end="10220" vertical-scroll-proportion="0.0" vertical-offset="2397" max-vertical-offset="7633" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/anuncie.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="0" selection-start="70" selection-end="128" vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="7633" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/contato.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="30" selection-start="61" selection-end="61" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="7633">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="53" selection-start="4738" selection-end="4738" vertical-scroll-proportion="0.0" vertical-offset="816" max-vertical-offset="37978">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/bootstrap.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="240" selection-start="460" selection-end="460" vertical-scroll-proportion="0.21283256" vertical-offset="0" max-vertical-offset="639" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/font-awesome.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-18.276995" vertical-offset="11679" max-vertical-offset="28526" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/ui.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5916" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/fonts.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="21184" selection-start="21991" selection-end="21991" vertical-scroll-proportion="0.47887325" vertical-offset="0" max-vertical-offset="639" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/font-awesome.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="486" selection-start="648" selection-end="648" vertical-scroll-proportion="0.07981221" vertical-offset="0" max-vertical-offset="639" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quem_somos.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="209" column="75" selection-start="13324" selection-end="13324" vertical-scroll-proportion="-17.692308" vertical-offset="3093" max-vertical-offset="8211">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/faq.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="231" column="24" selection-start="14590" selection-end="14590" vertical-scroll-proportion="0.42917252" vertical-offset="3621" max-vertical-offset="9061">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
+

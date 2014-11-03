@@ -12,6 +12,7 @@ namespace Cliquemix.Controllers.Inicial
     public class InicialController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();
+
         // GET: Inicial
         public ActionResult Index()
         {
