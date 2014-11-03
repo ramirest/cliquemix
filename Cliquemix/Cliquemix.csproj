@@ -105,12 +105,13 @@
     <Reference Include="MVCVideo">
       <HintPath>..\packages\MVC4.Video.2.0.0\lib\net40\MVCVideo.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\MySql.ConnectorNET.Data.6.8.3.2\lib\net45\MySql.Data.dll</HintPath>
+    <Reference Include="MySql.Data, Version=6.9.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MySql.Data.6.9.3\lib\net45\MySql.Data.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Web, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <Private>True</Private>
+    <Reference Include="MySql.Web, Version=6.9.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MySql.Web.6.9.3\lib\net45\MySql.Web.dll</HintPath>
     </Reference>
     <Reference Include="Octokit">
       <HintPath>..\packages\Octokit.0.4.1\lib\net45\Octokit.dll</HintPath>
@@ -598,8 +599,6 @@
     <Content Include="Content\css-master-slider\video-close-btn.png" />
     <Content Include="Content\demo.css" />
     <Content Include="Content\edicoes.css" />
-    <Content Include="Content\Inicial\bootstrap-tour.html" />
-    <Content Include="Content\Inicial\bootstrap.min.css" />
     <Content Include="Content\Inicial\css\bootstrap.min.css" />
     <Content Include="Content\Inicial\css\color1.css" />
     <Content Include="Content\Inicial\css\color10.css" />
@@ -626,7 +625,6 @@
     <Content Include="Content\Inicial\css\font-awesome.min.css" />
     <Content Include="Content\Inicial\css\fonts.css" />
     <Content Include="Content\Inicial\css\ui.css" />
-    <Content Include="Content\Inicial\style.css" />
     <Content Include="Content\Outros\bootstrap-3.1.1\css\bootstrap-theme.css" />
     <Content Include="Content\Outros\bootstrap-3.1.1\css\bootstrap-theme.min.css" />
     <Content Include="Content\Outros\bootstrap-3.1.1\css\bootstrap.css" />
@@ -881,36 +879,6 @@
     <Content Include="Images\anuncios\slide_3.jpg" />
     <Content Include="Images\anuncios\works_1.jpg" />
     <Content Include="Images\anuncios\works_2.jpg" />
-    <Content Include="Images\Inicial\blog\blog_1.jpg" />
-    <Content Include="Images\Inicial\blog\blog_2.jpg" />
-    <Content Include="Images\Inicial\blog\blog_3.jpg" />
-    <Content Include="Images\Inicial\blog\blog_4.jpg" />
-    <Content Include="Images\Inicial\blog\blog_5.jpg" />
-    <Content Include="Images\Inicial\blog\blog_6.jpg" />
-    <Content Include="Images\Inicial\customer_1.png" />
-    <Content Include="Images\Inicial\customer_2.png" />
-    <Content Include="Images\Inicial\customer_3.png" />
-    <Content Include="Images\Inicial\customer_4.png" />
-    <Content Include="Images\Inicial\customer_5.png" />
-    <Content Include="Images\Inicial\customer_6.png" />
-    <Content Include="Images\Inicial\fundo2.png" />
-    <Content Include="Images\Inicial\gallery\gallery_1.jpg" />
-    <Content Include="Images\Inicial\gallery\gallery_2.jpg" />
-    <Content Include="Images\Inicial\gallery\gallery_3.jpg" />
-    <Content Include="Images\Inicial\gallery\gallery_4.jpg" />
-    <Content Include="Images\Inicial\gallery\gallery_5.jpg" />
-    <Content Include="Images\Inicial\gallery\gallery_6.jpg" />
-    <Content Include="Images\Inicial\gallery\modal_1.jpg" />
-    <Content Include="Images\Inicial\gallery\modal_2.jpg" />
-    <Content Include="Images\Inicial\gallery\modal_3.jpg" />
-    <Content Include="Images\Inicial\gallery\modal_4.jpg" />
-    <Content Include="Images\Inicial\gallery\modal_5.jpg" />
-    <Content Include="Images\Inicial\gallery\modal_6.jpg" />
-    <Content Include="Images\Inicial\headers\first.jpg" />
-    <Content Include="Images\Inicial\headers\first_macbook.png" />
-    <Content Include="Images\Inicial\headers\first_macbook_2.png" />
-    <Content Include="Images\Inicial\headers\first_macbook_3.png" />
-    <Content Include="Images\Inicial\headers\third.jpg" />
     <Content Include="Images\Inicial\img\2 %281%29.jpg" />
     <Content Include="Images\Inicial\img\2 %2810%29.jpg" />
     <Content Include="Images\Inicial\img\2 %2811%29.jpg" />
@@ -1013,20 +981,6 @@
     <Content Include="Images\Inicial\img\vt %288%29.png" />
     <Content Include="Images\Inicial\img\vt %289%29.png" />
     <Content Include="Images\Inicial\img\vt.png" />
-    <Content Include="Images\Inicial\logo.png" />
-    <Content Include="Images\Inicial\logocliquemix.png" />
-    <Content Include="Images\Inicial\marker.png" />
-    <Content Include="Images\Inicial\oneclick.png" />
-    <Content Include="Images\Inicial\preload.gif" />
-    <Content Include="Images\Inicial\slide_1.jpg" />
-    <Content Include="Images\Inicial\slide_2.jpg" />
-    <Content Include="Images\Inicial\slide_3.jpg" />
-    <Content Include="Images\Inicial\team\team_1.jpg" />
-    <Content Include="Images\Inicial\team\team_2.jpg" />
-    <Content Include="Images\Inicial\team\team_3.jpg" />
-    <Content Include="Images\Inicial\team\team_4.jpg" />
-    <Content Include="Images\Inicial\works_1.jpg" />
-    <Content Include="Images\Inicial\works_2.jpg" />
     <Content Include="Images\Pictures\imgDemoVideo.jpg" />
     <Content Include="Images\Pictures\modeloViewAnuncio.jpg" />
     <Content Include="Images\Pictures\pirobox\1.jpg" />
@@ -1069,20 +1023,6 @@
     <Content Include="Scripts\flex.js" />
     <Content Include="Scripts\holder.js" />
     <Content Include="Scripts\html5shiv.js" />
-    <Content Include="Scripts\Inicial\bigmodals.html" />
-    <Content Include="Scripts\Inicial\bootstrap.min.js" />
-    <Content Include="Scripts\Inicial\bootstrap.tour.cookie.html" />
-    <Content Include="Scripts\Inicial\bootstrap.tour.min.html" />
-    <Content Include="Scripts\Inicial\custom.js" />
-    <Content Include="Scripts\Inicial\guideline.main.js" />
-    <Content Include="Scripts\Inicial\guideline.steps.js" />
-    <Content Include="Scripts\Inicial\jquery-1.10.2.min.js" />
-    <Content Include="Scripts\Inicial\jquery.easing.js" />
-    <Content Include="Scripts\Inicial\jquery.fitvids.min.js" />
-    <Content Include="Scripts\Inicial\jquery.form.js" />
-    <Content Include="Scripts\Inicial\jquery.nicescroll.min.js" />
-    <Content Include="Scripts\Inicial\jquery.promin.html" />
-    <Content Include="Scripts\Inicial\jquery.touchwipe.min.js" />
     <Content Include="Scripts\Inicial\js\bootstrap.min.js" />
     <Content Include="Scripts\Inicial\js\custom.js" />
     <Content Include="Scripts\Inicial\js\jqcloud-1.0.4.js" />
@@ -1106,11 +1046,6 @@
     <Content Include="Scripts\Inicial\js\retina-1.1.0.min.js" />
     <Content Include="Scripts\Inicial\js\socialstream.jquery.js" />
     <Content Include="Scripts\Inicial\js\zoomsl-3.0.min.js" />
-    <Content Include="Scripts\Inicial\modals.js" />
-    <Content Include="Scripts\Inicial\modernizr.js" />
-    <Content Include="Scripts\Inicial\retina.js" />
-    <Content Include="Scripts\Inicial\skrollr.js" />
-    <Content Include="Scripts\Inicial\toucheffects.js" />
     <Content Include="Scripts\js-master-slider\jquery-1.10.2.min.js" />
     <Content Include="Scripts\js-master-slider\jquery.easing.min.js" />
     <Content Include="Scripts\js-master-slider\jquery.prettyPhoto.js" />
@@ -1169,11 +1104,6 @@
     <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\._.DS_Store" />
     <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\_source\.DS_Store" />
     <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\_source\._.DS_Store" />
-    <Content Include="Images\Inicial\blog\Descr.WD3" />
-    <Content Include="Images\Inicial\Descr.WD3" />
-    <Content Include="Images\Inicial\gallery\Descr.WD3" />
-    <Content Include="Images\Inicial\headers\Descr.WD3" />
-    <Content Include="Images\Inicial\team\Descr.WD3" />
     <Content Include="fonts\img\images\prettyPhoto\default\Thumbs.db" />
     <Content Include="Content\plugins\img\Descr.WD3" />
     <Content Include="Content\plugins\img\gallery\Descr.WD3" />
@@ -1209,6 +1139,7 @@
     <None Include="Properties\PublishProfiles\Mix-Clique.pubxml" />
     <Content Include="Scripts\Inicial\js\js" />
     <Content Include="Scripts\Inicial\js\rest" />
+    <None Include="Properties\PublishProfiles\MixClique.pubxml" />
     <None Include="Scripts\Outros\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\Outros\jquery-2.1.1.js" />
     <Content Include="Scripts\Outros\jquery-2.1.1.min.js" />
@@ -1301,20 +1232,19 @@
     <Content Include="Scripts\plugins\validate\MascaraValidacao.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Views\Anuncio\Anuncio.js" />
-    <Content Include="Views\Inicial\anuncie.html" />
-    <Content Include="Views\Inicial\cadastro.html" />
-    <Content Include="Views\Inicial\como_funciona.html" />
-    <Content Include="Views\Inicial\contato.html" />
-    <Content Include="Views\Inicial\curriculo.html" />
-    <Content Include="Views\Inicial\faq.html" />
+    <None Include="Views\Inicial\anuncie.cshtml" />
+    <None Include="Views\Inicial\cadastro.cshtml" />
+    <None Include="Views\Inicial\como_funciona.cshtml" />
+    <None Include="Views\Inicial\contato.cshtml" />
+    <None Include="Views\Inicial\curriculo.cshtml" />
+    <None Include="Views\Inicial\faq.cshtml" />
     <Content Include="Views\Inicial\favicon.ico" />
-    <Content Include="Views\Inicial\index.html" />
-    <Content Include="Views\Inicial\interna.html" />
-    <Content Include="Views\Inicial\quem_somos.html" />
-    <Content Include="Views\Inicial\suporte.html" />
-    <Content Include="Views\Inicial\tabela.html" />
-    <Content Include="Views\Inicial\veja_como.html" />
-    <Content Include="Views\Inicial\vendas.html" />
+    <None Include="Views\Inicial\interna.cshtml" />
+    <None Include="Views\Inicial\quem_somos.cshtml" />
+    <None Include="Views\Inicial\suporte.cshtml" />
+    <None Include="Views\Inicial\tabela.cshtml" />
+    <None Include="Views\Inicial\veja_como.cshtml" />
+    <None Include="Views\Inicial\vendas.cshtml" />
     <Content Include="Views\_Inicial\components.html" />
     <Content Include="Views\_Inicial\favicon.ico" />
     <Content Include="Views\_Inicial\thumbnail.png" />
