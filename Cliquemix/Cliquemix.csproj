@@ -1241,6 +1241,8 @@
     <Content Include="Views\Inicial\favicon.ico" />
     <None Include="Views\Inicial\interna.cshtml" />
     <None Include="Views\Inicial\quem_somos.cshtml" />
+    <Content Include="Views\Inicial\Register.cshtml" />
+    <Content Include="Views\Inicial\RegisterEndereco.cshtml" />
     <None Include="Views\Inicial\suporte.cshtml" />
     <None Include="Views\Inicial\tabela.cshtml" />
     <None Include="Views\Inicial\veja_como.cshtml" />

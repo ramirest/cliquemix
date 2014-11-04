@@ -25,6 +25,12 @@ namespace Cliquemix.Controllers.Inicial
         {
             ViewBag.raid = new SelectList(db.tbRamoAtividade, "raid", "descricao");
             ViewBag.cpid = new SelectList(db.tbCondicaoPagto.SqlQuery("SELECT * FROM dbo.tbCondicaoPagto WHERE ativo = 1"), "cpid", "descricao");
+            ViewBag.tpAnunciante = new List<SelectListItem>
+            {
+                new SelectListItem {Selected = true, Text = "Pessoa Jurídica", Value = "0"},
+                new SelectListItem {Selected = true, Text = "Pessoa Física", Value = "1"}
+            };
+
             return View();
         }
 

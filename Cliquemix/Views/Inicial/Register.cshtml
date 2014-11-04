@@ -1,0 +1,874 @@
+﻿@model Cliquemix.Models.tbAnunciante
+
+@using System.Security.Cryptography
+@using System.Web.Mvc;
+@using System.Web.UI.WebControls
+@using Cliquemix.Controllers
+@using Cliquemix.Models
+
+@{
+    ApplicationDbContext db = new ApplicationDbContext();
+    Layout = null;
+    ViewBag.Error = string.Empty;
+    ViewBag.raid = new SelectList(db.tbRamoAtividade, "raid", "descricao");
+    ViewBag.cpid = new SelectList(db.tbCondicaoPagto.SqlQuery("SELECT * FROM dbo.tbCondicaoPagto WHERE ativo = 1"), "cpid", "descricao");
+    ViewBag.tipo = 1;
+}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <!-- THEME STYLES - Include these on every page. -->
+        <link href="~/Content/style.css" rel="stylesheet">
+        <link href="~/Content/plugins.css" rel="stylesheet">
+        <!-- THEME DEMO STYLES - Use these styles for reference if needed. Otherwise they can be deleted. -->
+        <link href="~/Content/demo.css" rel="stylesheet">
+        <!-- PAGE LEVEL PLUGIN STYLES -->
+        <link href="~/Content/plugins/messenger/messenger.css" rel="stylesheet">
+        <link href="~/Content/plugins/messenger/messenger-theme-flat.css" rel="stylesheet">
+
+        
+        <script type="text/javascript" src="~/Scripts/Outros/jquery-2.1.1.min.js"></script>
+        <script src="~/Scripts/plugins/validate/jquery.validate.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="~/Scripts/plugins/bootstrap/bootstrap.min.js"></script>
+        <script src="~/Scripts/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="~/Scripts/plugins/hisrc/hisrc.js"></script>
+        <script src="~/Scripts/flex.js"></script>
+        <script src="~/Scripts/demo/validation-demo.js"></script>
+        <!-- PAGE LEVEL PLUGIN SCRIPTS -->
+        <script src="~/Scripts/plugins/messenger/messenger.min.js"></script>
+        <script src="~/Scripts/plugins/messenger/messenger-theme-flat.js"></script>       
+
+        <script type="text/javascript">
+            function atualizarDefinicao() {
+                $.ajax(
+                {
+                    type: 'POST',
+                    url: '/Account/RegisterEndereco/?cep=' + $("input[id='txtCep']").val(),
+                    dataType: 'html',
+                    cache: false,
+                    async: true,
+                    success: function(data) {
+                        $('#registerEndereco').html(data);
+                        $("input[id='tbAnuncianteEndereco_endereco']").val($("input[id='txtEndereco']").val());
+                        $("input[id='tbAnuncianteEndereco_nomeBairro']").val($("input[id='txtBairro']").val());
+                        $("input[id='tbAnuncianteEndereco_nomeCidade']").val($("input[id='txtCidade']").val());
+                        $("input[id='tbAnuncianteEndereco_ufEstado']").val($("input[id='txtEstado']").val());
+                        $("input[id='tbAnuncianteEndereco_cep']").val($("input[id='txtCep']").val());
+                        $("input[id='tbAnuncianteEndereco_numero_endereco']").val($("input[id='txtNumero']").val());
+                        $("input[id='tbAnuncianteEndereco_complemento_endereco']").val($("input[id='txtComplemento']").val());
+                    }
+                });
+            }
+
+            function leuTermo() {
+                var c = document.getElementById('leuTermo');
+                v.value = true;
+                alert('Teste');
+            }
+
+            function AtualizaCep(txt) {
+                atualizarDefinicao();
+                $("input[id='tbAnuncianteEndereco_endereco']").val($("input[id='txtEndereco']").val());
+                $("input[id='tbAnuncianteEndereco_nomeBairro']").val($("input[id='txtBairro']").val());
+                $("input[id='tbAnuncianteEndereco_nomeCidade']").val($("input[id='txtCidade']").val());
+                $("input[id='tbAnuncianteEndereco_ufEstado']").val($("input[id='txtEstado']").val());
+                $("input[id='tbAnuncianteEndereco_cep']").val($("input[id='txtCep']").val());
+                $("input[id='tbAnuncianteEndereco_numero_endereco']").val($("input[id='txtNumero']").val());
+                $("input[id='tbAnuncianteEndereco_complemento_endereco']").val($("input[id='txtComplemento']").val());
+            };
+
+        </script>
+
+
+        <script>
+            function ErroCriarAnunciante(tipo) {
+                var desc = "";
+
+                if (tipo == 1) {
+                    desc = "Login ou password não podem estar vazios [Cod: 002.00001]";
+                } else if (tipo == 2) {
+                    desc = "O Login informado já existe [Cod: 002.00002]";
+                } else if (tipo == 3) {
+                    desc = "A senha informada não é segura [Cod: 002.00003]";
+                } else if (tipo == 4) {
+                    desc = "A Senha e a Confirmação devem ser idênticas [Cod: 002.00004]";
+                } else if (tipo == 5) {
+                    desc = "A Razão Social do anunciante é requerido [Cod: 002.00005]";
+                } else if (tipo == 6) {
+                    desc = "O Nome Fantasia do anunciante é requerido [Cod: 002.00006]";
+                } else if (tipo == 7) {
+                    desc = "O CNPJ do anunciante é requerido [Cod: 002.00007]";
+                } else if (tipo == 8) {
+                    desc = "O CNPJ informado já está cadastrado, informe outro CNPJ. [Cod: 002.00008]";
+                } else if (tipo == 9) {
+                    desc = "O usuário informado não atende aos padrões do sistema.	[002.00009]";
+                } else if (tipo == 10) {
+                    desc = "O Patrocinador informado não existe no banco de dados do sistema [Cod: 002.00010]";
+                }
+
+                setTimeout(function() {
+                    erro_message_demo(desc);
+                }, 1000);
+            }
+
+            function retornaCodCampanha(item) {
+                document.getElementById('pCodCampanha').value = item;
+            }
+
+            function limparAviso() {
+                Messenger().hideAll();
+            }
+
+            function success_message_demo(erro) {
+                Messenger.options = {
+                    extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
+                    theme: 'flat'
+                }
+                Messenger().post({
+                    message: erro,
+                    type: 'success',
+                    showCloseButton: true
+                });
+            }
+
+            function erro_message_demo(erro) {
+                Messenger.options = {
+                    extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
+                    theme: 'flat'
+                }
+                Messenger().post({
+                    message: erro,
+                    type: 'error',
+                    showCloseButton: true
+                });
+            };
+
+            function validarCampos() {
+                var t = document.getElementById('tipo');
+                if (t.value == 0) {
+                    document.getElementById('link6').click();
+                } else {
+                    document.getElementById('link7').click();
+                }
+            }
+
+            function validarPatrocinador() {
+                var n = document.getElementById('patrocinador').value;
+                $.ajax({
+                    dataType: "json",
+                    type: "GET",
+                    url: "/Inicial/ValidaPatrocinador/?nome=" + n,
+                    success: function(data) {
+                        $(data).each(function() {
+                            if (data.tpError == "002.00010") {
+                                //Caso o valor for inválido, altera o estado de exibição das divs e Informa que o valor está inválido
+                                $("#msgValidar_Patrocinador").attr("class", "form-group has-error");
+                                document.getElementById("msgValidar_Patrocinador").innerHTML =
+                                    '<span class="help-block"><i class="fa fa-warning"></i> ' +
+                                    '<strong>Inválido!</strong> ' + data.Error + '</span>';
+                            } else {
+                                //Caso o valor for Válido, altera o estado de exibição das divs e Informa que o valor está válido
+                                $("#msgValidar_Patrocinador").attr("class", "form-group has-success");
+                                document.getElementById("msgValidar_Patrocinador").innerHTML =
+                                    '<span class="help-block"><i class="fa fa-check"></i> ' +
+                                    '<strong>OK!</strong> O Patrocinador informado é válido!"</span>';
+                            }
+                        });
+                    }
+                });
+            }
+
+        </script>
+        
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+
+        <link href="~/Content/plugins/pace/pace.css" rel="stylesheet">
+        <script src="~/Scripts/plugins/pace/pace.js"></script>
+        <script language="JavaScript" type="text/javascript" src="~/Scripts/plugins/validate/MascaraValidacao.js"></script>
+        <link href="~/Content/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    
+        <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel="stylesheet" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel="stylesheet" type="text/css">
+        <link href="~/fonts/icons/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="~/Content/style.css" rel="stylesheet">
+        <link href="~/Content/plugins.css" rel="stylesheet">
+        <link href="~/Content/edicoes.css" rel="stylesheet">
+    
+        <!--[if lt IE 9]>
+            <script src="~/Scripts/html5shiv.js"></script>
+            <script src="~/Scripts/respond.min.js"></script>
+        <![endif]-->
+        
+        @*
+            ViewBag.Error = "Login ou password não podem estar vazios [Cod: 002.00001]";
+            ViewBag.tpError = "002.00001";
+        *@
+        @if (ViewBag.tpError == "002.00001")
+        {
+            <script type="text/javascript">
+                    ErroCriarAnunciante(1); </script>
+        }
+        @*
+            ViewBag.Error = "O Login informado já existe [Cod: 002.00002]";
+            ViewBag.tpError = "002.00002";
+        *@
+        else if (ViewBag.tpError == "002.00002")
+        {
+            <script type="text/javascript">
+                    ErroCriarAnunciante(2); </script>
+        }
+        @*
+            ViewBag.Error = "A senha informada não é segura [Cod: 002.00003]";
+            ViewBag.tpError = "002.00003";
+        *@
+        else if (ViewBag.tpError == "002.00003")
+        {
+            <script type="text/javascript">
+                    ErroCriarAnunciante(3); </script>
+        }
+        @*
+            ViewBag.Error = "A Senha e a Confirmação devem ser idênticas [Cod: 002.00004]";
+            ViewBag.tpError = "002.00004";
+        *@
+        else if (ViewBag.tpError == "002.00004")
+        {
+            <script type="text/javascript">
+                    ErroCriarAnunciante(4); </script>
+        }
+        @*
+            ViewBag.Error = "A Razão Social do anunciante é requerido [Cod: 002.00005]";
+            ViewBag.tpError = "002.00005";
+        *@
+        else if (ViewBag.tpError == "002.00005")
+        {
+            <script type="text/javascript">
+                    ErroCriarAnunciante(5); </script>
+        }
+        @*
+            ViewBag.Error = "O Nome Fantasia do anunciante é requerido [Cod: 002.00006]";
+            ViewBag.tpError = "002.00006";
+        *@
+        else if (ViewBag.tpError == "002.00006")
+        {
+            <script type="text/javascript">
+                    ErroCriarAnunciante(6); </script>
+        }
+        @*
+            ViewBag.Error = "O CNPJ do anunciante é requerido [Cod: 002.00007]";
+            ViewBag.tpError = "002.00007";
+        *@
+        else if (ViewBag.tpError == "002.00007")
+        {
+            <script type="text/javascript">
+                    ErroCriarAnunciante(7); </script>
+        }
+        @*
+            ViewBag.Error = "O CNPJ informado já está cadastrado, informe outro CNPJ. [Cod: 002.00008]";
+            ViewBag.tpError = "002.00008";
+        *@
+        else if (ViewBag.tpError == "002.00008")
+        {
+            <script type="text/javascript">
+                    ErroCriarAnunciante(8); </script>
+        }
+        @*
+            ViewBag.Error = "O usuário informado não atende aos padrões do sistema.	[002.00009]";
+            ViewBag.tpError = "002.00009";
+        *@
+        else if (ViewBag.tpError == "002.00009")
+        {
+            <script type="text/javascript">
+                    ErroCriarAnunciante(9); </script>
+        }
+        @*
+            ViewBag.Error = "O Patrocinador informado não existe no banco de dados do sistema [Cod: 002.00010]";
+            ViewBag.tpError = "002.00010";
+        *@
+        else if (ViewBag.tpError == "002.00010")
+        {
+            <script type="text/javascript">
+                    ErroCriarAnunciante(10); </script>
+        }
+    </head>
+    <body>
+        <div id="wrapper ">
+            <nav class="navbar-top" role="navigation">
+                <div class="navbar-header">
+                    <div class="nav-top">
+
+                        <div class="navbar-brand">
+                            <a href="#">
+                                <img src="~/fonts/img/logo.png" class="img-responsive edit-tamanho-cadastro" alt="" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <div id="page-wrapper" class="collapsed">
+                <div class="page-content">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="page-title">
+                                <h1>
+                                    CliqueMix
+                                    <small>Cadastro de Anunciante</small>
+                                </h1>
+                                <ol class="breadcrumb">
+                                    <li>
+                                        <i class="fa fa-dashboard"></i>  <a href="index.html">Anunciante</a>
+                                    </li>
+                                    <li class="active">Cadastro</li>
+                                </ol>
+                            </div>
+                        </div>
+                        <!-- /.col-lg-12 -->
+                    </div>
+
+                    @using (Html.BeginForm("Register", "Inicial", FormMethod.Post, new {onsubmit = "return validarCampos()"}))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="portlet portlet-default">
+                                    <div class="portlet-body">
+                                        <ul id="userTab" class="nav nav-tabs">
+                                            <li class="active">
+                                                <a href="#profile-settings" data-toggle="tab">Cadastro de Informações</a>
+                                            </li>
+                                            <div class="row text-right" style="margin-right: 0%;">
+                                                @Html.Label("Tipo do Anunciante")
+                                                @Html.DropDownListFor(model => model.tipo, new SelectList(
+                                                    new List<Object>{
+                                                        new { value = 0 , text = "Pessoa Física"  },
+                                                        new { value = 1 , text = "Pessoa Jurídica" }
+                                                    }, "value", "text", 2),
+                                                    new
+                                                    {
+                                                        @style = "width:280px; height:34px",
+                                                        @id = "tipo",
+                                                        @name = "tipo",
+                                                        @onchange = "validarCampos();"
+                                                    })
+                                            </div>
+                                        </ul>
+                                        <script type="text/javascript">validarCampos();</script>
+                                        <div id="userTabContent" class="tab-content">
+                                            <div class="tab-pane fade in active" id="profile-settings">
+                                                <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <ul id="userSettings" class="nav nav-pills nav-stacked">
+                                                            <li class="active">
+                                                                <a href="#dadosPesFisica" data-toggle="tab" id="link1"><i class="fa fa-building-o fa-fw"></i> Dados Básicos</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#dadosContato" data-toggle="tab" id="link2"><i class="fa fa-phone fa-fw"></i> Dados de Contato</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#dadosEndereco" data-toggle="tab" id="link3"><i class="fa fa-globe fa-fw"></i>Dados de Endereço</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#condicaoPagto" data-toggle="tab" id="link5"><i class="fa fa-dollar fa-fw"></i>Condição de Pagamento</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#dadosUsuario" data-toggle="tab" id="link4"><i class="fa fa-user fa-fw"></i> Dados de Usuário</a>
+                                                            </li>
+                                                        </ul>
+                                                        <a href="#dadosPesFisica" data-toggle="tab" id="link6"></a>
+                                                        <a href="#dadosPesJuridica" data-toggle="tab" id="link7"></a>
+                                                    </div>
+                                                    @Html.ValidationSummary(true)
+                                                    <div class="col-sm-9">
+                                                        <div id="userSettingsContent" class="tab-content">
+
+                                                            @* Dados Pessoa Física *@
+                                                            <div class="tab-pane fade in active" id="dadosPesFisica">
+                                                                @*  Dados do Anunciante *@
+                                                                <h4 class="page-header">Dados do Anunciante:</h4>
+                                                                    <div class="clearfix"></div>
+                                                                    <div class="form-group col-lg-6">
+                                                                        @Html.Label("Nome Completo")
+                                                                        @Html.TextBoxFor(model => model.razaoSocial,
+                                                                            new
+                                                                            {
+                                                                                @class = "form-control",
+                                                                                maxlength = "100",
+                                                                                alt = "razaoSocial",
+                                                                                id = "txtRazaoSocial"
+                                                                            })
+                                                                        @Html.ValidationMessageFor(model => model.razaoSocial)
+                                                                    </div>
+
+                                                                    <div class="form-group col-lg-6">
+                                                                        @Html.Label("Nome Abreviado")
+                                                                        @Html.TextBoxFor(model => model.nmFantasia,
+                                                                            new
+                                                                            {
+                                                                                @class = "form-control",
+                                                                                maxlength = "100",
+                                                                                alt = "nmFantasia",
+                                                                                id = "txtnmFantasia"
+                                                                            })
+                                                                        @Html.ValidationMessageFor(model => model.nmFantasia)
+                                                                    </div>
+                                                                    <div class="clearfix"></div>
+                                                                    <div class="form-group col-lg-offset-12"></div>
+
+                                                                    <div class="form-group col-lg-4" id="dvCpf">
+                                                                        @Html.Label("CPF")
+                                                                        @Html.TextBoxFor(model => model.cpf,
+                                                                            new
+                                                                            {
+                                                                                @class = "form-control",
+                                                                                maxlength = "14",
+                                                                                alt = "cpf",
+                                                                                id = "txtCpf",
+                                                                                onkeypress = "MascaraCPF(this);",
+                                                                                onblur = "ValidarCPF(this);"
+                                                                            })
+                                                                        @Html.ValidationMessageFor(model => model.cpf)
+                                                                        <div id="msgValidar_cpf"></div>
+                                                                    </div>
+
+                                                                    <div class="form-group col-lg-4" id="dvRg">
+                                                                        @Html.Label("RG")
+                                                                        @Html.TextBoxFor(model => model.rg,
+                                                                            new
+                                                                            {
+                                                                                @class = "form-control",
+                                                                                maxlength = "15",
+                                                                                alt = "rg",
+                                                                                id = "txtrg"
+                                                                            })
+                                                                        @Html.ValidationMessageFor(model => model.rg)
+                                                                    </div>
+
+                                                                    <div class="form-group col-lg-4" id="dvPis">
+                                                                        @Html.Label("PIS")
+                                                                        @Html.TextBoxFor(model => model.pis,
+                                                                            new
+                                                                            {
+                                                                                @class = "form-control",
+                                                                                maxlength = "10",
+                                                                                alt = "pis",
+                                                                                id = "txtpis"
+                                                                            })
+                                                                        @Html.ValidationMessageFor(model => model.pis)
+                                                                    </div>
+                                                                    <div class="clearfix"></div>
+                                                                    <div class="form-group col-lg-offset-12"></div>
+
+                                                                <div class="form-group col-lg-4" id="dadosPatrocinador">
+                                                                    @Html.Label("Patrocinador")
+                                                                    <div class="clearfix"></div>
+                                                                    <input type="text" class="form-control" maxlength="30"
+                                                                           alt="patrocinador" id="patrocinador" name="patrocinador" onchange="validarPatrocinador(); " />
+                                                                    <div id="msgValidar_Patrocinador"></div>
+                                                                </div>
+                                                                
+                                                                <div class="clearfix"></div>
+                                                                <div class="form-group col-lg-offset-12"></div>
+                                                                @*<div class="form-group col-lg-offset-12 text-right" style="margin-right: 0%;">*@
+                                                                <div class="row text-right" style="margin-right: 0%;">
+                                                                    <button type="button" onclick="$('#link2').click(); " class="btn btn-default">
+                                                                        Próximo
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            @* Dados Pessoa Jurídica *@
+                                                            <div class="tab-pane fade" id="dadosPesJuridica">
+                                                                @*  Dados do Anunciante *@
+                                                                <h4 class="page-header">Dados do Anunciante:</h4>
+                                                                <div class="clearfix"></div>
+
+                                                                <div class="form-group col-lg-6">
+                                                                    @Html.Label("Razão Social")
+                                                                    @Html.TextBoxFor(model => model.razaoSocial,
+                                                                        new
+                                                                        {
+                                                                            @class = "form-control",
+                                                                            maxlength = "100",
+                                                                            alt = "razaoSocial",
+                                                                            id = "txtRazaoSocial"
+                                                                        })
+                                                                    @Html.ValidationMessageFor(model => model.razaoSocial)
+                                                                </div>
+
+                                                                <div class="form-group col-lg-6">
+                                                                    @Html.Label("Nome Fantasia")
+                                                                    @Html.TextBoxFor(model => model.nmFantasia,
+                                                                        new
+                                                                        {
+                                                                            @class = "form-control",
+                                                                            maxlength = "100",
+                                                                            alt = "nmFantasia",
+                                                                            id = "txtnmFantasia"
+                                                                        })
+                                                                    @Html.ValidationMessageFor(model => model.nmFantasia)
+                                                                </div>
+                                                                <div class="clearfix"></div>
+                                                                <div class="form-group col-lg-offset-12"></div>
+                                                                <div class="form-group col-lg-4" id="dvCnpj">
+                                                                    @Html.Label("CNPJ")
+                                                                    @Html.TextBoxFor(model => model.cnpj,
+                                                                        new
+                                                                        {
+                                                                            @class = "form-control",
+                                                                            maxlength = "18",
+                                                                            alt = "cnpj",
+                                                                            id = "txtCnpj",
+                                                                            onkeypress = "MascaraCNPJ(this);",
+                                                                            onblur = "ValidarCNPJ(this);"
+                                                                        })
+                                                                    @Html.ValidationMessageFor(model => model.cnpj)
+                                                                    <div id="msgValidar_cnpj"></div>
+                                                                </div>
+                                                                <div class="form-group col-lg-4" id="dvIe">
+                                                                    @Html.Label("Inscrição Estadual")
+                                                                    @Html.TextBoxFor(model => model.ie,
+                                                                        new
+                                                                        {
+                                                                            @class = "form-control",
+                                                                            maxlength = "15",
+                                                                            alt = "ie",
+                                                                            id = "txtie"
+                                                                        })
+                                                                    @Html.ValidationMessageFor(model => model.ie)
+                                                                </div>
+                                                                <div class="form-group col-lg-4" id="dvIm">
+                                                                    @Html.Label("Inscrição Municipal")
+                                                                    @Html.TextBoxFor(model => model.im,
+                                                                        new
+                                                                        {
+                                                                            @class = "form-control",
+                                                                            maxlength = "10",
+                                                                            alt = "im",
+                                                                            id = "txtim"
+                                                                        })
+                                                                    @Html.ValidationMessageFor(model => model.im)
+                                                                </div>
+
+                                                                <div class="form-group col-lg-offset-12"></div>
+
+                                                                <div class="form-group col-lg-4" id="dvRaid">
+                                                                    @Html.Label("Ramo de Atividade")
+                                                                    <div class="clearfix"></div>
+                                                                    @Html.DropDownList("raid", null, string.Empty,
+                                                                        new
+                                                                        {
+                                                                            style = "width:280px; height:34px"
+                                                                        })
+                                                                    @Html.ValidationMessageFor(model => model.raid)
+                                                                </div>
+                                                                <div class="form-group col-lg-4">
+                                                                    @Html.Label("Contato")
+                                                                    @Html.TextBoxFor(model => model.contato,
+                                                                        new
+                                                                        {
+                                                                            @class = "form-control",
+                                                                            maxlength = "40",
+                                                                            alt = "contato",
+                                                                            id = "txtContato"
+                                                                        })
+                                                                    @Html.ValidationMessageFor(model => model.contato)
+                                                                </div>
+
+                                                                <div class="form-group col-lg-4" id="dadosPatrocinador">
+                                                                    @Html.Label("Patrocinador")
+                                                                    <div class="clearfix"></div>
+                                                                    <input type="text" class="form-control" maxlength="30"
+                                                                           alt="patrocinador" id="patrocinador" name="patrocinador" onchange="validarPatrocinador(); " />
+                                                                    <div id="msgValidar_Patrocinador"></div>
+                                                                </div>
+
+                                                                <div class="clearfix"></div>
+                                                                <div class="form-group col-lg-offset-12"></div>
+                                                                @*<div class="form-group col-lg-offset-12 text-right" style="margin-right: 0%;">*@
+                                                                <div class="row text-right" style="margin-right: 0%;">
+                                                                    <button type="button" onclick="$('#link2').click(); " class="btn btn-default">
+                                                                        Próximo
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="tab-pane fade" id="dadosContato">
+                                                                @*  Dados de Contato  *@
+                                                                <h4 class="page-header">Dados de Contato:</h4>
+                                                                <div class="form-group col-lg-6">
+                                                                    @Html.Label("E-mail")
+                                                                    @Html.TextBoxFor(model => model.email,
+                                                                    new
+                                                                    {
+                                                                        @class = "form-control",
+                                                                        maxlength = "60",
+                                                                        size = "65",
+                                                                        alt = "email",
+                                                                        id = "txtEmail",
+                                                                        placeholder = "exemplo@exemplo.com.br",
+                                                                        onblur = "validacaoEmail(this)",
+                                                                        required = ""
+                                                                    })
+                                                                    @Html.ValidationMessageFor(model => model.email)
+                                                                    <div id="msgValidar_Email"></div>
+                                                                </div>
+
+                                                                <div class="form-group col-lg-6">
+                                                                    @Html.Label("Endereço WEB")
+                                                                    @Html.TextBoxFor(model => model.site,
+                                                                    new
+                                                                    {
+                                                                        @class = "form-control",
+                                                                        maxlength = "50",
+                                                                        alt = "site",
+                                                                        id = "txtSite",
+                                                                        placeholder = "http://"
+                                                                    })
+                                                                    @Html.ValidationMessageFor(model => model.site)
+                                                                </div>
+                                                                <div class="clearfix"></div>
+                                                                <div class="form-group col-lg-offset-12"></div>
+                                                                <div class="form-group col-lg-3">
+                                                                    @Html.Label("Telefone Residencial")
+                                                                    @Html.TextBoxFor(model => model.telResidencial,
+                                                                    new
+                                                                    {
+                                                                        @class = "form-control",
+                                                                        maxlength = "15", alt = "telResidencial",
+                                                                        id = "txtTelResidencial",
+                                                                        //onkeypress="MascaraTelefone(this);",
+                                                                        //onblur="ValidaTelefone(this);"
+                                                                        onkeyup = "mascara(this, mtel);"
+                                                                    })
+                                                                    @Html.ValidationMessageFor(model => model.telResidencial)
+                                                                    <div id="msgValidar_telResidencial"></div>
+                                                                </div>
+                                                                <div class="form-group col-lg-3">
+                                                                    @Html.Label("Telefone Comercial")
+                                                                    @Html.TextBoxFor(model => model.telComercial,
+                                                                    new
+                                                                    {
+                                                                        @class = "form-control",
+                                                                        maxlength = "15",
+                                                                        alt = "telComercial",
+                                                                        id = "txtTelComercial",
+                                                                        //onkeypress = "MascaraTelefone(this);",
+                                                                        //onblur = "ValidaTelefone(this);"
+                                                                        onkeyup = "mascara(this, mtel);"
+                                                                    })
+                                                                    @Html.ValidationMessageFor(model => model.telComercial)
+                                                                    <div id="msgValidar_telComercial"></div>
+                                                                </div>
+                                                                <div class="form-group col-lg-3">
+                                                                    @Html.Label("Telefone Celular1")
+                                                                    @Html.TextBoxFor(model => model.telCelular1,
+                                                                    new
+                                                                    {
+                                                                        @class = "form-control",
+                                                                        maxlength = "15",
+                                                                        alt = "telCelular1",
+                                                                        id = "txtCelular1",
+                                                                        //onkeypress = "MascaraTelefone(this);",
+                                                                        //onblur = "ValidaTelefone(this);"
+                                                                        onkeyup = "mascara(this, mtel);"
+                                                                    })
+                                                                    @Html.ValidationMessageFor(model => model.telCelular1)
+                                                                    <div id="msgValidar_telCelular1"></div>
+                                                                </div>
+                                                                <div class="form-group col-lg-3">
+                                                                    @Html.Label("Telefone Celular2")
+                                                                    @Html.TextBoxFor(model => model.telCelular2,
+                                                                    new
+                                                                    {
+                                                                        @class = "form-control",
+                                                                        maxlength = "15",
+                                                                        alt = "telCelular2",
+                                                                        id = "txtCelular2",
+                                                                        //onkeypress = "MascaraTelefone(this);",
+                                                                        //onblur = "ValidaTelefone(this);"
+                                                                        onkeyup = "mascara(this, mtel);"
+                                                                    })
+                                                                    @Html.ValidationMessageFor(model => model.telCelular2)
+                                                                    <div id="msgValidar_telCelular2"></div>
+                                                                </div>
+                                                                <div class="clearfix"></div>
+                                                                <div class="form-group col-lg-offset-12"></div>
+                                                                <div class="row text-right" style="margin-right: 0%;">
+                                                                    <button type="button" onclick="$('#link1').click(); " class="btn btn-default">Anterior</button>
+                                                                    <button type="button" onclick="$('#link3').click(); " class="btn btn-default">Próximo</button>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="tab-pane fade in" id="dadosEndereco">
+                                                                <h4 class="page-header">Dados de Endereço:</h4>
+                                                                <div id="registerEndereco">
+                                                                    @{
+                                                                    Html.RenderPartial("RegisterEndereco");
+                                                                    }
+                                                                </div>
+                                                                @* Campos que armazenarão o endereço
+                                                                @Html.HiddenFor(model => model.tbAnuncianteEndereco.endereco)
+                                                                @Html.HiddenFor(model => model.tbAnuncianteEndereco.nomeBairro)
+                                                                @Html.HiddenFor(model => model.tbAnuncianteEndereco.nomeCidade)
+                                                                @Html.HiddenFor(model => model.tbAnuncianteEndereco.ufEstado)
+                                                                @Html.HiddenFor(model => model.tbAnuncianteEndereco.nomePais)
+                                                                @Html.HiddenFor(model => model.tbAnuncianteEndereco.cep)
+                                                                @Html.HiddenFor(model => model.tbAnuncianteEndereco.numero_endereco)
+                                                                @Html.HiddenFor(model => model.tbAnuncianteEndereco.complemento_endereco)*@
+                                                                <div class="clearfix"></div>
+                                                                <div class="clearfix"></div>
+                                                                <div class="row text-right" style="margin-right: 0%;">
+                                                                    <button type="button" onclick="$('#link2').click(); " class="btn btn-default">Anterior</button>
+                                                                    <button type="button" onclick="$('#link5').click(); " class="btn btn-default">Próximo</button>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="tab-pane fade in" id="condicaoPagto">
+                                                                @*  Condições de Pagamento  *@
+                                                                <h4 class="page-header">Condições de Pagamento:</h4>
+                                                                <div class="form-group col-lg-12">
+                                                                    <h1 style="color: #34495E; font-weight: normal; font-size: 20px;">
+                                                                        Você cadastra uma única vez e usa sempre que fizer compras de créditos
+                                                                    </h1>
+                                                                </div>
+                                                                <div class="clearfix"></div>
+                                                                <div class="clearfix"></div>
+                                                                <div class="form-group col-lg-4">
+                                                                    @Html.Label("Condição de Pagamento")
+                                                                    <div class="clearfix"></div>
+                                                                    @Html.DropDownList("cpid", null, string.Empty, new {style = "width:300px; height:34px"})
+                                                                    @Html.ValidationMessageFor(model => model.cpid)
+                                                                </div>
+                                                                <div class="clearfix"></div>
+                                                                <div class="row text-right" style="margin-right: 0%;">
+                                                                    <button type="button" onclick="$('#link3').click(); " class="btn btn-default">Anterior</button>
+                                                                    <button type="button" onclick="$('#link4').click(); " class="btn btn-default">Próximo</button>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="tab-pane fade in" id="dadosUsuario">
+                                                                @*  Dados de Usuários  *@
+                                                                <h4 class="page-header">Dados de Usuário:</h4>
+                                                                <div class="row">
+                                                                    <div class="col-lg-12">
+                                                                        <div class="col-lg-6">
+                                                                            <div class="form-group col-lg-6">
+                                                                                <div class="input-group">
+                                                                                    @Html.Label("Usuário", new {style = "min-width: 130px;"})
+                                                                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                                                    @Html.TextBoxFor(model => model.tbUsers.username,
+                                                                                    new
+                                                                                    {
+                                                                                        @class = "form-control",
+                                                                                        id = "txtUsuario",
+                                                                                        style = "width:200px",
+                                                                                        maxlength = "20",
+                                                                                        required = "",
+                                                                                        onchange = "Testando(this.value);"
+                                                                                    })
+                                                                                </div>
+                                                                                <div id="msgValidar_Usuario"></div>
+                                                                            </div>
+                                                                            <div class="clearfix"></div>
+                                                                            <div class="form-group col-lg-6">
+                                                                                <div class="input-group">
+                                                                                    @Html.Label("Senha", new {style = "min-width: 130px;"})
+                                                                                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                                                                    @Html.PasswordFor(model => model.tbUsers.pwd,
+                                                                                    new
+                                                                                    {
+                                                                                        @class = "form-control",
+                                                                                        id = "txtSenha",
+                                                                                        style = "width:200px",
+                                                                                        maxlength = "12",
+                                                                                        required = ""
+                                                                                    })
+                                                                                </div>
+                                                                                <div id="msgValidar_Senha"></div>
+                                                                            </div>
+                                                                            <div class="clearfix"></div>
+                                                                            <div class="form-group col-lg-6">
+                                                                                <div class="input-group">
+                                                                                    @Html.Label("Confirme a Senha", new {style = "min-width: 130px;"})
+                                                                                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                                                                    @Html.PasswordFor(model => model.tbUsers.cpwd,
+                                                                                    new
+                                                                                    {
+                                                                                        @class = "form-control",
+                                                                                        id = "txtConSenha",
+                                                                                        style = "width:200px",
+                                                                                        maxlength = "12",
+                                                                                        required = ""
+                                                                                    })
+                                                                                </div>
+                                                                                <div id="msgValidar_ConfimacaoSenha"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group col-lg-6">
+                                                                            <h1 style="color: #34495E; font-weight: normal; font-size: 12px;">
+                                                                                <i class="fa fa-check fa-fw"></i>
+                                                                                O login deve conter de 6 a 20 caracteres
+                                                                            </h1>
+                                                                            <h1 style="color: #34495E; font-weight: normal; font-size: 12px;">
+                                                                                <i class="fa fa-check fa-fw"></i>
+                                                                                A senha deve conter de 6 a 12 caracteres
+                                                                            </h1>
+                                                                            <h1 style="color: #34495E; font-weight: normal; font-size: 12px;">
+                                                                                <i class="fa fa-check fa-fw"></i>
+                                                                                A senha deve conter pelo menos 1 número
+                                                                            </h1>
+                                                                        </div>
+
+                                                                        <div class="col-lg-12">
+                                                                            <div class="form-group col-lg-12"></div>
+                                                                            @ViewBag.Error
+                                                                            <div class="form-group col-lg-12"></div>
+                                                                            @Html.HiddenFor(model => model.leuTermo, new {id = "leuTermo", name = "leuTermo", value = false})
+                                                                            <div class="form-group col-lg-12">
+                                                                                Ao clicar em salvar, confirmo ter lido e concordado com todos os
+                                                                                <a style="color: #1CC7D3; font-weight: bold;" href="#" target="_blank" onclick="leuTermo(); ">
+                                                                                    termos do serviço.
+                                                                                </a>
+                                                                            </div>
+                                                                            <div id="msgValidar_LerTermo"></div>
+                                                                            <div class="clearfix"></div>
+                                                                            <div class="row text-right" style="margin-right: 0%;">
+                                                                                <button type="button" onclick="$('#link5').click(); " class="btn btn-default">Anterior</button>
+                                                                                <button type="submit" value="Salvar" class="btn btn-default">
+                                                                                    <i class="fa fa-floppy-o"></i> Salvar
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.portlet-body -->
+                            </div>
+                            <!-- /.portlet -->
+                        </div>
+                        <!-- /.col-lg-12 -->
+                    </div>                    
+                    <!-- /.row -->
+                }
+                
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

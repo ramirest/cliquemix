@@ -22,7 +22,6 @@ namespace Cliquemix.Models
         public Nullable<int> uid { get; set; }
         public Nullable<int> pid { get; set; }
         public Nullable<int> cid { get; set; }
-    
         public virtual tbAnunciante tbAnunciante { get; set; }
         public virtual tbConsumidor tbConsumidor { get; set; }
         public virtual tbConsumidorPontosStatus tbConsumidorPontosStatus { get; set; }

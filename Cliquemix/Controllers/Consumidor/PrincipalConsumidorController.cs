@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Cliquemix.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Cliquemix.Controllers.Consumidor
 {
@@ -15,6 +16,10 @@ namespace Cliquemix.Controllers.Consumidor
         // GET: /PrincipalConsumidor/
         public ActionResult PrincipalConsumidor()
         {
+            var cdUsu = ProcFunc.RetornarCodigoUsuario(User.Identity.GetUserName());
+            ViewBag.QtdeAnunPontuados = ProcFunc.RetornarQtdeAnunciosPontuadosDashboardConsumidor(cdUsu);
+            ViewBag.QtdeAnunVisualizados = ProcFunc.RetornarQtdeAnunciosVisualizadosDashboardAnunciante(cdUsu);
+            ViewBag.QtdeAnunPontosAdquiridos = ProcFunc.RetornarQtdePontosAdquiridosDashboardAnunciante(cdUsu);
             return View();
         }
 

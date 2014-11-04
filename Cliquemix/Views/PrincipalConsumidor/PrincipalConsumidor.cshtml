@@ -46,7 +46,7 @@
                                         <div class="card card-dark-blue-theme hover">
                                             <div class="front">
                                                 <h1>Cliques Feitos</h1>
-                                                <p id="users-count">233</p> @*Quantidade de anúncios realizados pelo consumidor*@
+                                                <p id="users-count">@ViewBag.QtdeAnunPontuados</p> @*Quantidade de anúncios realizados pelo consumidor*@
                                                 <span class="fa-stack fa-2x pull-right">
                                                     <i class="fa fa-circle fa-stack-2x"></i>
                                                     <i class="fa fa-hand-o-down fa-stack-1x"></i>
@@ -62,7 +62,7 @@
                                         <div class="card card-dark-blue-theme hover">
                                             <div class="front">
                                                 <h1>Anúncios visualizados até hoje</h1>
-                                                <p id="users-count">1444</p> @*Quantidade de anúncios visualizados pelo consumidor*@
+                                                <p id="users-count">@ViewBag.QtdeAnunVisualizados</p> @*Quantidade de anúncios visualizados pelo consumidor*@
                                                 <span class="fa-stack fa-2x pull-right">
                                                     <i class="fa fa-circle fa-stack-2x"></i>
                                                     <i class="fa fa-eye fa-stack-1x"></i>
@@ -78,7 +78,7 @@
                                         <div class="card card-dark-blue-theme hover">
                                             <div class="front">
                                                 <h1>Pontos Adquiridos</h1>
-                                                <p id="users-count">23877</p> @*Quantidade de pontos adquiridos pelo consumidor*@
+                                                <p id="users-count">@ViewBag.QtdeAnunPontosAdquiridos</p> @*Quantidade de pontos adquiridos pelo consumidor*@
                                                 <span class="fa-stack fa-2x pull-right">
                                                     <i class="fa fa-circle fa-stack-2x"></i>
                                                     <i class="fa fa-star fa-stack-1x"></i>
@@ -97,7 +97,7 @@
                 </div>
                 <!--Fim portlet -->
                 <!--=============================================================================================================================-->
-
+                @*
                 <div class="row">
                     <!--Inicio Row-texto-area principal -->
                     <div class="col-lg-12">
@@ -301,7 +301,7 @@
                 </div>
                 <!--Fim Row-texto-area principal -->
                 <!--INICIO Novidades -->
-                @*
+                
     <div class="row">
         <!--Inicio Row-texto-area principal -->
         <div class="col-lg-12">

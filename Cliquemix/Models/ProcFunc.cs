@@ -1003,14 +1003,14 @@ namespace Cliquemix.Models
             try
             {
                 var pat = db.tbConsumidorPontos.Where(c => c.pid == pCodAnunciante && c.cid == pCodConsumidor).ToList();
-                if (pat.Any())
-                {
-                    tbConsumidorPontos.qtdPontos = (double?)pVlrMovimentado / 10;                    
-                }
-                else
-                {
+                //if (pat.Any())
+                //{
+                //    tbConsumidorPontos.qtdPontos = (double?)pVlrMovimentado / 10;                    
+                //}
+                //else
+                //{
                     tbConsumidorPontos.qtdPontos = (double?)pVlrMovimentado/100*20;
-                }
+                //}
             }
             catch (Exception)
             {
@@ -1212,6 +1212,58 @@ namespace Cliquemix.Models
             catch (Exception)
             {
                 return "";
+            }
+        }
+        #endregion
+
+        #region "Retornar a Quantidade de Anúncios Pontuados na DashBoard do Consumidor"
+        public static int RetornarQtdeAnunciosPontuadosDashboardConsumidor(int? pCodUsuario)
+        {
+            try
+            {
+                var c = (from pontuados in db.tbCampanhaAnuncioConsumidor
+                         where pontuados.waitTimeOut == true && pontuados.uid == pCodUsuario
+                         select pontuados).ToList();
+                return (int)c.Count;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+
+        }
+        #endregion
+
+        #region "Retornar a Quantidade de Anúncios Visualizados na DashBoard do Consumidor"
+        public static int RetornarQtdeAnunciosVisualizadosDashboardAnunciante(int? pCodUsuario)
+        {
+            try
+            {
+                var a = (from visualizados in db.tbCampanhaAnuncioConsumidor
+                         where visualizados.uid == pCodUsuario
+                         select visualizados).ToList();
+                return (int)a.Count;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
+        #endregion
+
+        #region "Retornar a Quantidade de Pontos Adquiridos na DashBoard do Consumidor"
+        public static int RetornarQtdePontosAdquiridosDashboardAnunciante(int? pCodUsuario)
+        {
+            try
+            {
+                var a = (from pontos in db.tbConsumidorPontos
+                         where pontos.uid == pCodUsuario
+                         select pontos).ToList();
+                return (int)a.Count;
+            }
+            catch (Exception)
+            {
+                return 0;
             }
         }
         #endregion
