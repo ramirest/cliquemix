@@ -24,7 +24,6 @@
           <ScalarProperty Name="saldoCreditos" ColumnName="saldoCreditos" />
           <ScalarProperty Name="leuTermo" ColumnName="leuTermo" />
           <ScalarProperty Name="uid" ColumnName="uid" />
-          <ScalarProperty Name="peid" ColumnName="peid" />
           <ScalarProperty Name="cpf" ColumnName="cpf" />
           <ScalarProperty Name="rg" ColumnName="rg" />
           <ScalarProperty Name="pis" ColumnName="pis" />
@@ -359,53 +358,11 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tbConfigPadrao">
-      <EntityTypeMapping TypeName="cliquemixModel.tbConfigPadrao">
-        <MappingFragment StoreEntitySet="tbConfigPadrao">
-          <ScalarProperty Name="cfgid" ColumnName="cfgid" />
-          <ScalarProperty Name="spna" ColumnName="spna" />
-          <ScalarProperty Name="spnc" ColumnName="spnc" />
-          <ScalarProperty Name="tpua" ColumnName="tpua" />
-          <ScalarProperty Name="spadc" ColumnName="spadc" />
-          <ScalarProperty Name="spnac" ColumnName="spnac" />
-          <ScalarProperty Name="itppc" ColumnName="itppc" />
-          <ScalarProperty Name="spea" ColumnName="spea" />
-          <ScalarProperty Name="spec" ColumnName="spec" />
-          <ScalarProperty Name="pua" ColumnName="pua" />
-          <ScalarProperty Name="spcp" ColumnName="spcp" />
-          <ScalarProperty Name="qdptcp" ColumnName="qdptcp" />
-          <ScalarProperty Name="spde" ColumnName="spde" />
-          <ScalarProperty Name="spdd" ColumnName="spdd" />
-          <ScalarProperty Name="spdad" ColumnName="spdad" />
-          <ScalarProperty Name="spdac" ColumnName="spdac" />
-          <ScalarProperty Name="spdaec" ColumnName="spdaec" />
-          <ScalarProperty Name="spaec" ColumnName="spaec" />
-          <ScalarProperty Name="spap" ColumnName="spap" />
-          <ScalarProperty Name="spaaa" ColumnName="spaaa" />
-          <ScalarProperty Name="spab" ColumnName="spab" />
-          <ScalarProperty Name="spcf" ColumnName="spcf" />
-          <ScalarProperty Name="Spcec" ColumnName="Spcec" />
-          <ScalarProperty Name="Spcea" ColumnName="Spcea" />
-          <ScalarProperty Name="Spcep" ColumnName="Spcep" />
-          <ScalarProperty Name="Spcb" ColumnName="Spcb" />
-          <ScalarProperty Name="Spcd" ColumnName="Spcd" />
-          <ScalarProperty Name="spccap" ColumnName="spccap" />
-          <ScalarProperty Name="spccc" ColumnName="spccc" />
-          <ScalarProperty Name="spccpa" ColumnName="spccpa" />
-          <ScalarProperty Name="spcna" ColumnName="spcna" />
-          <ScalarProperty Name="tpuc" ColumnName="tpuc" />
-          <ScalarProperty Name="spnan" ColumnName="spnan" />
-          <ScalarProperty Name="spala" ColumnName="spala" />
-          <ScalarProperty Name="spnpc" ColumnName="spnpc" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tbConsumidor">
       <EntityTypeMapping TypeName="cliquemixModel.tbConsumidor">
         <MappingFragment StoreEntitySet="tbConsumidor">
           <ScalarProperty Name="cid" ColumnName="cid" />
           <ScalarProperty Name="uid" ColumnName="uid" />
-          <ScalarProperty Name="leuTermo" ColumnName="leuTermo" />
           <ScalarProperty Name="tid" ColumnName="tid" />
           <ScalarProperty Name="conid" ColumnName="conid" />
           <ScalarProperty Name="nomeCompleto" ColumnName="nomeCompleto" />
@@ -417,6 +374,7 @@
           <ScalarProperty Name="pis" ColumnName="pis" />
           <ScalarProperty Name="dtNascimento" ColumnName="dtNascimento" />
           <ScalarProperty Name="ativo" ColumnName="ativo" />
+          <ScalarProperty Name="leuTermo" ColumnName="leuTermo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -457,6 +415,8 @@
     <EntitySetMapping Name="tbCreditoCompra">
       <EntityTypeMapping TypeName="cliquemixModel.tbCreditoCompra">
         <MappingFragment StoreEntitySet="tbCreditoCompra">
+          <ScalarProperty Name="dtVencimento" ColumnName="dtVencimento" />
+          <ScalarProperty Name="txid" ColumnName="txid" />
           <ScalarProperty Name="ccid" ColumnName="ccid" />
           <ScalarProperty Name="pid" ColumnName="pid" />
           <ScalarProperty Name="crid" ColumnName="crid" />
@@ -745,6 +705,8 @@
     <EntitySetMapping Name="tbTransacaoXml">
       <EntityTypeMapping TypeName="cliquemixModel.tbTransacaoXml">
         <MappingFragment StoreEntitySet="tbTransacaoXml">
+          <ScalarProperty Name="cnpj" ColumnName="cnpj" />
+          <ScalarProperty Name="codAfiliacao" ColumnName="codAfiliacao" />
           <ScalarProperty Name="txid" ColumnName="txid" />
           <ScalarProperty Name="transacao" ColumnName="transacao" />
           <ScalarProperty Name="sid" ColumnName="sid" />
@@ -754,7 +716,6 @@
           <ScalarProperty Name="valor" ColumnName="valor" />
           <ScalarProperty Name="dataVencimento" ColumnName="dataVencimento" />
           <ScalarProperty Name="descricao" ColumnName="descricao" />
-          <ScalarProperty Name="cpf" ColumnName="cpf" />
           <ScalarProperty Name="cep" ColumnName="cep" />
           <ScalarProperty Name="cidade" ColumnName="cidade" />
           <ScalarProperty Name="estado" ColumnName="estado" />
@@ -786,6 +747,7 @@
           <ScalarProperty Name="pwd" ColumnName="pwd" />
           <ScalarProperty Name="utid" ColumnName="utid" />
           <ScalarProperty Name="cpwd" ColumnName="cpwd" />
+          <ScalarProperty Name="ativo" ColumnName="ativo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -975,6 +937,62 @@
           <ScalarProperty Name="dtTermino" ColumnName="dtTermino" />
           <ScalarProperty Name="contCliquesAtual" ColumnName="contCliquesAtual" />
           <ScalarProperty Name="pid" ColumnName="pid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbConfigPadrao">
+      <EntityTypeMapping TypeName="cliquemixModel.tbConfigPadrao">
+        <MappingFragment StoreEntitySet="tbConfigPadrao">
+          <ScalarProperty Name="urlRetornoPagto" ColumnName="urlRetornoPagto" />
+          <ScalarProperty Name="dpvb" ColumnName="dpvb" />
+          <ScalarProperty Name="tel2" ColumnName="tel2" />
+          <ScalarProperty Name="tel1" ColumnName="tel1" />
+          <ScalarProperty Name="cep" ColumnName="cep" />
+          <ScalarProperty Name="uf" ColumnName="uf" />
+          <ScalarProperty Name="cidade" ColumnName="cidade" />
+          <ScalarProperty Name="bairro" ColumnName="bairro" />
+          <ScalarProperty Name="endereco" ColumnName="endereco" />
+          <ScalarProperty Name="razaoSocial" ColumnName="razaoSocial" />
+          <ScalarProperty Name="NumMaxParPag" ColumnName="NumMaxParPag" />
+          <ScalarProperty Name="chPadPagBol" ColumnName="chPadPagBol" />
+          <ScalarProperty Name="cdAfPadPagBol" ColumnName="cdAfPadPagBol" />
+          <ScalarProperty Name="texpsu" ColumnName="texpsu" />
+          <ScalarProperty Name="tpuad" ColumnName="tpuad" />
+          <ScalarProperty Name="spnpc" ColumnName="spnpc" />
+          <ScalarProperty Name="spala" ColumnName="spala" />
+          <ScalarProperty Name="spnan" ColumnName="spnan" />
+          <ScalarProperty Name="tpuc" ColumnName="tpuc" />
+          <ScalarProperty Name="spcna" ColumnName="spcna" />
+          <ScalarProperty Name="spccpa" ColumnName="spccpa" />
+          <ScalarProperty Name="spccc" ColumnName="spccc" />
+          <ScalarProperty Name="spccap" ColumnName="spccap" />
+          <ScalarProperty Name="Spcd" ColumnName="Spcd" />
+          <ScalarProperty Name="Spcb" ColumnName="Spcb" />
+          <ScalarProperty Name="Spcep" ColumnName="Spcep" />
+          <ScalarProperty Name="Spcea" ColumnName="Spcea" />
+          <ScalarProperty Name="Spcec" ColumnName="Spcec" />
+          <ScalarProperty Name="spcf" ColumnName="spcf" />
+          <ScalarProperty Name="spab" ColumnName="spab" />
+          <ScalarProperty Name="spaaa" ColumnName="spaaa" />
+          <ScalarProperty Name="spap" ColumnName="spap" />
+          <ScalarProperty Name="spaec" ColumnName="spaec" />
+          <ScalarProperty Name="spdaec" ColumnName="spdaec" />
+          <ScalarProperty Name="spdac" ColumnName="spdac" />
+          <ScalarProperty Name="spdad" ColumnName="spdad" />
+          <ScalarProperty Name="spdd" ColumnName="spdd" />
+          <ScalarProperty Name="spde" ColumnName="spde" />
+          <ScalarProperty Name="qdptcp" ColumnName="qdptcp" />
+          <ScalarProperty Name="spcp" ColumnName="spcp" />
+          <ScalarProperty Name="pua" ColumnName="pua" />
+          <ScalarProperty Name="spec" ColumnName="spec" />
+          <ScalarProperty Name="spea" ColumnName="spea" />
+          <ScalarProperty Name="itppc" ColumnName="itppc" />
+          <ScalarProperty Name="spnac" ColumnName="spnac" />
+          <ScalarProperty Name="spadc" ColumnName="spadc" />
+          <ScalarProperty Name="tpua" ColumnName="tpua" />
+          <ScalarProperty Name="spnc" ColumnName="spnc" />
+          <ScalarProperty Name="spna" ColumnName="spna" />
+          <ScalarProperty Name="cfgid" ColumnName="cfgid" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

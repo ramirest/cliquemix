@@ -1,0 +1,101 @@
+@charset "utf-8";
+/* CSS Document */
+
+@font-face {
+	font-family: Yesteryear;
+	src: url("../fonts/Yesteryear-Regular.eot") /* EOT file for IE */
+}
+@font-face {
+	font-family: Yesteryear;
+	src: url("../fonts/Yesteryear-Regular.ttf") /* TTF file for CSS3 browsers */
+}
+body {
+	padding-top: 80px;
+	padding-bottom: 60px;
+}
+h1 {
+	font-family: Yesteryear;
+}
+.max-width {
+	max-width: 960px;
+}
+.centro {
+	float: none;
+	margin: 0 auto;
+}
+#barra-topo {
+	width: 100%;
+	height: 70px;
+	background-color: #000;
+}
+#slide {
+	width: 960px;
+	height: 450px;
+}
+.topo-texto-h2 {
+	font-family: Yesteryear;
+	font-size: 48px;
+	color: #09F;
+	border-bottom: solid 1px #09F;
+	padding-bottom: 10px;
+}
+/*slide*/
+#slide1 {
+	width: 960px;
+	height: 350px;
+}
+/* tornar responsivo */
+
+.video-container {
+	position: relative;
+	padding-bottom: 51.25%;
+	padding-top: 30px;
+	height: 0;
+	overflow: hidden;
+}
+.video-container img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.video-container iframe, .video-container object, .video-container embed {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.navbar-default {
+	border: none;
+	text-transform: uppercase;
+}
+.formulario {
+	padding-top: 25px;
+}
+.mapa {
+	top: 25px;
+	
+	height: 252px;
+}
+
+.video{height:200px;}
+.formulario input {
+	margin-bottom: 4px;
+	border-radius: 0;
+}
+.formulario textarea {
+	height: 140px;
+	border-radius: 0;
+}
+input#enviar {
+	border: none;
+	background-color: #fff;
+	text-transform: uppercase;
+	float: right;
+	margin-top: 5px;
+	color: #09F;
+}
+
+

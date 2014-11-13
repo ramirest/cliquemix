@@ -24,7 +24,6 @@
     <Property Name="saldoCreditos" Type="decimal" Precision="11" Scale="3" />
     <Property Name="leuTermo" Type="int" />
     <Property Name="uid" Type="int" />
-    <Property Name="peid" Type="int" />
     <Property Name="cpf" Type="varchar" MaxLength="30" />
     <Property Name="rg" Type="varchar" MaxLength="20" />
     <Property Name="pis" Type="varchar" MaxLength="20" />
@@ -367,6 +366,21 @@
     <Property Name="spnan" Type="int" />
     <Property Name="spala" Type="int" />
     <Property Name="spnpc" Type="int" />
+    <Property Name="tpuad" Type="int" />
+    <Property Name="texpsu" Type="int" />
+    <Property Name="cdAfPadPagBol" Type="varchar" MaxLength="20" />
+    <Property Name="chPadPagBol" Type="varchar" MaxLength="100" />
+    <Property Name="NumMaxParPag" Type="int" />
+    <Property Name="razaoSocial" Type="varchar" MaxLength="50" />
+    <Property Name="endereco" Type="varchar" MaxLength="100" />
+    <Property Name="bairro" Type="varchar" MaxLength="50" />
+    <Property Name="cidade" Type="varchar" MaxLength="50" />
+    <Property Name="uf" Type="varchar" MaxLength="2" />
+    <Property Name="cep" Type="varchar" MaxLength="10" />
+    <Property Name="tel1" Type="varchar" MaxLength="20" />
+    <Property Name="tel2" Type="varchar" MaxLength="20" />
+    <Property Name="dpvb" Type="int" />
+    <Property Name="urlRetornoPagto" Type="varchar" MaxLength="200" />
   </EntityType>
   <EntityType Name="tbConsumidor">
     <Key>
@@ -374,18 +388,18 @@
     </Key>
     <Property Name="cid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="uid" Type="int" />
-    <Property Name="leuTermo" Type="int" />
     <Property Name="tid" Type="int" />
     <Property Name="conid" Type="int" Nullable="false" />
     <Property Name="nomeCompleto" Type="varchar" MaxLength="100" />
     <Property Name="nomeAbreviado" Type="varchar" MaxLength="100" />
-    <Property Name="usuSicove" Type="varchar" MaxLength="20" />
+    <Property Name="usuSicove" Type="varchar" MaxLength="50" />
     <Property Name="email" Type="varchar" MaxLength="100" />
     <Property Name="cpf" Type="varchar" MaxLength="30" />
     <Property Name="rg" Type="varchar" MaxLength="20" />
     <Property Name="pis" Type="varchar" MaxLength="30" />
     <Property Name="dtNascimento" Type="datetime" />
     <Property Name="ativo" Type="bit" Nullable="false" />
+    <Property Name="leuTermo" Type="bit" />
   </EntityType>
   <EntityType Name="tbConsumidorPontos">
     <Key>
@@ -428,6 +442,8 @@
     <Property Name="dtCompra" Type="datetime" />
     <Property Name="crsid" Type="int" />
     <Property Name="promocional" Type="bit" />
+    <Property Name="txid" Type="int" />
+    <Property Name="dtVencimento" Type="date" Nullable="false" />
   </EntityType>
   <EntityType Name="tbCreditoDesconta">
     <Key>
@@ -691,7 +707,7 @@
     <Property Name="valor" Type="decimal" Precision="11" Scale="3" />
     <Property Name="dataVencimento" Type="datetime" />
     <Property Name="descricao" Type="varchar" MaxLength="50" />
-    <Property Name="cpf" Type="varchar" MaxLength="20" />
+    <Property Name="cnpj" Type="varchar" MaxLength="30" />
     <Property Name="cep" Type="varchar" MaxLength="10" />
     <Property Name="cidade" Type="varchar" MaxLength="50" />
     <Property Name="estado" Type="varchar" MaxLength="2" />
@@ -704,6 +720,7 @@
     <Property Name="urlRetornoLoja" Type="varchar" MaxLength="200" />
     <Property Name="txsid" Type="int" />
     <Property Name="dtMovimento" Type="datetime" />
+    <Property Name="codAfiliacao" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="tbTransacaoXmlStatus">
     <Key>
@@ -721,6 +738,7 @@
     <Property Name="pwd" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="utid" Type="int" Nullable="false" />
     <Property Name="cpwd" Type="varchar" MaxLength="50" />
+    <Property Name="ativo" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="tbUsersLogAcesso">
     <Key>
@@ -1598,18 +1616,6 @@ warning 6002: The table/view 'cliquemix.dbo.VwRelatorioAnuncianteAnuncios_Top10M
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="peid_tbAnunciante_tbAnuncianteEndereco_peid_fk">
-    <End Role="tbAnuncianteEndereco" Type="Self.tbAnuncianteEndereco" Multiplicity="0..1" />
-    <End Role="tbAnunciante" Type="Self.tbAnunciante" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tbAnuncianteEndereco">
-        <PropertyRef Name="peid" />
-      </Principal>
-      <Dependent Role="tbAnunciante">
-        <PropertyRef Name="peid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="peid_tbUsersPermissao_tbPermissao_fk">
     <End Role="tbPermissao" Type="Self.tbPermissao" Multiplicity="1" />
     <End Role="tbUsersPermissao" Type="Self.tbUsersPermissao" Multiplicity="*" />
@@ -2222,6 +2228,18 @@ warning 6002: The table/view 'cliquemix.dbo.VwRelatorioAnuncianteAnuncios_Top10M
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="tpuad_tbConfigPadrao_tbUsersTipo_fk">
+    <End Role="tbUsersTipo" Type="Self.tbUsersTipo" Multiplicity="0..1" />
+    <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbUsersTipo">
+        <PropertyRef Name="utid" />
+      </Principal>
+      <Dependent Role="tbConfigPadrao">
+        <PropertyRef Name="tpuad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="tpuc_tbConfigPadrao_tbUsersTipo_fk">
     <End Role="tbUsersTipo" Type="Self.tbUsersTipo" Multiplicity="0..1" />
     <End Role="tbConfigPadrao" Type="Self.tbConfigPadrao" Multiplicity="*" />
@@ -2231,6 +2249,18 @@ warning 6002: The table/view 'cliquemix.dbo.VwRelatorioAnuncianteAnuncios_Top10M
       </Principal>
       <Dependent Role="tbConfigPadrao">
         <PropertyRef Name="tpuc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="txid_tbCreditoCompra_tbTransacaoXml_fk">
+    <End Role="tbTransacaoXml" Type="Self.tbTransacaoXml" Multiplicity="0..1" />
+    <End Role="tbCreditoCompra" Type="Self.tbCreditoCompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbTransacaoXml">
+        <PropertyRef Name="txid" />
+      </Principal>
+      <Dependent Role="tbCreditoCompra">
+        <PropertyRef Name="txid" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -2822,10 +2852,6 @@ warning 6002: The table/view 'cliquemix.dbo.VwRelatorioAnuncianteAnuncios_Top10M
       <End Role="tbPacoteClique" EntitySet="tbPacoteClique" />
       <End Role="tbDestaque" EntitySet="tbDestaque" />
     </AssociationSet>
-    <AssociationSet Name="peid_tbAnunciante_tbAnuncianteEndereco_peid_fk" Association="Self.peid_tbAnunciante_tbAnuncianteEndereco_peid_fk">
-      <End Role="tbAnuncianteEndereco" EntitySet="tbAnuncianteEndereco" />
-      <End Role="tbAnunciante" EntitySet="tbAnunciante" />
-    </AssociationSet>
     <AssociationSet Name="peid_tbUsersPermissao_tbPermissao_fk" Association="Self.peid_tbUsersPermissao_tbPermissao_fk">
       <End Role="tbPermissao" EntitySet="tbPermissao" />
       <End Role="tbUsersPermissao" EntitySet="tbUsersPermissao" />
@@ -3030,9 +3056,17 @@ warning 6002: The table/view 'cliquemix.dbo.VwRelatorioAnuncianteAnuncios_Top10M
       <End Role="tbUsersTipo" EntitySet="tbUsersTipo" />
       <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
     </AssociationSet>
+    <AssociationSet Name="tpuad_tbConfigPadrao_tbUsersTipo_fk" Association="Self.tpuad_tbConfigPadrao_tbUsersTipo_fk">
+      <End Role="tbUsersTipo" EntitySet="tbUsersTipo" />
+      <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
     <AssociationSet Name="tpuc_tbConfigPadrao_tbUsersTipo_fk" Association="Self.tpuc_tbConfigPadrao_tbUsersTipo_fk">
       <End Role="tbUsersTipo" EntitySet="tbUsersTipo" />
       <End Role="tbConfigPadrao" EntitySet="tbConfigPadrao" />
+    </AssociationSet>
+    <AssociationSet Name="txid_tbCreditoCompra_tbTransacaoXml_fk" Association="Self.txid_tbCreditoCompra_tbTransacaoXml_fk">
+      <End Role="tbTransacaoXml" EntitySet="tbTransacaoXml" />
+      <End Role="tbCreditoCompra" EntitySet="tbCreditoCompra" />
     </AssociationSet>
     <AssociationSet Name="txsid_tbTransacaoXml_tbTransacaoXmlStatus_fk" Association="Self.txsid_tbTransacaoXml_tbTransacaoXmlStatus_fk">
       <End Role="tbTransacaoXmlStatus" EntitySet="tbTransacaoXmlStatus" />

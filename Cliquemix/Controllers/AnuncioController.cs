@@ -11,7 +11,7 @@ using PagedList;
 namespace Cliquemix.Controllers
 {
     //Somente usuários com a permissão Anunciante podem acessar essa página
-    [PermissoesFiltro(Roles = "Anunciante")]
+    //[PermissoesFiltro(Roles = "Anunciante")]
     public class AnuncioController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

@@ -16,7 +16,7 @@ ul, ul li { list-style: none }
 /* ------------ Common Classes ------------ */
 .heading1 { font-size: 22px; color: #5e626b; font-family: 'Open Sans', arial, sans-serif; padding: 0px; text-align: left; margin: 0px 0 20px 0; text-align: center }
 .heading2 { font-size: 40px; color: #96979D; font-family: 'Open Sans', arial, sans-serif; padding: 0px; text-align: center; margin: 25px 0 10px 0; font-weight: 600 }
-.heading3 { font-size: 32px; color: #96979D; font-family: 'Open Sans', arial, sans-serif; padding: 8px 0 20px 0; text-align: center; margin: 10px 0 10px 0; font-weight: 600; background: url(../img/bottomline.png) repeat-x 0 bottom; box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2); border-top: 1px solid #efefef; }
+.heading3 { font-size: 32px; color: #96979D; font-family: 'Open Sans', arial, sans-serif; padding: 8px 0 20px 0; text-align: center; margin: 10px 0 10px 0; font-weight: 600; background: url(../../Images/Inicial/img/bottomline.png) repeat-x 0 bottom; box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2); border-top: 1px solid #efefef; }
 .heading4 { font-size: 22px; color: #5e626b; font-family: 'Open Sans', arial, sans-serif; padding: 0; margin: 0px 0 10px 0; border-bottom: 1px solid #efefef; padding: 0 0 10px 0 }
 .heading5 { font-size: 22px; color: #5e626b; font-family: 'Open Sans', arial, sans-serif; padding: 0 0 10px 12px; margin: 0px 0 20px 0; position: relative }
 .borderbottm { border-bottom: 1px solid #efefef; }
@@ -105,13 +105,13 @@ box-shadow: none; -moz-box-shadow: none; -webkit-box-shadow: none }
 .dropdown-menu { top: 96% }
 /*.container { box-sizing: content-box; -moz-box-sizing: content-box; -webkit-box-sizing: content-box; }*/
 /* ------------ Heading Style ------------ */
-#header .headerdetails { border: none; background: #fff; padding: 60px 0 35px 0; background: url(../img/sprial.png) repeat-x 0 0 }
+#header .headerdetails { border: none; background: #fff; padding: 60px 0 35px 0; background: url(../../Images/Inicial/img/sprial.png) repeat-x 0 0 }
 #header .menurelative { padding: 0px }
 #header #mainmenu .subnav { background: none; padding: 7px 0 }
 #header ul.mainmenucontain > li a i { display: none }
 #header ul.mainmenucontain { width: auto; padding: 0px; margin-left: -10px }
 #header .call, #header .email { float: right; clear: none; margin: 4px 33px 0 0 }
-.breadcrumb { margin: 20px auto; background: none; border-bottom: 4px double #E7E7E7; padding: 15px 20px; background: url(../img/bottomline.png) repeat-x 0 bottom; box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2); }
+.breadcrumb { margin: 20px auto; background: none; border-bottom: 4px double #E7E7E7; padding: 15px 20px; background: url(../../Images/Inicial/img/bottomline.png) repeat-x 0 bottom; box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2); }
 .heading4 { font-size: 22px; color: #5e626b; font-family: 'Open Sans', arial, sans-serif; padding: 0; margin: 0px 0 10px 0; border-bottom: 1px solid #efefef; padding: 0 0 10px 0 }
 .breadcrumb li.active { color: #30A6B1 }
 .logo { margin-top: 10px }
@@ -159,7 +159,7 @@ ul.steps li div.step { border: 1px solid #ddd; padding: 0 10px; font-size: 18px;
 ul.steps li div.step span.stepcount { background: #999999; height: 30px; width: 30px; line-height: 30px; text-align: center; color: #fff; margin-right: 10px; display: inline-block }
 ul.steps li div.step i { color: #30A6B1; line-height: 47px; display: inline-block; font-size: 40px }
 /*Search*/
-#search { height: 300px; background: #ccc url(../img/mainimage.jpg) center center no-repeat; display: block; position: relative }
+#search { height: 300px; background: #ccc url(../../Images/Inicial/img/mainimage.jpg) center center no-repeat; display: block; position: relative }
 #searchinner { background: #666; display: block; position: relative; padding: 10px 10px 43px 0; width: auto; margin-bottom: 40px }
 #searchinner .searchcontianer { margin: 0 auto; padding: 15px; background: none; border: none }
 #search:after, .searchcontianer:after { clear: both; content: ''; display: block }
@@ -177,7 +177,7 @@ a.postadinner { border: 1px solid #E7E7E7; background: #ffffff; color: #fff; bor
 a.postadinner span { background: #30A6B1; line-height: 30px; display: block; border-radius: 40px; font-weight: 600; font-size: 16px; text-align: center; text-transform: uppercase; padding: 5px 20px }
 a:hover.postadinner span { color: #fff; background: #d8420e; }
 #search .container { position: relative }
-.todayoffer { width: 105px; height: 200px; background: url(../img/pricetag.png) 0 0 no-repeat; position: absolute; left: 100px; top: -30px; padding: 55px 10px 10px 10px }
+.todayoffer { width: 105px; height: 200px; background: url(../../Images/Inicial/img/pricetag.png) 0 0 no-repeat; position: absolute; left: 100px; top: -30px; padding: 55px 10px 10px 10px }
 .todayoffer span.text1 { font-size: 14px; color: #000; font-weight: 600; font-style: italic; display: block; margin-bottom: 10px }
 .todayoffer span.text2 { font-size: 36px; color: #30A6B1; font-weight: 800; font-style: italic; display: block; line-height: 36px }
 /*Home Map*/
@@ -266,7 +266,7 @@ ul.latesttestimonials .detail { margin-left: 60px }
 ul.latesttestimonials .detail:after { clear: both; display: block; content: ''; height: 0 }
 /* ------------ Newsletter ------------ */
 .subscribeinput { width: 350px }
-.newsletter { padding: 34px 0; background: #fff url(../img/bottomline.png) repeat-x scroll 0 0 }
+.newsletter { padding: 34px 0; background: #fff url(../../Images/Inicial/img/bottomline.png) repeat-x scroll 0 0 }
 #newslettersignup input.button { margin-top: -2px }
 .social-feed img { height: 50px; width: 50px; display: inline-block; float: left; margin: 4px; border: 1px solid #999 }
 /* ------------ Latest Blog ------------ */
@@ -507,7 +507,7 @@ ul.listoption6 li:before { padding: 5px 0 5px 3px; font-family: fontAwesome; con
 #twitter ul li { clear: both; display: block; margin-bottom: 15px; padding: 0 0 20px 0!important; border-bottom: 1px solid #efefef }
 #twitter ul li a { color: #30A6B1 }
 /*Quicklink*/
-#quicklink { color: #333; background: #efefef url(../img/bottomline.png) repeat-x scroll 0 0 }
+#quicklink { color: #333; background: #efefef url(../../Images/Inicial/img/bottomline.png) repeat-x scroll 0 0 }
 .quicklinks { text-align: center }
 .quicklinks li { display: inline-block; padding: 6px 10px; margin: 12px 0 }
 .quicklinks li + li { border-left: 1px solid #efefef }

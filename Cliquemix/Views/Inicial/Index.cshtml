@@ -13,7 +13,6 @@
     <!-- CSS -->
     <link href="~/Content/Inicial/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <!-- Google Webfont -->
-    <link href='http://www.google.com/fonts#UsePlace:use/Collection:Open+Sans:400,300,400italic,600,700,800,800italic' rel='stylesheet' type='text/css'>
     <!-- Main Css -->
     <link href="~/Content/Inicial/css/color5.css" rel="stylesheet" media="screen" id="color">
     <link href="~/Content/Inicial/css/demo.css" rel="stylesheet">
@@ -25,19 +24,89 @@
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
+        <script src="js/html5shiv.js"></script>
+        <script src="js/respond.min.js"></script>
     <![endif]-->
 </head>
+
 <body>
+    
     <!-- Header Start -->
     <header id="header">
         <div class="headerdetails">
+
             <div class="container">
-                <a class="logo pull-left" href="index.html"><img title="MixClique" alt="MixClique" src="~/Images/Inicial/img/logo.png"></a>
+
+                <div class="mt10 pull-right resp_01">
+                    <!--Social -->
+                    <div class="socialtop pull-right">
+                        <ul class="pull-right">
+                            <li><a class="tooltip-test" href="https://www.facebook.com/pages/Mixclique/522379434565002?fref=ts" target="_blank" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                            <li><a class="tooltip-test" href="https://twitter.com/mixcliquebrasil" target="_blank" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                            <li><a class="tooltip-test" data-original-title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a class="tooltip-test" href="https://plus.google.com/107089634860888528230" target="_blank" data-original-title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a class="tooltip-test" href="http://www.pinterest.com/mixclique" target="_blank" data-original-title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+                            <li><a class="tooltip-test" href="https://www.flickr.com/photos/128584834@N06" target="_blank" data-original-title="Flickr"><i class="fa fa-flickr"></i></a></li>
+                        </ul>
+                    </div>
+                    <!--Top Search -->
+
+                    <div class="call">
+
+                        <div id="mainmenu" class=" pull-right">
+                            <!-- Navigation -->
+                            <nav class="subnav subnav22">
+                                <div class="menurelative">
+                                    <a class="btn btn-orange mainmenumobile" href="/Account/Login">Entrar ou Cadastrar</a>
+                                    
+                                    <ul class="nav-pills mainmenucontain contain22">
+
+                                        <li>
+                                            @*<a class="submenu2 btn btn-branco tooltip-test mainserarchsubmit" href="/Account/Login">Entrar/Cadastrar</a>*@
+                                            <a href="/Account/Login">Entrar/Cadastrar</a>
+                                            @*<div class="submenu">
+                                                <div class="portlet portlet-green">
+                                                    <div class="portlet-body">
+                                                        <div class="form-group">
+                                                            <input class="form-control" placeholder="Login" name="email" type="text">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input class="form-control" placeholder="Senha" name="senha" type="password" value="">
+                                                        </div>
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input name="remember" type="checkbox" value="Remember Me">Lembrar senha
+                                                            </label>
+                                                        </div>
+                                                        <br>
+                                                        <a href="#" class="btn btn-lg btn-green btn-block btn-block33">Entrar</a>
+                                                        <a href="#" class="btn btn-lg btn-green btn-block btn-block333">Cadastrar</a>
+                                                        <br>
+                                                        <p class="small" style="text-align: center">
+                                                            <a href="#">Esqueceu a senha?</a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>*@
+
+                                        </li>
+                                    </ul>
+                                    
+                                </div>
+                            </nav>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="container">
+                <a class="logo pull-left" href="/Inicial/Index"><img title="MixClique" alt="MixClique" src="../../Images/Inicial/img/logo.png"></a>
                 <div id="mainmenu" class=" pull-right">
                     <!-- Navigation -->
-                    <nav class="subnav">
+                    <nav class="subnav subnav222">
                         <div class="menurelative">
                             <a class="btn btn-orange mainmenumobile">Menu</a>
                             <ul class="nav-pills mainmenucontain">
@@ -45,10 +114,10 @@
                                     <a class="active home submenu2">Sobre o MixClique</a>
                                     <div class="submenu">
                                         <ul>
-                                            <li> <a class="" title="Quem Somos" href="quem_somos.html">Quem Somos</a> </li>
-                                            <li> <a class="" title="Como Funciona" href="como_funciona.html">Como Funciona</a> </li>
-                                            <li> <a class="" title="Regulamentação" href="~/Arquivos/Inicial/doc/politica.pdf">Política do MixClique</a> </li>
-                                            <li> <a class="" title="Política de Proteção de Dados" href="~/Arquivos/Inicial/doc/privacidade.pdf">Termos e Condições</a> </li>
+                                            <li> <a class="" title="Quem Somos" href="#">Quem Somos</a> </li>
+                                            <li> <a class="" title="Como Funciona" href="#">Como Funciona</a> </li>
+                                            <li> <a class="" title="Regulamentação" href="#">Política do MixClique</a> </li>
+                                            <li> <a class="" title="Política de Proteção de Dados" href="#">Termos e Condições</a> </li>
                                         </ul>
                                     </div>
                                 </li>
@@ -56,20 +125,20 @@
                                     <a class="submenu2">Ganhe clicando</a>
                                     <div class="submenu">
                                         <ul class="pull-left">
-                                            <li> <a class="" title="Veja Como" href="veja_como.html">Veja Como</a> </li>
-                                            <li> <a class="" title="Faça seu Cadastro" href="cadastro.html">Cadastre-se</a> </li>
-                                            <li> <a class="" title="Acesse o Gerenciador" href="escritorio.html">Escritório Virtual</a> </li>
-                                            <li> <a class="" href="#"><img title="Veja os Detalhes" alt="" src="~/Images/Inicial/img/ad1.jpg" width="200"></a></li>
+                                            <li> <a class="" title="Veja Como" href="#">Veja Como</a> </li>
+                                            <li> <a class="" title="Faça seu Cadastro" href="#">Cadastre-se</a> </li>
+                                            <li> <a class="" title="Acesse o Gerenciador" href="#">Escritório Virtual</a> </li>
+                                            <li> <a class="" href="#"><img title="Veja os Detalhes" alt="" src="../../Images/Inicial/img/ad1.jpg" width="200"></a></li>
                                         </ul>
                                         <div id="topdeal">
                                             <h3>Top do momento</h3>
                                             <ul>
                                                 <li>
-                                                    <img width="100" src="~/Images/Inicial/img/blog1.jpg" alt="Veja os Detalhes" title="Veja os Detalhes" class="pull-left"> <a class="title" href="blog.html">Samsung Galaxy Tab 3 T211 Tablet </a>
+                                                    <img width="100" src="../../Images/Inicial/img/blog1.jpg" alt="Veja os Detalhes" title="Veja os Detalhes" class="pull-left"> <a class="title" href="#">Samsung Galaxy Tab 3 T211 Tablet </a>
                                                     <div class="blogdate"> <span class="blogicon"><i class="fa fa-calendar"></i> 5 de Outubro, 2014 </span> </div>
                                                 </li>
                                                 <li>
-                                                    <img width="100" src="~/Images/Inicial/img/blog2.jpg" alt="Veja os Detalhes" title="Veja os Detalhes" class="pull-left"> <a class="title" href="blog.html">Samsung Galaxy Tab 3 T211 Tablet </a>
+                                                    <img width="100" src="../../Images/Inicial/img/blog2.jpg" alt="Veja os Detalhes" title="Veja os Detalhes" class="pull-left"> <a class="title" href="#">Samsung Galaxy Tab 3 T211 Tablet </a>
                                                     <div class="blogdate"> <span class="blogicon"><i class="fa fa-calendar"></i> 8 de Setembro, 2014 </span> </div>
                                                 </li>
                                             </ul>
@@ -80,11 +149,11 @@
                                     <a class="submenu2">Seja Anunciante</a>
                                     <div class="submenu">
                                         <ul>
-                                            <li> <a class="" title="Seja um Anunciante" href="anuncie.html">Anuncie no MixClique </a> </li>
-                                            <li> <a class="" title="Veja os Preços dos Anuncios" href="~/Arquivos/Inicial/doc/tabela.pdf">Tabela de Preços</a> </li>
-                                            <li> <a class="" title="Baixe a Apresentação do MixClique" href="~/Arquivos/Inicial/doc/Apresentação MixClique.pdf">Apresentação MixClique</a> </li>
-                                            <li> <a class="" title="Baixe o Contrato" href="~/Arquivos/Inicial/doc/contrato.pdf">Contrato Geral</a> </li>
-                                            <li> <a class="" title="Acesse o Gerenciador" href="escritorio.html">Escritório Virtual</a> </li>
+                                            <li> <a class="" title="Seja um Anunciante" href="#">Anuncie no MixClique </a> </li>
+                                            <li> <a class="" title="Veja os Preços dos Anuncios" href="#">Tabela de Preços</a> </li>
+                                            <li> <a class="" title="Baixe a Apresentação do MixClique" href="#">Apresentação MixClique</a> </li>
+                                            <li> <a class="" title="Baixe o Contrato" href="#">Contrato Geral</a> </li>
+                                            <li> <a class="" title="Acesse o Gerenciador" href="#">Escritório Virtual</a> </li>
                                         </ul>
                                     </div>
                                 </li>
@@ -93,39 +162,26 @@
                                     <div class="submenu">
                                         <ul>
                                             <li> <a class="" title="O que é Sicove do Brasil" href="http://www.sicove.com.br/">Conheça o Sicove</a> </li>
-                                            <li> <a class="" title="Venda Publicidade" href="vendas.html">Venda Anuncios</a> </li>
-                                            <li> <a class="" title="Preencha o Currículo" href="curriculo.html">Trabalhe Conosco</a> </li>
-                                            <li> <a class="" title="Ajuda" href="suporte.html">Ajuda e Suporte</a> </li>
+                                            <li> <a class="" title="Venda Publicidade" href="#">Venda Anuncios</a> </li>
+                                            <li> <a class="" title="Preencha o Currículo" href="#">Trabalhe Conosco</a> </li>
+                                            <li> <a class="" title="Ajuda" href="#">Ajuda e Suporte</a> </li>
                                         </ul>
                                     </div>
                                 </li>
-                                <li> <a class="" title="Contato" href="contato.html">Contato</a> </li>
-                                <li> <a class="" title="Perguntas mais Frequentes" href="faq.html">Faq</a> </li>
+                                <li> <a class="" title="Contato" href="#">Contato</a> </li>
+                                <li> <a class="" title="Perguntas mais Frequentes" href="#">Faq</a> </li>
                             </ul>
                         </div>
                     </nav>
-                    <div class="mt10 pull-right">
-                        <!--Social -->
-                        <div class="socialtop pull-right">
-                            <ul class="pull-right">
-                                <li><a class="tooltip-test" href="https://www.facebook.com/pages/Mixclique/522379434565002?fref=ts" target="_blank" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                <li><a class="tooltip-test" href="https://twitter.com/mixcliquebrasil" target="_blank" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                <li><a class="tooltip-test" data-original-title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a class="tooltip-test" href="https://plus.google.com/107089634860888528230" target="_blank" data-original-title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a class="tooltip-test" href="http://www.pinterest.com/mixclique" target="_blank" data-original-title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
-                                <li><a class="tooltip-test" href="https://www.flickr.com/photos/128584834@N06" target="_blank" data-original-title="Flickr"><i class="fa fa-flickr"></i></a></li>
-                            </ul>
-                        </div>
-                        <!--Top Search -->
 
-                        <div class="email"> <i class="fa fa-envelope-o"></i> Email : <a href="maito:contato@mixclique.com.br" class="black">contato@mixclique.com.br</a></div>
-                        <div class="call"><i class="fa fa-phone"></i> LigueMix : <span class="black"><a href="tel:0313136160917">31 3616.0917</a> </span></div>
-                    </div>
                 </div>
             </div>
         </div>
     </header>
     <!-- Header End -->
+
+
+
     <div id="maincontainer">
         <!-- Slider Start-->
 
@@ -135,12 +191,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <img class="img-responsive" src="~/Images/Inicial/img/slide1.jpg">
+                        <a href="http://www.mixclique.com.br/mix/ver_anuncio/index.html"><img class="img-responsive" src="../../Images/Inicial/img/slide1.jpg"></a>
                     </div>
                 </div>
             </div>
 
-            <a href="post-ad.html" class="postad"><span> <i class="fa fa-pencil"></i>anuncie aqui</span></a>
+            <a href="#" class="postad"><span class="teste22"> <i class="fa fa-pencil"></i>anuncie aqui</span></a>
 
             <div class="searchcontianer" id="searchinner">
                 <a class="todayoffer"><span class="text1">Grandes Ofertas<br> para</span><span class="text2">VOCÊ</span></a>
@@ -160,7 +216,10 @@
                             <option value="Movies">Brinquedos</option>
                             <option value="Health">cama</option>
                         </select>
-                        <input type="button" id="searchmapbutton" name="Pesquisar" value="Pesquisar" class="btn btn-orange tooltip-test mainserarchsubmit" />
+                        <a href="#"> <img class="img-responsive" style="display: -webkit-inline-box;" src="../../Images/Inicial/img/pes.png"></a>
+
+                        <!--   <input type="button" id="searchmapbutton" name="Pesquisar" value="Pesquisar" class="btn btn-orange tooltip-test mainserarchsubmit"/>-->
+
                     </div>
                 </form>
             </div>
@@ -200,224 +259,224 @@
             <ul class="maincategory row">
 
                 <li>
-                    <a href="listing.html">
+                    <a href="#">
                         <i class="fa fa-bug c16"></i> <br>
                         <span class="direname">Animais</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="listing.html">
+                    <a href="#">
                         <i class="fa fa-microphone c2"></i> <br>
                         <span class="direname">Áudio</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="listing.html">
+                    <a href="#">
                         <i class="fa fa-female c13"></i> <br>
                         <span class="direname">Beleza</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="listing.html">
+                    <a href="#">
                         <i class="fa fa-bicycle c3"></i> <br>
                         <span class="direname">Bicicleta</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="listing.html">
+                    <a href="#">
                         <i class="fa fa-cubes c10"></i> <br>
                         <span class="direname">Brinquedos</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="listing.html">
+                    <a href="#">
                         <i class="fa fa-camera c15"></i> <br>
                         <span class="direname">Câmeras</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="listing.html">
+                    <a href="#">
                         <i class="fa fa-home c1"></i> <br>
                         <span class="direname">Casa</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="listing.html">
+                    <a href="#">
                         <i class="fa fa-mobile c7"></i> <br>
                         <span class="direname">Celular</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="listing.html">
+                    <a href="#">
                         <i class="fa fa-users c6"></i> <br>
                         <span class="direname">Comunidades</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="listing.html">
+                    <a href="#">
                         <i class="fa fa-desktop c4"></i> <br>
                         <span class="direname">Computador</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="listing.html">
+                    <a href="#">
                         <i class="fa fa-child c5"></i> <br>
                         <span class="direname">Crianças</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="listing.html">
+                    <a href="#">
                         <i class="fa fa-plug c3"></i> <br>
                         <span class="direname">Eletrodomésticos</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="listing.html">
+                    <a href="#">
                         <i class="fa fa-calculator c17"></i> <br>
                         <span class="direname">Eletrônicos</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="listing.html">
+                    <a href="#">
                         <i class="fa fa-futbol-o c12"></i> <br>
                         <span class="direname">Esportes</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="listing.html">
+                    <a href="#">
                         <i class="fa fa-film c6"></i> <br>
                         <span class="direname">Filmes</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="listing.html">
+                    <a href="#">
                         <i class="fa fa-yelp c2"></i> <br>
                         <span class="direname">Games</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="listing.html">
+                    <a href="#">
                         <i class="fa fa-cutlery c15"></i> <br>
                         <span class="direname">Gastronomia</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="listing.html">
+                    <a href="#">
                         <i class="fa fa-building-o c11"></i> <br>
                         <span class="direname">Imóveis</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="listing.html">
+                    <a href="#">
                         <i class="fa fa-print c3"></i> <br>
                         <span class="direname">Impressoras</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="listing.html">
+                    <a href="#">
                         <i class="fa fa-book c17"></i> <br>
                         <span class="direname">Livros</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="listing.html">
+                    <a href="#">
                         <i class="fa fa-music c7"></i> <br>
                         <span class="direname">Música</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="listing.html">
+                    <a href="#">
                         <i class="fa fa-laptop c16"></i> <br>
                         <span class="direname">Notebook</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="listing.html">
+                    <a href="#">
                         <i class="fa fa-puzzle-piece c13"></i> <br>
                         <span class="direname">Passatempo</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="listing.html">
+                    <a href="#">
                         <i class="fa fa-keyboard-o c1"></i> <br>
                         <span class="direname">Periféricos</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="listing.html">
+                    <a href="#">
                         <i class="fa fa-user c12"></i> <br>
                         <span class="direname">Pessoal</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="listing.html">
+                    <a href="#">
                         <i class="fa fa-twitter c10"></i> <br>
                         <span class="direname">Pets</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="listing.html">
+                    <a href="#">
                         <i class="fa fa-user-md c6"></i> <br>
                         <span class="direname">Saúde</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="listing.html">
+                    <a href="#">
                         <i class="fa fa-thumbs-o-up c2"></i> <br>
                         <span class="direname">Serviços</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="listing.html">
+                    <a href="#">
                         <i class="fa fa-phone c17"></i> <br>
                         <span class="direname">Telefone</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="listing.html">
+                    <a href="#">
                         <i class="fa fa-automobile c7"></i> <br>
                         <span class="direname">Veículos</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="listing.html">
+                    <a href="#">
                         <i class="fa fa-suitcase c4"></i> <br>
                         <span class="direname">Viagens</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="listing.html">
+                    <a href="#">
                         <i class="fa fa-video-camera c6"></i> <br>
                         <span class="direname">Vídeos</span>
                     </a>
@@ -430,6 +489,11 @@
         <!-- Directory Listing-->
         <div class="container mt40  mt-normal">
 
+            <div class="col-lg-12">
+
+                <div class="separa">Anúncios em Destaque</div>
+
+            </div>
 
 
             <!--     destaque 2    -->
@@ -439,6 +503,12 @@
 
                 <header id="myCarousel2" class="carousel slide">
                     <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+                        <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for Slides -->
                     <!-- Wrapper for Slides -->
                     <div class="carousel-inner">
 
@@ -454,11 +524,24 @@
                                             <a href="#gallery_1" role="button" data-toggle="modal">
                                                 <div>
                                                     <div>
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/blog_4.jpg" alt="">
+                                                        <img class="img-responsive" src="../../Images/Inicial/img/blog_4.jpg" alt="">
                                                     </div>
                                                     <div class="txt-destaque-1">
-                                                        <h4>Sansung Master Lav</h4>
-                                                        <span>A melhor lavaroupas do mercado</span>
+                                                        <h4>Cacau Show</h4>
+                                                        <span>Um natal recheado de chocolates, confira as sextas de natal que a Cacau Show preparou para você.</span>
+                                                    </div>
+                                                    <div class="txt-destaque-2">
+                                                        <div class="col-md-3 col-md-offset-3 pad_an">
+                                                            <a href="#">
+                                                                <i class="fa fa-mobile c11 iconeb"></i><br>
+                                                            </a>
+                                                        </div>
+
+                                                        <div class="col-md-3  pad_an">
+                                                            <a href="#">
+                                                                <i class="fa fa-map-marker c11 iconeb"></i><br>
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </a>
@@ -470,11 +553,25 @@
                                             <a href="#gallery_2" role="button" data-toggle="modal">
                                                 <div>
                                                     <div>
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/blog_1.jpg" alt="">
+                                                        <img class="img-responsive" src="../../Images/Inicial/img/blog_1.jpg" alt="">
                                                     </div>
                                                     <div class="txt-destaque-1">
                                                         <h4>Sansung Master Lav</h4>
-                                                        <span>A melhor lavaroupas do mercado</span>
+                                                        <span>A melhor lavaroupas do mercado. Lava, enchuga e seca suas roupas, super promoção de dezembro.</span>
+                                                    </div>
+
+                                                    <div class="txt-destaque-2">
+                                                        <div class="col-md-3 col-md-offset-3 pad_an">
+                                                            <a href="#">
+                                                                <i class="fa fa-mobile c11 iconeb"></i><br>
+                                                            </a>
+                                                        </div>
+
+                                                        <div class="col-md-3  pad_an">
+                                                            <a href="#">
+                                                                <i class="fa fa-map-marker c11 iconeb"></i><br>
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </a>
@@ -486,16 +583,34 @@
                                             <a href="#gallery_3" role="button" data-toggle="modal">
                                                 <div>
                                                     <div>
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/blog_3.jpg" alt="">
+                                                        <img class="img-responsive" src="../../Images/Inicial/blog_3.jpg" alt="">
                                                     </div>
                                                     <div class="txt-destaque-1">
-                                                        <h4>Sansung Master Lav</h4>
-                                                        <span>A melhor lavaroupas do mercado</span>
+                                                        <h4>Audi A3</h4>
+                                                        <span>Um conceito, um mito, venha conferir o Audi A3, mais detalhe no hotsite, clique e confira.</span>
                                                     </div>
+
+
+
+
+                                                    <div class="txt-destaque-2">
+                                                        <div class="col-md-3 col-md-offset-3 pad_an">
+                                                            <a href="#">
+                                                                <i class="fa fa-mobile c11 iconeb"></i><br>
+                                                            </a>
+                                                        </div>
+
+                                                        <div class="col-md-3  pad_an">
+                                                            <a href="#">
+                                                                <i class="fa fa-map-marker c11 iconeb"></i><br>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+
                                                 </div>
                                             </a>
                                         </li>
-
 
 
                                     </ul>
@@ -515,11 +630,24 @@
                                             <a href="#gallery_1" role="button" data-toggle="modal">
                                                 <div>
                                                     <div>
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/blog_4.jpg" alt="">
+                                                        <img class="img-responsive" src="../../Images/Inicial/img/blog_4.jpg" alt="">
                                                     </div>
                                                     <div class="txt-destaque-1">
-                                                        <h4>Sansung Master Lav</h4>
-                                                        <span>A melhor lavaroupas do mercado</span>
+                                                        <h4>Cacau Show</h4>
+                                                        <span>Um natal recheado de chocolates, confira as sextas de natal que a Cacau Show preparou para você.</span>
+                                                    </div>
+                                                    <div class="txt-destaque-2">
+                                                        <div class="col-md-3 col-md-offset-3 pad_an">
+                                                            <a href="#">
+                                                                <i class="fa fa-mobile c11 iconeb"></i><br>
+                                                            </a>
+                                                        </div>
+
+                                                        <div class="col-md-3  pad_an">
+                                                            <a href="#">
+                                                                <i class="fa fa-map-marker c11 iconeb"></i><br>
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </a>
@@ -531,11 +659,25 @@
                                             <a href="#gallery_2" role="button" data-toggle="modal">
                                                 <div>
                                                     <div>
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/blog_1.jpg" alt="">
+                                                        <img class="img-responsive" src="../../Images/Inicial/img/blog_1.jpg" alt="">
                                                     </div>
                                                     <div class="txt-destaque-1">
                                                         <h4>Sansung Master Lav</h4>
-                                                        <span>A melhor lavaroupas do mercado</span>
+                                                        <span>A melhor lavaroupas do mercado. Lava, enchuga e seca suas roupas, super promoção de dezembro.</span>
+                                                    </div>
+
+                                                    <div class="txt-destaque-2">
+                                                        <div class="col-md-3 col-md-offset-3 pad_an">
+                                                            <a href="#">
+                                                                <i class="fa fa-mobile c11 iconeb"></i><br>
+                                                            </a>
+                                                        </div>
+
+                                                        <div class="col-md-3  pad_an">
+                                                            <a href="#">
+                                                                <i class="fa fa-map-marker c11 iconeb"></i><br>
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </a>
@@ -547,16 +689,31 @@
                                             <a href="#gallery_3" role="button" data-toggle="modal">
                                                 <div>
                                                     <div>
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/blog_3.jpg" alt="">
+                                                        <img class="img-responsive" src="../../Images/Inicial/img/blog_3.jpg" alt="">
                                                     </div>
                                                     <div class="txt-destaque-1">
-                                                        <h4>Sansung Master Lav</h4>
-                                                        <span>A melhor lavaroupas do mercado</span>
+                                                        <h4>Audi A3</h4>
+                                                        <span>Um conceito, um mito, venha conferir o Audi A3, mais detalhe no hotsite, clique e confira.</span>
                                                     </div>
+
+                                                    <div class="txt-destaque-2">
+                                                        <div class="col-md-3 col-md-offset-3 pad_an">
+                                                            <a href="#">
+                                                                <i class="fa fa-mobile c11 iconeb"></i><br>
+                                                            </a>
+                                                        </div>
+
+                                                        <div class="col-md-3  pad_an">
+                                                            <a href="#">
+                                                                <i class="fa fa-map-marker c11 iconeb"></i><br>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+
                                                 </div>
                                             </a>
                                         </li>
-
 
 
                                     </ul>
@@ -576,11 +733,24 @@
                                             <a href="#gallery_1" role="button" data-toggle="modal">
                                                 <div>
                                                     <div>
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/blog_4.jpg" alt="">
+                                                        <img class="img-responsive" src="../../Images/Inicial/img/blog_4.jpg" alt="">
                                                     </div>
                                                     <div class="txt-destaque-1">
-                                                        <h4>Sansung Master Lav</h4>
-                                                        <span>A melhor lavaroupas do mercado</span>
+                                                        <h4>Cacau Show</h4>
+                                                        <span>Um natal recheado de chocolates, confira as sextas de natal que a Cacau Show preparou para você.</span>
+                                                    </div>
+                                                    <div class="txt-destaque-2">
+                                                        <div class="col-md-3 col-md-offset-3 pad_an">
+                                                            <a href="#">
+                                                                <i class="fa fa-mobile c11 iconeb"></i><br>
+                                                            </a>
+                                                        </div>
+
+                                                        <div class="col-md-3  pad_an">
+                                                            <a href="#">
+                                                                <i class="fa fa-map-marker c11 iconeb"></i><br>
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </a>
@@ -592,11 +762,25 @@
                                             <a href="#gallery_2" role="button" data-toggle="modal">
                                                 <div>
                                                     <div>
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/blog_1.jpg" alt="">
+                                                        <img class="img-responsive" src="../../Images/Inicial/img/blog_1.jpg" alt="">
                                                     </div>
                                                     <div class="txt-destaque-1">
                                                         <h4>Sansung Master Lav</h4>
-                                                        <span>A melhor lavaroupas do mercado</span>
+                                                        <span>A melhor lavaroupas do mercado. Lava, enchuga e seca suas roupas, super promoção de dezembro.</span>
+                                                    </div>
+
+                                                    <div class="txt-destaque-2">
+                                                        <div class="col-md-3 col-md-offset-3 pad_an">
+                                                            <a href="#">
+                                                                <i class="fa fa-mobile c11 iconeb"></i><br>
+                                                            </a>
+                                                        </div>
+
+                                                        <div class="col-md-3  pad_an">
+                                                            <a href="#">
+                                                                <i class="fa fa-map-marker c11 iconeb"></i><br>
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </a>
@@ -608,16 +792,34 @@
                                             <a href="#gallery_3" role="button" data-toggle="modal">
                                                 <div>
                                                     <div>
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/blog_3.jpg" alt="">
+                                                        <img class="img-responsive" src="../../Images/Inicial/img/blog_3.jpg" alt="">
                                                     </div>
                                                     <div class="txt-destaque-1">
-                                                        <h4>Sansung Master Lav</h4>
-                                                        <span>A melhor lavaroupas do mercado</span>
+                                                        <h4>Audi A3</h4>
+                                                        <span>Um conceito, um mito, venha conferir o Audi A3, mais detalhe no hotsite, clique e confira.</span>
                                                     </div>
+
+
+
+
+                                                    <div class="txt-destaque-2">
+                                                        <div class="col-md-3 col-md-offset-3 pad_an">
+                                                            <a href="#">
+                                                                <i class="fa fa-mobile c11 iconeb"></i><br>
+                                                            </a>
+                                                        </div>
+
+                                                        <div class="col-md-3  pad_an">
+                                                            <a href="#">
+                                                                <i class="fa fa-map-marker c11 iconeb"></i><br>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+
                                                 </div>
                                             </a>
                                         </li>
-
 
 
                                     </ul>
@@ -641,310 +843,15 @@
 
             </div>
             <!--     fim destaque 2    -->
-            <!--     destaque 3      -->
+
+
             <div class="col-lg-12">
 
-
-
-                <header id="myCarousel3" class="carousel slide">
-                    <!-- Indicators -->
-                    <!-- Wrapper for Slides -->
-                    <div class="carousel-inner">
-
-
-
-
-                        <!--início item 1-->
-                        <div class="item active">
-                            <div class="col-lg-12">
-                                <div class="row">
-                                    <ul class="grid">
-
-
-                                        <!--start #1 gallery-->
-                                        <li class="col-lg-4 col-sm-4 col-sm-4-front">
-                                            <div class="border-clique">
-                                                <a href="#gallery_1" role="button" data-toggle="modal">
-                                                    <figure>
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/gallery_9.jpg" alt="">
-
-                                                    </figure>
-                                                </a>
-                                            </div>
-                                        </li>
-
-
-                                        <!--start #2 gallery-->
-                                        <li class="col-lg-4 col-sm-4 col-sm-4-front">
-                                            <div class="border-clique">
-                                                <a href="#gallery_2" role="button" data-toggle="modal">
-                                                    <figure>
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/gallery_7.jpg" alt="">
-
-                                                    </figure>
-                                                </a>
-                                            </div>
-                                        </li>
-
-
-                                        <!--start #3 gallery-->
-                                        <li class="col-lg-4 col-sm-4 col-sm-4-front">
-                                            <div class="border-clique">
-                                                <a href="#gallery_3" role="button" data-toggle="modal">
-                                                    <figure>
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/gallery_9.jpg" alt="">
-
-                                                    </figure>
-                                                </a>
-                                            </div>
-                                        </li>
-
-
-                                        <!--start #4 gallery-->
-                                        <li class="col-lg-4 col-sm-4 col-sm-4-front">
-                                            <div class="border-clique">
-                                                <a href="#gallery_3" role="button" data-toggle="modal">
-                                                    <figure>
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/gallery_7.jpg" alt="">
-
-                                                    </figure>
-                                                </a>
-                                            </div>
-                                        </li>
-
-
-                                        <!--start #5 gallery-->
-                                        <li class="col-lg-4 col-sm-4 col-sm-4-front">
-                                            <div class="border-clique">
-                                                <a href="#gallery_3" role="button" data-toggle="modal">
-                                                    <figure>
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/gallery_9.jpg" alt="">
-
-                                                    </figure>
-                                                </a>
-                                            </div>
-                                        </li>
-
-
-                                        <!--start #6 gallery-->
-                                        <li class="col-lg-4 col-sm-4 col-sm-4-front">
-                                            <div class="border-clique">
-                                                <a href="#gallery_3" role="button" data-toggle="modal">
-                                                    <figure>
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/gallery_7.jpg" alt="">
-
-                                                    </figure>
-                                                </a>
-                                            </div>
-                                        </li>
-
-
-
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!--fim item 1-->
-                        <!--inicio item 2-->
-                        <div class="item">
-                            <div class="col-lg-12">
-                                <div class="row">
-                                    <ul class="grid">
-
-
-                                        <!--start #1 gallery-->
-                                        <li class="col-lg-4 col-sm-4 col-sm-4-front">
-                                            <div class="border-clique">
-                                                <a href="#gallery_1" role="button" data-toggle="modal">
-                                                    <figure>
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/gallery_9.jpg" alt="">
-
-                                                    </figure>
-                                                </a>
-                                            </div>
-                                        </li>
-
-
-                                        <!--start #2 gallery-->
-                                        <li class="col-lg-4 col-sm-4 col-sm-4-front">
-                                            <div class="border-clique">
-                                                <a href="#gallery_2" role="button" data-toggle="modal">
-                                                    <figure>
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/gallery_7.jpg" alt="">
-
-                                                    </figure>
-                                                </a>
-                                            </div>
-                                        </li>
-
-
-                                        <!--start #3 gallery-->
-                                        <li class="col-lg-4 col-sm-4 col-sm-4-front">
-                                            <div class="border-clique">
-                                                <a href="#gallery_3" role="button" data-toggle="modal">
-                                                    <figure>
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/gallery_9.jpg" alt="">
-
-                                                    </figure>
-                                                </a>
-                                            </div>
-                                        </li>
-
-
-                                        <!--start #4 gallery-->
-                                        <li class="col-lg-4 col-sm-4 col-sm-4-front">
-                                            <div class="border-clique">
-                                                <a href="#gallery_3" role="button" data-toggle="modal">
-                                                    <figure>
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/gallery_7.jpg" alt="">
-
-                                                    </figure>
-                                                </a>
-                                            </div>
-                                        </li>
-
-
-                                        <!--start #5 gallery-->
-                                        <li class="col-lg-4 col-sm-4 col-sm-4-front">
-                                            <div class="border-clique">
-                                                <a href="#gallery_3" role="button" data-toggle="modal">
-                                                    <figure>
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/gallery_9.jpg" alt="">
-
-                                                    </figure>
-                                                </a>
-                                            </div>
-                                        </li>
-
-
-                                        <!--start #6 gallery-->
-                                        <li class="col-lg-4 col-sm-4 col-sm-4-front">
-                                            <div class="border-clique">
-                                                <a href="#gallery_3" role="button" data-toggle="modal">
-                                                    <figure>
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/gallery_7.jpg" alt="">
-
-                                                    </figure>
-                                                </a>
-                                            </div>
-                                        </li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!--fim item 2-->
-                        <!--início item 3-->
-                        <div class="item">
-                            <div class="col-lg-12">
-                                <div class="row">
-                                    <ul class="grid">
-
-
-                                        <!--start #1 gallery-->
-                                        <li class="col-lg-4 col-sm-4 col-sm-4-front">
-                                            <div class="border-clique">
-                                                <a href="#gallery_1" role="button" data-toggle="modal">
-                                                    <figure>
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/gallery_7.jpg" alt="">
-
-                                                    </figure>
-                                                </a>
-                                            </div>
-                                        </li>
-
-
-                                        <!--start #2 gallery-->
-                                        <li class="col-lg-4 col-sm-4 col-sm-4-front">
-                                            <div class="border-clique">
-                                                <a href="#gallery_2" role="button" data-toggle="modal">
-                                                    <figure>
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/gallery_9.jpg" alt="">
-
-                                                    </figure>
-                                                </a>
-                                            </div>
-                                        </li>
-
-
-                                        <!--start #3 gallery-->
-                                        <li class="col-lg-4 col-sm-4 col-sm-4-front">
-                                            <div class="border-clique">
-                                                <a href="#gallery_3" role="button" data-toggle="modal">
-                                                    <figure>
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/gallery_7.jpg" alt="">
-
-                                                    </figure>
-                                                </a>
-                                            </div>
-                                        </li>
-
-
-                                        <!--start #4 gallery-->
-                                        <li class="col-lg-4 col-sm-4 col-sm-4-front">
-                                            <div class="border-clique">
-                                                <a href="#gallery_3" role="button" data-toggle="modal">
-                                                    <figure>
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/gallery_9.jpg" alt="">
-
-                                                    </figure>
-                                                </a>
-                                            </div>
-                                        </li>
-
-
-                                        <!--start #5 gallery-->
-                                        <li class="col-lg-4 col-sm-4 col-sm-4-front">
-                                            <div class="border-clique">
-                                                <a href="#gallery_3" role="button" data-toggle="modal">
-                                                    <figure>
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/gallery_7.jpg" alt="">
-
-                                                    </figure>
-                                                </a>
-                                            </div>
-                                        </li>
-
-
-                                        <!--start #6 gallery-->
-                                        <li class="col-lg-4 col-sm-4 col-sm-4-front">
-
-                                            <div style="border: solid 1px #e5e5e5;">
-                                                <div class="border-clique">
-                                                    <a href="#gallery_3" role="button" data-toggle="modal">
-                                                        <figure>
-                                                            <img class="img-responsive" src="~/Images/Inicial/img/gallery_9.jpg" alt="">
-
-                                                        </figure>
-                                                    </a>
-                                                </div>
-                                            </div>
-
-                                        </li>
-
-
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!--fim item 3-->
-
-                    </div>
-                    <!-- Controls -->
-                    <a class="left carousel-control" href="#myCarousel3" data-slide="prev">
-                        <span class="icon-prev"></span>
-                    </a>
-                    <a class="right carousel-control" href="#myCarousel3" data-slide="next">
-                        <span class="icon-next"></span>
-                    </a>
-
-                </header>
-
-
-
+                <div class="separa" style="margin-top: 50px">Mais Anúncios</div>
 
             </div>
-            <!--     fim destaque 3   -->
+
+
             <!--     destaque 4      -->
             <div class="col-lg-12">
 
@@ -952,6 +859,12 @@
 
                 <header id="myCarousel4" class="carousel slide">
                     <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+                        <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Wrapper for Slides -->
                     <!-- Wrapper for Slides -->
                     <div class="carousel-inner">
 
@@ -967,12 +880,12 @@
                                             <div class="border-clique">
                                                 <a href="#gallery_1" role="button" data-toggle="modal">
                                                     <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/gallery_10.jpg" alt="">
+                                                        <img class="img-responsive" src="../../Images/Inicial/img/jardim.jpg" alt="">
                                                     </div>
                                                     <div class="txt-destaque-4">
-                                                        <span class="tit-destaque-4">Nokia Lumia 530</span><br>
-                                                        <span> Windows Phone</span><br>
-                                                        <span style="color:red">8.1 2G/3G Câmera</span>
+                                                        <span class="tit-destaque-4">Josiel - Jardinagem</span><br>
+                                                        <span>Serviços de aparas, poda, design, projetos, nutriçao, criação, acompanhamento entre outros.</span><br>
+                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
                                                     </div>
                                                 </a>
                                             </div>
@@ -984,12 +897,12 @@
                                             <div class="border-clique">
                                                 <a href="#gallery_1" role="button" data-toggle="modal">
                                                     <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/gallery_11.jpg" alt="">
+                                                        <img class="img-responsive" src="../../Images/Inicial/img/seg.jpg" alt="">
                                                     </div>
                                                     <div class="txt-destaque-4">
-                                                        <span class="tit-destaque-4">Belezura de maça verdinha</span><br>
-                                                        <span>Oferta especial</span><br>
-                                                        <span style="color:#5ad202">Clique aqui</span>
+                                                        <span class="tit-destaque-4">Patrix Seguros</span><br>
+                                                        <span class="tit-destaque-8">Seguradora de Veículos, imóveis, cargas, serviços, viagens entre outros.</span><br>
+                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
                                                     </div>
                                                 </a>
                                             </div>
@@ -1001,12 +914,12 @@
                                             <div class="border-clique">
                                                 <a href="#gallery_1" role="button" data-toggle="modal">
                                                     <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/gallery_12.jpg" alt="">
+                                                        <img class="img-responsive" src="../../Images/Inicial/img/gallery_12.jpg" alt="">
                                                     </div>
                                                     <div class="txt-destaque-4">
                                                         <span class="tit-destaque-4">Nutrilife</span><br>
-                                                        <span>Produtos naturais</span><br>
-                                                        <span style="color:#5ad202">Confira a oferta</span>
+                                                        <span>Os produtos naturais Nutrilife tentam resgatar um pouco do tempo em que, colhidos e preparados na hora.</span><br>
+                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
                                                     </div>
                                                 </a>
                                             </div>
@@ -1019,12 +932,12 @@
                                             <div class="border-clique">
                                                 <a href="#gallery_1" role="button" data-toggle="modal">
                                                     <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/gallery_10.jpg" alt="">
+                                                        <img class="img-responsive" src="../../Images/Inicial/img/gallery_10.jpg" alt="">
                                                     </div>
                                                     <div class="txt-destaque-4">
                                                         <span class="tit-destaque-4">Nokia Lumia 530</span><br>
-                                                        <span> Windows Phone</span><br>
-                                                        <span style="color:red">8.1 2G/3G Câmera</span>
+                                                        <span>Windows Phone e aplicativos que vão lhe surpriender, confira mais marcas em meu hotsite.</span><br>
+                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
                                                     </div>
                                                 </a>
                                             </div>
@@ -1036,12 +949,12 @@
                                             <div class="border-clique">
                                                 <a href="#gallery_1" role="button" data-toggle="modal">
                                                     <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/gallery_11.jpg" alt="">
+                                                        <img class="img-responsive" src="../../Images/Inicial/img/pet.jpg" alt="">
                                                     </div>
                                                     <div class="txt-destaque-4">
-                                                        <span class="tit-destaque-4">Belezura de maça verdinha</span><br>
-                                                        <span>Oferta especial</span><br>
-                                                        <span style="color:#5ad202">Clique aqui</span>
+                                                        <span class="tit-destaque-4">Pet Care - Com muito carinho</span><br>
+                                                        <span>Petshop, hotelzinho e todos os serviços para deixar seu pet a vontade e feliz.</span><br>
+                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
                                                     </div>
                                                 </a>
                                             </div>
@@ -1053,12 +966,12 @@
                                             <div class="border-clique">
                                                 <a href="#gallery_1" role="button" data-toggle="modal">
                                                     <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/gallery_12.jpg" alt="">
+                                                        <img class="img-responsive" src="../../Images/Inicial/img/pizza.jpg" alt="">
                                                     </div>
                                                     <div class="txt-destaque-4">
-                                                        <span class="tit-destaque-4">Nutrilife</span><br>
-                                                        <span>Produtos naturais</span><br>
-                                                        <span style="color:#5ad202">Confira a oferta</span>
+                                                        <span class="tit-destaque-4">MeGusta Pizzaria</span><br>
+                                                        <span>As mais deliciosas pizza do Vale, trabalhamos com entrgas, experimente o Crep MeGusta.</span><br>
+                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
                                                     </div>
                                                 </a>
                                             </div>
@@ -1082,12 +995,12 @@
                                             <div class="border-clique">
                                                 <a href="#gallery_1" role="button" data-toggle="modal">
                                                     <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/gallery_10.jpg" alt="">
+                                                        <img class="img-responsive" src="../../Images/Inicial/img/jardim.jpg" alt="">
                                                     </div>
                                                     <div class="txt-destaque-4">
-                                                        <span class="tit-destaque-4">Nokia Lumia 530</span><br>
-                                                        <span> Windows Phone</span><br>
-                                                        <span style="color:red">8.1 2G/3G Câmera</span>
+                                                        <span class="tit-destaque-4">Josiel - Jardinagem</span><br>
+                                                        <span>Serviços de aparas, poda, design, projetos, nutriçao, criação, acompanhamento entre outros.</span><br>
+                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
                                                     </div>
                                                 </a>
                                             </div>
@@ -1099,12 +1012,12 @@
                                             <div class="border-clique">
                                                 <a href="#gallery_1" role="button" data-toggle="modal">
                                                     <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/gallery_11.jpg" alt="">
+                                                        <img class="img-responsive" src="../../Images/Inicial/img/seg.jpg" alt="">
                                                     </div>
                                                     <div class="txt-destaque-4">
-                                                        <span class="tit-destaque-4">Belezura de maça verdinha</span><br>
-                                                        <span>Oferta especial</span><br>
-                                                        <span style="color:#5ad202">Clique aqui</span>
+                                                        <span class="tit-destaque-4">Patrix Seguros</span><br>
+                                                        <span class="tit-destaque-8">Seguradora de Veículos, imóveis, cargas, serviços, viagens entre outros.</span><br>
+                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
                                                     </div>
                                                 </a>
                                             </div>
@@ -1116,28 +1029,30 @@
                                             <div class="border-clique">
                                                 <a href="#gallery_1" role="button" data-toggle="modal">
                                                     <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/gallery_12.jpg" alt="">
+                                                        <img class="img-responsive" src="../../Images/Inicial/img/gallery_12.jpg" alt="">
                                                     </div>
                                                     <div class="txt-destaque-4">
                                                         <span class="tit-destaque-4">Nutrilife</span><br>
-                                                        <span>Produtos naturais</span><br>
-                                                        <span style="color:#5ad202">Confira a oferta</span>
+                                                        <span>Os produtos naturais Nutrilife tentam resgatar um pouco do tempo em que, colhidos e preparados na hora.</span><br>
+                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
                                                     </div>
                                                 </a>
                                             </div>
                                         </li>
+
+
 
                                         <!--start #4 gallery-->
                                         <li class="col-lg-4 col-sm-4  col-sm-4-front">
                                             <div class="border-clique">
                                                 <a href="#gallery_1" role="button" data-toggle="modal">
                                                     <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/gallery_10.jpg" alt="">
+                                                        <img class="img-responsive" src="../../Images/Inicial/img/gallery_10.jpg" alt="">
                                                     </div>
                                                     <div class="txt-destaque-4">
                                                         <span class="tit-destaque-4">Nokia Lumia 530</span><br>
-                                                        <span> Windows Phone</span><br>
-                                                        <span style="color:red">8.1 2G/3G Câmera</span>
+                                                        <span>Windows Phone e aplicativos que vão lhe surpriender, confira mais marcas em meu hotsite.</span><br>
+                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
                                                     </div>
                                                 </a>
                                             </div>
@@ -1149,12 +1064,12 @@
                                             <div class="border-clique">
                                                 <a href="#gallery_1" role="button" data-toggle="modal">
                                                     <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/gallery_11.jpg" alt="">
+                                                        <img class="img-responsive" src="../../Images/Inicial/img/pet.jpg" alt="">
                                                     </div>
                                                     <div class="txt-destaque-4">
-                                                        <span class="tit-destaque-4">Belezura de maça verdinha</span><br>
-                                                        <span>Oferta especial</span><br>
-                                                        <span style="color:#5ad202">Clique aqui</span>
+                                                        <span class="tit-destaque-4">Pet Care - Com muito carinho</span><br>
+                                                        <span>Petshop, hotelzinho e todos os serviços para deixar seu pet a vontade e feliz.</span><br>
+                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
                                                     </div>
                                                 </a>
                                             </div>
@@ -1166,22 +1081,24 @@
                                             <div class="border-clique">
                                                 <a href="#gallery_1" role="button" data-toggle="modal">
                                                     <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/gallery_12.jpg" alt="">
+                                                        <img class="img-responsive" src="../../Images/Inicial/img/pizza.jpg" alt="">
                                                     </div>
                                                     <div class="txt-destaque-4">
-                                                        <span class="tit-destaque-4">Nutrilife</span><br>
-                                                        <span>Produtos naturais</span><br>
-                                                        <span style="color:#5ad202">Confira a oferta</span>
+                                                        <span class="tit-destaque-4">MeGusta Pizzaria</span><br>
+                                                        <span>As mais deliciosas pizza do Vale, trabalhamos com entrgas, experimente o Crep MeGusta.</span><br>
+                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
                                                     </div>
                                                 </a>
                                             </div>
                                         </li>
+
 
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <!--fim item 2-->
+                        pijiuhiu
                         <!--início item 3-->
                         <div class="item">
                             <div class="col-lg-12">
@@ -1194,12 +1111,12 @@
                                             <div class="border-clique">
                                                 <a href="#gallery_1" role="button" data-toggle="modal">
                                                     <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/gallery_10.jpg" alt="">
+                                                        <img class="img-responsive" src="../../Images/Inicial/img/jardim.jpg" alt="">
                                                     </div>
                                                     <div class="txt-destaque-4">
-                                                        <span class="tit-destaque-4">Nokia Lumia 530</span><br>
-                                                        <span> Windows Phone</span><br>
-                                                        <span style="color:red">8.1 2G/3G Câmera</span>
+                                                        <span class="tit-destaque-4">Josiel - Jardinagem</span><br>
+                                                        <span>Serviços de aparas, poda, design, projetos, nutriçao, criação, acompanhamento entre outros.</span><br>
+                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
                                                     </div>
                                                 </a>
                                             </div>
@@ -1211,12 +1128,12 @@
                                             <div class="border-clique">
                                                 <a href="#gallery_1" role="button" data-toggle="modal">
                                                     <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/gallery_11.jpg" alt="">
+                                                        <img class="img-responsive" src="../../Images/Inicial/img/seg.jpg" alt="">
                                                     </div>
                                                     <div class="txt-destaque-4">
-                                                        <span class="tit-destaque-4">Belezura de maça verdinha</span><br>
-                                                        <span>Oferta especial</span><br>
-                                                        <span style="color:#5ad202">Clique aqui</span>
+                                                        <span class="tit-destaque-4">Patrix Seguros</span><br>
+                                                        <span class="tit-destaque-8">Seguradora de Veículos, imóveis, cargas, serviços, viagens entre outros.</span><br>
+                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
                                                     </div>
                                                 </a>
                                             </div>
@@ -1228,28 +1145,30 @@
                                             <div class="border-clique">
                                                 <a href="#gallery_1" role="button" data-toggle="modal">
                                                     <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/gallery_12.jpg" alt="">
+                                                        <img class="img-responsive" src="../../Images/Inicial/img/gallery_12.jpg" alt="">
                                                     </div>
                                                     <div class="txt-destaque-4">
                                                         <span class="tit-destaque-4">Nutrilife</span><br>
-                                                        <span>Produtos naturais</span><br>
-                                                        <span style="color:#5ad202">Confira a oferta</span>
+                                                        <span>Os produtos naturais Nutrilife tentam resgatar um pouco do tempo em que, colhidos e preparados na hora.</span><br>
+                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
                                                     </div>
                                                 </a>
                                             </div>
                                         </li>
+
+
 
                                         <!--start #4 gallery-->
                                         <li class="col-lg-4 col-sm-4  col-sm-4-front">
                                             <div class="border-clique">
                                                 <a href="#gallery_1" role="button" data-toggle="modal">
                                                     <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/gallery_10.jpg" alt="">
+                                                        <img class="img-responsive" src="../../Images/Inicial/img/gallery_10.jpg" alt="">
                                                     </div>
                                                     <div class="txt-destaque-4">
                                                         <span class="tit-destaque-4">Nokia Lumia 530</span><br>
-                                                        <span> Windows Phone</span><br>
-                                                        <span style="color:red">8.1 2G/3G Câmera</span>
+                                                        <span>Windows Phone e aplicativos que vão lhe surpriender, confira mais marcas em meu hotsite.</span><br>
+                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
                                                     </div>
                                                 </a>
                                             </div>
@@ -1261,12 +1180,12 @@
                                             <div class="border-clique">
                                                 <a href="#gallery_1" role="button" data-toggle="modal">
                                                     <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/gallery_11.jpg" alt="">
+                                                        <img class="img-responsive" src="../../Images/Inicial/img/pet.jpg" alt="">
                                                     </div>
                                                     <div class="txt-destaque-4">
-                                                        <span class="tit-destaque-4">Belezura de maça verdinha</span><br>
-                                                        <span>Oferta especial</span><br>
-                                                        <span style="color:#5ad202">Clique aqui</span>
+                                                        <span class="tit-destaque-4">Pet Care - Com muito carinho</span><br>
+                                                        <span>Petshop, hotelzinho e todos os serviços para deixar seu pet a vontade e feliz.</span><br>
+                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
                                                     </div>
                                                 </a>
                                             </div>
@@ -1278,16 +1197,17 @@
                                             <div class="border-clique">
                                                 <a href="#gallery_1" role="button" data-toggle="modal">
                                                     <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="~/Images/Inicial/img/gallery_12.jpg" alt="">
+                                                        <img class="img-responsive" src="../../Images/Inicial/img/pizza.jpg" alt="">
                                                     </div>
                                                     <div class="txt-destaque-4">
-                                                        <span class="tit-destaque-4">Nutrilife</span><br>
-                                                        <span>Produtos naturais</span><br>
-                                                        <span style="color:#5ad202">Confira a oferta</span>
+                                                        <span class="tit-destaque-4">MeGusta Pizzaria</span><br>
+                                                        <span>As mais deliciosas pizza do Vale, trabalhamos com entrgas, experimente o Crep MeGusta.</span><br>
+                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
                                                     </div>
                                                 </a>
                                             </div>
                                         </li>
+
 
                                     </ul>
                                 </div>
@@ -1305,6 +1225,7 @@
                         <span class="icon-next"></span>
                     </a>
 
+
                 </header>
 
 
@@ -1316,8 +1237,12 @@
         </div>
 
         <div class="container mt40">
-            <div class="container">
-                <h2 class="heading3">Social</h2>
+            <div class="container" style="padding:0px!important">
+
+
+                <div class="separa">Social</div>
+
+
                 <div class="mt40" id="social">
                     <ul class="row clearfix">
                         <li class="col-md-3 col-sm-3">
@@ -1327,44 +1252,31 @@
                                     <li class="tweet_first tweet_odd">
                                         <a class="tweet_avatar" href="http://twitter.com/twitter">
                                             <img src="http://pbs.twimg.com/profile_images/2284174758/v65oai7fxn47qv9nectx_normal.png" height="32" width="32" alt="twitter's avatar" title="twitter's avatar" border="0">
-                                        </a>
-                                        <span class="tweet_time">
-                                            <a href="http://twitter.com/twitter/status/519540931461005312" title="view tweet on twitter">about 3 days ago</a>
-                                        </span>
-                                        <span class="tweet_join"></span>
-                                        <span class="tweet_text">
-                                            Today we're taking legal action to provide more
-                                            <a href="http://search.twitter.com/search?q=&amp;tag=transparency&amp;lang=all" class="tweet_hashtag">#transparency</a> to our users about requests from the US government.
-                                            <a href="https://blog.twitter.com/2014/taking-the-fight-for-transparency-to-court">blog.twitter.com/2014/taking-th…</a>
-                                        </span>
+                                        </a><span class="tweet_time"><a href="http://twitter.com/twitter/status/519540931461005312" title="view tweet on twitter">about 3 days ago</a></span> <span class="tweet_join"></span> <span class="tweet_text">Today we're taking legal action to provide more <a href="http://search.twitter.com/search?q=&amp;tag=transparency&amp;lang=all" class="tweet_hashtag">#transparency</a> to our users about requests from the US government. <a href="https://blog.twitter.com/2014/taking-the-fight-for-transparency-to-court">blog.twitter.com/2014/taking-th…</a></span>
                                     </li>
-                                    <li class="tweet_even">
-                                        <a class="tweet_avatar" href="http://twitter.com/twitter">
-                                            <img src="http://pbs.twimg.com/profile_images/2284174758/v65oai7fxn47qv9nectx_normal.png" height="32" width="32" alt="twitter's avatar" title="twitter's avatar" border="0">
-                                        </a><span class="tweet_time"><a href="http://twitter.com/twitter/status/517712695496155136" title="view tweet on twitter">about 9 days ago</a></span> <span class="tweet_join"></span> <span class="tweet_text">Now it's easier to enjoy photos on Twitter for Mac. Share pics in messages, view/post up to 4 pics in Tweets: <a href="https://itunes.apple.com/us/app/twitter/id409789998?mt=12">itunes.apple.com/us/app/twitter…</a></span>
-                                    </li>
+                                    <li class="tweet_even"><a class="tweet_avatar" href="http://twitter.com/twitter"><img src="http://pbs.twimg.com/profile_images/2284174758/v65oai7fxn47qv9nectx_normal.png" height="32" width="32" alt="twitter's avatar" title="twitter's avatar" border="0"></a><span class="tweet_time"><a href="http://twitter.com/twitter/status/517712695496155136" title="view tweet on twitter">about 9 days ago</a></span> <span class="tweet_join"></span> <span class="tweet_text">Now it's easier to enjoy photos on Twitter for Mac. Share pics in messages, view/post up to 4 pics in Tweets: <a href="https://itunes.apple.com/us/app/twitter/id409789998?mt=12">itunes.apple.com/us/app/twitter…</a></span></li>
                                 </ul>
                             </div>
                         </li>
                         <li class="col-md-3 col-sm-3 mt40column">
                             <h5 class="heading5">Flickr</h5>
                             <div class="social-feed flickr-feed">
-                                <img src="~/Images/Inicial/img/photo1.jpg" alt="" title="">
-                                <img src="~/Images/Inicial/img/photo2.jpg" alt="" title="">
-                                <img src="~/Images/Inicial/img/photo3.jpg" alt="" title="">
-                                <img src="~/Images/Inicial/img/photo4.jpg" alt="" title="">
-                                <img src="~/Images/Inicial/img/photo4.jpg" alt="" title="">
-                                <img src="~/Images/Inicial/img/photo2.jpg" alt="" title="">
-                                <img src="~/Images/Inicial/img/photo1.jpg" alt="" title="">
-                                <img src="~/Images/Inicial/img/photo3.jpg" alt="" title="">
-                                <img src="~/Images/Inicial/img/photo1.jpg" alt="" title="">
-                                <img src="~/Images/Inicial/img/photo2.jpg" alt="" title="">
-                                <img src="~/Images/Inicial/img/photo3.jpg" alt="" title="">
-                                <img src="~/Images/Inicial/img/photo4.jpg" alt="" title="">
-                                <img src="~/Images/Inicial/img/photo2.jpg" alt="" title="">
-                                <img src="~/Images/Inicial/img/photo4.jpg" alt="" title="">
-                                <img src="~/Images/Inicial/img/photo3.jpg" alt="" title="">
-                                <img src="~/Images/Inicial/img/photo1.jpg" alt="" title="">
+                                <img src="../../Images/Inicial/img/photo1.jpg" alt="" title="">
+                                <img src="../../Images/Inicial/img/photo2.jpg" alt="" title="">
+                                <img src="../../Images/Inicial/img/photo3.jpg" alt="" title="">
+                                <img src="../../Images/Inicial/img/photo4.jpg" alt="" title="">
+                                <img src="../../Images/Inicial/img/photo4.jpg" alt="" title="">
+                                <img src="../../Images/Inicial/img/photo2.jpg" alt="" title="">
+                                <img src="../../Images/Inicial/img/photo1.jpg" alt="" title="">
+                                <img src="../../Images/Inicial/img/photo3.jpg" alt="" title="">
+                                <img src="../../Images/Inicial/img/photo1.jpg" alt="" title="">
+                                <img src="../../Images/Inicial/img/photo2.jpg" alt="" title="">
+                                <img src="../../Images/Inicial/img/photo3.jpg" alt="" title="">
+                                <img src="../../Images/Inicial/img/photo4.jpg" alt="" title="">
+                                <img src="../../Images/Inicial/img/photo2.jpg" alt="" title="">
+                                <img src="../../Images/Inicial/img/photo4.jpg" alt="" title="">
+                                <img src="../../Images/Inicial/img/photo3.jpg" alt="" title="">
+                                <img src="../../Images/Inicial/img/photo1.jpg" alt="" title="">
                                 <ul class="flickr-list"></ul>
                             </div>
                         </li>
@@ -1430,12 +1342,12 @@
                 <div class="container">
                     <div class="row">
                         <ul class="quicklinks">
-                            <li> <a class="active home" href="index.html">A empresa</a> </li>
-                            <li> <a class="" href="listing.html">Ganhe dinheiro clicando</a> </li>
-                            <li> <a class="" href="detail.html">anuncie</a> </li>
-                            <li> <a class="" href="login.html">oportunidade de negócio</a> </li>
-                            <li> <a class="" href="register.html">contato</a> </li>
-                            <li> <a class="" href="account.html">Faq</a> </li>
+                            <li> <a class="active home" href="/Inicial/Index">A empresa</a> </li>
+                            <li> <a class="" href="#">Ganhe dinheiro clicando</a> </li>
+                            <li> <a class="" href="#">anuncie</a> </li>
+                            <li> <a class="" href="#">oportunidade de negócio</a> </li>
+                            <li> <a class="" href="#">contato</a> </li>
+                            <li> <a class="" href="#">Faq</a> </li>
                         </ul>
                     </div>
                 </div>
@@ -1473,7 +1385,6 @@
     <!-- Social -->
     <script type="text/javascript" src="~/Scripts/Inicial/js/socialstream.jquery.js"></script>
     <!-- Jquery Map -->
-    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
     <script type="text/javascript" src="~/Scripts/Inicial/js/jquery.gmap.js"></script>
     <!-- Sparkline -->
     <script type="text/javascript" src="~/Scripts/Inicial/js/jquery.sparkline.min.js"></script>

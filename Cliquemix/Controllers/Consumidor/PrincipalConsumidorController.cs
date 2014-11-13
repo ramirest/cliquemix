@@ -22,12 +22,17 @@ namespace Cliquemix.Controllers.Consumidor
             ViewBag.QtdeAnunPontosAdquiridos = ProcFunc.RetornarQtdePontosAdquiridosDashboardAnunciante(cdUsu);
             return View();
         }
-
-
+        
 
         // Página principal do site, onde serão exibidos os anúncios para pontuação
         // GET: /PrincipalConsumidor/
         public ActionResult PrincipalAnuncios()
+        {
+            return View();
+        }
+
+
+        public ActionResult DetalhesAnuncio()
         {
             return View();
         }

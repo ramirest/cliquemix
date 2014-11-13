@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+  <transacao>criartransacao</transacao>
+  <sid>2448c877c0cdf482418a344aabeecb24</sid>
+  <codigoafiliacao>1006993069</codigoafiliacao>
+  <chave>25fbb99741c739dd84d7b06ec78c9bac718838630f30b112d033ce2e621b34f3</chave>
+  <credor>Renato Montanha</credor>
+  <valor>1800.00</valor>
+  <datavencimento>2014-09-30</datavencimento>
+  <descricao>Pacote de Crédito 001</descricao>
+  <cpf>578.112.087-41</cpf>
+  <cep>35160000</cep>
+  <cidade>Ipatinga</cidade>
+  <estado>MG</estado>
+  <bairro>Bethânia</bairro>
+  <endereco>Avenida Selim José de Sales</endereco>
+  <numero>1500</numero>
+  <complemento>Casa</complemento>
+  <nmaximoparcelas>5</nmaximoparcelas>
+  <campolivre>campo de texto livre</campolivre>
+  <urlretornoloja>http://localhost:35543/</urlretornoloja>
+</xml>

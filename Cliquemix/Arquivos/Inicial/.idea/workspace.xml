@@ -355,7 +355,7 @@
         <state line="8" column="240" selection-start="460" selection-end="460" vertical-scroll-proportion="0.21283256" vertical-offset="0" max-vertical-offset="639" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/font-awesome.css">
+    <entry file="file://$PROJECT_DIR$/fonts/icons/font-awesome/css/font-awesome.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-18.276995" vertical-offset="11679" max-vertical-offset="28526" />
       </provider>
@@ -370,7 +370,7 @@
         <state line="18" column="21184" selection-start="21991" selection-end="21991" vertical-scroll-proportion="0.47887325" vertical-offset="0" max-vertical-offset="639" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/font-awesome.min.css">
+    <entry file="file://$PROJECT_DIR$/fonts/icons/font-awesome/css/font-awesome.min.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="486" selection-start="648" selection-end="648" vertical-scroll-proportion="0.07981221" vertical-offset="0" max-vertical-offset="639" />
       </provider>

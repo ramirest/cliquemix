@@ -134,15 +134,15 @@ textarea:focus, input:focus, a:focus, *:focus {
 /* ==== Intro ==== */
 
 #slide_1 {
-	background: #852b99 url(../img/slide_1.jpg) fixed no-repeat;
+	background: #852b99 url(../../Images/Inicial/img/slide_1.jpg) fixed no-repeat;
 }
 
 #slide_2 {
-	background: #852b99 url(../img/slide_2.jpg) fixed no-repeat;
+	background: #852b99 url(../../Images/Inicial/img/slide_2.jpg) fixed no-repeat;
 }
 
 #slide_3 {
-	background: #852b99 url(../img/slide_3.jpg) fixed no-repeat;
+	background: #852b99 url(../../Images/Inicial/img/slide_3.jpg) fixed no-repeat;
 }
 
 @media (min-width: 1920px) {
@@ -331,12 +331,12 @@ textarea:focus, input:focus, a:focus, *:focus {
 /* ==== Header backgrounds ==== */
 
 #first-header {
-	background: #852b99 url(../img/headers/first.jpg) center top no-repeat;
+	background: #852b99 url(../../Images/Inicial/img/headers/first.jpg) center top no-repeat;
 	margin-top: 90px;
 }
 
 #third-header {
-	background: #852b99 url(../img/headers/third.jpg) center top no-repeat;
+	background: #852b99 url(../../Images/Inicial/img/headers/third.jpg) center top no-repeat;
 	margin-top: 90px;
 }
 
@@ -826,7 +826,7 @@ form .btn {
 
 .navbar {
 	background: #fff;
-    background-image: url(../img/fundo2.png);
+    background-image: url(../../Images/Inicial/img/fundo2.png);
     background-repeat: repeat;
 }
 
@@ -950,7 +950,7 @@ form .btn {
 	text-align: center !important;
 }
 .logocliquemix {
-    background-image: url(../img/logocliquemix.png);
+    background-image: url(../../Images/Inicial/img/logocliquemix.png);
     width:201px;
     height: 42px;
 }
@@ -1191,7 +1191,7 @@ form .btn {
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	background-image: url(../img/preload.gif);
+	background-image: url(../../Images/Inicial/img/preload.gif);
 	background-repeat: no-repeat;
 	background-position: center;
 	margin: -100px 0 0 -100px;
@@ -1848,7 +1848,7 @@ form .btn {
 
 
 .logocliquemix {
-    background-image: url(../img/logocliquemix.png);
+    background-image: url(../../Images/Inicial/img/logocliquemix.png);
     width:201px;
     height: 42px;
 }

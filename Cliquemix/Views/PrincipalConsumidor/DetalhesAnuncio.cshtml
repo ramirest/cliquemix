@@ -1,0 +1,339 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>site clique</title>
+
+    <!-- Bootstrap -->
+    <link href="~/Content/hot/bootstrap.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="~/Content/hot/clique.css">
+    <link rel="stylesheet" href="~/Content/hot/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="~/Content/hot/owl-carousel/owl.theme.css">
+    <link rel="stylesheet" href="~/Content/hot/slider.css">
+    <link rel="stylesheet" href="~/Content/hot/jquery.ferro.ferroMenu.css">
+    <link rel="icon" href="favicon.ico">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="~/Scripts/hot/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+    <script src="~/Content/hot/owl-carousel/owl.carousel.js"></script>
+    <script src="~/Scripts/hot/bootstrap.min.js"></script>
+
+
+
+
+
+    <script src="~/Scripts/hot/base.js"></script>
+
+    <!------------------------------
+    Não vale a pena colocar o script abaixo em um arquivo externo, porque a rolagem fica lenta.
+    ------------------------------->
+    <script type="text/javascript">
+$(document).ready(function(e) {
+ $("nav a").click(function (event) {
+    event.preventDefault();
+    var destino = 0;
+    if ($(this.hash).offset().top > $(document).height() - $(window).height()) {
+        destino = $(document).height() - $(window).height();
+    } else {
+        destino = $(this.hash).offset().top-120;
+    }
+    $('html,body').animate({
+        scrollTop: destino
+    }, 1000, 'swing');
+});
+});
+
+    </script>
+
+    <!-- javascript do contador   -->
+    <script language="javascript">
+        var max_time = 30;
+        var cinterval;
+
+        function countdown_timer(){
+            // decrease timer
+            max_time--;
+            document.getElementById('countdown').innerHTML = max_time;
+            if(max_time == 0){
+                clearInterval(cinterval);
+            }
+        }
+        // 1,000 means 1 second.
+        cinterval = setInterval('countdown_timer()', 500); // 500, sao 30 segundos, 1000, um minuto
+    </script>
+
+
+    <!-- javascript da barra    -->
+    <script type="text/javascript">
+        var progresso = new Number();
+        var maximo = new Number();
+
+        var progresso = 0;
+        var maximo = 30;
+
+        function start (){
+            if((progresso + 1) <= maximo) {
+                progresso++;
+
+                document.getElementById("pg").value = progresso;
+                setTimeout("start()", 500);   /* 500, sao 30 segundos, 1000, um minuto */
+            }
+        }
+    </script>
+</head>
+
+<style>
+    progress {
+        background-color: #fff;
+        border: 0;
+        height: 18px;
+        border-radius: 9px;
+    }
+</style>
+
+
+<body onload="start();">
+    <div class="navbar-fixed-top" id="barra-topo">
+        <div class="container max-width">
+            <div class="row">
+
+
+                <div class="col-md-12">
+
+                    <!---------------------------------
+                    Abaixo esta apenas a marcação de espaço para a barra superior, onde ficara um banner na direita e a barra de conategm a esquerda
+                    atualmente estão sendo usadas apenas  duas imagens
+
+                    ---------------------------------->
+
+                    <div class="col-md-1"> <a href="http://www.mixclique.com.br/mix/index.html">  <img style=" padding-top:15px;" src="~/Images/hot/topo-fixo-e.PNG">  </a> </div>
+                    <div class="col-md-4" style=" padding-top:17px;">
+                        <progress id="pg" max="30"></progress>
+
+                        <br />
+                        <p class="barra1">Processando o seus pontos em:<span id="countdown" style="margin-left: 10px">30</span></p>
+                    </div>
+
+
+
+                    <div class="col-md-7"><img style="padding-top:10px;" src="~/Images/hot/topo-fixo-d.PNG"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!------------------------------------------------------------------------------------------------------------------------------->
+
+    <div class="container max-width ">
+        <!---------------------------////////////////////////////////////////////////--------------------------------------------------->
+
+        <div style="  background-color:#fff;z-index:9600;  margin-top:-10px;  padding-top:5px;" class="row clearfix fixar">
+            <div class="col-md-12 column">
+                <div class="row clearfix">
+                    <div class="col-md-2 column  "> <a href="#"><img class="visible-lg  " src="~/Images/hot/logo.PNG" title="#" alt="#"></a> </div>
+                    <div class="col-md-10 column">
+                        <nav class="navbar navbar-default" role="navigation">
+                            <a class="pull-left" href="#"><img style="padding:5px;" class=" visible-xs visible-sm visible-md img-responsive " src="~/Images/hot/logo.PNG" title="#" alt="#"></a>
+                            <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                        <span class="sr-only">Toggle navigation</span> 
+                                        <span class="icon-bar"></span> 
+                                        <span class="icon-bar"></span> 
+                                        <span class="icon-bar"></span> 
+                                    </button>
+                                </div>
+                                <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+                                    <ul class="nav navbar-nav pull-right right-0">
+                                        <li class="menuItem"><a href="#principal">001 Principal</a></li>
+                                        <li class="menuItem"><a href="#descricao">002 Descrição</a></li>
+                                        <li class="menuItem"><a href="#gal">003 Galeria</a></li>
+                                        <li class="menuItem"><a href="#comentarios">004 Comentários</a></li>
+                                        <li class="menuItem"><a href="#contato">005 Contato</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix bottom-60"></div>
+
+        <!---------------------------////////////////////////////////////////////////--------------------------------------------------->
+
+    </div>
+    <div class="container max-width">
+        <div class="row clearfix">
+            <div id="principal" class="col-md-12 column">
+                <div id="owl-demo" class="owl-carousel owl-theme">
+                    <div class="item"><img src="~/Images/hot/upload/Chrysanthemum.jpg" alt="The Last of us"></div>
+                    <div class="item"><img src="~/Images/hot/upload/Desert.jpg" alt="GTA V"></div>
+                    <div class="item"><img src="~/Images/hot/upload/Lighthouse.jpg" alt="Mirror Edge"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div id="descricao" class="col-md-12 column">
+                <div class="row clearfix">
+                    <div class="col-md-9 column">
+                        <h2 class="topo-texto-h2">Descrição</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna lorem, egestas eget libero eu, maximus luctus justo. Curabitur ipsum purus, luctus vitae dolor sollicitudin, congue gravida lectus. Ut dignissim urna lorem, blandit facilisis quam cursus vitae. Vivamus sollicitudin, est iaculis iaculis cursus, augue ante venenatis diam, iaculis finibus lorem risus sed lectus. Etiam porta egestas quam laoreet rhoncus. Sed eget dui tempor, varius velit ac, scelerisque magna. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla turpis risus, pretium ut purus vel, congue commodo libero.</p>
+                        <ul>
+                            <li>Lorem ipsum dolor sit amet, consectetur</li>
+                            <li>Morbi urna lorem, egestas eget libero</li>
+                            <li>iaculis finibus lorem risus sed lectus</li>
+                            <li>Vestibulum ante ipsum primis in faucibus orci luctus</li>
+                            <li>congue commodo libero.</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 column">
+
+                        <!-------
+
+                        As imagens abaixo precisam ser refeitas, estão com a qualidade baixa, é preciso pedir imagens com qualidade superior
+
+                        --------->
+                        <h2 class="topo-texto-h2">Social</h2>
+                        <a href="#"><img style="width:100%" ; class="img-responsive" src="~/Images/hot/btn-face.PNG" alt="#" title="#"></a>
+                        <a href="#"><img style="width:100%" ; class="img-responsive" src="~/Images/hot/btn-insta.PNG" alt="#" title="#"></a>
+                        <a href="#"><img style="width:100%" ; class="img-responsive" src="~/Images/hot/btn-twitter.PNG" alt="#" title="#"></a>
+                        <a href="#"><img style="width:100%" ; class="img-responsive" src="~/Images/hot/ptn-pagina.PNG" alt="#" title="#"></a>
+                        <a href="#"><img style="width:100%" ; class="img-responsive" src="~/Images/hot/btn-skype.PNG" alt="#" title="#"></a>
+                        <a href="#"><img style="width:100%" ; class="img-responsive" src="~/Images/hot/btn-email.PNG" alt="#" title="#"></a>
+                        <a href="#"><img style="width:100%" ; class="img-responsive" src="~/Images/hot/btn-tel.PNG" alt="#" title="#"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!---------------------------////////////////////////////////////////////////--------------------------------------------------->
+        <div class="row clearfix">
+            <div id="gal" class="col-md-12 column">
+                <div class="row clearfix">
+                    <div class="col-md-9 column">
+                        <h2 class="topo-texto-h2">Galeria</h2>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div id="galeria">
+                                    <div class="item2">
+                                        <img src="~/Images/hot/upload/Chrysanthemum.jpg" alt="The Last of us">
+                                        <p>Vestibulum ante ipsum</p>
+                                    </div>
+                                    <div class="item2">
+                                        <img src="~/Images/hot/upload/Desert.jpg" alt="GTA V">
+                                        <p>Vestibulum ante ipsum</p>
+                                    </div>
+                                    <div class="item2">
+                                        <img src="~/Images/hot/upload/Lighthouse.jpg" alt="Mirror Edge">
+                                        <p>Vestibulum ante ipsum</p>
+                                    </div>
+                                    <div class="item2">
+                                        <img src="~/Images/hot/upload/Desert.jpg" alt="GTA V">
+                                        <p>Vestibulum ante ipsum</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="video-container">
+                                    <iframe width="640" height="350" src="http://www.youtube.com/embed/1yup_0047F8" frameborder="0" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 column">
+                        <div class="row">
+                            <div class="col-md-12 column">
+                                <h2 class="topo-texto-h2">Endereço</h2>
+                                <address>
+                                    <strong>nome da empresa</strong><br>
+                                    Av: 28 de abril , n 32<br>
+                                    ipatinga, MG<br>
+                                    <abbr title="Telefone">P:</abbr> (31) 0000 0000
+                                </address>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 column">
+                                <h2 class="topo-texto-h2">Pagamento</h2>
+                                <div class="btns"><img src="~/Images/hot/paypal.png" title="#" alt="#"></div>
+                                <div class="btns"><img src="~/Images/hot/visa.png" title="#" alt="#"></div>
+                                <div class="btns"><img src="~/Images/hot/master.png" title="#" alt="#"></div>
+                                <div class="btns"><img src="~/Images/hot/visa.png" title="#" alt="#"></div>
+                                <div class="btns"><img src="~/Images/hot/paypal.png" title="#" alt="#"></div>
+                                <div class="btns"><img src="~/Images/hot/paypal.png" title="#" alt="#"></div>
+                                <div class="btns"><img src="~/Images/hot/visa.png" title="#" alt="#"></div>
+                                <div class="btns"><img src="~/Images/hot/master.png" title="#" alt="#"></div>
+                                <div class="btns"><img src="~/Images/hot/visa.png" title="#" alt="#"></div>
+                                <div class="btns"><img src="~/Images/hot/paypal.png" title="#" alt="#"></div>
+                                <div class="btns"><img src="~/Images/hot/visa.png" title="#" alt="#"></div>
+                                <div class="btns"><img src="~/Images/hot/paypal.png" title="#" alt="#"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!---------------------------////////////////////////////////////////////////--------------------------------------------------->
+        <div class="row clearfix">
+            <div id="comentarios" class="col-md-9 column">
+                <h2 class="topo-texto-h2">Comentários</h2>
+                <img class="img-responsive" src="~/Images/hot/comentarios.png">
+            </div>
+        </div>
+
+        <!---------------------------////////////////////////////////////////////////--------------------------------------------------->
+        <div class="row clearfix">
+            <div id="contato" class="col-md-9 column">
+                <h2 class="topo-texto-h2">Contato</h2>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <form class="formulario" name="form" id="form" method="post" enctype="multipart/form-data" action="#">
+                            <input class="form-control" type="text" name="nome" id="nome" placeholder="Nome" required>
+                            <input class="form-control" type="mail" name="email" id="email" placeholder="Email" required>
+                            <input class="form-control" type="text" name="telefone" id="telefone" placeholder="Telefone" required>
+                            <textarea name="mensagem" id="mensagem" class="form-control" role="6" style="resize:none"></textarea>
+                            <input type="submit" name="enviar" id="enviar" value="Enviar">
+                        </form>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="video-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3761.6876789765074!2d-42.531423999999994!3d-19.469027999999998!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb00037978597b3%3A0x230e1202f6258bb7!2sIpatinga+M%C3%B3veis!5e0!3m2!1spt-BR!2sbr!4v1409161534937" width="400" height="650" frameborder="0" style="border:0"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--------------------
+
+        A configuração do footer esta básica porque no layout não foi especificado nada relacionado ao mesmo,
+        apenas esta com texto alinhado ao centro
+
+        ---------------------->
+        <div class="col-md-12 footer"></div>
+
+        <!---------------------------////////////////////////////////////////////////----------------------------->
+    </div>
+
+    <!-------------------------------------------------------------------------------------------------------------------------------->
+</body>
+</html>

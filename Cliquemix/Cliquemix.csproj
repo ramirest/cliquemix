@@ -578,7 +578,11 @@
     <Content Include="Arquivos\Inicial\.idea\modules.xml" />
     <Content Include="Arquivos\Inicial\.idea\scopes\scope_settings.xml" />
     <Content Include="Arquivos\Inicial\.idea\vcs.xml" />
-    <Content Include="Arquivos\Inicial\.idea\workspace.xml" />
+    <Content Include="Arquivos\Inicial\.idea\workspace.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="bin\MySql.Data.dll" />
+    <Content Include="bin\MySql.Web.dll" />
     <Content Include="Content\css-master-slider\default\light-skin-1-retina.png" />
     <Content Include="Content\css-master-slider\default\light-skin-1.png" />
     <Content Include="Content\css-master-slider\default\style.css" />
@@ -599,6 +603,18 @@
     <Content Include="Content\css-master-slider\video-close-btn.png" />
     <Content Include="Content\demo.css" />
     <Content Include="Content\edicoes.css" />
+    <Content Include="Content\hot\bootstrap.min.css" />
+    <Content Include="Content\hot\clique.css" />
+    <Content Include="Content\hot\custom.css" />
+    <Content Include="Content\hot\drawer.css" />
+    <Content Include="Content\hot\drawer.min.css" />
+    <Content Include="Content\hot\jquery.ferro.ferroMenu.css" />
+    <Content Include="Content\hot\jquery.snippet.min.css" />
+    <Content Include="Content\hot\responsive.css" />
+    <Content Include="Content\hot\responsiveslides.css" />
+    <Content Include="Content\hot\slider.css" />
+    <Content Include="Content\hot\style.css" />
+    <Content Include="Content\hot\yamm.css" />
     <Content Include="Content\Inicial\css\bootstrap.min.css" />
     <Content Include="Content\Inicial\css\color1.css" />
     <Content Include="Content\Inicial\css\color10.css" />
@@ -735,6 +751,13 @@
     <Content Include="Content\plugins\messenger\messenger-theme-flat.css" />
     <Content Include="Content\plugins\messenger\messenger.css" />
     <Content Include="Content\plugins\morris\morris.css" />
+    <Content Include="Content\hot\owl-carousel\AjaxLoader.gif" />
+    <Content Include="Content\hot\owl-carousel\grabbing.png" />
+    <Content Include="Content\hot\owl-carousel\owl.carousel.css" />
+    <Content Include="Content\hot\owl-carousel\owl.carousel.js" />
+    <Content Include="Content\hot\owl-carousel\owl.carousel.min.js" />
+    <Content Include="Content\hot\owl-carousel\owl.theme.css" />
+    <Content Include="Content\hot\owl-carousel\owl.transitions.css" />
     <Content Include="Content\plugins\pace\pace.css" />
     <Content Include="Content\plugins\pirobox\ajax-loader.gif" />
     <Content Include="Content\plugins\pirobox\close_t.gif" />
@@ -753,6 +776,7 @@
     <Content Include="Content\style.css" />
     <Content Include="Content\timeline.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\hot\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\icons\font-awesome\css\font-awesome.css" />
     <Content Include="fonts\icons\font-awesome\css\font-awesome.min.css" />
     <Content Include="fonts\icons\font-awesome\fonts\fontawesome-webfont.svg" />
@@ -834,7 +858,7 @@
     <Content Include="fonts\img\widget-bg-evening.jpg" />
     <Content Include="fonts\img\widget-bg-midnight.jpg" />
     <Content Include="fonts\img\widget-bg-morning.jpg" />
-    <Content Include="fonts\Inicial\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Inicial\fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\Outros\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Images\anuncios\customer_1.png" />
@@ -879,6 +903,37 @@
     <Content Include="Images\anuncios\slide_3.jpg" />
     <Content Include="Images\anuncios\works_1.jpg" />
     <Content Include="Images\anuncios\works_2.jpg" />
+    <Content Include="Images\hot\AjaxLoader.gif" />
+    <Content Include="Images\hot\btn-email.PNG" />
+    <Content Include="Images\hot\btn-face.PNG" />
+    <Content Include="Images\hot\btn-insta.PNG" />
+    <Content Include="Images\hot\btn-skype.PNG" />
+    <Content Include="Images\hot\btn-tel.PNG" />
+    <Content Include="Images\hot\btn-twitter.PNG" />
+    <Content Include="Images\hot\comentarios.jpg" />
+    <Content Include="Images\hot\comentarios.png" />
+    <Content Include="Images\hot\glyphicons-halflings-green.png" />
+    <Content Include="Images\hot\glyphicons-halflings-white.png" />
+    <Content Include="Images\hot\glyphicons-halflings.png" />
+    <Content Include="Images\hot\logo.PNG" />
+    <Content Include="Images\hot\master.png" />
+    <Content Include="Images\hot\mix-clique.png" />
+    <Content Include="Images\hot\naveg-maior.PNG" />
+    <Content Include="Images\hot\naveg-menor.PNG" />
+    <Content Include="Images\hot\next.png" />
+    <Content Include="Images\hot\paginacao.png" />
+    <Content Include="Images\hot\paypal.png" />
+    <Content Include="Images\hot\prev.png" />
+    <Content Include="Images\hot\ptn-pagina.PNG" />
+    <Content Include="Images\hot\topo-fixo-d.PNG" />
+    <Content Include="Images\hot\topo-fixo-e.PNG" />
+    <Content Include="Images\hot\upload\Chrysanthemum.jpg" />
+    <Content Include="Images\hot\upload\Desert.jpg" />
+    <Content Include="Images\hot\upload\img\Chrysanthemum.jpg" />
+    <Content Include="Images\hot\upload\img\Desert.jpg" />
+    <Content Include="Images\hot\upload\img\Hydrangeas.jpg" />
+    <Content Include="Images\hot\upload\Lighthouse.jpg" />
+    <Content Include="Images\hot\visa.png" />
     <Content Include="Images\Inicial\img\2 %281%29.jpg" />
     <Content Include="Images\Inicial\img\2 %2810%29.jpg" />
     <Content Include="Images\Inicial\img\2 %2811%29.jpg" />
@@ -919,9 +974,11 @@
     <Content Include="Images\Inicial\img\gallery_8.jpg" />
     <Content Include="Images\Inicial\img\gallery_9.jpg" />
     <Content Include="Images\Inicial\img\google_white2.png" />
+    <Content Include="Images\Inicial\img\h2_bg.png" />
     <Content Include="Images\Inicial\img\health.png" />
     <Content Include="Images\Inicial\img\hobbies.png" />
     <Content Include="Images\Inicial\img\imgs8.png" />
+    <Content Include="Images\Inicial\img\jardim.jpg" />
     <Content Include="Images\Inicial\img\job.png" />
     <Content Include="Images\Inicial\img\list1.jpg" />
     <Content Include="Images\Inicial\img\list2.jpg" />
@@ -933,16 +990,22 @@
     <Content Include="Images\Inicial\img\mapcnt3.png" />
     <Content Include="Images\Inicial\img\movies.png" />
     <Content Include="Images\Inicial\img\openhand_8_8.cur" />
+    <Content Include="Images\Inicial\img\paginacao.png" />
     <Content Include="Images\Inicial\img\personal.png" />
+    <Content Include="Images\Inicial\img\pes.png" />
+    <Content Include="Images\Inicial\img\pet.jpg" />
     <Content Include="Images\Inicial\img\photo1.jpg" />
     <Content Include="Images\Inicial\img\photo2.jpg" />
     <Content Include="Images\Inicial\img\photo3.jpg" />
     <Content Include="Images\Inicial\img\photo4.jpg" />
+    <Content Include="Images\Inicial\img\pizza.jpg" />
     <Content Include="Images\Inicial\img\pricetag.png" />
     <Content Include="Images\Inicial\img\product1.jpg" />
     <Content Include="Images\Inicial\img\product2.jpg" />
     <Content Include="Images\Inicial\img\product3.jpg" />
     <Content Include="Images\Inicial\img\reasestate.png" />
+    <Content Include="Images\Inicial\img\resta.jpg" />
+    <Content Include="Images\Inicial\img\seg.jpg" />
     <Content Include="Images\Inicial\img\slide1.jpg" />
     <Content Include="Images\Inicial\img\slide2.jpg" />
     <Content Include="Images\Inicial\img\sprial.png" />
@@ -1022,6 +1085,23 @@
     <Content Include="Scripts\demo\wysiwyg-demo.js" />
     <Content Include="Scripts\flex.js" />
     <Content Include="Scripts\holder.js" />
+    <Content Include="Scripts\hot\application.js" />
+    <Content Include="Scripts\hot\base.js" />
+    <Content Include="Scripts\hot\bootstrap.min.js" />
+    <Content Include="Scripts\hot\cycle.js" />
+    <Content Include="Scripts\hot\google-code-prettify\prettify.css" />
+    <Content Include="Scripts\hot\google-code-prettify\prettify.js" />
+    <Content Include="Scripts\hot\google-code-prettify\run_prettify.js" />
+    <Content Include="Scripts\hot\holder.js" />
+    <Content Include="Scripts\hot\jquery.drawer.js" />
+    <Content Include="Scripts\hot\jquery.drawer.min.js" />
+    <Content Include="Scripts\hot\jquery.ferro.ferroMenu-1.2.3.min.js" />
+    <Content Include="Scripts\hot\jquery.js" />
+    <Content Include="Scripts\hot\jquery.snippet.min.js" />
+    <Content Include="Scripts\hot\responsiveslides.min.js" />
+    <Content Include="Scripts\hot\stickUp.js" />
+    <Content Include="Scripts\hot\stickUp.min.js" />
+    <Content Include="Scripts\hot\unslider.min.js" />
     <Content Include="Scripts\html5shiv.js" />
     <Content Include="Scripts\Inicial\js\bootstrap.min.js" />
     <Content Include="Scripts\Inicial\js\custom.js" />
@@ -1126,19 +1206,25 @@
       <DependentUpon>Cliquemix.edmx</DependentUpon>
       <LastGenOutput>Cliquemix.cs</LastGenOutput>
     </Content>
-    <Content Include="fonts\Inicial\fonts\fontawesome-webfont.eot" />
-    <Content Include="fonts\Inicial\fonts\fontawesome-webfont.ttf" />
-    <Content Include="fonts\Inicial\fonts\fontawesome-webfont.woff" />
-    <Content Include="fonts\Inicial\fonts\FontAwesome.otf" />
+    <Content Include="Content\Inicial\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\Inicial\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\Inicial\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\Inicial\fonts\FontAwesome.otf" />
     <Content Include="Arquivos\Inicial\.idea\.name" />
     <Content Include="Arquivos\Inicial\.idea\em produção.iml" />
     <Content Include="Arquivos\Inicial\doc\Apresentação MixClique.pdf" />
     <Content Include="Arquivos\Inicial\doc\contrato.pdf" />
     <Content Include="Arquivos\Inicial\doc\privacidade.pdf" />
     <Content Include="Arquivos\Inicial\doc\tabela.pdf" />
+    <Content Include="Content\hot\drawer.css.map" />
+    <Content Include="fonts\hot\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\hot\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\hot\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\hot\Yesteryear-Regular.eot" />
+    <Content Include="fonts\hot\Yesteryear-Regular.ttf" />
     <None Include="Properties\PublishProfiles\Mix-Clique.pubxml" />
-    <Content Include="Scripts\Inicial\js\js" />
-    <Content Include="Scripts\Inicial\js\rest" />
+    <Content Include="Scripts\Inicial\js\js.js" />
+    <Content Include="Scripts\Inicial\js\rest.js" />
     <None Include="Properties\PublishProfiles\MixClique.pubxml" />
     <None Include="Scripts\Outros\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\Outros\jquery-2.1.1.js" />
@@ -1239,6 +1325,7 @@
     <None Include="Views\Inicial\curriculo.cshtml" />
     <None Include="Views\Inicial\faq.cshtml" />
     <Content Include="Views\Inicial\favicon.ico" />
+    <Content Include="Views\Inicial\Index.cshtml" />
     <None Include="Views\Inicial\interna.cshtml" />
     <None Include="Views\Inicial\quem_somos.cshtml" />
     <Content Include="Views\Inicial\Register.cshtml" />
@@ -1251,7 +1338,7 @@
     <Content Include="Views\_Inicial\favicon.ico" />
     <Content Include="Views\_Inicial\thumbnail.png" />
     <Content Include="Views\PrincipalConsumidor\favicon.ico" />
-    <Content Include="Views\PrincipalConsumidor\index.html" />
+    <None Include="Views\PrincipalConsumidor\DetalhesAnuncio.cshtml" />
     <Content Include="Views\Shared\favicon.ico" />
     <Content Include="Views\Teste\Transacao.xml" />
     <Content Include="Web.config">
@@ -1480,7 +1567,7 @@
     <Content Include="Views\Credito\ItensCompra.cshtml" />
     <Content Include="Views\ConfigAdmin\ConfigAdmin.cshtml" />
     <Content Include="Views\ConfigAdmin\ControleAcesso.cshtml" />
-    <Content Include="Views\Inicial\Index.cshtml" />
+    <Content Include="Views\Inicial\Index2.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1495,6 +1582,7 @@
     <Folder Include="Arquivos\Anúncios\" />
     <Folder Include="Arquivos\Destaques\" />
     <Folder Include="Arquivos\XmlPagamento\" />
+    <Folder Include="fonts\Inicial\" />
     <Folder Include="Images\Fotos\" />
     <Folder Include="Images\Icons\" />
   </ItemGroup>

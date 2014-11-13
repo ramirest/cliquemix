@@ -10,7 +10,7 @@ namespace Cliquemix.Controllers.Consumidor
     public class RelatorioConsumidorController : Controller
     {
         //Somente usuários com a permissão Consumidor podem acessar essa página
-        [PermissoesFiltro(Roles = "Consumidor")]
+        //[PermissoesFiltro(Roles = "Consumidor")]
         // GET: /RelatorioConsumidor/
         public ActionResult RelConsumidorPrincipal()
         {
