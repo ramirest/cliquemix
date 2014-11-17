@@ -1186,8 +1186,6 @@
     <Content Include="Content\plugins\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\Outros\bootstrap-theme.css.map" />
     <Content Include="Content\Outros\bootstrap.css.map" />
-    <Content Include="Content\plugins\AutoSuggest_2.1.3\.DS_Store" />
-    <Content Include="Content\plugins\AutoSuggest_2.1.3\._.DS_Store" />
     <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\.DS_Store" />
     <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\._.DS_Store" />
     <Content Include="Content\plugins\AutoSuggest_2.1.3\img_inquisitor\_source\.DS_Store" />
