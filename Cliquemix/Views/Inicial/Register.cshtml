@@ -42,6 +42,12 @@
         <script src="~/Scripts/plugins/messenger/messenger-theme-flat.js"></script>       
 
         <script type="text/javascript">
+            
+            $(document).ready(function (e) {
+                document.getElementById('tipo').selectedIndex = 0;
+                document.getElementById('link1').href = "#dadosPesFisica";
+            });
+
             function atualizarDefinicao() {
                 $.ajax(
                 {
@@ -80,6 +86,13 @@
                 $("input[id='tbAnuncianteEndereco_complemento_endereco']").val($("input[id='txtComplemento']").val());
             };
 
+            function DadosBasicos(tipo) {
+                if (tipo.selectedIndex == 0) {
+                    document.getElementById('link1').href = "#dadosPesFisica";
+                } else {
+                    document.getElementById('link1').href = "#dadosPesJuridica";
+                }
+            }
         </script>
 
 
@@ -146,7 +159,8 @@
                 });
             };
 
-            function validarCampos() {
+            function validarCampos(tipo) {
+                DadosBasicos(tipo);
                 var t = document.getElementById('tipo');
                 if (t.value == 0) {
                     document.getElementById('link6').click();
@@ -211,7 +225,7 @@
         @if (ViewBag.tpError == "002.00001")
         {
             <script type="text/javascript">
-                    ErroCriarAnunciante(1); </script>
+                ErroCriarAnunciante(1); </script>
         }
         @*
             ViewBag.Error = "O Login informado já existe [Cod: 002.00002]";
@@ -220,7 +234,7 @@
         else if (ViewBag.tpError == "002.00002")
         {
             <script type="text/javascript">
-                    ErroCriarAnunciante(2); </script>
+                ErroCriarAnunciante(2); </script>
         }
         @*
             ViewBag.Error = "A senha informada não é segura [Cod: 002.00003]";
@@ -229,7 +243,7 @@
         else if (ViewBag.tpError == "002.00003")
         {
             <script type="text/javascript">
-                    ErroCriarAnunciante(3); </script>
+                ErroCriarAnunciante(3); </script>
         }
         @*
             ViewBag.Error = "A Senha e a Confirmação devem ser idênticas [Cod: 002.00004]";
@@ -238,7 +252,7 @@
         else if (ViewBag.tpError == "002.00004")
         {
             <script type="text/javascript">
-                    ErroCriarAnunciante(4); </script>
+                ErroCriarAnunciante(4); </script>
         }
         @*
             ViewBag.Error = "A Razão Social do anunciante é requerido [Cod: 002.00005]";
@@ -247,7 +261,7 @@
         else if (ViewBag.tpError == "002.00005")
         {
             <script type="text/javascript">
-                    ErroCriarAnunciante(5); </script>
+                ErroCriarAnunciante(5); </script>
         }
         @*
             ViewBag.Error = "O Nome Fantasia do anunciante é requerido [Cod: 002.00006]";
@@ -256,7 +270,7 @@
         else if (ViewBag.tpError == "002.00006")
         {
             <script type="text/javascript">
-                    ErroCriarAnunciante(6); </script>
+                ErroCriarAnunciante(6); </script>
         }
         @*
             ViewBag.Error = "O CNPJ do anunciante é requerido [Cod: 002.00007]";
@@ -265,7 +279,7 @@
         else if (ViewBag.tpError == "002.00007")
         {
             <script type="text/javascript">
-                    ErroCriarAnunciante(7); </script>
+                ErroCriarAnunciante(7); </script>
         }
         @*
             ViewBag.Error = "O CNPJ informado já está cadastrado, informe outro CNPJ. [Cod: 002.00008]";
@@ -274,7 +288,7 @@
         else if (ViewBag.tpError == "002.00008")
         {
             <script type="text/javascript">
-                    ErroCriarAnunciante(8); </script>
+                ErroCriarAnunciante(8); </script>
         }
         @*
             ViewBag.Error = "O usuário informado não atende aos padrões do sistema.	[002.00009]";
@@ -283,7 +297,7 @@
         else if (ViewBag.tpError == "002.00009")
         {
             <script type="text/javascript">
-                    ErroCriarAnunciante(9); </script>
+                ErroCriarAnunciante(9); </script>
         }
         @*
             ViewBag.Error = "O Patrocinador informado não existe no banco de dados do sistema [Cod: 002.00010]";
@@ -292,7 +306,7 @@
         else if (ViewBag.tpError == "002.00010")
         {
             <script type="text/javascript">
-                    ErroCriarAnunciante(10); </script>
+                ErroCriarAnunciante(10); </script>
         }
     </head>
     <body>
@@ -353,7 +367,8 @@
                                                         @style = "width:280px; height:34px",
                                                         @id = "tipo",
                                                         @name = "tipo",
-                                                        @onchange = "validarCampos();"
+                                                        @onchange = "validarCampos(this);",
+                                                        @onclick = "DadosBasicos(this);"
                                                     })
                                             </div>
                                         </ul>
@@ -364,7 +379,7 @@
                                                     <div class="col-sm-3">
                                                         <ul id="userSettings" class="nav nav-pills nav-stacked">
                                                             <li class="active">
-                                                                <a href="#dadosPesFisica" data-toggle="tab" id="link1"><i class="fa fa-building-o fa-fw"></i> Dados Básicos</a>
+                                                                <a href="#" onclick="" data-toggle="tab" id="link1"><i class="fa fa-building-o fa-fw"></i> Dados Básicos</a>
                                                             </li>
                                                             <li>
                                                                 <a href="#dadosContato" data-toggle="tab" id="link2"><i class="fa fa-phone fa-fw"></i> Dados de Contato</a>
@@ -846,6 +861,7 @@
                                                                                     <i class="fa fa-floppy-o"></i> Salvar
                                                                                 </button>
                                                                             </div>
+                                                                            <button type="button" onclick="alert(document.getElementById('patrocinador').value);">Teste</button>
                                                                         </div>
                                                                     </div>
                                                                 </div>

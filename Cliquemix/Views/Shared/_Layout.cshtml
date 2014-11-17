@@ -151,58 +151,73 @@
 
 </script>
     
-    <script>
-        $(function () {
-            $(".datepicker").datepicker({
-                showOn: "button"
-            });
-
-            $('.timepicker').timepicker();
+<script>
+    $(function () {
+        $(".datepicker").datepicker({
+            showOn: "button"
         });
-    </script>    
+
+        $('.timepicker').timepicker();
+    });
+</script>    
+
+<script type="text/javascript">
+
+    var slider = new MasterSlider();
+    slider.setup('masterslider', {
+        width: 760,
+        height: 400,
+        space: 10,
+        loop: true,
+        view: 'prtialwave'
+    });
+
+    slider.control('arrows');
+    slider.control('bullets');
+    slider.control('lightbox');
+    slider.control('slideinfo', { insertTo: "#partial-view-1", autohide: false });
+    slider.control('circletimer', { color: "#FFFFFF", stroke: 9 });
+
+
+
+    $(document).ready(function () {
+        $("a[rel^='prettyPhoto']").prettyPhoto();
+    });
+</script>
+
 
     <script type="text/javascript">
-
-        var slider = new MasterSlider();
-        slider.setup('masterslider', {
-            width: 760,
-            height: 400,
-            space: 10,
-            loop: true,
-            view: 'prtialwave'
+    //Easy Pie Charts
+    $(function () {
+        $('#easy-pie-1, #easy-pie-2, #easy-pie-3, #easy-pie-4').easyPieChart({
+            barColor: "rgba(255,255,255,.5)",
+            trackColor: "rgba(255,255,255,.5)",
+            scaleColor: "rgba(255,255,255,.5)",
+            lineWidth: 20,
+            animate: 1500,
+            size: 175,
+            onStep: function (from, to, percent) {
+                $(this.el).find('.percent').text(Math.round(percent));
+            }
         });
 
-        slider.control('arrows');
-        slider.control('bullets');
-        slider.control('lightbox');
-        slider.control('slideinfo', { insertTo: "#partial-view-1", autohide: false });
-        slider.control('circletimer', { color: "#FFFFFF", stroke: 9 });
+    });
 
-
-
-        $(document).ready(function () {
-            $("a[rel^='prettyPhoto']").prettyPhoto();
+    function LogoutCliqueMix() {
+        $.ajax(
+        {
+            type: 'POST',
+            url: '/Account/_Logout',
+            dataType: 'html',
+            cache: false,
+            async: true,
+            success: function() {
+                document.getElementById('btnCancelarLogout').click();
+                location.href = "/Account/Login";
+            }
         });
-    </script>
-
-
-    <script type="text/javascript">
-        //Easy Pie Charts
-        $(function () {
-            $('#easy-pie-1, #easy-pie-2, #easy-pie-3, #easy-pie-4').easyPieChart({
-                barColor: "rgba(255,255,255,.5)",
-                trackColor: "rgba(255,255,255,.5)",
-                scaleColor: "rgba(255,255,255,.5)",
-                lineWidth: 20,
-                animate: 1500,
-                size: 175,
-                onStep: function (from, to, percent) {
-                    $(this.el).find('.percent').text(Math.round(percent));
-                }
-            });
-
-        });
-    </script>
+    }
+</script>
 
 
 

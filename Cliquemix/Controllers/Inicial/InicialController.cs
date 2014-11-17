@@ -57,16 +57,15 @@ namespace Cliquemix.Controllers.Inicial
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register([Bind(Include = "pid,cnpj,razaoSocial,nmFantasia,contato,telResidencial,telComercial,telCelular1,telCelular2,ie,im,email,site,obs,cpid,raid,tid,saldoCreditos,leuTermo,uid,peid,tipo")] tbAnunciante tbanunciante)
+        public ActionResult Register([Bind(Include = "pid,cnpj,razaoSocial,nmFantasia,contato,telResidencial,telComercial,telCelular1,telCelular2,ie,im,rg,cpf,pis,email,site,obs,cpid,raid,tid,saldoCreditos,leuTermo,uid,peid,tipo")] tbAnunciante tbanunciante, string patrocinador)
         {
             if (ModelState.IsValid)
             {
                 string _usuario = @Request.Form.Get("tbUsers.username");
                 string _pwd = @Request.Form.Get("tbUsers.pwd");
                 string _cpwd = @Request.Form.Get("tbUsers.cpwd");
-                string _patrocinador = @Request.Form.Get("patrocinador");
 
-                if (_patrocinador == string.Empty)
+                if (patrocinador == string.Empty)
                     tbanunciante.tipo = 1;
                 else
                     tbanunciante.tipo = 0;
@@ -130,7 +129,7 @@ namespace Cliquemix.Controllers.Inicial
 
                 //Verifica se o patrocinador é válido
                 if (tbanunciante.tipo == 0)
-                    if (String.IsNullOrEmpty(_patrocinador) || (!ProcFunc.PatrocinadorExiste(_patrocinador)))
+                    if (String.IsNullOrEmpty(patrocinador) || (!ProcFunc.PatrocinadorExiste(patrocinador)))
                     {
                         ViewBag.tpError = "002.00010";
                         return View(tbanunciante);
@@ -157,11 +156,11 @@ namespace Cliquemix.Controllers.Inicial
                 ProcFunc.AlterarSaldoAnunciante(tbanunciante.pid, sfa, sfa, "Saldo Inicial do Anunciante | Cód "+tbanunciante.pid.ToString());
 
                 //*** Definir Patrocinador do Anunciante (Se Anunciante Comum) ***
-                if ((tbanunciante.tipo == 0) && (ProcFunc.RetornarCodigoPatrocinadorAnunciante(_patrocinador) > 0))
+                if ((tbanunciante.tipo == 0) && (ProcFunc.RetornarCodigoPatrocinadorAnunciante(patrocinador) > 0))
                 {
                     var anunciantePatrocinador = new tbAnunciantePatrocinador();
                     anunciantePatrocinador.pid = tbanunciante.pid;
-                    anunciantePatrocinador.cid = ProcFunc.RetornarCodigoPatrocinadorAnunciante(_patrocinador);
+                    anunciantePatrocinador.cid = ProcFunc.RetornarCodigoPatrocinadorAnunciante(patrocinador);
                     anunciantePatrocinador.ativo = true;
                     CriarPatrocinadorAnunciante(anunciantePatrocinador);
                 }

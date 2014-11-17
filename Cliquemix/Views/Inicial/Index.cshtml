@@ -1,1434 +1,1560 @@
-﻿@{
+﻿@using Microsoft.AspNet.Identity;
+
+@{
     Layout = null;
 }
 
 <!DOCTYPE html>
 <html>
-<head>
-    <title>MixClique</title>
-    <link rel="icon" type="image/ico" href="favicon.ico">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Classificados, publicidade, anúncios, ptc, clique, click, ganhe dinheiro, sicove, propaganda, apareça, crecimento ">
-    <!-- CSS -->
-    <link href="~/Content/Inicial/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <!-- Google Webfont -->
-    <!-- Main Css -->
-    <link href="~/Content/Inicial/css/color5.css" rel="stylesheet" media="screen" id="color">
-    <link href="~/Content/Inicial/css/demo.css" rel="stylesheet">
-    <!-- Font Icon -->
-    <link href="~/Content/Inicial/css/font-awesome.min.css" rel="stylesheet" media="screen">
-    <link href="~/Content/Inicial/css/font-awesome.css" rel="stylesheet" media="screen">
-    <!-- Include only for MapSearch Page -->
-    <link rel="stylesheet" href="~/Content/Inicial/css/ui.css" />
+    <head>
+        <title>MixClique</title>
+        <link rel="icon" type="image/ico" href="favicon.ico">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Classificados, publicidade, anúncios, ptc, clique, click, ganhe dinheiro, sicove, propaganda, apareça, crecimento ">
+        
+        <!-- CSS -->
+        <link href="~/Content/Inicial/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <!-- Google Webfont -->
+        <!-- Main Css -->
+        <link href="~/Content/Inicial/css/color5.css" rel="stylesheet" media="screen" id="color">
+        <link href="~/Content/Inicial/css/demo.css" rel="stylesheet">
+        <!-- Font Icon -->
+        <link href="~/Content/Inicial/css/font-awesome.min.css" rel="stylesheet" media="screen">
+        <link href="~/Content/Inicial/css/font-awesome.css" rel="stylesheet" media="screen">
+        <!-- Include only for MapSearch Page -->
+        <link rel="stylesheet" href="~/Content/Inicial/css/ui.css" />
+        
+        @*<link href="~/Content/plugins.css" rel="stylesheet">*@
+        <link href="~/Content/Inicial/css/style.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-        <script src="js/html5shiv.js"></script>
-        <script src="js/respond.min.js"></script>
-    <![endif]-->
-</head>
+        <!-- CSS -->
+        <link href="~/Content/Inicial/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <!-- Google Webfont -->
+        <!-- Main Css -->
+        <link href="~/Content/Inicial/css/color5.css" rel="stylesheet" media="screen" id="color">
+        <link href="~/Content/Inicial/css/demo.css" rel="stylesheet">
+        <!-- Font Icon -->
+        <link href="~/Content/Inicial/css/font-awesome.min.css" rel="stylesheet" media="screen">
+        <link href="~/Content/Inicial/css/font-awesome.css" rel="stylesheet" media="screen">
+        <!-- Include only for MapSearch Page -->
+        <link rel="stylesheet" href="~/Content/Inicial/css/ui.css" />
+        <!-- THEME STYLES - Include these on every page. -->
+        @*<link href="~/Content/Inicial/css/style.css" rel="stylesheet">*@
+        <link href="~/Content/plugins.css" rel="stylesheet">
 
-<body>
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="js/html5shiv.js"></script>
+            <script src="js/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
     
-    <!-- Header Start -->
-    <header id="header">
-        <div class="headerdetails">
+        
 
-            <div class="container">
+        <!-- Header Start -->
+        <header id="header">
+            <div class="headerdetails">
 
-                <div class="mt10 pull-right resp_01">
-                    <!--Social -->
-                    <div class="socialtop pull-right">
-                        <ul class="pull-right">
-                            <li><a class="tooltip-test" href="https://www.facebook.com/pages/Mixclique/522379434565002?fref=ts" target="_blank" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                            <li><a class="tooltip-test" href="https://twitter.com/mixcliquebrasil" target="_blank" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                            <li><a class="tooltip-test" data-original-title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a class="tooltip-test" href="https://plus.google.com/107089634860888528230" target="_blank" data-original-title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a class="tooltip-test" href="http://www.pinterest.com/mixclique" target="_blank" data-original-title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
-                            <li><a class="tooltip-test" href="https://www.flickr.com/photos/128584834@N06" target="_blank" data-original-title="Flickr"><i class="fa fa-flickr"></i></a></li>
-                        </ul>
-                    </div>
-                    <!--Top Search -->
+                <div class="container">
 
-                    <div class="call">
-
-                        <div id="mainmenu" class=" pull-right">
-                            <!-- Navigation -->
-                            <nav class="subnav subnav22">
-                                <div class="menurelative">
-                                    <a class="btn btn-orange mainmenumobile" href="/Account/Login">Entrar ou Cadastrar</a>
-                                    
-                                    <ul class="nav-pills mainmenucontain contain22">
-
-                                        <li>
-                                            @*<a class="submenu2 btn btn-branco tooltip-test mainserarchsubmit" href="/Account/Login">Entrar/Cadastrar</a>*@
-                                            <a href="/Account/Login">Entrar/Cadastrar</a>
-                                            @*<div class="submenu">
-                                                <div class="portlet portlet-green">
-                                                    <div class="portlet-body">
-                                                        <div class="form-group">
-                                                            <input class="form-control" placeholder="Login" name="email" type="text">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <input class="form-control" placeholder="Senha" name="senha" type="password" value="">
-                                                        </div>
-                                                        <div class="checkbox">
-                                                            <label>
-                                                                <input name="remember" type="checkbox" value="Remember Me">Lembrar senha
-                                                            </label>
-                                                        </div>
-                                                        <br>
-                                                        <a href="#" class="btn btn-lg btn-green btn-block btn-block33">Entrar</a>
-                                                        <a href="#" class="btn btn-lg btn-green btn-block btn-block333">Cadastrar</a>
-                                                        <br>
-                                                        <p class="small" style="text-align: center">
-                                                            <a href="#">Esqueceu a senha?</a>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>*@
-
-                                        </li>
-                                    </ul>
-                                    
-                                </div>
-                            </nav>
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="container">
-                <a class="logo pull-left" href="/Inicial/Index"><img title="MixClique" alt="MixClique" src="../../Images/Inicial/img/logo.png"></a>
-                <div id="mainmenu" class=" pull-right">
-                    <!-- Navigation -->
-                    <nav class="subnav subnav222">
-                        <div class="menurelative">
-                            <a class="btn btn-orange mainmenumobile">Menu</a>
-                            <ul class="nav-pills mainmenucontain">
-                                <li>
-                                    <a class="active home submenu2">Sobre o MixClique</a>
-                                    <div class="submenu">
-                                        <ul>
-                                            <li> <a class="" title="Quem Somos" href="#">Quem Somos</a> </li>
-                                            <li> <a class="" title="Como Funciona" href="#">Como Funciona</a> </li>
-                                            <li> <a class="" title="Regulamentação" href="#">Política do MixClique</a> </li>
-                                            <li> <a class="" title="Política de Proteção de Dados" href="#">Termos e Condições</a> </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a class="submenu2">Ganhe clicando</a>
-                                    <div class="submenu">
-                                        <ul class="pull-left">
-                                            <li> <a class="" title="Veja Como" href="#">Veja Como</a> </li>
-                                            <li> <a class="" title="Faça seu Cadastro" href="#">Cadastre-se</a> </li>
-                                            <li> <a class="" title="Acesse o Gerenciador" href="#">Escritório Virtual</a> </li>
-                                            <li> <a class="" href="#"><img title="Veja os Detalhes" alt="" src="../../Images/Inicial/img/ad1.jpg" width="200"></a></li>
-                                        </ul>
-                                        <div id="topdeal">
-                                            <h3>Top do momento</h3>
-                                            <ul>
-                                                <li>
-                                                    <img width="100" src="../../Images/Inicial/img/blog1.jpg" alt="Veja os Detalhes" title="Veja os Detalhes" class="pull-left"> <a class="title" href="#">Samsung Galaxy Tab 3 T211 Tablet </a>
-                                                    <div class="blogdate"> <span class="blogicon"><i class="fa fa-calendar"></i> 5 de Outubro, 2014 </span> </div>
-                                                </li>
-                                                <li>
-                                                    <img width="100" src="../../Images/Inicial/img/blog2.jpg" alt="Veja os Detalhes" title="Veja os Detalhes" class="pull-left"> <a class="title" href="#">Samsung Galaxy Tab 3 T211 Tablet </a>
-                                                    <div class="blogdate"> <span class="blogicon"><i class="fa fa-calendar"></i> 8 de Setembro, 2014 </span> </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a class="submenu2">Seja Anunciante</a>
-                                    <div class="submenu">
-                                        <ul>
-                                            <li> <a class="" title="Seja um Anunciante" href="#">Anuncie no MixClique </a> </li>
-                                            <li> <a class="" title="Veja os Preços dos Anuncios" href="#">Tabela de Preços</a> </li>
-                                            <li> <a class="" title="Baixe a Apresentação do MixClique" href="#">Apresentação MixClique</a> </li>
-                                            <li> <a class="" title="Baixe o Contrato" href="#">Contrato Geral</a> </li>
-                                            <li> <a class="" title="Acesse o Gerenciador" href="#">Escritório Virtual</a> </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a class="submenu2">Oportunidade de Negócios</a>
-                                    <div class="submenu">
-                                        <ul>
-                                            <li> <a class="" title="O que é Sicove do Brasil" href="http://www.sicove.com.br/">Conheça o Sicove</a> </li>
-                                            <li> <a class="" title="Venda Publicidade" href="#">Venda Anuncios</a> </li>
-                                            <li> <a class="" title="Preencha o Currículo" href="#">Trabalhe Conosco</a> </li>
-                                            <li> <a class="" title="Ajuda" href="#">Ajuda e Suporte</a> </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li> <a class="" title="Contato" href="#">Contato</a> </li>
-                                <li> <a class="" title="Perguntas mais Frequentes" href="#">Faq</a> </li>
+                    <div class="mt10 pull-right resp_01">
+                        <!--Social -->
+                        <div class="socialtop pull-right">
+                            <ul class="pull-right">
+                                <li><a class="tooltip-test" href="https://www.facebook.com/pages/Mixclique/522379434565002?fref=ts" target="_blank" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                <li><a class="tooltip-test" href="https://twitter.com/mixcliquebrasil" target="_blank" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                <li><a class="tooltip-test" data-original-title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a class="tooltip-test" href="https://plus.google.com/107089634860888528230" target="_blank" data-original-title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a class="tooltip-test" href="http://www.pinterest.com/mixclique" target="_blank" data-original-title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+                                <li><a class="tooltip-test" href="https://www.flickr.com/photos/128584834@N06" target="_blank" data-original-title="Flickr"><i class="fa fa-flickr"></i></a></li>
                             </ul>
                         </div>
-                    </nav>
+                        <!--Top Search -->
 
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- Header End -->
+                        <div class="call">
 
+                            <div id="mainmenu" class=" pull-right">
+                                <!-- Navigation -->
+                                <nav class="subnav subnav22">
+                                    <div class="menurelative">
+                                        @if (Request.IsAuthenticated)
+                                        {
+                                            <p class="name tooltip-sidebar-logout">
+                                                <span class="last-name" style="color: white">
+                                                    Seja bem-vindo, @Html.Label(User.Identity.GetUserName())!
+                                                </span>
+                                                <a style="color: white" class="logout_open blue" href="#logout" data-toggle="tooltip" data-placement="top" title="Logout">
+                                                    <i class="fa fa-sign-out"></i>
+                                                </a>
+                                            </p>
+                                        }
+                                        else
+                                        {
+                                            <a class="btn btn-orange mainmenumobile" href="/Account/Login">Entrar ou Cadastrar</a>
+                                            <ul class="nav-pills mainmenucontain contain22">
+                                                <li>
+                                                    @*<a class="submenu2 btn btn-branco tooltip-test mainserarchsubmit" href="/Account/Login">Entrar/Cadastrar</a>*@
+                                                    <a href="/Account/Login">Entrar/Cadastrar</a>
+                                                    @*<div class="submenu">
+                                                    <div class="portlet portlet-green">
+                                                        <div class="portlet-body">
+                                                            <div class="form-group">
+                                                                <input class="form-control" placeholder="Login" name="email" type="text">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input class="form-control" placeholder="Senha" name="senha" type="password" value="">
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input name="remember" type="checkbox" value="Remember Me">Lembrar senha
+                                                                </label>
+                                                            </div>
+                                                            <br>
+                                                            <a href="#" class="btn btn-lg btn-green btn-block btn-block33">Entrar</a>
+                                                            <a href="#" class="btn btn-lg btn-green btn-block btn-block333">Cadastrar</a>
+                                                            <br>
+                                                            <p class="small" style="text-align: center">
+                                                                <a href="#">Esqueceu a senha?</a>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>*@
+                                                </li>
+                                            </ul>
+                                        }
+                                    
+                                    </div>
+                                </nav>
 
+                            </div>
 
-    <div id="maincontainer">
-        <!-- Slider Start-->
-
-
-        <section id="searchmap">
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <a href="http://www.mixclique.com.br/mix/ver_anuncio/index.html"><img class="img-responsive" src="../../Images/Inicial/img/slide1.jpg"></a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <a href="#" class="postad"><span class="teste22"> <i class="fa fa-pencil"></i>anuncie aqui</span></a>
 
-            <div class="searchcontianer" id="searchinner">
-                <a class="todayoffer"><span class="text1">Grandes Ofertas<br> para</span><span class="text2">VOCÊ</span></a>
-                <h1 class="heading1">Procure por milhares de anúncios e classificados<span class="orange"> MixClique</span> </h1>
-                <form class="form-inline">
-                    <div class="btn-group" id="search-group">
-
-                        <input type="text" id="keyword" name="keyword" value="" placeholder="Pesquisar produto" class="form-control mainserarch" />
-                        <select id="category" name="category">
-                            <option value="">Selecione a categoria</option>
-                            <option value="Real Estate">Automóveis</option>
-                            <option value="Jobs">Casa e Lazer</option>
-                            <option value="Personal">PetShop</option>
-                            <option value="Computers">Construção</option>
-                            <option value="Beauty">Eletrônicos</option>
-                            <option value="Hobbies">Lazer</option>
-                            <option value="Movies">Brinquedos</option>
-                            <option value="Health">cama</option>
-                        </select>
-                        <a href="#"> <img class="img-responsive" style="display: -webkit-inline-box;" src="../../Images/Inicial/img/pes.png"></a>
-
-                        <!--   <input type="button" id="searchmapbutton" name="Pesquisar" value="Pesquisar" class="btn btn-orange tooltip-test mainserarchsubmit"/>-->
-
-                    </div>
-                </form>
-            </div>
-
-        </section>
-        <!-- Slider End-->
-        <!-- SEO Line-->
-        <div class="container mt20">
-            <div class="seodetails">
-                <h2 class="heading2"> NUNCA FOI TÃO FÁCIL ANUNCIAR, <br>MELHOR AINDA É CLICAR!</h2>
-                <p class="metadetails">
-                    Aqui você anuncia, clica, se diverte. Visualiza os melhores produtos e serviços e ainda pode ganhar prêmios e muito dinheiro<br>
-                    Você nunca viu nada igual, MixClique chegou para mudar a sua vida.
-                </p>
-            </div>
-        </div>
-        <!-- Steps-->
-        <div class="container">
-            <div class="row">
-                <ul class="steps">
-                    <li class="col-sm-4">
-                        <div class="step"><span class="stepcount">1</span><span>Selecione a Plano</span> <i class="fa fa-check-square-o pull-right"></i></div>
-                    </li>
-                    <li class="col-sm-4">
-                        <div class="step"><span class="stepcount">2</span><span>Poste seu anúncio</span> <i class="fa fa-edit pull-right"></i></div>
-                    </li>
-                    <li class="col-sm-4">
-                        <div class="step"><span class="stepcount">3</span><span>Finalizar o pagamento</span> <i class="fa fa-credit-card pull-right"></i></div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!-- Services-->
-
-
-        <div class="container mt40" id="maincategory">
-            <ul class="maincategory row">
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-bug c16"></i> <br>
-                        <span class="direname">Animais</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-microphone c2"></i> <br>
-                        <span class="direname">Áudio</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-female c13"></i> <br>
-                        <span class="direname">Beleza</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-bicycle c3"></i> <br>
-                        <span class="direname">Bicicleta</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-cubes c10"></i> <br>
-                        <span class="direname">Brinquedos</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-camera c15"></i> <br>
-                        <span class="direname">Câmeras</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-home c1"></i> <br>
-                        <span class="direname">Casa</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-mobile c7"></i> <br>
-                        <span class="direname">Celular</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-users c6"></i> <br>
-                        <span class="direname">Comunidades</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-desktop c4"></i> <br>
-                        <span class="direname">Computador</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-child c5"></i> <br>
-                        <span class="direname">Crianças</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-plug c3"></i> <br>
-                        <span class="direname">Eletrodomésticos</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-calculator c17"></i> <br>
-                        <span class="direname">Eletrônicos</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-futbol-o c12"></i> <br>
-                        <span class="direname">Esportes</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-film c6"></i> <br>
-                        <span class="direname">Filmes</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-yelp c2"></i> <br>
-                        <span class="direname">Games</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-cutlery c15"></i> <br>
-                        <span class="direname">Gastronomia</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-building-o c11"></i> <br>
-                        <span class="direname">Imóveis</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-print c3"></i> <br>
-                        <span class="direname">Impressoras</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-book c17"></i> <br>
-                        <span class="direname">Livros</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-music c7"></i> <br>
-                        <span class="direname">Música</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-laptop c16"></i> <br>
-                        <span class="direname">Notebook</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-puzzle-piece c13"></i> <br>
-                        <span class="direname">Passatempo</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-keyboard-o c1"></i> <br>
-                        <span class="direname">Periféricos</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-user c12"></i> <br>
-                        <span class="direname">Pessoal</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-twitter c10"></i> <br>
-                        <span class="direname">Pets</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-user-md c6"></i> <br>
-                        <span class="direname">Saúde</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-thumbs-o-up c2"></i> <br>
-                        <span class="direname">Serviços</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-phone c17"></i> <br>
-                        <span class="direname">Telefone</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-automobile c7"></i> <br>
-                        <span class="direname">Veículos</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-suitcase c4"></i> <br>
-                        <span class="direname">Viagens</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-video-camera c6"></i> <br>
-                        <span class="direname">Vídeos</span>
-                    </a>
-                </li>
-
-            </ul>
-            <div class="clearfix"></div>
-            <a id="prevcat" class="prevcarousal" href="#">Previous</a> <a id="nextcat" class="nextcarosal" href="#">Next</a>
-        </div>
-        <!-- Directory Listing-->
-        <div class="container mt40  mt-normal">
-
-            <div class="col-lg-12">
-
-                <div class="separa">Anúncios em Destaque</div>
-
-            </div>
-
-
-            <!--     destaque 2    -->
-            <div class="col-lg-12">
-
-
-
-                <header id="myCarousel2" class="carousel slide">
-                    <!-- Indicators -->
-                    <ol class="carousel-indicators">
-                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#myCarousel" data-slide-to="1" class=""></li>
-                        <li data-target="#myCarousel" data-slide-to="2" class=""></li>
-                    </ol>
-                    <!-- Wrapper for Slides -->
-                    <!-- Wrapper for Slides -->
-                    <div class="carousel-inner">
-
-                        <!--início item 1-->
-                        <div class="item active">
-                            <div class="col-lg-12">
-                                <div class="row">
-                                    <ul class="grid">
-
-
-                                        <!--start #1 gallery-->
-                                        <li class="col-lg-4 col-sm-4 col-sm-4-front">
-                                            <a href="#gallery_1" role="button" data-toggle="modal">
-                                                <div>
-                                                    <div>
-                                                        <img class="img-responsive" src="../../Images/Inicial/img/blog_4.jpg" alt="">
-                                                    </div>
-                                                    <div class="txt-destaque-1">
-                                                        <h4>Cacau Show</h4>
-                                                        <span>Um natal recheado de chocolates, confira as sextas de natal que a Cacau Show preparou para você.</span>
-                                                    </div>
-                                                    <div class="txt-destaque-2">
-                                                        <div class="col-md-3 col-md-offset-3 pad_an">
-                                                            <a href="#">
-                                                                <i class="fa fa-mobile c11 iconeb"></i><br>
-                                                            </a>
-                                                        </div>
-
-                                                        <div class="col-md-3  pad_an">
-                                                            <a href="#">
-                                                                <i class="fa fa-map-marker c11 iconeb"></i><br>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-
-
-                                        <!--start #2 gallery-->
-                                        <li class="col-lg-4 col-sm-4 col-sm-4-front">
-                                            <a href="#gallery_2" role="button" data-toggle="modal">
-                                                <div>
-                                                    <div>
-                                                        <img class="img-responsive" src="../../Images/Inicial/img/blog_1.jpg" alt="">
-                                                    </div>
-                                                    <div class="txt-destaque-1">
-                                                        <h4>Sansung Master Lav</h4>
-                                                        <span>A melhor lavaroupas do mercado. Lava, enchuga e seca suas roupas, super promoção de dezembro.</span>
-                                                    </div>
-
-                                                    <div class="txt-destaque-2">
-                                                        <div class="col-md-3 col-md-offset-3 pad_an">
-                                                            <a href="#">
-                                                                <i class="fa fa-mobile c11 iconeb"></i><br>
-                                                            </a>
-                                                        </div>
-
-                                                        <div class="col-md-3  pad_an">
-                                                            <a href="#">
-                                                                <i class="fa fa-map-marker c11 iconeb"></i><br>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-
-
-                                        <!--start #3 gallery-->
-                                        <li class="col-lg-4 col-sm-4 col-sm-4-front">
-                                            <a href="#gallery_3" role="button" data-toggle="modal">
-                                                <div>
-                                                    <div>
-                                                        <img class="img-responsive" src="../../Images/Inicial/blog_3.jpg" alt="">
-                                                    </div>
-                                                    <div class="txt-destaque-1">
-                                                        <h4>Audi A3</h4>
-                                                        <span>Um conceito, um mito, venha conferir o Audi A3, mais detalhe no hotsite, clique e confira.</span>
-                                                    </div>
-
-
-
-
-                                                    <div class="txt-destaque-2">
-                                                        <div class="col-md-3 col-md-offset-3 pad_an">
-                                                            <a href="#">
-                                                                <i class="fa fa-mobile c11 iconeb"></i><br>
-                                                            </a>
-                                                        </div>
-
-                                                        <div class="col-md-3  pad_an">
-                                                            <a href="#">
-                                                                <i class="fa fa-map-marker c11 iconeb"></i><br>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-
-
-                                                </div>
-                                            </a>
-                                        </li>
-
-
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!--fim item 1-->
-                        <!--inicio item 2-->
-                        <div class="item">
-                            <div class="col-lg-12">
-                                <div class="row">
-                                    <ul class="grid">
-
-
-                                        <!--start #1 gallery-->
-                                        <li class="col-lg-4 col-sm-4 col-sm-4-front">
-                                            <a href="#gallery_1" role="button" data-toggle="modal">
-                                                <div>
-                                                    <div>
-                                                        <img class="img-responsive" src="../../Images/Inicial/img/blog_4.jpg" alt="">
-                                                    </div>
-                                                    <div class="txt-destaque-1">
-                                                        <h4>Cacau Show</h4>
-                                                        <span>Um natal recheado de chocolates, confira as sextas de natal que a Cacau Show preparou para você.</span>
-                                                    </div>
-                                                    <div class="txt-destaque-2">
-                                                        <div class="col-md-3 col-md-offset-3 pad_an">
-                                                            <a href="#">
-                                                                <i class="fa fa-mobile c11 iconeb"></i><br>
-                                                            </a>
-                                                        </div>
-
-                                                        <div class="col-md-3  pad_an">
-                                                            <a href="#">
-                                                                <i class="fa fa-map-marker c11 iconeb"></i><br>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-
-
-                                        <!--start #2 gallery-->
-                                        <li class="col-lg-4 col-sm-4 col-sm-4-front">
-                                            <a href="#gallery_2" role="button" data-toggle="modal">
-                                                <div>
-                                                    <div>
-                                                        <img class="img-responsive" src="../../Images/Inicial/img/blog_1.jpg" alt="">
-                                                    </div>
-                                                    <div class="txt-destaque-1">
-                                                        <h4>Sansung Master Lav</h4>
-                                                        <span>A melhor lavaroupas do mercado. Lava, enchuga e seca suas roupas, super promoção de dezembro.</span>
-                                                    </div>
-
-                                                    <div class="txt-destaque-2">
-                                                        <div class="col-md-3 col-md-offset-3 pad_an">
-                                                            <a href="#">
-                                                                <i class="fa fa-mobile c11 iconeb"></i><br>
-                                                            </a>
-                                                        </div>
-
-                                                        <div class="col-md-3  pad_an">
-                                                            <a href="#">
-                                                                <i class="fa fa-map-marker c11 iconeb"></i><br>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-
-
-                                        <!--start #3 gallery-->
-                                        <li class="col-lg-4 col-sm-4 col-sm-4-front">
-                                            <a href="#gallery_3" role="button" data-toggle="modal">
-                                                <div>
-                                                    <div>
-                                                        <img class="img-responsive" src="../../Images/Inicial/img/blog_3.jpg" alt="">
-                                                    </div>
-                                                    <div class="txt-destaque-1">
-                                                        <h4>Audi A3</h4>
-                                                        <span>Um conceito, um mito, venha conferir o Audi A3, mais detalhe no hotsite, clique e confira.</span>
-                                                    </div>
-
-                                                    <div class="txt-destaque-2">
-                                                        <div class="col-md-3 col-md-offset-3 pad_an">
-                                                            <a href="#">
-                                                                <i class="fa fa-mobile c11 iconeb"></i><br>
-                                                            </a>
-                                                        </div>
-
-                                                        <div class="col-md-3  pad_an">
-                                                            <a href="#">
-                                                                <i class="fa fa-map-marker c11 iconeb"></i><br>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-
-
-                                                </div>
-                                            </a>
-                                        </li>
-
-
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!--fim item 2-->
-                        <!--início item 3-->
-                        <div class="item">
-                            <div class="col-lg-12">
-                                <div class="row">
-                                    <ul class="grid">
-
-
-                                        <!--start #1 gallery-->
-                                        <li class="col-lg-4 col-sm-4 col-sm-4-front">
-                                            <a href="#gallery_1" role="button" data-toggle="modal">
-                                                <div>
-                                                    <div>
-                                                        <img class="img-responsive" src="../../Images/Inicial/img/blog_4.jpg" alt="">
-                                                    </div>
-                                                    <div class="txt-destaque-1">
-                                                        <h4>Cacau Show</h4>
-                                                        <span>Um natal recheado de chocolates, confira as sextas de natal que a Cacau Show preparou para você.</span>
-                                                    </div>
-                                                    <div class="txt-destaque-2">
-                                                        <div class="col-md-3 col-md-offset-3 pad_an">
-                                                            <a href="#">
-                                                                <i class="fa fa-mobile c11 iconeb"></i><br>
-                                                            </a>
-                                                        </div>
-
-                                                        <div class="col-md-3  pad_an">
-                                                            <a href="#">
-                                                                <i class="fa fa-map-marker c11 iconeb"></i><br>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-
-
-                                        <!--start #2 gallery-->
-                                        <li class="col-lg-4 col-sm-4 col-sm-4-front">
-                                            <a href="#gallery_2" role="button" data-toggle="modal">
-                                                <div>
-                                                    <div>
-                                                        <img class="img-responsive" src="../../Images/Inicial/img/blog_1.jpg" alt="">
-                                                    </div>
-                                                    <div class="txt-destaque-1">
-                                                        <h4>Sansung Master Lav</h4>
-                                                        <span>A melhor lavaroupas do mercado. Lava, enchuga e seca suas roupas, super promoção de dezembro.</span>
-                                                    </div>
-
-                                                    <div class="txt-destaque-2">
-                                                        <div class="col-md-3 col-md-offset-3 pad_an">
-                                                            <a href="#">
-                                                                <i class="fa fa-mobile c11 iconeb"></i><br>
-                                                            </a>
-                                                        </div>
-
-                                                        <div class="col-md-3  pad_an">
-                                                            <a href="#">
-                                                                <i class="fa fa-map-marker c11 iconeb"></i><br>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-
-
-                                        <!--start #3 gallery-->
-                                        <li class="col-lg-4 col-sm-4 col-sm-4-front">
-                                            <a href="#gallery_3" role="button" data-toggle="modal">
-                                                <div>
-                                                    <div>
-                                                        <img class="img-responsive" src="../../Images/Inicial/img/blog_3.jpg" alt="">
-                                                    </div>
-                                                    <div class="txt-destaque-1">
-                                                        <h4>Audi A3</h4>
-                                                        <span>Um conceito, um mito, venha conferir o Audi A3, mais detalhe no hotsite, clique e confira.</span>
-                                                    </div>
-
-
-
-
-                                                    <div class="txt-destaque-2">
-                                                        <div class="col-md-3 col-md-offset-3 pad_an">
-                                                            <a href="#">
-                                                                <i class="fa fa-mobile c11 iconeb"></i><br>
-                                                            </a>
-                                                        </div>
-
-                                                        <div class="col-md-3  pad_an">
-                                                            <a href="#">
-                                                                <i class="fa fa-map-marker c11 iconeb"></i><br>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-
-
-                                                </div>
-                                            </a>
-                                        </li>
-
-
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!--fim item 3-->
-                    </div>
-                    <!-- Controls -->
-                    <a class="left carousel-control" href="#myCarousel2" data-slide="prev">
-                        <span class="icon-prev"></span>
-                    </a>
-                    <a class="right carousel-control" href="#myCarousel2" data-slide="next">
-                        <span class="icon-next"></span>
-                    </a>
-
-                </header>
-
-
-
-
-            </div>
-            <!--     fim destaque 2    -->
-
-
-            <div class="col-lg-12">
-
-                <div class="separa" style="margin-top: 50px">Mais Anúncios</div>
-
-            </div>
-
-
-            <!--     destaque 4      -->
-            <div class="col-lg-12">
-
-
-
-                <header id="myCarousel4" class="carousel slide">
-                    <!-- Indicators -->
-                    <ol class="carousel-indicators">
-                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#myCarousel" data-slide-to="1" class=""></li>
-                        <li data-target="#myCarousel" data-slide-to="2" class=""></li>
-                    </ol>
-                    <!-- Wrapper for Slides -->
-                    <!-- Wrapper for Slides -->
-                    <div class="carousel-inner">
-
-                        <!--início item 1-->
-                        <div class="item active">
-                            <div class="col-lg-12">
-                                <div class="row">
-                                    <ul class="grid">
-
-
-                                        <!--start #1 gallery-->
-                                        <li class="col-lg-4 col-sm-4  col-sm-4-front">
-                                            <div class="border-clique">
-                                                <a href="#gallery_1" role="button" data-toggle="modal">
-                                                    <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="../../Images/Inicial/img/jardim.jpg" alt="">
-                                                    </div>
-                                                    <div class="txt-destaque-4">
-                                                        <span class="tit-destaque-4">Josiel - Jardinagem</span><br>
-                                                        <span>Serviços de aparas, poda, design, projetos, nutriçao, criação, acompanhamento entre outros.</span><br>
-                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </li>
-
-
-                                        <!--start #2 gallery-->
-                                        <li class="col-lg-4 col-sm-4  col-sm-4-front">
-                                            <div class="border-clique">
-                                                <a href="#gallery_1" role="button" data-toggle="modal">
-                                                    <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="../../Images/Inicial/img/seg.jpg" alt="">
-                                                    </div>
-                                                    <div class="txt-destaque-4">
-                                                        <span class="tit-destaque-4">Patrix Seguros</span><br>
-                                                        <span class="tit-destaque-8">Seguradora de Veículos, imóveis, cargas, serviços, viagens entre outros.</span><br>
-                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </li>
-
-
-                                        <!--start #3 gallery-->
-                                        <li class="col-lg-4 col-sm-4  col-sm-4-front">
-                                            <div class="border-clique">
-                                                <a href="#gallery_1" role="button" data-toggle="modal">
-                                                    <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="../../Images/Inicial/img/gallery_12.jpg" alt="">
-                                                    </div>
-                                                    <div class="txt-destaque-4">
-                                                        <span class="tit-destaque-4">Nutrilife</span><br>
-                                                        <span>Os produtos naturais Nutrilife tentam resgatar um pouco do tempo em que, colhidos e preparados na hora.</span><br>
-                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </li>
-
-
-
-                                        <!--start #4 gallery-->
-                                        <li class="col-lg-4 col-sm-4  col-sm-4-front">
-                                            <div class="border-clique">
-                                                <a href="#gallery_1" role="button" data-toggle="modal">
-                                                    <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="../../Images/Inicial/img/gallery_10.jpg" alt="">
-                                                    </div>
-                                                    <div class="txt-destaque-4">
-                                                        <span class="tit-destaque-4">Nokia Lumia 530</span><br>
-                                                        <span>Windows Phone e aplicativos que vão lhe surpriender, confira mais marcas em meu hotsite.</span><br>
-                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </li>
-
-
-                                        <!--start #5 gallery-->
-                                        <li class="col-lg-4 col-sm-4  col-sm-4-front">
-                                            <div class="border-clique">
-                                                <a href="#gallery_1" role="button" data-toggle="modal">
-                                                    <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="../../Images/Inicial/img/pet.jpg" alt="">
-                                                    </div>
-                                                    <div class="txt-destaque-4">
-                                                        <span class="tit-destaque-4">Pet Care - Com muito carinho</span><br>
-                                                        <span>Petshop, hotelzinho e todos os serviços para deixar seu pet a vontade e feliz.</span><br>
-                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </li>
-
-
-                                        <!--start #6 gallery-->
-                                        <li class="col-lg-4 col-sm-4  col-sm-4-front">
-                                            <div class="border-clique">
-                                                <a href="#gallery_1" role="button" data-toggle="modal">
-                                                    <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="../../Images/Inicial/img/pizza.jpg" alt="">
-                                                    </div>
-                                                    <div class="txt-destaque-4">
-                                                        <span class="tit-destaque-4">MeGusta Pizzaria</span><br>
-                                                        <span>As mais deliciosas pizza do Vale, trabalhamos com entrgas, experimente o Crep MeGusta.</span><br>
-                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </li>
-
-
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!--fim item 1-->
-                        <!--inicio item 2-->
-                        <div class="item">
-                            <div class="col-lg-12">
-                                <div class="row">
-                                    <ul class="grid">
-
-
-                                        <!--start #1 gallery-->
-                                        <li class="col-lg-4 col-sm-4  col-sm-4-front">
-                                            <div class="border-clique">
-                                                <a href="#gallery_1" role="button" data-toggle="modal">
-                                                    <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="../../Images/Inicial/img/jardim.jpg" alt="">
-                                                    </div>
-                                                    <div class="txt-destaque-4">
-                                                        <span class="tit-destaque-4">Josiel - Jardinagem</span><br>
-                                                        <span>Serviços de aparas, poda, design, projetos, nutriçao, criação, acompanhamento entre outros.</span><br>
-                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </li>
-
-
-                                        <!--start #2 gallery-->
-                                        <li class="col-lg-4 col-sm-4  col-sm-4-front">
-                                            <div class="border-clique">
-                                                <a href="#gallery_1" role="button" data-toggle="modal">
-                                                    <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="../../Images/Inicial/img/seg.jpg" alt="">
-                                                    </div>
-                                                    <div class="txt-destaque-4">
-                                                        <span class="tit-destaque-4">Patrix Seguros</span><br>
-                                                        <span class="tit-destaque-8">Seguradora de Veículos, imóveis, cargas, serviços, viagens entre outros.</span><br>
-                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </li>
-
-
-                                        <!--start #3 gallery-->
-                                        <li class="col-lg-4 col-sm-4  col-sm-4-front">
-                                            <div class="border-clique">
-                                                <a href="#gallery_1" role="button" data-toggle="modal">
-                                                    <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="../../Images/Inicial/img/gallery_12.jpg" alt="">
-                                                    </div>
-                                                    <div class="txt-destaque-4">
-                                                        <span class="tit-destaque-4">Nutrilife</span><br>
-                                                        <span>Os produtos naturais Nutrilife tentam resgatar um pouco do tempo em que, colhidos e preparados na hora.</span><br>
-                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </li>
-
-
-
-                                        <!--start #4 gallery-->
-                                        <li class="col-lg-4 col-sm-4  col-sm-4-front">
-                                            <div class="border-clique">
-                                                <a href="#gallery_1" role="button" data-toggle="modal">
-                                                    <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="../../Images/Inicial/img/gallery_10.jpg" alt="">
-                                                    </div>
-                                                    <div class="txt-destaque-4">
-                                                        <span class="tit-destaque-4">Nokia Lumia 530</span><br>
-                                                        <span>Windows Phone e aplicativos que vão lhe surpriender, confira mais marcas em meu hotsite.</span><br>
-                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </li>
-
-
-                                        <!--start #5 gallery-->
-                                        <li class="col-lg-4 col-sm-4  col-sm-4-front">
-                                            <div class="border-clique">
-                                                <a href="#gallery_1" role="button" data-toggle="modal">
-                                                    <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="../../Images/Inicial/img/pet.jpg" alt="">
-                                                    </div>
-                                                    <div class="txt-destaque-4">
-                                                        <span class="tit-destaque-4">Pet Care - Com muito carinho</span><br>
-                                                        <span>Petshop, hotelzinho e todos os serviços para deixar seu pet a vontade e feliz.</span><br>
-                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </li>
-
-
-                                        <!--start #6 gallery-->
-                                        <li class="col-lg-4 col-sm-4  col-sm-4-front">
-                                            <div class="border-clique">
-                                                <a href="#gallery_1" role="button" data-toggle="modal">
-                                                    <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="../../Images/Inicial/img/pizza.jpg" alt="">
-                                                    </div>
-                                                    <div class="txt-destaque-4">
-                                                        <span class="tit-destaque-4">MeGusta Pizzaria</span><br>
-                                                        <span>As mais deliciosas pizza do Vale, trabalhamos com entrgas, experimente o Crep MeGusta.</span><br>
-                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </li>
-
-
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!--fim item 2-->
-                        pijiuhiu
-                        <!--início item 3-->
-                        <div class="item">
-                            <div class="col-lg-12">
-                                <div class="row">
-                                    <ul class="grid">
-
-
-                                        <!--start #1 gallery-->
-                                        <li class="col-lg-4 col-sm-4  col-sm-4-front">
-                                            <div class="border-clique">
-                                                <a href="#gallery_1" role="button" data-toggle="modal">
-                                                    <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="../../Images/Inicial/img/jardim.jpg" alt="">
-                                                    </div>
-                                                    <div class="txt-destaque-4">
-                                                        <span class="tit-destaque-4">Josiel - Jardinagem</span><br>
-                                                        <span>Serviços de aparas, poda, design, projetos, nutriçao, criação, acompanhamento entre outros.</span><br>
-                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </li>
-
-
-                                        <!--start #2 gallery-->
-                                        <li class="col-lg-4 col-sm-4  col-sm-4-front">
-                                            <div class="border-clique">
-                                                <a href="#gallery_1" role="button" data-toggle="modal">
-                                                    <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="../../Images/Inicial/img/seg.jpg" alt="">
-                                                    </div>
-                                                    <div class="txt-destaque-4">
-                                                        <span class="tit-destaque-4">Patrix Seguros</span><br>
-                                                        <span class="tit-destaque-8">Seguradora de Veículos, imóveis, cargas, serviços, viagens entre outros.</span><br>
-                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </li>
-
-
-                                        <!--start #3 gallery-->
-                                        <li class="col-lg-4 col-sm-4  col-sm-4-front">
-                                            <div class="border-clique">
-                                                <a href="#gallery_1" role="button" data-toggle="modal">
-                                                    <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="../../Images/Inicial/img/gallery_12.jpg" alt="">
-                                                    </div>
-                                                    <div class="txt-destaque-4">
-                                                        <span class="tit-destaque-4">Nutrilife</span><br>
-                                                        <span>Os produtos naturais Nutrilife tentam resgatar um pouco do tempo em que, colhidos e preparados na hora.</span><br>
-                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </li>
-
-
-
-                                        <!--start #4 gallery-->
-                                        <li class="col-lg-4 col-sm-4  col-sm-4-front">
-                                            <div class="border-clique">
-                                                <a href="#gallery_1" role="button" data-toggle="modal">
-                                                    <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="../../Images/Inicial/img/gallery_10.jpg" alt="">
-                                                    </div>
-                                                    <div class="txt-destaque-4">
-                                                        <span class="tit-destaque-4">Nokia Lumia 530</span><br>
-                                                        <span>Windows Phone e aplicativos que vão lhe surpriender, confira mais marcas em meu hotsite.</span><br>
-                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </li>
-
-
-                                        <!--start #5 gallery-->
-                                        <li class="col-lg-4 col-sm-4  col-sm-4-front">
-                                            <div class="border-clique">
-                                                <a href="#gallery_1" role="button" data-toggle="modal">
-                                                    <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="../../Images/Inicial/img/pet.jpg" alt="">
-                                                    </div>
-                                                    <div class="txt-destaque-4">
-                                                        <span class="tit-destaque-4">Pet Care - Com muito carinho</span><br>
-                                                        <span>Petshop, hotelzinho e todos os serviços para deixar seu pet a vontade e feliz.</span><br>
-                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </li>
-
-
-                                        <!--start #6 gallery-->
-                                        <li class="col-lg-4 col-sm-4  col-sm-4-front">
-                                            <div class="border-clique">
-                                                <a href="#gallery_1" role="button" data-toggle="modal">
-                                                    <div class="img-destaque-4">
-                                                        <img class="img-responsive" src="../../Images/Inicial/img/pizza.jpg" alt="">
-                                                    </div>
-                                                    <div class="txt-destaque-4">
-                                                        <span class="tit-destaque-4">MeGusta Pizzaria</span><br>
-                                                        <span>As mais deliciosas pizza do Vale, trabalhamos com entrgas, experimente o Crep MeGusta.</span><br>
-                                                        <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </li>
-
-
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!--fim item 3-->
-
-
-                    </div>
-                    <!-- Controls -->
-                    <a class="left carousel-control" href="#myCarousel4" data-slide="prev">
-                        <span class="icon-prev"></span>
-                    </a>
-                    <a class="right carousel-control" href="#myCarousel4" data-slide="next">
-                        <span class="icon-next"></span>
-                    </a>
-
-
-                </header>
-
-
-
-
-            </div>
-            <!--     fim destaque 4  -->
-
-        </div>
-
-        <div class="container mt40">
-            <div class="container" style="padding:0px!important">
-
-
-                <div class="separa">Social</div>
-
-
-                <div class="mt40" id="social">
-                    <ul class="row clearfix">
-                        <li class="col-md-3 col-sm-3">
-                            <h5 class="heading5">Twitter</h5>
-                            <div id="twitter">
-                                <ul class="tweet_list">
-                                    <li class="tweet_first tweet_odd">
-                                        <a class="tweet_avatar" href="http://twitter.com/twitter">
-                                            <img src="http://pbs.twimg.com/profile_images/2284174758/v65oai7fxn47qv9nectx_normal.png" height="32" width="32" alt="twitter's avatar" title="twitter's avatar" border="0">
-                                        </a><span class="tweet_time"><a href="http://twitter.com/twitter/status/519540931461005312" title="view tweet on twitter">about 3 days ago</a></span> <span class="tweet_join"></span> <span class="tweet_text">Today we're taking legal action to provide more <a href="http://search.twitter.com/search?q=&amp;tag=transparency&amp;lang=all" class="tweet_hashtag">#transparency</a> to our users about requests from the US government. <a href="https://blog.twitter.com/2014/taking-the-fight-for-transparency-to-court">blog.twitter.com/2014/taking-th…</a></span>
+                <div class="container">
+                    <a class="logo pull-left" href="/Inicial/Index"><img title="MixClique" alt="MixClique" src="../../Images/Inicial/img/logo.png"></a>
+                    <div id="mainmenu" class=" pull-right">
+                        <!-- Navigation -->
+                        <nav class="subnav subnav222">
+                            <div class="menurelative">
+                                <a class="btn btn-orange mainmenumobile">Menu</a>
+                                <ul class="nav-pills mainmenucontain">
+                                    <li>
+                                        <a class="active home submenu2">Sobre o MixClique</a>
+                                        <div class="submenu">
+                                            <ul>
+                                                <li> <a class="" title="Quem Somos" href="#">Quem Somos</a> </li>
+                                                <li> <a class="" title="Como Funciona" href="#">Como Funciona</a> </li>
+                                                <li> <a class="" title="Regulamentação" href="#">Política do MixClique</a> </li>
+                                                <li> <a class="" title="Política de Proteção de Dados" href="#">Termos e Condições</a> </li>
+                                            </ul>
+                                        </div>
                                     </li>
-                                    <li class="tweet_even"><a class="tweet_avatar" href="http://twitter.com/twitter"><img src="http://pbs.twimg.com/profile_images/2284174758/v65oai7fxn47qv9nectx_normal.png" height="32" width="32" alt="twitter's avatar" title="twitter's avatar" border="0"></a><span class="tweet_time"><a href="http://twitter.com/twitter/status/517712695496155136" title="view tweet on twitter">about 9 days ago</a></span> <span class="tweet_join"></span> <span class="tweet_text">Now it's easier to enjoy photos on Twitter for Mac. Share pics in messages, view/post up to 4 pics in Tweets: <a href="https://itunes.apple.com/us/app/twitter/id409789998?mt=12">itunes.apple.com/us/app/twitter…</a></span></li>
+                                    <li>
+                                        <a class="submenu2">Ganhe clicando</a>
+                                        <div class="submenu">
+                                            <ul class="pull-left">
+                                                <li> <a class="" title="Veja Como" href="#">Veja Como</a> </li>
+                                                <li> <a class="" title="Faça seu Cadastro" href="#">Cadastre-se</a> </li>
+                                                <li> <a class="" title="Acesse o Gerenciador" href="#">Escritório Virtual</a> </li>
+                                                <li> <a class="" href="#"><img title="Veja os Detalhes" alt="" src="../../Images/Inicial/img/ad1.jpg" width="200"></a></li>
+                                            </ul>
+                                            <div id="topdeal">
+                                                <h3>Top do momento</h3>
+                                                <ul>
+                                                    <li>
+                                                        <img width="100" src="../../Images/Inicial/img/blog1.jpg" alt="Veja os Detalhes" title="Veja os Detalhes" class="pull-left"> <a class="title" href="#">Samsung Galaxy Tab 3 T211 Tablet </a>
+                                                        <div class="blogdate"> <span class="blogicon"><i class="fa fa-calendar"></i> 5 de Outubro, 2014 </span> </div>
+                                                    </li>
+                                                    <li>
+                                                        <img width="100" src="../../Images/Inicial/img/blog2.jpg" alt="Veja os Detalhes" title="Veja os Detalhes" class="pull-left"> <a class="title" href="#">Samsung Galaxy Tab 3 T211 Tablet </a>
+                                                        <div class="blogdate"> <span class="blogicon"><i class="fa fa-calendar"></i> 8 de Setembro, 2014 </span> </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a class="submenu2">Seja Anunciante</a>
+                                        <div class="submenu">
+                                            <ul>
+                                                <li>
+                                                    @Html.ActionLink("Anuncie no MixClique", "Register", "Inicial", new { @title = "Seja um Anunciante" })
+                                                </li>
+                                                <li> <a class="" title="Veja os Preços dos Anuncios" href="#">Tabela de Preços</a> </li>
+                                                <li> <a class="" title="Baixe a Apresentação do MixClique" href="#">Apresentação MixClique</a> </li>
+                                                <li> <a class="" title="Baixe o Contrato" href="#">Contrato Geral</a> </li>
+                                                <li> <a class="" title="Acesse o Gerenciador" href="#">Escritório Virtual</a> </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a class="submenu2">Oportunidade de Negócios</a>
+                                        <div class="submenu">
+                                            <ul>
+                                                <li> <a class="" title="O que é Sicove do Brasil" href="http://www.sicove.com.br/">Conheça o Sicove</a> </li>
+                                                <li> <a class="" title="Venda Publicidade" href="#">Venda Anuncios</a> </li>
+                                                <li> <a class="" title="Preencha o Currículo" href="#">Trabalhe Conosco</a> </li>
+                                                <li> <a class="" title="Ajuda" href="#">Ajuda e Suporte</a> </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li> <a class="" title="Contato" href="#">Contato</a> </li>
+                                    <li> <a class="" title="Perguntas mais Frequentes" href="#">Faq</a> </li>
                                 </ul>
                             </div>
-                        </li>
-                        <li class="col-md-3 col-sm-3 mt40column">
-                            <h5 class="heading5">Flickr</h5>
-                            <div class="social-feed flickr-feed">
-                                <img src="../../Images/Inicial/img/photo1.jpg" alt="" title="">
-                                <img src="../../Images/Inicial/img/photo2.jpg" alt="" title="">
-                                <img src="../../Images/Inicial/img/photo3.jpg" alt="" title="">
-                                <img src="../../Images/Inicial/img/photo4.jpg" alt="" title="">
-                                <img src="../../Images/Inicial/img/photo4.jpg" alt="" title="">
-                                <img src="../../Images/Inicial/img/photo2.jpg" alt="" title="">
-                                <img src="../../Images/Inicial/img/photo1.jpg" alt="" title="">
-                                <img src="../../Images/Inicial/img/photo3.jpg" alt="" title="">
-                                <img src="../../Images/Inicial/img/photo1.jpg" alt="" title="">
-                                <img src="../../Images/Inicial/img/photo2.jpg" alt="" title="">
-                                <img src="../../Images/Inicial/img/photo3.jpg" alt="" title="">
-                                <img src="../../Images/Inicial/img/photo4.jpg" alt="" title="">
-                                <img src="../../Images/Inicial/img/photo2.jpg" alt="" title="">
-                                <img src="../../Images/Inicial/img/photo4.jpg" alt="" title="">
-                                <img src="../../Images/Inicial/img/photo3.jpg" alt="" title="">
-                                <img src="../../Images/Inicial/img/photo1.jpg" alt="" title="">
-                                <ul class="flickr-list"></ul>
-                            </div>
-                        </li>
-                        <li class="col-md-3 col-sm-3 mt40column">
-                            <h5 class="heading5">Youtube</h5>
-                            <div class="social-feed youtube-feed">
-                                <ul class="youtube-list"></ul>
-                            </div>
-                        </li>
-                        <li class="col-md-3 col-sm-3 mt40column">
-                            <h5 class="heading5">Facebook</h5>
-                            <div class="">
-                                <div id="fb-root" class=" fb_reset">
-                                    <div style="position: absolute; top: -10000px; height: 0px; width: 0px;">
-                                        <div>
+                        </nav>
 
-                                        </div>
-                                    </div>
-                                    <div style="position: absolute; top: -10000px; height: 0px; width: 0px;">
-                                        <div>
-                                            <iframe name="fb_xdm_frame_http" frameborder="0" allowtransparency="true" scrolling="no" id="fb_xdm_frame_http" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="http://static.ak.facebook.com/connect/xd_arbiter/KFZn1BJ0LYk.js?version=41#channel=f2d0443774&amp;origin=http%3A%2F%2Fwww.pxcreate.com" style="border: none;"></iframe>
-                                            <iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="https://s-static.ak.facebook.com/connect/xd_arbiter/KFZn1BJ0LYk.js?version=41#channel=f2d0443774&amp;origin=http%3A%2F%2Fwww.pxcreate.com" style="border: none;"></iframe>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="fb-like-box fb_iframe_widget" data-href="https://www.facebook.com/facebook" data-width="240" data-show-faces="true" data-colorscheme="light" data-stream="false" data-show-border="false" data-header="false" data-height="240" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=&amp;color_scheme=light&amp;header=false&amp;height=240&amp;href=https%3A%2F%2Fwww.facebook.com%2Ffacebook&amp;locale=en_US&amp;sdk=joey&amp;show_border=false&amp;show_faces=true&amp;stream=false&amp;width=240">
-                                    <span style="vertical-align: bottom; width: 240px; height: 240px;">
-                                        <iframe name="f27aea448c" width="240px" height="240px" frameborder="0" allowtransparency="true" scrolling="no" title="fb:like_box Facebook Social Plugin" src="http://www.facebook.com/plugins/like_box.php?app_id=&amp;channel=http%3A%2F%2Fstatic.ak.facebook.com%2Fconnect%2Fxd_arbiter%2FKFZn1BJ0LYk.js%3Fversion%3D41%23cb%3Df2733b24f8%26domain%3Dwww.pxcreate.com%26origin%3Dhttp%253A%252F%252Fwww.pxcreate.com%252Ff2d0443774%26relation%3Dparent.parent&amp;color_scheme=light&amp;header=false&amp;height=240&amp;href=https%3A%2F%2Fwww.facebook.com%2Ffacebook&amp;locale=en_US&amp;sdk=joey&amp;show_border=false&amp;show_faces=true&amp;stream=false&amp;width=240" style="border: none; visibility: visible; width: 240px; height: 240px;" class=""></iframe>
-                                    </span>
-                                </div>
-                            </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Header End -->
+
+
+
+        <div id="maincontainer">
+            <!-- Slider Start-->
+
+
+            <section id="searchmap">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <a href="#"><img class="img-responsive" src="../../Images/Inicial/img/slide1.jpg"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#" class="postad"><span class="teste22"> <i class="fa fa-pencil"></i>anuncie aqui</span></a>
+
+                <div class="searchcontianer" id="searchinner">
+                    <a class="todayoffer"><span class="text1">Grandes Ofertas<br> para</span><span class="text2">VOCÊ</span></a>
+                    <h1 class="heading1">Procure por milhares de anúncios e classificados<span class="orange"> MixClique</span> </h1>
+                    <form class="form-inline">
+                        <div class="btn-group" id="search-group">
+
+                            <input type="text" id="keyword" name="keyword" value="" placeholder="Pesquisar produto" class="form-control mainserarch" />
+                            <select id="category" name="category">
+                                <option value="">Selecione a categoria</option>
+                                <option value="Real Estate">Automóveis</option>
+                                <option value="Jobs">Casa e Lazer</option>
+                                <option value="Personal">PetShop</option>
+                                <option value="Computers">Construção</option>
+                                <option value="Beauty">Eletrônicos</option>
+                                <option value="Hobbies">Lazer</option>
+                                <option value="Movies">Brinquedos</option>
+                                <option value="Health">cama</option>
+                            </select>
+                            <a href="#"> <img class="img-responsive" style="display: -webkit-inline-box;" src="../../Images/Inicial/img/pes.png"></a>
+
+                            <!--   <input type="button" id="searchmapbutton" name="Pesquisar" value="Pesquisar" class="btn btn-orange tooltip-test mainserarchsubmit"/>-->
+
+                        </div>
+                    </form>
+                </div>
+
+            </section>
+            <!-- Slider End-->
+            <!-- SEO Line-->
+            <div class="container mt20">
+                <div class="seodetails">
+                    <h2 class="heading2"> NUNCA FOI TÃO FÁCIL ANUNCIAR, <br>MELHOR AINDA É CLICAR!</h2>
+                    <p class="metadetails">
+                        Aqui você anuncia, clica, se diverte. Visualiza os melhores produtos e serviços e ainda pode ganhar prêmios e muito dinheiro<br>
+                        Você nunca viu nada igual, MixClique chegou para mudar a sua vida.
+                    </p>
+                </div>
+            </div>
+            <!-- Steps-->
+            <div class="container">
+                <div class="row">
+                    <ul class="steps">
+                        <li class="col-sm-4">
+                            <div class="step"><span class="stepcount">1</span><span>Selecione a Plano</span> <i class="fa fa-check-square-o pull-right"></i></div>
+                        </li>
+                        <li class="col-sm-4">
+                            <div class="step"><span class="stepcount">2</span><span>Poste seu anúncio</span> <i class="fa fa-edit pull-right"></i></div>
+                        </li>
+                        <li class="col-sm-4">
+                            <div class="step"><span class="stepcount">3</span><span>Finalizar o pagamento</span> <i class="fa fa-credit-card pull-right"></i></div>
                         </li>
                     </ul>
                 </div>
             </div>
-        </div>
+            <!-- Services-->
 
-        <!-- Newsletter-->
-        <section class="mt40 newsletter" id="newslettersignup">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 col-sm-6">
-                        <div class="pull-left ">
-                            <h5 class="heading5 borderbottm">Mala direta</h5>
-                            Cadastre seu email para receber novidades MixClique
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6">
-                        <div class="pull-right mt20 surbscribeform">
-                            <form class="form-inline">
-                                <div class="input-prepend">
-                                    <input type="text" class="subscribeinput" id="inputIcon" placeholder="Digite aqui seu email">
-                                    <input type="submit" class="btn btn-orange" value="Enviar">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+
+            <div class="container mt40" id="maincategory">
+                <ul class="maincategory row">
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-bug c16"></i> <br>
+                            <span class="direname">Animais</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-microphone c2"></i> <br>
+                            <span class="direname">Áudio</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-female c13"></i> <br>
+                            <span class="direname">Beleza</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-bicycle c3"></i> <br>
+                            <span class="direname">Bicicleta</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-cubes c10"></i> <br>
+                            <span class="direname">Brinquedos</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-camera c15"></i> <br>
+                            <span class="direname">Câmeras</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-home c1"></i> <br>
+                            <span class="direname">Casa</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-mobile c7"></i> <br>
+                            <span class="direname">Celular</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-users c6"></i> <br>
+                            <span class="direname">Comunidades</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-desktop c4"></i> <br>
+                            <span class="direname">Computador</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-child c5"></i> <br>
+                            <span class="direname">Crianças</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-plug c3"></i> <br>
+                            <span class="direname">Eletrodomésticos</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-calculator c17"></i> <br>
+                            <span class="direname">Eletrônicos</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-futbol-o c12"></i> <br>
+                            <span class="direname">Esportes</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-film c6"></i> <br>
+                            <span class="direname">Filmes</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-yelp c2"></i> <br>
+                            <span class="direname">Games</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-cutlery c15"></i> <br>
+                            <span class="direname">Gastronomia</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-building-o c11"></i> <br>
+                            <span class="direname">Imóveis</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-print c3"></i> <br>
+                            <span class="direname">Impressoras</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-book c17"></i> <br>
+                            <span class="direname">Livros</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-music c7"></i> <br>
+                            <span class="direname">Música</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-laptop c16"></i> <br>
+                            <span class="direname">Notebook</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-puzzle-piece c13"></i> <br>
+                            <span class="direname">Passatempo</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-keyboard-o c1"></i> <br>
+                            <span class="direname">Periféricos</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-user c12"></i> <br>
+                            <span class="direname">Pessoal</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-twitter c10"></i> <br>
+                            <span class="direname">Pets</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-user-md c6"></i> <br>
+                            <span class="direname">Saúde</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-thumbs-o-up c2"></i> <br>
+                            <span class="direname">Serviços</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-phone c17"></i> <br>
+                            <span class="direname">Telefone</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-automobile c7"></i> <br>
+                            <span class="direname">Veículos</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-suitcase c4"></i> <br>
+                            <span class="direname">Viagens</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-video-camera c6"></i> <br>
+                            <span class="direname">Vídeos</span>
+                        </a>
+                    </li>
+
+                </ul>
+                <div class="clearfix"></div>
+                <a id="prevcat" class="prevcarousal" href="#">Previous</a> <a id="nextcat" class="nextcarosal" href="#">Next</a>
             </div>
-        </section>
-        <footer id="footer">
-            <section id="quicklink">
-                <div class="container">
-                    <div class="row">
-                        <ul class="quicklinks">
-                            <li> <a class="active home" href="/Inicial/Index">A empresa</a> </li>
-                            <li> <a class="" href="#">Ganhe dinheiro clicando</a> </li>
-                            <li> <a class="" href="#">anuncie</a> </li>
-                            <li> <a class="" href="#">oportunidade de negócio</a> </li>
-                            <li> <a class="" href="#">contato</a> </li>
-                            <li> <a class="" href="#">Faq</a> </li>
+            <!-- Directory Listing-->
+            <div class="container mt40  mt-normal">
+
+                <div class="col-lg-12">
+                    <div class="separa">Anúncios em Destaque</div>
+                </div>
+
+
+                <!--   destaque 2    -->
+                <div class="col-lg-12">
+
+                    <header id="myCarousel2" class="carousel slide">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+                            <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+                        </ol>
+                        <!-- Wrapper for Slides -->
+                        <!-- Wrapper for Slides -->
+                        <div class="carousel-inner">
+
+                            <!--início item 1-->
+                            <div class="item active">
+                                <div class="col-lg-12">
+                                    <div class="row">
+                                        <ul class="grid">
+
+
+                                            <!--start #1 gallery-->
+                                            <li class="col-lg-4 col-sm-4 col-sm-4-front">
+                                                <a href="#gallery_1" role="button" data-toggle="modal">
+                                                    <div>
+                                                        <div>
+                                                            <img class="img-responsive" src="../../Images/Inicial/img/blog_4.jpg" alt="">
+                                                        </div>
+                                                        <div class="txt-destaque-1">
+                                                            <h4>Cacau Show</h4>
+                                                            <span>Um natal recheado de chocolates, confira as cestas de natal que a Cacau Show preparou para você.</span>
+                                                        </div>
+                                                        <div class="txt-destaque-2">
+                                                            <div class="col-md-3 col-md-offset-3 pad_an">
+                                                                <a href="#">
+                                                                    <i class="fa fa-mobile c11 iconeb"></i><br>
+                                                                </a>
+                                                            </div>
+
+                                                            <div class="col-md-3  pad_an">
+                                                                <a href="#">
+                                                                    <i class="fa fa-map-marker c11 iconeb"></i><br>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+
+
+                                            <!--start #2 gallery-->
+                                            <li class="col-lg-4 col-sm-4 col-sm-4-front">
+                                                <a href="#gallery_2" role="button" data-toggle="modal">
+                                                    <div>
+                                                        <div>
+                                                            <img class="img-responsive" src="../../Images/Inicial/img/blog_1.jpg" alt="">
+                                                        </div>
+                                                        <div class="txt-destaque-1">
+                                                            <h4>Sansung Master Lav</h4>
+                                                            <span>A melhor lavaroupas do mercado. Lava, enxuga e seca suas roupas, super promoção de dezembro.</span>
+                                                        </div>
+
+                                                        <div class="txt-destaque-2">
+                                                            <div class="col-md-3 col-md-offset-3 pad_an">
+                                                                <a href="#">
+                                                                    <i class="fa fa-mobile c11 iconeb"></i><br>
+                                                                </a>
+                                                            </div>
+
+                                                            <div class="col-md-3  pad_an">
+                                                                <a href="#">
+                                                                    <i class="fa fa-map-marker c11 iconeb"></i><br>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+
+
+                                            <!--start #3 gallery-->
+                                            <li class="col-lg-4 col-sm-4 col-sm-4-front">
+                                                <a href="#gallery_3" role="button" data-toggle="modal">
+                                                    <div>
+                                                        <div>
+                                                            <img class="img-responsive" src="../../Images/Inicial/img/blog_3.jpg" alt="">
+                                                        </div>
+                                                        <div class="txt-destaque-1">
+                                                            <h4>Audi A3</h4>
+                                                            <span>Um conceito, um mito, venha conferir o Audi A3, mais detalhe no hotsite, clique e confira.</span>
+                                                        </div>
+
+
+
+
+                                                        <div class="txt-destaque-2">
+                                                            <div class="col-md-3 col-md-offset-3 pad_an">
+                                                                <a href="#">
+                                                                    <i class="fa fa-mobile c11 iconeb"></i><br>
+                                                                </a>
+                                                            </div>
+
+                                                            <div class="col-md-3  pad_an">
+                                                                <a href="#">
+                                                                    <i class="fa fa-map-marker c11 iconeb"></i><br>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                </a>
+                                            </li>
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--fim item 1-->
+                            <!--inicio item 2-->
+                            <div class="item">
+                                <div class="col-lg-12">
+                                    <div class="row">
+                                        <ul class="grid">
+
+
+                                            <!--start #1 gallery-->
+                                            <li class="col-lg-4 col-sm-4 col-sm-4-front">
+                                                <a href="#gallery_1" role="button" data-toggle="modal">
+                                                    <div>
+                                                        <div>
+                                                            <img class="img-responsive" src="../../Images/Inicial/img/blog_4.jpg" alt="">
+                                                        </div>
+                                                        <div class="txt-destaque-1">
+                                                            <h4>Cacau Show</h4>
+                                                            <span>Um natal recheado de chocolates, confira as sextas de natal que a Cacau Show preparou para você.</span>
+                                                        </div>
+                                                        <div class="txt-destaque-2">
+                                                            <div class="col-md-3 col-md-offset-3 pad_an">
+                                                                <a href="#">
+                                                                    <i class="fa fa-mobile c11 iconeb"></i><br>
+                                                                </a>
+                                                            </div>
+
+                                                            <div class="col-md-3  pad_an">
+                                                                <a href="#">
+                                                                    <i class="fa fa-map-marker c11 iconeb"></i><br>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+
+
+                                            <!--start #2 gallery-->
+                                            <li class="col-lg-4 col-sm-4 col-sm-4-front">
+                                                <a href="#gallery_2" role="button" data-toggle="modal">
+                                                    <div>
+                                                        <div>
+                                                            <img class="img-responsive" src="../../Images/Inicial/img/blog_1.jpg" alt="">
+                                                        </div>
+                                                        <div class="txt-destaque-1">
+                                                            <h4>Sansung Master Lav</h4>
+                                                            <span>A melhor lavaroupas do mercado. Lava, enchuga e seca suas roupas, super promoção de dezembro.</span>
+                                                        </div>
+
+                                                        <div class="txt-destaque-2">
+                                                            <div class="col-md-3 col-md-offset-3 pad_an">
+                                                                <a href="#">
+                                                                    <i class="fa fa-mobile c11 iconeb"></i><br>
+                                                                </a>
+                                                            </div>
+
+                                                            <div class="col-md-3  pad_an">
+                                                                <a href="#">
+                                                                    <i class="fa fa-map-marker c11 iconeb"></i><br>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+
+
+                                            <!--start #3 gallery-->
+                                            <li class="col-lg-4 col-sm-4 col-sm-4-front">
+                                                <a href="#gallery_3" role="button" data-toggle="modal">
+                                                    <div>
+                                                        <div>
+                                                            <img class="img-responsive" src="../../Images/Inicial/img/blog_3.jpg" alt="">
+                                                        </div>
+                                                        <div class="txt-destaque-1">
+                                                            <h4>Audi A3</h4>
+                                                            <span>Um conceito, um mito, venha conferir o Audi A3, mais detalhe no hotsite, clique e confira.</span>
+                                                        </div>
+
+                                                        <div class="txt-destaque-2">
+                                                            <div class="col-md-3 col-md-offset-3 pad_an">
+                                                                <a href="#">
+                                                                    <i class="fa fa-mobile c11 iconeb"></i><br>
+                                                                </a>
+                                                            </div>
+
+                                                            <div class="col-md-3  pad_an">
+                                                                <a href="#">
+                                                                    <i class="fa fa-map-marker c11 iconeb"></i><br>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                </a>
+                                            </li>
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--fim item 2-->
+                            <!--início item 3-->
+                            <div class="item">
+                                <div class="col-lg-12">
+                                    <div class="row">
+                                        <ul class="grid">
+
+
+                                            <!--start #1 gallery-->
+                                            <li class="col-lg-4 col-sm-4 col-sm-4-front">
+                                                <a href="#gallery_1" role="button" data-toggle="modal">
+                                                    <div>
+                                                        <div>
+                                                            <img class="img-responsive" src="../../Images/Inicial/img/blog_4.jpg" alt="">
+                                                        </div>
+                                                        <div class="txt-destaque-1">
+                                                            <h4>Cacau Show</h4>
+                                                            <span>Um natal recheado de chocolates, confira as sextas de natal que a Cacau Show preparou para você.</span>
+                                                        </div>
+                                                        <div class="txt-destaque-2">
+                                                            <div class="col-md-3 col-md-offset-3 pad_an">
+                                                                <a href="#">
+                                                                    <i class="fa fa-mobile c11 iconeb"></i><br>
+                                                                </a>
+                                                            </div>
+
+                                                            <div class="col-md-3  pad_an">
+                                                                <a href="#">
+                                                                    <i class="fa fa-map-marker c11 iconeb"></i><br>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+
+
+                                            <!--start #2 gallery-->
+                                            <li class="col-lg-4 col-sm-4 col-sm-4-front">
+                                                <a href="#gallery_2" role="button" data-toggle="modal">
+                                                    <div>
+                                                        <div>
+                                                            <img class="img-responsive" src="../../Images/Inicial/img/blog_1.jpg" alt="">
+                                                        </div>
+                                                        <div class="txt-destaque-1">
+                                                            <h4>Sansung Master Lav</h4>
+                                                            <span>A melhor lavaroupas do mercado. Lava, enchuga e seca suas roupas, super promoção de dezembro.</span>
+                                                        </div>
+
+                                                        <div class="txt-destaque-2">
+                                                            <div class="col-md-3 col-md-offset-3 pad_an">
+                                                                <a href="#">
+                                                                    <i class="fa fa-mobile c11 iconeb"></i><br>
+                                                                </a>
+                                                            </div>
+
+                                                            <div class="col-md-3  pad_an">
+                                                                <a href="#">
+                                                                    <i class="fa fa-map-marker c11 iconeb"></i><br>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+
+
+                                            <!--start #3 gallery-->
+                                            <li class="col-lg-4 col-sm-4 col-sm-4-front">
+                                                <a href="#gallery_3" role="button" data-toggle="modal">
+                                                    <div>
+                                                        <div>
+                                                            <img class="img-responsive" src="../../Images/Inicial/img/blog_3.jpg" alt="">
+                                                        </div>
+                                                        <div class="txt-destaque-1">
+                                                            <h4>Audi A3</h4>
+                                                            <span>Um conceito, um mito, venha conferir o Audi A3, mais detalhe no hotsite, clique e confira.</span>
+                                                        </div>
+
+
+
+
+                                                        <div class="txt-destaque-2">
+                                                            <div class="col-md-3 col-md-offset-3 pad_an">
+                                                                <a href="#">
+                                                                    <i class="fa fa-mobile c11 iconeb"></i><br>
+                                                                </a>
+                                                            </div>
+
+                                                            <div class="col-md-3  pad_an">
+                                                                <a href="#">
+                                                                    <i class="fa fa-map-marker c11 iconeb"></i><br>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                </a>
+                                            </li>
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--fim item 3-->
+                        </div>
+                        <!-- Controls -->
+                        <a class="left carousel-control" href="#myCarousel2" data-slide="prev">
+                            <span class="icon-prev"></span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel2" data-slide="next">
+                            <span class="icon-next"></span>
+                        </a>
+
+                    </header>
+
+
+
+
+                </div>
+                <!--     fim destaque 2    -->
+
+
+                <div class="col-lg-12">
+
+                    <div class="separa" style="margin-top: 50px">Mais Anúncios</div>
+
+                </div>
+
+
+                <!--     destaque 4      -->
+                <div class="col-lg-12">
+
+
+
+                    <header id="myCarousel4" class="carousel slide">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+                            <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+                        </ol>
+                        <!-- Wrapper for Slides -->
+                        <!-- Wrapper for Slides -->
+                        <div class="carousel-inner">
+
+                            <!--início item 1-->
+                            <div class="item active">
+                                <div class="col-lg-12">
+                                    <div class="row">
+                                        <ul class="grid">
+
+
+                                            <!--start #1 gallery-->
+                                            <li class="col-lg-4 col-sm-4  col-sm-4-front">
+                                                <div class="border-clique">
+                                                    <a href="#gallery_1" role="button" data-toggle="modal">
+                                                        <div class="img-destaque-4">
+                                                            <img class="img-responsive" src="../../Images/Inicial/img/jardim.jpg" alt="">
+                                                        </div>
+                                                        <div class="txt-destaque-4">
+                                                            <span class="tit-destaque-4">Josiel - Jardinagem</span><br>
+                                                            <span>Serviços de aparas, poda, design, projetos, nutriçao, criação, acompanhamento entre outros.</span><br>
+                                                            <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </li>
+
+
+                                            <!--start #2 gallery-->
+                                            <li class="col-lg-4 col-sm-4  col-sm-4-front">
+                                                <div class="border-clique">
+                                                    <a href="#gallery_1" role="button" data-toggle="modal">
+                                                        <div class="img-destaque-4">
+                                                            <img class="img-responsive" src="../../Images/Inicial/img/seg.jpg" alt="">
+                                                        </div>
+                                                        <div class="txt-destaque-4">
+                                                            <span class="tit-destaque-4">Patrix Seguros</span><br>
+                                                            <span class="tit-destaque-8">Seguradora de Veículos, imóveis, cargas, serviços, viagens entre outros.</span><br>
+                                                            <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </li>
+
+
+                                            <!--start #3 gallery-->
+                                            <li class="col-lg-4 col-sm-4  col-sm-4-front">
+                                                <div class="border-clique">
+                                                    <a href="#gallery_1" role="button" data-toggle="modal">
+                                                        <div class="img-destaque-4">
+                                                            <img class="img-responsive" src="../../Images/Inicial/img/gallery_12.jpg" alt="">
+                                                        </div>
+                                                        <div class="txt-destaque-4">
+                                                            <span class="tit-destaque-4">Nutrilife</span><br>
+                                                            <span>Os produtos naturais Nutrilife tentam resgatar um pouco do tempo em que, colhidos e preparados na hora.</span><br>
+                                                            <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </li>
+
+
+
+                                            <!--start #4 gallery-->
+                                            <li class="col-lg-4 col-sm-4  col-sm-4-front">
+                                                <div class="border-clique">
+                                                    <a href="#gallery_1" role="button" data-toggle="modal">
+                                                        <div class="img-destaque-4">
+                                                            <img class="img-responsive" src="../../Images/Inicial/img/gallery_10.jpg" alt="">
+                                                        </div>
+                                                        <div class="txt-destaque-4">
+                                                            <span class="tit-destaque-4">Nokia Lumia 530</span><br>
+                                                            <span>Windows Phone e aplicativos que vão lhe surpriender, confira mais marcas em meu hotsite.</span><br>
+                                                            <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </li>
+
+
+                                            <!--start #5 gallery-->
+                                            <li class="col-lg-4 col-sm-4  col-sm-4-front">
+                                                <div class="border-clique">
+                                                    <a href="#gallery_1" role="button" data-toggle="modal">
+                                                        <div class="img-destaque-4">
+                                                            <img class="img-responsive" src="../../Images/Inicial/img/pet.jpg" alt="">
+                                                        </div>
+                                                        <div class="txt-destaque-4">
+                                                            <span class="tit-destaque-4">Pet Care - Com muito carinho</span><br>
+                                                            <span>Petshop, hotelzinho e todos os serviços para deixar seu pet a vontade e feliz.</span><br>
+                                                            <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </li>
+
+
+                                            <!--start #6 gallery-->
+                                            <li class="col-lg-4 col-sm-4  col-sm-4-front">
+                                                <div class="border-clique">
+                                                    <a href="#gallery_1" role="button" data-toggle="modal">
+                                                        <div class="img-destaque-4">
+                                                            <img class="img-responsive" src="../../Images/Inicial/img/pizza.jpg" alt="">
+                                                        </div>
+                                                        <div class="txt-destaque-4">
+                                                            <span class="tit-destaque-4">MeGusta Pizzaria</span><br>
+                                                            <span>As mais deliciosas pizza do Vale, trabalhamos com entrgas, experimente o Crep MeGusta.</span><br>
+                                                            <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </li>
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--fim item 1-->
+                            <!--inicio item 2-->
+                            <div class="item">
+                                <div class="col-lg-12">
+                                    <div class="row">
+                                        <ul class="grid">
+
+
+                                            <!--start #1 gallery-->
+                                            <li class="col-lg-4 col-sm-4  col-sm-4-front">
+                                                <div class="border-clique">
+                                                    <a href="#gallery_1" role="button" data-toggle="modal">
+                                                        <div class="img-destaque-4">
+                                                            <img class="img-responsive" src="../../Images/Inicial/img/jardim.jpg" alt="">
+                                                        </div>
+                                                        <div class="txt-destaque-4">
+                                                            <span class="tit-destaque-4">Josiel - Jardinagem</span><br>
+                                                            <span>Serviços de aparas, poda, design, projetos, nutriçao, criação, acompanhamento entre outros.</span><br>
+                                                            <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </li>
+
+
+                                            <!--start #2 gallery-->
+                                            <li class="col-lg-4 col-sm-4  col-sm-4-front">
+                                                <div class="border-clique">
+                                                    <a href="#gallery_1" role="button" data-toggle="modal">
+                                                        <div class="img-destaque-4">
+                                                            <img class="img-responsive" src="../../Images/Inicial/img/seg.jpg" alt="">
+                                                        </div>
+                                                        <div class="txt-destaque-4">
+                                                            <span class="tit-destaque-4">Patrix Seguros</span><br>
+                                                            <span class="tit-destaque-8">Seguradora de Veículos, imóveis, cargas, serviços, viagens entre outros.</span><br>
+                                                            <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </li>
+
+
+                                            <!--start #3 gallery-->
+                                            <li class="col-lg-4 col-sm-4  col-sm-4-front">
+                                                <div class="border-clique">
+                                                    <a href="#gallery_1" role="button" data-toggle="modal">
+                                                        <div class="img-destaque-4">
+                                                            <img class="img-responsive" src="../../Images/Inicial/img/gallery_12.jpg" alt="">
+                                                        </div>
+                                                        <div class="txt-destaque-4">
+                                                            <span class="tit-destaque-4">Nutrilife</span><br>
+                                                            <span>Os produtos naturais Nutrilife tentam resgatar um pouco do tempo em que, colhidos e preparados na hora.</span><br>
+                                                            <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </li>
+
+
+
+                                            <!--start #4 gallery-->
+                                            <li class="col-lg-4 col-sm-4  col-sm-4-front">
+                                                <div class="border-clique">
+                                                    <a href="#gallery_1" role="button" data-toggle="modal">
+                                                        <div class="img-destaque-4">
+                                                            <img class="img-responsive" src="../../Images/Inicial/img/gallery_10.jpg" alt="">
+                                                        </div>
+                                                        <div class="txt-destaque-4">
+                                                            <span class="tit-destaque-4">Nokia Lumia 530</span><br>
+                                                            <span>Windows Phone e aplicativos que vão lhe surpriender, confira mais marcas em meu hotsite.</span><br>
+                                                            <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </li>
+
+
+                                            <!--start #5 gallery-->
+                                            <li class="col-lg-4 col-sm-4  col-sm-4-front">
+                                                <div class="border-clique">
+                                                    <a href="#gallery_1" role="button" data-toggle="modal">
+                                                        <div class="img-destaque-4">
+                                                            <img class="img-responsive" src="../../Images/Inicial/img/pet.jpg" alt="">
+                                                        </div>
+                                                        <div class="txt-destaque-4">
+                                                            <span class="tit-destaque-4">Pet Care - Com muito carinho</span><br>
+                                                            <span>Petshop, hotelzinho e todos os serviços para deixar seu pet a vontade e feliz.</span><br>
+                                                            <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </li>
+
+
+                                            <!--start #6 gallery-->
+                                            <li class="col-lg-4 col-sm-4  col-sm-4-front">
+                                                <div class="border-clique">
+                                                    <a href="#gallery_1" role="button" data-toggle="modal">
+                                                        <div class="img-destaque-4">
+                                                            <img class="img-responsive" src="../../Images/Inicial/img/pizza.jpg" alt="">
+                                                        </div>
+                                                        <div class="txt-destaque-4">
+                                                            <span class="tit-destaque-4">MeGusta Pizzaria</span><br>
+                                                            <span>As mais deliciosas pizza do Vale, trabalhamos com entrgas, experimente o Crep MeGusta.</span><br>
+                                                            <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </li>
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--fim item 2-->
+                            pijiuhiu
+                            <!--início item 3-->
+                            <div class="item">
+                                <div class="col-lg-12">
+                                    <div class="row">
+                                        <ul class="grid">
+
+
+                                            <!--start #1 gallery-->
+                                            <li class="col-lg-4 col-sm-4  col-sm-4-front">
+                                                <div class="border-clique">
+                                                    <a href="#gallery_1" role="button" data-toggle="modal">
+                                                        <div class="img-destaque-4">
+                                                            <img class="img-responsive" src="../../Images/Inicial/img/jardim.jpg" alt="">
+                                                        </div>
+                                                        <div class="txt-destaque-4">
+                                                            <span class="tit-destaque-4">Josiel - Jardinagem</span><br>
+                                                            <span>Serviços de aparas, poda, design, projetos, nutriçao, criação, acompanhamento entre outros.</span><br>
+                                                            <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </li>
+
+
+                                            <!--start #2 gallery-->
+                                            <li class="col-lg-4 col-sm-4  col-sm-4-front">
+                                                <div class="border-clique">
+                                                    <a href="#gallery_1" role="button" data-toggle="modal">
+                                                        <div class="img-destaque-4">
+                                                            <img class="img-responsive" src="../../Images/Inicial/img/seg.jpg" alt="">
+                                                        </div>
+                                                        <div class="txt-destaque-4">
+                                                            <span class="tit-destaque-4">Patrix Seguros</span><br>
+                                                            <span class="tit-destaque-8">Seguradora de Veículos, imóveis, cargas, serviços, viagens entre outros.</span><br>
+                                                            <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </li>
+
+
+                                            <!--start #3 gallery-->
+                                            <li class="col-lg-4 col-sm-4  col-sm-4-front">
+                                                <div class="border-clique">
+                                                    <a href="#gallery_1" role="button" data-toggle="modal">
+                                                        <div class="img-destaque-4">
+                                                            <img class="img-responsive" src="../../Images/Inicial/img/gallery_12.jpg" alt="">
+                                                        </div>
+                                                        <div class="txt-destaque-4">
+                                                            <span class="tit-destaque-4">Nutrilife</span><br>
+                                                            <span>Os produtos naturais Nutrilife tentam resgatar um pouco do tempo em que, colhidos e preparados na hora.</span><br>
+                                                            <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </li>
+
+
+
+                                            <!--start #4 gallery-->
+                                            <li class="col-lg-4 col-sm-4  col-sm-4-front">
+                                                <div class="border-clique">
+                                                    <a href="#gallery_1" role="button" data-toggle="modal">
+                                                        <div class="img-destaque-4">
+                                                            <img class="img-responsive" src="../../Images/Inicial/img/gallery_10.jpg" alt="">
+                                                        </div>
+                                                        <div class="txt-destaque-4">
+                                                            <span class="tit-destaque-4">Nokia Lumia 530</span><br>
+                                                            <span>Windows Phone e aplicativos que vão lhe surpriender, confira mais marcas em meu hotsite.</span><br>
+                                                            <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </li>
+
+
+                                            <!--start #5 gallery-->
+                                            <li class="col-lg-4 col-sm-4  col-sm-4-front">
+                                                <div class="border-clique">
+                                                    <a href="#gallery_1" role="button" data-toggle="modal">
+                                                        <div class="img-destaque-4">
+                                                            <img class="img-responsive" src="../../Images/Inicial/img/pet.jpg" alt="">
+                                                        </div>
+                                                        <div class="txt-destaque-4">
+                                                            <span class="tit-destaque-4">Pet Care - Com muito carinho</span><br>
+                                                            <span>Petshop, hotelzinho e todos os serviços para deixar seu pet a vontade e feliz.</span><br>
+                                                            <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </li>
+
+
+                                            <!--start #6 gallery-->
+                                            <li class="col-lg-4 col-sm-4  col-sm-4-front">
+                                                <div class="border-clique">
+                                                    <a href="#gallery_1" role="button" data-toggle="modal">
+                                                        <div class="img-destaque-4">
+                                                            <img class="img-responsive" src="../../Images/Inicial/img/pizza.jpg" alt="">
+                                                        </div>
+                                                        <div class="txt-destaque-4">
+                                                            <span class="tit-destaque-4">MeGusta Pizzaria</span><br>
+                                                            <span>As mais deliciosas pizza do Vale, trabalhamos com entrgas, experimente o Crep MeGusta.</span><br>
+                                                            <span class="tel-00">+Detalhes - </span> <span class="tel-01">Telefone</span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </li>
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--fim item 3-->
+
+
+                        </div>
+                        <!-- Controls -->
+                        <a class="left carousel-control" href="#myCarousel4" data-slide="prev">
+                            <span class="icon-prev"></span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel4" data-slide="next">
+                            <span class="icon-next"></span>
+                        </a>
+
+
+                    </header>
+
+
+
+
+                </div>
+                <!--     fim destaque 4  -->
+
+            </div>
+
+            <div class="container mt40">
+                <div class="container" style="padding:0px!important">
+
+
+                    <div class="separa">Social</div>
+
+
+                    <div class="mt40" id="social">
+                        <ul class="row clearfix">
+                            <li class="col-md-3 col-sm-3">
+                                <h5 class="heading5">Twitter</h5>
+                                <div id="twitter">
+                                    <ul class="tweet_list">
+                                        <li class="tweet_first tweet_odd">
+                                            <a class="tweet_avatar" href="http://twitter.com/twitter">
+                                                <img src="http://pbs.twimg.com/profile_images/2284174758/v65oai7fxn47qv9nectx_normal.png" height="32" width="32" alt="twitter's avatar" title="twitter's avatar" border="0">
+                                            </a><span class="tweet_time"><a href="http://twitter.com/twitter/status/519540931461005312" title="view tweet on twitter">about 3 days ago</a></span> <span class="tweet_join"></span> <span class="tweet_text">Today we're taking legal action to provide more <a href="http://search.twitter.com/search?q=&amp;tag=transparency&amp;lang=all" class="tweet_hashtag">#transparency</a> to our users about requests from the US government. <a href="https://blog.twitter.com/2014/taking-the-fight-for-transparency-to-court">blog.twitter.com/2014/taking-th…</a></span>
+                                        </li>
+                                        <li class="tweet_even"><a class="tweet_avatar" href="http://twitter.com/twitter"><img src="http://pbs.twimg.com/profile_images/2284174758/v65oai7fxn47qv9nectx_normal.png" height="32" width="32" alt="twitter's avatar" title="twitter's avatar" border="0"></a><span class="tweet_time"><a href="http://twitter.com/twitter/status/517712695496155136" title="view tweet on twitter">about 9 days ago</a></span> <span class="tweet_join"></span> <span class="tweet_text">Now it's easier to enjoy photos on Twitter for Mac. Share pics in messages, view/post up to 4 pics in Tweets: <a href="https://itunes.apple.com/us/app/twitter/id409789998?mt=12">itunes.apple.com/us/app/twitter…</a></span></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="col-md-3 col-sm-3 mt40column">
+                                <h5 class="heading5">Flickr</h5>
+                                <div class="social-feed flickr-feed">
+                                    <img src="../../Images/Inicial/img/photo1.jpg" alt="" title="">
+                                    <img src="../../Images/Inicial/img/photo2.jpg" alt="" title="">
+                                    <img src="../../Images/Inicial/img/photo3.jpg" alt="" title="">
+                                    <img src="../../Images/Inicial/img/photo4.jpg" alt="" title="">
+                                    <img src="../../Images/Inicial/img/photo4.jpg" alt="" title="">
+                                    <img src="../../Images/Inicial/img/photo2.jpg" alt="" title="">
+                                    <img src="../../Images/Inicial/img/photo1.jpg" alt="" title="">
+                                    <img src="../../Images/Inicial/img/photo3.jpg" alt="" title="">
+                                    <img src="../../Images/Inicial/img/photo1.jpg" alt="" title="">
+                                    <img src="../../Images/Inicial/img/photo2.jpg" alt="" title="">
+                                    <img src="../../Images/Inicial/img/photo3.jpg" alt="" title="">
+                                    <img src="../../Images/Inicial/img/photo4.jpg" alt="" title="">
+                                    <img src="../../Images/Inicial/img/photo2.jpg" alt="" title="">
+                                    <img src="../../Images/Inicial/img/photo4.jpg" alt="" title="">
+                                    <img src="../../Images/Inicial/img/photo3.jpg" alt="" title="">
+                                    <img src="../../Images/Inicial/img/photo1.jpg" alt="" title="">
+                                    <ul class="flickr-list"></ul>
+                                </div>
+                            </li>
+                            <li class="col-md-3 col-sm-3 mt40column">
+                                <h5 class="heading5">Youtube</h5>
+                                <div class="social-feed youtube-feed">
+                                    <ul class="youtube-list"></ul>
+                                </div>
+                            </li>
+                            <li class="col-md-3 col-sm-3 mt40column">
+                                <h5 class="heading5">Facebook</h5>
+                                <div class="">
+                                    <div id="fb-root" class=" fb_reset">
+                                        <div style="position: absolute; top: -10000px; height: 0px; width: 0px;">
+                                            <div>
+
+                                            </div>
+                                        </div>
+                                        <div style="position: absolute; top: -10000px; height: 0px; width: 0px;">
+                                            <div>
+                                                <iframe name="fb_xdm_frame_http" frameborder="0" allowtransparency="true" scrolling="no" id="fb_xdm_frame_http" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="http://static.ak.facebook.com/connect/xd_arbiter/KFZn1BJ0LYk.js?version=41#channel=f2d0443774&amp;origin=http%3A%2F%2Fwww.pxcreate.com" style="border: none;"></iframe>
+                                                <iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="https://s-static.ak.facebook.com/connect/xd_arbiter/KFZn1BJ0LYk.js?version=41#channel=f2d0443774&amp;origin=http%3A%2F%2Fwww.pxcreate.com" style="border: none;"></iframe>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="fb-like-box fb_iframe_widget" data-href="https://www.facebook.com/facebook" data-width="240" data-show-faces="true" data-colorscheme="light" data-stream="false" data-show-border="false" data-header="false" data-height="240" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=&amp;color_scheme=light&amp;header=false&amp;height=240&amp;href=https%3A%2F%2Fwww.facebook.com%2Ffacebook&amp;locale=en_US&amp;sdk=joey&amp;show_border=false&amp;show_faces=true&amp;stream=false&amp;width=240">
+                                        <span style="vertical-align: bottom; width: 240px; height: 240px;">
+                                            <iframe name="f27aea448c" width="240px" height="240px" frameborder="0" allowtransparency="true" scrolling="no" title="fb:like_box Facebook Social Plugin" src="http://www.facebook.com/plugins/like_box.php?app_id=&amp;channel=http%3A%2F%2Fstatic.ak.facebook.com%2Fconnect%2Fxd_arbiter%2FKFZn1BJ0LYk.js%3Fversion%3D41%23cb%3Df2733b24f8%26domain%3Dwww.pxcreate.com%26origin%3Dhttp%253A%252F%252Fwww.pxcreate.com%252Ff2d0443774%26relation%3Dparent.parent&amp;color_scheme=light&amp;header=false&amp;height=240&amp;href=https%3A%2F%2Fwww.facebook.com%2Ffacebook&amp;locale=en_US&amp;sdk=joey&amp;show_border=false&amp;show_faces=true&amp;stream=false&amp;width=240" style="border: none; visibility: visible; width: 240px; height: 240px;" class=""></iframe>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                 </div>
-            </section>
-            <section class="copyrightbottom">
+            </div>
+
+            <!-- Newsletter-->
+            <section class="mt40 newsletter" id="newslettersignup">
                 <div class="container">
                     <div class="row">
-                        <div class="pull-left"> Copyright © 2014 Mixclique. Todos os direitos reservados à Sicove do Brasil. </div>
-                        <div class="pull-right"><a href="http://www.seeatecnologia.com.br" target="_blank">Seea</a></div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="pull-left ">
+                                <h5 class="heading5 borderbottm">Mala direta</h5>
+                                Cadastre seu email para receber novidades MixClique
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="pull-right mt20 surbscribeform">
+                                <form class="form-inline">
+                                    <div class="input-prepend">
+                                        <input type="text" class="subscribeinput" id="inputIcon" placeholder="Digite aqui seu email">
+                                        <input type="submit" class="btn btn-orange" value="Enviar">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
-        </footer>
-        <!-- Got to top -->
-        <a id="gotop"><i class="fa fa-arrow-circle-up"></i></a>
-    </div>
+            <footer id="footer">
+                <section id="quicklink">
+                    <div class="container">
+                        <div class="row">
+                            <ul class="quicklinks">
+                                <li> <a class="active home" href="/Inicial/Index">A empresa</a> </li>
+                                <li> <a class="" href="#">Ganhe dinheiro clicando</a> </li>
+                                <li> <a class="" href="#">anuncie</a> </li>
+                                <li> <a class="" href="#">oportunidade de negócio</a> </li>
+                                <li> <a class="" href="#">contato</a> </li>
+                                <li> <a class="" href="#">Faq</a> </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section class="copyrightbottom">
+                    <div class="container">
+                        <div class="row">
+                            <div class="pull-left"> Copyright © 2014 Mixclique. Todos os direitos reservados à Sicove do Brasil. </div>
+                            <div class="pull-right"><a href="http://www.seeatecnologia.com.br" target="_blank">Seea</a></div>
+                        </div>
+                    </div>
+                </section>
+            </footer>
+            <!-- Got to top -->
+            <a id="gotop"><i class="fa fa-arrow-circle-up"></i></a>
+        </div>
+        
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="~/Scripts/Inicial/js/jquery.js"></script>
-    <script src="~/Scripts/Inicial/js/jquery-migrate-1.2.1.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="~/Scripts/Inicial/js/bootstrap.min.js"></script>
-    <!-- include jQuery + carouFredSel plugin -->
-    <script src="~/Scripts/Inicial/js/jquery.carouFredSel-6.2.1-packed.js"></script>
-    <!-- Flex slider Blog-->
-    <script src="~/Scripts/Inicial/js/jquery.flexslider.js"></script>
-    <!-- Jquery zoom on detail page-->
-    <script src="~/Scripts/Inicial/js/zoomsl-3.0.min.js"></script>
-    <!-- Jquery Validation-->
-    <script type="text/javascript" src="~/Scripts/Inicial/js/jquery.validate.js"></script>
-    <!-- Jquery Latest Tweet-->
-    <script type="text/javascript" src="~/Scripts/Inicial/js/jquery.tweet.js"></script>
-    <!-- Jquery Countdown-->
-    <script type="text/javascript" src="~/Scripts/Inicial/js/jquery.countdown.js"></script>
-    <!-- Social -->
-    <script type="text/javascript" src="~/Scripts/Inicial/js/socialstream.jquery.js"></script>
-    <!-- Jquery Map -->
-    <script type="text/javascript" src="~/Scripts/Inicial/js/jquery.gmap.js"></script>
-    <!-- Sparkline -->
-    <script type="text/javascript" src="~/Scripts/Inicial/js/jquery.sparkline.min.js"></script>
-    <!-- Cloud -->
-    <script type="text/javascript" src="~/Scripts/Inicial/js/jqcloud-1.0.4.js"></script>
-    <!-- Ratina View -->
-    <script type="text/javascript" src="~/Scripts/Inicial/js/retina-1.1.0.min.js"></script>
-    <!-- Custom -->
-    <script src="~/Scripts/Inicial/js/custom.js"></script>
-    <!-- Include only for MapSearch Page -->
-    <script src="~/Scripts/Inicial/js/jquery.ui.core.min.js"></script>
-    <script src="~/Scripts/Inicial/js/jquery.ui.widget.min.js"></script>
-    <script src="~/Scripts/Inicial/js/jquery.ui.position.min.js"></script>
-    <script src="~/Scripts/Inicial/js/jquery.ui.autocomplete.min.js"></script>
-    <script src="~/Scripts/Inicial/js/map.js"></script>
-    <!-- Style Switcher -->
-    <script type="text/javascript" src="~/Scripts/Inicial/js/jquery.style-switcher.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#styleswitch').styleSwitcher();
-            $("#styleswitch h3").click(function () {
-                if ($(this).parent().css("left") == "-200px") {
-                    $(this).parent().animate({ left: '0px' }, { queue: false, duration: 500 });
-                } else {
-                    $(this).parent().animate({ left: '-200px' }, { queue: false, duration: 500 });
-                }
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="~/Scripts/Inicial/jquery.js"></script>
+        <script src="~/Scripts/Inicial/jquery-migrate-1.2.1.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="~/Scripts/Inicial/bootstrap.min.js"></script>
+        <!-- include jQuery + carouFredSel plugin -->
+        <script src="~/Scripts/Inicial/jquery.carouFredSel-6.2.1-packed.js"></script>
+        <!-- Flex slider Blog-->
+        <script src="~/Scripts/Inicial/jquery.flexslider.js"></script>
+        <!-- Jquery zoom on detail page-->
+        <script src="~/Scripts/Inicial/zoomsl-3.0.min.js"></script>
+        <!-- Jquery Validation-->
+        <script type="text/javascript" src="~/Scripts/Inicial/jquery.validate.js"></script>
+        <!-- Jquery Latest Tweet-->
+        <script type="text/javascript" src="~/Scripts/Inicial/jquery.tweet.js"></script>
+        <!-- Jquery Countdown-->
+        <script type="text/javascript" src="~/Scripts/Inicial/jquery.countdown.js"></script>
+        <!-- Social -->
+        <script type="text/javascript" src="~/Scripts/Inicial/socialstream.jquery.js"></script>
+        <!-- Jquery Map -->
+        <script type="text/javascript" src="~/Scripts/Inicial/jquery.gmap.js"></script>
+        <!-- Sparkline -->
+        <script type="text/javascript" src="~/Scripts/Inicial/jquery.sparkline.min.js"></script>
+        <!-- Cloud -->
+        <script type="text/javascript" src="~/Scripts/Inicial/jqcloud-1.0.4.js"></script>
+        <!-- Ratina View -->
+        <script type="text/javascript" src="~/Scripts/Inicial/retina-1.1.0.min.js"></script>
+        <!-- Custom -->
+        <script src="~/Scripts/Inicial/custom.js"></script>
+        <!-- Include only for MapSearch Page -->
+        <script src="~/Scripts/Inicial/jquery.ui.core.min.js"></script>
+        <script src="~/Scripts/Inicial/jquery.ui.widget.min.js"></script>
+        <script src="~/Scripts/Inicial/jquery.ui.position.min.js"></script>
+        <script src="~/Scripts/Inicial/jquery.ui.autocomplete.min.js"></script>
+        <script src="~/Scripts/Inicial/map.js"></script>
+        <!-- Style Switcher -->
+        <script type="text/javascript" src="~/Scripts/Inicial/jquery.style-switcher.js"></script>
+        
+        
+        <script src="~/Scripts/plugins/bootstrap/bootstrap.min.js"></script>
+        <script src="~/Scripts/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="~/Scripts/plugins/popupoverlay/jquery.popupoverlay.js"></script>
+        <script src="~/Scripts/plugins/popupoverlay/defaults.js"></script>
+        
+        <script src="~/Scripts/plugins/popupoverlay/logout.js"></script>
+        <script src="~/Scripts/plugins/hisrc/hisrc.js"></script>
+        <script src="~/Scripts/plugins/messenger/messenger.min.js"></script>
+        <script src="~/Scripts/plugins/messenger/messenger-theme-flat.js"></script>
+        <script src="~/Scripts/plugins/daterangepicker/moment.js"></script>
+        <script src="~/Scripts/plugins/daterangepicker/daterangepicker.js"></script>
+        <script src="~/Scripts/plugins/morris/raphael-2.1.0.min.js"></script>
+        <script src="~/Scripts/plugins/morris/morris.js"></script>
+        <script src="~/Scripts/plugins/flot/jquery.flot.js"></script>
+        <script src="~/Scripts/plugins/flot/jquery.flot.resize.js"></script>
+        <script src="~/Scripts/plugins/sparkline/jquery.sparkline.min.js"></script>
+        <script src="~/Scripts/plugins/moment/moment.min.js"></script>
+        <script src="~/Scripts/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+        <script src="~/Scripts/plugins/jvectormap/maps/jquery-jvectormap-world-mill-en.js"></script>
+        <script src="~/Scripts/demo/map-demo-data.js"></script>
+        <script src="~/Scripts/plugins/datatables/jquery.dataTables.js"></script>
+        <script src="~/Scripts/plugins/datatables/datatables-bs3.js"></script>
+        <script src="~/Scripts/plugins/summernote/summernote.min.js"></script>
+        <script src="~/Scripts/plugins/ladda/spin.min.js"></script>
+        <script src="~/Scripts/plugins/ladda/ladda.min.js"></script>
+        <script src="~/Scripts/demo/buttons-demo.js"></script>
+        <script src="~/Scripts/demo/advanced-form-demo.js"></script>
+        <script src="~/Scripts/plugins/bootstrap-multiselect/bootstrap-multiselect.js"></script>
+        <script src="~/Scripts/plugins/bootstrap-filestyle/bootstrap-filestyle.min.js"></script>
+        <script src="~/Scripts/flex.js"></script>     
+        
+        @Scripts.Render("~/bundles/js-default")
+
+
+        <script src="~/Scripts/plugins/bootstrap-tokenfield/bootstrap-tokenfield.min.js"></script>
+        <script src="~/Scripts/plugins/bootstrap-tokenfield/scrollspy.js"></script>
+        <script src="~/Scripts/plugins/bootstrap-tokenfield/affix.js"></script>
+        <script src="~/Scripts/plugins/bootstrap-tokenfield/typeahead.min.js"></script>
+        <script src="~/Scripts/plugins/bootstrap-maxlength/bootstrap-maxlength.js"></script>
+        <script src="~/Scripts/plugins/bootstrap-timepicker/bootstrap-timepicker.min.js"></script>
+        <script src="~/Scripts/plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+        <script src="~/Scripts/plugins/ladda/spin.min.js"></script>
+        <script src="~/Scripts/plugins/ladda/ladda.min.js"></script>
+        <script src="~/Scripts/plugins/bootstrap-multiselect/bootstrap-multiselect.js"></script>
+        <script src="~/Scripts/Outros/jquery.uploadify.js"></script>
+        <script src="~/Scripts/plugins/easypiechart/jquery.easypiechart.min.js"></script>
+
+        @Scripts.Render("~/bundles/js-masterslider")
+
+        @Scripts.Render("~/bundles/js-others")        
+
+        <!-- Style Switcher -->
+        <script type="text/javascript" src="~/Scripts/Inicial/jquery.style-switcher.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#styleswitch').styleSwitcher();
+                $("#styleswitch h3").click(function () {
+                    if ($(this).parent().css("left") == "-200px") {
+                        $(this).parent().animate({ left: '0px' }, { queue: false, duration: 500 });
+                    } else {
+                        $(this).parent().animate({ left: '-200px' }, { queue: false, duration: 500 });
+                    }
+                });
             });
-        });
-    </script>
+
+            function LogoutCliqueMix() {
+                $.ajax(
+                {
+                    type: 'POST',
+                    url: '/Account/_Logout',
+                    dataType: 'html',
+                    cache: false,
+                    async: true,
+                    success: function () {
+                        document.getElementById('btnCancelarLogout').click();
+                        location.href = "/Account/Login";
+                    }
+                });
+            }
+        </script>
 
 
-    <script>
-        (function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date(); a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-        ga('create', 'UA-55601467-1', 'auto');
-        ga('send', 'pageview');
+            ga('create', 'UA-55601467-1', 'auto');
+            ga('send', 'pageview');
 
-    </script>
+        </script>
+        
+        
+        <div id="logout">
+            <div class="logout-message">
+                <img class="img-circle img-logout" src="~/fonts/img/profile-pic.jpg" alt="">
+                <h3>
+                    <i class="fa fa-sign-out text-green"></i> <p>Pronto para sair?</p>
+                </h3>
+                <p>Selecione "Sair" se você estiver pronto<br> para terminar a sua sessão.</p>
+                <ul class="list-inline">
+                    <li>
+                        <button type="button" class="btn btn-green" id="btnLogout" name="btnLogout" onclick="LogoutCliqueMix();">
+                            <strong>Logout</strong>
+                        </button>
+                    </li>
+                    <li>
+                        <button id="btnCancelarLogout" name="btnCancelarLogout" class="logout_close btn btn-green">
+                            Cancelar
+                        </button>
+                    </li>
+                </ul>                
+            </div>
+        </div>        
 
-
-</body>
+    </body>
 </html>

@@ -303,6 +303,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AnuncioViewModel.cs" />
     <Compile Include="Models\Cliquemix.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -640,6 +641,7 @@
     <Content Include="Content\Inicial\css\font-awesome.css" />
     <Content Include="Content\Inicial\css\font-awesome.min.css" />
     <Content Include="Content\Inicial\css\fonts.css" />
+    <Content Include="Content\Inicial\css\style.css" />
     <Content Include="Content\Inicial\css\ui.css" />
     <Content Include="Content\Outros\bootstrap-3.1.1\css\bootstrap-theme.css" />
     <Content Include="Content\Outros\bootstrap-3.1.1\css\bootstrap-theme.min.css" />
@@ -903,6 +905,9 @@
     <Content Include="Images\anuncios\slide_3.jpg" />
     <Content Include="Images\anuncios\works_1.jpg" />
     <Content Include="Images\anuncios\works_2.jpg" />
+    <Content Include="Images\Fotos\img-anun-painel.jpg" />
+    <Content Include="Images\Fotos\img-boss-admin.jpg" />
+    <Content Include="Images\Fotos\img-cons-painel.jpg" />
     <Content Include="Images\hot\AjaxLoader.gif" />
     <Content Include="Images\hot\btn-email.PNG" />
     <Content Include="Images\hot\btn-face.PNG" />
@@ -1103,29 +1108,32 @@
     <Content Include="Scripts\hot\stickUp.min.js" />
     <Content Include="Scripts\hot\unslider.min.js" />
     <Content Include="Scripts\html5shiv.js" />
-    <Content Include="Scripts\Inicial\js\bootstrap.min.js" />
-    <Content Include="Scripts\Inicial\js\custom.js" />
-    <Content Include="Scripts\Inicial\js\jqcloud-1.0.4.js" />
-    <Content Include="Scripts\Inicial\js\jquery-migrate-1.2.1.js" />
-    <Content Include="Scripts\Inicial\js\jquery.carouFredSel-6.2.1-packed.js" />
-    <Content Include="Scripts\Inicial\js\jquery.countdown.js" />
-    <Content Include="Scripts\Inicial\js\jquery.flexslider.js" />
-    <Content Include="Scripts\Inicial\js\jquery.gmap.js" />
-    <Content Include="Scripts\Inicial\js\jquery.js" />
-    <Content Include="Scripts\Inicial\js\jquery.sparkline.min.js" />
-    <Content Include="Scripts\Inicial\js\jquery.style-switcher.js" />
-    <Content Include="Scripts\Inicial\js\jquery.tweet.js" />
-    <Content Include="Scripts\Inicial\js\jquery.ui.autocomplete.min.js" />
-    <Content Include="Scripts\Inicial\js\jquery.ui.core.min.js" />
-    <Content Include="Scripts\Inicial\js\jquery.ui.position.min.js" />
-    <Content Include="Scripts\Inicial\js\jquery.ui.widget.min.js" />
-    <Content Include="Scripts\Inicial\js\jquery.validate.js" />
-    <Content Include="Scripts\Inicial\js\main.js" />
-    <Content Include="Scripts\Inicial\js\map.js" />
-    <Content Include="Scripts\Inicial\js\marca1.jpg" />
-    <Content Include="Scripts\Inicial\js\retina-1.1.0.min.js" />
-    <Content Include="Scripts\Inicial\js\socialstream.jquery.js" />
-    <Content Include="Scripts\Inicial\js\zoomsl-3.0.min.js" />
+    <Content Include="Scripts\Inicial\bootstrap.min.js" />
+    <Content Include="Scripts\Inicial\custom.js" />
+    <Content Include="Scripts\Inicial\jqcloud-1.0.4.js" />
+    <Content Include="Scripts\Inicial\jquery-migrate-1.2.1.js" />
+    <Content Include="Scripts\Inicial\jquery.carouFredSel-6.2.1-packed.js" />
+    <Content Include="Scripts\Inicial\jquery.countdown.js" />
+    <Content Include="Scripts\Inicial\jquery.flexslider.js" />
+    <Content Include="Scripts\Inicial\jquery.gmap.js" />
+    <Content Include="Scripts\Inicial\jquery.js" />
+    <Content Include="Scripts\Inicial\jquery.sparkline.min.js" />
+    <Content Include="Scripts\Inicial\jquery.style-switcher.js" />
+    <Content Include="Scripts\Inicial\jquery.tweet.js" />
+    <Content Include="Scripts\Inicial\jquery.ui.autocomplete.min.js" />
+    <Content Include="Scripts\Inicial\jquery.ui.core.min.js" />
+    <Content Include="Scripts\Inicial\jquery.ui.position.min.js" />
+    <Content Include="Scripts\Inicial\jquery.ui.widget.min.js" />
+    <Content Include="Scripts\Inicial\jquery.validate.js" />
+    <Content Include="Scripts\Inicial\js.js" />
+    <Content Include="Scripts\Inicial\main.js" />
+    <Content Include="Scripts\Inicial\map.js" />
+    <Content Include="Scripts\Inicial\marca1.jpg" />
+    <Content Include="Scripts\Inicial\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Inicial\rest.js" />
+    <Content Include="Scripts\Inicial\retina-1.1.0.min.js" />
+    <Content Include="Scripts\Inicial\socialstream.jquery.js" />
+    <Content Include="Scripts\Inicial\zoomsl-3.0.min.js" />
     <Content Include="Scripts\js-master-slider\jquery-1.10.2.min.js" />
     <Content Include="Scripts\js-master-slider\jquery.easing.min.js" />
     <Content Include="Scripts\js-master-slider\jquery.prettyPhoto.js" />
@@ -1223,8 +1231,6 @@
     <Content Include="fonts\hot\Yesteryear-Regular.eot" />
     <Content Include="fonts\hot\Yesteryear-Regular.ttf" />
     <None Include="Properties\PublishProfiles\Mix-Clique.pubxml" />
-    <Content Include="Scripts\Inicial\js\js.js" />
-    <Content Include="Scripts\Inicial\js\rest.js" />
     <None Include="Properties\PublishProfiles\MixClique.pubxml" />
     <None Include="Scripts\Outros\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\Outros\jquery-2.1.1.js" />
@@ -1583,7 +1589,6 @@
     <Folder Include="Arquivos\Destaques\" />
     <Folder Include="Arquivos\XmlPagamento\" />
     <Folder Include="fonts\Inicial\" />
-    <Folder Include="Images\Fotos\" />
     <Folder Include="Images\Icons\" />
   </ItemGroup>
   <ItemGroup>

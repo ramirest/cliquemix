@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Cliquemix.Models.AnuncioViewModel
+
+@{
     Layout = null;
 }
 
@@ -14,11 +16,11 @@
     <link href="~/Content/hot/bootstrap.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="~/Content/hot/clique.css">
-    <link rel="stylesheet" href="~/Content/hot/owl-carousel/owl.carousel.css">
-    <link rel="stylesheet" href="~/Content/hot/owl-carousel/owl.theme.css">
-    <link rel="stylesheet" href="~/Content/hot/slider.css">
-    <link rel="stylesheet" href="~/Content/hot/jquery.ferro.ferroMenu.css">
+    <link rel="stylesheet" href="../../Content/hot/clique.css">
+    <link rel="stylesheet" href="../../Content/hot/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="../../Content/hot/owl-carousel/owl.theme.css">
+    <link rel="stylesheet" href="../../Content/hot/slider.css">
+    <link rel="stylesheet" href="../../Content/hot/jquery.ferro.ferroMenu.css">
     <link rel="icon" href="favicon.ico">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -31,34 +33,31 @@
     <script src="~/Scripts/hot/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
 
-    <script src="~/Content/hot/owl-carousel/owl.carousel.js"></script>
-    <script src="~/Scripts/hot/bootstrap.min.js"></script>
-
-
-
-
-
-    <script src="~/Scripts/hot/base.js"></script>
+    <script src="../../Content/hot/owl-carousel/owl.carousel.js"></script>
+    <script src="../../Scripts/hot/bootstrap.min.js"></script>
+    
+    <script src="../../Scripts/hot/base.js"></script>
+    
+    
 
     <!------------------------------
     Não vale a pena colocar o script abaixo em um arquivo externo, porque a rolagem fica lenta.
     ------------------------------->
     <script type="text/javascript">
-$(document).ready(function(e) {
- $("nav a").click(function (event) {
-    event.preventDefault();
-    var destino = 0;
-    if ($(this.hash).offset().top > $(document).height() - $(window).height()) {
-        destino = $(document).height() - $(window).height();
-    } else {
-        destino = $(this.hash).offset().top-120;
-    }
-    $('html,body').animate({
-        scrollTop: destino
-    }, 1000, 'swing');
-});
-});
-
+        $(document).ready(function (e) {
+            $("nav a").click(function(event) {
+                event.preventDefault();
+                var destino = 0;
+                if ($(this.hash).offset().top > $(document).height() - $(window).height()) {
+                    destino = $(document).height() - $(window).height();
+                } else {
+                    destino = $(this.hash).offset().top - 120;
+                }
+                $('html,body').animate({
+                    scrollTop: destino
+                }, 1000, 'swing');
+            });
+        });
     </script>
 
     <!-- javascript do contador   -->
@@ -75,7 +74,7 @@ $(document).ready(function(e) {
             }
         }
         // 1,000 means 1 second.
-        cinterval = setInterval('countdown_timer()', 500); // 500, sao 30 segundos, 1000, um minuto
+        cinterval = setInterval('countdown_timer()', 1000); // 500, sao 30 segundos, 1000, um minuto
     </script>
 
 
@@ -92,7 +91,7 @@ $(document).ready(function(e) {
                 progresso++;
 
                 document.getElementById("pg").value = progresso;
-                setTimeout("start()", 500);   /* 500, sao 30 segundos, 1000, um minuto */
+                setTimeout("start()", 1000);   /* 500, sao 30 segundos, 1000, um minuto */
             }
         }
     </script>
@@ -122,17 +121,22 @@ $(document).ready(function(e) {
 
                     ---------------------------------->
 
-                    <div class="col-md-1"> <a href="http://www.mixclique.com.br/mix/index.html">  <img style=" padding-top:15px;" src="~/Images/hot/topo-fixo-e.PNG">  </a> </div>
-                    <div class="col-md-4" style=" padding-top:17px;">
-                        <progress id="pg" max="30"></progress>
+                    <div class="col-md-1"> <a href="http://www.mixclique.com.br/mix/index.html">  <img style=" padding-top:15px;" src="../../Images/hot/topo-fixo-e.PNG">  </a> </div>
+                    @{
+                        <div class="col-md-4" style=" padding-top:17px;">
+                            @if (true)
+                            {
+                                <progress id="pg" max="30"></progress><br />
+                                <p class="barra1">Processando o seus pontos em:<span id="countdown" style="margin-left: 10px">30</span></p>
+                            }
+                            else
+                            {
+                                <p class="barra1">Você já pontuou nesse anúncio.</p>
+                            }
+                        </div>
 
-                        <br />
-                        <p class="barra1">Processando o seus pontos em:<span id="countdown" style="margin-left: 10px">30</span></p>
-                    </div>
-
-
-
-                    <div class="col-md-7"><img style="padding-top:10px;" src="~/Images/hot/topo-fixo-d.PNG"></div>
+                    }
+                    <div class="col-md-7"><img style="padding-top:10px;" src="../../Images/hot/topo-fixo-d.PNG"></div>
                 </div>
             </div>
         </div>
@@ -146,10 +150,10 @@ $(document).ready(function(e) {
         <div style="  background-color:#fff;z-index:9600;  margin-top:-10px;  padding-top:5px;" class="row clearfix fixar">
             <div class="col-md-12 column">
                 <div class="row clearfix">
-                    <div class="col-md-2 column  "> <a href="#"><img class="visible-lg  " src="~/Images/hot/logo.PNG" title="#" alt="#"></a> </div>
+                    <div class="col-md-2 column  "> <a href="#"><img class="visible-lg  " src="../../Images/hot/logo.PNG" title="#" alt="#"></a> </div>
                     <div class="col-md-10 column">
                         <nav class="navbar navbar-default" role="navigation">
-                            <a class="pull-left" href="#"><img style="padding:5px;" class=" visible-xs visible-sm visible-md img-responsive " src="~/Images/hot/logo.PNG" title="#" alt="#"></a>
+                            <a class="pull-left" href="#"><img style="padding:5px;" class=" visible-xs visible-sm visible-md img-responsive " src="../../Images/hot/logo.PNG" title="#" alt="#"></a>
                             <div class="container-fluid">
                                 <!-- Brand and toggle get grouped for better mobile display -->
                                 <div class="navbar-header">
@@ -178,15 +182,47 @@ $(document).ready(function(e) {
         <div class="clearfix bottom-60"></div>
 
         <!---------------------------////////////////////////////////////////////////--------------------------------------------------->
-
     </div>
+
     <div class="container max-width">
         <div class="row clearfix">
             <div id="principal" class="col-md-12 column">
                 <div id="owl-demo" class="owl-carousel owl-theme">
-                    <div class="item"><img src="~/Images/hot/upload/Chrysanthemum.jpg" alt="The Last of us"></div>
-                    <div class="item"><img src="~/Images/hot/upload/Desert.jpg" alt="GTA V"></div>
-                    <div class="item"><img src="~/Images/hot/upload/Lighthouse.jpg" alt="Mirror Edge"></div>
+                    @*<div class="item"><img src="../../Images/hot/upload/Chrysanthemum.jpg" alt="The Last of us"></div>
+                    <div class="item"><img src="../../Images/hot/upload/Desert.jpg" alt="GTA V"></div>
+                    <div class="item"><img src="../../Images/hot/upload/Lighthouse.jpg" alt="Mirror Edge"></div>*@
+                    @try
+                    {
+                        <br />
+                        foreach (var item in Model.ListaImagensAnuncio)
+                        {
+                            var aaa = item.actid; //Variável usada para passar pelo TRY (Não tem necessidade)
+                            var desc = item.tbAnuncio.tituloAnuncio;
+                            String idImg = String.Format("{0:00000000}", item.actid) + "-" + String.Format("{0:000}", item.iditem);
+                            string idDv = "dv" + idImg;
+                            String src = "/Arquivos/Anúncios/" +
+                                          String.Format("{0:00000000}", item.actid) + "/Imagens/" +
+                                          String.Format("{0:000}", item.iditem) + ".jpeg";
+                            <div class="item" id="@idDv">
+                                <img src="@src" alt="@desc" id="@idImg" title="@desc">
+                            </div>
+                            
+                            <script type="text/javascript">
+                                AjustaHeightImg();
+                                function AjustaHeightImg() {
+                                    var img = document.getElementById('@idImg');
+                                    var div = document.getElementById('@idDv');
+                                    var width = div.width();
+                                    var height = width / 100 * 36;
+                                    img.height = height;
+                                }
+                            </script>
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        <br />
+                    }
                 </div>
             </div>
         </div>
@@ -195,34 +231,28 @@ $(document).ready(function(e) {
                 <div class="row clearfix">
                     <div class="col-md-9 column">
                         <h2 class="topo-texto-h2">Descrição</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi urna lorem, egestas eget libero eu, maximus luctus justo. Curabitur ipsum purus, luctus vitae dolor sollicitudin, congue gravida lectus. Ut dignissim urna lorem, blandit facilisis quam cursus vitae. Vivamus sollicitudin, est iaculis iaculis cursus, augue ante venenatis diam, iaculis finibus lorem risus sed lectus. Etiam porta egestas quam laoreet rhoncus. Sed eget dui tempor, varius velit ac, scelerisque magna. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla turpis risus, pretium ut purus vel, congue commodo libero.</p>
-                        <ul>
-                            <li>Lorem ipsum dolor sit amet, consectetur</li>
-                            <li>Morbi urna lorem, egestas eget libero</li>
-                            <li>iaculis finibus lorem risus sed lectus</li>
-                            <li>Vestibulum ante ipsum primis in faucibus orci luctus</li>
-                            <li>congue commodo libero.</li>
-                        </ul>
+                        <div class="col-md-12" id="dvDescricao">
+                        </div>
+                        @Html.HiddenFor(model => model.DsAnuncio, new{@id="dsAnuncio", @name="dsAnuncio"})
                     </div>
                     <div class="col-md-3 column">
-
                         <!-------
 
                         As imagens abaixo precisam ser refeitas, estão com a qualidade baixa, é preciso pedir imagens com qualidade superior
 
                         --------->
                         <h2 class="topo-texto-h2">Social</h2>
-                        <a href="#"><img style="width:100%" ; class="img-responsive" src="~/Images/hot/btn-face.PNG" alt="#" title="#"></a>
-                        <a href="#"><img style="width:100%" ; class="img-responsive" src="~/Images/hot/btn-insta.PNG" alt="#" title="#"></a>
-                        <a href="#"><img style="width:100%" ; class="img-responsive" src="~/Images/hot/btn-twitter.PNG" alt="#" title="#"></a>
-                        <a href="#"><img style="width:100%" ; class="img-responsive" src="~/Images/hot/ptn-pagina.PNG" alt="#" title="#"></a>
-                        <a href="#"><img style="width:100%" ; class="img-responsive" src="~/Images/hot/btn-skype.PNG" alt="#" title="#"></a>
-                        <a href="#"><img style="width:100%" ; class="img-responsive" src="~/Images/hot/btn-email.PNG" alt="#" title="#"></a>
-                        <a href="#"><img style="width:100%" ; class="img-responsive" src="~/Images/hot/btn-tel.PNG" alt="#" title="#"></a>
+                        <a href="#"><img style="width:100%" class="img-responsive" src="../../Images/hot/btn-face.PNG" alt="#" title="#"></a>
+                        <a href="#"><img style="width:100%" class="img-responsive" src="../../Images/hot/btn-insta.PNG" alt="#" title="#"></a>
+                        <a href="#"><img style="width:100%" class="img-responsive" src="../../Images/hot/btn-twitter.PNG" alt="#" title="#"></a>
+                        <a href="#"><img style="width:100%" class="img-responsive" src="../../Images/hot/ptn-pagina.PNG" alt="#" title="#"></a>
+                        <a href="#"><img style="width:100%" class="img-responsive" src="../../Images/hot/btn-skype.PNG" alt="#" title="#"></a>
+                        <a href="#"><img style="width:100%" class="img-responsive" src="../../Images/hot/btn-email.PNG" alt="#" title="#"></a>
+                        <a href="#"><img style="width:100%" class="img-responsive" src="../../Images/hot/btn-tel.PNG" alt="#" title="#"></a>
                     </div>
                 </div>
             </div>
-        </div>
+        </div>       
 
         <!---------------------------////////////////////////////////////////////////--------------------------------------------------->
         <div class="row clearfix">
@@ -233,27 +263,37 @@ $(document).ready(function(e) {
                         <div class="row">
                             <div class="col-md-6">
                                 <div id="galeria">
-                                    <div class="item2">
-                                        <img src="~/Images/hot/upload/Chrysanthemum.jpg" alt="The Last of us">
-                                        <p>Vestibulum ante ipsum</p>
-                                    </div>
-                                    <div class="item2">
-                                        <img src="~/Images/hot/upload/Desert.jpg" alt="GTA V">
-                                        <p>Vestibulum ante ipsum</p>
-                                    </div>
-                                    <div class="item2">
-                                        <img src="~/Images/hot/upload/Lighthouse.jpg" alt="Mirror Edge">
-                                        <p>Vestibulum ante ipsum</p>
-                                    </div>
-                                    <div class="item2">
-                                        <img src="~/Images/hot/upload/Desert.jpg" alt="GTA V">
-                                        <p>Vestibulum ante ipsum</p>
-                                    </div>
+                                    @try
+                                    {
+                                        <br />
+                                        foreach (var item in Model.ListaImagensAnuncio)
+                                        {
+                                            var aaa = item.actid; //Variável usada para passar pelo TRY (Não tem necessidade)
+                                            var desc = item.tbAnuncio.tituloAnuncio;
+                                            String _src = "/Arquivos/Anúncios/" +
+                                                          String.Format("{0:00000000}", item.actid) + "/Imagens/" +
+                                                          String.Format("{0:000}", item.iditem) +
+                                                          ".jpeg";
+
+                                            <div class="item2">
+                                                @*<img src="../../Images/hot/upload/Chrysanthemum.jpg" alt="The Last of us">*@
+                                                <img src="@_src" alt="@desc" title="@desc">
+                                                @*<p>Vestibulum ante ipsum</p>*@
+                                            </div>
+                                        }
+                                    }
+                                    catch (Exception)
+                                    {
+                                        <br />
+                                    }
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="video-container">
-                                    <iframe width="640" height="350" src="http://www.youtube.com/embed/1yup_0047F8" frameborder="0" allowfullscreen></iframe>
+                                    <iframe id="iFrameVideo" name="iFrameVideo" width="640" height="350"
+                                            src="http://www.youtube.com/embed/vtyV8DXAYIU" frameborder="0" allowfullscreen></iframe>
+
+                                    @Html.HiddenFor(model => model.VideoAnuncio, new{@id="videoAnuncio", @name="videoAnuncio"})
                                 </div>
                             </div>
                         </div>
@@ -263,28 +303,44 @@ $(document).ready(function(e) {
                             <div class="col-md-12 column">
                                 <h2 class="topo-texto-h2">Endereço</h2>
                                 <address>
-                                    <strong>nome da empresa</strong><br>
-                                    Av: 28 de abril , n 32<br>
-                                    ipatinga, MG<br>
-                                    <abbr title="Telefone">P:</abbr> (31) 0000 0000
+                                    <strong>
+                                        @* Endereço do Anunciante *@
+                                        @Html.DisplayTextFor(model => model.Anunciante.razaoSocial)
+                                    </strong>
+                                    <br />@Html.DisplayTextFor(model => model.EnderecoAnunciante.endereco), nº
+                                    @Html.DisplayTextFor(model => model.EnderecoAnunciante.numero_endereco),
+                                    @Html.DisplayTextFor(model => model.EnderecoAnunciante.complemento_endereco) -
+                                    @Html.DisplayTextFor(model => model.EnderecoAnunciante.nomeBairro)
+                                    <br />
+                                    @Html.DisplayTextFor(model => model.EnderecoAnunciante.nomeCidade),
+                                    @Html.DisplayTextFor(model => model.EnderecoAnunciante.ufEstado) -
+                                    @Html.DisplayTextFor(model => model.EnderecoAnunciante.cep)
+                                    <br/>
+                                    <abbr title="Telefone">P:</abbr> @Html.DisplayTextFor(model => model.Anunciante.telResidencial)
+                                    <br />
+                                    <abbr title="Telefone">P:</abbr> @Html.DisplayTextFor(model => model.Anunciante.telComercial)
+                                    <br />
+                                    <abbr title="Telefone">P:</abbr> @Html.DisplayTextFor(model => model.Anunciante.telCelular1)
+                                    <br />
+                                    <abbr title="Telefone">P:</abbr> @Html.DisplayTextFor(model => model.Anunciante.telCelular2)
                                 </address>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12 column">
                                 <h2 class="topo-texto-h2">Pagamento</h2>
-                                <div class="btns"><img src="~/Images/hot/paypal.png" title="#" alt="#"></div>
-                                <div class="btns"><img src="~/Images/hot/visa.png" title="#" alt="#"></div>
-                                <div class="btns"><img src="~/Images/hot/master.png" title="#" alt="#"></div>
-                                <div class="btns"><img src="~/Images/hot/visa.png" title="#" alt="#"></div>
-                                <div class="btns"><img src="~/Images/hot/paypal.png" title="#" alt="#"></div>
-                                <div class="btns"><img src="~/Images/hot/paypal.png" title="#" alt="#"></div>
-                                <div class="btns"><img src="~/Images/hot/visa.png" title="#" alt="#"></div>
-                                <div class="btns"><img src="~/Images/hot/master.png" title="#" alt="#"></div>
-                                <div class="btns"><img src="~/Images/hot/visa.png" title="#" alt="#"></div>
-                                <div class="btns"><img src="~/Images/hot/paypal.png" title="#" alt="#"></div>
-                                <div class="btns"><img src="~/Images/hot/visa.png" title="#" alt="#"></div>
-                                <div class="btns"><img src="~/Images/hot/paypal.png" title="#" alt="#"></div>
+                                <div class="btns"><img src="../../Images/hot/paypal.png" title="#" alt="#"></div>
+                                <div class="btns"><img src="../../Images/hot/visa.png" title="#" alt="#"></div>
+                                <div class="btns"><img src="../../Images/hot/master.png" title="#" alt="#"></div>
+                                <div class="btns"><img src="../../Images/hot/visa.png" title="#" alt="#"></div>
+                                <div class="btns"><img src="../../Images/hot/paypal.png" title="#" alt="#"></div>
+                                <div class="btns"><img src="../../Images/hot/paypal.png" title="#" alt="#"></div>
+                                <div class="btns"><img src="../../Images/hot/visa.png" title="#" alt="#"></div>
+                                <div class="btns"><img src="../../Images/hot/master.png" title="#" alt="#"></div>
+                                <div class="btns"><img src="../../Images/hot/visa.png" title="#" alt="#"></div>
+                                <div class="btns"><img src="../../Images/hot/paypal.png" title="#" alt="#"></div>
+                                <div class="btns"><img src="../../Images/hot/visa.png" title="#" alt="#"></div>
+                                <div class="btns"><img src="../../Images/hot/paypal.png" title="#" alt="#"></div>
                             </div>
                         </div>
                     </div>
@@ -296,7 +352,7 @@ $(document).ready(function(e) {
         <div class="row clearfix">
             <div id="comentarios" class="col-md-9 column">
                 <h2 class="topo-texto-h2">Comentários</h2>
-                <img class="img-responsive" src="~/Images/hot/comentarios.png">
+                <img class="img-responsive" src="../../Images/hot/comentarios.png">
             </div>
         </div>
 
@@ -308,7 +364,7 @@ $(document).ready(function(e) {
                     <div class="col-sm-6">
                         <form class="formulario" name="form" id="form" method="post" enctype="multipart/form-data" action="#">
                             <input class="form-control" type="text" name="nome" id="nome" placeholder="Nome" required>
-                            <input class="form-control" type="mail" name="email" id="email" placeholder="Email" required>
+                            <input class="form-control" type="email" name="email" id="email" placeholder="Email" required>
                             <input class="form-control" type="text" name="telefone" id="telefone" placeholder="Telefone" required>
                             <textarea name="mensagem" id="mensagem" class="form-control" role="6" style="resize:none"></textarea>
                             <input type="submit" name="enviar" id="enviar" value="Enviar">
@@ -337,3 +393,21 @@ $(document).ready(function(e) {
     <!-------------------------------------------------------------------------------------------------------------------------------->
 </body>
 </html>
+
+
+<script type="text/javascript">
+    $(document).ready(function(e) {
+        carregaDetalhes();
+    });
+
+    //Carrega o item detalhes com o valor do anúncio
+    function carregaDetalhes() {
+        var ds = document.getElementById('dsAnuncio');
+        var dvDesc = document.getElementById('dvDescricao');
+        dvDesc.innerHTML = ds.value;
+
+        var iframe = document.getElementById('iFrameVideo');
+        var urlVideo = document.getElementById('videoAnuncio');
+        iframe.src = urlVideo.value;
+    }
+</script>

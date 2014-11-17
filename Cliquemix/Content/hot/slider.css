@@ -7,7 +7,7 @@
 .next {
 	width: 40px;
 	height: 40px;
-	background-image: url(../../Images/Inicial/img/prev.png);
+	background-image: url(../../Images/hot/prev.png);
 	border: none;
 	border-radius: 100%;
 	color: #fff;
@@ -20,7 +20,7 @@
 .prev {
 	width: 40px;
 	height: 40px;
-	background-image: url(../../Images/Inicial/img/next.png);
+	background-image: url(../../Images/hot/next.png);
 	border: none;
 	border-radius: 100%;
 	color: #fff;

@@ -23,7 +23,7 @@ namespace Cliquemix.Controllers.Administrador
         }
 
 
-        [HttpPost]
+        [HttpGet]
         public ActionResult LiberarAcesso(int id)
         {
             //var tbusers = db.tbUsers.Include(t => t.tbUsersTipo);
@@ -31,7 +31,7 @@ namespace Cliquemix.Controllers.Administrador
         }
 
 
-        [HttpPost]
+        [HttpGet]
         public ActionResult BloquearAcesso(int id)
         {
             //var tbusers = db.tbUsers.Include(t => t.tbUsersTipo);

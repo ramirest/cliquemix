@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace Cliquemix.Models
 {
-    public class PermissaoProvider : System.Web.Security.RoleProvider
+    public class PermissaoProvider : RoleProvider
     {
 
         public override void AddUsersToRoles(string[] usernames, string[] roleNames)
@@ -48,19 +49,18 @@ namespace Cliquemix.Models
 
         public override string[] GetRolesForUser(string username)
         {
-            using (var db = new ApplicationDbContext())
-            {
-                var usu = db.tbUsers.FirstOrDefault(u => u.username == username);
+            var db = new ApplicationDbContext();
 
-                //No teoricamente improvável caso o usuário não existir
-                if (usu == null)
-                    return new string[] {};
+            var usu = db.tbUsers.FirstOrDefault(u => u.username == username);
 
-                //Lista de permissões do usuário
-                List<String> permissoes = usu.tbUsersPermissao.Select(p => p.tbPermissao.dsPermissao).ToList();
+            //No teoricamente improvável caso o usuário não existir
+            if (usu == null)
+                return new string[] { };
 
-                return permissoes.ToArray();
-            }
+            //Lista de permissões do usuário
+            List<String> permissoes = usu.tbUsersPermissao.Select(p => p.tbPermissao.dsPermissao).ToList();
+
+            return permissoes.ToArray();
         }
 
         public override string[] GetUsersInRole(string roleName)
@@ -85,14 +85,14 @@ namespace Cliquemix.Models
 
     }
 
-    public class PermissoesFiltro : System.Web.Mvc.AuthorizeAttribute
+    public class PermissoesFiltro : AuthorizeAttribute
     {
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
             base.OnAuthorization(filterContext);
 
             //Caso o usuário não foi autorizado, ele será enviado a página /Home/Negado
-            if (filterContext.Result is HttpUnauthorizedResult)
+            if (filterContext.Result is HttpUnauthorizedResult && filterContext.HttpContext.Request.IsAuthenticated)
             {
                 filterContext.HttpContext.Response.Redirect("/Account/Login");
             }
